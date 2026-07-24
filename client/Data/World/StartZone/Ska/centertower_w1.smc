@@ -1,0 +1,16 @@
+NAME "centertower_w1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\centertower_w1.bm";
+  TEXTURES   
+  {
+    "centertower3_juno"	TFNM "Data\World\StartZone\Ska\Texture\centertower3_juno.tex";
+    "centertower1_juno"	TFNM "Data\World\StartZone\Ska\Texture\centertower1_juno.tex";
+    "centertower2_juno"	TFNM "Data\World\StartZone\Ska\Texture\centertower2_juno.tex";
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-19.6731,-0.165281,-2.30311,19.6731,50.7265,2.30311;
+  COLISION
+  {
+    "Default"  {-19.5,0,-2,19.5,50,2;}
+  }
+}

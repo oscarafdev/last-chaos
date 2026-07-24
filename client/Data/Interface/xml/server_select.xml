@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="UIServerSelect" x="0" y="0" w="498" h="442" hide="1" align_h="1" align_v="1" tooltip="-1">
+    <UIImage id="img_background" x="0" y="0" w="498" h="442" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" l="1" t="282" r="499" b="724" />
+    <UIText id="text_title" x="154" y="20" w="193" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="250" str="서버 선택" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_desc" x="42" y="65" w="417" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="2618" str="♣추천 서버란?" color="0xd257ffff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_desc_info" x="42" y="86" w="417" h="73" hide="0" align_h="0" align_v="0" tooltip="-1" sx="5" sy="5" gap_y="2" h_align="0" str_idx="2619" text_col="0xffffffff" str="라스트카오스를 처음 시작하신다면 3채널(초보평화) 서버를 추천해 드립니다. 3채널에 있는 &apos;초보 지원사&apos;를 통해 경험치/숙련도 2배, 물리/마법 공격력 20%향상되는 &apos;초보지원 버프&apos;를 받으실 수 있습니다. 초보지원 버프는 레벨 60까지만 제공됩니다.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIText id="text_server_name" x="42" y="174" w="187" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="251" str="서버군" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_channel_name" x="231" y="174" w="152" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="370" str="서버" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_channel_state" x="385" y="174" w="60" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="6091" str="상태" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="146" y="367" w="99" h="46" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" str_idx="249" str="접속" newtype="0" edge="1" text_color="0xffff00ff">
+        <uv type="0" l="314" t="92" r="413" b="138" />
+        <uv type="1" l="419" t="92" r="518" b="138" />
+        <uv type="2" l="314" t="142" r="413" b="188" />
+        <uv type="3" l="419" t="142" r="518" b="188" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="255" y="367" w="99" h="46" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" str_idx="139" str="취소" newtype="0" edge="1" text_color="0xffff00ff">
+        <uv type="0" l="314" t="92" r="413" b="138" />
+        <uv type="1" l="419" t="92" r="518" b="138" />
+        <uv type="2" l="314" t="142" r="413" b="188" />
+        <uv type="3" l="419" t="142" r="518" b="188" />
+    </UIButton>
+    <UIList id="list_server" x="41" y="195" w="188" h="159" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" itemx="0" itemy="0" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+        <select x="0" y="0" w="190" h="31" l="511" t="0" r="701" b="31" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="189" h="31" hide="0" align_h="0" align_v="0" tooltip="-1">
+            <UIText id="text_name" x="7" y="7" w="104" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="796" str="1. 블리스" color="0xc0c000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImageArray id="img_server_state" x="117" y="7" w="63" h="15" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" render_idx="0">
+                <surface0 x="0" y="0" w="63" h="15" l="505" t="652" r="568" b="667" desc="" />
+                <surface1 x="0" y="0" w="63" h="15" l="569" t="652" r="632" b="667" desc="" />
+            </UIImageArray>
+        </UIListItem>
+    </UIList>
+    <UIList id="list_channel" x="231" y="195" w="229" h="159" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" itemx="0" itemy="0" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+        <select x="0" y="0" w="216" h="31" l="511" t="34" r="701" b="63" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="214" h="31" hide="0" align_h="0" align_v="0" tooltip="-1">
+            <UIText id="text_name" x="7" y="7" w="145" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="796" str="1. 블리스" color="0xc0c000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_state" x="154" y="7" w="60" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="371" str="원활" color="0xb4b4b4ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+        <UIScrollBar x="0" y="1" w="228" h="157" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" vertical="1" right="1" scroll_pos="0" move_unit="5" item_count="0" item_per_page="5">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="13" h="9" l0="402" t0="191" r0="413" b0="200" l1="415" t1="191" r1="426" b1="200" />
+            <button2 x="0" y="0" w="13" h="9" l0="402" t0="232" r0="413" b0="241" l1="415" t1="232" r1="426" b1="241" />
+            <thumb x="0" y="0" w="13" h="139" unit="9" l="415" t="200" r="426" b="232" />
+        </UIScrollBar>
+    </UIList>
+</Window>

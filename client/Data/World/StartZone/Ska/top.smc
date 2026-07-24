@@ -1,0 +1,14 @@
+NAME "top";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\top.bm";
+  TEXTURES   
+  {
+    "top"	TFNM "Data\world\StartZone\Ska\texture\top.tex";
+    "castledoor_11"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.744886,0.011845,-0.634079,0.734374,5.08107,0.646998;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,5,0.5;}
+  }
+}

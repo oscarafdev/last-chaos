@@ -1,0 +1,17 @@
+OFFSET    	-1.07,-0.13,-0.4,-140,-80,0;
+NAME "ro_crossbow_002";
+{
+  MESH       	TFNM "Data\Item\Weapon\ro_crossbow_002.bm";
+  TEXTURES   
+  {
+    "ro_crossbow_002"	TFNM "Data\Item\Weapon\Texture\ro_crossbow_002.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_CROSSBOW_002.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.359293,-0.0247052,-0.207267,0.334945,0.12027,0.291223;
+  COLISION
+  {
+  }
+}

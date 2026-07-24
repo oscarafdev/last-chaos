@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Nimblepango";
+{
+  MESH       	TFNM "Data\Monster\pango\v0\Pango_nim_body.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Default"	TFNM "Data\Monster\pango\Fang_Go-Default.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v0\Pango_nim_bomb.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Default"	TFNM "Data\Monster\pango\Fang_Go-Default.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v0\Pango_nim_hm.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Default"	TFNM "Data\Monster\pango\Fang_Go-Default.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\pango\Nimblepango.bs";
+  ANIMSET   	TFNM "Data\Monster\pango\Nimblepango.ba";
+  ANIMEFFECT	TFNM "Data\Monster\pango\Nimblepango.bae";
+  ALLFRAMESBBOX	-0.4,0,-0.4,0.4,1.3,0.4;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.2,0.4;}
+  }
+}

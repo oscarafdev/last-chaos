@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hel_021-1";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hel_021-1.bm";
+  TEXTURES   
+  {
+    "ro_hel_021-1"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hel_021-1.tex";
+  }
+  ALLFRAMESBBOX	-0.093108,1.53799,-0.124482,0.093108,1.79536,0.140017;
+  COLISION
+  {
+  }
+}

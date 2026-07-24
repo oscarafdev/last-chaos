@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_mask-scream";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_mask-scream.bm";
+  TEXTURES   
+  {
+    "mask_scream"	TFNM "Data\Item\Shield\Knight\Texture\mask_scream.tex";
+  }
+  ALLFRAMESBBOX	-0.125211,1.58039,-0.19247,0.12521,2.00695,0.153377;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "d1_b_kingchair_001";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_b_kingchair_001.bm";
+  TEXTURES   
+  {
+    "d1_b_kingchair_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_b_kingchair_001.tex";
+  }
+  ALLFRAMESBBOX	-0.63105,-2e-006,-0.683949,0.613905,3.30471,0.575016;
+  COLISION
+  {
+    "Default"  {-0.643382,-0.0230899,-0.708225,0.801966,3.27758,0.575211;}
+  }
+}

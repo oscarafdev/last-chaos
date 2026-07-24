@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_npc";
+{
+  MESH       	TFNM "Data\Npc\NS_npc\ns_hdface_002_NPC.bm";
+  TEXTURES   
+  {
+    "ns_hdface_002_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_hdface_002_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_hdhair_001_NPC.bm";
+  TEXTURES   
+  {
+    "ns_hdhair_001_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_hdhair_001_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_bu_022_NPC.bm";
+  TEXTURES   
+  {
+    "ns_bu_022_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_bu_022_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_bu_022_1_NPC.bm";
+  TEXTURES   
+  {
+    "ns_bu_022_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_bu_022_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_hn_022_NPC.bm";
+  TEXTURES   
+  {
+    "ns_hn_022_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_hn_022_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_bd_022_NPC.bm";
+  TEXTURES   
+  {
+    "ns_bd_022_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_bd_022_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_ft_022_NPC.bm";
+  TEXTURES   
+  {
+    "ns_ft_022_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_ft_022_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_wing_022_NPC.bm";
+  TEXTURES   
+  {
+    "ns_wing_022_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_wing_022_NPC.tex";
+  }
+  MESH       	TFNM "Data\Npc\NS_npc\ns_hood_022_NPC.bm";
+  TEXTURES   
+  {
+    "ns_hood_022_NPC"	TFNM "Data\Npc\NS_npc\Texture\ns_hood_022_NPC.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\NS_npc\ns_npc.bs";
+  ANIMSET   	TFNM "Data\Npc\NS_npc\ns_npc.ba";
+  ALLFRAMESBBOX	-0.728424,-0.00304513,-0.498722,0.593338,2.08405,0.754127;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,2.05,0.6;}
+  }
+}

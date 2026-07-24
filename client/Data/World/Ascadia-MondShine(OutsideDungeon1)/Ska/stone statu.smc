@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "stone_statu";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_statu.bm";
+  TEXTURES   
+  {
+    "stone statu"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone statu.tex";
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_statu.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_statu.ba";
+  ALLFRAMESBBOX	-13.3087,-0.232388,-7.66367,13.3293,21.1062,10.1674;
+  COLISION
+  {
+    "Default"  {-6.75,0,-6.75,6.75,11,6.75;}
+  }
+}

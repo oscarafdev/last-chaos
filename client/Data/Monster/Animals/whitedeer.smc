@@ -1,0 +1,26 @@
+OFFSET    	0,0,0.2,180,0,0;
+NAME "whitedeer";
+{
+  MESH       	TFNM "Data\monster\Animals\_TAG_T_CENTER_wdeer.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Animals\whitedeer.bm";
+  TEXTURES   
+  {
+    "whitedeer"	TFNM "Data\Monster\Animals\whitedeer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Animals\whitedeer_1.bm";
+  TEXTURES   
+  {
+    "whitedeer_1"	TFNM "Data\Monster\Animals\whitedeer_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Animals\whitedeer.bs";
+  ANIMSET   	TFNM "Data\Monster\Animals\whitedeer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Animals\whitedeer.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.55,0.75,2,0.95;
+  COLISION
+  {
+    "Default"  {-0.7,0,-0.7,0.7,1.8,0.7;}
+  }
+}

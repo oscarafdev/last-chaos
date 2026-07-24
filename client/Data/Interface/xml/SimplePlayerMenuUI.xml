@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="PartyMenuUI" x="0" y="0" w="100" h="100" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="img_main_back" x="0" y="0" w="100" h="100" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="229" r="85" b="251" unit="9" splitmode="2">
+        <UIList id="list_main_menu" x="7" y="7" w="86" h="86" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="0" itemgap="1" item_count="0" pre_create="0">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem x="0" y="0" w="86" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIText id="text_menu_name" x="0" y="0" w="86" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xc2bac5ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIListItem>
+        </UIList>
+    </UIImageSplit>
+    <UIImageSplit id="img_sub_back" x="100" y="1" w="100" h="100" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="229" r="85" b="251" unit="9" splitmode="2">
+        <UIList id="list_sub_menu" x="7" y="7" w="86" h="86" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="0" itemgap="1" item_count="0" pre_create="0">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem x="0" y="0" w="86" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIText id="text_menu_name" x="0" y="0" w="86" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xc2bac5ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIListItem>
+        </UIList>
+    </UIImageSplit>
+</Window>

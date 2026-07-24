@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_bd_Germany";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_Germany.bm";
+  TEXTURES   
+  {
+    "ni_bd_Germany"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_Germany.tex";
+  }
+  ALLFRAMESBBOX	-0.334873,0.379487,-0.138919,0.33487,1.25622,0.171811;
+  COLISION
+  {
+  }
+}

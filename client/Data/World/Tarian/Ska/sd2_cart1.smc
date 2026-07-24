@@ -1,0 +1,18 @@
+NAME "sd2_cart1";
+{
+  MESH       	TFNM "Data\World\Tarian\ska\sd2_cart1.bm";
+  TEXTURES   
+  {
+    "sd2_mine's_cart_wheel"	TFNM "Data\World\Tarian\ska\texture\sd2_mine's_cart_wheel.tex";
+    "sd2_mine's_shovel"	TFNM "Data\World\Tarian\ska\texture\sd2_mine's_shovel.tex";
+    "S_Dengen2_Detail"	TFNM "Data\World\Tarian\ska\texture\S_Dengen2_Detail.tex";
+    "sd2_mine's_cart"	TFNM "Data\World\Tarian\ska\texture\sd2_mine's_cart.tex";
+    "sd2_mine's_cart_wheel01"	TFNM "Data\World\Tarian\ska\texture\sd2_mine's_cart_wheel01.tex";
+    "Floor_02"	TFNM "Data\World\Tarian\Ska\Texture\Floor_02.tex";
+  }
+  ALLFRAMESBBOX	-1.5071,-0.006433,-2.07037,1.50711,3.367,2.07037;
+  COLISION
+  {
+    "Default"  {-1.5,0,-2,1.5,3,2;}
+  }
+}

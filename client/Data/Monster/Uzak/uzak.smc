@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "uzak";
+{
+  MESH       	TFNM "Data\Monster\Uzak\uzak_1.bm";
+  TEXTURES   
+  {
+    "uzak"	TFNM "Data\Monster\Uzak\Texture\uzak.tex";
+  }
+  MESH       	TFNM "Data\Monster\Uzak\uzak_2.bm";
+  TEXTURES   
+  {
+    "uzak"	TFNM "Data\Monster\Uzak\Texture\uzak.tex";
+  }
+  MESH       	TFNM "Data\Monster\Uzak\uzak_3.bm";
+  TEXTURES   
+  {
+    "uzak"	TFNM "Data\Monster\Uzak\Texture\uzak.tex";
+  }
+  MESH       	TFNM "Data\Monster\Uzak\uzak_bd.bm";
+  TEXTURES   
+  {
+    "uzak"	TFNM "Data\Monster\Uzak\Texture\uzak.tex";
+  }
+  MESH       	TFNM "Data\Monster\Uzak\uzak_bu.bm";
+  TEXTURES   
+  {
+    "uzak"	TFNM "Data\Monster\Uzak\Texture\uzak.tex";
+  }
+  MESH       	TFNM "Data\Monster\Uzak\uzak_weapon.bm";
+  TEXTURES   
+  {
+    "uzak_sword"	TFNM "Data\Monster\Uzak\Texture\uzak_sword.tex";
+  }
+  MESH       	TFNM "Data\Monster\Uzak\_TAG_T_UZAK.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Uzak\_TAG_UZAKS.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Uzak\uzak.bs";
+  ANIMSET   	TFNM "Data\Monster\Uzak\uzak.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Uzak\uzak.bae";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,6,2.5;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,6,2;}
+  }
+}

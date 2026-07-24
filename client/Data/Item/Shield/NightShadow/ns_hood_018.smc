@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_hood_018";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_hood_018.bm";
+  TEXTURES   
+  {
+    "ns_hood_018"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hood_018.tex";
+  }
+  ALLFRAMESBBOX	-0.164915,1.59441,-0.127437,0.161527,2.02713,0.184478;
+  COLISION
+  {
+  }
+}

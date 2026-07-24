@@ -1,0 +1,12 @@
+NAME "d1_b_bottle_001";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_b_bottle_001.bm";
+  TEXTURES   
+  {
+    "d1_b_bottle_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_b_bottle_001.tex";
+  }
+  ALLFRAMESBBOX	-0.040487,4.9e-005,-0.034714,0.039682,0.116108,0.034714;
+  COLISION
+  {
+  }
+}

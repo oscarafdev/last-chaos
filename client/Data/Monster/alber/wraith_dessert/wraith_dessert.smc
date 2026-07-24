@@ -1,0 +1,57 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "wraith_dessert";
+{
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_bu.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_bu_1.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_head.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_head_1.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_head_2.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\Wraith_lhn.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_rhn.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_bd.bm";
+  TEXTURES   
+  {
+    "wraith_dessert"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\wraith_dessert\wraith_scythe.bm";
+  TEXTURES   
+  {
+    "wraith_dessert_weapon"	TFNM "Data\Monster\alber\wraith_dessert\wraith_dessert_weapon.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\wraith_dessert\wraith.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\wraith_dessert\wraith.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\wraith_dessert\wraith.bae";
+  ALLFRAMESBBOX	-2,0,-1.5,2,4.2,1.5;
+  COLISION
+  {
+    "Default"  {-0.940405,0.000965595,-1.12569,1.05959,4.20097,0.974306;}
+  }
+}

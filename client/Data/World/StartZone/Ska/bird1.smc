@@ -1,0 +1,14 @@
+NAME "bird1";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\bird1.bm";
+  TEXTURES   
+  {
+    "eagle"	TFNM "Data\world\StartZone\Ska\Texture\eagle.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\bird1.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\bird1.ba";
+  ALLFRAMESBBOX	-0.529399,-0.692836,-1.05829,0.639588,0.489216,1.04994;
+  COLISION
+  {
+  }
+}

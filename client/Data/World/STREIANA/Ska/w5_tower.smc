@@ -1,0 +1,33 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w5_tower";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_tower_4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\_TAG_T_WTOWER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_tower_1.bm";
+  TEXTURES   
+  {
+    "w5_gate01"	TFNM "Data\World\STREIANA\Ska\Texture\w5_gate01.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_tower_2.bm";
+  TEXTURES   
+  {
+    "w5_gate02"	TFNM "Data\World\STREIANA\Ska\Texture\w5_gate02.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_tower_3.bm";
+  TEXTURES   
+  {
+    "w5_gate03"	TFNM "Data\World\STREIANA\Ska\Texture\w5_gate03.tex";
+  }
+  SKELETON  	TFNM "Data\World\STREIANA\Ska\w5_tower.bs";
+  ANIMSET   	TFNM "Data\World\STREIANA\Ska\w5_tower.ba";
+  ALLFRAMESBBOX	-4.65484,-0.0210088,-3.35723,4.65484,12.8225,3.35723;
+  COLISION
+  {
+  }
+}

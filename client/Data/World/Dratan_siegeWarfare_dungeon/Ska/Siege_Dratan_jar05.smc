@@ -1,0 +1,14 @@
+NAME "Siege_Dratan_jar05";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Siege_Dratan_jar05.bm";
+  TEXTURES   
+  {
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_Dratan_Detail.tex";
+    "Siege_Dratan_jar02"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_Dratan_jar02.tex";
+  }
+  ALLFRAMESBBOX	-0.299837,-0.0029,-0.259666,0.299837,0.604556,0.259666;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,0.6,0.25;}
+  }
+}

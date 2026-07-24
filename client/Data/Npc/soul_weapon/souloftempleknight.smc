@@ -1,0 +1,16 @@
+NAME "souloftempleknight";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\ni_shield_00u.bm";
+  TEXTURES   
+  {
+    "ni_shield_00u"	TFNM "Data\Npc\soul_weapon\ni_shield_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ni_soul_shi.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ni_soul_shi.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\souloftempleknight.bae";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,2.3,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,2.3,0.1;}
+  }
+}

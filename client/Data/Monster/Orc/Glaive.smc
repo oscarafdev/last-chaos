@@ -1,0 +1,43 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Glaive";
+{
+  MESH       	TFNM "Data\monster\Orc\OrcBody.bm";
+  TEXTURES   
+  {
+    "M_Orc_b2"	TFNM "Data\monster\Orc\M_Orc_b2.tex";
+    "M_Orc_fight_body"	TFNM "Data\monster\Orc\M_Orc_fight_body.tex";
+  }
+  MESH       	TFNM "Data\monster\Orc\OrcHead.bm";
+  TEXTURES   
+  {
+    "M_Orc_b2"	TFNM "Data\monster\Orc\M_Orc_b2.tex";
+  }
+  MESH       	TFNM "Data\monster\orc\OrcFace2.bm";
+  TEXTURES   
+  {
+    "M_Orc_fight_body"	TFNM "Data\monster\Orc\M_Orc_fight_body.tex";
+    "M_Orc_w_add"	TFNM "Data\monster\Orc\M_Orc_w_add.tex";
+  }
+  MESH       	TFNM "Data\monster\orc\OrcShield.bm";
+  TEXTURES   
+  {
+    "M_Orc_w_add"	TFNM "Data\monster\Orc\M_Orc_w_add.tex";
+  }
+  MESH       	TFNM "Data\monster\orc\GlaiveWeapon.bm";
+  TEXTURES   
+  {
+    "m_weapon_tex"	TFNM "Data\monster\Orc\m_weapon_tex.tex";
+  }
+  MESH       	TFNM "Data\monster\Orc\_TAG_T_CENTER_glaive.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Orc\m_orc_f.bs";
+  ANIMSET   	TFNM "Data\monster\Orc\m_orc_f.ba";
+  ANIMEFFECT	TFNM "Data\Monster\orc\Glaive.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.5,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.65,0.5,2.3,0.65;}
+  }
+}

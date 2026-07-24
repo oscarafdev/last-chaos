@@ -1,0 +1,16 @@
+NAME "electric_lamp_001";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\bridge_001.bm";
+  TEXTURES   
+  {
+    "M_combo_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+    "bridge_A_001"	TFNM "Data\World\M_combo\Ska\Texture\bridge_A_001.tex";
+    "bridge_A_002"	TFNM "Data\World\M_combo\Ska\Texture\bridge_A_002.tex";
+    "bridge_A_003"	TFNM "Data\World\M_combo\Ska\Texture\bridge_A_003.tex";
+    "bridge_A_004"	TFNM "Data\World\M_combo\Ska\Texture\bridge_A_004.tex";
+  }
+  ALLFRAMESBBOX	-9.93889,-0.036816,-42.5,10.0611,2.21009,42.5;
+  COLISION
+  {
+  }
+}

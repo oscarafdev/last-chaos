@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "soulofarcher";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\soulofarcher.bm";
+  TEXTURES   
+  {
+    "soulofarcher"	TFNM "Data\Npc\soul_weapon\soulofarcher.tex";
+  }
+  MESH       	TFNM "Data\Npc\soul_weapon\_TAG_T_HBSOUL.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\soulofarcher.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\soulofarcher.ba";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,1.9,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,1.9,0.1;}
+  }
+}

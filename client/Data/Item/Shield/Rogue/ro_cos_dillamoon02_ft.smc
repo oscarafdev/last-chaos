@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cos_dillamoon02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_dillamoon02_ft00.bm";
+  TEXTURES   
+  {
+    "ro_cos_dillamoon02_ft"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_dillamoon02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.243747,-0.002894,-0.189026,0.243747,0.603199,0.124707;
+  COLISION
+  {
+  }
+}

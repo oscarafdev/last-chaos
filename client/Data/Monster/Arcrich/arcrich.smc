@@ -1,0 +1,89 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bu.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bu_1.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bu_2.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bu_3.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bu_4.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bu_5.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bu_6.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_head.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bs.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_lhn.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_rhn.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_bd.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\arcrich_staff.bm";
+  TEXTURES   
+  {
+    "arclich"	TFNM "Data\Monster\Arcrich\Texture\arclich.tex";
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\_TAG_T_ARCICH_H.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\_TAG_ARCRICH_S1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Arcrich\_TAG_ARCRICH_S2.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Arcrich\arcrich.bs";
+  ANIMSET   	TFNM "Data\Monster\Arcrich\arcrich.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Arcrich\arcrich.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,2.5,1;
+  COLISION
+  {
+    "Default"  {-0.940405,0.000965595,-1.07569,1.05959,2.50097,0.924306;}
+  }
+}

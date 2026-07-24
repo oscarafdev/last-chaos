@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cos_kailooks02_hm";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_kailooks02_hm.bm";
+  TEXTURES   
+  {
+    "ro_cos_kailooks02_hm"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_kailooks02_hm.tex";
+  }
+  ALLFRAMESBBOX	-0.102646,1.42375,-0.123122,0.102646,1.85539,0.294428;
+  COLISION
+  {
+  }
+}

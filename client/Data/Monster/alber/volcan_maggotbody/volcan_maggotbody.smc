@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "volcan_maggotbody";
+{
+  MESH       	TFNM "Data\Monster\alber\volcan_maggotbody\maggotbody.bm";
+  TEXTURES   
+  {
+    "volcan_croiz"	TFNM "Data\Monster\alber\volcan_maggotbody\volcan_croiz.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\volcan_maggotbody\maggotbody.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\volcan_maggotbody\maggotbody.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\volcan_maggotbody\maggotbody.bae";
+  ALLFRAMESBBOX	-0.4,0,-0.4,0.4,0.4,0.4;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,0.4,0.4;}
+  }
+}

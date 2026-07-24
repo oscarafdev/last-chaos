@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\LoginWorld2\Ska\AM-Tumb_01.bm";
+  TEXTURES   
+  {
+    "skull_tumb"	TFNM "Data\World\LoginWorld2\Ska\Texture\skull_tumb.tex";
+  }
+  ALLFRAMESBBOX	-1.964,-0.074542,-1.94593,1.964,1.41652,1.94593;
+  COLISION
+  {
+  }
+}

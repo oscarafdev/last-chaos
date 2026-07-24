@@ -1,0 +1,60 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "MON_madPriests_boss";
+{
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\_TAG_ef_madPriests_boss.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\_TAG_WP_madPriests_boss.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss_bd.bm";
+  TEXTURES   
+  {
+    "MON_madPriests_boss_bd"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\MON_madPriests_boss_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss_bu01.bm";
+  TEXTURES   
+  {
+    "MON_madPriests_boss_bu01"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\MON_madPriests_boss_bu01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss_bu02.bm";
+  TEXTURES   
+  {
+    "MON_madPriests_boss_bu01"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\MON_madPriests_boss_bu01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss_ft.bm";
+  TEXTURES   
+  {
+    "MON_madPriests_boss_bd"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\MON_madPriests_boss_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss_hm.bm";
+  TEXTURES   
+  {
+    "MON_madPriests_boss_bu02"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\MON_madPriests_boss_bu02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss_hn.bm";
+  TEXTURES   
+  {
+    "MON_madPriests_boss_bu02"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\MON_madPriests_boss_bu02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\WP_madPriests_boss.bm";
+  TEXTURES   
+  {
+    "WP_madPriests_boss"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\WP_madPriests_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss_face.bm";
+  TEXTURES   
+  {
+    "MON_madPriests_boss_face"	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\texture\MON_madPriests_boss_face.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Attribute boss\MON_madPriests_boss\MON_madPriests_boss.bae";
+  ALLFRAMESBBOX	-2.37016,-0.697901,-3.30917,2.37016,3.8021,4.34676;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,3.5,0.75;}
+  }
+}

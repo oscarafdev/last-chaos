@@ -1,0 +1,18 @@
+NAME "mateoHF";
+{
+  MESH       	TFNM "Data\Effect\Ska\mateoHF.bm";
+  TEXTURES   
+  {
+    "mateo"	TFNM "Data\Effect\Ska\mateo.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\_TAG_T_MATEOH.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\mateoHF.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\mateoHF.ba";
+  ALLFRAMESBBOX	-0.407545,-0.378331,-0.372373,0.443067,0.344284,0.425205;
+  COLISION
+  {
+  }
+}

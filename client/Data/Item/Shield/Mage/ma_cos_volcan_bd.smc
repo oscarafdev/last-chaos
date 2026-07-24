@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_cos_volcan_bd";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_cos_volcan_bd.bm";
+  TEXTURES   
+  {
+    "ma_cos_volcan_bd"	TFNM "Data\Item\Shield\Mage\Texture\ma_cos_volcan_bd.tex";
+  }
+  ALLFRAMESBBOX	-0.217884,0.874187,-0.17925,0.217884,1.30131,0.159671;
+  COLISION
+  {
+  }
+}

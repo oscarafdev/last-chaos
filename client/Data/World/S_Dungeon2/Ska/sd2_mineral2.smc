@@ -1,0 +1,13 @@
+NAME "sd2_mineral2";
+{
+  MESH       	TFNM "Data\World\S_Dungeon2\ska\sd2_mineral2.bm";
+  TEXTURES   
+  {
+    "sd2_mine's_jewelry_b"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_mine's_jewelry_b.tex";
+  }
+  ALLFRAMESBBOX	-0.542331,-0.006887,-0.579878,0.542331,0.691772,0.579878;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

@@ -1,0 +1,35 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ramianqueen";
+{
+  MESH       	TFNM "Data\Monster\m_ramian\ramianqueen01.bm";
+  TEXTURES   
+  {
+    "ramianqueen01"	TFNM "Data\Monster\m_ramian\ramianqueen01.tex";
+  }
+  MESH       	TFNM "Data\Monster\m_ramian\ramianqueen02.bm";
+  TEXTURES   
+  {
+    "ramianqueen02"	TFNM "Data\Monster\m_ramian\ramianqueen02.tex";
+  }
+  MESH       	TFNM "Data\Monster\m_ramian\ramianqueen03.bm";
+  TEXTURES   
+  {
+    "w2_m_barsil"	TFNM "Data\Monster\Basilisk\w2_m_barsil.tex";
+  }
+  MESH       	TFNM "Data\Monster\m_ramian\_TAG_T_CENTER_ramianqueen.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\m_ramian\ramianqueen04.bm";
+  TEXTURES   
+  {
+    "ramianqueen01"	TFNM "Data\Monster\m_ramian\ramianqueen01.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\m_ramian\ramianqueen.bs";
+  ANIMSET   	TFNM "Data\Monster\m_ramian\ramianqueen.ba";
+  ALLFRAMESBBOX	-2.5,0,-4,2.5,4.5,4;
+  COLISION
+  {
+    "Default"  {-1.1,0,-1.2,1.1,4.2,2.2;}
+  }
+}

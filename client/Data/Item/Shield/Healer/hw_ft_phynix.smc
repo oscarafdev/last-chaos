@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_ft_phynix";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_ft_phynix.bm";
+  TEXTURES   
+  {
+    "hw_ft_phynix"	TFNM "Data\Item\Shield\Healer\Texture\hw_ft_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.318439,-0.002728,-0.140397,0.318439,0.706622,0.10836;
+  COLISION
+  {
+  }
+}

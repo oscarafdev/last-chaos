@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_ft_cos_russia";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_ft_cos_russia.bm";
+  TEXTURES   
+  {
+    "ns_cos_russia_ft"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_russia_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.376165,-0.003136,-0.186039,0.376165,0.703849,0.23348;
+  COLISION
+  {
+    "Default"  {-0.376165,-0.00313598,-0.212895,0.376165,0.703849,0.206624;}
+  }
+}

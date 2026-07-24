@@ -1,0 +1,16 @@
+NAME "appletree_01";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\appletree_01.bm";
+  TEXTURES   
+  {
+    "apple"	TFNM "Data\World\StartZone\Ska\Texture\apple.tex";
+    "apple_tree00"	TFNM "Data\World\StartZone\Ska\Texture\apple_tree00.tex";
+    "apple_tree01"	TFNM "Data\World\StartZone\Ska\Texture\apple_tree01.tex";
+    "apple_tree02"	TFNM "Data\World\StartZone\Ska\Texture\apple_tree02.tex";
+  }
+  ALLFRAMESBBOX	-7.55603,0.017882,-5.75605,6.50645,10.6986,8.27038;
+  COLISION
+  {
+    "Default"  {-0.309602,-0.00625956,-0.33629,0.332694,1.02493,0.348316;}
+  }
+}

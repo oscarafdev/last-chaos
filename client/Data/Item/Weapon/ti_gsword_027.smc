@@ -1,0 +1,12 @@
+NAME "ti_gsword_027";
+{
+  MESH       	TFNM "Data\Item\Weapon\ti_gsword_027.bm";
+  TEXTURES   
+  {
+    "ti_gsword_027"	TFNM "Data\Item\Weapon\Texture\ti_gsword_027.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

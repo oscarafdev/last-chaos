@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "deadammorlancer";
+{
+  MESH       	TFNM "Data\Monster\deadammor\_TEG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\deadammor\deadammorlancer_bu.bm";
+  TEXTURES   
+  {
+    "deadammorlancer"	TFNM "Data\Monster\deadammor\deadammorlancer.tex";
+  }
+  MESH       	TFNM "Data\Monster\deadammor\deadammorlancer_cen.bm";
+  TEXTURES   
+  {
+    "deadammorlancer"	TFNM "Data\Monster\deadammor\deadammorlancer.tex";
+  }
+  MESH       	TFNM "Data\Monster\deadammor\deadammorlancer_ft.bm";
+  TEXTURES   
+  {
+    "deadammorlancer"	TFNM "Data\Monster\deadammor\deadammorlancer.tex";
+  }
+  MESH       	TFNM "Data\Monster\deadammor\deadammorlancer_hn.bm";
+  TEXTURES   
+  {
+    "deadammorlancer"	TFNM "Data\Monster\deadammor\deadammorlancer.tex";
+  }
+  MESH       	TFNM "Data\Monster\deadammor\deadammorlancer_wp.bm";
+  TEXTURES   
+  {
+    "deadammorlancer_sp"	TFNM "Data\Monster\deadammor\deadammorlancer_sp.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\deadammor\deadammorlancer.bs";
+  ANIMSET   	TFNM "Data\Monster\deadammor\deadammorlancer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Deadammor\deadammorlancer.bae";
+  ALLFRAMESBBOX	-5.2,0,-5,4.8,3,5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-1.3,0.7,3,0.9;}
+  }
+}

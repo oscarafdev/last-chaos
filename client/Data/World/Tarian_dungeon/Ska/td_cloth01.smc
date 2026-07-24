@@ -1,0 +1,12 @@
+NAME "td_cloth01";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_cloth01.bm";
+  TEXTURES   
+  {
+    "td_cloth01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_cloth01.tex";
+  }
+  ALLFRAMESBBOX	-11.2104,0,-1e-006,11.1968,12.803,0;
+  COLISION
+  {
+  }
+}

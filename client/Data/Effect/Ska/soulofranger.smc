@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "soulofranger";
+{
+  MESH       	TFNM "Data\Effect\Ska\soulofranger.bm";
+  TEXTURES   
+  {
+    "soulofranger"	TFNM "Data\Effect\Ska\soulofranger.tex";
+  }
+  ALLFRAMESBBOX	-0.549137,-0.422208,-0.075522,0.549136,0.422208,0.075522;
+  COLISION
+  {
+  }
+}

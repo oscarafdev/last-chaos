@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_bd_castellan_red";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_castellan_red.bm";
+  TEXTURES   
+  {
+    "ni_bd_castellan_red"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_castellan_red.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_castellan_red_1.bm";
+  TEXTURES   
+  {
+    "ni_bd_castellan_red_1"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_castellan_red_1.tex";
+  }
+  ALLFRAMESBBOX	-0.311763,0.460088,-0.159805,0.311763,1.25946,0.18263;
+  COLISION
+  {
+  }
+}

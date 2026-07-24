@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_mask-jason";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_mask-jason.bm";
+  TEXTURES   
+  {
+    "mask_jason"	TFNM "Data\Item\Shield\Knight\Texture\mask_jason.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_mask-jason_1.bm";
+  TEXTURES   
+  {
+    "ni_face_000"	TFNM "Data\Item\Shield\Knight\Texture\ni_face_000.tex";
+  }
+  ALLFRAMESBBOX	-0.089052,1.72115,-0.183,0.088842,1.99341,0.093465;
+  COLISION
+  {
+  }
+}

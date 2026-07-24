@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "masterminier";
+{
+  MESH       	TFNM "Data\npc\masterminier\masterminier.bm";
+  TEXTURES   
+  {
+    "minemaster"	TFNM "Data\npc\masterminier\texture\minemaster.tex";
+  }
+  SKELETON  	TFNM "Data\npc\masterminier\masterminier.bs";
+  ANIMSET   	TFNM "Data\npc\masterminier\masterminier.ba";
+  ALLFRAMESBBOX	-0.65,0,-0.6,0.65,2.1,0.6;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.5,0.4,2,0.5;}
+  }
+}

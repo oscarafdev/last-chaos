@@ -1,0 +1,14 @@
+NAME "w2_totem01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_totem01.bm";
+  TEXTURES   
+  {
+    "w2_totem"	TFNM "Data\World\Dratan\Ska\Texture\w2_totem.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-5.5133,-0.026248,-1.57061,5.51339,12.5796,1.57061;
+  COLISION
+  {
+    "Default"  {-1.47881,-0.307386,-1.55204,1.42837,12.7666,1.57868;}
+  }
+}

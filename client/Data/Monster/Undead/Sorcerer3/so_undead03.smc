@@ -1,0 +1,55 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_undead01";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_013.bm";
+  TEXTURES   
+  {
+    "so_bd_013"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_013.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_013.bm";
+  TEXTURES   
+  {
+    "so_bu_013"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_013.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Sorcerer3\so_face_000.bm";
+  TEXTURES   
+  {
+    "so_face_000"	TFNM "Data\Monster\Undead\Sorcerer3\so_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_ft_013.bm";
+  TEXTURES   
+  {
+    "so_ft_013"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_ft_013.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Sorcerer3\so_hair_000.bm";
+  TEXTURES   
+  {
+    "so_hair_000"	TFNM "Data\Monster\Undead\Sorcerer3\so_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hn_013.bm";
+  TEXTURES   
+  {
+    "so_hn_013"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hn_013.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Sorcerer3\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Undead\Sorcerer3\_TAG_so_staff_009.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\so_staff_012.bm";
+  TEXTURES   
+  {
+    "so_staff_012"	TFNM "Data\Item\Weapon\texture\so_staff_012.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Undead\Sorcerer3\so.bs";
+  ANIMSET   	TFNM "Data\Monster\Undead\Sorcerer3\so.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Undead\Sorcerer3\so.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.3,0.5,2,0.3;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.4,0.5,2,0.4;}
+  }
+}

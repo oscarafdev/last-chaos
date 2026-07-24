@@ -1,0 +1,13 @@
+NAME "w1_holystone2";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_holystone2.bm";
+  TEXTURES   
+  {
+    "w2_jewelryring"	TFNM "Data\World\Dratan\Ska\Texture\w2_jewelryring.tex";
+    "w2_jewelry_a"	TFNM "Data\World\Dratan\Ska\Texture\w2_jewelry_a.tex";
+  }
+  ALLFRAMESBBOX	-1.72935,0.744906,-1.70036,1.61289,4.18795,1.64189;
+  COLISION
+  {
+  }
+}

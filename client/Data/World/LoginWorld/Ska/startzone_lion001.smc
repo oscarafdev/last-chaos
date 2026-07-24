@@ -1,0 +1,15 @@
+NAME "startzone_lion001";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\startzone_lion001.bm";
+  TEXTURES   
+  {
+    "startzone_lion001"	TFNM "Data\World\LoginWorld\Ska\Texture\startzone_lion001.tex";
+    "startzone_lion002"	TFNM "Data\World\LoginWorld\Ska\Texture\startzone_lion002.tex";
+    "Dengen1_Detail"	TFNM "Data\World\LoginWorld\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.806679,0.000982,-0.693304,0.807442,1.59828,0.967735;
+  COLISION
+  {
+    "Default"  {-0.800892,0.0138088,-0.699201,0.820869,0.598404,0.720091;}
+  }
+}

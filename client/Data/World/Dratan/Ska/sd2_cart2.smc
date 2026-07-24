@@ -1,0 +1,18 @@
+NAME "sd2_cart2";
+{
+  MESH       	TFNM "Data\World\Dratan\ska\sd2_cart2.bm";
+  TEXTURES   
+  {
+    "sd2_mine's_shovel"	TFNM "Data\World\Dratan\ska\texture\sd2_mine's_shovel.tex";
+    "S_Dengen2_Detail"	TFNM "Data\World\Dratan\ska\texture\S_Dengen2_Detail.tex";
+    "sd2_mine's_cart01"	TFNM "Data\World\Dratan\ska\texture\sd2_mine's_cart01.tex";
+    "sd2_mine's_cart_wheel01"	TFNM "Data\World\Dratan\ska\texture\sd2_mine's_cart_wheel01.tex";
+    "sd2_mine's_cart_wheel"	TFNM "Data\World\Dratan\ska\texture\sd2_mine's_cart_wheel.tex";
+    "Floor_02"	TFNM "Data\World\Dratan\texture\Floor_02.tex";
+  }
+  ALLFRAMESBBOX	-1.48525,-0.022202,-1.37112,1.50141,2.25738,1.22521;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2,1.5;}
+  }
+}

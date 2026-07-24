@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_cos_dillamoon02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_cos_dillamoon02_ft00.bm";
+  TEXTURES   
+  {
+    "ma_cos_dillamoon02_ft"	TFNM "Data\Item\Shield\Mage\Texture\ma_cos_dillamoon02_ft.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_cos_dillamoon02_ft01.bm";
+  TEXTURES   
+  {
+    "ma_cos_dillamoon02_ft01"	TFNM "Data\Item\Shield\Mage\Texture\ma_cos_dillamoon02_ft01.tex";
+  }
+  ALLFRAMESBBOX	-0.396565,0.00052,-0.260497,0.396565,1.06915,0.099706;
+  COLISION
+  {
+  }
+}

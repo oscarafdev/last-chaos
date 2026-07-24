@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="UITrade" x="0" y="0" w="512" h="392" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="512" h="392" hide="0" tex="TradeUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="512" b="392" />
+    <UIText id="text_title" x="104" y="15" w="304" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="3275" str="송크란 명절 이벤트" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="base_drag_area" x="0" y="0" w="492" h="39" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    <UIList id="list_amend" x="13" y="43" w="222" h="309" hide="0" tex="TradeUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="8" itemy="8" itemshow_num="8" itemgap="3" item_count="1" pre_create="0">
+        <select x="0" y="0" w="196" h="34" l="198" t="394" r="394" b="428" />
+        <over x="0" y="0" w="196" h="34" l="0" t="394" r="196" b="428" />
+        <UIListItem id="list_item_001" x="8" y="8" w="196" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_item" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+            <UIText id="text_name" x="40" y="9" w="152" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="아이템 네임" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+        <UIScrollBar x="9" y="8" w="208" h="292" hide="0" tex="TradeUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="27" item_count="1" item_per_page="8">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="130" t0="448" r0="140" b0="458" l1="108" t1="448" r1="118" b1="458" />
+            <button2 x="0" y="0" w="10" h="10" l0="130" t0="459" r0="140" b0="469" l1="108" t1="459" r1="118" b1="469" />
+            <thumb x="0" y="0" w="10" h="272" unit="9" l="97" t="448" r="107" b="472" />
+        </UIScrollBar>
+    </UIList>
+    <UIList id="list_amend_condition" x="246" y="157" w="254" h="195" hide="0" tex="TradeUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="5" itemy="5" itemshow_num="5" itemgap="3" item_count="1" pre_create="0">
+        <select x="0" y="0" w="196" h="34" l="198" t="394" r="394" b="428" />
+        <over x="0" y="0" w="196" h="34" l="0" t="394" r="196" b="428" />
+        <UIListItem id="list_item_001" x="5" y="5" w="196" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_item" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+            <UIText id="text_name" x="40" y="9" w="152" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="아이템 네임" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_item_cnt" x="205" y="9" w="35" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="99/99" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIButton id="btn_close" x="-4" y="4" w="16" h="16" hide="0" tex="TradeUI.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="97" t="430" r="113" b="446" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="114" t="430" r="130" b="446" />
+        <uv type="3" l="114" t="430" r="130" b="446" />
+    </UIButton>
+    <UIButton id="btn_ok" x="-80" y="-8" w="95" h="21" hide="0" tex="TradeUI.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="127" str="교환" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="430" r="95" b="451" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="0" t="452" r="95" b="473" />
+        <uv type="3" l="0" t="474" r="95" b="495" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="80" y="-8" w="95" h="21" hide="0" tex="TradeUI.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="430" r="95" b="451" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="0" t="452" r="95" b="473" />
+        <uv type="3" l="0" t="474" r="95" b="495" />
+    </UIButton>
+    <UIBase id="base_amend_info" x="116" y="45" w="255" h="101" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0">
+        <UITextBox id="tb_amend_desc" x="7" y="48" w="241" h="45" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="5" sy="3" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="교환 아이템 디스크립션">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UITextBox>
+        <UIText id="text_amend_name" x="46" y="16" w="155" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="교환 아이템 이름" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_amend_cnt" x="207" y="16" w="41" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="19/99" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIIcon id="icon_amend_item" x="7" y="7" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+    </UIBase>
+</Window>

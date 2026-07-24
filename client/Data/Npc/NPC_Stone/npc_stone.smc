@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "npc_stone";
+{
+  MESH       	TFNM "Data\Npc\NPC_Stone\NPC_stone.bm";
+  TEXTURES   
+  {
+    "npc_stone"	TFNM "Data\Npc\NPC_Stone\NPC_stone.tex";
+  }
+  MESH       	TFNM "Data\Npc\NPC_Stone\_TAG_T_NPCST.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\NPC_Stone\NPC_stone.bs";
+  ANIMSET   	TFNM "Data\Npc\NPC_Stone\NPC_stone.ba";
+  ALLFRAMESBBOX	-0.142524,-0.012648,-0.160817,0.153114,0.16143,0.143109;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

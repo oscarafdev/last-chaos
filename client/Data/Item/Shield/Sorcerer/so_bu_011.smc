@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bu_003";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_011.bm";
+  TEXTURES   
+  {
+    "so_bu_011"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_011.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_01_011.bm";
+  TEXTURES   
+  {
+    "so_bu_011"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_011.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "startshop_01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\startshop_01.bm";
+  TEXTURES   
+  {
+    "shop-weapon-01"	TFNM "Data\world\StartZone\Ska\Texture\shop-weapon-01.tex";
+  }
+  ALLFRAMESBBOX	-1.01373,8.8e-005,-1.05338,1.01373,2.58435,1.05338;
+  COLISION
+  {
+  }
+}

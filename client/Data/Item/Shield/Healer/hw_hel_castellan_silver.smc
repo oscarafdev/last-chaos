@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_hel_castellan_silver";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hair_castellan_silver.bm";
+  TEXTURES   
+  {
+    "hw_hm_castellan_silver"	TFNM "Data\Item\Shield\Healer\Texture\hw_hm_castellan_silver.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hel_castellan_silver.bm";
+  TEXTURES   
+  {
+    "hw_hm_castellan_silver"	TFNM "Data\Item\Shield\Healer\Texture\hw_hm_castellan_silver.tex";
+  }
+  ALLFRAMESBBOX	-0.115535,1.47722,-0.122588,0.115535,2.02775,0.169171;
+  COLISION
+  {
+  }
+}

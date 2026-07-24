@@ -1,0 +1,49 @@
+NAME "c_ghost";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_head.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_bu.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_bu_1.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_lhn.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_rhn.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_bd_1.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_bd_2.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\c_ghost_bd_3.bm";
+  TEXTURES   
+  {
+    "c_ghost"	TFNM "Data\World\M_combo\Ska\Texture\c_ghost.tex";
+  }
+  SKELETON  	TFNM "Data\World\M_combo\Ska\c_ghost.bs";
+  ANIMSET   	TFNM "Data\World\M_combo\Ska\c_ghost.ba";
+  ALLFRAMESBBOX	-196.104,-9e-006,-196.024,197.597,9e-006,197.677;
+  COLISION
+  {
+  }
+}

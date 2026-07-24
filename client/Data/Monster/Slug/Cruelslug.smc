@@ -1,0 +1,48 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Cruelslug";
+{
+  MESH       	TFNM "Data\Monster\Slug\_TAG_CSlugLFA.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Slug\_TAG_CSlugLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Slug\_TAG_CSlugRFA.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Slug\_TAG_CSlugwp.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Slug\Cacce02.bm";
+  TEXTURES   
+  {
+    "Cruelslug"	TFNM "Data\Monster\Slug\Cruelslug.tex";
+  }
+  MESH       	TFNM "Data\Monster\Slug\Cacce.bm";
+  TEXTURES   
+  {
+    "Cruelslug"	TFNM "Data\Monster\Slug\Cruelslug.tex";
+  }
+  MESH       	TFNM "Data\Monster\Slug\Cwp.bm";
+  TEXTURES   
+  {
+    "Cweapon"	TFNM "Data\Monster\Slug\Cweapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Slug\Cbody.bm";
+  TEXTURES   
+  {
+    "Cruelslug"	TFNM "Data\Monster\Slug\Cruelslug.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Slug\Cruelslug.bs";
+  ANIMSET   	TFNM "Data\Monster\Slug\Cruelslug.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Slug\Cruelslug.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,3,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,3,1;}
+  }
+}

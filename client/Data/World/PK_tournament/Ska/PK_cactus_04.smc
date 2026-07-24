@@ -1,0 +1,16 @@
+NAME "w2_cactus_g02";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_cactus_04.bm";
+  TEXTURES   
+  {
+    "pk_To_tile04_NRM"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM.tex";
+    "PK_cactus_g03"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_cactus_g03.tex";
+    "PK_cactus_g01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_cactus_g01.tex";
+    "PK_cactus_g02"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_cactus_g02.tex";
+  }
+  ALLFRAMESBBOX	-0.332222,-0.013124,-0.304884,0.400178,1.8471,0.304883;
+  COLISION
+  {
+    "Default"  {-0.272449,-0.00650322,-0.163086,0.218794,1.00655,0.234631;}
+  }
+}

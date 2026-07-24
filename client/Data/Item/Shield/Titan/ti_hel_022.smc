@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_hel_022";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_hel_022.bm";
+  TEXTURES   
+  {
+    "ti_hel_022"	TFNM "Data\Item\Shield\Titan\Texture\ti_hel_022.tex";
+  }
+  ALLFRAMESBBOX	-0.281339,1.87439,-0.169324,0.281339,2.24554,0.172484;
+  COLISION
+  {
+  }
+}

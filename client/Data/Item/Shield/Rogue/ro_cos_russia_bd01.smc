@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cos_russia_bd01";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_russia_bd01.bm";
+  TEXTURES   
+  {
+    "ro_cos_russia_bd"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_russia_bd.tex";
+  }
+  ALLFRAMESBBOX	-0.208298,0.499267,-0.120881,0.239075,1.27988,0.16036;
+  COLISION
+  {
+    "Default"  {-0.208298,0.499267,-0.120881,0.239075,1.27988,0.16036;}
+  }
+}

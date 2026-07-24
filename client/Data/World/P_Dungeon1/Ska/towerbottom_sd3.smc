@@ -1,0 +1,13 @@
+NAME "towerbottom_sd3";
+{
+  MESH       	TFNM "Data\World\S_Dungeon3\ska\towerbottom_sd3.bm";
+  TEXTURES   
+  {
+    "towerbottom_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\towerbottom_sd3.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-23.5656,-0.009933,-23.5656,23.5656,0.455805,23.5656;
+  COLISION
+  {
+  }
+}

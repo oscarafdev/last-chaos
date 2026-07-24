@@ -1,0 +1,5 @@
+MESHLODLIST
+{
+  MAX_DISTANCE 15;
+  #INCLUDE "d:\ss_se\data\effect\ska\brotherband\Body.am"
+}

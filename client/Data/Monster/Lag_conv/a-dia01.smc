@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "a-dia01";
+{
+  MESH       	TFNM "Data\Monster\Lag_conv\adia1_2.bm";
+  TEXTURES   
+  {
+    "boss_adia01_03"	TFNM "Data\Monster\Lag_conv\Texture\boss_adia01_03.tex";
+  }
+  MESH       	TFNM "Data\Monster\Lag_conv\adia1_1.bm";
+  TEXTURES   
+  {
+    "boss_adia01_01"	TFNM "Data\Monster\Lag_conv\Texture\boss_adia01_01.tex";
+    "boss_adia01_02"	TFNM "Data\Monster\Lag_conv\Texture\boss_adia01_02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lag_conv\a-dia01.bs";
+  ANIMSET   	TFNM "Data\Monster\Lag_conv\a-dia01.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Lag_conv\a-dia01.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,3.3,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,3.2,1;}
+  }
+}

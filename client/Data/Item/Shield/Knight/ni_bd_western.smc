@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_bd_western";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_western.bm";
+  TEXTURES   
+  {
+    "ni_bd_western"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_western.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_western_1.bm";
+  TEXTURES   
+  {
+    "ni_bd_western"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_western.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_western_2.bm";
+  TEXTURES   
+  {
+    "ni_bd_western_1"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_western_1.tex";
+  }
+  ALLFRAMESBBOX	-0.308446,0.460088,-0.153006,0.308446,1.24676,0.163042;
+  COLISION
+  {
+  }
+}

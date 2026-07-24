@@ -1,0 +1,13 @@
+NAME "fire_stone";
+{
+  MESH       	TFNM "Data\Effect\SKA\fire_stone.bm";
+  TEXTURES   
+  {
+    "fire_stone"	TFNM "Data\Effect\TEXTURE\fire_stone.tex";
+  }
+  
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

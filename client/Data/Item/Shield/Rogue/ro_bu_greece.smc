@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_bu_greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bu_greece.bm";
+  TEXTURES   
+  {
+    "ro_bu_greece"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bu_greece.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bu_greece01.bm";
+  TEXTURES   
+  {
+    "ro_bu_greece"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bu_greece.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bu_greece02.bm";
+  TEXTURES   
+  {
+    "ro_bu_greece"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bu_greece.tex";
+  }
+  ALLFRAMESBBOX	-0.335468,0.147667,-0.142572,0.335468,1.58685,0.196309;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "summonland";
+{
+  MESH       	TFNM "Data\Npc\Summon\summonland.bm";
+  TEXTURES   
+  {
+    "summonland"	TFNM "Data\Npc\Summon\summonland.tex";
+  }
+  MESH       	TFNM "Data\Npc\Summon\_TAG_land.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Summon\summonland.bs";
+  ANIMSET   	TFNM "Data\Npc\Summon\summonland.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Summon\summonland.bae";
+  ALLFRAMESBBOX	-1.5,0,-0.75,1.5,3,0.75;
+  COLISION
+  {
+    "Default"  {-1.5,0,-0.75,1.5,3,0.75;}
+  }
+}

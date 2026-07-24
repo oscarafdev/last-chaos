@@ -1,0 +1,14 @@
+NAME "w2_pyramidbridge";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramidbridge.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_castlealtar03"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar03.tex";
+    "w2_castlealtar02"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar02.tex";
+  }
+  ALLFRAMESBBOX	-22.7804,-4.55361,-82.2056,22.7804,4.55364,82.2056;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_hel_police";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hel_police_1.bm";
+  TEXTURES   
+  {
+    "ni_face_000"	TFNM "Data\Item\Shield\Knight\Texture\ni_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hel_police.bm";
+  TEXTURES   
+  {
+    "ni_hel_police"	TFNM "Data\Item\Shield\Knight\Texture\ni_hel_police.tex";
+  }
+  ALLFRAMESBBOX	-0.10216,1.7284,-0.161746,0.101951,2.00472,0.136426;
+  COLISION
+  {
+  }
+}

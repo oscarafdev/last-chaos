@@ -1,0 +1,14 @@
+NAME "young_stgrass02";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\young_stgrass02.bm";
+  TEXTURES   
+  {
+    "young_stgrass02"	TFNM "Data\world\StartZone\Ska\Texture\young_stgrass02.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\young_stgrass02.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\young_stgrass02.ba";
+  ALLFRAMESBBOX	-1.35244,-0.0769771,-1.41489,1.39802,2.30041,1.25335;
+  COLISION
+  {
+  }
+}

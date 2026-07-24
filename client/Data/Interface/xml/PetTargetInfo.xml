@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="280" y="34" w="140" h="56" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="is_title" x="0" y="0" w="140" h="26" hide="0" tex="TargetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="140" b="26" unit="30" splitmode="0">
+        <UIButton id="btn_petinfo" x="110" y="3" w="16" h="16" hide="0" tex="TargetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="159" t="27" r="175" b="43" />
+            <copyuv src="0" dst="1" />
+            <copyuv src="0" dst="2" />
+            <uv type="3" l="0" t="0" r="0" b="0" />
+        </UIButton>
+    </UIImageSplit>
+    <UIImageSplit id="is_back" x="0" y="26" w="140" h="30" hide="0" tex="TargetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="26" r="140" b="43" unit="30" splitmode="0" />
+    <UIImage id="hp_back" x="5" y="25" w="130" h="12" hide="0" tex="TargetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="10" t="44" r="140" b="56" />
+    <UIImage id="img_hp" x="10" y="27" w="120" h="8" hide="0" tex="TargetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1" t="44" r="2" b="52" />
+    <UIImage id="hungry_back" x="5" y="40" w="130" h="8" hide="0" tex="TargetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="10" t="44" r="140" b="56" />
+    <UIImage id="img_hungry" x="10" y="41" w="120" h="5" hide="0" tex="TargetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="6" t="44" r="8" b="52" />
+    <UIText id="str_level" x="20" y="5" w="20" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="100" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_name" x="20" y="5" w="103" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="포니" str_ellipsis="" color="0x8baaff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+</Window>

@@ -1,0 +1,17 @@
+NAME "w1_charge03";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_charge03.bm";
+  TEXTURES   
+  {
+    "StartZonetile_castle002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle002.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_05_1"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_05_1.tex";
+    "StartZonetile_05_2"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_05_2.tex";
+    "StartZonetile_07"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_07.tex";
+  }
+  ALLFRAMESBBOX	-2.86755,-0.008154,-1.99898,2.87107,7.41975,1.98159;
+  COLISION
+  {
+    "Default"  {-3.10801,-2.19186,-3.63098,3.05554,7.86201,2.734;}
+  }
+}

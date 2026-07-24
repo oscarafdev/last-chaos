@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "an_clun";
+{
+  MESH       	TFNM "Data\Effect\Ska\an_clun.bm";
+  TEXTURES   
+  {
+    "an_clun"	TFNM "Data\Effect\Ska\an_clun.tex";
+  }
+  ALLFRAMESBBOX	-0.574278,6.85258,-0.883759,0.589698,8.30819,0.895733;
+  COLISION
+  {
+    "Default"  {-0.9,6.9,-0.9,0.9,8.2,0.9;}
+  }
+}

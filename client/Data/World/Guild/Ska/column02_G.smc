@@ -1,0 +1,14 @@
+NAME "column02_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\column02_G.bm";
+  TEXTURES   
+  {
+    "molding02_G"	TFNM "Data\World\Guild\Ska\Texture\molding02_G.tex";
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+    "wall04_G"	TFNM "Data\World\Guild\Ska\Texture\wall04_G.tex";
+  }
+  ALLFRAMESBBOX	-3.4743,0.002082,-0.904583,3.47433,8.79932,0.904581;
+  COLISION
+  {
+  }
+}

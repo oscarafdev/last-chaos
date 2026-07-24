@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_an_backpack_02";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_an_backpack_02.bm";
+  TEXTURES   
+  {
+    "an_backpack_02"	TFNM "Data\Item\Shield\Knight\Texture\an_backpack_02.tex";
+  }
+  ALLFRAMESBBOX	-0.701892,0.336431,0.108674,0.701892,1.77434,1.36745;
+  COLISION
+  {
+  }
+}

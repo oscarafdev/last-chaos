@@ -1,0 +1,16 @@
+NAME "sidetower_w1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\sidetower_w1.bm";
+  TEXTURES   
+  {
+    "sidetower_juno"	TFNM "Data\World\StartZone\Ska\Texture\sidetower_juno.tex";
+    "Knightstone_juno011"	TFNM "Data\World\StartZone\Ska\Texture\Knightstone_juno011.tex";
+    "Knightstone_juno03"	TFNM "Data\World\StartZone\Ska\Texture\Knightstone_juno03.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-19.5918,-0.036347,-27.5809,19.5918,44.1346,27.5809;
+  COLISION
+  {
+    "Default"  {-19.5,0,-28,19.5,44,28;}
+  }
+}

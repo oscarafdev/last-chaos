@@ -1,0 +1,16 @@
+NAME "soulofwarmaster";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\ti_gsword.bm";
+  TEXTURES   
+  {
+    "ti_gsword_00u"	TFNM "Data\Npc\soul_weapon\ti_gsword_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ti_soul_Gs.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ti_soul_Gs.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\soulofwarmaster.bae";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,2.5,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,2.5,0.1;}
+  }
+}

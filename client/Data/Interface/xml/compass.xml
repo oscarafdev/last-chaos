@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="-300" w="112" h="125" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="112" h="125" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="2" t="259" r="115" b="385" />
+    <UIImage id="question" x="36" y="21" w="41" h="69" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="21" t="396" r="63" b="466" />
+    <UIImage id="compass" x="45" y="21" w="20" h="70" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="146" t="339" r="168" b="411" />
+    <UIImage id="cover" x="18" y="18" w="76" h="76" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="118" t="258" r="195" b="335" />
+    <UIImage id="cover1" x="18" y="18" w="76" h="76" hide="1" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="96" t="433" r="173" b="510" />
+    <UIImage id="cover2" x="18" y="18" w="76" h="76" hide="1" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="177" t="433" r="254" b="510" />
+</Window>

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_cos_dillamoon02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_dillamoon02_ft.bm";
+  TEXTURES   
+  {
+    "ns_cos_dillamoon02_ft"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_dillamoon02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.283842,-0.003807,-0.158798,0.283842,0.784357,0.194459;
+  COLISION
+  {
+  }
+}

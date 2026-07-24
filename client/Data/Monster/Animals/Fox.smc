@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Fox";
+{
+  MESH       	TFNM "Data\monster\Animals\Fox.bm";
+  TEXTURES   
+  {
+    "d1_animal"	TFNM "Data\monster\Animals\d1_animal.tex";
+  }
+  MESH       	TFNM "Data\monster\Animals\_TAG_T_CENTER_fox.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Animals\Fox.bs";
+  ANIMSET   	TFNM "Data\monster\Animals\Fox.ba";
+  ANIMEFFECT	TFNM "Data\monster\Animals\Fox.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,1.5,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.6,0.5,1.5,0.6;}
+  }
+}

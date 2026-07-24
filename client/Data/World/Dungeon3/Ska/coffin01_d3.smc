@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "coffin01_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\coffin01_d3.bm";
+  TEXTURES   
+  {
+    "w3_coffin01_d3"	TFNM "Data\World\Dungeon3\Ska\Texture\w3_coffin01_d3.tex";
+  }
+  ALLFRAMESBBOX	-3.72111,-0.020935,-3.01618,3.72112,1.91644,3.01618;
+  COLISION
+  {
+    "Default"  {-4,0,-4,4,2,4;}
+  }
+}

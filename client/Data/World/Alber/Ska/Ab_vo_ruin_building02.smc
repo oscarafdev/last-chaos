@@ -1,0 +1,15 @@
+NAME "Ab_vo_ruin_building02";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_ruin_building02.bm";
+  TEXTURES   
+  {
+    "Ab_vo_temple01"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple01.tex";
+    "Ab_vo_temple05"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple05.tex";
+    "Ab_vo_temple06"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple06.tex";
+    "Ab_vo_temple08"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple08.tex";
+  }
+  ALLFRAMESBBOX	-3.25031,-7e-006,-2.59802,3.25092,8.79631,2.8149;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "light_cylinder-b";
+{
+  MESH       	TFNM "Data\Effect\SKA\light_cylinder-b.bm";
+  TEXTURES   
+  {
+    "light_sh_b"	TFNM "Data\Effect\TEXTURE\light_sh_b.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

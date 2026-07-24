@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "special_1";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_sp2.bm";
+  TEXTURES   
+  {
+    "ns_wp_sp02"	TFNM "Data\Effect\Ska\ns_weapons\ns_wp_sp02.tex";
+  }
+  ALLFRAMESBBOX	-0.084508,-0.102488,-0.09206,0.084508,0.066527,0.087618;
+  COLISION
+  {
+  }
+}

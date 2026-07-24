@@ -1,0 +1,27 @@
+NAME "w1_church";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_church.bm";
+  TEXTURES   
+  {
+    "w1_churchdoor"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchdoor.tex";
+    "StartZonetile_bar001"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_bar001.tex";
+    "StartZonetile_castle002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle002.tex";
+    "StartZonetile_wall002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_wall002.tex";
+    "w1_brick5"	TFNM "Data\World\StartZone\Ska\Texture\w1_brick5.tex";
+    "w1_church1"	TFNM "Data\World\StartZone\Ska\Texture\w1_church1.tex";
+    "w1_church2"	TFNM "Data\World\StartZone\Ska\Texture\w1_church2.tex";
+    "w1_church3"	TFNM "Data\World\StartZone\Ska\Texture\w1_church3.tex";
+    "w1_church4"	TFNM "Data\World\StartZone\Ska\Texture\w1_church4.tex";
+    "w1_churchcross"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchcross.tex";
+    "w1_churchdoor"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchdoor.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_castle003"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle003.tex";
+    "StartZonetile_07"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_07.tex";
+    "StartZonetile_roof03"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_roof03.tex";
+  }
+  ALLFRAMESBBOX	-18.7074,-0.039333,-10.3943,18.7074,44.9681,10.3944;
+  COLISION
+  {
+    "Default"  {-18.5,0,-10,18.5,45,10;}
+  }
+}

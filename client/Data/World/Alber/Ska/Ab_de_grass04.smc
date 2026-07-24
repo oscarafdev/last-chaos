@@ -1,0 +1,12 @@
+NAME "Ab_de_grass04";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_grass04.bm";
+  TEXTURES   
+  {
+    "Ab_grass"	TFNM "Data\World\Alber\Ska\Texture\Ab_grass.tex";
+  }
+  ALLFRAMESBBOX	-0.968168,-0.239251,-0.837424,0.977996,1.09818,1.05346;
+  COLISION
+  {
+  }
+}

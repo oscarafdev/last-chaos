@@ -1,0 +1,13 @@
+NAME "Tree_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\Sphere01.bm";
+  TEXTURES   
+  {
+    "Pot & firewood"	TFNM "Data\World\Tarian\Ska\Texture\Pot & firewood.tex";
+  }
+  ALLFRAMESBBOX	-1.79425,-0.001492,-2.08254,1.79425,2.73174,2.08254;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

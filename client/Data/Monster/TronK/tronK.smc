@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "tronK";
+{
+  MESH       	TFNM "Data\Monster\tronK\tronK_bd.bm";
+  TEXTURES   
+  {
+    "tronK"	TFNM "Data\Monster\tronK\tronK.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\tronK_bd_2.bm";
+  TEXTURES   
+  {
+    "tronK"	TFNM "Data\Monster\tronK\tronK.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\tronK_weapon.bm";
+  TEXTURES   
+  {
+    "arms"	TFNM "Data\Monster\tronK\arms.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\tronK_bd_1.bm";
+  TEXTURES   
+  {
+    "tronK"	TFNM "Data\Monster\tronK\tronK.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\tronK_head.bm";
+  TEXTURES   
+  {
+    "tronK"	TFNM "Data\Monster\tronK\tronK.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\tronK_hn.bm";
+  TEXTURES   
+  {
+    "tronK"	TFNM "Data\Monster\tronK\tronK.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\tronK_weapon_1.bm";
+  TEXTURES   
+  {
+    "arms"	TFNM "Data\Monster\tronK\arms.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\tronK_bu.bm";
+  TEXTURES   
+  {
+    "tronK"	TFNM "Data\Monster\tronK\tronK.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronK\_TAG_tronK.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\tronK\tronK.bs";
+  ANIMSET   	TFNM "Data\Monster\tronK\tronK.ba";
+  ANIMEFFECT	TFNM "Data\Monster\TronK\tronK.bae";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,2.5,2.5;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.6,0.65,2.2,0.6;}
+  }
+}

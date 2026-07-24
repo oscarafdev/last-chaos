@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_mask-ghost";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_mask-ghost.bm";
+  TEXTURES   
+  {
+    "mask_ghost"	TFNM "Data\Item\Shield\Mage\Texture\mask_ghost.tex";
+  }
+  ALLFRAMESBBOX	-0.113115,1.56946,-0.175207,0.113115,1.9419,0.137168;
+  COLISION
+  {
+  }
+}

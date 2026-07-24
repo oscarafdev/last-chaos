@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "v_salwgirl";
+{
+  MESH       	TFNM "Data\Npc\V_salegirl\vsalegirl_bd.bm";
+  TEXTURES   
+  {
+    "NPC_v.salegirl"	TFNM "Data\Npc\V_salegirl\NPC_v.salegirl.tex";
+  }
+  MESH       	TFNM "Data\Npc\V_salegirl\vsalegirl_bd_1.bm";
+  TEXTURES   
+  {
+    "NPC_v.salegirl"	TFNM "Data\Npc\V_salegirl\NPC_v.salegirl.tex";
+  }
+  MESH       	TFNM "Data\Npc\V_salegirl\vsalegirl_box.bm";
+  TEXTURES   
+  {
+    "NPC_v.salegirl_box"	TFNM "Data\Npc\V_salegirl\NPC_v.salegirl_box.tex";
+  }
+  MESH       	TFNM "Data\Npc\V_salegirl\vsalegirl_bu.bm";
+  TEXTURES   
+  {
+    "NPC_v.salegirl"	TFNM "Data\Npc\V_salegirl\NPC_v.salegirl.tex";
+  }
+  MESH       	TFNM "Data\Npc\V_salegirl\vsalegirl_bu_1.bm";
+  TEXTURES   
+  {
+    "NPC_v.salegirl"	TFNM "Data\Npc\V_salegirl\NPC_v.salegirl.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\V_salegirl\vsalegirl.bs";
+  ANIMSET   	TFNM "Data\Npc\V_salegirl\vsalegirl.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

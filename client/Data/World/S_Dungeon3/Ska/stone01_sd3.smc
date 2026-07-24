@@ -1,0 +1,17 @@
+NAME "stone01_sd3";
+{
+  MESH       	TFNM "Data\world\S_Dungeon3\Ska\stone01_sd3.bm";
+  TEXTURES   
+  {
+    "stone03_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\stone03_sd3.tex";
+    "stone01_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\stone01_sd3.tex";
+    "stone02_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\stone02_sd3.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "stone04_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\stone04_sd3.tex";
+  }
+  ALLFRAMESBBOX	-24.3561,-0.239358,-42.8171,24.9009,43.1643,8.31156;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

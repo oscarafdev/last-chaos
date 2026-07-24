@@ -1,0 +1,13 @@
+NAME "td_hallprops01";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_hallprops01.bm";
+  TEXTURES   
+  {
+    "d_hallpillar01_1"	TFNM "Data\World\tarian_dungeon\Ska\Texture\d_hallpillar01_1.tex";
+    "d_hallpillar01_2"	TFNM "Data\World\tarian_dungeon\Ska\Texture\d_hallpillar01_2.tex";
+  }
+  ALLFRAMESBBOX	-0.949744,1e-006,-0.950138,0.949995,3.62277,0.949595;
+  COLISION
+  {
+  }
+}

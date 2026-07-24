@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ns_cos_dessert_bd";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\Ns_cos_dessert_bd.bm";
+  TEXTURES   
+  {
+    "Ns_cos_dessert_bd"	TFNM "Data\Item\Shield\NightShadow\Texture\Ns_cos_dessert_bd.tex";
+  }
+  ALLFRAMESBBOX	-0.238079,0.530724,-0.130077,0.268936,1.31798,0.184935;
+  COLISION
+  {
+  }
+}

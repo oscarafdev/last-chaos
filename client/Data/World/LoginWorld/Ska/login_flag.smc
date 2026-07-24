@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "login_flag";
+{
+  MESH       	TFNM "Data\world\LoginWorld\Ska\login_flag.bm";
+  TEXTURES   
+  {
+    "login_flag"	TFNM "Data\world\LoginWorld\Ska\Texture\login_flag.tex";
+  }
+  SKELETON  	TFNM "Data\world\LoginWorld\Ska\login_flag.bs";
+  ANIMSET   	TFNM "Data\world\LoginWorld\Ska\login_flag.ba";
+  ALLFRAMESBBOX	-1.5,0,-0.5,1.5,5,0.5;
+  COLISION
+  {
+  }
+}

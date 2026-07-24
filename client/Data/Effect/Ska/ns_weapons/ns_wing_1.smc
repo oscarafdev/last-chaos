@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_wing_1";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_fly_1.bm";
+  TEXTURES   
+  {
+    "ns_fly"	TFNM "Data\Effect\Ska\ns_weapons\ns_fly.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\ns_wing_1.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\ns_wing_1.ba";
+  ALLFRAMESBBOX	-1.90428,0.958473,-1.21027,1.90427,3.49882,1.84119;
+  COLISION
+  {
+  }
+}

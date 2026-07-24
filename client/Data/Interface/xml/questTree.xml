@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<Window id="test" x="0" y="0" w="750" h="550" hide="0">
+    <UITree id="tree_root" x="0" y="0" w="265" h="320" show_num="16" pre="1">
+		<UICheck id="tree_collapse" x="0" y="0" w="11" h="11" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+			<none l="240" t="895" r="251" b="906" />
+			<check l="227" t="895" r="238" b="906" />			
+		</UICheck>
+    </UITree>
+	
+	<UITreeItem id="tree_1" x="0" y="0" w="250" h="16">
+		<UIText id="str_treename" x="15" y="0" w="250" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="test string" color="0xffc000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+			<back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+		</UIText>
+	</UITreeItem>
+	
+	<UITreeItem id="tree_quest" x="0" y="0" w="220" h="16">
+		<UIText id="quest_name" x="16" y="0" w="180" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Depth 2" color="0xffc000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+			<back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+		</UIText>
+		<UICheck id="quest_veiw" x="0" y="0" w="15" h="14" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+			<none l="193" t="893" r="208" b="907" />
+			<check l="209" t="893" r="224" b="907" />			
+		</UICheck>
+	</UITreeItem>
+
+</Window>

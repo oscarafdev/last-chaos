@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "d_golem_evacuation";
+{
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_evacuation.bm";
+  TEXTURES   
+  {
+    "d_golem_evacuation"	TFNM "Data\Monster\D_Golem\d_golem_evacuation.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_evacuation_bd.bm";
+  TEXTURES   
+  {
+    "d_golem_evacuation"	TFNM "Data\Monster\D_Golem\d_golem_evacuation.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_evacuation_hn.bm";
+  TEXTURES   
+  {
+    "d_golem_evacuation_hn"	TFNM "Data\Monster\D_Golem\d_golem_evacuation_hn.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\D_Golem\d_golem_evacuation.bs";
+  ANIMSET   	TFNM "Data\Monster\D_Golem\d_golem_evacuation.ba";
+  ANIMEFFECT	TFNM "Data\Monster\D_Golem\d_golem_evacuation.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.7,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2.7,1.5;}
+  }
+}

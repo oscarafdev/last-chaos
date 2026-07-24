@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="183" h="277" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImage x="0" y="0" w="183" h="277" hide="0" tex="Guildoption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="185" t="0" r="368" b="277" />
+    <UIButton id="btn_close" x="-4" y="4" w="14" h="14" hide="0" tex="Guildoption.tex" align_h="2" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="55" t="286" r="69" b="300" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="40" t="286" r="54" b="300" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIText x="0" y="5" w="183" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6474" str="경험치 상납 설정 변경" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="17" y="40" w="150" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6475" str="경험치 상납 범위" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="17" y="84" w="150" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3848" str="경험치 상납" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="17" y="127" w="150" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6476" str="명성치 상납 범위" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="17" y="170" w="150" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3849" str="명성치 상납" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="-37" y="-13" w="63" h="20" hide="0" tex="Guildoption.tex" align_h="1" align_v="2" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3846" str="적용" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="91" t="286" r="154" b="306" />
+        <uv type="2" l="157" t="286" r="220" b="306" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="37" y="-13" w="63" h="20" hide="0" tex="Guildoption.tex" align_h="1" align_v="2" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="870" str="닫기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="91" t="286" r="154" b="306" />
+        <uv type="2" l="157" t="286" r="220" b="306" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIEdit id="eb_payExpMin" x="18" y="59" w="59" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" max="3" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIEdit id="eb_payExpMax" x="107" y="59" w="59" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" max="3" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIEdit id="eb_PayExp" x="18" y="103" w="147" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" max="16" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIEdit id="eb_payFameMin" x="18" y="146" w="59" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" max="3" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIEdit id="eb_payFameMax" x="107" y="146" w="59" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" max="3" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIEdit id="eb_PayFame" x="18" y="189" w="147" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" max="16" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+</Window>

@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "SandGolem";
+{
+  MESH       	TFNM "Data\monster\Golem\SandGolem.bm";
+  TEXTURES   
+  {
+    "w2_m_sendgol"	TFNM "Data\monster\Golem\w2_m_sendgol.tex";
+  }
+  MESH       	TFNM "Data\monster\Golem\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Golem\SandGolem.bs";
+  ANIMSET   	TFNM "Data\monster\Golem\SandGolem.ba";
+  ANIMEFFECT	TFNM "Data\monster\Golem\SandGolem.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,3,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.8,0.5;}
+  }
+}

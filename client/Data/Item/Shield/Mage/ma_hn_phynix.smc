@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_hn_phynix";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hn_phynix.bm";
+  TEXTURES   
+  {
+    "ma_hn_phynix"	TFNM "Data\Item\Shield\Mage\Texture\ma_hn_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.700387,1.05626,-0.08473,0.700387,1.51783,0.094104;
+  COLISION
+  {
+  }
+}

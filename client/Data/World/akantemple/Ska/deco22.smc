@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "BG_padocs";
+{
+  MESH       	TFNM "Data\World\Akantemple\Ska\deco22_bd.bm";
+  TEXTURES   
+  {
+    "deco22_2"	TFNM "Data\World\Akantemple\Ska\deco22_2.tex";
+  }
+  MESH       	TFNM "Data\World\Akantemple\Ska\deco22_bs.bm";
+  TEXTURES   
+  {
+    "deco22_1"	TFNM "Data\World\Akantemple\Ska\deco22_1.tex";
+  }
+  MESH       	TFNM "Data\World\Akantemple\Ska\deco22_bu.bm";
+  TEXTURES   
+  {
+    "deco22_1"	TFNM "Data\World\Akantemple\Ska\deco22_1.tex";
+  }
+  MESH       	TFNM "Data\World\Akantemple\Ska\deco22_bu_1.bm";
+  TEXTURES   
+  {
+    "deco22_2"	TFNM "Data\World\Akantemple\Ska\deco22_2.tex";
+  }
+  MESH       	TFNM "Data\World\Akantemple\Ska\deco22_head.bm";
+  TEXTURES   
+  {
+    "deco22_1"	TFNM "Data\World\Akantemple\Ska\deco22_1.tex";
+  }
+  MESH       	TFNM "Data\World\Akantemple\Ska\deco22_hn.bm";
+  TEXTURES   
+  {
+    "deco22_2"	TFNM "Data\World\Akantemple\Ska\deco22_2.tex";
+  }
+  SKELETON  	TFNM "Data\World\Akantemple\Ska\deco22.bs";
+  ANIMSET   	TFNM "Data\World\Akantemple\Ska\deco22.ba";
+  ALLFRAMESBBOX	-1.28205,1.35662,-0.231616,1.07266,3.74833,0.702247;
+  COLISION
+  {
+    "Default"  {-1.25,1.3,-1.25,1.25,3.8,1.25;}
+  }
+}

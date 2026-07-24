@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_cos_volcan_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_cos_volcan_hn.bm";
+  TEXTURES   
+  {
+    "ni_cos_volcan_hn"	TFNM "Data\Item\Shield\Knight\Texture\ni_cos_volcan_hn.tex";
+  }
+  ALLFRAMESBBOX	-0.644021,0.949149,-0.0327,0.644016,1.57156,0.252192;
+  COLISION
+  {
+  }
+}

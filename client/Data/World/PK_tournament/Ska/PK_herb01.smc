@@ -1,0 +1,12 @@
+NAME "w2_herb04";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_herb01.bm";
+  TEXTURES   
+  {
+    "PK_herb01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_herb01.tex";
+  }
+  ALLFRAMESBBOX	-0.566353,-0.045993,-0.540366,0.564553,1.11808,0.543147;
+  COLISION
+  {
+  }
+}

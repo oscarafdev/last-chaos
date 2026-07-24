@@ -1,0 +1,14 @@
+NAME "flag3";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\flag03.bm";
+  TEXTURES   
+  {
+    "castledoor_08"	TFNM "Data\world\StartZone\Ska\Texture\castledoor_08.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\flag3.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\flag3.ba";
+  ALLFRAMESBBOX	-0.813755,0.157804,-0.145262,0.746922,5.32101,0.040838;
+  COLISION
+  {
+  }
+}

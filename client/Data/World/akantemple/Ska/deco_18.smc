@@ -1,0 +1,13 @@
+NAME "s_dun_fireport01";
+{
+  MESH       	TFNM "Data\world\akantemple\Ska\s_dun_fireport01.bm";
+  TEXTURES   
+  {
+    "deco_15"	TFNM "Data\world\akantemple\Ska\Texture\deco_15.tex";
+  }
+  ALLFRAMESBBOX	-0.665335,0,-0.674134,0.669734,2.16022,0.660935;
+  COLISION
+  {
+    "Default"  {-0.551241,-0.022693,-0.473533,0.491338,2.93675,0.516783;}
+  }
+}

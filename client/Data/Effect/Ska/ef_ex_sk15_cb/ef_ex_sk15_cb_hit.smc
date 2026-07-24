@@ -1,0 +1,44 @@
+NAME "ef_ex_sk15_cb_hit";
+{
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_hit.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk15_cb_t00"	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\Cone02.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk15_cb_t00"	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\Cone03.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk15_cb_t00"	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\Cone04.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk15_cb_t00"	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\Cone05.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk15_cb_t00"	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\Cone06.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk15_cb_t00"	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\Cone07.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk15_cb_t00"	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_t00.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_hit.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ef_ex_sk15_cb\ef_ex_sk15_cb_hit.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

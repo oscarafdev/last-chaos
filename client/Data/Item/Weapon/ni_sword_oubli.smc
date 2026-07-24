@@ -1,0 +1,17 @@
+OFFSET    	0.65,-1.01,0.2,-160,0.25,-57;
+NAME "ni_sword_oubli";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_SWORD_OUBLI.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ni_sword_oubli.bm";
+  TEXTURES   
+  {
+    "ni_sword_oubli"	TFNM "Data\Item\Weapon\Texture\ni_sword_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.492158,-0.0414542,-1.27991,0.330282,0.0738375,0.731425;
+  COLISION
+  {
+  }
+}

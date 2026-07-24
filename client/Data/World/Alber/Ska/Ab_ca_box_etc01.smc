@@ -1,0 +1,12 @@
+NAME "Ab_ca_box_etc01";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_ca_box_etc01.bm";
+  TEXTURES   
+  {
+    "Ab_ca_box_etc01"	TFNM "Data\World\Alber\Ska\Texture\Ab_ca_box_etc01.tex";
+  }
+  ALLFRAMESBBOX	-0.316508,-0.009595,-0.339095,0.332284,1.57459,0.309697;
+  COLISION
+  {
+  }
+}

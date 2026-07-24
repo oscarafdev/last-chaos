@@ -1,0 +1,19 @@
+NAME "ns_wp_soul";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\ns_wp.bm";
+  TEXTURES   
+  {
+    "so_staff_019"	TFNM "Data\Npc\soul_weapon\so_staff_019.tex";
+  }
+  MESH       	TFNM "Data\Npc\soul_weapon\_TAG_ns_soul_wp.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ns_wp_soul.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ns_wp_soul.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\ns_wp_soul.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

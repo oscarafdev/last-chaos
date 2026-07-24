@@ -1,0 +1,13 @@
+NAME "td_torch_01";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_torch_01.bm";
+  TEXTURES   
+  {
+    "torch"	TFNM "Data\World\tarian_dungeon\Ska\Texture\torch.tex";
+  }
+  ALLFRAMESBBOX	-0.221303,-0.000467,0.000501,0.221303,0.396997,0.24834;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,66 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dragon";
+{
+  MESH       	TFNM "Data\Monster\S_devil\bd00.bm";
+  TEXTURES   
+  {
+    "s_devil_body03"	TFNM "Data\Monster\S_devil\s_devil_body03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bd01.bm";
+  TEXTURES   
+  {
+    "s_devil_body03"	TFNM "Data\Monster\S_devil\s_devil_body03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bd02.bm";
+  TEXTURES   
+  {
+    "s_devil_body03"	TFNM "Data\Monster\S_devil\s_devil_body03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bd03.bm";
+  TEXTURES   
+  {
+    "s_devil_body03"	TFNM "Data\Monster\S_devil\s_devil_body03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bu00.bm";
+  TEXTURES   
+  {
+    "s_devil_face03"	TFNM "Data\Monster\S_devil\s_devil_face03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bu01.bm";
+  TEXTURES   
+  {
+    "s_devil_face03"	TFNM "Data\Monster\S_devil\s_devil_face03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bu02.bm";
+  TEXTURES   
+  {
+    "s_devil_face03"	TFNM "Data\Monster\S_devil\s_devil_face03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bu03.bm";
+  TEXTURES   
+  {
+    "s_devil_face03"	TFNM "Data\Monster\S_devil\s_devil_face03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bu04.bm";
+  TEXTURES   
+  {
+    "s_devil_face03"	TFNM "Data\Monster\S_devil\s_devil_face03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\bu05.bm";
+  TEXTURES   
+  {
+    "s_devil_face03"	TFNM "Data\Monster\S_devil\s_devil_face03.tex";
+  }
+  MESH       	TFNM "Data\Monster\S_devil\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\S_devil\s_devil.bs";
+  ANIMSET   	TFNM "Data\Monster\S_devil\s_devil.ba";
+  ANIMEFFECT	TFNM "Data\Monster\S_devil\S_devil.bae";
+  ALLFRAMESBBOX	-1.4,0,-3,1.4,3.5,3;
+  COLISION
+  {
+    "Default"  {-1,0,-0.75,1,3.2,0.75;}
+  }
+}

@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bb_trap";
+{
+  MESH       	TFNM "Data\Effect\Ska\Brotherband\bb_trap.bm";
+  TEXTURES   
+  {
+    "brotherband_trap"	TFNM "Data\Effect\Ska\Brotherband\brotherband_trap.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\Brotherband\bb_trap.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\Brotherband\bb_trap.ba";
+  ALLFRAMESBBOX	-0.297567,0.003711,-0.283003,0.297567,0.33962,0.283003;
+  COLISION
+  {
+    "Default"  {-0.3,0,-0.3,0.3,0.35,0.3;}
+  }
+}

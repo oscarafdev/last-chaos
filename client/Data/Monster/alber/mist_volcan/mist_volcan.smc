@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "mist_volcan";
+{
+  MESH       	TFNM "Data\Monster\alber\mist_volcan\Mist.bm";
+  TEXTURES   
+  {
+    "w2_m_mist_volcan"	TFNM "Data\Monster\alber\mist_volcan\w2_m_mist_volcan.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\mist_volcan\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\alber\mist_volcan\Mist.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\mist_volcan\Mist.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\mist_volcan\Mist.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,1.3,1;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

@@ -1,0 +1,13 @@
+NAME "electric_lamp_001";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\pillar_stone_001.bm";
+  TEXTURES   
+  {
+    "M_combo_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+    "electric_lamp_002"	TFNM "Data\World\M_combo\Ska\Texture\electric_lamp_002.tex";
+  }
+  ALLFRAMESBBOX	-9.93889,-0.036816,-42.5,10.0611,2.21009,42.5;
+  COLISION
+  {
+  }
+}

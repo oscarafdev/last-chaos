@@ -1,0 +1,13 @@
+NAME "rock_01";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\rock_01.bm";
+  TEXTURES   
+  {
+    "rock-01-02"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\rock-01-02.tex";
+    "rock-01-01"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\rock-01-01.tex";
+  }
+  ALLFRAMESBBOX	-7.95651,-0.024534,-17.1176,8.85617,12.2381,17.2051;
+  COLISION
+  {
+  }
+}

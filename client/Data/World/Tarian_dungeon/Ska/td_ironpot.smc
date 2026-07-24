@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "td_ironpot";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_ironpot.bm";
+  TEXTURES   
+  {
+    "td_ironpot2"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_ironpot2.tex";
+  }
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_ironpot_1.bm";
+  TEXTURES   
+  {
+    "td_ironpot1"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_ironpot1.tex";
+  }
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\_TAG_T_TDIR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\tarian_dungeon\Ska\td_ironpot.bs";
+  ANIMSET   	TFNM "Data\World\tarian_dungeon\Ska\td_ironpot.ba";
+  ANIMEFFECT	TFNM "Data\World\tarian_dungeon\Ska\td_ironpot.bae";
+  ALLFRAMESBBOX	-1.2065,-0.00446807,-1.2065,1.2065,4.17808,1.2065;
+  COLISION
+  {
+    "Default"  {-1.2065,0,-1.2065,1.2065,4.18254,1.2065;}
+  }
+}

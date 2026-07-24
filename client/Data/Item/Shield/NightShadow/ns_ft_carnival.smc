@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_ft_carnival";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_ft_carnival.bm";
+  TEXTURES   
+  {
+    "ns_ft_carnival"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_ft_carnival.tex";
+  }
+  ALLFRAMESBBOX	-0.297218,-0.001386,-0.165421,0.297218,0.711789,0.155607;
+  COLISION
+  {
+  }
+}

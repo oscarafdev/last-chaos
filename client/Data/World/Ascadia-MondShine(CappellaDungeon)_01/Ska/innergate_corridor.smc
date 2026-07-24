@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "innergate_corridor";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\innergate_corridor.bm";
+  TEXTURES   
+  {
+    "innergate_corridor"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\innergate_corridor.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\innergate_corridor_1.bm";
+  TEXTURES   
+  {
+    "innergate_corridor"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\innergate_corridor.tex";
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\innergate_corridor.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\innergate_corridor.ba";
+  ALLFRAMESBBOX	-10.4017,-0.00210129,-9.99789,10.4029,15.0467,0.406585;
+  COLISION
+  {
+    "Default"  {-1.5,0,-2,1.5,3,2;}
+  }
+}

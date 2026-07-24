@@ -1,0 +1,12 @@
+NAME "terra_spear01";
+{
+  MESH       	TFNM "Data\Effect\SKA\terra_spear01.bm";
+  TEXTURES   
+  {
+    "pillar_a_d3"	TFNM "Data\Effect\TEXTURE\pillar_a_d3.tex";
+  }
+  ALLFRAMESBBOX	-0.123474,0,-0.176851,0.177832,1.29502,0.13303;
+  COLISION
+  {
+  }
+}

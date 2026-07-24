@@ -1,0 +1,14 @@
+NAME "d2_Gate01";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_Gate01.bm";
+  TEXTURES   
+  {
+    "Dengen2_Detail"	TFNM "Data\World\Dungeon2\Ska\Texture\Dengen2_Detail.tex";
+    "gate01"	TFNM "Data\World\Dungeon2\Ska\Texture\gate01.tex";
+    "deco01"	TFNM "Data\World\Dungeon2\Ska\Texture\deco01.tex";
+  }
+  ALLFRAMESBBOX	-4.61856,-5.64395,-1.2946,4.6187,5.64395,1.29459;
+  COLISION
+  {
+  }
+}

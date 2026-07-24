@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_bu.bm";
+  TEXTURES   
+  {
+    "wight_flare"	TFNM "Data\Monster\Wight\Texture\wight_flare.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_bu_1.bm";
+  TEXTURES   
+  {
+    "wight_flare_1"	TFNM "Data\Monster\Wight\Texture\wight_flare_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_bu_2.bm";
+  TEXTURES   
+  {
+    "wight_flare"	TFNM "Data\Monster\Wight\Texture\wight_flare.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_lhn.bm";
+  TEXTURES   
+  {
+    "wight_flare"	TFNM "Data\Monster\Wight\Texture\wight_flare.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_rhn.bm";
+  TEXTURES   
+  {
+    "wight_flare"	TFNM "Data\Monster\Wight\Texture\wight_flare.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_bd.bm";
+  TEXTURES   
+  {
+    "wight_flare"	TFNM "Data\Monster\Wight\Texture\wight_flare.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_bow.bm";
+  TEXTURES   
+  {
+    "wight_flare_1"	TFNM "Data\Monster\Wight\Texture\wight_flare_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_flare_mantle.bm";
+  TEXTURES   
+  {
+    "wight_flare_1"	TFNM "Data\Monster\Wight\Texture\wight_flare_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\_TAG_WIGHT_F_BOW.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Wight\wight_flare.bs";
+  ANIMSET   	TFNM "Data\Monster\Wight\wight_flare.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Wight\wight_flare.bae";
+  ALLFRAMESBBOX	-1.1,0,-1,1.1,2.1,1;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-1.07569,1.1596,2.10097,0.924306;}
+  }
+}

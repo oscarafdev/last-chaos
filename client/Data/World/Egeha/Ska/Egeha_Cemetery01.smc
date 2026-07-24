@@ -1,0 +1,14 @@
+NAME "w3_Cemetery01";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_Cemetery01.bm";
+  TEXTURES   
+  {
+    "w3_Cemetery"	TFNM "Data\World\Merac\ska\texture\w3_Cemetery.tex";
+    "merac_Detail"	TFNM "Data\World\Egeha\Ska\Texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.33204,-0.016485,-0.67577,1.33203,2.13774,0.675904;
+  COLISION
+  {
+    "Default"  {-1.28436,-0.0349559,-0.720127,1.34605,2.12481,0.865096;}
+  }
+}

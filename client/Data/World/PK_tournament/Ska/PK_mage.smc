@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "PK_knight";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_mage.bm";
+  TEXTURES   
+  {
+    "pk_mage"	TFNM "Data\World\PK_tournament\Ska\Texture\pk_mage.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-0.321874,0.002595,-0.232111,0.321874,2.20976,0.308536;
+  COLISION
+  {
+    "Default"  {-0.263017,-0.0252665,-0.24426,0.303802,1.22346,0.235741;}
+  }
+}

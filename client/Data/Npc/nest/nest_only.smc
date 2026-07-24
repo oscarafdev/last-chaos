@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "nest_only";
+{
+  MESH       	TFNM "Data\Npc\nest\nest_only.bm";
+  TEXTURES   
+  {
+    "nest"	TFNM "Data\Npc\nest\nest.tex";
+  }
+  ALLFRAMESBBOX	0,0,0,0,0.05,0;
+  COLISION
+  {
+    "Default"  {0,0,0,0,0.05,0;}
+  }
+}

@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "angel_wing01";
+{
+  MESH       	TFNM "Data\Effect\Ska\angelwing\angel_wing01.bm";
+  TEXTURES   
+  {
+    "angel_wing01"	TFNM "Data\Effect\Ska\angelwing\angel_wing01.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\angelwing\angel_wing01.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\angelwing\angel_wing01_idle.ba";
+  ALLFRAMESBBOX	-3.06898,-0.860046,0.347582,3.06899,0.743206,0.965943;
+  COLISION
+  {
+  }
+}

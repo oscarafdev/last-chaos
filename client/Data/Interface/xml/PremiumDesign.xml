@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="1" y="-1" w="1024" h="768" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIList id="list_copyPassive" x="0" y="0" w="370" h="122" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="4" itemgap="0" item_count="1" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="370" h="30" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage id="img_copyBtnbg" x="8" y="5" w="4" h="4" hide="0" tex="premium_character.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="79" t="549" r="83" b="553" />
+            <UITextBox id="tb_copyContent" x="18" y="0" w="340" h="30" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xb9b9b9ff" str="모든 몬스터로부터 기본 EXP/SP 10%를 더 획득 합니다.">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UITextBox>
+        </UIListItem>
+    </UIList>
+    <UIList id="list_copyActive" x="0" y="125" w="250" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="2" itemgap="0" item_count="1" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="245" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage id="img_copyBtnbg" x="8" y="5" w="4" h="4" hide="0" tex="premium_character.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="79" t="549" r="83" b="553" />
+            <UIText id="str_copyContent" x="18" y="0" w="230" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="펫 봉인 해제" str_ellipsis="" color="0xfdc78bff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+</Window>

@@ -1,0 +1,12 @@
+NAME "cadtle_14";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\cadtle_14.bm";
+  TEXTURES   
+  {
+    "castledoor_14_2"	TFNM "Data\World\LoginWorld\Ska\Texture\castledoor_14_2.tex";
+  }
+  ALLFRAMESBBOX	-5.30076,-0.03281,-5.2425,5.26072,30.8953,5.2425;
+  COLISION
+  {
+  }
+}

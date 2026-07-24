@@ -1,0 +1,33 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "BlacktyrantLOOK";
+{
+  MESH       	TFNM "Data\Monster\BlacktyrantLOOK\BTlook.bm";
+  TEXTURES   
+  {
+    "BlacktyrantLOOK"	TFNM "Data\Monster\BlacktyrantLOOK\Blacktyrantlook.tex";
+  }
+  MESH       	TFNM "Data\Monster\BlacktyrantLOOK\_TAG_lookCT.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\BlacktyrantLOOK\_TAG_lookrh.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\BlacktyrantLOOK\_TAG_looklh.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\BlacktyrantLOOK\_TAG_lookHD.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\BlacktyrantLOOK\BTlook.bs";
+  ANIMSET   	TFNM "Data\Monster\BlacktyrantLOOK\BlacktyrantLOOK.ba";
+  ANIMEFFECT	TFNM "Data\Monster\BlacktyrantLOOK\BlacktyrantLOOK.bae";
+  ALLFRAMESBBOX	-1.75,0,-1.75,1.75,3.2,1.75;
+  COLISION
+  {
+    "Default"  {-1.0904,0.000965595,-1.17569,1.20959,3.60097,1.02431;}
+  }
+}

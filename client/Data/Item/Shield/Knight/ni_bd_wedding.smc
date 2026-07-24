@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_bd_wedding";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_wedding.bm";
+  TEXTURES   
+  {
+    "ni_bd_wedding"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_wedding.tex";
+  }
+  ALLFRAMESBBOX	-0.37086,0.039258,-0.142729,0.37086,1.25622,0.185057;
+  COLISION
+  {
+  }
+}

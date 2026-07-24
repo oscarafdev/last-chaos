@@ -1,0 +1,13 @@
+NAME "Chair_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\chair_01.bm";
+  TEXTURES   
+  {
+    "Chair_01"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Texture\Chair_01.tex";
+  }
+  ALLFRAMESBBOX	-1.84526,-0.027818,-0.494663,1.84526,1.4878,0.494664;
+  COLISION
+  {
+    "Default"  {-2.0147,-0.0314436,-0.360232,2.36323,1.81625,0.369988;}
+  }
+}

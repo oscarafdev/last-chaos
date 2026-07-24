@@ -1,0 +1,17 @@
+NAME "w3_bigtree";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\ska\w3_bigtree.bm";
+  TEXTURES   
+  {
+    "w3_tree023"	TFNM "Data\World\STAEIANA(canyon)\ska\texture\w3_tree023.tex";
+    "merac_Detail"	TFNM "Data\World\STAEIANA(canyon)\ska\texture\Detail.tex";
+    "w3_tree05"	TFNM "Data\World\merac\ska\texture\w3_tree05.tex";
+    "w3_trees02"	TFNM "Data\World\merac\ska\texture\w3_trees02.tex";
+    "w3_tree021"	TFNM "Data\World\merac\ska\texture\w3_tree021.tex";
+  }
+  ALLFRAMESBBOX	-12.117,-0.509855,-10.5724,9.56691,20.144,10.5985;
+  COLISION
+  {
+    "Default"  {-4.48148,-0.549925,-4.2515,5.99197,19.1335,4.1977;}
+  }
+}

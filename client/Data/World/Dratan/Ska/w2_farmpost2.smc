@@ -1,0 +1,15 @@
+NAME "w2_farmpost2";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_farmpost2.bm";
+  TEXTURES   
+  {
+    "w2_wallgate4"	TFNM "Data\World\Dratan\Ska\Texture\w2_wallgate4.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_charge03"	TFNM "Data\World\Dratan\Ska\Texture\w2_charge03.tex";
+    "w2_farmstone1"	TFNM "Data\World\Dratan\Ska\Texture\w2_farmstone1.tex";
+  }
+  ALLFRAMESBBOX	-1.42386,-0.235228,-2.05338,1.37639,5.61771,7.8993;
+  COLISION
+  {
+  }
+}

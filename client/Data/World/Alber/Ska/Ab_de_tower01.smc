@@ -1,0 +1,17 @@
+NAME "Ab_de_tower01";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_tower01.bm";
+  TEXTURES   
+  {
+    "Ab_de_tower01_01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_tower01_01.tex";
+    "Ab_de_tower01_02"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_tower01_02.tex";
+    "Ab_de_tower01_03"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_tower01_03.tex";
+    "Ab_de_tower01_04"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_tower01_04.tex";
+  }
+  SKELETON  	TFNM "Data\World\Alber\Ska\Ab_de_tower01.bs";
+  ANIMSET   	TFNM "Data\World\Alber\Ska\Ab_de_tower01.ba";
+  ALLFRAMESBBOX	-5,0,-5,5,50,5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,46 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "deadammorsoldier";
+{
+  MESH       	TFNM "Data\monster\deadammor\deadammorsoldier_1.bm";
+  TEXTURES   
+  {
+    "soldiermad_sw"	TFNM "Data\monster\deadammor\soldiermad_sw.tex";
+  }
+  MESH       	TFNM "Data\monster\deadammor\deadammorsoldier_2.bm";
+  TEXTURES   
+  {
+    "soldiermad_sh"	TFNM "Data\monster\deadammor\soldiermad_sh.tex";
+  }
+  MESH       	TFNM "Data\monster\deadammor\deadammorsoldier_bu.bm";
+  TEXTURES   
+  {
+    "soldiermad"	TFNM "Data\monster\deadammor\soldiermad.tex";
+  }
+  MESH       	TFNM "Data\monster\deadammor\deadammorsoldier_cen.bm";
+  TEXTURES   
+  {
+    "soldiermad"	TFNM "Data\monster\deadammor\soldiermad.tex";
+  }
+  MESH       	TFNM "Data\monster\deadammor\deadammorsoldier_ft.bm";
+  TEXTURES   
+  {
+    "soldiermad"	TFNM "Data\monster\deadammor\soldiermad.tex";
+  }
+  MESH       	TFNM "Data\monster\deadammor\deadammorsoldier_hn.bm";
+  TEXTURES   
+  {
+    "soldiermad"	TFNM "Data\monster\deadammor\soldiermad.tex";
+  }
+  MESH       	TFNM "Data\Monster\deadammor\_TEG_T_soldier.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\deadammor\deadammorsoldier.bs";
+  ANIMSET   	TFNM "Data\monster\deadammor\deadammorsoldier.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Deadammor\deadammorsoldier.bae";
+  ALLFRAMESBBOX	-5,0,-5,5,3,5;
+  COLISION
+  {
+    "Default"  {-0.8,0,-1.2,0.8,3,1;}
+  }
+}

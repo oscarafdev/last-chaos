@@ -1,0 +1,13 @@
+NAME "casket";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\casket.bm";
+  TEXTURES   
+  {
+    "casket"	TFNM "Data\World\tarian_dungeon\Ska\Texture\casket.tex";
+  }
+  ALLFRAMESBBOX	-0.634085,0,-1.15334,0.651564,0.857606,1.16854;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

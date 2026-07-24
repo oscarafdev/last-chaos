@@ -1,0 +1,42 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "cao_guard";
+{
+  MESH       	TFNM "Data\Npc\Cao\cao_guard_1.bm";
+  TEXTURES   
+  {
+    "cao_guard_head"	TFNM "Data\Npc\Cao\Texture\cao_guard_head.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guard_bu.bm";
+  TEXTURES   
+  {
+    "cao_guard"	TFNM "Data\Npc\Cao\Texture\cao_guard.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guard_hn.bm";
+  TEXTURES   
+  {
+    "cao_guard"	TFNM "Data\Npc\Cao\Texture\cao_guard.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guard_bd.bm";
+  TEXTURES   
+  {
+    "cao_guard"	TFNM "Data\Npc\Cao\Texture\cao_guard.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guard_shield.bm";
+  TEXTURES   
+  {
+    "cao_guard_shields"	TFNM "Data\Npc\Cao\Texture\cao_guard_shields.tex";
+    "shields_back"	TFNM "Data\Npc\Cao\Texture\shields_back.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guard_sword.bm";
+  TEXTURES   
+  {
+    "cao_guard_weapon"	TFNM "Data\Npc\Cao\Texture\cao_guard_weapon.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Cao\cao_guard.bs";
+  ANIMSET   	TFNM "Data\Npc\Cao\cao_guard.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,13 @@
+NAME "cd_cobra";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\cd_cobra.bm";
+  TEXTURES   
+  {
+    "cd_cobra"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\texture\cd_cobra.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Texture\Siege_Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.96083,-0.022068,-0.274643,1.96083,1.24101,0.274642;
+  COLISION
+  {
+  }
+}

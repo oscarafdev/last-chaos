@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_mask-ghost";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_mask-ghost.bm";
+  TEXTURES   
+  {
+    "mask_ghost"	TFNM "Data\Item\Shield\Knight\Texture\mask_ghost.tex";
+  }
+  ALLFRAMESBBOX	-0.138286,1.58231,-0.20337,0.138286,2.03762,0.219368;
+  COLISION
+  {
+  }
+}

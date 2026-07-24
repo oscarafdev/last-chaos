@@ -1,0 +1,62 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Deathknight";
+{
+  MESH       	TFNM "Data\Monster\Deathknight\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_bu_01.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\Monster\Deathknight\dn_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_bu.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\Monster\Deathknight\dn_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_bu_02.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\Monster\Deathknight\dn_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_bu_03.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\Monster\Deathknight\dn_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_face.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\Monster\Deathknight\dn_bu.tex";
+    "dn_bd"	TFNM "Data\Monster\Deathknight\dn_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_hn.bm";
+  TEXTURES   
+  {
+    "dn_bd"	TFNM "Data\Monster\Deathknight\dn_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_shield.bm";
+  TEXTURES   
+  {
+    "dn_weapon"	TFNM "Data\Monster\Deathknight\dn_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_sword.bm";
+  TEXTURES   
+  {
+    "dn_weapon"	TFNM "Data\Monster\Deathknight\dn_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Deathknight\dn_bd.bm";
+  TEXTURES   
+  {
+    "dn_bd"	TFNM "Data\Monster\Deathknight\dn_bd.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Deathknight\Deathknight.bs";
+  ANIMSET   	TFNM "Data\Monster\Deathknight\Deathknight.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Deathknight\Deathknight.bae";
+  ALLFRAMESBBOX	-7,0,-7,7,5.6,7;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1,1.5,5.6,1;}
+  }
+}

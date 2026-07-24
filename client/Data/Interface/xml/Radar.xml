@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="150" h="278" hide="0" align_h="2" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIBase id="group_top" x="9" y="0" w="141" h="57" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+        <UIImage x="0" y="0" w="141" h="57" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="144" t="963" r="285" b="1020" />
+        <UIButton id="btn_express" x="5" y="5" w="25" h="25" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="650" t="679" r="675" b="704" />
+            <uv type="1" l="678" t="707" r="703" b="732" />
+            <uv type="2" l="678" t="679" r="703" b="704" />
+            <uv type="3" l="650" t="706" r="675" b="731" />
+        </UIButton>
+        <UIButton id="btn_petstash" x="31" y="5" w="26" h="26" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="5954" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="734" t="683" r="760" b="709" />
+            <uv type="1" l="762" t="711" r="788" b="737" />
+            <uv type="2" l="762" t="683" r="788" b="709" />
+            <uv type="3" l="649" t="706" r="676" b="733" />
+        </UIButton>
+        <UIButton id="btn_itemcollect" x="57" y="3" w="27" h="27" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="7036" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="649" t="736" r="676" b="763" />
+            <uv type="1" l="677" t="764" r="704" b="791" />
+            <uv type="2" l="677" t="736" r="704" b="763" />
+            <uv type="3" l="649" t="706" r="676" b="733" />
+        </UIButton>
+        <UIButton id="btn_premium" x="83" y="3" w="27" h="27" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="733" t="738" r="760" b="765" />
+            <uv type="1" l="761" t="766" r="788" b="793" />
+            <uv type="2" l="761" t="738" r="788" b="765" />
+            <uv type="3" l="733" t="766" r="760" b="793" />
+        </UIButton>
+        <UIButton id="btn_durability" x="110" y="3" w="27" h="27" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="790" t="766" r="817" b="793" />
+            <uv type="1" l="818" t="794" r="845" b="821" />
+            <uv type="2" l="818" t="766" r="845" b="793" />
+            <uv type="3" l="790" t="794" r="817" b="821" />
+        </UIButton>
+        <UIText id="txt_pos" x="15" y="36" w="112" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0x72d02eff" color_enter="0x72d02eff" color_select="0x72d02eff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIBase>
+    <UIBase id="group_bottom" x="0" y="48" w="150" h="145" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+        <UIImage x="5" y="0" w="143" h="143" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="344" t="347" r="487" b="490" />
+        <UIButton id="btn_zoom_p" x="100" y="7" w="25" h="25" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="548" t="484" r="573" b="509" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="490" t="484" r="515" b="509" />
+            <uv type="3" l="606" t="484" r="631" b="509" />
+        </UIButton>
+        <UIButton id="btn_zoom_m" x="120" y="33" w="25" h="25" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="577" t="484" r="602" b="509" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="519" t="484" r="544" b="509" />
+            <uv type="3" l="635" t="484" r="660" b="509" />
+        </UIButton>
+        <UIButton id="btn_signal" x="20" y="102" w="27" h="27" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="2222" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="790" t="738" r="817" b="765" />
+            <uv type="1" l="846" t="738" r="873" b="765" />
+            <uv type="2" l="818" t="738" r="845" b="765" />
+            <uv type="3" l="818" t="738" r="845" b="765" />
+        </UIButton>
+        <UIButton id="btn_option" x="3" y="76" w="27" h="27" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="442" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="790" t="710" r="817" b="737" />
+            <uv type="1" l="846" t="710" r="873" b="737" />
+            <uv type="2" l="818" t="710" r="845" b="737" />
+            <uv type="3" l="818" t="710" r="845" b="737" />
+        </UIButton>
+        <UIButton id="btn_map" x="-1" y="49" w="27" h="27" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="190" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="790" t="682" r="817" b="709" />
+            <uv type="1" l="846" t="682" r="873" b="709" />
+            <uv type="2" l="818" t="682" r="845" b="709" />
+            <uv type="3" l="818" t="682" r="845" b="709" />
+        </UIButton>
+    </UIBase>
+    <UIBase id="group_info" x="0" y="195" w="150" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+        <UIText id="txt_date" x="0" y="0" w="150" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="2015.08.24 15:24" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="txt_channel" x="0" y="14" w="150" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="1. 블리??Ch.2" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIBase>
+    <UIImageArray id="imgarr_rr" x="100" y="226" w="26" h="49" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="5579" tooltip_color="0xffffffff" tooltip_width="0" render_idx="2">
+        <surface0 x="0" y="0" w="26" h="49" l="183" t="197" r="209" b="246" desc="" />
+        <surface1 x="0" y="0" w="26" h="49" l="154" t="197" r="180" b="246" desc="" />
+        <surface2 x="0" y="0" w="26" h="49" l="125" t="197" r="151" b="246" desc="" />
+    </UIImageArray>
+    <UISpriteAni id="sprani_rr" x="8" y="226" w="86" h="49" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" cur="1" delay_time="500" play="1">
+        <uv l="51" t="135" r="137" b="184" />
+        <uv l="144" t="135" r="230" b="184" />
+    </UISpriteAni>
+</Window>

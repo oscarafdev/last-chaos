@@ -1,0 +1,14 @@
+NAME "fish2";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\fish2.bm";
+  TEXTURES   
+  {
+    "fish-02"	TFNM "Data\world\StartZone\Ska\Texture\fish-02.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\fish2.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\fish2.ba";
+  ALLFRAMESBBOX	-2.46492,-0.748888,-0.3742,1.50829,0.832785,0.679074;
+  COLISION
+  {
+  }
+}

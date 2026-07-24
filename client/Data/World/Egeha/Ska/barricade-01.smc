@@ -1,0 +1,14 @@
+NAME "barricade-01";
+{
+  MESH       	TFNM "Data\world\Egeha\Ska\barricade-01.bm";
+  TEXTURES   
+  {
+    "barricade-01"	TFNM "Data\World\Egeha\Ska\Texture\barricade-01.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-2.21959,0.003913,-1.18977,2.21959,2.19318,1.18977;
+  COLISION
+  {
+    "Default"  {-2.22571,-0.0064435,-1.17572,2.22418,2.18765,1.2345;}
+  }
+}

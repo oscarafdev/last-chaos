@@ -1,0 +1,15 @@
+NAME "cotton_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\cotton_G.bm";
+  TEXTURES   
+  {
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+    "decowal01_G"	TFNM "Data\World\Guild\Ska\Texture\decowal01_G.tex";
+    "decowall_G"	TFNM "Data\World\Guild\Ska\Texture\decowall_G.tex";
+    "cotton_G"	TFNM "Data\World\Guild\Ska\Texture\cotton_G.tex";
+  }
+  ALLFRAMESBBOX	-3.70082,0.009012,-0.245755,3.70082,9.16339,0.245754;
+  COLISION
+  {
+  }
+}

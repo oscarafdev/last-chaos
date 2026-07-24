@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Boy";
+{
+  MESH       	TFNM "Data\npc\public\Boy.bm";
+  TEXTURES   
+  {
+    "Boy"	TFNM "Data\npc\public\Boy.tex";
+  }
+  MESH       	TFNM "Data\npc\public\Boy_1.bm";
+  TEXTURES   
+  {
+    "Boy"	TFNM "Data\npc\public\Boy.tex";
+  }
+  MESH       	TFNM "Data\npc\public\Boy_2.bm";
+  TEXTURES   
+  {
+    "Boy"	TFNM "Data\npc\public\Boy.tex";
+  }
+  MESH       	TFNM "Data\npc\public\Boy_3.bm";
+  TEXTURES   
+  {
+    "Boy"	TFNM "Data\npc\public\Boy.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\Boy.bs";
+  ANIMSET   	TFNM "Data\npc\public\Boy.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,1.55,2;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.55,0.4;}
+  }
+}

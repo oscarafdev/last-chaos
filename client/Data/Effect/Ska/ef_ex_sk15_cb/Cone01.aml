@@ -1,0 +1,5 @@
+MESHLODLIST
+{
+  MAX_DISTANCE 15;
+  #INCLUDE "d:\ra_svn\trunk\resrc\data\effect\ska\ef_ex_sk15_cb\Cone01.am"
+}

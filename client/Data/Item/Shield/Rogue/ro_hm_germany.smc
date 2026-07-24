@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hm_germany";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hm_germany01.bm";
+  TEXTURES   
+  {
+    "ro_hair_004"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_004.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hm_germany02.bm";
+  TEXTURES   
+  {
+    "ro_hm_germany "	TFNM "Data\Item\Shield\Rogue\Texture\ro_hm_germany .tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hm_germany.bm";
+  TEXTURES   
+  {
+    "ro_hair_004"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_004.tex";
+  }
+  ALLFRAMESBBOX	-0.11234,1.55524,-0.091537,0.08215,1.76933,0.154832;
+  COLISION
+  {
+  }
+}

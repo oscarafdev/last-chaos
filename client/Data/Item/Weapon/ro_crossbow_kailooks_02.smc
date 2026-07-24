@@ -1,0 +1,17 @@
+OFFSET    	-1.07,-0.13,-0.4,-140,-80,0;
+NAME "ro_crossbow_kailooks_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_CROSSBOW_kailooks_02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ro_crossbow_kailooks_02.bm";
+  TEXTURES   
+  {
+    "ro_crossbow_kailooks_02"	TFNM "Data\Item\Weapon\Texture\ro_crossbow_kailooks_02.tex";
+  }
+  ALLFRAMESBBOX	-0.384276,-0.10454,-0.396175,0.384135,0.205342,0.246614;
+  COLISION
+  {
+  }
+}

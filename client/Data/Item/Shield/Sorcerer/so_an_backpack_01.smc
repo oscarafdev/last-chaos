@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_an_backpack_01";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_an_backpack_01.bm";
+  TEXTURES   
+  {
+    "an_backpack_01"	TFNM "Data\Item\Shield\Sorcerer\Texture\an_backpack_01.tex";
+  }
+  ALLFRAMESBBOX	-0.738664,0.986783,0.066339,0.738664,2.27769,1.15931;
+  COLISION
+  {
+  }
+}

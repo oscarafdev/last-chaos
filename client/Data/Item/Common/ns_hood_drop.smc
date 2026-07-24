@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_hood_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ns_hood_drop.bm";
+  TEXTURES   
+  {
+    "ns_hood_drop"	TFNM "Data\Item\Common\Texture\ns_hood_drop.tex";
+  }
+  ALLFRAMESBBOX	-0.171618,0,-0.208198,0.161527,0.16453,0.234631;
+  COLISION
+  {
+    "Default"  {-0.225,0,-0.21,0.225,0.16,0.24;}
+  }
+}

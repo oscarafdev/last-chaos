@@ -1,0 +1,17 @@
+OFFSET    	0.33,-1.06,0.4,140,-0.25,-50;
+NAME "so_staff_oubli";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_SO_STAFF_OUBLI.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\so_staff_oubli.bm";
+  TEXTURES   
+  {
+    "so_staff_oubli"	TFNM "Data\Item\Weapon\Texture\so_staff_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.795429,-0.0453565,-1.24986,0.979537,0.0863273,0.978996;
+  COLISION
+  {
+  }
+}

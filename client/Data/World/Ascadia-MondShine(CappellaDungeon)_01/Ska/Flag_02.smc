@@ -1,0 +1,13 @@
+NAME "fancein";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Flag_02.bm";
+  TEXTURES   
+  {
+    "Flag_02"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Texture\Flag_02.tex";
+  }
+  ALLFRAMESBBOX	-0.835583,-0.002203,-0.179918,0.835582,4.5759,0.179918;
+  COLISION
+  {
+    "Default"  {-0.228474,-0.0304977,-0.158983,0.260324,1.70738,0.137862;}
+  }
+}

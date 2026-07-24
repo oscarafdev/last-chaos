@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_ft_zorro";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ft_zorro.bm";
+  TEXTURES   
+  {
+    "ro_ft_zorro"	TFNM "Data\Item\Shield\Rogue\Texture\ro_ft_zorro.tex";
+  }
+  ALLFRAMESBBOX	-0.252525,-0.003785,-0.187497,0.252525,0.674723,0.104614;
+  COLISION
+  {
+  }
+}

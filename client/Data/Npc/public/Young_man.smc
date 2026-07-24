@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Young_man";
+{
+  MESH       	TFNM "Data\npc\public\Young_man.bm";
+  TEXTURES   
+  {
+    "Young_man_face"	TFNM "Data\npc\public\Young_man_face.tex";
+  }
+  MESH       	TFNM "Data\npc\public\Young_man_1.bm";
+  TEXTURES   
+  {
+    "Young_man_bu"	TFNM "Data\npc\public\Young_man_bu.tex";
+  }
+  MESH       	TFNM "Data\npc\public\Young_man_2.bm";
+  TEXTURES   
+  {
+    "Young_man_bd"	TFNM "Data\npc\public\Young_man_bd.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\Young_man.bs";
+  ANIMSET   	TFNM "Data\npc\public\Young_man.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,2,2;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,2,0.4;}
+  }
+}

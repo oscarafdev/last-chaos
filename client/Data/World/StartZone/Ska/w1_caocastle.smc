@@ -1,0 +1,16 @@
+NAME "w1_caocastle";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_caocastle.bm";
+  TEXTURES   
+  {
+    "w1_caocastle01"	TFNM "Data\World\StartZone\Ska\Texture\w1_caocastle01.tex";
+    "w1_caocastle02"	TFNM "Data\World\StartZone\Ska\Texture\w1_caocastle02.tex";
+    "w1_caocastle03"	TFNM "Data\World\StartZone\Ska\Texture\w1_caocastle03.tex";
+    "w1_caocastle04"	TFNM "Data\World\StartZone\Ska\Texture\w1_caocastle04.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-22.436,-0.162531,-22.436,22.436,116.835,22.436;
+  COLISION
+  {
+  }
+}

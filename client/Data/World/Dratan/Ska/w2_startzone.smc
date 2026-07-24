@@ -1,0 +1,15 @@
+NAME "w2_startzone";
+{
+  MESH       	TFNM "Data\World\Dratan\ska\w2_startzone.bm";
+  TEXTURES   
+  {
+    "startzone2"	TFNM "Data\World\Dratan\ska\Texture\startzone2.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "startstone"	TFNM "Data\World\Dratan\ska\Texture\startstone.tex";
+    "startzone1"	TFNM "Data\World\Dratan\ska\Texture\startzone1.tex";
+  }
+  ALLFRAMESBBOX	-23.5676,-0.00993,-23.5676,23.5677,8.00466,23.5676;
+  COLISION
+  {
+  }
+}

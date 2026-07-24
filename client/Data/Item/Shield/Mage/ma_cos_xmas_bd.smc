@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_cos_xmas_bd";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_cos_xmas_bd.bm";
+  TEXTURES   
+  {
+    "ma_cos_xmas_bd"	TFNM "Data\Item\Shield\Mage\Texture\ma_cos_xmas_bd.tex";
+  }
+  ALLFRAMESBBOX	-0.422737,0.332496,-0.393895,0.422737,1.28685,0.23865;
+  COLISION
+  {
+  }
+}

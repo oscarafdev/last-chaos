@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "summonfire";
+{
+  MESH       	TFNM "Data\Npc\Summon\summonfire.bm";
+  TEXTURES   
+  {
+    "summonfire"	TFNM "Data\Npc\Summon\summonfire.tex";
+  }
+  MESH       	TFNM "Data\Npc\Summon\_TAG_T_Fire.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Summon\summonfire.bs";
+  ANIMSET   	TFNM "Data\Npc\Summon\summonfire.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Summon\summonfire.bae";
+  ALLFRAMESBBOX	-0.5,0,-1.5,0.5,1.7,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-1.5,0.5,1.7,1.5;}
+  }
+}

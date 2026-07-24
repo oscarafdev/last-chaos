@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw";
+{
+  MESH       	TFNM "Data\character\Healer\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\character\Healer\hw_bd_000.bm";
+  TEXTURES   
+  {
+    "hw_bd_000"	TFNM "Data\character\Healer\hw_bd_000.tex";
+  }
+  MESH       	TFNM "Data\character\Healer\hw_bs_000.bm";
+  TEXTURES   
+  {
+    "hw_bs_000"	TFNM "Data\character\Healer\hw_bs_000.tex";
+  }
+  MESH       	TFNM "Data\character\Healer\hw_bu_000.bm";
+  TEXTURES   
+  {
+    "hw_bu_000"	TFNM "Data\character\Healer\hw_bu_000.tex";
+  }
+  MESH       	TFNM "Data\character\Healer\hw_face_000.bm";
+  TEXTURES   
+  {
+    "hw_face_000"	TFNM "Data\character\Healer\hw_face_000.tex";
+  }
+  MESH       	TFNM "Data\character\Healer\hw_ft_000.bm";
+  TEXTURES   
+  {
+    "hw_ft_000"	TFNM "Data\character\Healer\hw_ft_000.tex";
+  }
+  MESH       	TFNM "Data\character\Healer\hw_hair_000.bm";
+  TEXTURES   
+  {
+    "hw_hair_000"	TFNM "Data\character\Healer\hw_hair_000.tex";
+  }
+  MESH       	TFNM "Data\character\Healer\hw_hn_000.bm";
+  TEXTURES   
+  {
+    "hw_hn_000"	TFNM "Data\character\Healer\hw_hn_000.tex";
+  }
+  SKELETON  	TFNM "Data\character\Healer\hw.bs";
+  ANIMSET   	TFNM "Data\character\Healer\hw.ba";
+  ANIMEFFECT	TFNM "Data\character\Healer\hw.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.32,0,-0.32,0.32,1.8,0.32;}
+  }
+}

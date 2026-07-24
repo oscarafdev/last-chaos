@@ -1,0 +1,20 @@
+NAME "Ab_de_brokentemple";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_brokentemple.bm";
+  TEXTURES   
+  {
+    "Ab_de_brokentemple_08"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_08.tex";
+    "Ab_de_brokentemple_07"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_07.tex";
+    "Ab_de_brokentemple_06"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_06.tex";
+    "Ab_de_brokentemple_05"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_05.tex";
+    "Ab_de_brokentemple_04"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_04.tex";
+    "Ab_de_brokentemple_03"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_03.tex";
+    "Ab_de_brokentemple_02"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_02.tex";
+    "Ab_de_brokentemple_01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_01.tex";
+    "Ab_de_TriumphalArch06"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch06.tex";
+  }
+  ALLFRAMESBBOX	-47.5556,-1.51029,-63.9908,48.0831,10.9344,47.0382;
+  COLISION
+  {
+  }
+}

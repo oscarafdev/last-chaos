@@ -1,0 +1,16 @@
+NAME "st_dong02";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_dong02.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "p_StartZonetile_06"	TFNM "Data\World\StartZone\Ska\Texture\p_StartZonetile_06.tex";
+    "p_StartZonetile_05"	TFNM "Data\World\StartZone\Ska\Texture\p_StartZonetile_05.tex";
+    "p_StartZonetile_05_2"	TFNM "Data\World\StartZone\Ska\Texture\p_StartZonetile_05_2.tex";
+    "Dengen1_Detail_)1"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail_)1.tex";
+  }
+  ALLFRAMESBBOX	-11.0563,-0.015746,-2.55112,11.0561,20.6107,1.78309;
+  COLISION
+  {
+  }
+}

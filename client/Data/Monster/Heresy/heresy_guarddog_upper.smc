@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "heresy_guarddog_upper";
+{
+  MESH       	TFNM "Data\Monster\Heresy\_TEG_T_CENTER_heresy_guarddog_upper.bm";
+  TEXTURES   
+  {
+    "vandersnach"	TFNM "Data\Monster\Heresy\heresy_guarddog.tex";
+  }
+  MESH       	TFNM "Data\Monster\Heresy\heresy_guarddog_upper_head.bm";
+  TEXTURES   
+  {
+    "heresy_guarddog"	TFNM "Data\Monster\Heresy\heresy_guarddog.tex";
+  }
+  MESH       	TFNM "Data\Monster\Heresy\heresy_guarddog_upper_bu.bm";
+  TEXTURES   
+  {
+    "heresy_guarddog"	TFNM "Data\Monster\Heresy\heresy_guarddog.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Heresy\heresy_guarddog_upper.bs";
+  ANIMSET   	TFNM "Data\Monster\Heresy\heresy_guarddog_upper.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Heresy\heresy_guarddog_upper.bae";
+  ALLFRAMESBBOX	-1.25,0,-1.55,1.25,1.5,0.95;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,1.5,1;}
+  }
+}

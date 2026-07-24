@@ -1,0 +1,13 @@
+NAME "DR_grass07";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_grass01.bm";
+  TEXTURES   
+  {
+    "pk_To_tile04_NRM"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM.tex";
+    "PK_grass01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_grass01.tex";
+  }
+  ALLFRAMESBBOX	-1.75037,-0.355047,-1.5333,1.64471,2.58253,1.5839;
+  COLISION
+  {
+  }
+}

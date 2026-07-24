@@ -1,0 +1,14 @@
+NAME "w2_minebridge";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_minebridge.bm";
+  TEXTURES   
+  {
+    "w2_minewood2"	TFNM "Data\World\Dratan\Ska\Texture\w2_minewood2.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_minewood1"	TFNM "Data\World\Dratan\Ska\Texture\w2_minewood1.tex";
+  }
+  ALLFRAMESBBOX	-7.88004,-4.83114,-4.37663,7.28185,4.82577,3.84922;
+  COLISION
+  {
+  }
+}

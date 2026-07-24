@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_hn_halloween";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hn_halloween.bm";
+  TEXTURES   
+  {
+    "hw_hn_halloween"	TFNM "Data\Item\Shield\Healer\Texture\hw_hn_halloween.tex";
+  }
+  ALLFRAMESBBOX	-0.65611,1.05683,-0.047329,0.65611,1.27027,0.09301;
+  COLISION
+  {
+  }
+}

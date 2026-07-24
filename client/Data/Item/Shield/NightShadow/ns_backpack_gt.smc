@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_backpack_gt";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_backpack_gt.bm";
+  TEXTURES   
+  {
+    "elec_guitar03"	TFNM "Data\Item\Shield\NightShadow\Texture\elec_guitar03.tex";
+  }
+  ALLFRAMESBBOX	-0.393163,0.624349,0.185077,0.425015,1.92498,0.278057;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "kel";
+{
+  MESH       	TFNM "Data\Monster\Kel\_TAG_T_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Kel\kel_bu.bm";
+  TEXTURES   
+  {
+    "w3_kel"	TFNM "Data\Monster\Kel\w3_kel.tex";
+  }
+  MESH       	TFNM "Data\Monster\Kel\W3_kel_h00.bm";
+  TEXTURES   
+  {
+    "w3_kel"	TFNM "Data\Monster\Kel\w3_kel.tex";
+  }
+  MESH       	TFNM "Data\Monster\Kel\W3_kel_h01.bm";
+  TEXTURES   
+  {
+    "w3_kel"	TFNM "Data\Monster\Kel\w3_kel.tex";
+  }
+  MESH       	TFNM "Data\Monster\Kel\W3_kel_h02.bm";
+  TEXTURES   
+  {
+    "w3_kel"	TFNM "Data\Monster\Kel\w3_kel.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Kel\kel.bs";
+  ANIMSET   	TFNM "Data\Monster\Kel\kel.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Kel\kel.bae";
+  ALLFRAMESBBOX	-4,0,-4.5,4,2,3.5;
+  COLISION
+  {
+    "Default"  {-0.7,0,-1.9,0.7,2,0.9;}
+  }
+}

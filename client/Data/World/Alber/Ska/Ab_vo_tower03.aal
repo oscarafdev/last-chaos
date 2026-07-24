@@ -1,0 +1,6 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\World\Alber\Ska\Ab_vo_tower03_idle01.AA"
+}

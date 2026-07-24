@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "PT_genielamp";
+{
+  MESH       	TFNM "Data\Effect\Ska\PT\PT_genielamp.bm";
+  TEXTURES   
+  {
+    "PT_genielamp"	TFNM "Data\Effect\Ska\PT\PT_genielamp.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\PT\PT_genielamp.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\PT\PT_genielamp.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

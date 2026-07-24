@@ -1,0 +1,22 @@
+NAME "w2_minestructure";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\w2_minestructure.bm";
+  TEXTURES   
+  {
+    "w2_farmwater3"	TFNM "Data\World\Tarian\Ska\Texture\w2_farmwater3.tex";
+    "w2_minefabric"	TFNM "Data\World\Tarian\Ska\Texture\w2_minefabric.tex";
+    "w2_mineral1"	TFNM "Data\World\Tarian\Ska\Texture\w2_mineral1.tex";
+    "w2_minewood1"	TFNM "Data\World\Tarian\Ska\Texture\w2_minewood1.tex";
+    "w2_minewood2"	TFNM "Data\World\Tarian\Ska\Texture\w2_minewood2.tex";
+    "w2_minewood4"	TFNM "Data\World\Tarian\Ska\Texture\w2_minewood4.tex";
+    "w2_minewood5"	TFNM "Data\World\Tarian\Ska\Texture\w2_minewood5.tex";
+    "w2_farmwater2-1"	TFNM "Data\World\Tarian\Ska\Texture\w2_farmwater2-1.tex";
+    "w2_farmwater2"	TFNM "Data\World\Tarian\Ska\Texture\w2_farmwater2.tex";
+    "w2_mine's_shovel"	TFNM "Data\World\Tarian\Ska\Texture\w2_mine's_shovel.tex";
+    "w2_minewood1"	TFNM "Data\World\Tarian\Ska\Texture\w2_minewood1.tex";
+  }
+  ALLFRAMESBBOX	-9.72134,-0.331723,-10.2552,13.5738,29.2865,21.575;
+  COLISION
+  {
+  }
+}

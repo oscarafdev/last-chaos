@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sta";
+{
+  MESH       	TFNM "Data\Effect\Ska\so_wp\Plane02.bm";
+  TEXTURES   
+  {
+    "so_staff_019"	TFNM "Data\Effect\Ska\so_wp\so_staff_019.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\so_wp\sta.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\so_wp\sta.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

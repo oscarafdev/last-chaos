@@ -1,0 +1,15 @@
+NAME "captianchair_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\captianchair_G.bm";
+  TEXTURES   
+  {
+    "tablechair_G"	TFNM "Data\World\Guild\Ska\Texture\tablechair_G.tex";
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+    "molding01_G"	TFNM "Data\World\Guild\Ska\Texture\molding01_G.tex";
+    "captainchair_G"	TFNM "Data\World\Guild\Ska\Texture\captainchair_G.tex";
+  }
+  ALLFRAMESBBOX	-0.707439,-0.016648,-0.841393,0.707441,2.69635,0.841399;
+  COLISION
+  {
+  }
+}

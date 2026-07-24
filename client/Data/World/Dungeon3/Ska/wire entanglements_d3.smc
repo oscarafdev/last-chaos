@@ -1,0 +1,12 @@
+NAME "wire entanglements_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\wire entanglements_d3.bm";
+  TEXTURES   
+  {
+    "wire entanglements_d3"	TFNM "Data\World\Dungeon3\Ska\texture\wire entanglements_d3.tex";
+  }
+  ALLFRAMESBBOX	-2.33258,0.024227,-0.006326,2.33257,6.92487,0.006305;
+  COLISION
+  {
+  }
+}

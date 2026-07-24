@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="680" h="420" hide="0">
+    <UIImage id="im_backTL" x="0" y="0" w="191" h="43" hide="0" tex="new_interface.tex" l="428" t="0" r="619" b="43" />
+    <UIImage id="im_backTM" x="191" y="0" w="298" h="43" hide="0" tex="new_interface.tex" l="619" t="0" r="752" b="43" />
+    <UIImage id="im_backTR" x="489" y="0" w="191" h="43" hide="0" tex="new_interface.tex" l="752" t="0" r="943" b="43" />
+    <UIImage id="im_backML" x="0" y="43" w="4" h="366" hide="0" tex="new_interface.tex" l="428" t="51" r="432" b="55" />
+    <UIImage id="im_backMM" x="4" y="43" w="672" h="366" hide="0" tex="new_interface.tex" l="440" t="51" r="450" b="55" />
+    <UIImage id="im_backMR" x="676" y="43" w="4" h="366" hide="0" tex="new_interface.tex" l="939" t="51" r="943" b="55" />
+    <UIImage id="im_backBL" x="0" y="409" w="11" h="11" hide="0" tex="new_interface.tex" l="428" t="149" r="439" b="160" />
+    <UIImage id="im_backBM" x="11" y="409" w="658" h="11" hide="0" tex="new_interface.tex" l="450" t="149" r="455" b="160" />
+    <UIImage id="im_backBR" x="669" y="409" w="11" h="11" hide="0" tex="new_interface.tex" l="932" t="149" r="943" b="160" />
+    <UIImage x="8" y="62" w="5" h="5" hide="0" tex="Cashshop.tex" l="294" t="153" r="300" b="159" />
+    <UIImage x="13" y="62" w="654" h="5" hide="0" tex="Cashshop.tex" l="299" t="153" r="379" b="159" />
+    <UIImage x="667" y="62" w="5" h="5" hide="0" tex="Cashshop.tex" l="378" t="153" r="384" b="159" />
+    <UIImage x="8" y="67" w="5" h="310" hide="0" tex="Cashshop.tex" l="294" t="158" r="300" b="224" />
+    <UIImage x="13" y="67" w="654" h="310" hide="0" tex="Cashshop.tex" l="299" t="158" r="379" b="224" />
+    <UIImage x="667" y="67" w="5" h="310" hide="0" tex="Cashshop.tex" l="378" t="158" r="384" b="224" />
+    <UIImage x="8" y="377" w="5" h="5" hide="0" tex="Cashshop.tex" l="294" t="223" r="300" b="229" />
+    <UIImage x="13" y="377" w="654" h="5" hide="0" tex="Cashshop.tex" l="299" t="223" r="379" b="229" />
+    <UIImage x="667" y="377" w="5" h="5" hide="0" tex="Cashshop.tex" l="378" t="223" r="384" b="229" />
+    <UIImage id="im_blackboxL" x="221" y="392" w="6" h="20" hide="0" tex="Cashshop.tex" l="39" t="236" r="45" b="256" />
+    <UIImage id="im_blackboxM" x="227" y="392" w="143" h="20" hide="0" tex="Cashshop.tex" l="46" t="236" r="150" b="256" />
+    <UIImage id="im_blackboxR" x="370" y="392" w="6" h="20" hide="0" tex="Cashshop.tex" l="151" t="236" r="157" b="256" />
+    <UIImage id="im_Rankingbox" x="8" y="36" w="197" h="27" hide="0" tex="Ranking.tex" l="0" t="50" r="198" b="78" />
+    <UIButton id="btn_close" x="659" y="4" w="14" h="14" hide="0" tex="MessageBox.tex" str_idx="-1" str="" newtype="0">
+        <uv type="0" l="234" t="0" r="248" b="14" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="219" t="0" r="233" b="14" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIButton id="btn_serch" x="378" y="391" w="84" h="21" hide="0" tex="new_interface.tex" str_idx="386" str="검색" newtype="0">
+        <uv type="0" l="282" t="244" r="352" b="266" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="364" t="244" r="434" b="266" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIButton id="btn_reset" x="578" y="38" w="84" h="21" hide="0" tex="new_interface.tex" str_idx="194" str="초기화" newtype="0">
+        <uv type="0" l="282" t="244" r="352" b="266" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="364" t="244" r="434" b="266" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIList id="list_toprankMenu" x="13" y="70" w="644" h="16" hide="0" itemx="0" itemy="0" itemshow_num="1" itemgap="0" item_count="1" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="644" h="16" hide="0">
+            <UIText x="0" y="0" w="127" h="14" hide="0" tex="Ranking.tex" str_idx="1715" str="아이디" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="127" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="127" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="5563" str="전주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="193" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="5564" str="금주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="259" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="5565" str="전주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="341" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="5566" str="금주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="423" y="0" w="35" h="14" hide="0" tex="Ranking.tex" str_idx="73" str="레벨" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="35" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="458" y="0" w="119" h="14" hide="0" tex="Ranking.tex" str_idx="141" str="직업" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="119" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="577" y="0" w="67" h="14" hide="0" tex="Ranking.tex" str_idx="5567" str="달성날짜" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="67" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIList id="list_bottomrankMenu" x="13" y="230" w="644" h="16" hide="0" itemx="0" itemy="0" itemshow_num="1" itemgap="0" item_count="1" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="644" h="16" hide="0">
+            <UIText x="0" y="0" w="127" h="14" hide="0" tex="Ranking.tex" str_idx="1715" str="아이디" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="127" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="127" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="5563" str="전주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="193" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="5564" str="금주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="259" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="5565" str="전주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="341" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="5566" str="금주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="423" y="0" w="35" h="14" hide="0" tex="Ranking.tex" str_idx="73" str="레벨" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="35" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="458" y="0" w="119" h="14" hide="0" tex="Ranking.tex" str_idx="141" str="직업" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="119" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+            <UIText x="577" y="0" w="67" h="14" hide="0" tex="Ranking.tex" str_idx="5567" str="달성날짜" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="67" h="14" l="0" t="87" r="58" b="100" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIImage x="13" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="21" y="85" w="111" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="132" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="140" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="148" y="85" w="50" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="198" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="206" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="214" y="85" w="50" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="264" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="272" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="280" y="85" w="66" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="346" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="354" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="362" y="85" w="66" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="428" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="436" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="444" y="85" w="19" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="463" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="471" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="479" y="85" w="103" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="582" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="590" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="598" y="85" w="51" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="649" y="85" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+    <UIImage x="13" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="21" y="245" w="111" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="132" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="140" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="148" y="245" w="50" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="198" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="206" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="214" y="245" w="50" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="264" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="272" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="280" y="245" w="66" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="346" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="354" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="362" y="245" w="66" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="428" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="436" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="444" y="245" w="19" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="463" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="471" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="479" y="245" w="103" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="582" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+	
+	<UIImage x="590" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="0" t="99" r="8" b="235" />
+	<UIImage x="598" y="245" w="51" h="133" hide="0" tex="Ranking.tex" l="8" t="99" r="50" b="235" />
+	<UIImage x="649" y="245" w="8" h="133" hide="0" tex="Ranking.tex" l="50" t="99" r="59" b="235" />
+    
+	<UIList id="list_toprank" x="13" y="85" w="655" h="133" hide="0" itemx="0" itemy="0" itemshow_num="10" itemgap="0" item_count="1" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="644" h="13" hide="0">
+            <UIText id="strName" x="0" y="0" w="127" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="아이디" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="127" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strlastrank" x="127" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="전주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strthisrank" x="193" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="금주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strlastpoint" x="259" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="전주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strthispoint" x="341" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="금주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strlevel" x="423" y="0" w="35" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="레벨" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="35" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strjob" x="458" y="0" w="119" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="직업" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="119" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strdate" x="577" y="0" w="67" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="달성날짜" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="67" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+        <UIScrollBar id="toprank_scroll" x="0" y="0" w="655" h="133" hide="0" tex="new_interface.tex" vertical="1" right="1" scroll_pos="0" move_unit="2" item_count="50" item_per_page="10">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="646" y="1" w="9" h="7" l0="146" t0="439" r0="156" b0="449" l1="134" t1="439" r1="144" b1="449" />
+            <button2 x="646" y="124" w="9" h="7" l0="146" t0="451" r0="156" b0="461" l1="134" t1="451" r1="144" b1="461" />
+            <thumb x="0" y="0" w="9" h="23" unit="10" l="163" t="438" r="173" b="478" />
+        </UIScrollBar>
+    </UIList>
+    <UIList id="list_bottomrank" x="13" y="245" w="655" h="133" hide="0" itemx="0" itemy="0" itemshow_num="10" itemgap="0" item_count="1" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="644" h="13" hide="0">
+            <UIText id="strName" x="0" y="0" w="127" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="아이디" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="127" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strlastrank" x="127" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="전주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strthisrank" x="193" y="0" w="66" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="금주랭킹" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="66" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strlastpoint" x="259" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="전주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strthispoint" x="341" y="0" w="82" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="금주달성" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="82" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strlevel" x="423" y="0" w="35" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="레벨" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="35" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strjob" x="458" y="0" w="119" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="직업" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="119" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="strdate" x="577" y="0" w="67" h="14" hide="0" tex="Ranking.tex" str_idx="-1" str="달성날짜" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+                <back x="0" y="0" w="67" h="14" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+        <UIScrollBar id="bottomrank_scroll" x="0" y="0" w="655" h="133" hide="0" tex="new_interface.tex" vertical="1" right="1" scroll_pos="0" move_unit="11" item_count="11" item_per_page="10">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="646" y="1" w="9" h="7" l0="146" t0="439" r0="156" b0="449" l1="134" t1="439" r1="144" b1="449" />
+            <button2 x="646" y="124" w="9" h="7" l0="146" t0="451" r0="156" b0="461" l1="134" t1="451" r1="144" b1="461" />
+            <thumb x="0" y="0" w="9" h="108" unit="10" l="163" t="438" r="173" b="478" />
+        </UIScrollBar>
+    </UIList>
+    <UIImage id="im_progressBox" x="151" y="320" w="400" h="44" hide="0" tex="Ranking.tex" l="0" t="0" r="401" b="45" />
+    <UIProgressBar id="pb_progress" x="162" y="333" w="378" h="18" hide="0" tex="Ranking.tex" l="0" t="0" r="0" b="0" lower="0" upper="100" step="0" offset_pos="10" auto_complete="0">
+        <bar sx="0" sy="0" l="405" t="1" r="417" b="16" />
+        <idle_text str_idx="5598" str="생성중" color="0xffffffff" show_percent="1" />
+        <doing_text str_idx="5598" str="생성중" color="0xffffffff" show_percent="1" />
+        <complete_text str_idx="5598" str="생성중" color="0xffffffff" show_percent="1" />
+    </UIProgressBar>
+    <UIComboBox id="cb_ranktype" x="29" y="40" w="155" h="160" hide="0" tex="Ranking.tex" maxline="10" lineheight="13" space_x="4" space_y="2" showline="10">
+        <back x="0" y="0" w="155" h="20" l="0" t="0" r="0" b="0" />
+        <button x="139" y="4" w="13" h="13" l0="420" t0="0" r0="434" b0="14" l1="450" t1="0" r1="464" b1="14" />
+        <drop_bg x="0" y="20" w="155" h="156" l="21" t="54" r="177" b="75" />
+    </UIComboBox>
+    <UIEdit id="eb_search" x="229" y="392" w="150" h="20" hide="0" tex="new_interface.tex" max="16" cursor_move="1" only_num="0">
+        <CandidateUV l="282" t="244" r="352" b="266" />
+        <ReadUV l="282" t="244" r="352" b="266" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIText id="str_title" x="120" y="12" w="441" h="15" hide="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_movetitle" x="0" y="0" w="680" h="30" hide="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="strTopRankingMsg" x="13" y="145" w="645" h="13" hide="1" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="strBottomRankingMsg" x="13" y="305" w="645" h="13" hide="1" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+</Window>

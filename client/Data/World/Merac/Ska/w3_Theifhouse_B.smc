@@ -1,0 +1,30 @@
+NAME "w3_Theifhouse_B";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_Theifhouse_B.bm";
+  TEXTURES   
+  {
+    "w3_Theifhouse_wood02"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wood02.tex";
+    "w3_bucket"	TFNM "Data\World\Merac\ska\texture\w3_bucket.tex";
+    "w3_farmdummy"	TFNM "Data\World\Merac\ska\texture\w3_farmdummy.tex";
+    "w3_farmwater2"	TFNM "Data\World\Merac\ska\texture\w3_farmwater2.tex";
+    "w3_Storebox01"	TFNM "Data\World\Merac\ska\texture\w3_Storebox01.tex";
+    "w3_Theifhouse_ma"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_ma.tex";
+    "w3_Theifhouse_tent01"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_tent01.tex";
+    "w3_Theifhouse_tent02"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_tent02.tex";
+    "w3_Theifhouse_tent03"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_tent03.tex";
+    "w3_Theifhouse_wall01"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wall01.tex";
+    "w3_Theifhouse_wheel"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wheel.tex";
+    "w3_Theifhouse_wood01"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wood01.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_Theifhouse_roof"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_roof.tex";
+    "w3_Theifhouse_window"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_window.tex";
+    "w3_Theifhouse_roof"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_roof.tex";
+    "w3_Theifhouse_wood01"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wood01.tex";
+    "w3_housebottom02"	TFNM "Data\World\Merac\ska\texture\w3_housebottom02.tex";
+    "w3_minewood4-1"	TFNM "Data\World\Merac\ska\texture\w3_minewood4-1.tex";
+  }
+  ALLFRAMESBBOX	-7.58065,-0.019887,-8.1355,7.58065,11.3303,8.13551;
+  COLISION
+  {
+  }
+}

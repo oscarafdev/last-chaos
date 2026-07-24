@@ -1,0 +1,17 @@
+OFFSET    	0.45,-1.17,0.55,180,0,-50;
+NAME "ti_gsword_011";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_GSWORD_011.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ti_gsword_011.bm";
+  TEXTURES   
+  {
+    "ti_gsword_011"	TFNM "Data\Item\Weapon\Texture\ti_gsword_011.tex";
+  }
+  ALLFRAMESBBOX	-0.290256,0.00461155,-0.95386,0.280222,0.0968683,0.835043;
+  COLISION
+  {
+  }
+}

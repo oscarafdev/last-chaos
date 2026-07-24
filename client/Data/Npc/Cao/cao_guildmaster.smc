@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "cao_guildmaster";
+{
+  MESH       	TFNM "Data\Npc\Cao\cao_guildmaster_bu.bm";
+  TEXTURES   
+  {
+    "cao_guildmaster"	TFNM "Data\Npc\Cao\Texture\cao_guildmaster.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guildmaster_hn.bm";
+  TEXTURES   
+  {
+    "cao_guildmaster"	TFNM "Data\Npc\Cao\Texture\cao_guildmaster.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guildmaster_weapon.bm";
+  TEXTURES   
+  {
+    "cao_guildmaster"	TFNM "Data\Npc\Cao\Texture\cao_guildmaster.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_guildmaster_bd.bm";
+  TEXTURES   
+  {
+    "cao_guildmaster"	TFNM "Data\Npc\Cao\Texture\cao_guildmaster.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Cao\cao_guildmaster.bs";
+  ANIMSET   	TFNM "Data\Npc\Cao\cao_guildmaster.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

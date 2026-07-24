@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bu_wedding";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_wedding.bm";
+  TEXTURES   
+  {
+    "so_bu_wedding"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_wedding.tex";
+  }
+  ALLFRAMESBBOX	-0.532757,0.947385,-0.11352,0.532756,1.7759,0.155236;
+  COLISION
+  {
+  }
+}

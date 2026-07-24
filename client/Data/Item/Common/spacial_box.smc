@@ -1,0 +1,13 @@
+NAME "special_box";
+{
+  MESH       	TFNM "Data\Item\Common\special_box.bm";
+  TEXTURES   
+  {
+    "spacial_box"	TFNM "Data\Item\Common\spacial_box.tex";
+  }
+  ALLFRAMESBBOX	-0.420795,0.000279,-0.310981,0.419555,0.808541,0.277369;
+  COLISION
+  {
+    "Default"  {-0.45,0,-0.45,0.45,0.81,0.45;}
+  }
+}

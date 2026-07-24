@@ -1,0 +1,13 @@
+NAME "castledoor03";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\castledoor03.bm";
+  TEXTURES   
+  {
+    "castledoor_03"	TFNM "Data\world\StartZone\Ska\texture\castledoor_03.tex";
+  }
+  ALLFRAMESBBOX	-5.08896,0,-0.110423,5.08892,6.77717,0.154877;
+  COLISION
+  {
+    "Default"  {-5.06948,-0.078685,-0.449883,5.07359,7.08479,0.550117;}
+  }
+}

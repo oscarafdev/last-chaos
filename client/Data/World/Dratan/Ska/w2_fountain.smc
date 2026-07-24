@@ -1,0 +1,19 @@
+NAME "w2_fountain";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_fountain.bm";
+  TEXTURES   
+  {
+    "fountain_f"	TFNM "Data\World\Dratan\Ska\Texture\fountain_f.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "fountain_a"	TFNM "Data\World\Dratan\Ska\Texture\fountain_a.tex";
+    "fountain_b"	TFNM "Data\World\Dratan\Ska\Texture\fountain_b.tex";
+    "fountain_c"	TFNM "Data\World\Dratan\Ska\Texture\fountain_c.tex";
+    "fountain_d"	TFNM "Data\World\Dratan\Ska\Texture\fountain_d.tex";
+    "fountain_e"	TFNM "Data\World\Dratan\Ska\Texture\fountain_e.tex";
+    "fountain_f"	TFNM "Data\World\Dratan\Ska\Texture\fountain_f.tex";
+  }
+  ALLFRAMESBBOX	-16.2525,-0.018025,-15.9228,15.9683,7.64543,15.9222;
+  COLISION
+  {
+  }
+}

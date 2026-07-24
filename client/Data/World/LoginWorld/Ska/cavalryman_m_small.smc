@@ -1,0 +1,20 @@
+NAME "cavalryman_m_small";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\cavalryman_m_small.bm";
+  TEXTURES   
+  {
+    "patrol_01"	TFNM "Data\World\LoginWorld\Ska\texture\patrol_01.tex";
+    "pt_bump_01"	TFNM "Data\World\LoginWorld\Ska\texture\pt_bump_01.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\cavalryman_m.bm";
+  TEXTURES   
+  {
+    "axe"	TFNM "Data\World\LoginWorld\Ska\texture\patrol_axe.tex";
+  }
+  SKELETON  	TFNM "Data\World\LoginWorld\Ska\cavalryman_m_small.bs";
+  ANIMSET   	TFNM "Data\World\LoginWorld\Ska\cavalryman_m_small.ba";
+  ALLFRAMESBBOX	-0.734702,-0.117979,-0.780275,0.385636,3.65834,1.48331;
+  COLISION
+  {
+  }
+}

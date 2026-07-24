@@ -1,0 +1,13 @@
+NAME "d2_arch";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_arch.bm";
+  TEXTURES   
+  {
+    "wallgate"	TFNM "Data\World\Dungeon2\Ska\Texture\wallgate.tex";
+    "Dengen2_Detail"	TFNM "Data\World\Dungeon2\Ska\Texture\Dengen2_Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.69919,-2.0774,-0.258711,4.69922,2.0774,0.258713;
+  COLISION
+  {
+  }
+}

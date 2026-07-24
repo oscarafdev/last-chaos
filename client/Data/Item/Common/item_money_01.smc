@@ -1,0 +1,15 @@
+NAME "item_money_01";
+{
+  MESH       	TFNM "Data\Item\Common\item_money_01.bm";
+  TEXTURES   
+  {
+    "item_money"	TFNM "Data\Item\Common\Texture\item_money.tex";
+  }
+  SKELETON  	TFNM "Data\Item\Common\item_money_01.bs";
+  ANIMSET   	TFNM "Data\Item\Common\item_money_01.ba";
+  ALLFRAMESBBOX	-0.235495,0,-0.235495,0.235495,0.1,0.235495;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,0.8,0.25;}
+  }
+}

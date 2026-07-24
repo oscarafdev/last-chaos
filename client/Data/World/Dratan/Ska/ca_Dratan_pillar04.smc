@@ -1,0 +1,16 @@
+NAME "w2_rock06";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\ca_Dratan_inner_pillar04.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "ca_Dratan_pillar01"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_pillar01.tex";
+    "ca_Dratan_pillar01_b"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_pillar01_b.tex";
+    "ca_Dratan_pillar02"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_pillar02.tex";
+  }
+  ALLFRAMESBBOX	-1.25299,-0.123247,-1.25299,1.25299,7.54897,1.25299;
+  COLISION
+  {
+    "Default"  {-1.25,0,-1.25,1.25,7,1.25;}
+  }
+}

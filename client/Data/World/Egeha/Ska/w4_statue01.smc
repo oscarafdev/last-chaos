@@ -1,0 +1,16 @@
+NAME "w4_statue01";
+{
+  MESH       	TFNM "Data\World\egeha\ska\w4_statue01.bm";
+  TEXTURES   
+  {
+    "Egeha_Detail_bil"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Detail_bil.tex";
+    "w4_statue01"	TFNM "Data\World\egeha\ska\texture\w4_statue01.tex";
+    "w4_statue01_1"	TFNM "Data\World\egeha\ska\texture\w4_statue01_1.tex";
+  }
+  ALLFRAMESBBOX	-22.3319,-3.49834,-8.15548,3.53971,15.3275,20.1416;
+  COLISION
+  {
+    "Default"  {-13.751,-0.957832,-8.26344,-0.382752,11.0691,6.89656;}
+    "Default"  {-21.9307,-0.203041,14.4522,-18.7561,8.97615,19.3868;}
+  }
+}

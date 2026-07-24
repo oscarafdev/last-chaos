@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "clumn";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\column.bm";
+  TEXTURES   
+  {
+    "column"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\column.tex";
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\column.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\column.ba";
+  ALLFRAMESBBOX	-1.67742,0.00014,-1.70108,1.67721,9.86288,1.65355;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,10,2;}
+  }
+}

@@ -1,0 +1,20 @@
+NAME "centerdeco";
+{
+  MESH       	TFNM "Data\World\LoginWorld2\Ska\centerdeco.bm";
+  TEXTURES   
+  {
+    "centerdeco_02"	TFNM "Data\World\LoginWorld2\Ska\centerdeco_02.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld2\Ska\centerdeco_1.bm";
+  TEXTURES   
+  {
+    "centerdeco_01"	TFNM "Data\World\LoginWorld2\Ska\centerdeco_01.tex";
+  }
+  SKELETON  	TFNM "Data\World\LoginWorld2\Ska\centerdeco.bs";
+  ANIMSET   	TFNM "Data\World\LoginWorld2\Ska\centerdeco.ba";
+  ALLFRAMESBBOX	-3.93099,-0.034965,-3.94841,3.93099,10.8184,3.94841;
+  COLISION
+  {
+    "Default"  {-1.5,0,-2,1.5,3,2;}
+  }
+}

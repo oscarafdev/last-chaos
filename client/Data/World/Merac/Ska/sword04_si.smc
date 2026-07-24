@@ -1,0 +1,14 @@
+NAME "sword04_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\sword04_si.bm";
+  TEXTURES   
+  {
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "swordstone_si"	TFNM "Data\World\Merac\ska\texture\swordstone_si.tex";
+    "castle inside_sword_si"	TFNM "Data\World\Merac\ska\texture\castle inside_sword_si.tex";
+  }
+  ALLFRAMESBBOX	-1.06835,-0.095148,-0.948216,0.983071,1.28814,1.29089;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,14 @@
+NAME "bat";
+{
+  MESH       	TFNM "Data\Effect\Ska\BatEffect\bat.bm";
+  TEXTURES   
+  {
+    "Eff_bat"	TFNM "Data\Effect\Ska\BatEffect\Eff_bat.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\BatEffect\bat.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\BatEffect\bat.ba";
+  ALLFRAMESBBOX	-0.364452,-0.216283,-0.309512,0.337666,0.410763,0.545479;
+  COLISION
+  {
+  }
+}

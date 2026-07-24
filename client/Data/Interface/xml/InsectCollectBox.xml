@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="InsectCollectUI" x="0" y="0" w="182" h="202" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="182" h="202" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="409" r="69" b="478" unit="23" splitmode="2" />
+    <UIText id="text_title" x="28" y="4" w="126" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2936" str="곤충 채집 상자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="163" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIImageSplit id="img" x="13" y="181" w="157" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="212" t="353" r="260" b="369" unit="16" splitmode="0" />
+    <UIText id="text_point" x="17" y="183" w="150" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2939" str="합계: %d 포인트" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIArray id="array_item" x="21" y="36" w="140" h="142" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="4" col="4" sx="0" sy="0" gapx="1" gapy="1" show_row="9">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIArrayItem id="array_item_001" x="0" y="0" w="34" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage x="0" y="0" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="167" t="353" r="201" b="387" />
+            <UIIcon id="icon_item" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        </UIArrayItem>
+    </UIArray>
+</Window>

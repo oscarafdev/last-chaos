@@ -1,0 +1,12 @@
+NAME "magic_arr";
+{
+  MESH       	TFNM "Data\Effect\SKA\magic_arr.bm";
+  TEXTURES   
+  {
+    "magic_arr"	TFNM "Data\Effect\TEXTURE\magic_arr.tex";
+  }
+  ALLFRAMESBBOX	-0.125738,-0.026343,-0.125738,0.125738,1.05414,0.125738;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "Ab_de_spore";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_de_spore.bm";
+  TEXTURES   
+  {
+    "Ab_de_spore"	TFNM "Data\Npc\Alber\Texture\Ab_de_spore.tex";
+  }
+  ALLFRAMESBBOX	-0.635544,-0.077443,-0.689566,0.707178,1.79478,0.601537;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,1,0.6;}
+  }
+}

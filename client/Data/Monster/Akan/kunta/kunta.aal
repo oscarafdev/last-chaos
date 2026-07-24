@@ -1,0 +1,33 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_att01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_dam.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_die.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_idle01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_run.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_skill02.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_walk.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta1\Kunta_appear.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta\Kunta_skill01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\akan\kunta\Kunta_skill03.AA"
+}

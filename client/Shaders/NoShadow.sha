@@ -1,0 +1,5 @@
+Package: TFNM Bin\Shaders.dll
+Name: Shader_NoShadow
+Info: Shader_Desc_NoShadow
+VPCode: Shader_VPCode_NoShadow
+PPCode: Shader_PPCode_NoShadow

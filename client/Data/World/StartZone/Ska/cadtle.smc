@@ -1,0 +1,13 @@
+NAME "cadtle";
+{
+  MESH       	TFNM "newproject\object\ska\cadtle.bm";
+  TEXTURES   
+  {
+    "castledoor_03"	TFNM "Data\World\Dungeon1\Ska\Texture\castledoor_03.tex";
+  }
+  ALLFRAMESBBOX	-5.09659,0.034708,0,5.09659,10.2658,0;
+  COLISION
+  {
+    "Default"  {-5.2012,0.183683,-0.839156,4.88299,11.5296,3.14842;}
+  }
+}

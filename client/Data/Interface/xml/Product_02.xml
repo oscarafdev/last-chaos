@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="458" h="304" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImage x="0" y="0" w="459" h="309" hide="0" tex="NewItemProduct.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="459" b="309" />
+    <UIBase id="title" x="0" y="5" w="412" h="25" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" />
+    <UIButton id="btn_close" x="440" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIText id="txt_title" x="19" y="42" w="131" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xc3c3c3ff" color_enter="0xc3c3c3ff" color_select="0xc3c3c3ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="txt_exp" x="160" y="42" w="43" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xc3c3c3ff" color_enter="0xc3c3c3ff" color_select="0xc3c3c3ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="pos" x="15" y="73" w="186" h="208" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+        <UITree id="tree" x="0" y="0" w="186" h="208" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" show_num="0" pre="0">
+            <UICheck id="tree_collapse" x="0" y="0" w="11" h="11" hide="0" tex="quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+                <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+                <none l="240" t="895" r="251" b="906" />
+                <check l="227" t="895" r="238" b="906" />
+                <none_disable l="0" t="0" r="0" b="0" />
+                <check_disable l="0" t="0" r="0" b="0" />
+            </UICheck>
+        </UITree>
+        <UITreeItem id="ti_stuff" x="20" y="0" w="156" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIText id="txt_" x="0" y="0" w="156" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_select" x="-2" y="-3" w="157" h="18" hide="1" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="145" t="138" r="240" b="172" />
+        </UITreeItem>
+        <UIScrollBar id="scroll" x="0" y="0" w="186" h="208" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="32" item_count="0" item_per_page="9">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+            <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+            <thumb x="-6" y="0" w="10" h="188" unit="7" l="185" t="32" r="195" b="71" />
+        </UIScrollBar>
+    </UIBase>
+    <UIImage x="222" y="45" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="167" t="353" r="201" b="387" />
+    <UIIcon id="icon_selected" x="223" y="46" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIText id="txt_selected" x="260" y="54" w="86" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="미스릴" str_ellipsis="" color="0xc3c3c3ff" color_enter="0xc3c3c3ff" color_select="0xc3c3c3ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_make" x="348" y="45" w="94" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4620" str="만들기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="259" t="0" r="353" b="34" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="357" t="0" r="451" b="34" />
+        <uv type="3" l="357" t="0" r="451" b="34" />
+    </UIButton>
+    <UIList id="list_material" x="219" y="95" w="228" h="189" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="3" itemy="4" itemshow_num="5" itemgap="3" item_count="5" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="3" y="4" w="221" h="183" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="32" item_count="0" item_per_page="5">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+            <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+            <thumb x="-6" y="0" w="10" h="163" unit="7" l="185" t="32" r="195" b="71" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="3" y="4" w="217" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIImage x="0" y="0" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="167" t="353" r="201" b="387" />
+            <UIIcon id="icon" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+            <UIText id="name" x="43" y="3" w="163" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="미스릴" str_ellipsis="" color="0xc3c3c3ff" color_enter="0xc3c3c3ff" color_select="0xc3c3c3ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="count" x="43" y="18" w="163" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4809" str="%s 개" str_ellipsis="" color="0xc3c3c3ff" color_enter="0xc3c3c3ff" color_select="0xc3c3c3ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+</Window>

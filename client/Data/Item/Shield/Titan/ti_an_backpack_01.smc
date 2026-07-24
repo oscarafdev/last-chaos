@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_an_backpack_01";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_an_backpack_01.bm";
+  TEXTURES   
+  {
+    "an_backpack_01"	TFNM "Data\Item\Shield\Titan\Texture\an_backpack_01.tex";
+  }
+  ALLFRAMESBBOX	-0.854954,1.04071,0.120095,0.854954,2.49845,1.31062;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+NAME "w1_charge04";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_charge04.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_07"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_07.tex";
+    "StartZonetile_castle002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle002.tex";
+    "w1_building2"	TFNM "Data\World\StartZone\Ska\Texture\w1_building2.tex";
+  }
+  ALLFRAMESBBOX	-2.52167,-0.008146,-0.639521,2.52167,4.68088,0.639519;
+  COLISION
+  {
+  }
+}

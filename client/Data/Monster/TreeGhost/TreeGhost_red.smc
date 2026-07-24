@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "TreeGhost_red";
+{
+  MESH       	TFNM "Data\monster\TreeGhost\TreeGhost01_red.bm";
+  TEXTURES   
+  {
+    "En_body_gr_red"	TFNM "Data\monster\TreeGhost\En_body_gr_red.tex";
+  }
+  MESH       	TFNM "Data\monster\TreeGhost\TreeGhost02_red.bm";
+  TEXTURES   
+  {
+    "En_body_red"	TFNM "Data\monster\TreeGhost\En_body_red.tex";
+  }
+  MESH       	TFNM "Data\monster\TreeGhost\TreeGhost03_red.bm";
+  TEXTURES   
+  {
+    "En_body_red"	TFNM "Data\monster\TreeGhost\En_body_red.tex";
+  }
+  MESH       	TFNM "Data\monster\TreeGhost\_TAG_T_CENTER_red.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\TreeGhost\TreeGhost_red.bs";
+  ANIMSET   	TFNM "Data\monster\TreeGhost\TreeGhost_red.ba";
+  ANIMEFFECT	TFNM "Data\Monster\TreeGhost\TreeGhost_red.bae";
+  ALLFRAMESBBOX	-2.44251,-1.55434,-2,2.55749,4.44566,2;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,4,1;}
+  }
+}

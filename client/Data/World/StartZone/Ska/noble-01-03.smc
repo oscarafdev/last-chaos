@@ -1,0 +1,12 @@
+NAME "noble-01-03";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\noble-01-03.bm";
+  TEXTURES   
+  {
+    "house-02"	TFNM "Data\world\StartZone\Ska\Texture\house-02.tex";
+  }
+  ALLFRAMESBBOX	-1.16045,0,-1.55,1.13342,9.19424,1.55;
+  COLISION
+  {
+  }
+}

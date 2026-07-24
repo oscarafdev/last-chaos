@@ -1,0 +1,13 @@
+NAME "st_gun01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_gun01.bm";
+  TEXTURES   
+  {
+    "stonegun_01_2"	TFNM "Data\world\StartZone\Ska\Texture\stonegun_01_2.tex";
+  }
+  ALLFRAMESBBOX	-3.36178,0,-1.80409,3.30081,1.71643,1.77982;
+  COLISION
+  {
+    "Default"  {-3.30703,0,-1.5972,3.28378,1.97398,1.66283;}
+  }
+}

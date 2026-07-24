@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="256" h="401" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="256" h="401" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="256" b="401" />
+    <UIText id="txt_title" x="61" y="17" w="136" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="196" str="옵션" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="237" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UITab id="tab_kind" x="3" y="38" w="251" h="326" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UICheck x="4" y="1" w="21" h="70" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="197" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="24" t="353" r="45" b="403" />
+            <check l="0" t="353" r="21" b="404" />
+            <UIImageArray id="tab_img_game" x="3" y="-1" w="14" h="31" hide="0" tex="CommonBtn.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="14" h="31" l="237" t="206" r="252" b="238" desc="" />
+                <surface1 x="0" y="0" w="14" h="31" l="220" t="206" r="234" b="237" desc="" />
+            </UIImageArray>
+        </UICheck>
+        <UICheck x="4" y="70" w="21" h="70" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="201" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="24" t="353" r="45" b="403" />
+            <check l="0" t="353" r="21" b="404" />
+            <UIImageArray id="tab_img_display" x="3" y="-1" w="14" h="31" hide="0" tex="CommonBtn.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="14" h="31" l="271" t="207" r="285" b="238" desc="" />
+                <surface1 x="0" y="0" w="14" h="31" l="254" t="207" r="268" b="238" desc="" />
+            </UIImageArray>
+        </UICheck>
+        <UICheck x="4" y="139" w="21" h="70" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="741" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="24" t="353" r="45" b="403" />
+            <check l="0" t="353" r="21" b="404" />
+            <UIImageArray id="tab_img_graphic" x="3" y="-1" w="14" h="31" hide="0" tex="CommonBtn.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="14" h="31" l="305" t="207" r="319" b="238" desc="" />
+                <surface1 x="0" y="0" w="14" h="31" l="288" t="207" r="302" b="238" desc="" />
+            </UIImageArray>
+        </UICheck>
+        <UICheck x="5" y="208" w="21" h="70" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="212" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="24" t="353" r="45" b="403" />
+            <check l="0" t="353" r="21" b="404" />
+            <UIImageArray id="tab_img_audio" x="3" y="-1" w="14" h="31" hide="0" tex="CommonBtn.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="14" h="31" l="339" t="207" r="353" b="238" desc="" />
+                <surface1 x="0" y="0" w="14" h="31" l="322" t="207" r="336" b="238" desc="" />
+            </UIImageArray>
+        </UICheck>
+        <UITabPage x="29" y="1" w="218" h="325" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText x="-2" y="3" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="197" str="게임" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage x="0" y="23" w="214" h="303" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="415" r="214" b="718" />
+            <UIText x="-47" y="29" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="199" str="캐릭터 이름 표시" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UISlideBar id="slide_name" x="11" y="49" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="0" range="6" min="0" max="5">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UIText x="-47" y="68" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="740" str="아이템 이름 표시" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UISlideBar id="slide_item" x="11" y="83" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="0" range="6" min="0" max="5">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UICheck id="chk_enter_chat" x="88" y="109" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="198" str="엔터 채팅" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UICheck id="chk_move_permit" x="190" y="109" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2118" str="소환 허가" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UICheck id="chk_cont_att" x="88" y="134" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="738" str="연속 공격" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UICheck id="chk_help1icon" x="190" y="134" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="284" str="도움말" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UICheck id="chk_pop_qbook" x="88" y="160" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5589" str="퀘스트북 팝업" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UICheck id="chk_deny_trade" x="190" y="160" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4456" str="거래 거부" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UICheck id="chk_deny_party" x="190" y="187" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4457" str="파티 거부" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UIText x="-21" y="213" w="157" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="1033" str="아이템 업그레이드 효과" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="-21" y="253" w="157" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4165" str="선택가능 대상 설정" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIComboBox id="combo_eff_item" x="9" y="231" w="197" h="45" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" maxline="2" lineheight="15" space_x="0" space_y="0" showline="2">
+                <back x="0" y="0" w="197" h="15" l="0" t="0" r="0" b="0" />
+                <button x="177" y="2" w="17" h="10" l0="283" t0="5" r0="300" b0="15" l1="302" t1="5" r1="319" b1="15" />
+                <drop_bg x="0" y="16" w="198" h="46" l="270" t="59" r="468" b="96" />
+            </UIComboBox>
+            <UIComboBox id="combo_select_target" x="10" y="271" w="197" h="62" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" maxline="3" lineheight="15" space_x="0" space_y="0" showline="3">
+                <back x="0" y="0" w="197" h="15" l="0" t="0" r="0" b="0" />
+                <button x="177" y="3" w="17" h="10" l0="283" t0="5" r0="300" b0="15" l1="302" t1="5" r1="319" b1="15" />
+                <drop_bg x="0" y="16" w="198" h="61" l="270" t="59" r="468" b="96" />
+            </UIComboBox>
+            <UIText x="-4" y="300" w="69" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="200" str="인터페이스" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIButton id="btn_init" x="145" y="297" w="60" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="194" str="초기화" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="71" t="432" r="134" b="453" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="135" t="432" r="198" b="453" />
+                <uv type="3" l="199" t="432" r="262" b="453" />
+            </UIButton>
+        </UITabPage>
+        <UITabPage x="29" y="2" w="218" h="325" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText x="-2" y="3" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="201" str="디스플레이" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage x="0" y="23" w="214" h="303" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="721" r="214" b="1024" />
+            <UIText x="-49" y="27" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="202" str="해상도" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIComboBox id="combo_res" x="9" y="42" w="197" h="90" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" maxline="10" lineheight="15" space_x="0" space_y="0" showline="5">
+                <back x="0" y="0" w="197" h="15" l="0" t="0" r="0" b="0" />
+                <button x="177" y="2" w="17" h="10" l0="283" t0="5" r0="300" b0="15" l1="302" t1="5" r1="319" b1="15" />
+                <drop_bg x="-1" y="15" w="197" h="165" l="270" t="59" r="468" b="96" />
+            </UIComboBox>
+            <UIText x="-70" y="74" w="58" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="739" str="전체 화면" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UICheck id="chk_fullscreen" x="84" y="74" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+            <UIText x="35" y="75" w="58" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Borderless" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UICheck id="chk_borderless" x="185" y="75" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>					
+            <UIText id="txt_bright" x="-66" y="102" w="60" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="203" str="밝기" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_contrast" x="-66" y="137" w="60" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="204" str="대비" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UISlideBar id="slide_bright" x="11" y="118" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="0" range="11" min="0" max="10">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UISlideBar id="slide_contrast" x="11" y="152" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="3" range="11" min="0" max="10">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UIText x="-49" y="187" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Aspect Ratio" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIComboBox id="combo_aspectratio" x="9" y="202" w="197" h="90" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" maxline="10" lineheight="15" space_x="0" space_y="0" showline="5">
+                <back x="0" y="0" w="197" h="15" l="0" t="0" r="0" b="0" />
+                <button x="177" y="2" w="17" h="10" l0="283" t0="5" r0="300" b0="15" l1="302" t1="5" r1="319" b1="15" />
+                <drop_bg x="-1" y="15" w="197" h="165" l="270" t="59" r="468" b="96" />
+            </UIComboBox>
+	        <UIText x="-49" y="237" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Graphics API" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIComboBox id="combo_graphicsapi" x="9" y="252" w="197" h="90" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" maxline="10" lineheight="15" space_x="0" space_y="0" showline="5">
+                <back x="0" y="0" w="197" h="15" l="0" t="0" r="0" b="0" />
+                <button x="177" y="2" w="17" h="10" l0="283" t0="5" r0="300" b0="15" l1="302" t1="5" r1="319" b1="15" />
+                <drop_bg x="-1" y="15" w="197" h="165" l="270" t="59" r="468" b="96" />
+            </UIComboBox>		
+        </UITabPage>
+        <UITabPage x="29" y="2" w="218" h="325" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText x="-2" y="3" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="741" str="그래픽" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage x="0" y="23" w="214" h="303" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="218" t="415" r="432" b="718" />
+            <UIText x="-49" y="33" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="205" str="텍스쳐 퀄리티" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="-49" y="68" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="206" str="그림자 퀄리티" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_char_qual" x="-49" y="103" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="209" str="캐릭터 퀄리티" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="-49" y="137" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="208" str="시야-지형" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="-49" y="171" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="210" str="반사 효과" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="-49" y="205" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="211" str="필터링 효과" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UISlideBar id="slide_texture" x="11" y="50" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="1" range="3" min="0" max="2">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UISlideBar id="slide_shadow" x="11" y="84" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="1" range="5" min="0" max="4">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UISlideBar id="slide_character" x="11" y="118" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="2" range="5" min="0" max="4">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UISlideBar id="slide_terrain" x="11" y="152" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="4" range="5" min="0" max="4">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UISlideBar id="slide_reflect" x="11" y="186" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="0" range="4" min="0" max="3">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UISlideBar id="slide_filtering" x="11" y="220" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="3" range="7" min="0" max="6">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UICheck id="chk_eff_bg" x="74" y="250" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="207" str="배경효과" posleft="1" text_x="5" region="60" text_area="0" h_align="2" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="139" t="75" r="152" b="88" />
+                <check l="119" t="75" r="132" b="88" />
+            </UICheck>
+        </UITabPage>
+        <UITabPage x="29" y="2" w="218" h="325" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText x="-2" y="3" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="212" str="오디오" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage x="0" y="23" w="214" h="303" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="218" t="721" r="432" b="1024" />
+            <UIText x="-49" y="33" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="213" str="배경음 볼륨" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="-49" y="68" w="100" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="214" str="효과음 볼륨" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UISlideBar id="slide_bgm" x="11" y="50" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="50" range="101" min="0" max="100">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+            <UISlideBar id="slide_sound_fx" x="11" y="84" w="193" h="17" hide="0" tex="NewOption.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" bar_w="14" bar_h="14" cur_pos="50" range="101" min="0" max="100">
+                <back l="0" t="0" r="0" b="0" />
+                <bar l="287" t="30" r="301" b="44" />
+            </UISlideBar>
+        </UITabPage>
+    </UITab>
+    <UIButton id="btn_cancel" x="148" y="368" w="90" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="262" b="453" />
+    </UIButton>
+    <UIButton id="btn_ok" x="38" y="368" w="90" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="262" b="453" />
+    </UIButton>
+</Window>

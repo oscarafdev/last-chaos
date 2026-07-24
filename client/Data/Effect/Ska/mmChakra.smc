@@ -1,0 +1,12 @@
+NAME "mmChakra";
+{
+  MESH       	TFNM "Data\Effect\Ska\mmChakra.bm";
+  TEXTURES   
+  {
+    "mmChakra00"	TFNM "Data\Effect\Texture\mmChakra00.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

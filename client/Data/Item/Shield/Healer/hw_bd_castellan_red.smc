@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_castellan_red";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bd_castellan_red.bm";
+  TEXTURES   
+  {
+    "hw_bd_castellan_red"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_castellan_red.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bs_castellan_red.bm";
+  TEXTURES   
+  {
+    "hw_bd_castellan_red"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_castellan_red.tex";
+  }
+  ALLFRAMESBBOX	-0.246618,0.532081,-0.12625,0.247037,1.26599,0.128459;
+  COLISION
+  {
+  }
+}

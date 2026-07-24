@@ -1,0 +1,79 @@
+NAME "ef_ex_sk16_cb_hit";
+{
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane01.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane02.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane03.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane04.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane05.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane06.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane07.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane08.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane09.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane10.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane11.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane12.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane13.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\Plane14.bm";
+  TEXTURES   
+  {
+    "ef_ex_sk16_cb_hit_t00"	TFNM "Data\Effect\Texture\ef_ex_sk16_cb_hit_t00.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\ef_ex_sk16_cb_hit.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ef_ex_sk16_cb_hit\ef_ex_sk16_cb_hit.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

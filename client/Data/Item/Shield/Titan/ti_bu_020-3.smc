@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_bu_020-3";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_020-3.bm";
+  TEXTURES   
+  {
+    "ti_bu_020-3"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_020-3.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_020-3_1.bm";
+  TEXTURES   
+  {
+    "ti_bu_020-3_1"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_020-3_1.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_020-3_2.bm";
+  TEXTURES   
+  {
+    "ti_bu_020-3_1"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_020-3_1.tex";
+  }
+  ALLFRAMESBBOX	-0.615201,1.25815,-0.267536,0.615201,2.08825,0.37855;
+  COLISION
+  {
+  }
+}

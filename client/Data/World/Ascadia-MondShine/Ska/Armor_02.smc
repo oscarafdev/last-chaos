@@ -1,0 +1,14 @@
+NAME "deco_05";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\armor_02.bm";
+  TEXTURES   
+  {
+    "ni_bd_007_01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\ni_bd_007_01.tex";
+    "ni_bu_007"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\ni_bu_007.tex";
+    "ni_ft_007"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\ni_ft_007.tex";
+  }
+  ALLFRAMESBBOX	-2.45619,-0.02444,-0.812478,2.45619,0.713619,0.8126;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "arc_hm_swimsuit_2020";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\arc_hm_swimsuit_2020.bm";
+  TEXTURES   
+  {
+    "arc_hm_swimsuit01_2020"	TFNM "Data\Item\Shield\Mage\Texture\arc_hm_swimsuit01_2020.tex";
+    "arc_hm_swimsuit02_2020"	TFNM "Data\Item\Shield\Mage\Texture\arc_hm_swimsuit02_2020.tex";
+    "arc_hm_swimsuit03_2020"	TFNM "Data\Item\Shield\Mage\Texture\arc_hm_swimsuit03_2020.tex";
+  }
+  ALLFRAMESBBOX	-0.087635,1.66563,-0.160734,0.117275,2.00978,0.069776;
+  COLISION
+  {
+  }
+}

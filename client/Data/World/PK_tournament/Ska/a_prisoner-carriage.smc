@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "a_prisoner-carriage";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\a_prisoner-carriage.bm";
+  TEXTURES   
+  {
+    "a_prisoner-carriage"	TFNM "Data\World\PK_tournament\Ska\Texture\a_prisoner-carriage.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  MESH       	TFNM "Data\World\PK_tournament\Ska\a_prisoner-carriage_1.bm";
+  TEXTURES   
+  {
+    "a_prisoner-carriage_1"	TFNM "Data\World\PK_tournament\Ska\Texture\a_prisoner-carriage_1.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-1.43852,4e-006,-4.86402,1.43852,4.05007,2.97414;
+  COLISION
+  {
+    "Default"  {-1.46642,-0.15824,-4.79766,1.43573,2.96072,2.66292;}
+  }
+}

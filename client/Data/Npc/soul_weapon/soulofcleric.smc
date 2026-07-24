@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "soulofcleric";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\_TAG_T_HSSOUL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\soul_weapon\soulofcleric.bm";
+  TEXTURES   
+  {
+    "soulofcleric"	TFNM "Data\Npc\soul_weapon\soulofcleric.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\soulofcleric.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\soulofcleric.ba";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,2.1,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,2.1,0.1;}
+  }
+}

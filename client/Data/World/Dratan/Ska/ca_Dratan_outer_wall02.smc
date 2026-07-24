@@ -1,0 +1,18 @@
+NAME "ca_Dratan";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\ca_Dratan_outer_wall02.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "ca_Dratan_wall01"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wall01.tex";
+    "ca_Dratan_wall02"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wall02.tex";
+    "ca_Dratan_wall03"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wall03.tex";
+    "ca_Dratan_wall04"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wall04.tex";
+    "ca_Dratan_wall07"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wall07.tex";
+  }
+  ALLFRAMESBBOX	-24.181,-0.01566,-2.3937,24.1809,13.4222,3.29462;
+  COLISION
+  {
+    "Default"  {-24.2798,-0.235701,-2.52285,23.9999,10.0049,3.46229;}
+  }
+}

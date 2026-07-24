@@ -1,0 +1,14 @@
+NAME "tree_n_w1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\tree_n_w1.bm";
+  TEXTURES   
+  {
+    "n_tree_under_w1"	TFNM "Data\World\StartZone\Ska\Texture\n_tree_under_w1.tex";
+    "n_tree_up_w1"	TFNM "Data\World\StartZone\Ska\Texture\n_tree_up_w1.tex";
+  }
+  ALLFRAMESBBOX	-6.94159,-0.033384,-6.2997,6.94153,14.0593,6.29971;
+  COLISION
+  {
+    "Default"  {-1.3,0,-0.5,-0.3,4,0.5;}
+  }
+}

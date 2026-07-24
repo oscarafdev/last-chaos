@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "stone_02";
+{
+  MESH       	TFNM "Data\World\STAEIANA(cave)3\Ska\stone_02.bm";
+  TEXTURES   
+  {
+    "wall_01"	TFNM "Data\World\STAEIANA(cave)3\Ska\Texture\wall_01.tex";
+  }
+  ALLFRAMESBBOX	-2.2825,-0.101759,-2.97083,3.41819,3.72037,2.3686;
+  COLISION
+  {
+    "Default"  {-2.09126,0.00396729,-2.69627,3.1244,3.53509,2.30042;}
+  }
+}

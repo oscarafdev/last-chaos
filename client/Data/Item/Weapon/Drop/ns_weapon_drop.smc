@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_weapon_drop";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ns_weapon_drop.bm";
+  TEXTURES   
+  {
+    "ns_weapon_drop"	TFNM "Data\Item\Weapon\Drop\Texture\ns_weapon_drop.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\Drop\_TAG_T_NSDWP.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Item\Weapon\Drop\ns_weapon_drop.bs";
+  ANIMSET   	TFNM "Data\Item\Weapon\Drop\ns_weapon_drop.ba";
+  ANIMEFFECT	TFNM "Data\Item\Weapon\Drop\ns_weapon_drop.bae";
+  ALLFRAMESBBOX	-0.330896,0.053441,-0.3307,0.330502,0.760539,0.330694;
+  COLISION
+  {
+    "Default"  {-0.330896,0.053441,-0.3307,0.330502,0.760539,0.330694;}
+  }
+}

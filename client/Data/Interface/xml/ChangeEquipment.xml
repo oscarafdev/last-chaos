@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="256" h="512" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="256" h="512" hide="0" tex="ChangeEquipment.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="256" b="512" />
+    <UIImage id="img_back2" x="14" y="46" w="229" h="140" hide="0" tex="ChangeEquipment.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="259" t="3" r="488" b="143" />
+    <UIButton id="btn_close" x="-4" y="4" w="16" h="16" hide="0" tex="ChangeEquipment.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="259" t="191" r="275" b="207" />
+        <uv type="2" l="277" t="191" r="293" b="207" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIText id="str_title" x="0" y="14" w="135" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="무기 교체" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="move_title" x="0" y="0" w="256" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_content" x="24" y="124" w="210" h="56" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="2" sy="2" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffc000ff" str="교체 할 아이템을 선택 후 확인 버튼을 클릭 하면 교체가 완료 됩니다.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar id="list_tbscroll" x="0" y="0" w="209" h="52" hide="0" tex="ChangeEquipment.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="15" item_count="3" item_per_page="4">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="308" t0="191" r0="319" b0="202" l1="296" t1="191" r1="307" b1="202" />
+            <button2 x="0" y="0" w="10" h="10" l0="308" t0="203" r0="319" b0="214" l1="296" t1="203" r1="307" b1="214" />
+            <thumb x="0" y="0" w="10" h="32" unit="8" l="321" t="191" r="332" b="231" />
+        </UIScrollBar>
+    </UITextBox>
+    <UIText id="str_listType" x="29" y="203" w="202" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="무기 리스트" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIList id="list_item" x="10" y="225" w="238" h="127" hide="0" tex="ChangeEquipment.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="2" itemy="2" itemshow_num="6" itemgap="2" item_count="0" pre_create="0">
+        <select x="0" y="-1" w="217" h="17" l="259" t="146" r="476" b="163" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar id="list_scroll" x="0" y="1" w="236" h="124" hide="0" tex="ChangeEquipment.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="10" item_count="0" item_per_page="6">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="308" t0="191" r0="319" b0="202" l1="296" t1="191" r1="307" b1="202" />
+            <button2 x="0" y="0" w="10" h="10" l0="308" t0="203" r0="319" b0="214" l1="296" t1="203" r1="307" b1="214" />
+            <thumb x="0" y="0" w="10" h="104" unit="10" l="321" t="191" r="332" b="231" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="2" y="2" w="217" h="17" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText id="str_itemType" x="6" y="0" w="210" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="기사도" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIList id="list_itemInfo" x="10" y="353" w="238" h="118" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="2" itemy="8" itemshow_num="1" itemgap="0" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar id="list_infoscroll" x="0" y="1" w="236" h="116" hide="0" tex="ChangeEquipment.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="10" item_count="0" item_per_page="1">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="308" t0="191" r0="319" b0="202" l1="296" t1="191" r1="307" b1="202" />
+            <button2 x="0" y="0" w="10" h="10" l0="308" t0="203" r0="319" b0="214" l1="296" t1="203" r1="307" b1="214" />
+            <thumb x="0" y="0" w="10" h="96" unit="10" l="321" t="191" r="332" b="231" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="2" y="8" w="220" h="105" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText id="str_nameTitle" x="6" y="0" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="무기 이름" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_name" x="100" y="0" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="헬그람" color="0xffc000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_levelTitle" x="6" y="17" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="무기 레벨" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_level" x="100" y="17" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="45" color="0xffc000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_classTitle" x="6" y="34" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="사용 클래스" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_class" x="100" y="34" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="타이탄" color="0xffc000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_point1Title" x="6" y="51" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="공격력" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_point1" x="100" y="51" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="294" color="0xffc000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_point2Title" x="6" y="68" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="마법 공격력" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_point2" x="100" y="68" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="111" color="0xffc000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIButton id="btn_ok" x="-53" y="-11" w="68" h="20" hide="0" tex="ChangeEquipment.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="260" t="167" r="328" b="187" />
+        <uv type="2" l="333" t="167" r="401" b="187" />
+        <uv type="3" l="406" t="167" r="474" b="187" />
+    </UIButton>
+    <UIButton id="btn_no" x="53" y="-11" w="68" h="20" hide="0" tex="ChangeEquipment.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="260" t="167" r="328" b="187" />
+        <uv type="2" l="333" t="167" r="401" b="187" />
+        <uv type="3" l="406" t="167" r="474" b="187" />
+    </UIButton>
+    <UIIcon id="icon_item" x="56" y="68" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_sub" x="169" y="68" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+</Window>

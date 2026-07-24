@@ -1,0 +1,63 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "succubus";
+{
+  MESH       	TFNM "Data\Npc\pet\succubus_hair.bm";
+  TEXTURES   
+  {
+    "succubus_hair_000"	TFNM "Data\Npc\pet\Textures\succubus_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\succubus_bu.bm";
+  TEXTURES   
+  {
+    "succubus"	TFNM "Data\Npc\pet\Textures\succubus.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\succubus_hn.bm";
+  TEXTURES   
+  {
+    "succubus"	TFNM "Data\Npc\pet\Textures\succubus.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\succubus_horn01.bm";
+  TEXTURES   
+  {
+    "succubus_horn01"	TFNM "Data\Npc\pet\Textures\succubus_horn01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\succubus_ft.bm";
+  TEXTURES   
+  {
+    "succubus_ft"	TFNM "Data\Npc\pet\Textures\succubus_ft.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\succubus_wing.bm";
+  TEXTURES   
+  {
+    "succubus_wing"	TFNM "Data\Npc\pet\Textures\succubus_wing.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\succubus_wrap.bm";
+  TEXTURES   
+  {
+    "succubus_whip"	TFNM "Data\Npc\pet\Textures\succubus_whip.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_SUC02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_SUC03.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_SUCW.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_SUC01.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\succubus.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\succubus.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\succubus.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.65,0.65,1.95,0.65;}
+  }
+}

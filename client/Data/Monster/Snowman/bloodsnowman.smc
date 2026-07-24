@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bloodsnowman";
+{
+  MESH       	TFNM "Data\Monster\Snowman\bloodsnowman_hn.bm";
+  TEXTURES   
+  {
+    "bloodsnowman"	TFNM "Data\Monster\Snowman\bloodsnowman.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\bloodsnowman_bd.bm";
+  TEXTURES   
+  {
+    "bloodsnowman"	TFNM "Data\Monster\Snowman\bloodsnowman.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\bloodsnowman_bu.bm";
+  TEXTURES   
+  {
+    "bloodsnowman"	TFNM "Data\Monster\Snowman\bloodsnowman.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Snowman\bloodsnowman.bs";
+  ANIMSET   	TFNM "Data\Monster\Snowman\bloodsnowman.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Snowman\bloodsnowman.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,2.65,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,3,1;}
+  }
+}

@@ -1,0 +1,23 @@
+NAME "flowerbed-01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\flowerbed-01.bm";
+  TEXTURES   
+  {
+    "flower-all"	TFNM "Data\world\StartZone\Ska\texture\flower-all.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\jandi02.bm";
+  TEXTURES   
+  {
+    "flowerbed-01"	TFNM "Data\world\StartZone\Ska\texture\flowerbed-01.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\jandi03.bm";
+  TEXTURES   
+  {
+    "jandi"	TFNM "Data\world\StartZone\Ska\texture\jandi.tex";
+  }
+  ALLFRAMESBBOX	-0.424493,-0.000646,-0.145434,0.424327,0.114971,0.145434;
+  COLISION
+  {
+    "Default"  {-0.406161,-0.00762951,-0.134522,0.416735,0.19632,0.135471;}
+  }
+}

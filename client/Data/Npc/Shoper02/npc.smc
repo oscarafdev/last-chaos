@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "npc";
+{
+  MESH       	TFNM "Data\npc\Shoper02\npc01.bm";
+  TEXTURES   
+  {
+    "npc_1"	TFNM "Data\npc\Shoper02\npc_1.tex";
+  }
+  MESH       	TFNM "Data\npc\Shoper02\npc02.bm";
+  TEXTURES   
+  {
+    "npc_1"	TFNM "Data\npc\Shoper02\npc_1.tex";
+  }
+  MESH       	TFNM "Data\npc\Shoper02\npc03.bm";
+  TEXTURES   
+  {
+    "npc_1"	TFNM "Data\npc\Shoper02\npc_1.tex";
+  }
+  MESH       	TFNM "Data\npc\Shoper02\npc04.bm";
+  TEXTURES   
+  {
+    "npc_1"	TFNM "Data\npc\Shoper02\npc_1.tex";
+  }
+  MESH       	TFNM "Data\npc\Shoper02\npcbox.bm";
+  TEXTURES   
+  {
+    "ma"	TFNM "Data\npc\Shoper02\ma.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Shoper02\npc.bs";
+  ANIMSET   	TFNM "Data\npc\Shoper02\npc.ba";
+  ALLFRAMESBBOX	-1,0,-1,1,2.1,1;
+  COLISION
+  {
+    "Default"  {-0.45,0,-0.3,0.55,2.1,0.7;}
+  }
+}

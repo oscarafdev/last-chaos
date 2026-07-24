@@ -1,0 +1,14 @@
+NAME "obj_06";
+{
+  MESH       	TFNM "Data\World\GuildCube\Ska\Object06.bm";
+  TEXTURES   
+  {
+    "iron_chaine"	TFNM "Data\World\GuildCube\Ska\Texture\iron_chaine.tex";
+    "obj-06"	TFNM "Data\World\GuildCube\Ska\Texture\obj-06.tex";
+    "obj-06-01"	TFNM "Data\World\GuildCube\Ska\Texture\obj-06-01.tex";
+  }
+  ALLFRAMESBBOX	-1.96614,-0.025079,-0.593827,1.96614,3.26166,0.487537;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,18 @@
+NAME "d1_bone_001";
+{
+  MESH       	TFNM "Data\world\Tarian\Ska\d1_bone_001_01.bm";
+  TEXTURES   
+  {
+    "d1_bone_002"	TFNM "Data\world\Tarian\Ska\Texture\d1_bone_002.tex";
+  }
+  MESH       	TFNM "Data\world\Tarian\Ska\d1_bone_001_02.bm";
+  TEXTURES   
+  {
+    "d1_bone_001"	TFNM "Data\world\Tarian\Ska\Texture\d1_bone_001.tex";
+  }
+  ALLFRAMESBBOX	-0.270707,-0.112869,-0.434835,0.205229,0.262341,0.440817;
+  COLISION
+  {
+    "Default"  {-0.305038,-0.0229998,-0.372285,0.139067,0.26297,0.445016;}
+  }
+}

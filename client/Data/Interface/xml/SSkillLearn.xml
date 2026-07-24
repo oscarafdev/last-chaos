@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="282" h="370" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="282" h="370" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="325" t="242" r="511" b="428" unit="62" splitmode="2" />
+    <UIImage id="move_area" x="0" y="0" w="278" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText x="60" y="16" w="159" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="91" str="스킬" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="261" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIImage x="0" y="44" w="161" h="20" hide="0" tex="CommonBtn.tex" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="265" t="42" r="426" b="62" />
+    <UIText id="text_subTitle" x="60" y="48" w="159" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="651" str="방어구제작 스킬" str_ellipsis="" color="0xffcb00ff" color_enter="0xffcb00ff" color_select="0xffcb00ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImageSplit x="11" y="70" w="259" h="227" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" />
+    <UIList id="list_skill" x="11" y="69" w="257" h="228" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="3" itemy="3" itemshow_num="6" itemgap="3" item_count="0" pre_create="0">
+        <select x="1" y="0" w="236" h="34" l="265" t="166" r="474" b="200" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="1" y="3" w="255" h="223" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="0" item_count="6" item_per_page="6">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+            <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+            <thumb x="-6" y="0" w="10" h="203" unit="7" l="185" t="32" r="195" b="71" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="3" y="3" w="240" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIImage x="0" y="0" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="167" t="353" r="201" b="387" />
+            <UIIcon id="icon_sskill" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+            <UIImageSplit x="39" y="1" w="198" h="33" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+            <UIText id="text_sskillname" x="44" y="3" w="189" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="초급 방어구 제작 기술" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_info" x="44" y="17" w="189" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="Lv 1    SP 47" str_ellipsis="" color="0xbda99fff" color_enter="0xbda99fff" color_select="0xbda99fff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIImageSplit x="141" y="304" w="126" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="212" t="353" r="260" b="369" unit="16" splitmode="0" />
+    <UIText x="89" y="305" w="49" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="90" str="숙련도" str_ellipsis="" color="0xded9a0ff" color_enter="0xded9a0ff" color_select="0xded9a0ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_skillpoint" x="146" y="305" w="117" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xbda99fff" color_enter="0xbda99fff" color_select="0xbda99fff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="50" y="332" w="80" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="269" str="습득" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="262" b="453" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="142" y="332" w="80" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="262" b="453" />
+    </UIButton>
+</Window>

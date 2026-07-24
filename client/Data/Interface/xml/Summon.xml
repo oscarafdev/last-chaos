@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="179" h="44" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImage x="0" y="0" w="179" h="44" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="179" b="44" />
+    <UIImage id="move_area" x="1" y="1" w="17" h="41" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIImageArray id="ia_type" x="19" y="6" w="32" h="32" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" render_idx="0">
+        <surface0 x="0" y="0" w="32" h="32" l="37" t="45" r="73" b="81" desc="" />
+        <surface1 x="0" y="0" w="32" h="32" l="0" t="45" r="36" b="81" desc="" />
+        <surface2 x="0" y="0" w="32" h="32" l="111" t="45" r="147" b="81" desc="" />
+        <surface3 x="0" y="0" w="32" h="32" l="74" t="45" r="110" b="81" desc="" />
+        <surface4 x="0" y="0" w="32" h="32" l="148" t="45" r="184" b="81" desc="" />
+    </UIImageArray>
+    <UIImage id="img_hp" x="60" y="5" w="107" h="4" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="185" t="45" r="191" b="49" />
+    <UIImage id="img_time" x="60" y="11" w="107" h="4" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="185" t="50" r="191" b="54" />
+    <UIButton id="btn_Attack" x="57" y="20" w="18" h="18" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="82" r="18" b="100" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="19" t="82" r="37" b="100" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_Pincers" x="81" y="20" w="18" h="18" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="38" t="82" r="56" b="100" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="57" t="82" r="75" b="100" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_Hold" x="105" y="20" w="18" h="18" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="76" t="82" r="94" b="100" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="95" t="82" r="113" b="100" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_Protection" x="129" y="20" w="18" h="18" hide="0" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="114" t="82" r="132" b="100" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="133" t="82" r="151" b="100" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIIcon id="icon_skill" x="153" y="20" w="18" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIImageSplit id="is_tooltipBg" x="4" y="100" w="100" h="22" hide="1" tex="Summon.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="101" r="22" b="123" unit="5" splitmode="2">
+        <UIText id="text_tooltip" x="5" y="3" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="TEST + Shift T" str_ellipsis="" color_idle="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+</Window>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="402" h="410" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="277" h="410" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="659" t="0" r="936" b="410">
+        <UIButton id="btn_close" x="-10" y="4" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="211" t="33" r="227" b="49" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="229" t="33" r="245" b="49" />
+            <uv type="3" l="0" t="0" r="0" b="0" />
+        </UIButton>
+        <UIImage id="move_area" x="0" y="0" w="277" h="43" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIText x="67" y="15" w="144" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2173" str="펫 정보창" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UITab id="main_tab" x="10" y="43" w="257" h="357" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UICheck id="chk_info" x="2" y="5" w="22" h="101" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="272" t="0" r="294" b="101" />
+                <check l="245" t="0" r="267" b="101" />
+                <UIText id="str_chkInfo" x="5" y="0" w="15" h="60" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="4204" str="기본정보" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UICheck>
+            <UICheck id="chk_skill" x="2" y="109" w="22" h="101" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="272" t="0" r="294" b="101" />
+                <check l="245" t="0" r="267" b="101" />
+                <UIText id="str_chkSkill" x="5" y="0" w="15" h="60" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="4205" str="스킬정보" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UICheck>
+			<UICheck id="chk_inventory" x="2" y="213" w="22" h="131" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                <none l="272" t="0" r="294" b="101" />
+                <check l="245" t="0" r="267" b="101" />
+                <UIText id="str_chkInventory" x="5" y="-15" w="15" h="60" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="166" str="Inventory" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UICheck>
+            <UITabPage id="tp_info" x="22" y="0" w="235" h="357" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIImage x="0" y="0" w="235" h="357" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="235" b="357" />
+                <UIBase id="area_inven" x="5" y="75" w="222" h="95" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIImageArray id="ia_inven_back" x="0" y="0" w="222" h="95" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                        <surface0 x="0" y="0" w="222" h="95" l="5" t="75" r="227" b="170" desc="인간형" />
+                        <surface1 x="0" y="0" w="222" h="95" l="517" t="417" r="739" b="512" desc="동물형" />
+                        <surface2 x="0" y="0" w="222" h="95" l="745" t="417" r="967" b="512" desc="악마형" />
+                    </UIImageArray>
+                    <UIImageArray id="ia_hungry" x="12" y="19" w="19" h="19" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                        <surface0 x="0" y="0" w="19" h="19" l="0" t="405" r="19" b="424" desc="배부름" />
+                        <surface1 x="0" y="0" w="19" h="19" l="23" t="405" r="42" b="424" desc="보통" />
+                        <surface2 x="0" y="0" w="19" h="19" l="46" t="405" r="65" b="424" desc="배고픔" />
+                    </UIImageArray>
+                    <UIImageArray id="ia_faith" x="-12" y="19" w="19" h="19" hide="0" tex="new_PetInfo.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                        <surface0 x="0" y="0" w="19" h="19" l="69" t="405" r="88" b="424" desc="믿음" />
+                        <surface1 x="0" y="0" w="19" h="19" l="92" t="405" r="111" b="424" desc="보통" />
+                        <surface2 x="0" y="0" w="19" h="19" l="115" t="405" r="134" b="424" desc="불신" />
+                    </UIImageArray>
+                    <UICheck id="chk_AISwitch" x="14" y="-5" w="25" h="25" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                        <none l="58" t="375" r="83" b="400" />
+                        <check l="2" t="375" r="27" b="400" />
+                    </UICheck>
+                    <UIButton id="btn_AISetting" x="-14" y="-5" w="25" h="25" hide="0" tex="new_PetInfo.tex" align_h="2" align_v="2" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="114" t="375" r="139" b="400" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="142" t="375" r="167" b="400" />
+                        <uv type="3" l="0" t="0" r="0" b="0" />
+                    </UIButton>
+                    <UIIcon id="icon_head" x="94" y="8" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIIcon id="icon_body" x="94" y="47" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIIcon id="icon_weapon" x="53" y="27" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIIcon id="icon_acce" x="135" y="27" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIText x="3" y="5" w="48" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4210" str="배고품" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="-3" y="5" w="48" h="15" hide="0" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4209" str="충성도" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_hungry" x="1" y="41" w="48" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="200/200" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_faith" x="-1" y="41" w="48" h="15" hide="0" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="200/200" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIBase>
+                <UIBase id="area_info" x="5" y="5" w="222" h="65" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIText x="5" y="6" w="48" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="71" str="이름" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="text_name" x="58" y="6" w="155" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="[P2]코끼리 창타이" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="26" w="48" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="73" str="레벨" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="text_level" x="56" y="26" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="96" y="26" w="48" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4206" str="종족" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="text_type" x="147" y="26" w="65" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="동물형" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="46" w="48" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="89" str="경험치" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="text_exp" x="59" y="46" w="153" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0 / 654" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIBase>
+                <UIBase id="area_stat" x="5" y="175" w="223" h="177" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIText x="7" y="5" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4406" str="힘" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_str" x="46" y="5" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="20(0)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIButton id="btn_strUp" x="91" y="5" w="15" h="15" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="121" t="49" r="136" b="64" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="138" t="49" r="153" b="64" />
+                        <uv type="3" l="155" t="74" r="170" b="89" />
+                    </UIButton>
+                    <UIText x="112" y="5" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4409" str="체질" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_con" x="154" y="5" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="20(0)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIButton id="btn_conUp" x="199" y="5" w="15" h="15" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="121" t="49" r="136" b="64" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="138" t="49" r="153" b="64" />
+                        <uv type="3" l="155" t="74" r="170" b="89" />
+                    </UIButton>
+                    <UIText x="7" y="25" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4407" str="민첩" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_dex" x="46" y="25" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="20(0)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIButton id="btn_dexUp" x="91" y="25" w="15" h="15" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="121" t="49" r="136" b="64" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="138" t="49" r="153" b="64" />
+                        <uv type="3" l="155" t="74" r="170" b="89" />
+                    </UIButton>
+                    <UIText x="112" y="25" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4408" str="지혜" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_int" x="154" y="25" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="20(0)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIButton id="btn_intUp" x="199" y="25" w="15" h="15" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="121" t="49" r="136" b="64" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="138" t="49" r="153" b="64" />
+                        <uv type="3" l="155" t="74" r="170" b="89" />
+                    </UIButton>
+                    <UIText x="5" y="47" w="95" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="84" str="성장 포인트" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_statpoint" x="119" y="47" w="90" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="87" w="80" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="86" str="마법공격력" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_att" x="100" y="69" w="112" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="801" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="69" w="80" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="85" str="공격력" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_Matt" x="100" y="87" w="112" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="105" w="80" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="87" str="방어력" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_def" x="100" y="105" w="112" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1379" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="123" w="80" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="88" str="마법방어력" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_Mdef" x="100" y="123" w="112" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="125" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="141" w="80" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4211" str="명중도" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_accuracy" x="100" y="141" w="112" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="806" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="5" y="159" w="80" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4212" str="회피" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_dodge" x="100" y="159" w="112" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="540" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIBase>
+                <UIImage id="img_expPetBack" x="0" y="175" w="235" h="182" hide="1" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="245" t="175" r="480" b="357">
+                    <UIButton id="btn_useExp" x="120" y="5" w="100" h="21" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5013" str="사용하기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="0" t="0" r="0" b="0" />
+                        <uv type="1" l="245" t="105" r="345" b="126" />
+                        <uv type="2" l="245" t="151" r="345" b="172" />
+                        <uv type="3" l="245" t="128" r="345" b="149" />
+                    </UIButton>
+                    <UIText x="18" y="9" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5635" str="경험치 축적 정보" str_ellipsis="" color="0xffb64bff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="18" y="30" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5636" str="경험치 축적 률" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="18" y="70" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5637" str="경험치 축적 가능량" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText x="18" y="110" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5638" str="축적 된 경험치 량" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_expPercent" x="18" y="50" w="197" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="20.49%" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_expMax" x="18" y="90" w="197" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="8984791273" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_expcur" x="18" y="130" w="197" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_petcooltimeTitle" x="125" y="3" w="100" h="15" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5644" str="쿨타임" str_ellipsis="" color="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="str_petcooltime" x="125" y="18" w="100" h="15" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="경험치 축적 정보" str_ellipsis="" color="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIImage>
+            </UITabPage>
+            <UITabPage id="tp_skill" x="22" y="0" w="235" h="357" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIList id="list_skill" x="5" y="36" w="224" h="320" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="6" itemy="0" itemshow_num="7" itemgap="2" item_count="0" pre_create="0">
+                    <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <UIScrollBar id="list_scroll" x="1" y="0" w="219" h="311" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="17" item_count="0" item_per_page="7">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+                        <button2 x="-2" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+                        <thumb x="0" y="0" w="10" h="291" unit="6" l="185" t="32" r="195" b="71" />
+                    </UIScrollBar>
+                    <UIListItem id="list_item_001" x="6" y="0" w="202" h="37" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                        <UIIcon id="icon_skill" x="1" y="2" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                        <UIText id="str_skillName" x="37" y="5" w="164" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="데들리 포인트" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        </UIText>
+                        <UIText id="str_skillLevel" x="37" y="20" w="164" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Lv 1" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        </UIText>
+                    </UIListItem>
+                </UIList>
+            </UITabPage>
+			<UITabPage id="tp_inventory" x="22" y="0" w="235" h="357" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+				<UIImage x="0" y="0" w="235" h="357" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="235" b="357" />
+				<UIIcon id="icon_inv_0" x="16" y="16" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_1" x="58" y="16" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_2" x="100" y="16" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_3" x="142" y="16" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_4" x="184" y="16" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_5" x="16" y="59" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_6" x="58" y="59" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_7" x="100" y="59" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_8" x="142" y="59" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_9" x="184" y="59" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_10" x="16" y="102" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_11" x="58" y="102" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_12" x="100" y="102" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_13" x="142" y="102" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_14" x="184" y="102" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_15" x="16" y="145" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_16" x="58" y="145" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_17" x="100" y="145" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_18" x="142" y="145" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_19" x="184" y="145" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_20" x="16" y="188" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_21" x="58" y="188" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_22" x="100" y="188" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_23" x="142" y="188" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_24" x="184" y="188" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIImage id="block_image_inv_0" x="15" y="16" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_1" x="57" y="16" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_2" x="99" y="16" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_3" x="141" y="16" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_4" x="183" y="16" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_5" x="15" y="59" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_6" x="57" y="59" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_7" x="99" y="59" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_8" x="141" y="59" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_9" x="183" y="59" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_10" x="15" y="102" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_11" x="57" y="102" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_12" x="99" y="102" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_13" x="141" y="102" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_14" x="183" y="102" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_15" x="15" y="145" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_16" x="57" y="145" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_17" x="99" y="145" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_18" x="141" y="145" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_19" x="183" y="145" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_20" x="15" y="188" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_21" x="57" y="188" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_22" x="99" y="188" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_23" x="141" y="188" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UIImage id="block_image_inv_24" x="183" y="188" w="32" h="32" hide="0" tex="new_PetInfo2.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="15" t="384" r="47" b="416" />
+				<UITextBox id="tb_inventory_desc" x="16" y="228" w="200" h="60" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="8217" split_mode="1" text_col="0xf2f2f2ff" str="Item Transfer">
+					<back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+				</UITextBox>
+				<UIIcon id="icon_inv_transfer_0" x="16" y="253" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_transfer_1" x="58" y="253" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_transfer_2" x="100" y="253" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_transfer_3" x="142" y="253" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIIcon id="icon_inv_transfer_4" x="184" y="253" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+				<UIButton id="btn_useItemTransfer" x="65" y="308" w="100" h="21" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="8219" str="Transfer Items" newtype="0" edge="0" text_color="0xf2f2f2ff">
+					<uv type="0" l="0" t="0" r="0" b="0" />
+					<uv type="1" l="245" t="105" r="345" b="126" />
+					<uv type="2" l="245" t="151" r="345" b="172" />
+					<uv type="3" l="245" t="128" r="345" b="149" />
+				</UIButton>
+            </UITabPage>
+        </UITab>
+    </UIImage>
+    <UIImage id="img_AISetBack" x="0" y="0" w="125" h="283" hide="1" tex="new_PetInfo.tex" align_h="2" align_v="2" tooltip="-1" tooltip_width="0" l="525" t="0" r="650" b="283">
+        <UIText x="13" y="5" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4373" str="펫 AI 설정" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIList id="list_AI" x="0" y="20" w="122" h="240" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="6" itemgap="1" item_count="6" pre_create="1">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem id="list_item_001" x="0" y="0" w="119" h="38" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UICheck id="chk_selectAI" x="6" y="10" w="15" h="15" hide="1" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="139" t="73" r="154" b="88" />
+                    <check l="119" t="73" r="134" b="88" />
+                </UICheck>
+                <UIIcon id="icon_ai" x="24" y="3" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                <UIIcon id="icon_action" x="75" y="3" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+            </UIListItem>
+        </UIList>
+        <UIButton id="btn_ok" x="0" y="-5" w="81" h="22" hide="0" tex="CommonBtn.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="4021" str="편집 완료" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="113" t="0" r="183" b="22" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="186" t="0" r="256" b="22" />
+            <uv type="3" l="145" t="178" r="215" b="200" />
+        </UIButton>
+    </UIImage>
+</Window>

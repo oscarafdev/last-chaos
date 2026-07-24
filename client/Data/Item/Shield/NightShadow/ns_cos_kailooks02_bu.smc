@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_cos_kailooks02_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_kailooks02_bu.bm";
+  TEXTURES   
+  {
+    "ns_cos_kailooks02_bu"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_kailooks02_bu.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_kailooks02_bu01.bm";
+  TEXTURES   
+  {
+    "ns_cos_kailooks02_bu"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_kailooks02_bu.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_kailooks02_wing.bm";
+  TEXTURES   
+  {
+    "ns_cos_kailooks02_wing"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_kailooks02_wing.tex";
+  }
+  ALLFRAMESBBOX	-0.564076,0.453323,-0.153426,0.564102,2.31487,0.442102;
+  COLISION
+  {
+  }
+}

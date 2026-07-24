@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "rabbith";
+{
+  MESH       	TFNM "Data\Npc\pet\rabbith_head.bm";
+  TEXTURES   
+  {
+    "rabbith"	TFNM "Data\Npc\pet\rabbith.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\rabbith_bu.bm";
+  TEXTURES   
+  {
+    "rabbith"	TFNM "Data\Npc\pet\rabbith.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\rabbith_bd.bm";
+  TEXTURES   
+  {
+    "rabbith"	TFNM "Data\Npc\pet\rabbith.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\rabbith_hn.bm";
+  TEXTURES   
+  {
+    "rabbith"	TFNM "Data\Npc\pet\rabbith.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\rabbith_tail.bm";
+  TEXTURES   
+  {
+    "rabbith"	TFNM "Data\Npc\pet\rabbith.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_RABBITH.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\rabbith.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\rabbith.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\rabbith.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1.2,0.5;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,1.2,0.25;}
+  }
+}

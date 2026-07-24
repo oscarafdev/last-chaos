@@ -1,0 +1,13 @@
+NAME "DR_mudwall";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\DR_mudwall.bm";
+  TEXTURES   
+  {
+    "DR_mudwall"	TFNM "Data\World\Dratan\Ska\Texture\DR_mudwall.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-7.10563,-0.054646,-4.53023,6.07146,2.82211,4.76918;
+  COLISION
+  {
+  }
+}

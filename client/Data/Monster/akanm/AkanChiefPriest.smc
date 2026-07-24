@@ -1,0 +1,29 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Akan_Chief_Priest";
+{
+  MESH       	TFNM "Data\Monster\akanm\Akan_Chief_Priest\Akan_Chief_Priest_BODY.bm";
+  TEXTURES   
+  {
+    "Darkness_Wizard_1"	TFNM "Data\Monster\akanm\Texture\Darkness_Wizard_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\akanm\Akan_Chief_Priest\_TAG_BMC.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akanm\Akan_Chief_Priest\_TAG_BMC01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akanm\Akan_Chief_Priest\_TAG_BMC02.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\akanm\Akan_Chief_Priest\Akan_Chief_Priest.bs";
+  ANIMSET   	TFNM "Data\Monster\akanm\Akan_Chief_Priest\AkanChiefPriest.ba";
+  ANIMEFFECT	TFNM "Data\Monster\akanm\Akan_Chief_Priest\akanm.bae";
+  ALLFRAMESBBOX	-1.76,-1.31419,-1.41613,1.83952,3.33243,2.68742;
+  COLISION
+  {
+    "Default"  {-1.05,0,-1.2,1.05,3.1,1.2;}
+  }
+}

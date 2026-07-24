@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_hn_oubli";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_hn_oubli.bm";
+  TEXTURES   
+  {
+    "ti_hn_oubli"	TFNM "Data\Item\Shield\Titan\Texture\ti_hn_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.725215,0.982599,-0.063496,0.725215,1.75948,0.169649;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,14 @@
+NAME "st_chain01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_chain01.bm";
+  TEXTURES   
+  {
+    "castledoor_05"	TFNM "Data\world\StartZone\Ska\Texture\castledoor_05.tex";
+    "StartZonetile_15"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_15.tex";
+  }
+  ALLFRAMESBBOX	-0.504521,1.46323,-18.0707,0.714144,13.6274,25.8738;
+  COLISION
+  {
+    "Default"  {-0.500478,0.37658,-18.6892,0.740288,8.95508,24.884;}
+  }
+}

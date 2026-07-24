@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sd2_post01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_gs_house_obj01b.bm";
+  TEXTURES   
+  {
+    "w2_bridge_02"	TFNM "Data\World\Dratan\Ska\Texture\w2_bridge_02.tex";
+    "w2_gs_box-01"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_box-01.tex";
+    "w2_gs_tile-01"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-01.tex";
+    "w2_gs_tile-04"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-04.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.65226,-0.057153,-1.65227,1.65226,8.4731,1.65227;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+NAME "sd2_railend";
+{
+  MESH       	TFNM "Data\World\S_Dungeon2\ska\sd2_railend.bm";
+  TEXTURES   
+  {
+    "sd2_minerail"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_minerail.tex";
+    "sd2_minewood1"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_minewood1.tex";
+    "S_Dengen2_Detail"	TFNM "Data\World\S_Dungeon2\ska\texture\S_Dengen2_Detail.tex";
+  }
+  ALLFRAMESBBOX	-2.3162,-0.144654,-5.1178,2.3162,0.223523,5.1178;
+  COLISION
+  {
+    "Default"  {-2,0,-4.5,2,0.3,4.5;}
+  }
+}

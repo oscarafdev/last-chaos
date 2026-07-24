@@ -1,0 +1,12 @@
+NAME "barracks-1";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\barracks-1.bm";
+  TEXTURES   
+  {
+    "barracks-1"	TFNM "Data\World\Tarian\Ska\Texture\barracks-1.tex";
+  }
+  ALLFRAMESBBOX	-3.19771,-0.030652,-2.21007,3.19771,3.30307,3.21519;
+  COLISION
+  {
+  }
+}

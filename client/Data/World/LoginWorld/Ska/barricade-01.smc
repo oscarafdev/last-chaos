@@ -1,0 +1,13 @@
+NAME "barricade-01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\barricade-01.bm";
+  TEXTURES   
+  {
+    "barricade-01"	TFNM "Data\World\LoginWorld\Ska\Texture\barricade-01.tex";
+  }
+  ALLFRAMESBBOX	-2.21959,0,-1,2.21959,2.18927,1;
+  COLISION
+  {
+    "Default"  {-2.14591,-0.0465058,-1.13464,2.2764,1.87517,1.08729;}
+  }
+}

@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "gate";
+{
+  MESH       	TFNM "Data\World\GuildCube\Ska\gate_1.bm";
+  TEXTURES   
+  {
+    "skeletone_02"	TFNM "Data\World\GuildCube\Ska\Texture\skeletone_02.tex";
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\gate_2.bm";
+  TEXTURES   
+  {
+    "gate-02"	TFNM "Data\World\GuildCube\Ska\Texture\gate-02.tex";
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\gate_3.bm";
+  TEXTURES   
+  {
+    "gate-01"	TFNM "Data\World\GuildCube\Ska\Texture\gate-01.tex";
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\gate_4.bm";
+  TEXTURES   
+  {
+    "gate-04"	TFNM "Data\World\GuildCube\Ska\Texture\gate-04.tex";
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\gate_5.bm";
+  TEXTURES   
+  {
+    "gate-03"	TFNM "Data\World\GuildCube\Ska\Texture\gate-03.tex";
+  }
+  SKELETON  	TFNM "Data\World\GuildCube\Ska\gate.bs";
+  ANIMSET   	TFNM "Data\World\GuildCube\Ska\gate.ba";
+  ALLFRAMESBBOX	-9.60952,0.0238739,-1.90142,9.93058,16.0061,1.7355;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

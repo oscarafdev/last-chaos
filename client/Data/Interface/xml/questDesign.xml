@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="1024" h="768" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIText id="str_copyCount" x="22" y="79" w="205" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0 / 5" color="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_copyRestoreName" x="5" y="150" w="225" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffa0ff" str="1. 카이룩스 제국의 가입신청서">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIText id="str_copyRestoreNpc" x="2" y="170" w="225" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="&lt;가입관리원&gt;" color="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_Summury" x="2" y="2" w="205" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0x8080ff" str="카이룩스 제국에 가입하기 위하여">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIText id="str_Summury" x="2" y="2" w="205" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="카이룩스" color="0x8080ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_Desc" x="22" y="59" w="205" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="1" text_col="0x5c3900ff" str="딜라문 검병 격파 수">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIText id="str_Desc" x="2" y="2" w="205" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0x5c3900ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIList id="list_copyitem" x="0" y="100" w="210" h="45" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="1" itemgap="0" item_count="1" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="220" h="45" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage id="img_copyBtnbg" x="2" y="0" w="42" h="42" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="147" t="891" r="189" b="933" />
+            <UIIcon id="icon_copyItem" x="7" y="5" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+            <UIImage id="img_copyitem" x="7" y="5" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+            <UITextBox id="tb_copyComplete" x="45" y="5" w="160" h="30" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xff0000ff" str="[퀘스트스크롤]카이룩스제국 가입신청서 1개">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UITextBox>
+            <UIImage id="img_selectItem" x="1" y="-1" w="44" h="44" hide="1" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="146" t="934" r="190" b="978" />
+        </UIListItem>
+    </UIList>
+    <UIList id="list_copyview" x="0" y="191" w="282" h="464" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="3" itemy="2" itemshow_num="2" itemgap="3" item_count="1" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="3" y="2" w="280" h="113" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIButton id="btn_view" x="0" y="0" w="15" h="14" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="209" t="893" r="224" b="907" />
+                <uv type="1" l="193" t="927" r="208" b="941" />
+                <uv type="2" l="193" t="893" r="208" b="907" />
+                <uv type="3" l="0" t="0" r="0" b="0" />
+            </UIButton>
+            <UIText id="str_name" x="33" y="0" w="235" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="[3]카이룩스제국의 가입 신청서" color="0xffffffff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_purpose1" x="33" y="16" w="230" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="딜라문 검병 격파 수" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_purpose2" x="33" y="48" w="230" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="딜라문 검병 격파 수" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_purpose3" x="33" y="80" w="230" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="딜라문 검병 격파 수" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+			<UIText id="str_purpose4" x="33" y="112" w="230" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="딜라문 검병 격파 수" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_purpose5" x="33" y="144" w="230" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="딜라문 검병 격파 수" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_purpose6" x="33" y="176" w="230" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="딜라문 검병 격파 수" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_count1" x="33" y="32" w="60" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="5 / 5" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_count2" x="33" y="64" w="80" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="5 / 5" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_count3" x="33" y="96" w="80" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="5 / 5" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+			<UIText id="str_count4" x="33" y="128" w="80" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="5 / 5" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_count5" x="33" y="160" w="80" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="5 / 5" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_count6" x="33" y="192" w="80" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="5 / 5" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_complete" x="33" y="-7" w="26" h="38" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="252" t="943" r="278" b="981" />
+        </UIListItem>
+    </UIList>
+    <UIImage id="img_selectMenu" x="0" y="451" w="217" h="15" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="20" t="875" r="237" b="890" />
+    <UIList id="list_copyTitle" x="0" y="19" w="230" h="50" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="1" itemgap="0" item_count="1" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="230" h="39" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage id="img_copyTitle" x="-10" y="0" w="203" h="39" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="4" t="983" r="208" b="1023" />
+            <UIText id="str_copytitle" x="25" y="13" w="100" h="16" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="진행상황" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIText id="str_space" x="0" y="0" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+</Window>

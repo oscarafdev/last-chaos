@@ -1,0 +1,26 @@
+OFFSET    	0,0,0.2,180,0,0;
+NAME "volcan_blackdeer";
+{
+  MESH       	TFNM "Data\Monster\alber\volcan_blackdeer\_TAG_T_CENTER_bdeer.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_blackdeer\blackdeer.bm";
+  TEXTURES   
+  {
+    "volcan_blackdeer"	TFNM "Data\Monster\alber\volcan_blackdeer\volcan_blackdeer.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_blackdeer\blackdeer_1.bm";
+  TEXTURES   
+  {
+    "volcan_blackdeer_1"	TFNM "Data\Monster\alber\volcan_blackdeer\volcan_blackdeer_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\volcan_blackdeer\blackdeer.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\volcan_blackdeer\blackdeer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\volcan_blackdeer\blackdeer.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.55,0.75,2,0.95;
+  COLISION
+  {
+    "Default"  {-0.7,0,-0.7,0.7,1.8,0.7;}
+  }
+}

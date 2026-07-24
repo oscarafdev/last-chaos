@@ -1,0 +1,12 @@
+NAME "prison_door";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\prison_door.bm";
+  TEXTURES   
+  {
+    "pri01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\pri01.tex";
+  }
+  ALLFRAMESBBOX	-1.81821,0,-0.121622,1.81821,7,0.121623;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "M_fire01";
+{
+  MESH       	TFNM "Data\World\M_combo\ska\M_fire01.bm";
+  TEXTURES   
+  {
+    "M_fire01"	TFNM "Data\World\M_combo\ska\texture\M_fire01.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.418313,0.001566,-0.417298,0.417522,0.576728,0.41836;
+  COLISION
+  {
+  }
+}

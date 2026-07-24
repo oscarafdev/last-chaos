@@ -1,0 +1,15 @@
+NAME "castle_wirewall01";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\castle_wirewall01.bm";
+  TEXTURES   
+  {
+    "castle_wirewall01"	TFNM "Data\World\LoginWorld\Ska\Texture\castle_wirewall01.tex";
+    "castle_wirewall02"	TFNM "Data\World\LoginWorld\Ska\Texture\castle_wirewall02.tex";
+    "Dengen1_Detail"	TFNM "Data\World\LoginWorld\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-2.28404,-0.003131,-0.388071,2.28404,2.54752,0.388071;
+  COLISION
+  {
+    "Default"  {-2.28751,-0.00563109,-0.382128,2.28718,2.67234,0.378259;}
+  }
+}

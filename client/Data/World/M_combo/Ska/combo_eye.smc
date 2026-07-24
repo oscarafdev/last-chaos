@@ -1,0 +1,21 @@
+NAME "combbo_eye";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\combo_eye.bm";
+  TEXTURES   
+  {
+    "combo_eye"	TFNM "Data\World\M_combo\Ska\Texture\combo_eye.tex";
+    "M_combo_Detail_2"	TFNM "Data\World\M_combo\Texture\M_combo_Detail_2.tex";
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\combo_eye_1.bm";
+  TEXTURES   
+  {
+    "combo_eye"	TFNM "Data\World\M_combo\Ska\Texture\combo_eye.tex";
+    "M_combo_Detail_2"	TFNM "Data\World\M_combo\Texture\M_combo_Detail_2.tex";
+  }
+  SKELETON  	TFNM "Data\World\M_combo\Ska\combo_eye.bs";
+  ANIMSET   	TFNM "Data\World\M_combo\Ska\combo_eye.ba";
+  ALLFRAMESBBOX	-196.104,-9e-006,-196.024,197.597,9e-006,197.677;
+  COLISION
+  {
+  }
+}

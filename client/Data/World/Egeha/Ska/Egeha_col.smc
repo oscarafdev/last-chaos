@@ -1,0 +1,26 @@
+NAME "Egeha_col";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_col.bm";
+  TEXTURES   
+  {
+    "Egeha_col_d3"	TFNM "Data\World\egeha\ska\texture\Egeha_col_d3.tex";
+    "Egeha_col_a1"	TFNM "Data\World\egeha\ska\texture\Egeha_col_a1.tex";
+    "Egeha_col_a2"	TFNM "Data\World\egeha\ska\texture\Egeha_col_a2.tex";
+    "Egeha_col_a3"	TFNM "Data\World\egeha\ska\texture\Egeha_col_a3.tex";
+    "Egeha_col_a4"	TFNM "Data\World\egeha\ska\texture\Egeha_col_a4.tex";
+    "Egeha_col_a5"	TFNM "Data\World\egeha\ska\texture\Egeha_col_a5.tex";
+    "Egeha_col_b1"	TFNM "Data\World\egeha\ska\texture\Egeha_col_b1.tex";
+    "Egeha_col_b2"	TFNM "Data\World\egeha\ska\texture\Egeha_col_b2.tex";
+    "Egeha_col_c1"	TFNM "Data\World\egeha\ska\texture\Egeha_col_c1.tex";
+    "Egeha_col_c2"	TFNM "Data\World\egeha\ska\texture\Egeha_col_c2.tex";
+    "Egeha_col_c3"	TFNM "Data\World\egeha\ska\texture\Egeha_col_c3.tex";
+    "Egeha_col_c4"	TFNM "Data\World\egeha\ska\texture\Egeha_col_c4.tex";
+    "Egeha_col_d1"	TFNM "Data\World\egeha\ska\texture\Egeha_col_d1.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\egeha\ska\texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-40.9333,-0.570495,-56.6665,45.3012,43.2988,42.7966;
+  COLISION
+  {
+    "Default"  {-40.9333,-0.570496,-56.6665,45.3012,43.2988,42.7966;}
+  }
+}

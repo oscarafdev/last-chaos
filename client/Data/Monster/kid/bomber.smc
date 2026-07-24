@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bomber";
+{
+  MESH       	TFNM "Data\Monster\kid\bomber\body.bm";
+  TEXTURES   
+  {
+    "kidbomber"	TFNM "Data\Monster\kid\Texture\kidbomber.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\kid\bomber\bomber.bs";
+  ANIMSET   	TFNM "Data\Monster\kid\bomber\bomber.ba";
+  ANIMEFFECT	TFNM "Data\Monster\kid\bomber\bomber.bae";
+  ALLFRAMESBBOX	-1.0213,-0.191001,-1.496,1.0978,1.71736,0.941587;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.5,0.75,2,0.5;}
+  }
+}

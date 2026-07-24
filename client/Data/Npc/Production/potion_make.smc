@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "potion_make";
+{
+  MESH       	TFNM "Data\npc\production\potion_make.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\potion_make.tex";
+  }
+  MESH       	TFNM "Data\npc\production\potion_make_1.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\potion_make.tex";
+  }
+  MESH       	TFNM "Data\npc\production\potion_make_2.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\potion_make.tex";
+  }
+  MESH       	TFNM "Data\npc\production\potion_make_3.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\potion_make.tex";
+  }
+  SKELETON  	TFNM "Data\npc\production\potion_make.bs";
+  ANIMSET   	TFNM "Data\npc\production\potion_make.ba";
+  ALLFRAMESBBOX	-1.5,0,-2,1.5,1.2,2;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.2,0.4;}
+  }
+}

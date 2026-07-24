@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "barsil_volcan";
+{
+  MESH       	TFNM "Data\Monster\alber\barsil_volcan\Basilisk.bm";
+  TEXTURES   
+  {
+    "w2_m_barsil_volcan"	TFNM "Data\Monster\alber\barsil_volcan\w2_m_barsil_volcan.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\barsil_volcan\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\alber\barsil_volcan\Basilisk.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\barsil_volcan\Basilisk.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\barsil_volcan\Basilisk.bae";
+  ALLFRAMESBBOX	-4,0,-5,4,4,5;
+  COLISION
+  {
+    "Default"  {-2.5,0,-4,2.5,3,2;}
+  }
+}

@@ -1,0 +1,12 @@
+NAME "td_board";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_board.bm";
+  TEXTURES   
+  {
+    "board"	TFNM "Data\World\tarian_dungeon\Ska\Texture\board.tex";
+  }
+  ALLFRAMESBBOX	-1.47107,-2e-006,-0.722949,1.47107,3.24031,0.797521;
+  COLISION
+  {
+  }
+}

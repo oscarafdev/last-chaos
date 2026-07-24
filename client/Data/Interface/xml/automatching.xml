@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="-40" w="471" h="220" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="470" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="256" r="78" b="278" unit="27" splitmode="0" />
+    <UIImageSplit x="0" y="22" w="470" h="196" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="81" t="262" r="111" b="285" unit="14" splitmode="2" />
+    <UIText id="txt_title" x="28" y="4" w="416" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2667" str="파티 등록" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="452" y="3" w="16" h="16" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="230" t="132" r="244" b="146" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="230" t="117" r="244" b="131" />
+        <uv type="3" l="230" t="117" r="244" b="131" />
+    </UIButton>
+    <UIText x="10" y="40" w="70" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2668" str="파티 공고" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage x="95" y="40" w="350" h="13" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="55" t="162" r="68" b="175" />
+    <UIEdit id="edit_notice" x="95" y="40" w="350" h="13" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" max="0" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIText x="10" y="70" w="80" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2669" str="필요 클래스" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase x="91" y="67" w="360" h="93" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UIImage x="0" y="0" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="254" t="178" r="276" b="200" />
+        <UIText x="24" y="5" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="43" str="타이탄" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_titan" x="105" y="6" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="120" y="0" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="279" t="178" r="301" b="200" />
+        <UIText x="145" y="5" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="44" str="기사" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_knight" x="226" y="6" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="240" y="0" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="304" t="178" r="326" b="200" />
+        <UIText x="266" y="5" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="45" str="힐러" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_healer" x="343" y="6" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="0" y="27" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="254" t="203" r="276" b="225" />
+        <UIText x="24" y="32" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="46" str="메이지" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_mage" x="105" y="33" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="120" y="27" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="279" t="203" r="301" b="225" />
+        <UIText x="145" y="32" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="47" str="로그" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_rogue" x="226" y="33" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="240" y="27" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="304" t="203" r="326" b="225" />
+        <UIText x="266" y="32" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="48" str="소서러" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_sorcerer" x="343" y="33" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="0" y="54" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="471" t="131" r="493" b="153" />
+        <UIText x="24" y="59" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4410" str="나이트셰도우" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_nightshadow" x="105" y="60" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="120" y="54" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="471" t="106" r="493" b="128" />
+        <UIText x="145" y="59" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5732" str="EX로그" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_exrogue" x="226" y="60" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UIImage x="240" y="54" w="22" h="22" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="446" t="106" r="468" b="128" />
+        <UIText x="266" y="59" w="75" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5820" str="아크메이지" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="chk_archmage" x="343" y="60" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="12" t="161" r="23" b="172" />
+            <check l="0" t="161" r="11" b="172" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+    </UIBase>
+    <UIText x="10" y="157" w="70" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2670" str="레벨 제한" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="156" y="185" w="80" h="21" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="46" r="63" b="67" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="66" t="46" r="129" b="67" />
+        <uv type="3" l="66" t="46" r="129" b="67" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="243" y="185" w="80" h="21" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="46" r="63" b="67" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="66" t="46" r="129" b="67" />
+        <uv type="3" l="66" t="46" r="129" b="67" />
+    </UIButton>
+    <UICheck id="chk_level" x="83" y="158" w="11" h="11" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+        <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+        <none l="12" t="161" r="23" b="172" />
+        <check l="0" t="161" r="11" b="172" />
+        <none_disable l="0" t="0" r="0" b="0" />
+        <check_disable l="0" t="0" r="0" b="0" />
+    </UICheck>
+</Window>

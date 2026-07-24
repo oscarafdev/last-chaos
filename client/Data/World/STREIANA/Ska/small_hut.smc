@@ -1,0 +1,17 @@
+NAME "small_hut";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\small_hut_1.bm";
+  TEXTURES   
+  {
+    "hut_01"	TFNM "Data\World\STREIANA\Ska\Texture\hut_01.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\small_hut_2.bm";
+  TEXTURES   
+  {
+    "hut_02"	TFNM "Data\World\STREIANA\Ska\Texture\hut_02.tex";
+  }
+  ALLFRAMESBBOX	-9.82548,-0.015751,-8.64631,9.9504,16.4414,8.64631;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "w2_dnobone03";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w2_dnobone03.bm";
+  TEXTURES   
+  {
+    "w2_bone01"	TFNM "Data\World\StartZone\Ska\Texture\w2_bone01.tex";
+    "Detail"	TFNM "Data\World\StartZone\Ska\Texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.876967,-0.050878,-0.858167,1.05811,1.33273,1.09488;
+  COLISION
+  {
+  }
+}

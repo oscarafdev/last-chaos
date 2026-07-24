@@ -1,0 +1,47 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Wight\wight_slasher_bu.bm";
+  TEXTURES   
+  {
+    "wight_slasher"	TFNM "Data\Monster\Wight\Texture\wight_slasher.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_slasher_bu_1.bm";
+  TEXTURES   
+  {
+    "wight_slasher_1"	TFNM "Data\Monster\Wight\Texture\wight_slasher_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_slasher_lhn.bm";
+  TEXTURES   
+  {
+    "wight_slasher"	TFNM "Data\Monster\Wight\Texture\wight_slasher.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_slasher_rhn.bm";
+  TEXTURES   
+  {
+    "wight_slasher"	TFNM "Data\Monster\Wight\Texture\wight_slasher.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_slasher_mantle.bm";
+  TEXTURES   
+  {
+    "wight_slasher_1"	TFNM "Data\Monster\Wight\Texture\wight_slasher_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_slasher_sword.bm";
+  TEXTURES   
+  {
+    "wight_slasher_1"	TFNM "Data\Monster\Wight\Texture\wight_slasher_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_slasher_bd.bm";
+  TEXTURES   
+  {
+    "wight_slasher"	TFNM "Data\Monster\Wight\Texture\wight_slasher.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Wight\wight_slasher.bs";
+  ANIMSET   	TFNM "Data\Monster\Wight\wight_slasher.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Wight\wight_slasher.bae";
+  ALLFRAMESBBOX	-2,0,-2,2,3.3,2;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

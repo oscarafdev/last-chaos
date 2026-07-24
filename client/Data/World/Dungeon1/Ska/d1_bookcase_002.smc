@@ -1,0 +1,13 @@
+NAME "d1_bookcase_002";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_bookcase_02.bm";
+  TEXTURES   
+  {
+    "d1_bookcase_002"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_bookcase_002.tex";
+  }
+  ALLFRAMESBBOX	-2.53368,0.007567,-0.535295,2.53368,7.93538,0.535295;
+  COLISION
+  {
+    "Default"  {-2.46551,-0.298809,0.469243,2.53459,7.91997,-0.565931;}
+  }
+}

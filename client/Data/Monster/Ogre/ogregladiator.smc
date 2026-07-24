@@ -1,0 +1,46 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ogregladiator";
+{
+  MESH       	TFNM "Data\Monster\Ogre\ogregladiator.bm";
+  TEXTURES   
+  {
+    "ogregladiator_1"	TFNM "Data\Monster\Ogre\ogregladiator_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogregladiator_1.bm";
+  TEXTURES   
+  {
+    "ogregladiator_1"	TFNM "Data\Monster\Ogre\ogregladiator_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogregladiator_bd.bm";
+  TEXTURES   
+  {
+    "ogregladiator"	TFNM "Data\Monster\Ogre\ogregladiator.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogregladiator_bu.bm";
+  TEXTURES   
+  {
+    "ogregladiator"	TFNM "Data\Monster\Ogre\ogregladiator.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogregladiator_hn.bm";
+  TEXTURES   
+  {
+    "ogregladiator"	TFNM "Data\Monster\Ogre\ogregladiator.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogregladiator_s.bm";
+  TEXTURES   
+  {
+    "ogregladiator_1"	TFNM "Data\Monster\Ogre\ogregladiator_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogregladiator_w.bm";
+  TEXTURES   
+  {
+    "ogregladiator"	TFNM "Data\Monster\Ogre\ogregladiator.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Ogre\ogregladiator.bs";
+  ANIMSET   	TFNM "Data\Monster\Ogre\ogregladiator.ba";
+  ALLFRAMESBBOX	-1.2,0,-1.7,1.8,3.2,1.3;
+  COLISION
+  {
+    "Default"  {-1.14284,-0.156388,-1.81262,1.85716,3.0436,1.18739;}
+  }
+}

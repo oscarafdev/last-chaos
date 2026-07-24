@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_cos_dillamoon02_bd";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_dillamoon02_bd.bm";
+  TEXTURES   
+  {
+    "ti_cos_dillamoon02_bd"	TFNM "Data\Item\Shield\Titan\Texture\ti_cos_dillamoon02_bd.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_dillamoon02_bd01.bm";
+  TEXTURES   
+  {
+    "ti_cos_dillamoon02_bd"	TFNM "Data\Item\Shield\Titan\Texture\ti_cos_dillamoon02_bd.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_dillamoon02_bd02.bm";
+  TEXTURES   
+  {
+    "ti_cos_dillamoon02_bd"	TFNM "Data\Item\Shield\Titan\Texture\ti_cos_dillamoon02_bd.tex";
+  }
+  ALLFRAMESBBOX	-0.499327,0.50562,-0.20271,0.499027,1.36074,0.225174;
+  COLISION
+  {
+  }
+}

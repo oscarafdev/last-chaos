@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_bu_western";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bu_western.bm";
+  TEXTURES   
+  {
+    "ro_bu_western"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bu_western.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bu_weatern_1.bm";
+  TEXTURES   
+  {
+    "ro_bu_western_1"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bu_western_1.tex";
+  }
+  ALLFRAMESBBOX	-0.335468,1.10855,-0.118492,0.335468,1.58685,0.154756;
+  COLISION
+  {
+  }
+}

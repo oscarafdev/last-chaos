@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bd_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_Greece01.bm";
+  TEXTURES   
+  {
+    "so_hermes2_Greece"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hermes2_Greece.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_Greece.bm";
+  TEXTURES   
+  {
+    "so_bd_Greece"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_Greece.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_Greece02.bm";
+  TEXTURES   
+  {
+    "so_hermes1_Greece"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hermes1_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.243656,0.500937,-0.147596,0.243656,1.28467,0.141624;
+  COLISION
+  {
+  }
+}

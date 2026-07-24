@@ -1,0 +1,15 @@
+NAME "w1_churchwall2";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_churchwall2.bm";
+  TEXTURES   
+  {
+    "w1_churchwall"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchwall.tex";
+    "w1_churchpoll"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchpoll.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-5.77388,-0.034894,-0.327978,5.77392,2.4884,0.327979;
+  COLISION
+  {
+    "Default"  {-5.5,0,-0.25,5.5,2,0.25;}
+  }
+}

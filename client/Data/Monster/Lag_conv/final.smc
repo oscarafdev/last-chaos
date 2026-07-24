@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "final";
+{
+  MESH       	TFNM "Data\Monster\Lag_conv\final.bm";
+  TEXTURES   
+  {
+    "finalboss01"	TFNM "Data\Monster\Lag_conv\Texture\finalboss01.tex";
+    "finalboss02"	TFNM "Data\Monster\Lag_conv\Texture\finalboss02.tex";
+    "finalboss03"	TFNM "Data\Monster\Lag_conv\Texture\finalboss03.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lag_conv\final.bs";
+  ANIMSET   	TFNM "Data\Monster\Lag_conv\final.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Lag_conv\final.bae";
+  ALLFRAMESBBOX	-2,0,-3.5,2,4,0.5;
+  COLISION
+  {
+    "Default"  {-3.5,0,-3,3.5,4,3;}
+  }
+}

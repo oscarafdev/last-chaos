@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\totem_head_03.bm";
+  TEXTURES   
+  {
+    "totem_head"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\totem_head.tex";
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+  }
+  ALLFRAMESBBOX	-1.47413,0.000586,-0.775493,0.915221,0.999747,0.63529;
+  COLISION
+  {
+    "Default"  {-1.50038,-0.013378,-0.766107,0.959035,1.00306,0.682666;}
+  }
+}

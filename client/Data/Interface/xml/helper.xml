@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="HelperUI" x="0" y="0" w="434" h="335" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="434" h="335" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="325" t="242" r="508" b="425" unit="61" splitmode="2" />
+    <UIText x="84" y="16" w="266" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="5071" str="후견인 시스템" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="415" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIText x="16" y="46" w="54" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1160" str="클래스" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="101" y="46" w="54" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1159" str="이 름" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="200" y="46" w="39" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="73" str="레벨" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="259" y="46" w="154" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="5072" str="후견인 상세 정보" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIList x="15" y="64" w="231" h="204" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="10" itemgap="-2" item_count="11" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIImage x="0" y="0" w="220" h="1" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="139" t="456" r="179" b="457" />
+        <UIListItem id="list_item_001" x="0" y="0" w="218" h="21" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIImage x="0" y="18" w="220" h="1" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="139" t="456" r="179" b="457" />
+        </UIListItem>
+    </UIList>
+    <UIList id="list_disciple" x="15" y="64" w="231" h="204" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="12" itemgap="-2" item_count="0" pre_create="1">
+        <select x="0" y="0" w="219" h="19" l="264" t="166" r="473" b="199" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="233" h="203" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="18" item_count="0" item_per_page="12">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+            <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+            <thumb x="0" y="0" w="10" h="183" unit="7" l="185" t="32" r="195" b="71" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="0" y="0" w="218" h="21" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIText id="txt_name" x="86" y="2" w="66" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_lv" x="186" y="2" w="32" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImageArray id="img_class" x="0" y="0" w="20" h="20" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="20" h="20" l="255" t="179" r="275" b="199" desc="" />
+                <surface1 x="0" y="0" w="20" h="20" l="280" t="179" r="300" b="199" desc="" />
+                <surface2 x="0" y="0" w="20" h="20" l="305" t="179" r="325" b="199" desc="" />
+                <surface3 x="0" y="0" w="20" h="20" l="255" t="204" r="275" b="224" desc="" />
+                <surface4 x="0" y="0" w="20" h="20" l="280" t="204" r="300" b="224" desc="" />
+                <surface5 x="0" y="0" w="20" h="20" l="305" t="204" r="325" b="224" desc="" />
+                <surface6 x="0" y="0" w="20" h="20" l="472" t="132" r="492" b="152" desc="" />
+                <surface7 x="0" y="0" w="20" h="20" l="280" t="204" r="300" b="224" desc="" />
+                <surface8 x="0" y="0" w="20" h="20" l="255" t="204" r="275" b="224" desc="" />
+            </UIImageArray>
+        </UIListItem>
+    </UIList>
+    <UIList x="256" y="64" w="164" h="202" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="-1" item_count="7" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="164" h="26" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIImageSplit x="0" y="0" w="164" h="26" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" />
+        </UIListItem>
+    </UIList>
+    <UIList id="list_info" x="256" y="64" w="164" h="202" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="-1" item_count="4" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="164" h="26" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIText id="txt_title" x="5" y="6" w="115" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="5077" str="양성중인 인원" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_cnt" x="126" y="6" w="32" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="0" str="" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIButton id="btn_enrolment" x="34" y="278" w="180" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1136" str="후견인 등록" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="1" t="490" r="133" b="511" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="134" t="490" r="267" b="511" />
+        <uv type="3" l="268" t="490" r="401" b="511" />
+    </UIButton>
+    <UIButton id="btn_abandon" x="34" y="305" w="180" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="5068" str="후견인 포기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="1" t="490" r="133" b="511" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="134" t="490" r="267" b="511" />
+        <uv type="3" l="268" t="490" r="401" b="511" />
+    </UIButton>
+    <UIButton id="btn_amend" x="222" y="278" w="180" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1695" str="보상" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="1" t="490" r="133" b="511" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="134" t="490" r="267" b="511" />
+        <uv type="3" l="268" t="490" r="401" b="511" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="222" y="305" w="180" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="870" str="닫기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="1" t="490" r="133" b="511" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="134" t="490" r="267" b="511" />
+        <uv type="3" l="268" t="490" r="401" b="511" />
+    </UIButton>
+    <UIBase id="base_drag" x="0" y="0" w="415" h="37" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" />
+</Window>

@@ -1,0 +1,18 @@
+NAME "w2_prymidtower";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramidtower_2.bm";
+  TEXTURES   
+  {
+    "w2_pyramidtower"	TFNM "Data\World\Dratan\Ska\Texture\w2_pyramidtower.tex";
+    "Dengen1_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dengen1_Detail.tex";
+  }
+  MESH       	TFNM "Data\World\Dratan\Ska\_TAG_T_PTOWER2.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-1.5071,-0.006433,-2.07037,1.50711,3.367,2.07037;
+  COLISION
+  {
+    "Default"  {-3.77544,-0.114043,-4.01822,4.29621,15.078,3.55061;}
+  }
+}

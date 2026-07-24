@@ -1,0 +1,12 @@
+NAME "Ab_de_campfence";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_campfence.bm";
+  TEXTURES   
+  {
+    "Ab_de_campfence"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_campfence.tex";
+  }
+  ALLFRAMESBBOX	-1.48258,-0.005303,-0.663339,1.36169,1.55313,0.18416;
+  COLISION
+  {
+  }
+}

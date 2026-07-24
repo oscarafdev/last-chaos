@@ -1,0 +1,35 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "healer";
+{
+  MESH       	TFNM "Data\monster\Skeleton\_TAG_T_CENTER_sksI.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\healer.bm";
+  TEXTURES   
+  {
+    "m_skeleton_001"	TFNM "Data\Monster\Skeleton\m_skeleton_001.tex";
+    "m_skeleton_001_01"	TFNM "Data\Monster\Skeleton\m_skeleton_001_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\healer_wand.bm";
+  TEXTURES   
+  {
+    "healer_wand"	TFNM "Data\Monster\Skeleton\healer_wand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\_TAG_T_SSTAFF.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\_TAG_SHef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Skeleton\healer.bs";
+  ANIMSET   	TFNM "Data\Monster\Skeleton\healer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Skeleton\Healer.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,1.8,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1.8,0.75;}
+  }
+}

@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "smoon_02";
+{
+  MESH       	TFNM "Data\World\STAEIANA(cave)\Ska\smoon_02.bm";
+  TEXTURES   
+  {
+    "smoon"	TFNM "Data\World\STAEIANA(cave)\Ska\Texture\smoon.tex";
+  }
+  ALLFRAMESBBOX	-1.11988,-0.002409,-1.01476,1.24349,0.933854,0.786323;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

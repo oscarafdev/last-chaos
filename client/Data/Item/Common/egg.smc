@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,-179,0,0;
+NAME "egg";
+{
+  MESH       	TFNM "Data\Item\Common\egg.bm";
+  TEXTURES   
+  {
+    "nest"	TFNM "Data\Item\Common\nest.tex";
+  }
+  MESH       	TFNM "Data\Item\Common\_TAG_T_EGG.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Item\Common\egg.bs";
+  ANIMSET   	TFNM "Data\Item\Common\egg.ba";
+  ALLFRAMESBBOX	-0.299549,-0.0534561,-0.295708,0.312131,0.6438,0.311512;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.35,0.35,0.65,0.35;}
+  }
+}

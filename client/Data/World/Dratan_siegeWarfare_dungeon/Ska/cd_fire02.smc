@@ -1,0 +1,14 @@
+OFFSET    	-0.0648359,0.318062,-7.37906e-005,0,0,0;
+NAME "cd_fire02";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\cd_fire02.bm";
+  TEXTURES   
+  {
+    "cd_fire02"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\texture\cd_fire02.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Texture\Siege_Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

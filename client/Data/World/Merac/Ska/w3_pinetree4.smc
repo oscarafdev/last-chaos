@@ -1,0 +1,16 @@
+NAME "w3_pinetree4";
+{
+  MESH       	TFNM "Data\World\merac\ska\w3_pinetree4.bm";
+  TEXTURES   
+  {
+    "merac_Detail"	TFNM "Data\World\merac\ska\texture\merac_Detail.tex";
+    "w3_pine02"	TFNM "Data\World\merac\ska\texture\w3_pine02.tex";
+    "w3_pine04"	TFNM "Data\World\merac\ska\texture\w3_pine04.tex";
+    "w3_pine052"	TFNM "Data\World\merac\ska\texture\w3_pine052.tex";
+  }
+  ALLFRAMESBBOX	-4.98127,-0.47576,-4.91187,5.05653,14.3004,4.52979;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,10,0.5;}
+  }
+}

@@ -1,0 +1,19 @@
+OFFSET    	0,0.4,0,0,0,180;
+NAME "ArrowNormal";
+{
+  MESH       	TFNM "Data\Effect\SKA\ArrowNormal.bm";
+  TEXTURES   
+  {
+    "elf_magic_arrow"	TFNM "Data\Effect\TEXTURE\elf_magic_arrow.tex";
+  }
+  MESH       	TFNM "Data\Effect\SKA\ArrowNormal_tag.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Effect\SKA\ArrowNormal.bs";
+  ALLFRAMESBBOX	-0.028079,0,-0.024563,0.028564,0.840496,0.024563;
+  COLISION
+  {
+    "Default"  {-0.0283215,0,-0.024563,0.0283215,0.840496,0.024563;}
+  }
+}

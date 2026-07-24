@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_cos_xmas_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_xmas_hn.bm";
+  TEXTURES   
+  {
+    "ni_cos_xmas_hn"	TFNM "Data\Item\Shield\Knight\Texture\ni_cos_xmas_hn.tex";
+  }
+  ALLFRAMESBBOX	-0.742697,0.997383,-0.052608,0.742697,1.3867,0.157011;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+NAME "w2_nangan";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_nangan.bm";
+  TEXTURES   
+  {
+    "w2_bridge"	TFNM "Data\World\Dratan\Ska\Texture\w2_bridge.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_wallgate4"	TFNM "Data\World\Dratan\Ska\Texture\w2_wallgate4.tex";
+    "w2_bridge"	TFNM "Data\World\Dratan\Ska\Texture\w2_bridge.tex";
+  }
+  ALLFRAMESBBOX	-1.55126,-0.011279,-0.107534,1.55109,1.17058,0.107534;
+  COLISION
+  {
+  }
+}

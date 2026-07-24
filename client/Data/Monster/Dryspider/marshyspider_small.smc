@@ -1,0 +1,37 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "marshyspider_small";
+{
+  MESH       	TFNM "Data\Monster\Dryspider\marshyspider_small.bm";
+  TEXTURES   
+  {
+    "marshyspider"	TFNM "Data\Monster\Dryspider\Marshyspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\marshyspider_small_ft01.bm";
+  TEXTURES   
+  {
+    "marshyspider"	TFNM "Data\Monster\Dryspider\Marshyspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\marshyspider_small_ft02.bm";
+  TEXTURES   
+  {
+    "marshyspider"	TFNM "Data\Monster\Dryspider\Marshyspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\marshyspider_small_ft03.bm";
+  TEXTURES   
+  {
+    "marshyspider"	TFNM "Data\Monster\Dryspider\Marshyspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\marshyspider_small_ft04.bm";
+  TEXTURES   
+  {
+    "marshyspider"	TFNM "Data\Monster\Dryspider\Marshyspider.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Dryspider\marshyspider_small.bs";
+  ANIMSET   	TFNM "Data\Monster\Dryspider\marshyspider_small.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Dryspider\marshyspider_small.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,1,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1,0.75;}
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_ft_swimsuit";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_ft_swimsuit.bm";
+  TEXTURES   
+  {
+    "ns_ft_swimsuit"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_ft_swimsuit.tex";
+  }
+  ALLFRAMESBBOX	-0.304772,-0.021194,-0.166183,0.304772,0.150967,0.166196;
+  COLISION
+  {
+  }
+}

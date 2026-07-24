@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "brotherband_collector";
+{
+  MESH       	TFNM "Data\Monster\BrotherBand\brotherband_collecttor.bm";
+  TEXTURES   
+  {
+    "brotherband_collector"	TFNM "Data\Monster\BrotherBand\brotherband_collector.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\_TAG_BBCef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\BrotherBand\brotherband_collector.bs";
+  ANIMSET   	TFNM "Data\Monster\BrotherBand\brotherband_collector.ba";
+  ANIMEFFECT	TFNM "Data\Monster\BrotherBand\brotherband_collector.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.75,0.5,1.7,0.25;
+  COLISION
+  {
+    "Default"  {-0.75,0,-1,0.75,2,0.5;}
+  }
+}

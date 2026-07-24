@@ -1,0 +1,13 @@
+NAME "rock_01";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\rock_01.bm";
+  TEXTURES   
+  {
+    "rock_01"	TFNM "Data\World\StartZone\Ska\Texture\rock_01.tex";
+  }
+  ALLFRAMESBBOX	-5.26591,-0.045256,-5.18603,5.26591,7.48287,5.18603;
+  COLISION
+  {
+    "Default"  {-2.14591,-0.0465058,-1.13464,2.2764,1.87517,1.08729;}
+  }
+}

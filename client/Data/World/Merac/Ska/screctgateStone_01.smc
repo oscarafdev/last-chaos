@@ -1,0 +1,13 @@
+NAME "screctgateStone_01";
+{
+  MESH       	TFNM "Data\World\Merac\Ska\screctgateStone_01.bm";
+  TEXTURES   
+  {
+    "stone_1"	TFNM "Data\World\Merac\Ska\Texture\stone_1.tex";
+  }
+  ALLFRAMESBBOX	-0.905543,-0.038012,-0.596531,0.905543,2.46818,0.596531;
+  COLISION
+  {
+    "Default"  {-0.905545,0,-0.59653,0.905545,2.50619,0.59653;}
+  }
+}

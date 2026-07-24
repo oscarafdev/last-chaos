@@ -1,0 +1,13 @@
+NAME "Egeha_tent02";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_tent02.bm";
+  TEXTURES   
+  {
+    "Egeha_tent02"	TFNM "Data\World\egeha\ska\texture\Egeha_tent02.tex";
+  }
+  ALLFRAMESBBOX	-8.23394,-0.171677,-7.95981,8.23394,8.01168,7.84263;
+  COLISION
+  {
+    "Default"  {-8.23395,-0.171677,-7.95979,8.23395,8.01168,7.84261;}
+  }
+}

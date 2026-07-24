@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_hel_police";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_hel_police.bm";
+  TEXTURES   
+  {
+    "ns_hel_police"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hel_police.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_hel_police_1.bm";
+  TEXTURES   
+  {
+    "ns_hair_000"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.125641,1.77778,-0.125873,0.125377,2.01782,0.175241;
+  COLISION
+  {
+  }
+}

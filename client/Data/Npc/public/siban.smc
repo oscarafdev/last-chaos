@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "siban";
+{
+  MESH       	TFNM "Data\npc\public\siban.bm";
+  TEXTURES   
+  {
+    "Young_man_face"	TFNM "Data\npc\public\siban_face.tex";
+  }
+  MESH       	TFNM "Data\npc\public\siban_1.bm";
+  TEXTURES   
+  {
+    "Young_man_bu"	TFNM "Data\npc\public\siban_bu.tex";
+  }
+  MESH       	TFNM "Data\npc\public\siban_2.bm";
+  TEXTURES   
+  {
+    "Young_man_bd"	TFNM "Data\npc\public\siban_bd.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\siban.bs";
+  ANIMSET   	TFNM "Data\npc\public\siban.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,2,2;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,2,0.4;}
+  }
+}

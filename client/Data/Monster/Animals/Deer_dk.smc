@@ -1,0 +1,21 @@
+OFFSET    	0,0,0.2,180,0,0;
+NAME "Deer_dk";
+{
+  MESH       	TFNM "Data\monster\Animals\Deer_dk.bm";
+  TEXTURES   
+  {
+    "animal01"	TFNM "Data\monster\Animals\animal01.tex";
+  }
+  MESH       	TFNM "Data\monster\Animals\_TAG_T_CENTER_deer_dk.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Animals\Deer_dk.bs";
+  ANIMSET   	TFNM "Data\monster\Animals\Deer_dk.ba";
+  ANIMEFFECT	TFNM "Data\monster\Animals\Deer_dk.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.7,0.5,1.8,0.7;}
+  }
+}

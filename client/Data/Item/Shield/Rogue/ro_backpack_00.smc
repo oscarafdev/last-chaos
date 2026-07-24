@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_backpack_00";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_backpack_00.bm";
+  TEXTURES   
+  {
+    "ro_backpack_00"	TFNM "Data\Item\Shield\Rogue\Texture\ro_backpack_00.tex";
+  }
+  ALLFRAMESBBOX	-0.151694,1.2045,0.069801,0.144404,1.49983,0.228116;
+  COLISION
+  {
+  }
+}

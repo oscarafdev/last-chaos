@@ -1,0 +1,66 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "anubis_mag";
+{
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag.bm";
+  TEXTURES   
+  {
+    "anubis_mag"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_lhn.bm";
+  TEXTURES   
+  {
+    "anubis_mag"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_rhn.bm";
+  TEXTURES   
+  {
+    "anubis_mag"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_bd.bm";
+  TEXTURES   
+  {
+    "anubis_mag"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_skull.bm";
+  TEXTURES   
+  {
+    "Anubis_mag_st"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag_st.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_sk.bm";
+  TEXTURES   
+  {
+    "Anubis_mag_st"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag_st.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_etc.bm";
+  TEXTURES   
+  {
+    "Anubis_mag_st"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag_st.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_etc2.bm";
+  TEXTURES   
+  {
+    "Anubis_mag_st"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag_st.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_staff.bm";
+  TEXTURES   
+  {
+    "Anubis_mag_st"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag_st.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_mag_staff01.bm";
+  TEXTURES   
+  {
+    "Anubis_mag_st"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_mag_st.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\_TAG_T_ANUBIS_STAFF.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\C_Anubis\anubis_mag.bs";
+  ANIMSET   	TFNM "Data\Monster\C_Anubis\anubis_mag.ba";
+  ANIMEFFECT	TFNM "Data\Monster\C_Anubis\Anubis_mag.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

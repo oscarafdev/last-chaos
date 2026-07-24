@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "blood_corpse";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\blood_corpse.bm";
+  TEXTURES   
+  {
+    "soul_corpse00"	TFNM "Data\Effect\Ska\ns_weapons\soul_corpse00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\blood_corpse1.bm";
+  TEXTURES   
+  {
+    "soul_corpse00"	TFNM "Data\Effect\Ska\ns_weapons\soul_corpse00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\blood_corpse2.bm";
+  TEXTURES   
+  {
+    "soul_corpse01"	TFNM "Data\Effect\Ska\ns_weapons\soul_corpse01.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\blood_corpse.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\blood_corpse.ba";
+  ALLFRAMESBBOX	-0.163805,-0.037837,-0.163805,0.163805,0.545894,0.163805;
+  COLISION
+  {
+  }
+}

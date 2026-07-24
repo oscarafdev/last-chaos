@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hair_007";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hair_007.bm";
+  TEXTURES   
+  {
+    "ro_hair_007"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_007.tex";
+  }
+  ALLFRAMESBBOX	-0.07417,1.53118,-0.079652,0.087334,1.78391,0.168129;
+  COLISION
+  {
+  }
+}

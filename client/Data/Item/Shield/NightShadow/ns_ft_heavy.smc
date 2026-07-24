@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_ft_heavy";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_ft_heavy.bm";
+  TEXTURES   
+  {
+    "ns_ft_heavy"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_ft_heavy.tex";
+  }
+  ALLFRAMESBBOX	-0.309274,-0.000204,-0.154524,0.309274,0.643177,0.171941;
+  COLISION
+  {
+  }
+}

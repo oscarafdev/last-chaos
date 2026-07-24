@@ -1,0 +1,58 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "gguard_01";
+{
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_bd.bm";
+  TEXTURES   
+  {
+    "G_guard01"	TFNM "Data\Npc\Gguard\G_guard01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_bd_1.bm";
+  TEXTURES   
+  {
+    "G_guard01"	TFNM "Data\Npc\Gguard\G_guard01.tex";
+    "G_guard_add"	TFNM "Data\Npc\Gguard\G_guard_add.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_bu.bm";
+  TEXTURES   
+  {
+    "G_guard01"	TFNM "Data\Npc\Gguard\G_guard01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\gguard_bu_1.bm";
+  TEXTURES   
+  {
+    "G_guard00"	TFNM "Data\Npc\Gguard\G_guard00.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_ft.bm";
+  TEXTURES   
+  {
+    "G_guard01"	TFNM "Data\Npc\Gguard\G_guard01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_ft_1.bm";
+  TEXTURES   
+  {
+    "G_guard01"	TFNM "Data\Npc\Gguard\G_guard01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_head.bm";
+  TEXTURES   
+  {
+    "G_guard00"	TFNM "Data\Npc\Gguard\G_guard00.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_hn.bm";
+  TEXTURES   
+  {
+    "G_guard00"	TFNM "Data\Npc\Gguard\G_guard00.tex";
+    "G_guard01"	TFNM "Data\Npc\Gguard\G_guard01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\Gguard_hn_1.bm";
+  TEXTURES   
+  {
+    "G_guard00"	TFNM "Data\Npc\Gguard\G_guard00.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Gguard\gguard.bs";
+  ANIMSET   	TFNM "Data\Npc\Gguard\gguard_02.ba";
+  ALLFRAMESBBOX	-40,0,-40,40,20,40;
+  COLISION
+  {
+    "Default"  {-5,0,-4,5,19.5,4;}
+  }
+}

@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dessert_kyripton02";
+{
+  MESH       	TFNM "Data\Monster\alber\dessert_Lag_conv\kyripton02_1.bm";
+  TEXTURES   
+  {
+    "boss_ky02_dessert_01"	TFNM "Data\Monster\alber\dessert_Lag_conv\boss_ky02_dessert_01.tex";
+    "boss_ky02_dessert_02"	TFNM "Data\Monster\alber\dessert_Lag_conv\boss_ky02_dessert_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_Lag_conv\kyripton02_2.bm";
+  TEXTURES   
+  {
+    "boss_ky02_dessert_02"	TFNM "Data\Monster\alber\dessert_Lag_conv\boss_ky02_dessert_02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\dessert_Lag_conv\kyripton02.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\dessert_Lag_conv\kyripton02.ba";
+  ALLFRAMESBBOX	-3.1265,-0.823859,-3.99079,3.59801,3.57614,1.868;
+  COLISION
+  {
+  }
+}

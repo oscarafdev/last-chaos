@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_drop";
+{
+  MESH       	TFNM "Data\Item\Common\hw_dish.bm";
+  TEXTURES   
+  {
+    "dish"	TFNM "Data\Item\Common\Texture\dish.tex";
+  }
+  MESH       	TFNM "Data\Item\Common\_TAG_T_HDISH.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.3,0,-0.3,0.3,0.3,0.3;
+  COLISION
+  {
+  }
+}

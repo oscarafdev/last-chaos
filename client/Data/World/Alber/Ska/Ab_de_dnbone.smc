@@ -1,0 +1,12 @@
+NAME "Ab_de_dnbone";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_dnbone.bm";
+  TEXTURES   
+  {
+    "Ab_de_bone01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_bone01.tex";
+  }
+  ALLFRAMESBBOX	-8.22335,-1.26613,-8.98617,7.34883,4.78802,10.8689;
+  COLISION
+  {
+  }
+}

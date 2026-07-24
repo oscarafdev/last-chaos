@@ -1,0 +1,39 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Jumpingtobido";
+{
+  MESH       	TFNM "Data\Monster\Tobido\Jumpingtobido.bm";
+  TEXTURES   
+  {
+    "Jumpingtobido"	TFNM "Data\Monster\Tobido\jumpingtobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\Jumpingtobido_1.bm";
+  TEXTURES   
+  {
+    "Jumpingtobido"	TFNM "Data\Monster\Tobido\jumpingtobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\Jumpingtobido_2.bm";
+  TEXTURES   
+  {
+    "Jumpingtobido"	TFNM "Data\Monster\Tobido\jumpingtobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_JTBH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_JTBL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_JTBR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Tobido\Jumpingtobido.bs";
+  ANIMSET   	TFNM "Data\Monster\Tobido\Jumpingtobido.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Tobido\Jumpingtobido.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

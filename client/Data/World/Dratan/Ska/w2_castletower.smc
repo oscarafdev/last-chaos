@@ -1,0 +1,19 @@
+NAME "w2_castletower";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_castletower.bm";
+  TEXTURES   
+  {
+    "w2_altar5"	TFNM "Data\World\Dratan\Ska\Texture\w2_altar5.tex";
+    "w2_altar9-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_altar9-1.tex";
+    "w2_castle01"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle01.tex";
+    "w2_castle05"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle05.tex";
+    "w2_castle13"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle13.tex";
+    "w2_castle18"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle18.tex";
+    "w2_castle19"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle19.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.04645,-0.025082,-4.04665,4.04648,98.8319,4.04664;
+  COLISION
+  {
+  }
+}

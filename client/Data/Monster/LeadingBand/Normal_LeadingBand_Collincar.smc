@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Normal_LeadingBand_Collincar";
+{
+  MESH       	TFNM "Data\Monster\Leadingband\boots_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\hair_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\head_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\n body_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\n handG_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\pants_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\sword01_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\sword_collin.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\_TAG_COLLINCA.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Leadingband\Normal_LeadingBand_Collincar.bs";
+  ANIMSET   	TFNM "Data\Monster\Leadingband\Normal_LeadingBand_Collincar.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Leadingband\Normal_LeadingBand_Collincar.bae";
+  ALLFRAMESBBOX	-0.35,0,-0.35,0.35,2.7,0.35;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2.7,0.75;}
+  }
+}

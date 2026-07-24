@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "eagles01_b";
+{
+  MESH       	TFNM "Data\Npc\Pet\eagles\eagle01_b.bm";
+  TEXTURES   
+  {
+    "eagls04"	TFNM "Data\Npc\Pet\eagles\eagls04.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Pet\eagles\eagles01_b.bs";
+  ANIMSET   	TFNM "Data\Npc\Pet\eagles\eagles01_b.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Pet\eagles\eagles01_b.bae";
+  ALLFRAMESBBOX	-0.65,0,-0.65,0.65,3,0.65;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.65,0.65,3,0.65;}
+  }
+}

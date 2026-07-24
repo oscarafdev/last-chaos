@@ -1,0 +1,87 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "MON_salamander_boss";
+{
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\MON_salamander_boss_amor.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\MON_salamander_boss_body.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_body01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_body01.tex";
+    "MON_salamander_boss_body02"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_body02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object01.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_body02"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_body02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object02.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_body02"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_body02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object03.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object04.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object05.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object07.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object08.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object09.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object10.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object11.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object12.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\Object06.bm";
+  TEXTURES   
+  {
+    "MON_salamander_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\texture\MON_salamander_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\_TAG_MON_salamander_boss.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\MON_salamander_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\MON_salamander_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Attribute boss\MON_salamander_boss\MON_salamander_boss.bae";
+  ALLFRAMESBBOX	-4.49281,-0.70599,-6.37079,4.06706,5.59401,5.91126;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,4,1;}
+  }
+}

@@ -1,0 +1,22 @@
+NAME "watchtower_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\watchtower_si.bm";
+  TEXTURES   
+  {
+    "watchtowerleather"	TFNM "Data\World\Merac\ska\texture\watchtowerleather.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "towerpole_si"	TFNM "Data\World\Merac\ska\texture\towerpole_si.tex";
+    "wallbone_si"	TFNM "Data\World\Merac\ska\texture\wallbone_si.tex";
+    "watchtower a_metal tile_si"	TFNM "Data\World\Merac\ska\texture\watchtower a_metal tile_si.tex";
+    "watchtower a_tree tile_si"	TFNM "Data\World\Merac\ska\texture\watchtower a_tree tile_si.tex";
+    "watchtower b_tree tile_si"	TFNM "Data\World\Merac\ska\texture\watchtower b_tree tile_si.tex";
+    "watchtower window tile_si"	TFNM "Data\World\Merac\ska\texture\watchtower window tile_si.tex";
+    "w3_chain"	TFNM "Data\World\Merac\ska\texture\w3_chain.tex";
+    "w3_Theifhouse_tent03"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_tent03.tex";
+    "w3_towertrash"	TFNM "Data\World\Merac\ska\texture\w3_towertrash.tex";
+  }
+  ALLFRAMESBBOX	-5.54292,-0.061934,-6.48775,5.54329,25.7584,6.48775;
+  COLISION
+  {
+  }
+}

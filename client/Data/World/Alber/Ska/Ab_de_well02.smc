@@ -1,0 +1,13 @@
+NAME "Ab_de_well02";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_well02.bm";
+  TEXTURES   
+  {
+    "ab_de_well01_01"	TFNM "Data\World\Alber\Ska\Texture\ab_de_well01_01.tex";
+    "Ab_de_TriumphalArch06"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch06.tex";
+  }
+  ALLFRAMESBBOX	-2.53252,-0.12423,-2.53252,2.68355,1.61746,2.53252;
+  COLISION
+  {
+  }
+}

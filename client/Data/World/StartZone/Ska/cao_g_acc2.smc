@@ -1,0 +1,13 @@
+NAME "cao_g_acc2";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\cao_g_acc2.bm";
+  TEXTURES   
+  {
+    "cao_wall2"	TFNM "Data\World\StartZone\Ska\Texture\cao_wall2.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-13.856,-0.76584,-15.1881,13.856,5.73533,15.1881;
+  COLISION
+  {
+  }
+}

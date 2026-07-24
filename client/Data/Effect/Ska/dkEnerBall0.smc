@@ -1,0 +1,15 @@
+OFFSET    	0,-1,0,0,0,0;
+NAME "mEnerBall0";
+{
+  MESH       	TFNM "Data\effect\SKA\mEnerBall0.bm";
+  TEXTURES   
+  {
+    "mEnerBall"	TFNM "Data\effect\TEXTURE\deathknight_black01.tex";
+  }
+  SKELETON  	TFNM "Data\effect\SKA\mEnerBall0.bs";
+  ANIMSET   	TFNM "Data\effect\SKA\mEnerBall0.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_ft_oubli";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_ft_oubli.bm";
+  TEXTURES   
+  {
+    "ma_ft_oubli"	TFNM "Data\Item\Shield\Mage\Texture\ma_ft_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.356952,-0.000315,-0.279933,0.356952,0.901271,0.075686;
+  COLISION
+  {
+  }
+}

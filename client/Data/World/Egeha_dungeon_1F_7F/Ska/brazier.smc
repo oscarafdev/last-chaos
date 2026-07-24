@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\brazier.bm";
+  TEXTURES   
+  {
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+    "brazier"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\brazier.tex";
+  }
+  ALLFRAMESBBOX	-0.933017,0.001251,-0.421933,0.933017,1.09202,0.421933;
+  COLISION
+  {
+    "Default"  {-0.949588,-0.0173868,-0.422511,0.951324,1.11163,0.473783;}
+  }
+}

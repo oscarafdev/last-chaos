@@ -1,0 +1,13 @@
+NAME "Web_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\web_01.bm";
+  TEXTURES   
+  {
+    "Web_01"	TFNM "Data\World\Tarian\Ska\Texture\Web_01.tex";
+  }
+  ALLFRAMESBBOX	-0.916025,-0.014422,-0.75,0.916025,1.98558,0.75;
+  COLISION
+  {
+    "Default"  {-0.916025,0,-0.75,0.916025,2,0.75;}
+  }
+}

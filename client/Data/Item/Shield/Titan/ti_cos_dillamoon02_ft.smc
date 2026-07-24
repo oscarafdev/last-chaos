@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_cos_dillamoon02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_dillamoon02_ft.bm";
+  TEXTURES   
+  {
+    "ti_cos_dillamoon02_ft"	TFNM "Data\Item\Shield\Titan\Texture\ti_cos_dillamoon02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.432983,-0.011371,-0.229319,0.432964,0.760841,0.20305;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="400" h="308" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="is_back" x="0" y="0" w="288" h="308" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="409" r="69" b="478" unit="23" splitmode="2">
+        <UIImage id="move_area" x="0" y="0" w="268" h="22" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIText x="26" y="5" w="238" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="1640" str="메신저 대화" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIButton id="btn_close" x="269" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="211" t="33" r="227" b="49" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="229" t="33" r="245" b="49" />
+            <copyuv src="0" dst="3" />
+        </UIButton>
+        <UIImageSplit x="5" y="23" w="278" h="22" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="106" t="456" r="136" b="486" unit="15" splitmode="2" />
+        <UIImageSplit x="5" y="47" w="278" h="230" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="106" t="456" r="136" b="486" unit="15" splitmode="2" />
+        <UIImageSplit x="5" y="278" w="278" h="22" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="106" t="456" r="136" b="486" unit="15" splitmode="2" />
+        <UIText id="text_memberlist" x="25" y="28" w="235" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="대화 참가인원 ( 2 )" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIList id="list_chat" x="5" y="47" w="278" h="231" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="5" itemy="5" itemshow_num="13" itemgap="1" item_count="0" pre_create="0">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIScrollBar x="0" y="0" w="278" h="230" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="17" item_count="0" item_per_page="13">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+                <button2 x="0" y="-2" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+                <thumb x="0" y="0" w="10" h="210" unit="10" l="185" t="32" r="195" b="71" />
+            </UIScrollBar>
+            <UIListItem id="list_item_001" x="5" y="5" w="260" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UITextBoxEx id="tbex_contents" x="0" y="0" w="260" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+            </UIListItem>
+        </UIList>
+        <UIEdit id="edit_input" x="10" y="281" w="250" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" max="256" passwd="0" cursor_move="1" only_num="0">
+            <CandidateUV l="0" t="0" r="0" b="0" />
+            <ReadUV l="0" t="0" r="0" b="0" />
+            <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+        </UIEdit>
+        <UICheck id="chk_member" x="267" y="28" w="13" h="13" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="230" t="161" r="243" b="174" />
+            <check l="230" t="147" r="243" b="160" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UICheck id="chk_chatcolor" x="267" y="283" w="13" h="13" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" edge="0">
+            <color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xf2f2f2ff" />
+            <none l="230" t="161" r="243" b="174" />
+            <check l="230" t="147" r="243" b="160" />
+            <none_disable l="0" t="0" r="0" b="0" />
+            <check_disable l="0" t="0" r="0" b="0" />
+        </UICheck>
+    </UIImageSplit>
+    <UIImageSplit id="is_memberlist" x="290" y="22" w="111" h="42" hide="1" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="164" t="45" r="186" b="68" unit="7" splitmode="2">
+        <UIList id="list_member" x="0" y="0" w="84" h="44" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="5" itemy="5" itemshow_num="2" itemgap="2" item_count="0" pre_create="0">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem id="list_item_001" x="5" y="5" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIText id="text_name" x="0" y="0" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="한글한글한글한글" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIListItem>
+        </UIList>
+    </UIImageSplit>
+    <UIImage id="img_color" x="290" y="259" w="48" h="48" hide="1" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="328" t="177" r="358" b="207">
+        <UIArray id="array_color" x="0" y="0" w="48" h="48" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="3" col="3" sx="0" sy="0" gapx="0" gapy="0" show_row="3">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <mouse_over x="0" y="0" w="16" h="16" l="12" t="161" r="23" b="172" />
+            <UIArrayItem id="array_item_001" x="0" y="0" w="16" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+        </UIArray>
+    </UIImage>
+</Window>

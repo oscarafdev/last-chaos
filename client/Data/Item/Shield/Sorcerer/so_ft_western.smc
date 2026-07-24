@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_ft_western";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_ft_western.bm";
+  TEXTURES   
+  {
+    "so_ft_western"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_ft_western.tex";
+  }
+  ALLFRAMESBBOX	-0.311712,-0.009404,-0.162781,0.311712,0.577941,0.131369;
+  COLISION
+  {
+  }
+}

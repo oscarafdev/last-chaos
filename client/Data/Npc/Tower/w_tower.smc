@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w_tower";
+{
+  MESH       	TFNM "Data\Npc\Tower\_TAG_T_W_TOWER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Tower\w_tower.bm";
+  TEXTURES   
+  {
+    "w_tower"	TFNM "Data\Npc\Tower\Texture\w_tower.tex";
+  }
+  MESH       	TFNM "Data\Npc\Tower\w_crystal.bm";
+  TEXTURES   
+  {
+    "crystal"	TFNM "Data\Npc\Tower\Texture\crystal.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Tower\w_tower.bs";
+  ANIMSET   	TFNM "Data\Npc\Tower\w_tower.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Tower\w_tower.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,7,1.5;
+  COLISION
+  {
+    "idle"  {-1.5,0,-1.5,1.5,7,1.5;}
+  }
+}

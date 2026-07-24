@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_dsword_att";
+{
+  MESH       	TFNM "Data\Effect\Ska\ni_wp\ni_dsword_att.bm";
+  TEXTURES   
+  {
+    "ni_sword_00u"	TFNM "Data\Effect\Ska\ni_wp\ni_sword_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ni_wp\att.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ni_wp\att.ba";
+  ANIMEFFECT	TFNM "Data\Effect\Ska\ni_wp\ni_dsword_att.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

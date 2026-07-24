@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\CusedWever2\c_wever_head.bm";
+  TEXTURES   
+  {
+    "cusedwever_bu"	TFNM "Data\Monster\CusedWever2\cusedwever_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedWever2\c_wever_bu.bm";
+  TEXTURES   
+  {
+    "cusedwever_bu"	TFNM "Data\Monster\CusedWever2\cusedwever_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedWever2\c_wever_hn.bm";
+  TEXTURES   
+  {
+    "cusedwever_bu"	TFNM "Data\Monster\CusedWever2\cusedwever_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedWever2\c_wever_arm.bm";
+  TEXTURES   
+  {
+    "cusedwever_bu"	TFNM "Data\Monster\CusedWever2\cusedwever_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedWever2\c_wever_bd.bm";
+  TEXTURES   
+  {
+    "cusedwever_bd"	TFNM "Data\Monster\CusedWever2\cusedwever_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedWever2\c_wever_leg.bm";
+  TEXTURES   
+  {
+    "cusedwever_bd"	TFNM "Data\Monster\CusedWever2\cusedwever_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedWever2\_TAG_CUSEDWEVER_SWORD.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\CusedWever2\cusedwever_sword.bm";
+  TEXTURES   
+  {
+    "cusedwever_sword"	TFNM "Data\Monster\CusedWever2\cusedwever_sword.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\CusedWever2\cusedwever.bs";
+  ANIMSET   	TFNM "Data\Monster\CusedWever2\cusedwever.ba";
+  ANIMEFFECT	TFNM "Data\Monster\CusedWever2\cused_wever2.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.85,0.75,2.7,0.85;
+  COLISION
+  {
+    "Default"  {-0.540405,0.000965595,-0.775704,0.659595,2.70097,0.624316;}
+  }
+}

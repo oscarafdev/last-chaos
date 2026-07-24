@@ -1,0 +1,14 @@
+NAME "ring_in_e";
+{
+  MESH       	TFNM "Data\Effect\SKA\ring_in_e.bm";
+  TEXTURES   
+  {
+    "Healer_weapon_plus_ring"	TFNM "Data\Effect\TEXTURE\Healer_weapon_plus_ring.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\SKA\ring_in_e.bs";
+  ANIMSET   	TFNM "Data\Effect\SKA\ring_in_e.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

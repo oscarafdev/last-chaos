@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "handr";
+{
+  MESH       	TFNM "Data\Effect\Ska\handr.bm";
+  TEXTURES   
+  {
+    "handr"	TFNM "Data\Effect\Ska\handr.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\handr.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\handp.ba";
+  ALLFRAMESBBOX	-0.526745,-3.58733,-0.069557,0.526745,2.86869,0.069557;
+  COLISION
+  {
+  }
+}

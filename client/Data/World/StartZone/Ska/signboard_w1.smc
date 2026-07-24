@@ -1,0 +1,13 @@
+NAME "signboard_w1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\signboard_w1.bm";
+  TEXTURES   
+  {
+    "sign board_w1"	TFNM "Data\World\StartZone\Ska\Texture\sign board_w1.tex";
+  }
+  ALLFRAMESBBOX	-0.925873,-0.011011,-0.543645,0.925874,5.282,0.543628;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,5,0.5;}
+  }
+}

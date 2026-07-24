@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Normal_LeadingBand_summons";
+{
+  MESH       	TFNM "Data\Monster\Leadingband\n body.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\n handG.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\pants.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\ma_staff_10.bm";
+  TEXTURES   
+  {
+    "ma_staff_011"	TFNM "Data\Monster\Leadingband\ma_staff_011.tex";
+    "ma_staff_011"	TFNM "Data\Monster\Leadingband\ma_staff_011.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\boots_Nor.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\hair_Nor.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\head_Nor.bm";
+  TEXTURES   
+  {
+    "Normal_LeadingBand"	TFNM "Data\Monster\Leadingband\Normal_LeadingBand.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\_TAG_NLBS.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\_TAG_T_NLBSS.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Leadingband\Normal_LeadingBand_Scholar.bs";
+  ANIMSET   	TFNM "Data\Monster\Leadingband\Normal_LeadingBand_Scholar.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Leadingband\Normal_LeadingBand_Summons.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2.1,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.1,0.5;}
+  }
+}

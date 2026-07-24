@@ -1,0 +1,17 @@
+NAME "w2_angelstone";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_angelstone.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_altarstone1"	TFNM "Data\World\Dratan\Ska\Texture\w2_altarstone1.tex";
+    "w2_altarstone2"	TFNM "Data\World\Dratan\Ska\Texture\w2_altarstone2.tex";
+    "w2_altarstone3"	TFNM "Data\World\Dratan\Ska\Texture\w2_altarstone3.tex";
+    "w2_wi_body"	TFNM "Data\World\Dratan\Ska\Texture\w2_wi_body.tex";
+    "w2_wi_sword"	TFNM "Data\World\Dratan\Ska\Texture\w2_wi_sword.tex";
+  }
+  ALLFRAMESBBOX	-5.67548,-0.016034,-3.32582,5.67549,19.1212,3.32582;
+  COLISION
+  {
+  }
+}

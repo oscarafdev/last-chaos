@@ -1,0 +1,12 @@
+NAME "Invisible";
+{
+  MESH       	TFNM "Data\Effect\SKA\ArrowNormal_tag.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1,0.5;
+  COLISION
+  {
+    "Default"  {-0.0283215,0,-0.024563,0.0283215,0.840496,0.024563;}
+  }
+}

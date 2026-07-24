@@ -1,0 +1,13 @@
+NAME "quest_box";
+{
+  MESH       	TFNM "Data\Item\Common\quest_box.bm";
+  TEXTURES   
+  {
+    "quest_box"	TFNM "Data\Item\Common\Texture\quest_box.tex";
+  }
+  ALLFRAMESBBOX	-0.209156,-0.017831,-0.421257,0.209156,0.775083,0.137124;
+  COLISION
+  {
+    "Default"  {-0.209156,-0.017831,-0.421257,0.209156,0.475083,0.137125;}
+  }
+}

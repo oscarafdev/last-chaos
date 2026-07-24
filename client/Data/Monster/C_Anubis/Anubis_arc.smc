@@ -1,0 +1,86 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "anubis_arc";
+{
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_hair_1.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_hair_2.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_hair_3.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_hair_4.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_hair_5.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_hair_6.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_bu.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_lhn.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_rhn.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_bd.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_bow.bm";
+  TEXTURES   
+  {
+    "Anubis_arc_bow"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc_bow.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_bowtong.bm";
+  TEXTURES   
+  {
+    "Anubis_arc_bow"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc_bow.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_sk.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_arc_etc.bm";
+  TEXTURES   
+  {
+    "anubis_arc"	TFNM "Data\Monster\C_Anubis\Texture\Anubis_arc.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\_TAG_T_ARCBOW.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\C_Anubis\anubis_arc.bs";
+  ANIMSET   	TFNM "Data\Monster\C_Anubis\anubis_arc.ba";
+  ANIMEFFECT	TFNM "Data\Monster\C_Anubis\Anubis_arc.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

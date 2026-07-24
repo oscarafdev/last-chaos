@@ -1,0 +1,34 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_cake3";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\_TAG_T_CAKE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\_TAG_T_CAKE01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\_TAG_T_CAKE02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\_TAG_T_CAKE03.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_cake3.bm";
+  TEXTURES   
+  {
+    "so_cake3"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_cake3.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_cake3_1.bm";
+  TEXTURES   
+  {
+    "so_hair_000"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.134263,1.63211,-0.159193,0.13334,2.10976,0.131575;
+  COLISION
+  {
+  }
+}

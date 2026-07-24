@@ -1,0 +1,12 @@
+NAME "flag01_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\flag01_G.bm";
+  TEXTURES   
+  {
+    "flag01_G"	TFNM "Data\World\Guild\Ska\Texture\flag01_G.tex";
+  }
+  ALLFRAMESBBOX	-0.998989,0.000507,0,0.998989,8.15745,0;
+  COLISION
+  {
+  }
+}

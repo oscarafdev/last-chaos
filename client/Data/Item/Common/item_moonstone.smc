@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "item_moonstone";
+{
+  MESH       	TFNM "Data\Item\Common\_TAG_T_ITEM_MOOMSTONE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Common\moonstone.bm";
+  TEXTURES   
+  {
+    "item_moonstone"	TFNM "Data\Item\Common\Texture\item_moonstone.tex";
+  }
+  MESH       	TFNM "Data\Item\Common\moonstone_ring.bm";
+  TEXTURES   
+  {
+    "item_moonstone"	TFNM "Data\Item\Common\Texture\item_moonstone.tex";
+  }
+  SKELETON  	TFNM "Data\Item\Common\moonstone.bs";
+  ANIMSET   	TFNM "Data\Item\Common\moonstone.ba";
+  ALLFRAMESBBOX	-0.25,0,-0.25,0.25,0.5,0.25;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,0.5,0.25;}
+  }
+}

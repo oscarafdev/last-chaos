@@ -1,0 +1,18 @@
+NAME "w4_store_03";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_statue_00.bm";
+  TEXTURES   
+  {
+    "Egeha_statue_05"	TFNM "Data\World\egeha\ska\texture\Egeha_statue_05.tex";
+    "Egeha_statue_01"	TFNM "Data\World\egeha\ska\texture\Egeha_statue_01.tex";
+    "Egeha_statue_02"	TFNM "Data\World\egeha\ska\texture\Egeha_statue_02.tex";
+    "Egeha_statue_03"	TFNM "Data\World\egeha\ska\texture\Egeha_statue_03.tex";
+    "Egeha_statue_04"	TFNM "Data\World\egeha\ska\texture\Egeha_statue_04.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\egeha\ska\texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-2.38792,-0.206205,-2.38792,2.38792,12.3726,2.38792;
+  COLISION
+  {
+    "Default"  {-2.38792,-0.206205,-2.38792,2.38792,12.3875,2.38792;}
+  }
+}

@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_cos_kailooks02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_cos_kailooks02_ft01.bm";
+  TEXTURES   
+  {
+    "ma_cos_kailooks02_ft01"	TFNM "Data\Item\Shield\Mage\Texture\ma_cos_kailooks02_ft01.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_cos_kailooks02_ft02.bm";
+  TEXTURES   
+  {
+    "ma_cos_kailooks02_ft02"	TFNM "Data\Item\Shield\Mage\Texture\ma_cos_kailooks02_ft02.tex";
+  }
+  ALLFRAMESBBOX	-0.363334,-0.001187,-0.249489,0.363334,1.01122,0.092285;
+  COLISION
+  {
+  }
+}

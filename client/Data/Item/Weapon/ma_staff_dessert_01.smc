@@ -1,0 +1,17 @@
+OFFSET    	0.2,-1.05,0.6,110,0,0;
+NAME "ma_staff_000";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_STAFF_dessert_01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_staff_dessert_01.bm";
+  TEXTURES   
+  {
+    "ma_staff_dessert_01"	TFNM "Data\Item\Weapon\Texture\ma_staff_dessert_01.tex";
+  }
+  ALLFRAMESBBOX	-0.835994,-0.00848091,-0.449293,1.11441,0.241805,0.340436;
+  COLISION
+  {
+  }
+}

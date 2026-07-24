@@ -1,0 +1,12 @@
+NAME "td_nick";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_nick.bm";
+  TEXTURES   
+  {
+    "td_altar_03"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_altar_03.tex";
+  }
+  ALLFRAMESBBOX	-2.4483,0,-1e-006,2.4483,14.0002,0;
+  COLISION
+  {
+  }
+}

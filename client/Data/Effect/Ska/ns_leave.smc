@@ -1,0 +1,24 @@
+NAME "ns_leave";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_leave1.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_leave.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_leave2.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_leave.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_leave3.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_leave.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_leave.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\leave.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

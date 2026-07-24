@@ -1,0 +1,13 @@
+NAME "Scull_AA";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\Scull_AA.bm";
+  TEXTURES   
+  {
+    "Scull_AA"	TFNM "Data\World\tarian_dungeon\Ska\Texture\Scull_AA.tex";
+  }
+  ALLFRAMESBBOX	-0.956414,0,-0.23957,0.956414,1.35364,0.23957;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

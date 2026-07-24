@@ -1,0 +1,19 @@
+NAME "w2_prymidjewel";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\_TAG_T_JEWEL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramidjewel.bm";
+  TEXTURES   
+  {
+    "w2_pyramidjewel"	TFNM "Data\World\Dratan\Ska\Texture\w2_pyramidjewel.tex";
+    "w2_pyramidjewel_1"	TFNM "Data\World\Dratan\Ska\Texture\w2_pyramidjewel_1.tex";
+  }
+  ANIMSET   	TFNM "Data\World\Dratan\Ska\w2_pyramidjewel.ba";
+  ANIMEFFECT	TFNM "Data\World\Dratan\Ska\w2_prymidjewel.bae";
+  ALLFRAMESBBOX	-4.04645,-0.025082,-4.04665,4.04648,98.8319,4.04664;
+  COLISION
+  {
+  }
+}

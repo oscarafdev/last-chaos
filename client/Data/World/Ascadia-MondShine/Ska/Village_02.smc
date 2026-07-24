@@ -1,0 +1,17 @@
+NAME "AM-Stone_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\Village_02.bm";
+  TEXTURES   
+  {
+    "w6_buildingB04"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_buildingB04.tex";
+    "w6_buildingB01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_buildingB01.tex";
+    "w6_buildingB03"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_buildingB03.tex";
+    "w6_buildingB02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_buildingB02.tex";
+    "w6_flag01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_flag01.tex";
+  }
+  ALLFRAMESBBOX	-31.4319,-0.026491,-37.2165,31.4883,39.2219,19.7588;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

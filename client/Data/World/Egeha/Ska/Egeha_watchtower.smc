@@ -1,0 +1,17 @@
+NAME "Egeha_watchtower";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_watchtower.bm";
+  TEXTURES   
+  {
+    "Egeha_watchtower_01"	TFNM "Data\World\egeha\ska\texture\Egeha_watchtower_01.tex";
+    "Egeha_watchtower_01b"	TFNM "Data\World\egeha\ska\texture\Egeha_watchtower_01b.tex";
+    "Egeha_watchtower_02"	TFNM "Data\World\egeha\ska\texture\Egeha_watchtower_02.tex";
+    "Egeha_watchtower_03"	TFNM "Data\World\egeha\ska\texture\Egeha_watchtower_03.tex";
+    "Egeha_watchtower_04"	TFNM "Data\World\egeha\ska\texture\Egeha_watchtower_04.tex";
+  }
+  ALLFRAMESBBOX	-2.32397,-0.289315,-2.39893,2.32397,14.395,3.31516;
+  COLISION
+  {
+    "Default"  {-2.32397,-0.289315,-2.39893,2.32397,14.3951,3.31517;}
+  }
+}

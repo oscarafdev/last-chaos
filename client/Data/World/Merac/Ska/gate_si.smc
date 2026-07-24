@@ -1,0 +1,13 @@
+NAME "gate_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\gate_si.bm";
+  TEXTURES   
+  {
+    "towergate_si_01"	TFNM "Data\World\Merac\ska\texture\towergate_si_01.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-7.58782,-0.229348,-1.3051,7.5878,18.8617,1.30508;
+  COLISION
+  {
+  }
+}

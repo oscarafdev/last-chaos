@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_hair_007";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hair_007.bm";
+  TEXTURES   
+  {
+    "ni_hair_007"	TFNM "Data\Item\Shield\Knight\Texture\ni_hair_007.tex";
+  }
+  ALLFRAMESBBOX	-0.097364,1.71128,-0.136179,0.111223,1.98947,0.121008;
+  COLISION
+  {
+  }
+}

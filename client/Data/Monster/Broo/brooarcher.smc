@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "brooarcher";
+{
+  MESH       	TFNM "Data\monster\broo\brooarcher.bm";
+  TEXTURES   
+  {
+    "brooarcher"	TFNM "Data\monster\broo\brooarcher.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\brooarcher_1.bm";
+  TEXTURES   
+  {
+    "brooarcher"	TFNM "Data\monster\broo\brooarcher.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\brooarcher_2.bm";
+  TEXTURES   
+  {
+    "brooarcher"	TFNM "Data\monster\broo\brooarcher.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\_TAG_archer.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\broo\brooarcher.bs";
+  ANIMSET   	TFNM "Data\monster\broo\brooarcher.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Broo\brooarcher.bae";
+  ALLFRAMESBBOX	-4,0,-4,4,3,4;
+  COLISION
+  {
+    "Default"  {-1.02748,0,-1.11918,0.925332,3.02519,0.616207;}
+  }
+}

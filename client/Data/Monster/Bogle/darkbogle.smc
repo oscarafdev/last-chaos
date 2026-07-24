@@ -1,0 +1,37 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Bogle\darkbogle_bu.bm";
+  TEXTURES   
+  {
+    "dark_bogle"	TFNM "Data\Monster\Bogle\dark_bogle.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bogle\darkbogle_hn_1.bm";
+  TEXTURES   
+  {
+    "dark_bogle"	TFNM "Data\Monster\Bogle\dark_bogle.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bogle\darkbogle_hn_2.bm";
+  TEXTURES   
+  {
+    "dark_bogle"	TFNM "Data\Monster\Bogle\dark_bogle.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bogle\darkbogle_bd.bm";
+  TEXTURES   
+  {
+    "dark_bogle"	TFNM "Data\Monster\Bogle\dark_bogle.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bogle\darkbogle_bd_1.bm";
+  TEXTURES   
+  {
+    "dark_bogle"	TFNM "Data\Monster\Bogle\dark_bogle.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Bogle\darkbogle.bs";
+  ANIMSET   	TFNM "Data\Monster\Bogle\darkbogle.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Bogle\darkbogle.bae";
+  ALLFRAMESBBOX	-2.5,0,-2,2.5,2.3,2;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.65,0.5,1.5,0.65;}
+  }
+}

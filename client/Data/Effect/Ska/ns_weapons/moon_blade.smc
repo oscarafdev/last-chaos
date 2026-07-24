@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "moon_blade";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade01.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade02.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade03.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade04.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade05.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade06.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moon_blade07.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.ba";
+  ALLFRAMESBBOX	-0.08,-0.073689,-0.08,0.08,0.086312,0.08;
+  COLISION
+  {
+  }
+}

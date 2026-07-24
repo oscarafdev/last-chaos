@@ -1,0 +1,13 @@
+NAME "plant_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\Planet_04.bm";
+  TEXTURES   
+  {
+    "plant_01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\plant_01.tex";
+  }
+  ALLFRAMESBBOX	-0.418558,-0.002699,0,0.414712,0.967669,0;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_drop";
+{
+  MESH       	TFNM "Data\Item\Common\worldcupball.bm";
+  TEXTURES   
+  {
+    "worldcupball"	TFNM "Data\Item\Common\Texture\worldcupball.tex";
+  }
+  ALLFRAMESBBOX	-0.3,0,-0.3,0.3,0.3,0.3;
+  COLISION
+  {
+  }
+}

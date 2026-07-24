@@ -1,0 +1,19 @@
+NAME "soulofnightshadow";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\_TAG_ns_soul_wp.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\soul_weapon\ns_wp.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ns_soul.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ns_idle01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\soulofnightshadow.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2.5,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.5,0.5;}
+  }
+}

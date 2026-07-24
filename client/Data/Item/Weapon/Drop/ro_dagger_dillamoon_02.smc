@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_dagger_dillamoon_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ro_dagger_dillamoon_02.bm";
+  TEXTURES   
+  {
+    "ro_dagger_dillamoon_02"	TFNM "Data\Item\Weapon\Texture\ro_dagger_dillamoon_02.tex";
+  }
+  ALLFRAMESBBOX	-0.197866,0.005183,-0.428359,0.239286,0.07321,0.311778;
+  COLISION
+  {
+  }
+}

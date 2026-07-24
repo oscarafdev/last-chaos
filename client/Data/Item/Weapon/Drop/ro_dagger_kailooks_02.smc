@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_dagger_kailooks_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ro_dagger_kailooks_02.bm";
+  TEXTURES   
+  {
+    "ro_dagger_kailooks_02"	TFNM "Data\Item\Weapon\Texture\ro_dagger_kailooks_02.tex";
+  }
+  ALLFRAMESBBOX	-0.294322,0.004122,-0.427122,0.295599,0.111285,0.376306;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,16 @@
+NAME "so_wp_soul_sta";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\Plane02.bm";
+  TEXTURES   
+  {
+    "so_staff_019"	TFNM "Data\Npc\soul_weapon\so_staff_019.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\so_wp_soul_sta.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\so_wp_soul_sta.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\so_wp_soul_sta.bae";
+  ALLFRAMESBBOX	-0.137371,0,-0.136732,0.139561,2.55,0.137128;
+  COLISION
+  {
+    "Default"  {-0.15,0,-0.15,0.15,2.55,0.15;}
+  }
+}

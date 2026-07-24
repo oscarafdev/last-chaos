@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "doomslayer";
+{
+  MESH       	TFNM "Data\Monster\Encordemon\encordemon.bm";
+  TEXTURES   
+  {
+    "endemicdemon"	TFNM "Data\Monster\Encordemon\endemicdemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Encordemon\Object01.bm";
+  TEXTURES   
+  {
+    "bocordemon_01"	TFNM "Data\Monster\Encordemon\bocordemon_01.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Encordemon\encordemon.bs";
+  ANIMSET   	TFNM "Data\Monster\Encordemon\encordemon_walk.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Encordemon\encordemon.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.9,0.75,2.7,0.9;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,2.3,0.6;}
+  }
+}

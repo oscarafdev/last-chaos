@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "d_golem_blood";
+{
+  MESH       	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood.bm";
+  TEXTURES   
+  {
+    "d_golem_blood"	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood_bd.bm";
+  TEXTURES   
+  {
+    "d_golem_blood"	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood_hn.bm";
+  TEXTURES   
+  {
+    "d_golem_blood_hn"	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\_TAG_T_DGB.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood.bs";
+  ANIMSET   	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood.ba";
+  ANIMEFFECT	TFNM "Data\Monster\D_Golem\Roteye_d_golem_blood.bae";
+  ALLFRAMESBBOX	-1.31299,-0.341739,-2.17444,2.11315,2.78854,2.49363;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

@@ -1,0 +1,13 @@
+NAME "sd_window_01";
+{
+  MESH       	TFNM "Data\world\S_Dungeon1\Ska\sd_window_01.bm";
+  TEXTURES   
+  {
+    "sd_window_01"	TFNM "Data\world\S_Dungeon1\Ska\Texture\sd_window_01.tex";
+    "Dengen1_Detail"	TFNM "Data\world\S_Dungeon1\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.047124,-0.00145,-1.22674,0.047124,6.24169,1.22674;
+  COLISION
+  {
+  }
+}

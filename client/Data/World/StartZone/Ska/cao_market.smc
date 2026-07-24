@@ -1,0 +1,32 @@
+NAME "cao_market";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\cao_market.bm";
+  TEXTURES   
+  {
+    "cao_amor2"	TFNM "Data\World\StartZone\Ska\Texture\cao_amor2.tex";
+    "cao_amor"	TFNM "Data\World\StartZone\Ska\Texture\cao_amor.tex";
+    "cao_StartZonetile_roof03"	TFNM "Data\World\StartZone\Ska\Texture\cao_StartZonetile_roof03.tex";
+    "cao_house_01"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_01.tex";
+    "cao_house_02"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_02.tex";
+    "cao_house_02_2"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_02_2.tex";
+    "cao_house_03"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_03.tex";
+    "cao_ma"	TFNM "Data\World\StartZone\Ska\Texture\cao_ma.tex";
+    "cao_shop_001"	TFNM "Data\World\StartZone\Ska\Texture\cao_shop_001.tex";
+    "cao_shop_002"	TFNM "Data\World\StartZone\Ska\Texture\cao_shop_002.tex";
+    "cao_StartZonetile_roof02"	TFNM "Data\World\StartZone\Ska\Texture\cao_StartZonetile_roof02.tex";
+    "w4_market-2"	TFNM "Data\World\StartZone\Ska\Texture\w4_market-2.tex";
+    "w4_market-3"	TFNM "Data\World\StartZone\Ska\Texture\w4_market-3.tex";
+    "w4_market"	TFNM "Data\World\StartZone\Ska\Texture\w4_market.tex";
+    "w4_weapon-3"	TFNM "Data\World\StartZone\Ska\Texture\w4_weapon-3.tex";
+    "cao_mana"	TFNM "Data\World\StartZone\Ska\Texture\cao_mana.tex";
+    "potion"	TFNM "Data\World\StartZone\Ska\Texture\potion.tex";
+    "cao_shop_001"	TFNM "Data\World\StartZone\Ska\Texture\cao_shop_001.tex";
+    "cao_shop_001"	TFNM "Data\World\StartZone\Ska\Texture\cao_shop_001.tex";
+    "cao_potion"	TFNM "Data\World\StartZone\Ska\Texture\cao_potion.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-11.5731,-0.784812,-6.7253,11.574,8.65715,6.73188;
+  COLISION
+  {
+  }
+}

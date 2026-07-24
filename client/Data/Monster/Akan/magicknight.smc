@@ -1,0 +1,40 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "magicknight";
+{
+  MESH       	TFNM "Data\Monster\Akan\magicknight\_TAG_AKMKS.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Akan\magicknight\_TAG_T_AKMK.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akan\magicknight\akan_kn_bd.bm";
+  TEXTURES   
+  {
+    "Akanmknight_bd_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_bd_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\magicknight\akan_kn_bu01.bm";
+  TEXTURES   
+  {
+    "Akanmknight_bu_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_bu_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\magicknight\akan_kn_hm.bm";
+  TEXTURES   
+  {
+    "Akanmknight_hm_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_hm_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\magicknight\akan_kn_Sword.bm";
+  TEXTURES   
+  {
+    "Akanmknight_sword"	TFNM "Data\Monster\akan\Texture\Akanmknight_sword.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\akan\magicknight\mknight.bs";
+  ANIMSET   	TFNM "Data\Monster\akan\magicknight\magicknight.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Akan\magicknight\magicknight.bae";
+  ALLFRAMESBBOX	-1.60857,-0.128632,-3.09356,1.6164,3.13713,2.43252;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

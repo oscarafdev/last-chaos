@@ -1,0 +1,14 @@
+NAME "w2_pyramidturf";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramidturf.bm";
+  TEXTURES   
+  {
+    "w2_box_grass_a"	TFNM "Data\World\Dratan\Ska\Texture\w2_box_grass_a.tex";
+    "w2_altar2"	TFNM "Data\World\Dratan\Ska\Texture\w2_altar2.tex";
+    "w2_box_grass"	TFNM "Data\World\Dratan\Ska\Texture\w2_box_grass.tex";
+  }
+  ALLFRAMESBBOX	-12.6562,-0.00692,-26.0989,12.6562,0.546639,26.0989;
+  COLISION
+  {
+  }
+}

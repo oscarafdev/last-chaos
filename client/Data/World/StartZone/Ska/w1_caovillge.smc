@@ -1,0 +1,12 @@
+NAME "w1_caovillge";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_caovillge.bm";
+  TEXTURES   
+  {
+    "earth_03-02"	TFNM "Data\World\StartZone\Texture\earth_03-02.tex";
+  }
+  ALLFRAMESBBOX	-209,-2.86649,-188.634,218.879,88.0509,184.039;
+  COLISION
+  {
+  }
+}

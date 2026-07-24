@@ -1,0 +1,13 @@
+NAME "deco_05";
+{
+  MESH       	TFNM "Data\World\akantemple\Ska\bbox_02.bm";
+  TEXTURES   
+  {
+    "ma"	TFNM "Data\World\akantemple\Ska\Texture\ma.tex";
+  }
+  ALLFRAMESBBOX	-0.403144,-0.002141,-0.401437,0.403144,0.888758,0.401437;
+  COLISION
+  {
+    "Default"  {-0.416762,-0.008986,-0.398642,0.385068,0.901506,0.392663;}
+  }
+}

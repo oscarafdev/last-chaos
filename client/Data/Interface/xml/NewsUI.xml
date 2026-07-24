@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="NewsUI" x="0" y="0" w="796" h="500" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="796" h="500" hide="0" tex="notice_all.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="500" r="796" b="1000" />
+    <UIButton id="btn_close" x="776" y="5" w="16" h="16" hide="0" tex="notice_all.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="751" t="21" r="767" b="37" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="769" t="21" r="785" b="37" />
+        <uv type="3" l="769" t="21" r="785" b="37" />
+    </UIButton>
+    <UIButton id="btn_prev" x="352" y="461" w="11" h="19" hide="0" tex="notice_all.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="751" t="0" r="762" b="19" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="779" t="0" r="790" b="19" />
+        <uv type="3" l="779" t="0" r="790" b="19" />
+    </UIButton>
+    <UIButton id="btn_next" x="424" y="461" w="11" h="19" hide="0" tex="notice_all.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xffffffff">
+        <uv type="0" l="765" t="0" r="776" b="19" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="793" t="0" r="804" b="19" />
+        <uv type="3" l="793" t="0" r="804" b="19" />
+    </UIButton>
+    <UIText id="text_page" x="-4" y="-20" w="40" h="16" hide="0" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="-1" str="0 / 1" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_title" x="0" y="26" w="500" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="252" str="공지사항" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="19" y="77" w="110" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6427" str="날짜 / 시간" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="132" y="76" w="645" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6428" str="공지 내용" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIList id="list_news" x="17" y="95" w="761" h="357" hide="0" tex="notice_all.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="9" itemgap="3" item_count="10" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="761" h="33" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText id="text_time" x="4" y="10" w="103" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="2014/10/15 20:10" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_content" x="115" y="10" w="643" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="..." color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIBase id="drag_area" x="0" y="0" w="756" h="64" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" />
+</Window>

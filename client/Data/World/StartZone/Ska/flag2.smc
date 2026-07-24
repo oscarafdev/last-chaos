@@ -1,0 +1,15 @@
+NAME "potaL";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\flag02.bm";
+  TEXTURES   
+  {
+    "castledoor_08"	TFNM "Data\world\StartZone\Ska\Texture\castledoor_08.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\flag2.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\flag2.ba";
+  ALLFRAMESBBOX	-1.4458,0.00412085,-0.389177,1.45146,5.4844,0.304932;
+  COLISION
+  {
+    "Default"  {-0.450064,0.348988,-0.441976,0.431744,0.958383,0.479535;}
+  }
+}

@@ -1,0 +1,51 @@
+OFFSET    	0,0.35,0,180,0,0;
+NAME "Nor_LB_Collinca";
+{
+  MESH       	TFNM "Data\Monster\Leadingband\Col_body.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Col_boots.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Col_hair.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Col_hand.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Col_head.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Col_pants.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Col_swordL.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Col_swordR.bm";
+  TEXTURES   
+  {
+    "Nor_LB"	TFNM "Data\Monster\Leadingband\Nor_LB.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Leadingband\Col_LB.bs";
+  ANIMSET   	TFNM "Data\Monster\Leadingband\Nor_LB_Collinca.ba";
+  ALLFRAMESBBOX	-0.4,0,-0.4,0.4,2.6,0.4;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.45,0.35,2.6,0.25;}
+  }
+}

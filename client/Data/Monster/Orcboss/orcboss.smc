@@ -1,0 +1,60 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "orcboss";
+{
+  MESH       	TFNM "Data\monster\orcboss\orcboss_bd.bm";
+  TEXTURES   
+  {
+    "orcboss_bd"	TFNM "Data\monster\orcboss\orcboss_bd.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\orcboss_bd_01.bm";
+  TEXTURES   
+  {
+    "orcboss_bd"	TFNM "Data\monster\orcboss\orcboss_bd.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\orcboss_bu.bm";
+  TEXTURES   
+  {
+    "orcboss_bu"	TFNM "Data\monster\orcboss\orcboss_bu.tex";
+    "orcboss_bd"	TFNM "Data\monster\orcboss\orcboss_bd.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\orcboss_bu_01.bm";
+  TEXTURES   
+  {
+    "orcboss_head"	TFNM "Data\monster\orcboss\orcboss_head.tex";
+    "orcboss_bd"	TFNM "Data\monster\orcboss\orcboss_bd.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\orcboss_ft.bm";
+  TEXTURES   
+  {
+    "orcboss_bd"	TFNM "Data\monster\orcboss\orcboss_bd.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\orcboss_head.bm";
+  TEXTURES   
+  {
+    "orcboss_head"	TFNM "Data\monster\orcboss\orcboss_head.tex";
+    "orcboss_bu"	TFNM "Data\monster\orcboss\orcboss_bu.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\orcboss_hn.bm";
+  TEXTURES   
+  {
+    "orcboss_bu"	TFNM "Data\monster\orcboss\orcboss_bu.tex";
+    "orcboss_bd"	TFNM "Data\monster\orcboss\orcboss_bd.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\orcboss_weapon.bm";
+  TEXTURES   
+  {
+    "orcboss_weapon"	TFNM "Data\monster\orcboss\orcboss_weapon.tex";
+  }
+  MESH       	TFNM "Data\monster\orcboss\_TAG_ef.bm";
+  TEXTURES   
+  {
+    "_TAG_ef"	TFNM "Data\monster\orcboss\_TAG_ef.tex";
+  }
+  SKELETON  	TFNM "Data\monster\orcboss\orcboss.bs";
+  ANIMSET   	TFNM "Data\monster\orcboss\orcboss.ba";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,2.3,2.5;
+  COLISION
+  {
+    "Default"  {-0.9,0,-1.3,0.7,2.4,0.5;}
+  }
+}

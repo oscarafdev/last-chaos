@@ -1,0 +1,61 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "jaguar01leo";
+{
+  MESH       	TFNM "Data\Npc\Pet\jaguar01leo.bm";
+  TEXTURES   
+  {
+    "jaguar01leo"	TFNM "Data\Npc\Pet\snowleo.tex";
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_JAG1leo_HS1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_JAG1leo_HS2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_JAG1leo_HS3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_JAG1leo_HS4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_JAG1leo_HS5.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_JAG1leo_HS6.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_T_JAG01leo_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_T_JAG01leo_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\_TAG_T_JAG01leo.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\jaguar01leo_hs1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\jaguar01leo_hs2.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Pet\jaguar01leo.bs";
+  ANIMSET   	TFNM "Data\Npc\Pet\jaguar01leo.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\jaguar01leo.bae";
+  ALLFRAMESBBOX	-0.4,0,-0.4,0.4,0.5,0.4;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,0.4,0.4;}
+  }
+}

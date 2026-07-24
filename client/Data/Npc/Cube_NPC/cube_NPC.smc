@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "cube_NPC";
+{
+  MESH       	TFNM "Data\Npc\Cube_NPC\_TAG_T_CNPC.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Cube_NPC\cube_NPC.bm";
+  TEXTURES   
+  {
+    "cube_NPC"	TFNM "Data\Npc\Cube_NPC\cube_NPC.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Cube_NPC\cube_NPC.bs";
+  ANIMSET   	TFNM "Data\Npc\Cube_NPC\cube_NPC.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Cube_NPC\cube_NPC.bae";
+  ALLFRAMESBBOX	-0.769293,-0.001403,-0.980882,0.769293,1.35436,0.427804;
+  COLISION
+  {
+    "Default"  {-0.775,0,-0.975,0.775,1.4,0.575;}
+  }
+}

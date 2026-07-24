@@ -1,0 +1,12 @@
+NAME "box1";
+{
+  MESH       	TFNM "Data\World\Egeha\Ska\Egeha_tree_08.bm";
+  TEXTURES   
+  {
+    "Egeha_tree_08"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_tree_08.tex";
+  }
+  ALLFRAMESBBOX	-1.58592,-0.367688,-1.42379,1.50765,3.1259,1.03473;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,58 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "10th_cake-3";
+{
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_5.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_6.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_7.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\_TAG_T_10TH_8.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\10th_cake-3.bm";
+  TEXTURES   
+  {
+    "10th_cake01"	TFNM "Data\Npc\10th_cake\10th_cake01.tex";
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\10th_cake-3_3.bm";
+  TEXTURES   
+  {
+    "10th_cake02"	TFNM "Data\Npc\10th_cake\10th_cake02.tex";
+  }
+  MESH       	TFNM "Data\Npc\10th_cake\10th_cake-3_4.bm";
+  TEXTURES   
+  {
+    "10th_cake02"	TFNM "Data\Npc\10th_cake\10th_cake02.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\10th_cake\10th_cake-3.bs";
+  ANIMSET   	TFNM "Data\Npc\10th_cake\10th_cake-3.ba";
+  ALLFRAMESBBOX	-3.85312,-0.00329484,-3.85066,3.85693,10.0048,3.85939;
+  COLISION
+  {
+    "Default"  {-3.85,0,-3.85,3.85,10,3.85;}
+  }
+}

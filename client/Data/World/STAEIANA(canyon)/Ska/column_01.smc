@@ -1,0 +1,13 @@
+NAME "column_01";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\column_01.bm";
+  TEXTURES   
+  {
+    "column_01"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\column_01.tex";
+  }
+  ALLFRAMESBBOX	-0.442125,0.000298,-0.418884,0.442125,2.83136,0.418884;
+  COLISION
+  {
+    "Default"  {-0.430633,-0.0275577,-0.413787,0.453036,2.95776,0.399795;}
+  }
+}

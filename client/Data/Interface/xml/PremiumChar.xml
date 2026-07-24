@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="NULL" x="0" y="0" w="430" h="520" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_Bg" x="0" y="0" w="430" h="520" hide="0" tex="premium_character.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="430" b="520" />
+    <UIImage id="move_area" x="0" y="0" w="430" h="36" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIButton id="btn_close" x="-2" y="3" w="16" h="16" hide="0" tex="premium_character.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="3" t="549" r="19" b="565" />
+        <uv type="2" l="21" t="549" r="37" b="565" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIText id="str_title" x="0" y="14" w="430" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6341" str="프리미엄 캐릭터 패키지" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_expiretime" x="184" y="57" w="222" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Expiration      2014/08/27 11:01:48" str_ellipsis="" color="0xd28500ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_passive" x="50" y="93" w="330" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6342" str="프리미엄 PASSIVE혜택" str_ellipsis="" color="0xff5928ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_active" x="50" y="293" w="330" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6335" str="프리미엄 ACTIVE혜택" str_ellipsis="" color="0x83b4ffff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_petremote" x="112" y="317" w="264" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6336" str="원격으로 봉인된 펫 부활이 가능합니다." str_ellipsis="" color="0xb9b9b9ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_jump" x="112" y="390" w="264" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6338" str="친구에게 텔레포트가 가능합니다." str_ellipsis="" color="0xb9b9b9ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_petRemote" x="62" y="345" w="30" h="30" hide="0" tex="premium_character.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="227" t="524" r="257" b="554" />
+        <uv type="1" l="262" t="524" r="292" b="554" />
+        <uv type="2" l="297" t="524" r="327" b="554" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_jump" x="62" y="421" w="30" h="30" hide="0" tex="premium_character.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="227" t="559" r="257" b="589" />
+        <uv type="1" l="262" t="559" r="292" b="589" />
+        <uv type="2" l="297" t="559" r="327" b="589" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="180" y="476" w="70" h="22" hide="0" tex="premium_character.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="1420" str="닫기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="3" t="524" r="73" b="546" />
+        <uv type="2" l="76" t="524" r="146" b="546" />
+        <uv type="3" l="149" t="524" r="219" b="546" />
+    </UIButton>
+    <UIList id="list_passive" x="36" y="128" w="370" h="122" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="0" itemgap="3" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar id="scroll_passive" x="0" y="2" w="367" h="117" hide="0" tex="premium_character.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="10" item_count="0" item_per_page="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="52" t0="549" r0="62" b0="559" l1="40" t1="549" r1="50" b1="559" />
+            <button2 x="0" y="0" w="10" h="10" l0="52" t0="561" r0="62" b0="571" l1="40" t1="561" r1="50" b1="571" />
+            <thumb x="0" y="0" w="10" h="97" unit="10" l="65" t="549" r="75" b="588" />
+        </UIScrollBar>
+        <UIListItem x="0" y="0" w="50" h="50" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    </UIList>
+    <UIList id="list_pet" x="120" y="341" w="250" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="0" itemgap="0" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem x="0" y="0" w="50" h="50" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    </UIList>
+    <UIList id="list_jump" x="120" y="417" w="250" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="0" itemgap="0" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem x="0" y="0" w="50" h="50" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    </UIList>
+</Window>

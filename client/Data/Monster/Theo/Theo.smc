@@ -1,0 +1,66 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Theo";
+{
+  MESH       	TFNM "Data\Monster\Theo\_TAG_T_CREST.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Theo\Theo_bu.bm";
+  TEXTURES   
+  {
+    "TheoBody"	TFNM "Data\Monster\Theo\TheoBody.tex";
+  }
+  MESH       	TFNM "Data\Monster\Theo\Theo_Crest.bm";
+  TEXTURES   
+  {
+    "TheoSwords"	TFNM "Data\Monster\Theo\TheoSwords.tex";
+  }
+  MESH       	TFNM "Data\Monster\Theo\Theo_sw_01.bm";
+  TEXTURES   
+  {
+    "TheoSwords"	TFNM "Data\Monster\Theo\TheoSwords.tex";
+  }
+  MESH       	TFNM "Data\Monster\Theo\Theo_sw_02.bm";
+  TEXTURES   
+  {
+    "TheoSwords"	TFNM "Data\Monster\Theo\TheoSwords.tex";
+  }
+  MESH       	TFNM "Data\Monster\Theo\Theo_sw_03.bm";
+  TEXTURES   
+  {
+    "TheoSwords"	TFNM "Data\Monster\Theo\TheoSwords.tex";
+  }
+  MESH       	TFNM "Data\Monster\Theo\Theo_sw_04.bm";
+  TEXTURES   
+  {
+    "TheoSwords"	TFNM "Data\Monster\Theo\TheoSwords.tex";
+  }
+  MESH       	TFNM "Data\Monster\Theo\_TAG_T_H1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Theo\_TAG_T_H2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Theo\_TAG_T_H3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Theo\_TAG_T_H4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Theo\_TAG_T_HEAD.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Theo\Theo.bs";
+  ANIMSET   	TFNM "Data\Monster\Theo\Theo.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Theo\Theo.bae";
+ ALLFRAMESBBOX	-1,0,-1,1,6,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,6,1;}
+  }
+}

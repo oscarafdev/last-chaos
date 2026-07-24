@@ -1,0 +1,9 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\soul_weapon\soulofarcher_start.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\soul_weapon\soulofarcher_idle.AA"
+}

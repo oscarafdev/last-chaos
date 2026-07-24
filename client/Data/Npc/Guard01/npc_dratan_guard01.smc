@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "npc_dratan_guard01";
+{
+  MESH       	TFNM "Data\npc\Guard01\npc_dratan_guard01.bm";
+  TEXTURES   
+  {
+    "w2_02_npc_Guard"	TFNM "Data\npc\Guard01\w2_02_npc_Guard.tex";
+  }
+  MESH       	TFNM "Data\npc\Guard01\npc_dratan_guard01_waepon.bm";
+  TEXTURES   
+  {
+    "w2_02_npc_Guard"	TFNM "Data\npc\Guard01\w2_02_npc_Guard.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Guard01\npc_dratan_guard01.bs";
+  ANIMSET   	TFNM "Data\npc\Guard01\npc_dratan_guard01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Guard01\npc_dratan_guard01.bae";
+  ALLFRAMESBBOX	-0.55,0,-0.55,0.55,2.2,0.55;
+  COLISION
+  {
+    "Default"  {-0.55,0,-0.65,0.55,2.2,0.45;}
+  }
+}

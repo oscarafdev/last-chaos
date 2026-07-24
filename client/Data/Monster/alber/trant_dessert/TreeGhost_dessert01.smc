@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "TreeGhost_dessert01";
+{
+  MESH       	TFNM "Data\Monster\alber\trant_dessert\TreeGhost01.bm";
+  TEXTURES   
+  {
+    "trant_de_02"	TFNM "Data\Monster\alber\trant_dessert\trant_de_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\trant_dessert\TreeGhost02.bm";
+  TEXTURES   
+  {
+    "trant_de_01"	TFNM "Data\Monster\alber\trant_dessert\trant_de_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\trant_dessert\TreeGhost03.bm";
+  TEXTURES   
+  {
+    "trant_de_01"	TFNM "Data\Monster\alber\trant_dessert\trant_de_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\trant_dessert\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\alber\trant_dessert\TreeGhost.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\trant_dessert\TreeGhost.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\trant_dessert\TreeGhost.bae";
+  ALLFRAMESBBOX	-2.44251,-1.55434,-2,2.55749,4.44566,2;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,4,1;}
+  }
+}

@@ -1,0 +1,21 @@
+NAME "td_bookshelf";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_bookshelf.bm";
+  TEXTURES   
+  {
+    "td_bookshelf"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_bookshelf.tex";
+    "books"	TFNM "Data\World\tarian_dungeon\Ska\Texture\books.tex";
+    "old_book"	TFNM "Data\World\tarian_dungeon\Ska\Texture\old_book.tex";
+    "tube02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\tube02.tex";
+    "tube03"	TFNM "Data\World\tarian_dungeon\Ska\Texture\tube03.tex";
+    "tube04"	TFNM "Data\World\tarian_dungeon\Ska\Texture\tube04.tex";
+    "books1"	TFNM "Data\World\tarian_dungeon\Ska\Texture\books1.tex";
+    "books2"	TFNM "Data\World\tarian_dungeon\Ska\Texture\books2.tex";
+    "papaer_box"	TFNM "Data\World\tarian_dungeon\Ska\Texture\papaer_box.tex";
+    "skull"	TFNM "Data\World\tarian_dungeon\Ska\Texture\skull.tex";
+  }
+  ALLFRAMESBBOX	-2.59034,-1e-006,-1.77569,2.59034,5.08393,1.88276;
+  COLISION
+  {
+  }
+}

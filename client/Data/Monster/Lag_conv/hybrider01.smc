@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hybrider01";
+{
+  MESH       	TFNM "Data\Monster\Lag_conv\hybrider01_1.bm";
+  TEXTURES   
+  {
+    "boss_hyb01_01"	TFNM "Data\Monster\Lag_conv\Texture\boss_hyb01_01.tex";
+    "boss_hyb01_02"	TFNM "Data\Monster\Lag_conv\Texture\boss_hyb01_02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lag_conv\hybrider01.bs";
+  ANIMSET   	TFNM "Data\Monster\Lag_conv\hybrider01.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Lag_conv\hybrider01.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,4,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,4,1;}
+  }
+}

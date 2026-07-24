@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\barrack_01.bm";
+  TEXTURES   
+  {
+    "barrack01"	TFNM "Data\World\Tarian\Ska\Texture\barrack01.tex";
+  }
+  ALLFRAMESBBOX	-2.21634,-0.021399,-2.09791,2.21634,2.56705,2.08451;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_fly";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\_TAG_T_NSWING.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_fly.bm";
+  TEXTURES   
+  {
+    "ns_fly"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_fly.tex";
+  }
+  ALLFRAMESBBOX	-1.90427,1.05134,0.139773,1.90427,2.50798,0.525327;
+  COLISION
+  {
+  }
+}

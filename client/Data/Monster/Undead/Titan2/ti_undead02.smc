@@ -1,0 +1,57 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti";
+{
+  MESH       	TFNM "Data\Monster\Undead\Titan2\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bd_011.bm";
+  TEXTURES   
+  {
+    "ti_bd_011"	TFNM "Data\Item\Shield\Titan\Texture\ti_bd_011.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_ft_011.bm";
+  TEXTURES   
+  {
+    "ti_ft_011"	TFNM "Data\Item\Shield\Titan\Texture\ti_ft_011.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Titan2\ti_hair_000.bm";
+  TEXTURES   
+  {
+    "ti_face_N_000"	TFNM "Data\Monster\Undead\Titan2\ti_face_N_000.tex";
+    "ti_face_000"	TFNM "Data\Monster\Undead\Titan2\ti_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_hn_011.bm";
+  TEXTURES   
+  {
+    "ti_hn_011"	TFNM "Data\Item\Shield\Titan\Texture\ti_hn_011.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Titan2\ti_face_000.bm";
+  TEXTURES   
+  {
+    "ti_face_000"	TFNM "Data\Monster\Undead\Titan2\ti_face_000.tex";
+    "ti_face_N_000"	TFNM "Data\Monster\Undead\Titan2\ti_face_N_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_011.bm";
+  TEXTURES   
+  {
+    "ti_bu_011"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_011.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_AXE_011.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ti_axe_011.bm";
+  TEXTURES   
+  {
+    "ti_axe_011"	TFNM "Data\Item\Weapon\Texture\ti_axe_011.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Undead\Titan2\ti.bs";
+  ANIMSET   	TFNM "Data\Monster\Undead\Titan2\ti.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Undead\Titan2\ti.bae";
+  ALLFRAMESBBOX	-0.6,0,-0.6,0.6,2.3,0.6;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,2.3,0.6;}
+  }
+}

@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Trent";
+{
+  MESH       	TFNM "Data\Npc\Trent\_TAG_staff.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Trent\body.bm";
+  TEXTURES   
+  {
+    "trent_01"	TFNM "Data\Npc\Trent\trent_01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Trent\leaf01.bm";
+  TEXTURES   
+  {
+    "trent_02"	TFNM "Data\Npc\Trent\trent_02.tex";
+  }
+  MESH       	TFNM "Data\Npc\Trent\leaf02.bm";
+  TEXTURES   
+  {
+    "trent_03"	TFNM "Data\Npc\Trent\trent_03.tex";
+  }
+  MESH       	TFNM "Data\Npc\Trent\wp.bm";
+  TEXTURES   
+  {
+    "trent_03"	TFNM "Data\Npc\Trent\trent_03.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Trent\trent.bs";
+  ANIMSET   	TFNM "Data\Npc\Trent\Trent.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Trent\Trent.bae";
+  ALLFRAMESBBOX	-2.5355,0,-2.9086,2.5355,5.81426,2.9086;
+  COLISION
+  {
+    "Default"  {-2.5,0,-3,2.5,6,3;}
+  }
+}

@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "d_golem_sphere";
+{
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_sphere.bm";
+  TEXTURES   
+  {
+    "d_golem_sphere"	TFNM "Data\Monster\D_Golem\d_golem_sphere.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_sphere_bd.bm";
+  TEXTURES   
+  {
+    "d_golem_sphere"	TFNM "Data\Monster\D_Golem\d_golem_sphere.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_sphere_hn.bm";
+  TEXTURES   
+  {
+    "d_golem_sphere_hn"	TFNM "Data\Monster\D_Golem\d_golem_sphere_hn.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\D_Golem\d_golem_sphere.bs";
+  ANIMSET   	TFNM "Data\Monster\D_Golem\d_golem_sphere.ba";
+  ANIMEFFECT	TFNM "Data\Monster\D_Golem\d_golem_sphere.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.7,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2.7,1.5;}
+  }
+}

@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Fanatic_hungry";
+{
+  MESH       	TFNM "Data\Monster\Fanatic\fanatic_hungry.bm";
+  TEXTURES   
+  {
+    "Fanatic_bd"	TFNM "Data\Monster\Fanatic\Fanatic_bd.tex";
+    "Fanatic_bu"	TFNM "Data\Monster\Fanatic\Fanatic_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\_TAG_FHef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Fanatic\fanatic_hungry.bs";
+  ANIMSET   	TFNM "Data\Monster\Fanatic\Fanatic_hungry.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Fanatic\Fanatic_hungry.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.9,0.75,2.3,0.6;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.65,0.65,2.3,0.65;}
+  }
+}

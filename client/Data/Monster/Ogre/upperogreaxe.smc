@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "upperogreaxe";
+{
+  MESH       	TFNM "Data\Monster\Ogre\upperogreaxe.bm";
+  TEXTURES   
+  {
+    "upperogreaxe_1"	TFNM "Data\Monster\Ogre\upperogreaxe_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogreaxe_1.bm";
+  TEXTURES   
+  {
+    "upperogreaxe_1"	TFNM "Data\Monster\Ogre\upperogreaxe_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogreaxe_bd.bm";
+  TEXTURES   
+  {
+    "upperogreaxe"	TFNM "Data\Monster\Ogre\upperogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogreaxe_bu.bm";
+  TEXTURES   
+  {
+    "upperogreaxe"	TFNM "Data\Monster\Ogre\upperogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogreaxe_hn.bm";
+  TEXTURES   
+  {
+    "upperogreaxe"	TFNM "Data\Monster\Ogre\upperogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogreaxe_weapon.bm";
+  TEXTURES   
+  {
+    "upperogreaxe"	TFNM "Data\Monster\Ogre\upperogreaxe.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Ogre\upperogreaxe.bs";
+  ANIMSET   	TFNM "Data\Monster\Ogre\upperogreaxe.ba";
+  ALLFRAMESBBOX	-1.25,0,-1.25,1.25,3.3,1.25;
+  COLISION
+  {
+    "Default"  {-1.25,0,-1.25,1.25,3.3,1.25;}
+  }
+}

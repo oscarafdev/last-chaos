@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w4_building01";
+{
+  MESH       	TFNM "Data\World\Egeha\Ska\Egeha_building_start_00.bm";
+  TEXTURES   
+  {
+    "Egeha_column_01"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_column_01.tex";
+    "Egeha_column_02"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_column_02.tex";
+    "Egeha_rock_00"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_rock_00.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Detail_bil.tex";
+    "Egeha_column_00"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_column_00.tex";
+    "Egeha_statue_00"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_statue_00.tex";
+    "Egeha_wall_00"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_wall_00.tex";
+  }
+  ALLFRAMESBBOX	-12.4634,-0.250367,-2.09779,12.4634,5.86096,2.66508;
+  COLISION
+  {
+    "Default"  {1.36415,-1.12906,-1.81994,12.5181,5.98661,2.72428;}
+    "Default"  {-12.5552,-0.0601612,-2.18534,-1.71564,5.71591,2.06991;}
+  }
+}

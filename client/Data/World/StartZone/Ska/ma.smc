@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\ma.bm";
+  TEXTURES   
+  {
+    "ma"	TFNM "Data\world\StartZone\Ska\texture\ma.tex";
+  }
+  ALLFRAMESBBOX	-0.838222,-0.004019,-1.3126,0.838229,1.03585,1.3126;
+  COLISION
+  {
+    "Default"  {-0.573721,-0.0051493,-1.33772,0.551617,1.01246,1.28245;}
+  }
+}

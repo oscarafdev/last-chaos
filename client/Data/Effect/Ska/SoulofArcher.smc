@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "SoulofArcher";
+{
+  MESH       	TFNM "Data\Effect\Ska\SoulofArcher.bm";
+  TEXTURES   
+  {
+    "SoulofArcher"	TFNM "Data\Effect\Ska\SoulofArcher.tex";
+  }
+  ALLFRAMESBBOX	-10.2714,0.116642,-10.2956,9.82631,0.116653,9.65784;
+  COLISION
+  {
+  }
+}

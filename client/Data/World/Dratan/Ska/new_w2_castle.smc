@@ -1,0 +1,51 @@
+NAME "w2_castle";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_castle.bm";
+  TEXTURES   
+  {
+    "w2_castle15"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle15.tex";
+    "w2_castle16"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle16.tex";
+    "w2_castle17"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle17.tex";
+    "w2_castle18"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle18.tex";
+    "w2_castle19-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle19-1.tex";
+    "w2_castle19"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle19.tex";
+    "w2_castle20-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle20-1.tex";
+    "w2_castle20"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle20.tex";
+    "w2_castle21"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle21.tex";
+    "w2_castle22"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle22.tex";
+    "w2_castle23"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle23.tex";
+    "w2_castledoor1"	TFNM "Data\World\Dratan\Ska\Texture\w2_castledoor1.tex";
+    "w2_castledoor2"	TFNM "Data\World\Dratan\Ska\Texture\w2_castledoor2.tex";
+    "w2_castledoor3"	TFNM "Data\World\Dratan\Ska\Texture\w2_castledoor3.tex";
+    "w2_castledoor4"	TFNM "Data\World\Dratan\Ska\Texture\w2_castledoor4.tex";
+    "w2_house004"	TFNM "Data\World\Dratan\Ska\Texture\w2_house004.tex";
+    "w2_house005"	TFNM "Data\World\Dratan\Ska\Texture\w2_house005.tex";
+    "w2_titanf01-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_titanf01-1.tex";
+    "w2_titanf01"	TFNM "Data\World\Dratan\Ska\Texture\w2_titanf01.tex";
+    "w2_titanf02"	TFNM "Data\World\Dratan\Ska\Texture\w2_titanf02.tex";
+    "w2_titanf03-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_titanf03-1.tex";
+    "w2_titanf03-2"	TFNM "Data\World\Dratan\Ska\Texture\w2_titanf03-2.tex";
+    "w2_titanf03-3"	TFNM "Data\World\Dratan\Ska\Texture\w2_titanf03-3.tex";
+    "w2_wallgate2"	TFNM "Data\World\Dratan\Ska\Texture\w2_wallgate2.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_castle01"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle01.tex";
+    "w2_castle02"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle02.tex";
+    "w2_castle03"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle03.tex";
+    "w2_castle04"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle04.tex";
+    "w2_castle05"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle05.tex";
+    "w2_castle06"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle06.tex";
+    "w2_castle07"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle07.tex";
+    "w2_castle08"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle08.tex";
+    "w2_castle09"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle09.tex";
+    "w2_castle10"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle10.tex";
+    "w2_castle11"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle11.tex";
+    "w2_castle12"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle12.tex";
+    "w2_castle13"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle13.tex";
+    "w2_castle14"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle14.tex";
+  }
+  ALLFRAMESBBOX	-79.1423,-0.329098,-51.5401,79.1426,83.2717,51.5401;
+  COLISION
+  {
+    "Default"  {-80,0,-50,80,60,50;}
+  }
+}

@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_hel_western";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hel_western.bm";
+  TEXTURES   
+  {
+    "so_hel_western"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hel_western.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hair_western.bm";
+  TEXTURES   
+  {
+    "so_hair_000"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.151216,1.6333,-0.182115,0.151216,1.96232,0.160682;
+  COLISION
+  {
+  }
+}

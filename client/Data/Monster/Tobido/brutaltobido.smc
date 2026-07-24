@@ -1,0 +1,35 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "brutaltobido";
+{
+  MESH       	TFNM "Data\Monster\Tobido\brutaltobido.bm";
+  TEXTURES   
+  {
+    "brutaltobido"	TFNM "Data\Monster\Tobido\brutaltobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\brutaltobido_1.bm";
+  TEXTURES   
+  {
+    "brutaltobido"	TFNM "Data\Monster\Tobido\brutaltobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\brutaltobido_2.bm";
+  TEXTURES   
+  {
+    "brutaltobido"	TFNM "Data\Monster\Tobido\brutaltobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_BTTBL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_BTTBR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Tobido\brutaltobido.bs";
+  ANIMSET   	TFNM "Data\Monster\Tobido\brutaltobido.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Tobido\brutaltobido.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

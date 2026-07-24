@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_backpack_pe";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_backpac_pe.bm";
+  TEXTURES   
+  {
+    "ma_backpack_pe"	TFNM "Data\Item\Shield\Mage\Texture\ma_backpack_pe.tex";
+  }
+  ALLFRAMESBBOX	-0.379093,1.1683,0.077721,0.379975,2.00839,0.161355;
+  COLISION
+  {
+  }
+}

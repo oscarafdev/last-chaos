@@ -1,0 +1,17 @@
+OFFSET    	-0.1,-1.1,0.6,-110,0,0;
+NAME "ma_wand_volcan_01";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_WAND_volcan_01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_wand_volcan_01.bm";
+  TEXTURES   
+  {
+    "ma_wand_volcan_01"	TFNM "Data\Item\Weapon\Texture\ma_wand_volcan_01.tex";
+  }
+  ALLFRAMESBBOX	-0.653211,-0.00658202,-0.263897,0.475853,0.144462,0.183908;
+  COLISION
+  {
+  }
+}

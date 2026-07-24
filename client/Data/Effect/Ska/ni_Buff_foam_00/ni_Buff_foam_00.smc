@@ -1,0 +1,12 @@
+NAME "ni_Buff_foam_00";
+{
+  MESH       	TFNM "Data\Effect\Ska\ni_Buff_foam_00\ni_Buff_foam_00.bm";
+  TEXTURES   
+  {
+    "ni_Buff_foam_00"	TFNM "Data\Effect\Ska\ni_Buff_foam_00\ni_Buff_foam_00.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

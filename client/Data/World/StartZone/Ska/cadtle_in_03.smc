@@ -1,0 +1,13 @@
+NAME "cadtle_in_03";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\cadtle_in_03.bm";
+  TEXTURES   
+  {
+    "castle_in_03"	TFNM "Data\world\StartZone\Ska\texture\castle_in_03.tex";
+  }
+  ALLFRAMESBBOX	-0.764461,0,-0.749236,0.746084,4.26205,0.749236;
+  COLISION
+  {
+    "Default"  {-0.762785,-0.176889,-0.821737,0.762172,4.14456,0.498679;}
+  }
+}

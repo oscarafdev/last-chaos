@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_head_wm_ira.bm";
+  TEXTURES   
+  {
+    "ti_face_000"	TFNM "Data\Item\Shield\Titan\Texture\ti_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_hel_wm_ira.bm";
+  TEXTURES   
+  {
+    "ti_hm_wm_ira"	TFNM "Data\Item\Shield\Titan\Texture\ti_hm_wm_ira.tex";
+  }
+  ALLFRAMESBBOX	-0.091924,1.91249,-0.141916,0.091924,2.13621,0.139369;
+  COLISION
+  {
+  }
+}

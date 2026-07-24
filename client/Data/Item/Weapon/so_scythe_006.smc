@@ -1,0 +1,17 @@
+OFFSET    	-0.1,1.13,0.4,-140,0,130;
+NAME "ni_dsword_000";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_BLADE_006.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\so_scythe_006.bm";
+  TEXTURES   
+  {
+    "so_scythe_006"	TFNM "Data\Item\Weapon\Texture\so_scythe_006.tex";
+  }
+  ALLFRAMESBBOX	-0.666268,0.000632405,-0.985343,0.793895,0.0481542,0.75716;
+  COLISION
+  {
+  }
+}

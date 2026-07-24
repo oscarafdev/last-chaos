@@ -1,0 +1,16 @@
+NAME "st_sheaf";
+{
+  MESH       	TFNM "Data\world\LoginWorld\Ska\st_sheaf.bm";
+  TEXTURES   
+  {
+    "StartZonetile_wall003"	TFNM "Data\world\LoginWorld\Ska\Texture\StartZonetile_wall003.tex";
+    "st_house_01"	TFNM "Data\world\LoginWorld\Ska\Texture\st_house_01.tex";
+    "st_sheaf"	TFNM "Data\world\LoginWorld\Ska\Texture\st_sheaf.tex";
+    "Dengen1_Detail"	TFNM "Data\world\LoginWorld\Ska\Texture\Dengen1_Detail.tex";
+    "st_house_02"	TFNM "Data\world\LoginWorld\Ska\Texture\st_house_02.tex";
+  }
+  ALLFRAMESBBOX	-7.29125,-0.028243,-4.83936,7.29125,9.49774,4.83936;
+  COLISION
+  {
+  }
+}

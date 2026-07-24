@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "scorpionmantis_dessert01";
+{
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_bu_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_head_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_head2_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_hn_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\Scorpion_mantis_bd_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_leg1_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_leg2_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_leg3_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis_tail_01.bm";
+  TEXTURES   
+  {
+    "scorpionmantis_de01"	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis_de01.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpionmantis.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\scorpionmantis_dessert\scorpion_mantis.ba";
+  ALLFRAMESBBOX	-2.5,0,-2,2.5,2.3,2;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

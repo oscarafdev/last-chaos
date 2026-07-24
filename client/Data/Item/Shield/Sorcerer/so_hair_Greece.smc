@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_hair_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hair_Greece.bm";
+  TEXTURES   
+  {
+    "so_hair_000"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hair_Greece01.bm";
+  TEXTURES   
+  {
+    "so_hermes1_Greece"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hermes1_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.081627,1.63211,-0.119413,0.081627,1.94633,0.138323;
+  COLISION
+  {
+  }
+}

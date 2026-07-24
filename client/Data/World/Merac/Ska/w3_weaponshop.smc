@@ -1,0 +1,30 @@
+NAME "w3_weaponshop";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_weaponshop.bm";
+  TEXTURES   
+  {
+    "w3_store01"	TFNM "Data\World\Merac\ska\texture\w3_store01.tex";
+    "w2_wpshop_fire01"	TFNM "Data\World\Merac\ska\texture\w2_wpshop_fire01.tex";
+    "w3_arms fabric"	TFNM "Data\World\Merac\ska\texture\w3_arms fabric.tex";
+    "w3_arms"	TFNM "Data\World\Merac\ska\texture\w3_arms.tex";
+    "w3_building_storeB_dome01"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_dome01.tex";
+    "w3_building_storeB_wall01"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_wall01.tex";
+    "w3_building_storeB_wall02"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_wall02.tex";
+    "w3_building_storeB_wall03"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_wall03.tex";
+    "w3_building_storeB_window01"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_window01.tex";
+    "w3_fabric"	TFNM "Data\World\Merac\ska\texture\w3_fabric.tex";
+    "w3_housewall05"	TFNM "Data\World\Merac\ska\texture\w3_housewall05.tex";
+    "w3_housewall04"	TFNM "Data\World\Merac\ska\texture\w3_housewall04.tex";
+    "w3_housetent01"	TFNM "Data\World\Merac\ska\texture\w3_housetent01.tex";
+    "w3_smelt"	TFNM "Data\World\Merac\ska\texture\w3_smelt.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_smelt01"	TFNM "Data\World\Merac\ska\texture\w3_smelt01.tex";
+    "w3_Storebox01"	TFNM "Data\World\Merac\ska\texture\w3_Storebox01.tex";
+    "w3_bucket"	TFNM "Data\World\Merac\ska\texture\w3_bucket.tex";
+  }
+  ALLFRAMESBBOX	-10.5075,-0.021905,-2.89444,9.75756,23.35,17.3236;
+  COLISION
+  {
+    "Default"  {-10.097,0,-2.98233,9.94012,20.0372,16.1667;}
+  }
+}

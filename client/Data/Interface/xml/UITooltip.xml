@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="UITooltip" x="0" y="0" w="183" h="300" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="img_normal_back" x="0" y="0" w="183" h="300" hide="1" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="137" r="141" b="227" unit="18" splitmode="2" />
+    <UIImageSplit id="img_string_back" x="0" y="0" w="183" h="300" hide="1" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="229" r="85" b="251" unit="9" splitmode="2" />
+    <UIText id="text" x="17" y="17" w="151" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="텍스트 테스트" color="0xfffbf0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="text_box" x="16" y="35" w="151" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="텍스트 박스 테스트">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIImageArray id="img_array_socket" x="17" y="55" w="19" h="19" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="1">
+        <surface0 x="0" y="0" w="19" h="19" l="195" t="122" r="214" b="140" desc="" />
+        <surface1 x="0" y="0" w="19" h="19" l="175" t="122" r="194" b="141" desc="" />
+        <surface2 x="0" y="0" w="19" h="19" l="195" t="143" r="214" b="162" desc="" />
+        <surface3 x="0" y="0" w="19" h="19" l="175" t="143" r="194" b="162" desc="" />
+    </UIImageArray>
+    <UIIcon id="icon" x="17" y="80" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+</Window>

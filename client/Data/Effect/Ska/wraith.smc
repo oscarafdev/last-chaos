@@ -1,0 +1,54 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "wraith";
+{
+  MESH       	TFNM "Data\Effect\Ska\wraith_head.bm";
+  TEXTURES   
+  {
+    "wraith_red"	TFNM "Data\Effect\Ska\wraith_red.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\wraith_head_1.bm";
+  TEXTURES   
+  {
+    "wraith_red"	TFNM "Data\Effect\Ska\wraith_red.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\wraith_head_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Effect\Ska\wraith_bu.bm";
+  TEXTURES   
+  {
+    "wraith_red"	TFNM "Data\Effect\Ska\wraith_red.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\wraith_bu_1.bm";
+  TEXTURES   
+  {
+    "wraith_red"	TFNM "Data\Effect\Ska\wraith_red.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\wraith_bd.bm";
+  TEXTURES   
+  {
+    "wraith_red"	TFNM "Data\Effect\Ska\wraith_red.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\Wraith_lhn.bm";
+  TEXTURES   
+  {
+    "wraith_red"	TFNM "Data\Effect\Ska\wraith_red.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\wraith_rhn.bm";
+  TEXTURES   
+  {
+    "wraith_red"	TFNM "Data\Effect\Ska\wraith_red.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\wraith_scythe.bm";
+  TEXTURES   
+  {
+    "wraith_weapon_red"	TFNM "Data\Effect\Ska\wraith_weapon_red.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\wraith.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\wraith.ba";
+  ALLFRAMESBBOX	-3.30681,0.239224,-4.37257,3.4227,4.51435,2.46586;
+  COLISION
+  {
+  }
+}

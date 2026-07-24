@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "vulcan03";
+{
+  MESH       	TFNM "Data\Monster\Lag_conv\vulcan03_1.bm";
+  TEXTURES   
+  {
+    "boss_bul03_01"	TFNM "Data\Monster\Lag_conv\Texture\boss_bul03_01.tex";
+    "boss_bul03_02"	TFNM "Data\Monster\Lag_conv\Texture\boss_bul03_02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lag_conv\vulcan03.bs";
+  ANIMSET   	TFNM "Data\Monster\Lag_conv\vulcan03.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Lag_conv\vulcan03.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,4,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,4,1;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "sd2_doublerail";
+{
+  MESH       	TFNM "Data\World\Dratan\ska\sd2_doublerail.bm";
+  TEXTURES   
+  {
+    "sd2_minewood1"	TFNM "Data\World\Dratan\ska\texture\sd2_minewood1.tex";
+    "S_Dengen2_Detail"	TFNM "Data\World\Dratan\ska\texture\S_Dengen2_Detail.tex";
+    "sd2_minerail"	TFNM "Data\World\Dratan\ska\texture\sd2_minerail.tex";
+  }
+  ALLFRAMESBBOX	-5.31027,-0.258064,-7.63067,5.13611,0.223411,7.39792;
+  COLISION
+  {
+    "Default"  {-5,0,-7.5,5,0.3,7.5;}
+  }
+}

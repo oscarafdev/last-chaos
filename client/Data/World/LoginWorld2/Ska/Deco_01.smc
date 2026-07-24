@@ -1,0 +1,13 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\LoginWorld2\Ska\deco_01.bm";
+  TEXTURES   
+  {
+    "w6_buildingC02"	TFNM "Data\World\LoginWorld2\Ska\Texture\w6_buildingC02.tex";
+    "w6_buildingC01"	TFNM "Data\World\LoginWorld2\Ska\Texture\w6_buildingC01.tex";
+  }
+  ALLFRAMESBBOX	-8.52495,0.009191,-0.679688,7.48615,14.4878,0.679692;
+  COLISION
+  {
+  }
+}

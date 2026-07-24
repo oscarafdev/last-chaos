@@ -1,0 +1,14 @@
+NAME "s_dun_poll02";
+{
+  MESH       	TFNM "Data\world\S_Dungeon1\Ska\s_dun_poll02.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\world\S_Dungeon1\Ska\Texture\Dengen1_Detail.tex";
+    "s_dun_arch01"	TFNM "Data\world\S_Dungeon1\Ska\Texture\s_dun_arch01.tex";
+    "s_dun_poll01"	TFNM "Data\world\S_Dungeon1\Ska\Texture\s_dun_poll01.tex";
+  }
+  ALLFRAMESBBOX	-4.10047,-0.009409,-0.505535,4.10047,9.01276,1.78219;
+  COLISION
+  {
+  }
+}

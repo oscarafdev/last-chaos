@@ -1,0 +1,12 @@
+NAME "td_bookdesk";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_bookdesk.bm";
+  TEXTURES   
+  {
+    "td_bookdesk"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_bookdesk.tex";
+  }
+  ALLFRAMESBBOX	-1.71584,0,-0.376237,1.71584,6.03017,0.844979;
+  COLISION
+  {
+  }
+}

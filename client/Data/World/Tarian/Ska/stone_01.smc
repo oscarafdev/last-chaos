@@ -1,0 +1,13 @@
+NAME "stone_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\stone_01.bm";
+  TEXTURES   
+  {
+    "Gate_01"	TFNM "Data\World\Tarian\Ska\Texture\Gate_01.tex";
+  }
+  ALLFRAMESBBOX	-4.45248,-0.010878,-5.20822,3.5219,4.78565,6.2428;
+  COLISION
+  {
+    "Default"  {-1.51136,-0.0214082,-1.50625,1.5,6.00001,1.5;}
+  }
+}

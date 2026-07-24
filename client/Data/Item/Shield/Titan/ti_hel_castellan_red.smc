@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_hel_castellan_red";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_hel_castellan_red.bm";
+  TEXTURES   
+  {
+    "ti_hel_castellan_red"	TFNM "Data\Item\Shield\Titan\Texture\ti_hel_castellan_red.tex";
+  }
+  ALLFRAMESBBOX	-0.152267,1.84602,-0.169493,0.152267,2.26192,0.106139;
+  COLISION
+  {
+  }
+}

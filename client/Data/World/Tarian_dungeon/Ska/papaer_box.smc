@@ -1,0 +1,12 @@
+NAME "papaer_box";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\papaer_box.bm";
+  TEXTURES   
+  {
+    "papaer_box"	TFNM "Data\World\tarian_dungeon\Ska\Texture\papaer_box.tex";
+  }
+  ALLFRAMESBBOX	-1.23465,0,-0.89364,1.23465,1.40067,0.89364;
+  COLISION
+  {
+  }
+}

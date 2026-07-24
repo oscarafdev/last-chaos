@@ -1,0 +1,13 @@
+NAME "worldmap_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\worldmap_G.bm";
+  TEXTURES   
+  {
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+    "worldmap_G"	TFNM "Data\World\Guild\Ska\Texture\worldmap_G.tex";
+  }
+  ALLFRAMESBBOX	-3.27873,0.015517,0,3.27873,3.61473,0;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,17 @@
+NAME "w3_lamp_A";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_lamp_A.bm";
+  TEXTURES   
+  {
+    "w3_outobject_flagA"	TFNM "Data\World\Merac\ska\texture\w3_outobject_flagA.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_outobject_A"	TFNM "Data\World\Merac\ska\texture\w3_outobject_A.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\ska\w3_lamp_A.bs";
+  ANIMSET   	TFNM "Data\World\Merac\ska\w3_lamp_A.ba";
+  ALLFRAMESBBOX	-0.33927,-0.004059,-0.14167,0.852268,4.73268,0.442317;
+  COLISION
+  {
+    "Default"  {-0.293685,0,-0.254688,0.206315,4,0.245312;}
+  }
+}

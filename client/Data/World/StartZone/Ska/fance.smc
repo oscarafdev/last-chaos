@@ -1,0 +1,13 @@
+NAME "fance";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\fance.bm";
+  TEXTURES   
+  {
+    "castle_15"	TFNM "Data\world\StartZone\Ska\Texture\castle_15.tex";
+  }
+  ALLFRAMESBBOX	-0.9859,0,-0.14338,0.967541,1.15943,0.15662;
+  COLISION
+  {
+    "Default"  {-0.985783,-0.00616795,-0.175964,0.993718,1.2298,0.200262;}
+  }
+}

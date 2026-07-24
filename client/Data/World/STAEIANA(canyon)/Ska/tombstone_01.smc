@@ -1,0 +1,12 @@
+NAME "tombstone_01";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\tombstone_01.bm";
+  TEXTURES   
+  {
+    "tombstone_01"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\tombstone_01.tex";
+  }
+  ALLFRAMESBBOX	-1.39362,-0.00517,-1.35234,1.36715,4.66486,1.33071;
+  COLISION
+  {
+  }
+}

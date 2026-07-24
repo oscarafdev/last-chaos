@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_ft_wm_col";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_ft_wm_col.bm";
+  TEXTURES   
+  {
+    "hw_ft_wm_col"	TFNM "Data\Item\Shield\Healer\Texture\hw_ft_wm_col.tex";
+  }
+  ALLFRAMESBBOX	-0.32384,-0.001002,-0.128858,0.32384,0.558683,0.109369;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_dsword_sp";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_n_SHIELD_sp.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ni_shield_sp.bm";
+  TEXTURES   
+  {
+    "ni_shield_sp"	TFNM "Data\Item\Weapon\Texture\ni_shield_sp.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

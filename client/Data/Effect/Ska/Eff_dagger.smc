@@ -1,0 +1,12 @@
+NAME "Eff_dagger";
+{
+  MESH       	TFNM "Data\Effect\SKA\Eff_dagger.bm";
+  TEXTURES   
+  {
+    "Eff_dagger"	TFNM "Data\Effect\TEXTURE\Eff_dagger.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

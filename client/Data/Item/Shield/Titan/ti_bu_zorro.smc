@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_bu_zorro";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_zorro.bm";
+  TEXTURES   
+  {
+    "ti_bu_zorro"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_zorro.tex";
+  }
+  ALLFRAMESBBOX	-0.629624,1.2238,-0.232565,0.629623,1.93849,0.198266;
+  COLISION
+  {
+  }
+}

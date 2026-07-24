@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bu_wedding";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bu_wedding.bm";
+  TEXTURES   
+  {
+    "ma_bu_wedding"	TFNM "Data\Item\Shield\Mage\Texture\ma_bu_wedding.tex";
+  }
+  ALLFRAMESBBOX	-0.389258,0.686028,-0.313139,0.389258,1.75311,0.298317;
+  COLISION
+  {
+  }
+}

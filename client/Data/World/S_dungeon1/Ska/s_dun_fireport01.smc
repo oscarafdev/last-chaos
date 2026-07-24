@@ -1,0 +1,13 @@
+NAME "s_dun_fireport01";
+{
+  MESH       	TFNM "Data\world\S_Dungeon1\Ska\s_dun_fireport01.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\world\S_Dungeon1\Ska\Texture\Dengen1_Detail.tex";
+    "s_dun_fireport01"	TFNM "Data\world\S_Dungeon1\Ska\Texture\s_dun_fireport01.tex";
+  }
+  ALLFRAMESBBOX	-0.665335,0,-0.674134,0.669734,2.16022,0.660935;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "chain01_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\chain01_d3.bm";
+  TEXTURES   
+  {
+    "Chain_d3"	TFNM "Data\World\Dungeon3\Ska\texture\Chain_d3.tex";
+  }
+  ALLFRAMESBBOX	-7.86205,0.075586,-18.7336,7.86205,21.5249,18.7336;
+  COLISION
+  {
+  }
+}

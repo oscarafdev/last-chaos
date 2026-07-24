@@ -1,0 +1,39 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Nogeu";
+{
+  MESH       	TFNM "Data\Monster\Nogeu\Nogeu_acc.bm";
+  TEXTURES   
+  {
+    "Nogeu_02"	TFNM "Data\Monster\Nogeu\Nogeu_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\Nogeu_body.bm";
+  TEXTURES   
+  {
+    "Nogeu_01"	TFNM "Data\Monster\Nogeu\Nogeu_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\Nogeu_wp.bm";
+  TEXTURES   
+  {
+    "Nogeu_02"	TFNM "Data\Monster\Nogeu\Nogeu_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\_TAG_NogHD.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\_TAG_NogSWORD_.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\_TAG_NogLH.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Nogeu\nogeu.bs";
+  ANIMSET   	TFNM "Data\Monster\Nogeu\Nogeu.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Nogeu\Nogeu.bae";
+  ALLFRAMESBBOX	-3,0,-3,3,6,3;
+  COLISION
+  {
+    "Default"  {-2.4,0,-2.4,2.4,5.5,2.4;}
+  }
+}

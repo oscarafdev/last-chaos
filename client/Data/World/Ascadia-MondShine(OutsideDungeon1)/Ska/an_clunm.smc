@@ -1,0 +1,22 @@
+NAME "an_clunm";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\_TAG_T_CLUNM.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\an_clunm.bm";
+  TEXTURES   
+  {
+    "an_altar"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\an_altar.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\an_clunm_1.bm";
+  TEXTURES   
+  {
+    "an_altar"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\an_altar.tex";
+  }
+  ALLFRAMESBBOX	-1.49603,-0.030221,-1.30787,1.49603,9.88786,1.30787;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,10,1.5;}
+  }
+}

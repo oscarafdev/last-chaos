@@ -1,0 +1,19 @@
+NAME "d1_priestst_005";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_priestst_005.bm";
+  TEXTURES   
+  {
+    "d1_priestst_001_n"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_priestst_001_n.tex";
+    "d1_priestst_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_priestst_001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_underst_005.bm";
+  TEXTURES   
+  {
+    "d1_underst_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_underst_001.tex";
+  }
+  ALLFRAMESBBOX	-0.628712,0.004578,-0.001099,0.628712,3.47573,0.694484;
+  COLISION
+  {
+    "Default"  {-0.653835,-0.659616,-0.0161413,0.695569,3.47395,0.735376;}
+  }
+}

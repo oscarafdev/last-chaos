@@ -1,0 +1,14 @@
+NAME "sd2_light";
+{
+  MESH       	TFNM "Data\World\Dratan\ska\sd2_light.bm";
+  TEXTURES   
+  {
+    "sd2_minemetal3"	TFNM "Data\World\Dratan\ska\texture\sd2_minemetal3.tex";
+    "sd2_light"	TFNM "Data\World\Dratan\ska\texture\sd2_light.tex";
+  }
+  ALLFRAMESBBOX	-0.382061,-1.08484,-0.330891,0.382099,1.08484,0.330891;
+  COLISION
+  {
+    "Default"  {-0.35,-1.1,-0.35,0.35,1.1,0.35;}
+  }
+}

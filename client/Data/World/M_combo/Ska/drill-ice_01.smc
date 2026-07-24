@@ -1,0 +1,14 @@
+OFFSET    	0.0840677,-3.2954,-1.19942,0,0,0;
+NAME "stone";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\drill-ice_01.bm";
+  TEXTURES   
+  {
+    "drill-ice_01"	TFNM "Data\World\M_combo\Ska\Texture\drill-ice_01.tex";
+    "M_combo_Detail_2"	TFNM "Data\World\M_combo\Texture\M_combo_Detail_2.tex";
+  }
+  ALLFRAMESBBOX	-2.71068,-0.530684,-3.24082,2.37421,8.75075,1.94046;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Basilisk";
+{
+  MESH       	TFNM "Data\monster\Basilisk\Basilisk.bm";
+  TEXTURES   
+  {
+    "w2_m_barsil_01"	TFNM "Data\Monster\Basilisk\w2_m_barsil_01.tex";
+  }
+  MESH       	TFNM "Data\monster\Basilisk\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Basilisk\w2_m_barsil_02.bm";
+  TEXTURES   
+  {
+    "w2_m_barsil_01"	TFNM "Data\Monster\Basilisk\w2_m_barsil_01.tex";
+  }
+  SKELETON  	TFNM "Data\monster\Basilisk\Basilisk.bs";
+  ANIMSET   	TFNM "Data\monster\Basilisk\Basilisk.ba";
+  ANIMEFFECT	TFNM "Data\monster\Basilisk\Basilisk.bae";
+  ALLFRAMESBBOX	-10,0,-10,10,4,10;
+  COLISION
+  {
+    "Default"  {-2.5,0,-4,2.5,3,2;}
+  }
+}

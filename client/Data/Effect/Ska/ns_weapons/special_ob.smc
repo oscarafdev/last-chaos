@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "special_ob";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\special_ob.bm";
+  TEXTURES   
+  {
+    "special_ob"	TFNM "Data\Effect\Ska\ns_weapons\special_ob.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\special_ob_1.bm";
+  TEXTURES   
+  {
+    "special_ob"	TFNM "Data\Effect\Ska\ns_weapons\special_ob.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\special_ob.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\special_ob.ba";
+  ALLFRAMESBBOX	-0.365765,-0.352161,-0.315022,0.365765,0.10602,0.364809;
+  COLISION
+  {
+  }
+}

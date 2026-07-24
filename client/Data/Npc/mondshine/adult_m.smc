@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "adult_m";
+{
+  MESH       	TFNM "Data\Npc\mondshine\adult_m_head.bm";
+  TEXTURES   
+  {
+    "adult_m"	TFNM "Data\Npc\mondshine\adult_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\adult_m_bd.bm";
+  TEXTURES   
+  {
+    "adult_m"	TFNM "Data\Npc\mondshine\adult_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\adult_m_bd_1.bm";
+  TEXTURES   
+  {
+    "adult_m"	TFNM "Data\Npc\mondshine\adult_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\adult_m_shield.bm";
+  TEXTURES   
+  {
+    "adult_m_1"	TFNM "Data\Npc\mondshine\adult_m_1.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\adult_m_sword.bm";
+  TEXTURES   
+  {
+    "adult_m_1"	TFNM "Data\Npc\mondshine\adult_m_1.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\mondshine\adult_m.bs";
+  ANIMSET   	TFNM "Data\Npc\mondshine\adult_m.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1.57,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.57,0.5;}
+  }
+}

@@ -1,0 +1,12 @@
+NAME "ma_hn_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ma_hn_drop.bm";
+  TEXTURES   
+  {
+    "ma_hn_drop"	TFNM "Data\Item\Common\Texture\ma_hn_drop.tex";
+  }
+  ALLFRAMESBBOX	-0.3,0,-0.3,0.3,0.3,0.3;
+  COLISION
+  {
+  }
+}

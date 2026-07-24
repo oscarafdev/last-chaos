@@ -1,0 +1,14 @@
+NAME "stoneimage_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\stoneimage_d3.bm";
+  TEXTURES   
+  {
+    "stoneimage_d3"	TFNM "Data\World\Dungeon3\Ska\texture\stoneimage_d3.tex";
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-2.80941,-0.000662,-2.50369,2.80941,9.49167,2.50369;
+  COLISION
+  {
+    "Default"  {-3,0,-3,3,9,3;}
+  }
+}

@@ -1,0 +1,6 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\altargate_close.AA"
+}

@@ -1,0 +1,17 @@
+NAME "st_house_06";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_house_06.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_roof03"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_roof03.tex";
+    "st_house_02"	TFNM "Data\world\StartZone\Ska\Texture\st_house_02.tex";
+    "st_house_01"	TFNM "Data\world\StartZone\Ska\Texture\st_house_01.tex";
+    "st_house_03"	TFNM "Data\world\StartZone\Ska\Texture\st_house_03.tex";
+  }
+  ALLFRAMESBBOX	-4.01087,3e-006,-4.31479,4.1581,10.91,4.31479;
+  COLISION
+  {
+    "Default"  {-4,0,-4,4,10,4;}
+  }
+}

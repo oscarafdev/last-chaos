@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "broolord";
+{
+  MESH       	TFNM "Data\monster\broo\_TAG_broolord.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\monster\broo\broolord.bm";
+  TEXTURES   
+  {
+    "magicgoat_d3"	TFNM "Data\monster\broo\magicgoat_d3.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broolord_1.bm";
+  TEXTURES   
+  {
+    "magicgoat_d3"	TFNM "Data\monster\broo\magicgoat_d3.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broolord_2.bm";
+  TEXTURES   
+  {
+    "magicgoat_d3"	TFNM "Data\monster\broo\magicgoat_d3.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broolord_3.bm";
+  TEXTURES   
+  {
+    "magicgoat_d3"	TFNM "Data\monster\broo\magicgoat_d3.tex";
+  }
+  SKELETON  	TFNM "Data\monster\broo\broolord.bs";
+  ANIMSET   	TFNM "Data\Monster\Broo\broolord2.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Broo\broolord.bae";
+  ALLFRAMESBBOX	-1,0,-0.5,1,3,0.5;
+  COLISION
+  {
+    "Default"  {-1,0,-1.25,1,3,1.25;}
+  }
+}

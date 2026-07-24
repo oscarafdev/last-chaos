@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="800" h="600" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_base" x="0" y="0" w="800" h="600" hide="0" tex="hardcore_base.png" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" l="0" t="0" r="800" b="600">
+        <UIImage id="img_warning" x="40" y="75" w="720" h="450" hide="0" tex="hardcore_warning.png" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="720" b="450" />
+        <UIImage id="img_charDie" x="40" y="75" w="720" h="450" hide="0" tex="hardcore_die.png" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="720" b="450" />
+        <UIButton id="btn_ok" x="300" y="545" w="200" h="40" hide="0" tex="hardcore_base.png" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="650" r="200" b="690" />
+            <uv type="1" l="0" t="690" r="200" b="730" />
+            <uv type="2" l="0" t="730" r="200" b="770" />
+            <uv type="3" l="0" t="770" r="200" b="810" />
+        </UIButton>
+    </UIImage>
+</Window>

@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "vital";
+{
+  MESH       	TFNM "Data\Effect\Ska\vital_box.bm";
+  TEXTURES   
+  {
+    "vital"	TFNM "Data\Effect\Texture\vital.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\vital_Sphere.bm";
+  TEXTURES   
+  {
+    "vital"	TFNM "Data\Effect\Texture\vital.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\vital.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\vital.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

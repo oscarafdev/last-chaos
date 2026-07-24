@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "randy";
+{
+  MESH       	TFNM "Data\npc\public\randy.bm";
+  TEXTURES   
+  {
+    "Girl"	TFNM "Data\npc\public\randy.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\randy.bs";
+  ANIMSET   	TFNM "Data\npc\public\randy.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,1.68,2;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1.8,0.75;}
+  }
+}

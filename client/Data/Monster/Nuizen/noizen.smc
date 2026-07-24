@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "noizen";
+{
+  MESH       	TFNM "Data\monster\nuizen\_TAG_T_noizen.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\monster\nuizen\noizen.bm";
+  TEXTURES   
+  {
+    "noizen"	TFNM "Data\monster\nuizen\noizen.tex";
+  }
+  MESH       	TFNM "Data\monster\nuizen\noizen_1.bm";
+  TEXTURES   
+  {
+    "noizen"	TFNM "Data\monster\nuizen\noizen.tex";
+  }
+  SKELETON  	TFNM "Data\monster\nuizen\noizen.bs";
+  ANIMSET   	TFNM "Data\monster\nuizen\noizen.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Nuizen\noizen.bae";
+  ALLFRAMESBBOX	-4,0,-4,4,1.2,4;
+  COLISION
+  {
+    "Default"  {-1.1,0,-1.1,1.1,1.2,1.1;}
+  }
+}

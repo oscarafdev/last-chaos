@@ -1,0 +1,17 @@
+OFFSET    	0.4,-1.2,0.15,-150,0,-38;
+NAME "hw_staff_004";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_T_STAFF_00u.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\hw_staff_00u.bm";
+  TEXTURES   
+  {
+    "hw_staff_00u"	TFNM "Data\Item\Weapon\Texture\hw_staff_00u.tex";
+  }
+  ALLFRAMESBBOX	-0.592596,-0.0264612,-0.928674,0.555436,0.0731709,0.893744;
+  COLISION
+  {
+  }
+}

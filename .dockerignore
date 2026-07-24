@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!server/
+!server/src/**
+!server/LC2018.Server.x64.tar.xz
+!docker/
+!docker/server/**

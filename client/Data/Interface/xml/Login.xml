@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="8" w="1024" h="768" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIBase id="base_ui" x="0" y="0" w="375" h="523" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+        <UISpriteAni id="ani_frame" x="72" y="0" w="256" h="256" hide="1" tex="logo_flame.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" cur="0">
+            <uv l="0" t="0" r="256" b="256" />
+            <uv l="256" t="0" r="512" b="256" />
+            <uv l="512" t="0" r="768" b="256" />
+            <uv l="768" t="0" r="1024" b="256" />
+            <uv l="0" t="256" r="256" b="512" />
+            <uv l="256" t="256" r="512" b="512" />
+            <uv l="512" t="256" r="768" b="512" />
+            <uv l="768" t="256" r="1024" b="512" />
+            <uv l="0" t="512" r="256" b="768" />
+            <uv l="256" t="512" r="512" b="768" />
+            <uv l="512" t="512" r="768" b="768" />
+            <uv l="768" t="512" r="1024" b="768" />
+        </UISpriteAni>
+        <UIImage id="img_frame" x="0" y="20" w="375" h="178" hide="1" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1" t="725" r="376" b="903" />
+        <UIImage id="img_frameHal" x="28" y="-10" w="349" h="203" hide="1" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1376" t="720" r="1813" b="973">
+            <UIImage id="img_halEye" x="118" y="64" w="88" h="39" hide="1" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1230" t="792" r="1339" b="840" />
+        </UIImage>
+        <UIImage id="img_frameChris" x="-35" y="-21" w="449" h="294" hide="1" tex="ChristmasLogo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="449" b="294" />
+        <UIImage id="img_chrisEffect1" x="-35" y="-21" w="449" h="294" hide="1" tex="ChristmasLogo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="295" r="449" b="589" />
+        <UIImage id="img_chrisEffect2" x="-35" y="-21" w="449" h="293" hide="1" tex="ChristmasLogo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="590" r="449" b="883" />
+        <UIImage id="img_back" x="35" y="250" w="306" h="273" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1" t="1" r="307" b="274">
+            <UIButton id="btn_login" x="50" y="208" w="101" h="45" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="180" str="접속" newtype="0" edge="1" text_color="0xffff00ff">
+                <uv type="0" l="313" t="92" r="414" b="137" />
+                <uv type="1" l="418" t="92" r="519" b="137" />
+                <uv type="2" l="313" t="142" r="414" b="187" />
+                <uv type="3" l="418" t="142" r="519" b="187" />
+            </UIButton>
+            <UIButton id="btn_close" x="155" y="208" w="101" h="45" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="181" str="나가기" newtype="0" edge="1" text_color="0xffff00ff">
+                <uv type="0" l="313" t="92" r="414" b="137" />
+                <uv type="1" l="418" t="92" r="519" b="137" />
+                <uv type="2" l="313" t="142" r="414" b="187" />
+                <uv type="3" l="418" t="142" r="519" b="187" />
+            </UIButton>
+            <UICheck id="btn_save" x="174" y="181" w="28" h="24" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="290" str="저장" posleft="0" text_x="32" region="0" text_area="0" h_align="0" color_on="0xffff00ff" color_off="0xc0c0c0ff" edge="1">
+                <none l="348" t="254" r="376" b="278" />
+                <check l="314" t="254" r="342" b="278" />
+            </UICheck>
+            <UIText id="str_id" x="57" y="99" w="64" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="183" str="아이디" str_ellipsis="" color="0xffff00ff" shadow="1" shadow_color="0xff" h_align="1" edge="-1">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_pw" x="57" y="145" w="64" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="184" str="패스워드" str_ellipsis="" color="0xffff00ff" shadow="1" shadow_color="0xff" h_align="1" edge="-1">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIComboBox id="cb_server" x="56" y="15" w="194" h="72" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" maxline="2" lineheight="22" space_x="2" space_y="2" showline="2">
+                <back x="0" y="0" w="194" h="22" l="0" t="0" r="0" b="0" />
+                <button x="170" y="0" w="23" h="21" l0="314" t0="193" r0="337" b0="214" l1="314" t1="221" r1="337" b1="242" />
+                <drop_bg x="0" y="24" w="194" h="68" l="312" t="0" r="509" b="39" />
+            </UIComboBox>
+            <UIEdit id="eb_id" x="128" y="99" w="120" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" max="16" passwd="0" cursor_move="1" only_num="0">
+                <CandidateUV l="0" t="0" r="0" b="0" />
+                <ReadUV l="0" t="0" r="0" b="0" />
+                <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+            </UIEdit>
+            <UIEdit id="eb_pw" x="128" y="145" w="120" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" max="16" passwd="0" cursor_move="1" only_num="0">
+                <CandidateUV l="0" t="0" r="0" b="0" />
+                <ReadUV l="0" t="0" r="0" b="0" />
+                <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+            </UIEdit>
+        </UIImage>
+    </UIBase>
+</Window>

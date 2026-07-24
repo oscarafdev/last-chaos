@@ -1,0 +1,27 @@
+NAME "noblehouse002";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\noblehouse002.bm";
+  TEXTURES   
+  {
+    "StartZonetile_window"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_window.tex";
+    "StartZonetile_castle006"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_castle006.tex";
+    "StartZonetile_castle004"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_castle004.tex";
+    "StartZonetile_castle008"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_castle008.tex";
+    "StartZonetile_castle003"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_castle003.tex";
+    "StartZonetile_wall002"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_wall002.tex";
+    "StartZonetile_wall003"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_wall003.tex";
+    "StartZonetile_castle001"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_castle001.tex";
+    "StartZonetile_castle002"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_castle002.tex";
+    "StartZonetile_roof01"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_roof01.tex";
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_07"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_07.tex";
+    "StartZonetile_bar001"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_bar001.tex";
+    "StartZonetile_05"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_05.tex";
+    "StartZonetile_terrace001"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_terrace001.tex";
+  }
+  ALLFRAMESBBOX	-16.4098,-0.011886,-9.83827,16.5373,16.4506,10.8948;
+  COLISION
+  {
+    "Default"  {-16,0,-10,16,16,10;}
+  }
+}

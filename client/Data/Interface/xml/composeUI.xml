@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="composUI" x="0" y="0" w="273" h="309" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIBase x="0" y="0" w="273" h="309" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+        <UIImage id="img_back" x="0" y="0" w="273" h="309" hide="0" tex="composeUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="273" b="309" />
+        <UIText id="str_title" x="0" y="13" w="273" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6416" str="아이템 합성" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIImage id="img_move" x="0" y="0" w="273" h="37" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIButton id="btn_close" x="-4" y="4" w="16" h="16" hide="0" tex="composeUI.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="275" t="0" r="291" b="16" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="293" t="0" r="309" b="16" />
+            <uv type="3" l="0" t="0" r="0" b="0" />
+        </UIButton>
+        <UIProgressBar id="pb_progress" x="0" y="-40" w="238" h="18" hide="0" tex="composeUI.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" l="4" t="342" r="242" b="360" lower="0" upper="2000" step="0" offset_pos="0" auto_complete="0">
+            <bar sx="1" sy="1" l="214" t="311" r="224" b="325" />
+            <idle_text str="" color="0xffffffff" show_percent="0" />
+            <doing_text str="" color="0xffffffff" show_percent="0" />
+            <complete_text str="" color="0xffffffff" show_percent="0" />
+        </UIProgressBar>
+        <UITextBox id="tb_guide" x="0" y="204" w="250" h="46" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UITextBox>
+        <UIButton id="btn_ok" x="-50" y="-10" w="70" h="22" hide="0" tex="composeUI.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="5933" str="합성" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="310" r="70" b="332" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="71" t="310" r="141" b="332" />
+            <uv type="3" l="142" t="310" r="212" b="332" />
+        </UIButton>
+        <UIButton id="btn_cancel" x="50" y="-10" w="70" h="22" hide="0" tex="composeUI.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="1420" str="닫기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="310" r="70" b="332" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="71" t="310" r="141" b="332" />
+            <uv type="3" l="142" t="310" r="212" b="332" />
+        </UIButton>
+        <UIImage id="img_iconbg01" x="33" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIImage id="img_iconbg02" x="77" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIImage id="img_iconbg03" x="121" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIImage id="img_iconbg04" x="165" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIImage id="img_iconbg05" x="209" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIImage id="img_iconbg06" x="121" y="140" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIIcon id="icon_slot01" x="33" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        <UIIcon id="icon_slot02" x="77" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        <UIIcon id="icon_slot03" x="121" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        <UIIcon id="icon_slot04" x="165" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        <UIIcon id="icon_slot05" x="209" y="67" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        <UIIcon id="icon_slot06" x="121" y="140" w="32" h="32" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    </UIBase>
+</Window>

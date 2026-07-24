@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_hel_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hair_Greece.bm";
+  TEXTURES   
+  {
+    "ni_face_000"	TFNM "Data\Item\Shield\Knight\Texture\ni_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hair_Greece01.bm";
+  TEXTURES   
+  {
+    "ni_hair_Greece"	TFNM "Data\Item\Shield\Knight\Texture\ni_hair_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.089827,1.74956,-0.119673,0.089827,1.99427,0.126413;
+  COLISION
+  {
+  }
+}

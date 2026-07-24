@@ -1,0 +1,12 @@
+NAME "uzak_weapon";
+{
+  MESH       	TFNM "Data\Effect\Ska\uzak_weapon.bm";
+  TEXTURES   
+  {
+    "uzak_sword"	TFNM "Data\Effect\Ska\uzak_sword.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

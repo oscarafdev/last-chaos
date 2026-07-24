@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "moonstone-1";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moonstone-1.bm";
+  TEXTURES   
+  {
+    "moonstone-1"	TFNM "Data\Effect\Ska\ns_weapons\moonstone-1.tex";
+  }
+  ALLFRAMESBBOX	-0.08,-0.073689,-0.08,0.08,0.086312,0.08;
+  COLISION
+  {
+  }
+}

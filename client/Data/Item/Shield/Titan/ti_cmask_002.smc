@@ -1,0 +1,17 @@
+NAME "ti_cmask_002";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cmask_002.bm";
+  TEXTURES   
+  {
+    "ti_cmask_002"	TFNM "Data\Item\Shield\Titan\Texture\ti_cmask_002.tex";
+  }
+  MESH       	TFNM "Data\Character\TITAN\ti_hair_000.bm";
+  TEXTURES   
+  {
+    "ti_face_000"	TFNM "Data\character\Titan\ti_face_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "broowizard";
+{
+  MESH       	TFNM "Data\monster\broo\broowizard.bm";
+  TEXTURES   
+  {
+    "broowizard"	TFNM "Data\monster\broo\broowizard.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broowizard_1.bm";
+  TEXTURES   
+  {
+    "broowizard"	TFNM "Data\monster\broo\broowizard.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broowizard_2.bm";
+  TEXTURES   
+  {
+    "broowizard"	TFNM "Data\monster\broo\broowizard.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\_TAG_wizard_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\broo\broowizard.bs";
+  ANIMSET   	TFNM "Data\Monster\Broo\broowizard2.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Broo\broowizard.bae";
+  ALLFRAMESBBOX	-4.5,0,-4.5,4.5,4.2,4.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.2,1.5,4.4,1.2;}
+  }
+}

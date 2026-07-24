@@ -1,0 +1,15 @@
+NAME "floor5_d4";
+{
+  MESH       	TFNM "Data\World\P_Dungeon1\Ska\floor5_d4.bm";
+  TEXTURES   
+  {
+    "tile2_d4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\tile2_d4.tex";
+    "pd_boss_stone03"	TFNM "Data\World\P_Dungeon1\Ska\Texture\pd_boss_stone03.tex";
+    "tile_d4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\tile_d4.tex";
+    "Detail_D4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\Detail_D4.tex";
+  }
+  ALLFRAMESBBOX	-83.3034,-15.3702,-84.0003,87.8087,15.3701,84.2867;
+  COLISION
+  {
+  }
+}

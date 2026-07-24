@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\oger_02\oger_02.bm";
+  TEXTURES   
+  {
+    "oger_02"	TFNM "Data\Monster\oger_02\oger_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\oger_02\oger_02_knife.bm";
+  TEXTURES   
+  {
+    "oger_knife"	TFNM "Data\Monster\oger_02\oger_knife.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\oger_02\oger_02.bs";
+  ANIMSET   	TFNM "Data\Monster\oger_02\oger_02.ba";
+  ANIMEFFECT	TFNM "Data\Monster\oger_02\oger_02.bae";
+  ALLFRAMESBBOX	-1.4,0,-0.75,1.4,3.7,0.75;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

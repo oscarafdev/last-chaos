@@ -1,0 +1,22 @@
+NAME "st_rock";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_rock_1.bm";
+  TEXTURES   
+  {
+    "st_rock01"	TFNM "Data\World\STREIANA\Ska\Texture\st_rock01.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_rock_2.bm";
+  TEXTURES   
+  {
+    "hut_02"	TFNM "Data\World\STREIANA\Ska\Texture\hut_02.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_rock_3.bm";
+  TEXTURES   
+  {
+    "hut_02"	TFNM "Data\World\STREIANA\Ska\Texture\hut_02.tex";
+  }
+  ALLFRAMESBBOX	-2.08551,-0.32281,-1.98608,2.08551,4.39074,1.98608;
+  COLISION
+  {
+  }
+}

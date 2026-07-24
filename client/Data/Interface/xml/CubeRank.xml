@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="CubeRankingUI" x="0" y="0" w="400" h="370" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="400" h="370" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="325" t="242" r="508" b="425" unit="61" splitmode="2" />
+    <UIText id="text_title" x="84" y="16" w="233" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4390" str="개인 큐브 포인트 현황" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="drag_area" x="0" y="0" w="399" h="37" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    <UIButton id="btn_close" x="380" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIText id="text_point" x="16" y="46" w="184" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4391" str="자신의 개인 큐브 포인트 : %d" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage x="13" y="65" w="374" h="1" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="139" t="456" r="179" b="457" />
+    <UIText x="20" y="71" w="184" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5097" str="현재 큐브 포인트 순위 현황" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="group_cur" x="12" y="90" w="380" h="108" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UIImageSplit x="0" y="0" w="374" h="106" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+        <UIText x="3" y="3" w="38" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="1714" str="순위" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_guild" x="74" y="3" w="63" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4392" str="소속 길드" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_name" x="185" y="3" w="70" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4393" str="캐릭터 이름" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="309" y="3" w="64" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4345" str="큐브포인트" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIList id="list_cur_rank" x="3" y="23" w="370" h="81" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="4" itemgap="1" item_count="5" pre_create="1">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem id="list_item_001" x="0" y="0" w="370" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIText id="text_rank" x="0" y="0" w="26" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_guild" x="73" y="0" w="52" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_name" x="184" y="0" w="65" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_point" x="308" y="0" w="58" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIListItem>
+        </UIList>
+    </UIBase>
+    <UIText x="20" y="200" w="184" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5098" str="지난주 큐브 포인트 순위 현황" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="group_prev" x="12" y="219" w="380" h="108" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UIImageSplit x="0" y="0" w="374" h="106" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+        <UIText x="3" y="3" w="38" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="1714" str="순위" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_guild" x="74" y="3" w="63" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4392" str="소속 길드" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_name" x="185" y="3" w="70" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4393" str="캐릭터 이름" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="309" y="3" w="64" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4345" str="큐브포인트" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIList id="list_prev_rank" x="3" y="23" w="370" h="81" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="4" itemgap="1" item_count="5" pre_create="1">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem id="list_item_001" x="0" y="0" w="370" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIText id="text_rank" x="0" y="0" w="26" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_guild" x="73" y="0" w="52" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_name" x="184" y="0" w="65" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_point" x="308" y="0" w="58" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIListItem>
+        </UIList>
+    </UIBase>
+    <UIButton id="btn_ok" x="161" y="334" w="80" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="260" b="453" />
+    </UIButton>
+</Window>

@@ -1,0 +1,17 @@
+NAME "a_tower";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\a_tower.bm";
+  TEXTURES   
+  {
+    "a_tower"	TFNM "Data\World\Dratan\Ska\Texture\a_tower.tex";
+  }
+  MESH       	TFNM "Data\World\Dratan\Ska\_TAG_T_A_TOWER.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.937193,-0.006854,-0.427674,0.949195,6.44055,0.955523;
+  COLISION
+  {
+    "Default"  {-0.964289,-0.0551438,-0.704974,0.967131,1.71918,0.685205;}
+  }
+}

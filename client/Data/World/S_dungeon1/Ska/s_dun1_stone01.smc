@@ -1,0 +1,13 @@
+NAME "s_dun1_stone01";
+{
+  MESH       	TFNM "Data\world\S_Dungeon1\Ska\s_dun1_stone01.bm";
+  TEXTURES   
+  {
+    "s_dun1_stone01"	TFNM "Data\world\S_Dungeon1\Ska\Texture\s_dun1_stone01.tex";
+    "Dengen1_Detail"	TFNM "Data\world\S_Dungeon1\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-5.58385,-0.078998,-4.06121,4.75388,10.1242,2.50581;
+  COLISION
+  {
+  }
+}

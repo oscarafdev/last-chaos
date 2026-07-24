@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="118" h="60" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImage x="0" y="0" w="118" h="60" hide="0" tex="GuildBattle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="53" r="118" b="113" />
+    <UIText x="4" y="3" w="110" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1740" str="죽인 적의 수" str_ellipsis="" color="0xa6c0ffff" color_enter="0xa6c0ffff" color_select="0xa6c0ffff" shadow="0" shadow_color="0x181818ff" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImageFont id="if_time" x="10" y="31" w="97" h="20" hide="1" tex="GuildBattle.tex" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" fsizex="16" fsizey="19" fgap="0" ogap="0" src="0123456789:" str="23:30" h_align="0">
+        <srcuv l="0" t="0" r="176" b="20" />
+    </UIImageFont>
+    <UIImageFont id="if_killcnt" x="0" y="26" w="114" h="27" hide="0" tex="GuildBattle.tex" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" fsizex="21" fsizey="27" fgap="0" ogap="0" src="0123456789:" str="0" h_align="1">
+        <srcuv l="0" t="21" r="210" b="48" />
+    </UIImageFont>
+</Window>

@@ -1,0 +1,13 @@
+NAME "electric_lamp_001";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\mon_icestar01.bm";
+  TEXTURES   
+  {
+    "mon_icestar"	TFNM "Data\World\M_combo\Ska\Texture\mon_icestar.tex";
+    "M_combo_Detail_2"	TFNM "Data\World\M_combo\Texture\M_combo_Detail_2.tex";
+  }
+  ALLFRAMESBBOX	-7.77192,0.111753,-6.06939,6.59907,15.2516,8.24756;
+  COLISION
+  {
+  }
+}

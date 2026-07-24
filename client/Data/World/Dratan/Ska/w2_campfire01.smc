@@ -1,0 +1,14 @@
+NAME "w2_campfire01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_campfire01.bm";
+  TEXTURES   
+  {
+    "w2_campfire01_s"	TFNM "Data\World\Dratan\Ska\Texture\w2_campfire01_s.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_campfire01_f"	TFNM "Data\World\Dratan\Ska\Texture\w2_campfire01_f.tex";
+  }
+  ALLFRAMESBBOX	-0.870427,-0.059607,-0.873426,0.870428,0.367075,0.873426;
+  COLISION
+  {
+  }
+}

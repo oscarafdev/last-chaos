@@ -1,0 +1,12 @@
+NAME "dk_pillarof_fire_sphere";
+{
+  MESH       	TFNM "Data\Effect\SKA\dk_pillarof_fire_sphere.bm";
+  TEXTURES   
+  {
+    "firetga_a(M)"	TFNM "Data\Effect\TEXTURE\firetga_a(M).tex";
+  }
+  ALLFRAMESBBOX	-2,-1e-006,-2,2,2,2;
+  COLISION
+  {
+  }
+}

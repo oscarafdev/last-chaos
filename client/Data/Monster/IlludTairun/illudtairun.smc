@@ -1,0 +1,78 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_bu.bm";
+  TEXTURES   
+  {
+    "illudtairun1"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun1.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_bu_1.bm";
+  TEXTURES   
+  {
+    "illudtairun2"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun2.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_head.bm";
+  TEXTURES   
+  {
+    "illudtairun1"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun1.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_add.bm";
+  TEXTURES   
+  {
+    "illudtairun2"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun2.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_add_1.bm";
+  TEXTURES   
+  {
+    "illudtairun2"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun2.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_lhn.bm";
+  TEXTURES   
+  {
+    "illudtairun1"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun1.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_rhn.bm";
+  TEXTURES   
+  {
+    "illudtairun1"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun1.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_lwing.bm";
+  TEXTURES   
+  {
+    "illudtairun2"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun2.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_rwing.bm";
+  TEXTURES   
+  {
+    "illudtairun2"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun2.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\illudtairun_bd.bm";
+  TEXTURES   
+  {
+    "illudtairun1"	TFNM "Data\Monster\IlludTairun\Texture\illudtairun1.tex";
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\_TAG_T_I_01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\_TAG_T_IH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\_TAG_T_IRH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\IlludTairun\_TAG_T_ILH.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\IlludTairun\illudtairun.bs";
+  ANIMSET   	TFNM "Data\Monster\IlludTairun\illudtairun.ba";
+  ANIMEFFECT	TFNM "Data\Monster\IlludTairun\illudtairun.bae";
+  ALLFRAMESBBOX	-2.5,0,-0.5,2.5,6,4.5;
+  COLISION
+  {
+    "Default"  {-2.5,0,-1.5,2.5,6,3.5;}
+  }
+}

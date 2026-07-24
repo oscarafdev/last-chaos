@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_backpack_gt";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_backpack_gt.bm";
+  TEXTURES   
+  {
+    "elec_guitar03"	TFNM "Data\Item\Shield\Knight\Texture\elec_guitar03.tex";
+  }
+  ALLFRAMESBBOX	-0.4114,0.587097,0.155472,0.434542,1.86197,0.230351;
+  COLISION
+  {
+  }
+}

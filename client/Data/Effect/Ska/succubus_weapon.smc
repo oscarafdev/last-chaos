@@ -1,0 +1,12 @@
+NAME "succubus_weapon";
+{
+  MESH       	TFNM "Data\Effect\Ska\succubus_weapon.bm";
+  TEXTURES   
+  {
+    "succubus_weapon"	TFNM "Data\Effect\Ska\succubus_weapon.tex";
+  }
+  ALLFRAMESBBOX	-0.039498,-0.000178,-0.039396,0.039396,0.17801,0.039396;
+  COLISION
+  {
+  }
+}

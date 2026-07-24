@@ -1,0 +1,13 @@
+NAME "d2_flag01";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_flag01.bm";
+  TEXTURES   
+  {
+    "d2 flag01"	TFNM "Data\World\Dungeon2\Ska\Texture\d2 flag01.tex";
+    "Dengen2_Detail"	TFNM "Data\World\Dungeon2\Ska\Texture\Dengen2_Detail.tex";
+  }
+  ALLFRAMESBBOX	-2.21666,-6.06783,-0.173752,2.21662,6.06783,0.173751;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+NAME "barricade-01";
+{
+  MESH       	TFNM "Data\World\Egeha\Ska\Egeha_Temple_02_broken01.bm";
+  TEXTURES   
+  {
+    "Egeha_Temple02_stonemat_02"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple02_stonemat_02.tex";
+    "Egeha_Temple02_stone_3-TT"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple02_stone_3-TT.tex";
+    "Detail"	TFNM "Data\World\Egeha\Ska\Texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-21.37,-0.201365,-25.1385,28.8117,111.133,24.7845;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

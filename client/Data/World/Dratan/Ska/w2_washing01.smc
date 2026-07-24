@@ -1,0 +1,14 @@
+NAME "w2_washing01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_washing01.bm";
+  TEXTURES   
+  {
+    "w2_washing01"	TFNM "Data\World\Dratan\Ska\Texture\w2_washing01.tex";
+  }
+  SKELETON  	TFNM "Data\World\Dratan\Ska\w2_washing01.bs";
+  ANIMSET   	TFNM "Data\World\Dratan\Ska\w2_washing01.ba";
+  ALLFRAMESBBOX	-3.03031,-0.763265,-0.310324,1.50395,0.482968,0.444585;
+  COLISION
+  {
+  }
+}

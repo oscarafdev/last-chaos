@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "brotherband_gusgo";
+{
+  MESH       	TFNM "Data\Monster\BrotherBand\brotherband_gusgo.bm";
+  TEXTURES   
+  {
+    "brotherband_guard"	TFNM "Data\Monster\BrotherBand\brotherband_guard.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\brotherband_gusgo_1.bm";
+  TEXTURES   
+  {
+    "brotherband_armor03"	TFNM "Data\Monster\BrotherBand\brotherband_armor03.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\_TAG_GUSGOef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\BrotherBand\brotherband_gusgo.bs";
+  ANIMSET   	TFNM "Data\Monster\BrotherBand\brotherband_gusgo.ba";
+  ANIMEFFECT	TFNM "Data\Monster\BrotherBand\brotherband_gusgo.bae";
+  ALLFRAMESBBOX	-0.75,0,-1.1,0.75,2.5,0.4;
+  COLISION
+  {
+    "Default"  {-1.25,0,-1.25,1.25,3,1.25;}
+  }
+}

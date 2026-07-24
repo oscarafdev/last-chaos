@@ -1,0 +1,76 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_bu.bm";
+  TEXTURES   
+  {
+    "darkdragon_a"	TFNM "Data\Monster\DarkDragon2\darkdragon_a.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_bd.bm";
+  TEXTURES   
+  {
+    "darkdragon_a"	TFNM "Data\Monster\DarkDragon2\darkdragon_a.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_lwing.bm";
+  TEXTURES   
+  {
+    "darkdragon_b"	TFNM "Data\Monster\DarkDragon2\darkdragon_b.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_rwing.bm";
+  TEXTURES   
+  {
+    "darkdragon_b"	TFNM "Data\Monster\DarkDragon2\darkdragon_b.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_lft.bm";
+  TEXTURES   
+  {
+    "darkdragon_a"	TFNM "Data\Monster\DarkDragon2\darkdragon_a.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_rft.bm";
+  TEXTURES   
+  {
+    "darkdragon_a"	TFNM "Data\Monster\DarkDragon2\darkdragon_a.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_lhn.bm";
+  TEXTURES   
+  {
+    "darkdragon_a"	TFNM "Data\Monster\DarkDragon2\darkdragon_a.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\darkdragon_rhn.bm";
+  TEXTURES   
+  {
+    "darkdragon_a"	TFNM "Data\Monster\DarkDragon2\darkdragon_a.tex";
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\_TAG_D_MOUSE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\_TAG_D_TAIL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\_TAG_T_EYE02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\_TAG_T_EYE01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\_TAG_T_F01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\DarkDragon2\_TAG_T_F02.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\DarkDragon2\darkdragon.bs";
+  ANIMSET   	TFNM "Data\Monster\DarkDragon2\darkdragon.ba";
+  ANIMEFFECT	TFNM "Data\Monster\DarkDragon2\darkdragon.bae";
+  ALLFRAMESBBOX	-10,0,-5,10,20,15;
+  COLISION
+  {
+    "Default"  {-10,0,-5,10,19,15;}
+  }
+}

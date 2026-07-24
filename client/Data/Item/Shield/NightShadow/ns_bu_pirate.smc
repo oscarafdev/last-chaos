@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_bu_pirate";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_bu_pirate.bm";
+  TEXTURES   
+  {
+    "ns_bu_pirate"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_bu_pirate.tex";
+  }
+  ALLFRAMESBBOX	-0.53165,0.858743,-0.168968,0.53165,1.79635,0.248455;
+  COLISION
+  {
+  }
+}

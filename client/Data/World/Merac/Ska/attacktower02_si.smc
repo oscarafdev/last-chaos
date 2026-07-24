@@ -1,0 +1,13 @@
+NAME "attacktower02_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\attacktower02_si.bm";
+  TEXTURES   
+  {
+    "attacktower02_si"	TFNM "Data\World\Merac\ska\texture\attacktower02_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-3.18716,-0.002854,-3.18722,3.18728,26.6891,3.18722;
+  COLISION
+  {
+  }
+}

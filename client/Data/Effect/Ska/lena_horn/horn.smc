@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "horn";
+{
+  MESH       	TFNM "Data\Effect\Ska\lena_horn\horn.bm";
+  TEXTURES   
+  {
+    "Lena Of Noble_body"	TFNM "Data\Effect\Ska\lena_horn\Lena Of Noble_body.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\lena_horn\horn.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\lena_horn\horn.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

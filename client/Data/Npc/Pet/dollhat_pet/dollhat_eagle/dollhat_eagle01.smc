@@ -1,0 +1,30 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dollhat_eagle01";
+{
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\_TAG_E01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\_TAG_T_EB01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\dollhat_eagle01.bm";
+  TEXTURES   
+  {
+    "dollhat_eagle01"	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\dollhat_eagle01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\dollhat_eagle02.bm";
+  TEXTURES   
+  {
+    "dollhat_eagle02"	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\dollhat_eagle02.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\dollhat_eagle01.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\dollhat_eagle01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\dollhat_pet\dollhat_eagle\dollhat_eagle01.bae";
+  ALLFRAMESBBOX	-0.65,0,-0.65,0.65,3,0.65;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.599999,0.6,3,0.599999;}
+  }
+}

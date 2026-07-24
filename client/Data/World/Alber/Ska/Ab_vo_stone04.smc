@@ -1,0 +1,12 @@
+NAME "Ab_vo_stone04";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_stone04.bm";
+  TEXTURES   
+  {
+    "ab_spl_volcanorock_02"	TFNM "Data\World\Alber\Texture\ab_spl_volcanorock_02.tex";
+  }
+  ALLFRAMESBBOX	-6.22511,-0.235093,-4.3434,6.22511,4.72702,4.3434;
+  COLISION
+  {
+  }
+}

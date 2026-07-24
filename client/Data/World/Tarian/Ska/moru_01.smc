@@ -1,0 +1,14 @@
+NAME "moru_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\moru_01.bm";
+  TEXTURES   
+  {
+    "moru1"	TFNM "Data\World\Tarian\Ska\Texture\moru1.tex";
+    "hamer"	TFNM "Data\World\Tarian\Ska\Texture\hamer.tex";
+  }
+  ALLFRAMESBBOX	-0.846278,-0.003968,-0.528735,0.699842,0.785809,0.737226;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

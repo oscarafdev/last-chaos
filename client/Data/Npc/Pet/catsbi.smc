@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "catsbi";
+{
+  MESH       	TFNM "Data\Npc\pet\catsbi_head.bm";
+  TEXTURES   
+  {
+    "catsbi"	TFNM "Data\Npc\pet\catsbi.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\catsbi_bu.bm";
+  TEXTURES   
+  {
+    "catsbi"	TFNM "Data\Npc\pet\catsbi.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\catsbi_hn.bm";
+  TEXTURES   
+  {
+    "catsbi"	TFNM "Data\Npc\pet\catsbi.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\catsbi_bd.bm";
+  TEXTURES   
+  {
+    "catsbi"	TFNM "Data\Npc\pet\catsbi.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\catsbi_tail.bm";
+  TEXTURES   
+  {
+    "catsbi"	TFNM "Data\Npc\pet\catsbi.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_CATSBI.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\catsbi.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\catsbi.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\catsbi.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1.1,0.5;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,1.1,0.25;}
+  }
+}

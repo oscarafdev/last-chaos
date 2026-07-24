@@ -1,0 +1,46 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bossskeleton";
+{
+  MESH       	TFNM "Data\monster\Skeleton\_TAG_T_CENTER_sksI.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bossskeleton01.bm";
+  TEXTURES   
+  {
+    "m_skeleton_001"	TFNM "Data\Monster\Skeleton\m_skeleton_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bossskeleton02.bm";
+  TEXTURES   
+  {
+    "Bosskeleton"	TFNM "Data\Monster\Skeleton\Bosskeleton.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bossskeleton03.bm";
+  TEXTURES   
+  {
+    "Bosskeleton"	TFNM "Data\Monster\Skeleton\Bosskeleton.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bossskeleton04.bm";
+  TEXTURES   
+  {
+    "Bosskeleton"	TFNM "Data\Monster\Skeleton\Bosskeleton.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bssskeleton_shield.bm";
+  TEXTURES   
+  {
+    "Bosskeleton"	TFNM "Data\Monster\Skeleton\Bosskeleton.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bossskeleton_sword.bm";
+  TEXTURES   
+  {
+    "Bosskeleton"	TFNM "Data\Monster\Skeleton\Bosskeleton.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Skeleton\bossskeleton.bs";
+  ANIMSET   	TFNM "Data\Monster\Skeleton\bossskeleton.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Skeleton\Bosskeleton.bae";
+  ALLFRAMESBBOX	-0.9,0,-0.9,0.9,1.8,0.9;
+  COLISION
+  {
+    "Default"  {-0.9,0,-0.9,0.9,1.8,0.9;}
+  }
+}

@@ -1,0 +1,45 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "quanian_assassin";
+{
+  MESH       	TFNM "Data\Monster\Quanian\quanian_assassin.bm";
+  TEXTURES   
+  {
+    "quanian_assassin"	TFNM "Data\Monster\Quanian\quanian_assassin.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_assassin_rhn.bm";
+  TEXTURES   
+  {
+    "quanian_assassin"	TFNM "Data\Monster\Quanian\quanian_assassin.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_assassin_lhn.bm";
+  TEXTURES   
+  {
+    "quanian_assassin"	TFNM "Data\Monster\Quanian\quanian_assassin.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_assassin_tail.bm";
+  TEXTURES   
+  {
+    "quanian_assassin"	TFNM "Data\Monster\Quanian\quanian_assassin.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_assassin_ft.bm";
+  TEXTURES   
+  {
+    "quanian_assassin"	TFNM "Data\Monster\Quanian\quanian_assassin.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\_TAG_T_QAL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Quanian\_TAG_T_QAR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Quanian\quanian_assassin.bs";
+  ANIMSET   	TFNM "Data\Monster\Quanian\quanian_assassin.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Quanian\quanian_assassin.bae";
+  ALLFRAMESBBOX	-1.75,0,-1.25,1.75,2.7,2.25;
+  COLISION
+  {
+    "Default"  {-1.75,0,-1.25,1.75,2.7,2.25;}
+  }
+}

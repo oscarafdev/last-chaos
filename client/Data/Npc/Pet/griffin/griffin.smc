@@ -1,0 +1,24 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "griffin";
+{
+  MESH       	TFNM "Data\Npc\Pet\griffin\griffin.bm";
+  TEXTURES   
+  {
+    "griffin"	TFNM "Data\Npc\Pet\griffin\griffin.tex";
+  }
+  MESH       	TFNM "Data\Npc\Pet\griffin\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Pet\griffin\griffin.bs";
+  ANIMSET   	TFNM "Data\Npc\Pet\griffin\griffin.ba";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,3,3.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,3,3.5;}
+  }
+  RIDING
+  {
+    "Bip001 Spine1"  	0,1.7,0,90,0,180;
+  }
+}

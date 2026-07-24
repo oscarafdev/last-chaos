@@ -1,0 +1,12 @@
+NAME "DOUBLE_MOVE01_SKA";
+{
+  MESH       	TFNM "Data\Effect\SKA\DOUBLE_MOVE01_SKA.bm";
+  TEXTURES   
+  {
+    "DOUBLE_MOVEMENT01"	TFNM "Data\Effect\TEXTURE\DOUBLE_MOVEMENT01.tex";
+  }
+  ALLFRAMESBBOX	-1,-1,-1,1,1,1;
+  COLISION
+  {
+  }
+}

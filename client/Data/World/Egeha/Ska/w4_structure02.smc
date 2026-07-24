@@ -1,0 +1,14 @@
+NAME "w4_structure02";
+{
+  MESH       	TFNM "Data\World\egeha\ska\w4_structure02.bm";
+  TEXTURES   
+  {
+    "w4_structure02"	TFNM "Data\World\egeha\ska\texture\w4_structure02.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-1.04223,-0.017613,-1.04223,1.04223,9.58217,1.04223;
+  COLISION
+  {
+    "Default"  {-1.04223,-0.0176101,-1.04223,1.04223,9.58217,1.04223;}
+  }
+}

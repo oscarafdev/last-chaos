@@ -1,0 +1,13 @@
+NAME "td_hook";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_hook.bm";
+  TEXTURES   
+  {
+    "td_halldoor"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_halldoor.tex";
+    "chain"	TFNM "Data\World\tarian_dungeon\Ska\Texture\chain.tex";
+  }
+  ALLFRAMESBBOX	-0.513223,-1e-006,-0.949972,0.513235,24.5595,1.177;
+  COLISION
+  {
+  }
+}

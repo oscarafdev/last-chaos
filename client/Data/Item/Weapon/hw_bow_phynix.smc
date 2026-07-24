@@ -1,0 +1,17 @@
+OFFSET    	-0.24,-1.2,-0.15,150,0,35;
+NAME "hw_bow_phynix";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_BOW_PHYNIX.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\hw_bow_phynix.bm";
+  TEXTURES   
+  {
+    "hw_bow_phynix"	TFNM "Data\Item\Weapon\Texture\hw_bow_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.519691,0.00691521,-0.605822,0.604634,0.0623548,0.78994;
+  COLISION
+  {
+  }
+}

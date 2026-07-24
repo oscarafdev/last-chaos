@@ -1,0 +1,15 @@
+NAME "castle_d_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\castle_d_si.bm";
+  TEXTURES   
+  {
+    "castlewall_si"	TFNM "Data\World\Merac\ska\texture\castlewall_si.tex";
+    "castle inside_platform_si"	TFNM "Data\World\Merac\ska\texture\castle inside_platform_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-2.97273,-0.005079,-2.57446,2.97273,0.692078,2.57447;
+  COLISION
+  {
+    "Default"  {-2.97273,0,-2.57447,2.97273,0.697157,2.57447;}
+  }
+}

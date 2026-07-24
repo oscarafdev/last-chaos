@@ -1,0 +1,71 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_WAND_EVENT01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_wand_event01.bm";
+  TEXTURES   
+  {
+    "ma_wand_event01"	TFNM "Data\Item\Weapon\Texture\ma_wand_event01.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_WAND_000.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_wand_000.bm";
+  TEXTURES   
+  {
+    "ma_wand_000"	TFNM "Data\Item\Weapon\Texture\ma_wand_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\character\Mage\ma_face_000.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\character\Mage\ma_face_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_ft_000.bm";
+  TEXTURES   
+  {
+    "ma_ft_000"	TFNM "Data\character\Mage\ma_ft_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_hn_000.bm";
+  TEXTURES   
+  {
+    "ma_hn_000"	TFNM "Data\character\Mage\ma_hn_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_bd_000.bm";
+  TEXTURES   
+  {
+    "ma_bd_000"	TFNM "Data\character\Mage\ma_bd_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_bu_000.bm";
+  TEXTURES   
+  {
+    "ma_bu_000"	TFNM "Data\character\Mage\ma_bu_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_hair_000.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\character\Mage\ma_face_000.tex";
+    "ma_hair_000"	TFNM "Data\character\Mage\ma_hair_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_bs_000.bm";
+  TEXTURES   
+  {
+    "ma_bs_000"	TFNM "Data\character\Mage\ma_bs_000.tex";
+  }
+  SKELETON  	TFNM "Data\character\Mage\ma.bs";
+  ANIMSET   	TFNM "Data\character\Mage\ma.ba";
+  ANIMEFFECT	TFNM "Data\Character\Mage\ma.bae";
+  ALLFRAMESBBOX	-1,0,-1.05,1,1.99,1.05;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.2,0.25,1.92,0.2;}
+    "DeathBox"  {-0.4,0,-0.9,0.4,1,-0.1;}
+  }
+}

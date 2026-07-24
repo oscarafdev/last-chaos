@@ -1,0 +1,33 @@
+OFFSET    	-0.4,-1.08,0.6,-150,0,0;
+NAME "hw_staff_023-1";
+{
+  MESH       	TFNM "Data\Item\Weapon\hw_staff_023-1.bm";
+  TEXTURES   
+  {
+    "hw_staff_023-1"	TFNM "Data\Item\Weapon\Texture\hw_staff_023-1.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_T_HWS023-1_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_T_HWS023-1_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_T_HWS023-1_3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_T_HWS023-1_4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_T_STAFF_023-1.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.852604,-0.029266,-1.11824,0.556979,0.075045,1.04604;
+  COLISION
+  {
+  }
+}

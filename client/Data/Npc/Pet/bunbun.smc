@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bunbun";
+{
+  MESH       	TFNM "Data\Npc\Pet\bunbun.bm";
+  TEXTURES   
+  {
+    "bunbun"	TFNM "Data\Npc\Pet\textures\bunbun.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Pet\bunbun.bs";
+  ANIMSET   	TFNM "Data\Npc\Pet\bunbun.ba";
+  ALLFRAMESBBOX	-0.296655,-0.0290528,-0.488201,0.17561,0.602048,0.414822;
+  COLISION
+  {
+  }
+}

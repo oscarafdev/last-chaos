@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="100" h="100" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImage id="img_att_0" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="266" t="717" r="304" b="755" />
+    <UIImage id="img_att_1" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="266" t="757" r="304" b="795" />
+    <UIImage id="img_att_2" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="266" t="798" r="304" b="836" />
+    <UIImage id="img_att_3" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="266" t="880" r="304" b="918" />
+    <UIImage id="img_att_4" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="266" t="839" r="304" b="877" />
+    <UIImage id="img_att_5" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="266" t="962" r="304" b="1000" />
+    <UIImage id="img_att_6" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="266" t="921" r="304" b="959" />
+    <UIImage id="img_def_0" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="307" t="717" r="345" b="755" />
+    <UIImage id="img_def_1" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="307" t="757" r="345" b="795" />
+    <UIImage id="img_def_2" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="307" t="798" r="345" b="836" />
+    <UIImage id="img_def_3" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="307" t="880" r="345" b="918" />
+    <UIImage id="img_def_4" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="307" t="839" r="345" b="877" />
+    <UIImage id="img_def_5" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="307" t="962" r="345" b="1000" />
+    <UIImage id="img_def_6" x="16" y="16" w="16" h="16" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="307" t="921" r="345" b="959" />
+    <UIImage id="jewel_grade_00" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="194" r="231" b="210" />
+    <UIImage id="jewel_grade_01" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="194" r="252" b="210" />
+    <UIImage id="jewel_grade_02" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="215" r="210" b="231" />
+    <UIImage id="jewel_grade_03" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="215" r="231" b="231" />
+    <UIImage id="jewel_grade_04" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="215" r="252" b="231" />
+    <UIImage id="jewel_grade_05" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="152" r="252" b="168" />
+    <UIImage id="jewel_grade_06" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="173" r="210" b="189" />
+    <UIImage id="jewel_grade_07" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="173" r="231" b="189" />
+    <UIImage id="jewel_grade_08" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="173" r="252" b="189" />
+    <UIImage id="jewel_grade_09" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="194" r="210" b="210" />
+    <UIImage id="jewel_grade_10" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="236" r="210" b="252" />
+    <UIImage id="jewel_grade_11" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="236" r="231" b="252" />
+    <UIImage id="jewel_grade_12" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="236" r="252" b="252" />
+    <UIImage id="jewel_grade_13" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="257" r="210" b="273" />
+    <UIImage id="jewel_grade_14" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="257" r="231" b="273" />
+    <UIImage id="jewel_grade_15" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="131" r="210" b="147" />
+    <UIImage id="jewel_grade_16" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="131" r="231" b="147" />
+    <UIImage id="jewel_grade_17" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="131" r="252" b="147" />
+    <UIImage id="jewel_grade_18" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="152" r="210" b="168" />
+    <UIImage id="jewel_grade_19" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="152" r="231" b="168" />
+    <UIImage id="jewel_grade_20" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="257" r="252" b="273" />
+    <UIImage id="jewel_grade_21" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="278" r="210" b="294" />
+    <UIImage id="jewel_grade_22" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="278" r="231" b="294" />
+    <UIImage id="jewel_grade_23" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="278" r="252" b="294" />
+    <UIImage id="jewel_grade_24" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="333" r="210" b="349" />
+    <UIImage id="jewel_grade_25" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="333" r="231" b="349" />
+    <UIImage id="jewel_grade_26" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="333" r="252" b="349" />
+    <UIImage id="jewel_grade_27" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="194" t="354" r="210" b="370" />
+    <UIImage id="jewel_grade_28" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="215" t="354" r="231" b="370" />
+    <UIImage id="jewel_grade_29" x="0" y="0" w="16" h="16" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="236" t="354" r="252" b="370" />
+	<UIImage id="img_premium_only" x="0" y="0" w="16" h="16" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="848" t="768" r="871" b="791" />
+    <UIImageFont id="stack" x="2" y="21" w="30" h="11" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" fsizex="7" fsizey="10" fgap="3" ogap="-3" src="0123456789" str="1" h_align="0">
+        <srcuv l="1" t="478" r="98" b="488" />
+    </UIImageFont>
+    <UIText id="stack_error" x="0" y="18" w="32" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="..." str_ellipsis="" color="0xfff300ff" color_enter="0xfff300ff" color_select="0xfff300ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="img_durablity" x="0" y="0" w="32" h="32" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="196" t="441" r="230" b="475" />
+    <UIText id="txt_plus" x="17" y="17" w="16" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="+1" str_ellipsis="" color="0xff0000ff" color_enter="0xff0000ff" color_select="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UISpriteAni id="toggle" x="-16" y="-16" w="64" h="64" hide="0" tex="toggleskill.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" cur="0" delay_time="100" play="0">
+        <uv l="0" t="0" r="64" b="64" />
+        <uv l="64" t="0" r="128" b="64" />
+        <uv l="128" t="0" r="192" b="64" />
+        <uv l="192" t="0" r="256" b="64" />
+        <uv l="0" t="64" r="64" b="128" />
+        <uv l="64" t="64" r="128" b="128" />
+        <uv l="128" t="64" r="192" b="128" />
+        <uv l="192" t="64" r="256" b="128" />
+    </UISpriteAni>
+    <UIImage id="select" x="0" y="0" w="32" h="32" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="3" t="441" r="38" b="476" />
+    <UIImage id="mix" x="0" y="0" w="32" h="32" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="79" t="441" r="114" b="476" />
+    <UIImage id="combine" x="0" y="0" w="32" h="32" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="117" t="441" r="152" b="476" />
+    <UIImage id="new" x="-3" y="-3" w="38" h="38" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="155" t="439" r="194" b="478" />
+    <UIImage id="rent" x="19" y="19" w="12" h="12" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="173" t="421" r="186" b="434" />
+    <UIImage id="restrition" x="0" y="0" w="32" h="32" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="117" t="441" r="152" b="476" />
+    <UIImage id="Hold" x="0" y="0" w="32" h="32" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="218" t="86" r="250" b="118" />
+</Window>

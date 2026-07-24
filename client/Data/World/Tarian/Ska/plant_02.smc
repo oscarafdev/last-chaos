@@ -1,0 +1,12 @@
+NAME "plant_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\Plant_02.bm";
+  TEXTURES   
+  {
+    "plant_02"	TFNM "Data\World\Tarian\Ska\Texture\plant_02.tex";
+  }
+  ALLFRAMESBBOX	-0.279253,-0.011324,-0.392251,0.255607,0.58414,0.562295;
+  COLISION
+  {
+  }
+}

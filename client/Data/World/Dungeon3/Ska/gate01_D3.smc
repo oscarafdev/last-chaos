@@ -1,0 +1,16 @@
+NAME "gate01_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\gate01_D3.bm";
+  TEXTURES   
+  {
+    "gate01_d3"	TFNM "Data\World\Dungeon3\Ska\texture\gate01_D3.tex";
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  SKELETON  	TFNM "Data\world\Dungeon3\Ska\gate01_D3.bs";
+  ANIMSET   	TFNM "Data\world\Dungeon3\Ska\gate01_D3.ba";
+  ANIMEFFECT	TFNM "Data\world\Dungeon3\Ska\gate01_D3.bae";
+  ALLFRAMESBBOX	-6.38515,-0.011407,-4.64127,6.38515,12.3791,4.64129;
+  COLISION
+  {
+  }
+}

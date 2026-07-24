@@ -1,0 +1,47 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "tronW";
+{
+  MESH       	TFNM "Data\Monster\tronW\tronW_bd.bm";
+  TEXTURES   
+  {
+    "st_mom_s_add"	TFNM "Data\Monster\tronW\st_mom_s_add.tex";
+    "st_mom_s_body"	TFNM "Data\Monster\tronW\st_mom_s_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronW\tronW_bd_1.bm";
+  TEXTURES   
+  {
+    "st_mom_s_add"	TFNM "Data\Monster\tronW\st_mom_s_add.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronW\tronW_head.bm";
+  TEXTURES   
+  {
+    "st_mom_s_body"	TFNM "Data\Monster\tronW\st_mom_s_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronW\tronW_bu.bm";
+  TEXTURES   
+  {
+    "st_mom_s_body"	TFNM "Data\Monster\tronW\st_mom_s_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronW\tronW_bu_1.bm";
+  TEXTURES   
+  {
+    "st_mom_s_add"	TFNM "Data\Monster\tronW\st_mom_s_add.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronW\tronW_weapon.bm";
+  TEXTURES   
+  {
+    "st_mom_s_add1"	TFNM "Data\Monster\tronW\st_mom_s_add1.tex";
+  }
+  MESH       	TFNM "Data\Monster\tronW\_TAG_tornW.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\tronW\tronW.bs";
+  ANIMSET   	TFNM "Data\Monster\tronW\tronW.ba";
+  ANIMEFFECT	TFNM "Data\Monster\TronW\tronW.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,0.8,1.5;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.15,0.25,0.75,0.15;}
+  }
+}

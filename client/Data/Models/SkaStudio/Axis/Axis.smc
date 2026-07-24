@@ -1,0 +1,11 @@
+NAME "Axis";
+{
+  MESH       	TFNM "Data\Models\SkaStudio\Axis\Axis.bm";
+  TEXTURES   
+  {
+  }
+  COLISION
+  {
+  }
+  COLOR		0xFFFFFFFF;
+}

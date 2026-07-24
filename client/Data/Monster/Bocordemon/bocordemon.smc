@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "summonfire";
+{
+  MESH       	TFNM "Data\Monster\Bocordemon\bocordemon_bu.bm";
+  TEXTURES   
+  {
+    "bocordemon"	TFNM "Data\Monster\Bocordemon\bocordemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bocordemon\bocordemon_hn.bm";
+  TEXTURES   
+  {
+    "bocordemon"	TFNM "Data\Monster\Bocordemon\bocordemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bocordemon\bocordemon_bd.bm";
+  TEXTURES   
+  {
+    "bocordemon"	TFNM "Data\Monster\Bocordemon\bocordemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bocordemon\bocordemon_staff.bm";
+  TEXTURES   
+  {
+    "bocordemon_weapon"	TFNM "Data\Monster\Bocordemon\bocordemon_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bocordemon\_TAG_BOCORDEMON_STAFF.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Bocordemon\bocordemon.bs";
+  ANIMSET   	TFNM "Data\Monster\Bocordemon\bocordemon.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Bocordemon\bocordemon.bae";
+  ALLFRAMESBBOX	-2.13285,-0.281627,-2.64147,1.62596,3.03412,4.33995;
+  COLISION
+  {
+    "Default"  {-0.458126,-1.19209e-006,-0.733223,0.541875,2.4,0.266777;}
+  }
+}

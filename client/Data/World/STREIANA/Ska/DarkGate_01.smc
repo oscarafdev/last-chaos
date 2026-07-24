@@ -1,0 +1,13 @@
+NAME "AM-Stone_01";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\DarkGate_01.bm";
+  TEXTURES   
+  {
+    "DarkGate_01"	TFNM "Data\World\STREIANA\Ska\Texture\DarkGate_01.tex";
+  }
+  ALLFRAMESBBOX	-1.39854,-0.003794,-0.03275,1.43181,2.43991,0.346153;
+  COLISION
+  {
+    "Default"  {-0.98654,-0.187951,-1.03921,1.12947,2.975,0.865703;}
+  }
+}

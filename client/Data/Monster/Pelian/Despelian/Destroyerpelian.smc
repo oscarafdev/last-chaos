@@ -1,0 +1,43 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Destroyerpelian";
+{
+  MESH       	TFNM "Data\Monster\Pelian\Despelian\_TAG_DPELH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Pelian\Despelian\_TAG_DPERH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Pelian\Despelian\_TAG_DPEWL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Pelian\Despelian\_TAG_DPEWR.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Pelian\Despelian\Destroyerpelian_body.bm";
+  TEXTURES   
+  {
+    "Destroyerpelian"	TFNM "Data\Monster\Pelian\Despelian\DestroyerPelian.tex";
+  }
+  MESH       	TFNM "Data\Monster\Pelian\Despelian\Destroyerpelian_leg.bm";
+  TEXTURES   
+  {
+    "Destroyerpelian"	TFNM "Data\Monster\Pelian\Despelian\DestroyerPelian.tex";
+  }
+  MESH       	TFNM "Data\Monster\Pelian\Despelian\Destroyerpelian_wing.bm";
+  TEXTURES   
+  {
+    "Destroyerpelian"	TFNM "Data\Monster\Pelian\Despelian\DestroyerPelian.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Pelian\Despelian\Destroyerpelian.bs";
+  ANIMSET   	TFNM "Data\Monster\Pelian\Despelian\Destroyerpelian.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Pelian\Despelian\Destroyerpelian.bae";
+  ALLFRAMESBBOX	-2.99104,-0.16902,-3.31128,3.26992,3.68817,2.74574;
+  COLISION
+  {
+    "Default"  {-2.15,0,-2.15,2.15,3.4,2.15;}
+  }
+}

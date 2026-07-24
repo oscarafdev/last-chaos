@@ -1,0 +1,13 @@
+NAME "s_dun_door01";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\s_dun_door01.bm";
+  TEXTURES   
+  {
+    "s_dun_door01"	TFNM "Data\World\Dungeon1\Ska\Texture\s_dun_door01.tex";
+    "s_dun_door02"	TFNM "Data\World\Dungeon1\Ska\Texture\s_dun_door02.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

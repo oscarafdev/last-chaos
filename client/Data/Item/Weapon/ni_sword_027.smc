@@ -1,0 +1,12 @@
+NAME "ni_sword_027";
+{
+  MESH       	TFNM "Data\Item\Weapon\ni_sword_027.bm";
+  TEXTURES   
+  {
+    "ni_sword_027"	TFNM "Data\Item\Weapon\Texture\ni_sword_027.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

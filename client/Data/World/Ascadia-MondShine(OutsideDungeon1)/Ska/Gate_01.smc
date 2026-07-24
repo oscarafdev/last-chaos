@@ -1,0 +1,17 @@
+NAME "w2_tombstone";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\w2_tombstone.bm";
+  TEXTURES   
+  {
+    "w2_tombstone3"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\w2_tombstone3.tex";
+    "w2_tombstone3"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\w2_tombstone3.tex";
+    "Dratan_Detail"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\Dratan_Detail.tex";
+    "w2_tombstone1"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\w2_tombstone1.tex";
+    "w2_tombstone2"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\w2_tombstone2.tex";
+  }
+  ALLFRAMESBBOX	-2.18637,-0.064283,-1.83088,2.18636,5.99459,1.83089;
+  COLISION
+  {
+    "Default"  {-1.51136,-0.0214082,-1.50625,1.5,6.00001,1.5;}
+  }
+}

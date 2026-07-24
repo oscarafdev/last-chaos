@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_hel_carnival";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hel_carnival.bm";
+  TEXTURES   
+  {
+    "ni_hel_carnival"	TFNM "Data\Item\Shield\Knight\Texture\ni_hel_carnival.tex";
+  }
+  ALLFRAMESBBOX	-0.23397,1.74937,-0.204595,0.233971,2.46285,0.407955;
+  COLISION
+  {
+  }
+}

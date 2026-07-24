@@ -1,0 +1,13 @@
+NAME "j_top";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\j_top.bm";
+  TEXTURES   
+  {
+    "j_top"	TFNM "Data\world\StartZone\Ska\Texture\j_top.tex";
+  }
+  ALLFRAMESBBOX	-0.414925,-1.72735,-0.419956,0.410502,2.45344,0.422652;
+  COLISION
+  {
+    "Default"  {-0.406474,-1.73479,-0.442851,0.407379,-1.3975,0.449308;}
+  }
+}

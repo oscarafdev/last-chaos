@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="284" h="260" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIText id="move_title" x="0" y="0" w="284" h="25" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="base_hide" x="0" y="0" w="285" h="230" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UIImageSplit id="is_title" x="0" y="0" w="284" h="23" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="280" t="920" r="564" b="943" unit="17" splitmode="0" />
+        <UIImageSplit id="is_back" x="0" y="23" w="284" h="232" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="280" t="943" r="564" b="965" unit="5" splitmode="2" />
+        <UIButton id="btn_left" x="110" y="6" w="11" h="15" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="193" t="944" r="204" b="959" />
+            <uv type="1" l="193" t="963" r="204" b="978" />
+            <uv type="2" l="221" t="944" r="232" b="959" />
+            <uv type="3" l="221" t="963" r="232" b="978" />
+        </UIButton>
+        <UIButton id="btn_right" x="165" y="6" w="11" h="15" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="207" t="944" r="218" b="959" />
+            <uv type="1" l="207" t="963" r="218" b="978" />
+            <uv type="2" l="235" t="944" r="246" b="959" />
+            <uv type="3" l="235" t="963" r="246" b="978" />
+        </UIButton>
+        <UIButton id="btn_close" x="263" y="5" w="16" h="16" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="0" r="0" b="0" />
+            <uv type="1" l="193" t="909" r="209" b="925" />
+            <uv type="2" l="211" t="909" r="227" b="925" />
+            <copyuv src="0" dst="3" />
+        </UIButton>
+        <UIText id="str_count" x="124" y="7" w="40" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0 / 6" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIBase>
+    <UIList id="list_content" x="0" y="24" w="282" h="232" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="8" itemy="2" itemshow_num="0" itemgap="3" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIList>
+</Window>

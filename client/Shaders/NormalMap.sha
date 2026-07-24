@@ -1,0 +1,5 @@
+Package: TFNM Bin\Shaders.dll
+Name: Shader_NormalMap
+Info: Shader_Desc_NormalMap
+VPCode: Shader_VPCode_NormalMap
+PPCode: Shader_PPCode_NormalMap

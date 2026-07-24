@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bu_germany";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_germany.bm";
+  TEXTURES   
+  {
+    "hw_bu_germany "	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_germany .tex";
+  }
+  ALLFRAMESBBOX	-0.399583,1.14493,-0.149608,0.399583,1.71869,0.120407;
+  COLISION
+  {
+  }
+}

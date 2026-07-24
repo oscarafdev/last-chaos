@@ -1,0 +1,19 @@
+NAME "mine";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_hons\line01.bm";
+  TEXTURES   
+  {
+    "magic_line"	TFNM "Data\Effect\Ska\ns_hons\magic_line.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_hons\line02.bm";
+  TEXTURES   
+  {
+    "magic_line"	TFNM "Data\Effect\Ska\ns_hons\magic_line.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_hons\mine.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_hons\mine.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,26 @@
+OFFSET    	-0.682726,28.5524,3.58682,0,0,0;
+NAME "dratan_drenter";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\dratan_drenter.bm";
+  TEXTURES   
+  {
+    "dg_drcan01"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan01.tex";
+    "dg_drcan13"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan13.tex";
+    "dg_drcan02"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan02.tex";
+    "dg_drcan03"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan03.tex";
+    "dg_drcan04"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan04.tex";
+    "dg_drcan05"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan05.tex";
+    "dg_drcan06"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan06.tex";
+    "dg_drcan07"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan07.tex";
+    "dg_drcan09"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan09.tex";
+    "dg_drcan10"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan10.tex";
+    "dg_drcan12"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan12.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\ska\Texture\Dratan_Detail.tex";
+    "dg_drcan08"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan08.tex";
+    "dg_drcan11"	TFNM "Data\World\Dratan\Ska\Texture\dg_drcan11.tex";
+  }
+  ALLFRAMESBBOX	-48.9988,-29.1006,-23.8017,48.9988,29.1006,23.8016;
+  COLISION
+  {
+  }
+}

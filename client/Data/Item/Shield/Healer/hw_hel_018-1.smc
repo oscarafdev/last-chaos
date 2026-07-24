@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_hel_018-1";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\_TAG_EYE0118-1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\_TAG_EYE0218-1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hel_018-1.bm";
+  TEXTURES   
+  {
+    "hw_hel_018-1"	TFNM "Data\Item\Shield\Healer\Texture\hw_hel_018-1.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hel_018-1_1.bm";
+  TEXTURES   
+  {
+    "hw_hair_000"	TFNM "Data\Item\Shield\Healer\Texture\hw_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.153927,1.46115,-0.111889,0.153927,1.88484,0.159223;
+  COLISION
+  {
+  }
+}

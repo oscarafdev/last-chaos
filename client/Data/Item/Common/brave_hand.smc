@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bow_drop";
+{
+  MESH       	TFNM "Data\Item\Common\_TAG_B_HAND.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Common\brave_hand.bm";
+  TEXTURES   
+  {
+    "brave_hand"	TFNM "Data\Item\Common\Texture\brave_hand.tex";
+  }
+  SKELETON  	TFNM "Data\Item\Common\brave_hand.bs";
+  ANIMSET   	TFNM "Data\Item\Common\brave_hand.ba";
+  ANIMEFFECT	TFNM "Data\Item\Common\brave_hand.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,0.6,0.5;
+  COLISION
+  {
+  }
+}

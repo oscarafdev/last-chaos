@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "cao_imp";
+{
+  MESH       	TFNM "Data\Effect\Ska\_TAG_T_CAO_IMP.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Effect\Ska\cao_imp.bm";
+  TEXTURES   
+  {
+    "cao_imp"	TFNM "Data\Effect\Ska\cao_imp.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\cao_imp.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\cao_imp.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

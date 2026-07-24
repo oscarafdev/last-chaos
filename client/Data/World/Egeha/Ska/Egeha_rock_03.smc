@@ -1,0 +1,14 @@
+NAME "w3_bigtree";
+{
+  MESH       	TFNM "Data\World\Egeha\Ska\Egeha_rock_03.bm";
+  TEXTURES   
+  {
+    "Egeha_rock_03"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_rock_03.tex";
+    "merac_Detail"	TFNM "Data\World\Egeha\Ska\Texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-3.07626,-0.082569,-2.92878,3.19234,5.98825,2.97005;
+  COLISION
+  {
+    "Default"  {-3.14655,-0.0840712,-3.0976,3.25482,6.08056,3.08874;}
+  }
+}

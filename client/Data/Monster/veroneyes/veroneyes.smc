@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "summonfire";
+{
+  MESH       	TFNM "Data\Monster\veroneyes\eye01.bm";
+  TEXTURES   
+  {
+    "veroneyes_01"	TFNM "Data\Monster\veroneyes\veroneyes_01.tex";
+    "veroneyes_02"	TFNM "Data\Monster\veroneyes\veroneyes_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\veroneyes\_TAG_T_eyes.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\veroneyes\veroneyes.bs";
+  ANIMSET   	TFNM "Data\Monster\veroneyes\veroneyes.ba";
+  ANIMEFFECT	TFNM "Data\Monster\veroneyes\veroneyes.bae";
+  ALLFRAMESBBOX	-5,0,-4.5,5,12,4.5;
+  COLISION
+  {
+    "Default"  {-5.00002,0,-4.5,5.00002,12,4.5;}
+  }
+}

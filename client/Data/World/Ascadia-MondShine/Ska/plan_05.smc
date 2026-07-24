@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\Plane06.bm";
+  TEXTURES   
+  {
+    "plant_01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\plant_01.tex";
+  }
+  ALLFRAMESBBOX	-0.712364,-0.013741,-0.72174,0.662933,1.24248,0.653557;
+  COLISION
+  {
+  }
+}

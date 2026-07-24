@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "td_mainwall";
+{
+  MESH       	TFNM "Data\World\Tarian_dungeon\Ska\td_mainwall.bm";
+  TEXTURES   
+  {
+    "mainwall02"	TFNM "Data\World\Tarian_dungeon\Ska\Texture\mainwall02.tex";
+    "mainwall01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\mainwall01.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian_dungeon\Ska\_TAG_T_TDMW.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\Tarian_dungeon\Ska\td_mainwall.bs";
+  ANIMSET   	TFNM "Data\World\Tarian_dungeon\Ska\td_mainwall.ba";
+  ANIMEFFECT	TFNM "Data\World\Tarian_dungeon\Ska\td_mainwall.bae";
+  ALLFRAMESBBOX	-2.89344,-1.77771e-005,-1.65321,2.89344,12.0345,0.025294;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,5,0.5;}
+  }
+}

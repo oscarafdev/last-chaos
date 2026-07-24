@@ -1,0 +1,17 @@
+OFFSET    	-0.2,1.16,0.4,-140,0,130;
+NAME "so_scythe_dessert_01";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_BLADE_dessert_01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\so_scythe_dessert_01.bm";
+  TEXTURES   
+  {
+    "so_scythe_dessert_01"	TFNM "Data\Item\Weapon\Texture\so_scythe_dessert_01.tex";
+  }
+  ALLFRAMESBBOX	-0.962214,0.00216281,-0.834828,0.714042,0.141625,0.935561;
+  COLISION
+  {
+  }
+}

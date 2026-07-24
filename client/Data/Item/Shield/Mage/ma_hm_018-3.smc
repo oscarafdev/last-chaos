@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_hm_018-3";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\_TAG_T_ME0118-3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\_TAG_T_ME0218-3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hm_018-3.bm";
+  TEXTURES   
+  {
+    "ma_hm_018-3"	TFNM "Data\Item\Shield\Mage\Texture\ma_hm_018-3.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hm_018-3_1.bm";
+  TEXTURES   
+  {
+    "ma_hair_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.185719,1.06463,-0.154355,0.185719,2.05777,0.365391;
+  COLISION
+  {
+  }
+}

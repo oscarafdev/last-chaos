@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "gambling2";
+{
+  MESH       	TFNM "Data\Npc\Gambling\gambling2_handle.bm";
+  TEXTURES   
+  {
+    "gambling_head"	TFNM "Data\Npc\Gambling\gambling2_head.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gambling\gambling2_head.bm";
+  TEXTURES   
+  {
+    "gambling_head"	TFNM "Data\Npc\Gambling\gambling2_head.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gambling\gmabling2_flag.bm";
+  TEXTURES   
+  {
+    "gambling_head"	TFNM "Data\Npc\Gambling\gambling2_head.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gambling\gambling2_body.bm";
+  TEXTURES   
+  {
+    "gambling_pole"	TFNM "Data\Npc\Gambling\gambling2_pole.tex";
+    "gambling_head"	TFNM "Data\Npc\Gambling\gambling2_head.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gambling\_TAG_T_ef2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Gambling\gambling2_deco.bm";
+  TEXTURES   
+  {
+    "gambling_deco"	TFNM "Data\Npc\Gambling\gambling2_deco.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Gambling\gambling2.bs";
+  ANIMSET   	TFNM "Data\Npc\Gambling\gambling2.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Gambling\gambling2.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1.86,0.5;
+  COLISION
+  {
+  }
+}

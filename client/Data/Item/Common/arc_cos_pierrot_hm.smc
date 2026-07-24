@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "arc_cos_pierrot_hm";
+{
+  MESH       	TFNM "Data\Item\Common\arc_cos_pierrot_hm.bm";
+  TEXTURES   
+  {
+    "cos_pierrot_hm"	TFNM "Data\Item\Common\Texture\cos_pierrot_hm.tex";
+  }
+  ALLFRAMESBBOX	-0.185471,1.67548,-0.13046,0.185473,1.98951,0.100045;
+  COLISION
+  {
+  }
+}

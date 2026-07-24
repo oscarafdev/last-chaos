@@ -1,0 +1,13 @@
+NAME "CandleStick_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Candle Stick_01.bm";
+  TEXTURES   
+  {
+    "CandleStick_01"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Texture\CandleStick_01.tex";
+  }
+  ALLFRAMESBBOX	-0.387923,-0.002523,-0.397287,0.387924,2.0265,0.37856;
+  COLISION
+  {
+    "Default"  {-2.0147,-0.0314436,-0.360232,2.36323,1.81625,0.369988;}
+  }
+}

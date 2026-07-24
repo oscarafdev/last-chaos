@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Goblin";
+{
+  MESH       	TFNM "Data\monster\Goblin\Goblin01.bm";
+  TEXTURES   
+  {
+    "w2_m_goblin"	TFNM "Data\monster\Goblin\w2_m_goblin.tex";
+  }
+  MESH       	TFNM "Data\monster\Goblin\Goblin02.bm";
+  TEXTURES   
+  {
+    "w2_m_goblin"	TFNM "Data\monster\Goblin\w2_m_goblin.tex";
+  }
+  MESH       	TFNM "Data\monster\Goblin\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Goblin\Goblin.bs";
+  ANIMSET   	TFNM "Data\monster\Goblin\Goblin.ba";
+  ANIMEFFECT	TFNM "Data\monster\Goblin\Goblin.bae";
+  ALLFRAMESBBOX	-2,0,-1.05,2,1.7,2.45;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.5,0.4,1.2,0.3;}
+  }
+}

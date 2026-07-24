@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bu_zorro";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bu_zorro.bm";
+  TEXTURES   
+  {
+    "ma_bu_zorro"	TFNM "Data\Item\Shield\Mage\Texture\ma_bu_zorro.tex";
+  }
+  ALLFRAMESBBOX	-0.273726,1.19433,-0.204762,0.273726,1.75311,0.067959;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "st_bridge01";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_brdge_1.bm";
+  TEXTURES   
+  {
+    "st_bridge"	TFNM "Data\World\STREIANA\Ska\Texture\st_bridge.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_brdge_2.bm";
+  TEXTURES   
+  {
+    "hut_01"	TFNM "Data\World\STREIANA\Ska\Texture\hut_01.tex";
+  }
+  ALLFRAMESBBOX	-2.41832,-0.054285,-4.85718,2.41832,6.42059,4.85718;
+  COLISION
+  {
+  }
+}

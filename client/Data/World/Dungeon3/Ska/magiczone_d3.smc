@@ -1,0 +1,18 @@
+NAME "magiczone_d3";
+{
+  MESH       	TFNM "Data\world\Dungeon3\Ska\magiczone_d3.bm";
+  TEXTURES   
+  {
+    "sculpture_d3"	TFNM "Data\world\Dungeon3\Ska\texture\sculpture_d3.tex";
+    "Chain_d3"	TFNM "Data\world\Dungeon3\Ska\texture\Chain_d3.tex";
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  SKELETON  	TFNM "Data\world\Dungeon3\Ska\magiczone_d3.bs";
+  ANIMSET   	TFNM "Data\world\Dungeon3\Ska\magiczone_d3.ba";
+  ANIMEFFECT	TFNM "Data\world\Dungeon3\Ska\magiczone_d3.bae";
+  ALLFRAMESBBOX	-9.80176,-0.20573,-9.80174,9.80176,16.0085,9.80175;
+  COLISION
+  {
+    "Default"  {-9.80175,0,-9.80175,9.80175,16.2142,9.80175;}
+  }
+}

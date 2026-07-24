@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\BOX_03.bm";
+  TEXTURES   
+  {
+    "tombstone02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\tombstone02.tex";
+  }
+  ALLFRAMESBBOX	-0.355275,-0.004338,-0.067605,0.355275,1.29918,0.067605;
+  COLISION
+  {
+  }
+}

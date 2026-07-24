@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="GuardianUI" x="0" y="0" w="300" h="315" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="300" h="315" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="325" t="242" r="508" b="425" unit="61" splitmode="2" />
+    <UIBase id="base_drag" x="0" y="0" w="282" h="37" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" />
+    <UIText x="0" y="16" w="124" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="5072" str="후견인 상세 정보" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="-3" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIButton id="btn_fire" x="0" y="-41" w="180" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="2" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1139" str="견습생 포기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="1" t="490" r="133" b="511" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="134" t="490" r="267" b="511" />
+        <uv type="3" l="268" t="490" r="401" b="511" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="0" y="-13" w="180" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="2" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="870" str="닫기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="1" t="490" r="133" b="511" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="134" t="490" r="267" b="511" />
+        <uv type="3" l="268" t="490" r="401" b="511" />
+    </UIButton>
+    <UIList id="list_" x="6" y="37" w="288" h="204" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="6" itemgap="0" item_count="6" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="286" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIImageSplit x="-1" y="1" w="286" h="34" hide="0" tex="new_interface.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="192" t="478" r="386" b="512" unit="10" splitmode="2" />
+            <UIText id="txt_title" x="5" y="0" w="75" h="16" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="0" str="" str_ellipsis="" color="0xffffa0ff" color_enter="0xffffa0ff" color_select="0xffffa0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImageSplit x="-6" y="0" w="160" h="21" hide="0" tex="new_interface.tex" align_h="2" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="473" r="96" b="489" unit="10" splitmode="2" />
+            <UIText id="txt_info" x="-9" y="1" w="151" h="16" hide="0" align_h="2" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="0" str="" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+</Window>

@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "catsbi_weapon";
+{
+  MESH       	TFNM "Data\Npc\pet\catsbi_weapon.bm";
+  TEXTURES   
+  {
+    "pet_weapons"	TFNM "Data\Npc\pet\pet_weapons.tex";
+  }
+  ALLFRAMESBBOX	0.296678,0.355003,-0.564815,0.456901,0.527335,0.092668;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

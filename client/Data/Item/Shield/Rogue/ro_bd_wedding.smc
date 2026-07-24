@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_bd_Wedding";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bd_wedding.bm";
+  TEXTURES   
+  {
+    "ro_bd_Wedding"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bd_wedding.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bd_wedding_1.bm";
+  TEXTURES   
+  {
+    "ro_bd_wedding_1"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bd_wedding_1.tex";
+    "ro_leaf_wedding"	TFNM "Data\Item\Shield\Rogue\Texture\ro_leaf_wedding.tex";
+  }
+  ALLFRAMESBBOX	-0.269584,0.481455,-0.169687,0.268386,1.16485,0.195723;
+  COLISION
+  {
+  }
+}

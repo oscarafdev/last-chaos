@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "matryoshka";
+{
+  MESH       	TFNM "Data\Item\Common\matryo01.bm";
+  TEXTURES   
+  {
+    "matryoshka"	TFNM "Data\Item\Common\Texture\matryoshka.tex";
+  }
+  MESH       	TFNM "Data\Item\Common\matryo02.bm";
+  TEXTURES   
+  {
+    "matryoshka"	TFNM "Data\Item\Common\Texture\matryoshka.tex";
+  }
+  MESH       	TFNM "Data\Item\Common\_TAG_T_RUSM.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Item\Common\matryoshka.bs";
+  ANIMSET   	TFNM "Data\Item\Common\matryoshka.ba";
+  ANIMEFFECT	TFNM "Data\Item\Common\matryoshka.bae";
+  ALLFRAMESBBOX	-0.149775,-0.026728,-0.147854,0.156066,0.3219,0.155756;
+  COLISION
+  {
+    "Default"  {-0.175,0,-0.175,0.175,0.35,0.175;}
+  }
+}

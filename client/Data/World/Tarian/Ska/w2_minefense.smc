@@ -1,0 +1,13 @@
+NAME "w2_minefense";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\w2_minefense.bm";
+  TEXTURES   
+  {
+    "w2_minewood2"	TFNM "Data\World\Tarian\Ska\Texture\w2_minewood2.tex";
+    "w2_minewood6"	TFNM "Data\World\Tarian\Ska\Texture\w2_minewood6.tex";
+  }
+  ALLFRAMESBBOX	-3.64481,-0.063937,-0.17791,3.43399,2.93897,0.177127;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,7 @@
+#define LINE_CHANGE_BY_WORD
+//#define MODIFY_MESSENGER_CHAT_BLANK_NA_20081028
+#define MULTI_CLIENT
+//#define STASH_PASSWORD
+
+#if defined VER_TEST
+#endif

@@ -1,0 +1,16 @@
+NAME "potionhouse_poll";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\potionhouse_poll.bm";
+  TEXTURES   
+  {
+    "st_house_02"	TFNM "Data\world\StartZone\Ska\Texture\st_house_02.tex";
+    "st_shop_001"	TFNM "Data\world\StartZone\Ska\Texture\st_shop_001.tex";
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\potionhouse_poll.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\potionhouse_poll.ba";
+  ALLFRAMESBBOX	-1.07754,-0.00705927,-0.292151,1.07772,2.87061,0.269735;
+  COLISION
+  {
+  }
+}

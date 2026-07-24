@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bd_cos_russia";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_cos_russia.bm";
+  TEXTURES   
+  {
+    "so_cos_russia_bd"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_cos_russia_bd.tex";
+  }
+  ALLFRAMESBBOX	-0.253997,0.490994,-0.185551,0.242197,1.3668,0.201683;
+  COLISION
+  {
+    "Default"  {-0.253997,0.490994,-0.185551,0.242197,1.3668,0.201683;}
+  }
+}

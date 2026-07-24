@@ -1,0 +1,13 @@
+NAME "decorationtable_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\decorationtable_G.bm";
+  TEXTURES   
+  {
+    "decorationtable_G"	TFNM "Data\World\Guild\Ska\Texture\decorationtable_G.tex";
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+  }
+  ALLFRAMESBBOX	-0.760636,-0.002737,-0.404552,0.760625,1.90679,0.404553;
+  COLISION
+  {
+  }
+}

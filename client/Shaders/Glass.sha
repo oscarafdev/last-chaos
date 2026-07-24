@@ -1,0 +1,5 @@
+Package: TFNM Bin\Shaders.dll
+Name: Shader_Glass
+Info: Shader_Desc_Glass
+VPCode: Shader_VPCode_Glass
+PPCode: Shader_PPCode_Glass

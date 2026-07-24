@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "etc_01";
+{
+  MESH       	TFNM "Data\Npc\tarian\etc_01.bm";
+  TEXTURES   
+  {
+    "etc_01"	TFNM "Data\Npc\tarian\etc_01.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\tarian\etc_01.bs";
+  ANIMSET   	TFNM "Data\Npc\tarian\etc_01.ba";
+  ALLFRAMESBBOX	-0.475299,0.00855097,-0.475299,0.475299,2.44823,0.475299;
+  COLISION
+  {
+  }
+}

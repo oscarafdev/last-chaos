@@ -1,0 +1,52 @@
+NAME "maincastle";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\maincastle.bm";
+  TEXTURES   
+  {
+    "castle_16"	TFNM "Data\world\StartZone\Ska\texture\castle_16.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image-07.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image-07"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image-07.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image-01.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image-01"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image-01.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image-04.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image-04"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image-04.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image-05.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image-05"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image-05.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image-06.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image-06"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image-06.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image-02.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image-02"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image-02.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image-03.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image-03"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image-03.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\sung-02-all-image.bm";
+  TEXTURES   
+  {
+    "sung-02-all-image"	TFNM "Data\world\StartZone\Ska\texture\sung-02-all-image.tex";
+  }
+  ALLFRAMESBBOX	-73.3669,-0.001761,-94.8978,73.3687,177.26,49.6098;
+  COLISION
+  {
+  }
+}

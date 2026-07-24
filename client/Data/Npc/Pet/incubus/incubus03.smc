@@ -1,0 +1,68 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "incubus03";
+{
+  MESH       	TFNM "Data\Npc\pet\incubus\incubus03_1.bm";
+  TEXTURES   
+  {
+    "incubus03_1"	TFNM "Data\Npc\pet\incubus\incubus03_1.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\incubus03_2.bm";
+  TEXTURES   
+  {
+    "incubus03_2"	TFNM "Data\Npc\pet\incubus\incubus03_2.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\incubus03_bd.bm";
+  TEXTURES   
+  {
+    "incubus03_bd"	TFNM "Data\Npc\pet\incubus\incubus03_bd.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\incubus03_ft.bm";
+  TEXTURES   
+  {
+    "incubus03_ft"	TFNM "Data\Npc\pet\incubus\incubus03_ft.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\incubus03_hd.bm";
+  TEXTURES   
+  {
+    "incubus03_hd"	TFNM "Data\Npc\pet\incubus\incubus03_hd.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\incubus03_wing.bm";
+  TEXTURES   
+  {
+    "incubus03_wi"	TFNM "Data\Npc\pet\incubus\incubus03_wi.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\incubus_ft_03.bm";
+  TEXTURES   
+  {
+    "incubus03_ft"	TFNM "Data\Npc\pet\incubus\incubus03_ft.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\Object01.bm";
+  TEXTURES   
+  {
+    "incubus03_2"	TFNM "Data\Npc\pet\incubus\incubus03_2.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\_TAG_T_ICE031.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\_TAG_T_ICE032.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\_TAG_T_LIC03.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\incubus\_TAG_T_RIC03.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\incubus\incubus03.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\incubus\incubus03.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\incubus\incubus03.bae";
+  ALLFRAMESBBOX	-1.1,0,-1.1,1.1,2.2,1.1;
+  COLISION
+  {
+    "Default"  {-1.1,0,-1.1,1.1,2.2,1.1;}
+  }
+}

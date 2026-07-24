@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "pointskull";
+{
+  MESH       	TFNM "Data\World\GuildCube\Ska\_TAG_T_PSKULL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\pointskull.bm";
+  TEXTURES   
+  {
+    "obj-07"	TFNM "Data\World\GuildCube\Ska\Texture\obj-07.tex";
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\pointskull_1.bm";
+  TEXTURES   
+  {
+    "obj-06"	TFNM "Data\World\GuildCube\Ska\Texture\obj-06.tex";
+  }
+  SKELETON  	TFNM "Data\World\GuildCube\Ska\pointskull.bs";
+  ANIMSET   	TFNM "Data\World\GuildCube\Ska\pointskull.ba";
+  ANIMEFFECT	TFNM "Data\World\GuildCube\Ska\pointskull.bae";
+  ALLFRAMESBBOX	-2.85886,-0.00276354,-2.78772,2.86945,4.03342,2.85888;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

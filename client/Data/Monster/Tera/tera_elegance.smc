@@ -1,0 +1,37 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "tera_elegance";
+{
+  MESH       	TFNM "Data\Monster\Tera\tera_elegance_body.bm";
+  TEXTURES   
+  {
+    "tera_elegance"	TFNM "Data\Monster\Tera\tera_elegance.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_elegance_foot.bm";
+  TEXTURES   
+  {
+    "tera_elegance"	TFNM "Data\Monster\Tera\tera_elegance.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_elegance_hand.bm";
+  TEXTURES   
+  {
+    "tera_elegance"	TFNM "Data\Monster\Tera\tera_elegance.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_elegance_head.bm";
+  TEXTURES   
+  {
+    "tera_elegance"	TFNM "Data\Monster\Tera\tera_elegance.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_elegance_tail.bm";
+  TEXTURES   
+  {
+    "tera_elegance"	TFNM "Data\Monster\Tera\tera_elegance.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Tera\tera_elegance.bs";
+  ANIMSET   	TFNM "Data\Monster\Tera\tera_elegance.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Tera\tera_elegance.bae";
+  ALLFRAMESBBOX	-0.65,0,-0.55,0.65,1.3,0.75;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.55,0.65,1.3,0.75;}
+  }
+}

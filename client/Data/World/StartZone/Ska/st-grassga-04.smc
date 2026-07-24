@@ -1,0 +1,12 @@
+NAME "st-grassga-04";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st-grassga-04.bm";
+  TEXTURES   
+  {
+    "s_grass_0021"	TFNM "Data\world\StartZone\Ska\Texture\s_grass_0021.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

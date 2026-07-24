@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="ChattingUI" x="0" y="-27" w="421" h="312" hide="0" align_h="0" align_v="2" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_user_notice" x="0" y="1" w="321" h="87" hide="1" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="260" r="321" b="347">
+        <UIText id="text_user_notice" x="27" y="64" w="273" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Player &gt; 유저 공지 입니다." str_ellipsis="" color="0xffff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImageSplit id="img_system_chat_back" x="0" y="88" w="321" h="91" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="342" r="321" b="421" unit="40" splitmode="2">
+        <UIBase id="sysmsg_resizing_area" x="21" y="-1" w="300" h="12" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+        <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="0" item_per_page="5">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+            </UIScrollBar>
+            <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+            </UIListItem>
+        </UIList>
+    </UIImageSplit>
+    <UITab id="tab_main_chat" x="0" y="-21" w="340" h="113" hide="0" align_h="0" align_v="2" tooltip="-1" tooltip_width="0">
+        <UIImageSplit id="img_chat_back" x="0" y="0" w="321" h="91" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="421" r="321" b="513" unit="40" splitmode="2" />
+        <UICheck id="cb_main_channel" x="0" y="-69" w="19" h="44" hide="0" tex="CommonBtn.tex" align_h="2" align_v="2" tooltip="5393" tooltip_width="0" str_idx="0" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="289" t="116" r="308" b="160" />
+            <check l="265" t="116" r="284" b="160" />
+        </UICheck>
+        <UICheck id="cb_main_general" x="0" y="-23" w="19" h="44" hide="0" tex="CommonBtn.tex" align_h="2" align_v="2" tooltip="5394" tooltip_width="0" str_idx="0" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="337" t="116" r="356" b="160" />
+            <check l="313" t="116" r="332" b="160" />
+        </UICheck>
+        <UITabPage id="tp_main_channel" x="0" y="0" w="340" h="113" hide="0" align_h="0" align_v="2" tooltip="-1" tooltip_width="0">
+            <UITab id="tab_chat_mode" x="0" y="0" w="321" h="113" hide="0" align_h="0" align_v="2" tooltip="-1" tooltip_width="0">
+                <UICheck id="cb_general" x="0" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="506" str="전체" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UICheck id="cb_group" x="76" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="507" str="파티" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UICheck id="cb_guild" x="152" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="508" str="길드" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UICheck id="cb_transaction" x="228" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="509" str="매매" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UITabPage id="tp_general" x="0" y="0" w="340" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="5" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+                <UITabPage id="tp_group" x="0" y="0" w="340" h="91" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="5" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+                <UITabPage id="tp_guild" x="0" y="0" w="340" h="91" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="0" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+                <UITabPage id="tp_transaction" x="0" y="0" w="340" h="91" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="0" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+            </UITab>
+        </UITabPage>
+        <UITabPage id="tp_main_general" x="0" y="0" w="340" h="113" hide="1" align_h="0" align_v="2" tooltip="-1" tooltip_width="0">
+            <UITab id="tab_chat_mode" x="0" y="0" w="321" h="113" hide="0" align_h="0" align_v="2" tooltip="-1" tooltip_width="0">
+                <UICheck id="cb_general" x="0" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="506" str="전체" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UICheck id="cb_group" x="76" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="507" str="파티" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UICheck id="cb_guild" x="152" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="508" str="길드" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UICheck id="cb_transaction" x="228" y="-2" w="74" h="19" hide="0" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="509" str="매매" posleft="0" text_x="0" region="0" text_area="74" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+                    <none l="362" t="140" r="436" b="159" />
+                    <check l="362" t="116" r="436" b="135" />
+                </UICheck>
+                <UITabPage id="tp_general" x="0" y="0" w="340" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="0" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+                <UITabPage id="tp_group" x="0" y="0" w="340" h="91" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="0" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+                <UITabPage id="tp_guild" x="0" y="0" w="340" h="91" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="0" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+                <UITabPage id="tp_transaction" x="0" y="0" w="340" h="91" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIList id="list_chat" x="0" y="0" w="321" h="91" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="21" itemy="5" itemshow_num="5" itemgap="1" item_count="5" pre_create="0">
+                        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        <UIScrollBar id="sb_chat" x="0" y="1" w="321" h="87" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="0" item_count="0" item_per_page="5">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                            <button1 x="5" y="0" w="13" h="13" l0="268" t0="218" r0="281" b0="231" l1="252" t1="218" r1="265" b1="231" />
+                            <button2 x="5" y="0" w="13" h="13" l0="268" t0="233" r0="281" b0="246" l1="252" t1="233" r1="265" b1="246" />
+                            <thumb x="7" y="0" w="9" h="61" unit="5" l="240" t="218" r="249" b="232" />
+                        </UIScrollBar>
+                        <UIListItem id="list_item_001" x="21" y="5" w="290" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                            <UITextBoxEx id="text_chat_msg" x="0" y="0" w="290" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="1" text_base_col="0xffffffff" str="" />
+                        </UIListItem>
+                    </UIList>
+                </UITabPage>
+            </UITab>
+        </UITabPage>
+        <UIBase id="general_resizing_area" x="19" y="0" w="300" h="12" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    </UITab>
+    <UIImage id="img_input_back" x="0" y="-1" w="322" h="22" hide="0" tex="TopUI.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" l="0" t="278" r="321" b="300">
+        <UIEdit id="eb_chat_input" x="21" y="0" w="296" h="22" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" max="250" passwd="0" cursor_move="1" only_num="0">
+            <CandidateUV l="0" t="0" r="0" b="0" />
+            <ReadUV l="0" t="0" r="0" b="0" />
+            <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+        </UIEdit>
+    </UIImage>
+    <UIButton id="btn_chat_option" x="304" y="-23" w="18" h="19" hide="0" tex="TopUI.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="508" t="256" r="526" b="275" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="530" t="256" r="548" b="275" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIImageSplit id="img_chat_option" x="321" y="-38" w="100" h="120" hide="1" tex="CommonBtn.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" l="0" t="229" r="85" b="251" unit="9" splitmode="2">
+        <UIText id="text_general" x="9" y="7" w="27" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="92" str="일반" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_group" x="9" y="23" w="27" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="453" str="파티(@)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_guild" x="9" y="39" w="27" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="454" str="길드(#)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_transaction" x="9" y="55" w="27" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="455" str="매매($)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_whisper" x="9" y="71" w="38" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="456" str="귓속말(!)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_shout" x="9" y="87" w="38" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="459" str="외치기(%)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_system" x="9" y="103" w="38" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="457" str="시스템" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UICheck id="cb_general" x="-8" y="7" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="139" t="75" r="152" b="88" />
+            <check l="119" t="75" r="132" b="88" />
+        </UICheck>
+        <UICheck id="cb_group" x="-8" y="23" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="139" t="75" r="152" b="88" />
+            <check l="119" t="75" r="132" b="88" />
+        </UICheck>
+        <UICheck id="cb_guild" x="-8" y="39" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="139" t="75" r="152" b="88" />
+            <check l="119" t="75" r="132" b="88" />
+        </UICheck>
+        <UICheck id="cb_transaction" x="-8" y="55" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="139" t="75" r="152" b="88" />
+            <check l="119" t="75" r="132" b="88" />
+        </UICheck>
+        <UICheck id="cb_whisper" x="-8" y="71" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="139" t="75" r="152" b="88" />
+            <check l="119" t="75" r="132" b="88" />
+        </UICheck>
+        <UICheck id="cb_shout" x="-8" y="87" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="139" t="75" r="152" b="88" />
+            <check l="119" t="75" r="132" b="88" />
+        </UICheck>
+        <UICheck id="cb_system" x="-8" y="103" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="139" t="75" r="152" b="88" />
+            <check l="119" t="75" r="132" b="88" />
+        </UICheck>
+    </UIImageSplit>
+</Window>

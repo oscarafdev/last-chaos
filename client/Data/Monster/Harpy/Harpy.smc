@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Harpy";
+{
+  MESH       	TFNM "Data\monster\Harpy\Harpy.bm";
+  TEXTURES   
+  {
+    "w2_m_harpy"	TFNM "Data\monster\Harpy\w2_m_harpy.tex";
+  }
+  MESH       	TFNM "Data\monster\Harpy\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Harpy\Harpy.bs";
+  ANIMSET   	TFNM "Data\monster\Harpy\Harpy.ba";
+  ANIMEFFECT	TFNM "Data\monster\Harpy\Harpy.bae";
+  ALLFRAMESBBOX	-2,0,-2,2,3.8,2;
+  COLISION
+  {
+    "Default"  {-0.45,0,-0.45,0.45,3.3,0.45;}
+  }
+}

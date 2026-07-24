@@ -1,0 +1,30 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_die.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_idle01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_walk.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_idle02.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_run.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_dam.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_att01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_att02.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\Summon\summon_wind_sow.AA"
+}

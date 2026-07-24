@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_hm_oubli";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hm_oubli.bm";
+  TEXTURES   
+  {
+    "so_hm_oubli"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hm_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.099292,1.69983,-0.124552,0.099292,2.08096,0.129022;
+  COLISION
+  {
+  }
+}

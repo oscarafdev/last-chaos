@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "MMusk";
+{
+  MESH       	TFNM "Data\Monster\Musk\mmusk\MMusk.bm";
+  TEXTURES   
+  {
+    "MMusk"	TFNM "Data\Monster\Musk\mmusk\Mmusk.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Musk\mmusk\mmusk.bs";
+  ANIMSET   	TFNM "Data\Monster\Musk\mmusk\MMusk.ba";
+  ALLFRAMESBBOX	-1,0,-2.25,1,2.5,2.25;
+  COLISION
+  {
+    "Default"  {-1,0,-2.25,1,2.5,2.25;}
+  }
+}

@@ -1,0 +1,55 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bd_011.bm";
+  TEXTURES   
+  {
+    "ro_bd_011"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bd_011.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bu_011.bm";
+  TEXTURES   
+  {
+    "ro_bu_011"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bu_011.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Rogue2\ro_face_000.bm";
+  TEXTURES   
+  {
+    "ro_face_000"	TFNM "Data\Monster\Undead\Rogue2\ro_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ft_011.bm";
+  TEXTURES   
+  {
+    "ro_ft_011"	TFNM "Data\Item\Shield\Rogue\Texture\ro_ft_011.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Rogue2\ro_hair_000.bm";
+  TEXTURES   
+  {
+    "ro_hair_000"	TFNM "Data\Monster\Undead\Rogue2\ro_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hn_011.bm";
+  TEXTURES   
+  {
+    "ro_hn_011"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hn_011.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Rogue2\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_DAGGER_011.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ro_dagger_011.bm";
+  TEXTURES   
+  {
+    "ro_dagger_011"	TFNM "Data\Item\Weapon\Texture\ro_dagger_011.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Undead\Rogue2\ro.bs";
+  ANIMSET   	TFNM "Data\Monster\Undead\Rogue2\ro.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Undead\Rogue2\ro.bae";
+  ALLFRAMESBBOX	-0.4,0,-0.4,0.4,1.8,0.4;
+  COLISION
+  {
+    "Default"  {-0.3,0,-0.3,0.3,1.78,0.3;}
+  }
+}

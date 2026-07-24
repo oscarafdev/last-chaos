@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_backpack_gt";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_backpack_gt.bm";
+  TEXTURES   
+  {
+    "elec_guitar02"	TFNM "Data\Item\Shield\Titan\Texture\elec_guitar02.tex";
+  }
+  ALLFRAMESBBOX	-0.474072,0.610998,0.180476,0.481382,2.05091,0.24676;
+  COLISION
+  {
+  }
+}

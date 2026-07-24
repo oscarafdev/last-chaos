@@ -1,0 +1,15 @@
+NAME "skeleton_rock_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\skeleton_rock.bm";
+  TEXTURES   
+  {
+    "skeleton_chains"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\skeleton_chains.tex";
+    "skeleton_rock"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\skeleton_rock.tex";
+    "m_skeleton_001_01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\m_skeleton_001_01.tex";
+    "m_skeleton_001"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\m_skeleton_001.tex";
+  }
+  ALLFRAMESBBOX	-2.6592,-0.005198,-1.96484,2.81981,4.44148,2.11012;
+  COLISION
+  {
+  }
+}

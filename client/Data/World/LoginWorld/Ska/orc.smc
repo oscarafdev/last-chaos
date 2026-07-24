@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "orc";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\orc.bm";
+  TEXTURES   
+  {
+    "M_Orc_axe"	TFNM "Data\World\LoginWorld\Ska\Texture\M_Orc_axe.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\l_body01.bm";
+  TEXTURES   
+  {
+    "M_Orc_b2"	TFNM "Data\World\LoginWorld\Ska\Texture\M_Orc_b2.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\l_body07.bm";
+  TEXTURES   
+  {
+    "M_Orc_b"	TFNM "Data\World\LoginWorld\Ska\Texture\M_Orc_b.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\Box03.bm";
+  TEXTURES   
+  {
+    "M_Orc_add"	TFNM "Data\World\LoginWorld\Ska\Texture\M_Orc_add.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\Box06.bm";
+  TEXTURES   
+  {
+    "M_Orc_b2"	TFNM "Data\World\LoginWorld\Ska\Texture\M_Orc_b2.tex";
+  }
+  SKELETON  	TFNM "Data\World\LoginWorld\Ska\orc.bs";
+  ANIMSET   	TFNM "Data\World\LoginWorld\Ska\orc.ba";
+  ALLFRAMESBBOX	-1.5,0,-1.4,1.5,2.6,1.4;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

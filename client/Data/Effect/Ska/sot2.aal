@@ -1,0 +1,6 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Character\Sorcerer\sot2_idle_01.AA"
+}

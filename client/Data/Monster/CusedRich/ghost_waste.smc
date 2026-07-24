@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ghost_waste";
+{
+  MESH       	TFNM "Data\Monster\CusedRich\_TAG_GWLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\_TAG_GWRH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_waste_face.bm";
+  TEXTURES   
+  {
+    "ghost_waste_bu"	TFNM "Data\Monster\CusedRich\ghost_waste_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_waste_bu.bm";
+  TEXTURES   
+  {
+    "ghost_waste_bu"	TFNM "Data\Monster\CusedRich\ghost_waste_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_waste_arm.bm";
+  TEXTURES   
+  {
+    "ghost_waste_bu"	TFNM "Data\Monster\CusedRich\ghost_waste_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_waste_hn.bm";
+  TEXTURES   
+  {
+    "ghost_waste_bu"	TFNM "Data\Monster\CusedRich\ghost_waste_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_waste_bd.bm";
+  TEXTURES   
+  {
+    "ghost_waste_bd"	TFNM "Data\Monster\CusedRich\ghost_waste_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_waste_ft.bm";
+  TEXTURES   
+  {
+    "ghost_waste_bd"	TFNM "Data\Monster\CusedRich\ghost_waste_bd.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\CusedRich\ghost_waste.bs";
+  ANIMSET   	TFNM "Data\Monster\CusedRich\ghost_waste.ba";
+  ANIMEFFECT	TFNM "Data\Monster\CusedRich\ghost_waste.bae";
+  ALLFRAMESBBOX	-0.6,0,-0.6,0.6,2.7,0.6;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,2.7,0.6;}
+  }
+}

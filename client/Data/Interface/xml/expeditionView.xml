@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="200" y="200" w="256" h="219" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="256" h="219" hide="0" tex="QuestBook.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="254" t="386" r="510" b="605" />
+    <UIImageArray id="ia_back" x="5" y="37" w="246" h="155" hide="0" tex="NewInventory.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+        <surface0 x="0" y="0" w="246" h="155" l="257" t="0" r="503" b="155" desc="타이탄" />
+        <surface1 x="0" y="0" w="246" h="155" l="504" t="0" r="750" b="155" desc="기사" />
+        <surface2 x="0" y="0" w="246" h="155" l="751" t="0" r="997" b="155" desc="힐러" />
+        <surface3 x="0" y="0" w="246" h="155" l="257" t="156" r="503" b="311" desc="메이지" />
+        <surface4 x="0" y="0" w="246" h="155" l="504" t="156" r="750" b="311" desc="로그" />
+        <surface5 x="0" y="0" w="246" h="155" l="751" t="156" r="997" b="311" desc="소서러" />
+        <surface6 x="0" y="0" w="246" h="155" l="257" t="312" r="503" b="467" desc="나이트쉐도우" />
+        <surface7 x="0" y="0" w="246" h="155" l="504" t="156" r="750" b="311" desc="EX로그" />
+        <surface8 x="0" y="0" w="246" h="155" l="257" t="156" r="503" b="311" desc="EX메이지" />
+    </UIImageArray>
+    <UIImage id="move_area" x="0" y="0" w="256" h="36" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText id="str_title" x="0" y="13" w="256" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4591" str="원정대원 정보" color="0xded9a0ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="232" y="4" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <uv type="3" l="155" t="74" r="169" b="88" />
+    </UIButton>
+    <UIText id="str_name" x="5" y="197" w="246" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIIcon id="icon_wear0" x="112" y="46" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear1" x="112" y="81" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear2" x="77" y="134" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear3" x="112" y="116" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear4" x="147" y="99" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear5" x="77" y="99" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear6" x="112" y="151" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear7" x="36" y="47" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear8" x="36" y="81" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear9" x="36" y="116" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear10" x="188" y="47" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_wear11" x="147" y="64" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+</Window>

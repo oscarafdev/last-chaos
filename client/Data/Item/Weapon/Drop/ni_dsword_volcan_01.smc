@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_dsword_volcan_01";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ni_dsword_volcan_01.bm";
+  TEXTURES   
+  {
+    "ni_sword_volcan_01"	TFNM "Data\Item\Weapon\Drop\Texture\ni_sword_volcan_01.tex";
+  }
+  ALLFRAMESBBOX	-0.62086,0.006493,-1.38092,0.34785,0.184603,1.00888;
+  COLISION
+  {
+  }
+}

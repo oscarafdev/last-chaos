@@ -1,0 +1,13 @@
+NAME "etc_04";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\etc_04.bm";
+  TEXTURES   
+  {
+    "box_etc"	TFNM "Data\World\Tarian\Ska\Texture\box_etc.tex";
+  }
+  ALLFRAMESBBOX	-0.443206,-0.003317,-0.443206,0.443205,1.15349,0.443206;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

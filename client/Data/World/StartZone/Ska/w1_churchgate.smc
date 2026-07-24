@@ -1,0 +1,14 @@
+NAME "w1_churchgate";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_churchgate.bm";
+  TEXTURES   
+  {
+    "w1_churchgate"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchgate.tex";
+    "w1_churchpoll"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchpoll.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.76691,-0.018546,-0.328311,1.76688,2.47619,0.328312;
+  COLISION
+  {
+  }
+}

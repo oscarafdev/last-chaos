@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "D_master";
+{
+  MESH       	TFNM "Data\Npc\npc_heras\npc_heras.bm";
+  TEXTURES   
+  {
+    "npc_heras"	TFNM "Data\Npc\npc_heras\npc_heras.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\npc_heras\npc_heras.bs";
+  ANIMSET   	TFNM "Data\Npc\npc_heras\npc_heras.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

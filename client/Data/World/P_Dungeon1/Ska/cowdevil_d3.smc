@@ -1,0 +1,17 @@
+NAME "cowdevil_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\cowdevil_d3.bm";
+  TEXTURES   
+  {
+    "deco_tile06_d3"	TFNM "Data\World\Dungeon3\Ska\texture\deco_tile06_d3.tex";
+    "cowdevil_d3"	TFNM "Data\World\Dungeon3\Ska\texture\cowdevil_d3.tex";
+    "deco_tile05_d3"	TFNM "Data\World\Dungeon3\Ska\texture\deco_tile05_d3.tex";
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+    "Eff_door01_d3"	TFNM "Data\World\Dungeon3\Ska\texture\Eff_door01_d3.tex";
+  }
+  ALLFRAMESBBOX	-3.84698,0.001429,-3.89229,3.8567,14.5603,3.81175;
+  COLISION
+  {
+    "Default"  {-4,0,-4,4,14,4;}
+  }
+}

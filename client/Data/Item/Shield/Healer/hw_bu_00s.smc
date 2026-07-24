@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bu_00s";
+{
+  MESH       	TFNM "Data\Item\shield\Healer\hw_bu_00s.bm";
+  TEXTURES   
+  {
+    "hw_bu_00s"	TFNM "Data\Item\shield\Healer\texture\hw_bu_00S.tex";
+    "hw_bu_00S_N"	TFNM "Data\Item\shield\Healer\texture\hw_bu_00S_N.tex";
+  }
+  MESH       	TFNM "Data\Item\shield\Healer\hw_bu_00s_01.bm";
+  TEXTURES   
+  {
+    "hw_bu_00s_01"	TFNM "Data\Item\shield\Healer\texture\hw_bu_00S_01.tex";
+    "hw_bu_00S_01_N"	TFNM "Data\Item\shield\Healer\texture\hw_bu_00S_01_N.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

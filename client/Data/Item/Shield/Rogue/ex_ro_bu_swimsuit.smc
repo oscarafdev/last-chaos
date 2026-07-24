@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ex_ro_bu_swimsuit";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ex_ro_bu_swimsuit.bm";
+  TEXTURES   
+  {
+    "ex_ro_bu_swimsuit"	TFNM "Data\Item\Shield\Rogue\Texture\ex_ro_bu_swimsuit.tex";
+  }
+  ALLFRAMESBBOX	-0.479857,1.0942,-0.119463,0.479857,1.58685,0.121183;
+  COLISION
+  {
+  }
+}

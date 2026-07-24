@@ -1,0 +1,86 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "MON_stonegolem_boss";
+{
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\MON_stonegolem_boss_amor.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object01.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object02.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object03.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object04.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object05.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object06.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object07.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object08.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor02"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object09.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object10.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_amor01"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_amor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object11.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_body"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\Object12.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_body"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\MON_stonegolem_boss_body.bm";
+  TEXTURES   
+  {
+    "MON_stonegolem_boss_body"	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\texture\MON_stonegolem_boss_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\_TAG_MON_stonegolem_boss.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\MON_stonegolem_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\MON_stonegolem_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Attribute boss\MON_stonegolem_boss\MON_stonegolem_boss.bae";
+  ALLFRAMESBBOX	-5.05643,-1.03354,-7.02151,4.87618,4.96646,6.99673;
+  COLISION
+  {
+    "Default"  {-1.25,0,-1.25,1.25,5,1.25;}
+  }
+}

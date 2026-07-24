@@ -1,0 +1,19 @@
+NAME "w5_egg01";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_egg01.bm";
+  TEXTURES   
+  {
+    "w5_egg01"	TFNM "Data\World\STREIANA\Ska\Texture\w5_egg01.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_egg01_1.bm";
+  TEXTURES   
+  {
+    "w5_egg01"	TFNM "Data\World\STREIANA\Ska\Texture\w5_egg01.tex";
+  }
+  SKELETON  	TFNM "Data\World\STREIANA\Ska\w5_egg01.bs";
+  ANIMSET   	TFNM "Data\World\STREIANA\Ska\w5_egg01.ba";
+  ALLFRAMESBBOX	-1.62633,-0.196367,-1.07431,1.62633,0.515528,1.07431;
+  COLISION
+  {
+  }
+}

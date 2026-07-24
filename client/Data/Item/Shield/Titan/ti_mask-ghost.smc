@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_mask-ghost";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_mask-ghost.bm";
+  TEXTURES   
+  {
+    "mask_ghost"	TFNM "Data\Item\Shield\Titan\Texture\mask_ghost.tex";
+  }
+  ALLFRAMESBBOX	-0.138286,1.73148,-0.193189,0.138286,2.18679,0.229549;
+  COLISION
+  {
+  }
+}

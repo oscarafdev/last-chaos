@@ -1,0 +1,16 @@
+NAME "ni_wp_soul_sword";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\ni_sword_00u.bm";
+  TEXTURES   
+  {
+    "ni_sword_00u"	TFNM "Data\Npc\soul_weapon\ni_sword_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ni_wp_soul_sword.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ni_wp_soul_sword.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\ni_wp_soul_sword.bae";
+  ALLFRAMESBBOX	-0.512568,0,-0.501431,0.54588,2.1,0.46812;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.1,0.5;}
+  }
+}

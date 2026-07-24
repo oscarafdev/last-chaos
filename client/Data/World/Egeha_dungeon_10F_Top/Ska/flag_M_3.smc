@@ -1,0 +1,13 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_10F_Top\Ska\flag_M-3.bm";
+  TEXTURES   
+  {
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_10F_Top\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+    "flag_M"	TFNM "Data\World\Egeha_dungeon_10F_Top\Ska\Texter\flag_M.tex";
+  }
+  ALLFRAMESBBOX	-0.188556,0.005535,-0.021454,0.188556,1.50013,0.021454;
+  COLISION
+  {
+  }
+}

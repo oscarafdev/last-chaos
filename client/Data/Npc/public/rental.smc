@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "rental";
+{
+  MESH       	TFNM "Data\npc\public\rental.bm";
+  TEXTURES   
+  {
+    "Old_man"	TFNM "Data\npc\public\rental.tex";
+  }
+  MESH       	TFNM "Data\npc\public\rental_1.bm";
+  TEXTURES   
+  {
+    "Old_man"	TFNM "Data\npc\public\rental.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\rental.bs";
+  ANIMSET   	TFNM "Data\npc\public\rental.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,1.38,2;
+  COLISION
+  {
+    "Default"  {-0.45,0,-0.45,0.45,1.4,0.45;}
+  }
+}

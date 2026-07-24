@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_cos_dillamoon02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_cos_dillamoon02_ft.bm";
+  TEXTURES   
+  {
+    "ni_cos_dillamoon02_ft"	TFNM "Data\Item\Shield\Knight\Texture\ni_cos_dillamoon02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.392458,-0.003807,-0.189919,0.392458,0.6978,0.205793;
+  COLISION
+  {
+  }
+}

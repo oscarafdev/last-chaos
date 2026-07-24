@@ -1,0 +1,8 @@
+NAME "new_Dratan_master_tower02_npc";
+{
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,10,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,10,1.5;}
+  }
+}

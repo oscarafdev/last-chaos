@@ -1,0 +1,13 @@
+NAME "w2_grass03_01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_grass03_01.bm";
+  TEXTURES   
+  {
+    "w2_grass03"	TFNM "Data\World\Dratan\Ska\Texture\w2_grass03.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.554416,-0.059247,-0.52185,0.575185,0.376183,0.53506;
+  COLISION
+  {
+  }
+}

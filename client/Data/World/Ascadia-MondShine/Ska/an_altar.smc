@@ -1,0 +1,19 @@
+NAME "an_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\an_altar.bm";
+  TEXTURES   
+  {
+    "an_altar"	TFNM "Data\World\Ascadia-MondShine\Ska\an_altar.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\_TAG_ALTAR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine\Ska\an_altar.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine\Ska\an_altar.ba";
+  ALLFRAMESBBOX	-4.50675,-0.00447773,-4.50709,4.50675,0.682613,4.50709;
+  COLISION
+  {
+    "Default"  {-1.5,0,-2,1.5,3,2;}
+  }
+}

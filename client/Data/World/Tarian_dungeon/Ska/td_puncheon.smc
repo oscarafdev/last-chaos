@@ -1,0 +1,13 @@
+NAME "td_puncheon";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_puncheon.bm";
+  TEXTURES   
+  {
+    "td_puncheon"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_puncheon.tex";
+  }
+  ALLFRAMESBBOX	-0.759526,0.001769,-0.926114,0.759526,1.6691,0.926114;
+  COLISION
+  {
+    "td_puncheon"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

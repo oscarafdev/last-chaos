@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_ft_mexico";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_ft_mexico.bm";
+  TEXTURES   
+  {
+    "ma_ft_mexico"	TFNM "Data\Item\Shield\Mage\Texture\ma_ft_mexico.tex";
+  }
+  ALLFRAMESBBOX	-0.359375,-0.000315,-0.235551,0.359375,0.901271,0.056769;
+  COLISION
+  {
+  }
+}

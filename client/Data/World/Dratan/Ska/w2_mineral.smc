@@ -1,0 +1,14 @@
+NAME "w2_mineral";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_mineral.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "mine's_jewelry copy"	TFNM "Data\World\Dratan\Ska\Texture\mine's_jewelry copy.tex";
+    "w2_mineral1"	TFNM "Data\World\Dratan\Ska\Texture\w2_mineral1.tex";
+  }
+  ALLFRAMESBBOX	-3.28418,-0.01,-3.41152,3.41154,2.67635,3.09772;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "NPC_dillamun_weapon";
+{
+  MESH       	TFNM "Data\Effect\Ska\RVR\NPC_Dillamun_weapon.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_weapon01"	TFNM "Data\Effect\Ska\RVR\NPC_Dillamun_weapon01.tex";
+  }
+  ALLFRAMESBBOX	-0.203242,-0.059616,-0.133273,0.156656,2.03908,0.133273;
+  COLISION
+  {
+  }
+}

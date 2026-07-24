@@ -1,0 +1,52 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Dark_LB_Wisemen";
+{
+  MESH       	TFNM "Data\Monster\Leadingband\Dark_arm.bm";
+  TEXTURES   
+  {
+    "Dark_LB-arms"	TFNM "Data\Monster\Leadingband\Dark_LB-arms.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Dark_body.bm";
+  TEXTURES   
+  {
+    "Dark_LB-body"	TFNM "Data\Monster\Leadingband\Dark_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Dark_boots.bm";
+  TEXTURES   
+  {
+    "Dark_LB-body"	TFNM "Data\Monster\Leadingband\Dark_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Dark_hair.bm";
+  TEXTURES   
+  {
+    "Dark_LB-body"	TFNM "Data\Monster\Leadingband\Dark_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Dark_head.bm";
+  TEXTURES   
+  {
+    "Dark_LB-body"	TFNM "Data\Monster\Leadingband\Dark_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Dark_pants.bm";
+  TEXTURES   
+  {
+    "Dark_LB-body"	TFNM "Data\Monster\Leadingband\Dark_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\D_daggerL.bm";
+  TEXTURES   
+  {
+    "ro_dagger_015"	TFNM "Data\Monster\Leadingband\ro_dagger_015.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\D_daggerR.bm";
+  TEXTURES   
+  {
+    "ro_dagger_015"	TFNM "Data\Monster\Leadingband\ro_dagger_015.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Leadingband\Dark_LB.bs";
+  ANIMSET   	TFNM "Data\Monster\Leadingband\Dark_LB_Scholar.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Leadingband\Dark_LB_Wisemen.bae";
+  ALLFRAMESBBOX	-0.35,0,-0.35,0.35,2.05,0.35;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.05,0.5;}
+  }
+}

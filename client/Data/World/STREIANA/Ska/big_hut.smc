@@ -1,0 +1,58 @@
+NAME "big_hut";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\_TAG_BIGHUT.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_01.bm";
+  TEXTURES   
+  {
+    "hut_03"	TFNM "Data\World\STREIANA\Ska\Texture\hut_03.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_02.bm";
+  TEXTURES   
+  {
+    "hut_05"	TFNM "Data\World\STREIANA\Ska\Texture\hut_05.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_03.bm";
+  TEXTURES   
+  {
+    "hut_02"	TFNM "Data\World\STREIANA\Ska\Texture\hut_02.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_04.bm";
+  TEXTURES   
+  {
+    "hut_04"	TFNM "Data\World\STREIANA\Ska\Texture\hut_04.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_05.bm";
+  TEXTURES   
+  {
+    "st_bridge"	TFNM "Data\World\STREIANA\Ska\Texture\st_bridge.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_06.bm";
+  TEXTURES   
+  {
+    "hut_02"	TFNM "Data\World\STREIANA\Ska\Texture\hut_02.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_07.bm";
+  TEXTURES   
+  {
+    "skull"	TFNM "Data\World\STREIANA\Ska\Texture\skull.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_08.bm";
+  TEXTURES   
+  {
+    "bine"	TFNM "Data\World\STREIANA\Ska\Texture\bine.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\big_hut_09.bm";
+  TEXTURES   
+  {
+    "hut_01"	TFNM "Data\World\STREIANA\Ska\Texture\hut_01.tex";
+  }
+  SKELETON  	TFNM "Data\World\STREIANA\Ska\big_hut.bs";
+  ANIMSET   	TFNM "Data\World\STREIANA\Ska\big_hut.ba";
+  ALLFRAMESBBOX	-17.7481,-0.0204772,-14.5523,17.7481,22.8198,14.5523;
+  COLISION
+  {
+  }
+}

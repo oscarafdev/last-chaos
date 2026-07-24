@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bd_mexico";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_mexico.bm";
+  TEXTURES   
+  {
+    "so_bd_mexico"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_mexico.tex";
+  }
+  ALLFRAMESBBOX	-0.235891,0.501254,-0.111546,0.235891,1.26144,0.123314;
+  COLISION
+  {
+  }
+}

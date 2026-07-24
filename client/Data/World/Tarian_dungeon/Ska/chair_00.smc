@@ -1,0 +1,13 @@
+NAME "chair_00";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\chair_00.bm";
+  TEXTURES   
+  {
+    "chair_00"	TFNM "Data\World\tarian_dungeon\Ska\Texture\chair_00.tex";
+  }
+  ALLFRAMESBBOX	-0.478101,0,-0.49873,0.478101,0.859827,0.49873;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

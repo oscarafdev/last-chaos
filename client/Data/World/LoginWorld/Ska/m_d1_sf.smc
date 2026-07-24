@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "m_d1_sf";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\m_d1_sf_01.bm";
+  TEXTURES   
+  {
+    "m_d1_sf01"	TFNM "Data\World\LoginWorld\Ska\Texture\m_d1_sf01.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\m_d1_sf_02.bm";
+  TEXTURES   
+  {
+    "m_d1_sf03"	TFNM "Data\World\LoginWorld\Ska\Texture\m_d1_sf03.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\m_d1_sf_03.bm";
+  TEXTURES   
+  {
+    "m_d1_sf02"	TFNM "Data\World\LoginWorld\Ska\Texture\m_d1_sf02.tex";
+  }
+  SKELETON  	TFNM "Data\World\LoginWorld\Ska\m_d1_sf.bs";
+  ANIMSET   	TFNM "Data\World\LoginWorld\Ska\m_d1_sf.ba";
+  ALLFRAMESBBOX	-0.75,0,-0.7,0.75,1.8,2.3;
+  COLISION
+  {
+    "idle"  {-0.282757,0,-0.577921,0.370531,1.49829,0.370608;}
+    "attack01"  {-0.410239,0,-0.571903,0.303651,1.73918,0.474833;}
+    "attack02"  {-0.308714,0,-0.651321,0.369506,1.75711,0.404495;}
+    "da"  {-0.352862,0,-0.431515,0.419026,1.72551,0.565523;}
+    "run"  {-0.416717,0,-0.580851,0.293382,1.8781,0.208259;}
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

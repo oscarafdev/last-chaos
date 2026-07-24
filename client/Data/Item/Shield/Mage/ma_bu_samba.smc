@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bu_samba";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bu_samba.bm";
+  TEXTURES   
+  {
+    "ma_bu_samba"	TFNM "Data\Item\Shield\Mage\Texture\ma_bu_samba.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_wing_samba.bm";
+  TEXTURES   
+  {
+    "ma_wing_samba"	TFNM "Data\Item\Shield\Mage\Texture\ma_wing_samba.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\_TAG_T_SAMBA.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.907028,0.683355,-0.194357,0.905854,2.37471,0.694782;
+  COLISION
+  {
+  }
+}

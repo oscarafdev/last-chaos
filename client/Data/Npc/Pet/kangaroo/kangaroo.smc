@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "kangaroo";
+{
+  MESH       	TFNM "Data\Npc\Pet\kangaroo\Body.bm";
+  TEXTURES   
+  {
+    "Kangoroo"	TFNM "Data\Npc\Pet\kangaroo\Kangoroo.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Pet\kangaroo\kangaroo.bs";
+  ANIMSET   	TFNM "Data\Npc\Pet\kangaroo\kangaroo.ba";
+  ALLFRAMESBBOX	-0.293986,-0.0904995,-0.910926,0.293986,1.26276,1.50827;
+  COLISION
+  {
+  }
+}

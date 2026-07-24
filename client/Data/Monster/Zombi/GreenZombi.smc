@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "GreenZombi";
+{
+  MESH       	TFNM "Data\monster\Zombi\GreenZombi.bm";
+  TEXTURES   
+  {
+    "m_zm02"	TFNM "Data\monster\Zombi\m_zm02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Zombi\_TAG_T_CENTER_gg.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Zombi\GreenZombi.bs";
+  ANIMSET   	TFNM "Data\monster\Zombi\GreenZombi.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Zombi\GreenZombi.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.95,1.5,2.3,1.55;
+  COLISION
+  {
+    "Default"  {-0.399252,0,-0.550058,0.537152,1.8751,0.590177;}
+  }
+}

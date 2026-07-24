@@ -1,0 +1,14 @@
+NAME "fancein";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\orcon_01.bm";
+  TEXTURES   
+  {
+    "orcon_01"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Texture\orcon_01.tex";
+    "orcon_02"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Texture\orcon_02.tex";
+  }
+  ALLFRAMESBBOX	-15.8459,-0.063967,-4.80943,15.7812,28.0161,5.4518;
+  COLISION
+  {
+    "Default"  {-2.0147,-0.0314436,-0.360232,2.36323,1.81625,0.369988;}
+  }
+}

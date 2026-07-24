@@ -1,0 +1,23 @@
+NAME "barricade-01";
+{
+  MESH       	TFNM "Data\World\Egeha\Ska\Egeha_Temple_01.bm";
+  TEXTURES   
+  {
+    "Egeha_Temple_01_1"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_01_1.tex";
+    "Egeha_Temple_01_2"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_01_2.tex";
+    "Egeha_Temple_01_3"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_01_3.tex";
+    "Egeha_Temple_01_4"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_01_4.tex";
+    "Egeha_Temple_02_1"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_02_1.tex";
+    "Egeha_Temple_03_1"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_03_1.tex";
+    "Egeha_Temple_03_2"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_03_2.tex";
+    "Egeha_Temple_03_3"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_03_3.tex";
+    "Egeha_Temple_03_4"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_03_4.tex";
+    "Egeha_Temple_03_5"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Temple_03_5.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-21.37,-0.201365,-25.1385,28.8117,111.133,24.7845;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "new_st_dungeon_gate-02";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\new_st_dungeon_gate-02.bm";
+  TEXTURES   
+  {
+    "Juno_StartZonetile_castle008"	TFNM "Data\World\StartZone\Ska\Texture\Juno_StartZonetile_castle008.tex";
+    "Juno_StartZonetile_castle002"	TFNM "Data\World\StartZone\Ska\Texture\Juno_StartZonetile_castle002.tex";
+    "Juno_StartZonetile_castle003"	TFNM "Data\World\StartZone\Ska\Texture\Juno_StartZonetile_castle003.tex";
+    "Juno_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Juno_Detail.tex";
+  }
+  ALLFRAMESBBOX	-39.4603,-2.63141,-41.3089,30.8965,41.4723,41.8219;
+  COLISION
+  {
+  }
+}

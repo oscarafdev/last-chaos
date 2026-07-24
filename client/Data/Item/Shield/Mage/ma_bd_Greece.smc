@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bd_greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bd_Greece.bm";
+  TEXTURES   
+  {
+    "ma_bd_greece"	TFNM "Data\Item\Shield\Mage\Texture\ma_bd_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.03766,1.07744,-0.051523,0.03766,1.10625,0.002181;
+  COLISION
+  {
+  }
+}

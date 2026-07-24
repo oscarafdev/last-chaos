@@ -1,0 +1,17 @@
+OFFSET    	-0.15,-1.1,0,150,0,50;
+NAME "hw_bow_oubli";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_BOW_oubli.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\hw_bow_oubli.bm";
+  TEXTURES   
+  {
+    "hw_bow_oubli"	TFNM "Data\Item\Weapon\Texture\hw_bow_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.206508,-0.00915694,-0.238644,0.266051,0.0214489,0.464394;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,14 @@
+NAME "td_cow";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_cow.bm";
+  TEXTURES   
+  {
+    "caw02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\caw02.tex";
+    "caw03"	TFNM "Data\World\tarian_dungeon\Ska\Texture\caw03.tex";
+    "caw01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\caw01.tex";
+  }
+  ALLFRAMESBBOX	-12.7669,-0.003524,-12.7669,12.7669,48.8771,12.7669;
+  COLISION
+  {
+  }
+}

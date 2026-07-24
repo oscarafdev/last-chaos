@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_bu_vipart";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_bu_vipart.bm";
+  TEXTURES   
+  {
+    "ro_bu_vipart"	TFNM "Data\Item\Shield\Rogue\Texture\ro_bu_vipart.tex";
+  }
+  ALLFRAMESBBOX	-0.335468,1.10855,-0.118494,0.335468,1.58685,0.120193;
+  COLISION
+  {
+  }
+}

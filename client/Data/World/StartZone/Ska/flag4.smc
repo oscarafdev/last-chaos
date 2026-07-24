@@ -1,0 +1,15 @@
+NAME "flag4";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\flag4.bm";
+  TEXTURES   
+  {
+    "flag-01"	TFNM "Data\world\StartZone\Ska\Texture\flag-01.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\flag4.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\flag4.ba";
+  ALLFRAMESBBOX	-0.769671,-0.00734226,-0.311899,1.52914,5.04601,0.311662;
+  COLISION
+  {
+    "Default"  {-1,0,-0.25,1,5,0.25;}
+  }
+}

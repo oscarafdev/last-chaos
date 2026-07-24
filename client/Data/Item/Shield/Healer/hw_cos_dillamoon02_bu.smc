@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_cos_dillamoon02_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_dillamoon02_bu00.bm";
+  TEXTURES   
+  {
+    "hw_cos_dillamoon02_bu00"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_dillamoon02_bu00.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_dillamoon02_bu01.bm";
+  TEXTURES   
+  {
+    "hw_cos_dillamoon02_bu01"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_dillamoon02_bu01.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_dillamoon02_eff.bm";
+  TEXTURES   
+  {
+    "hw_cos_dillamoon02_eff"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_dillamoon02_eff.tex";
+  }
+  ALLFRAMESBBOX	-0.706512,0.420468,-0.189554,0.706512,2.33342,0.471502;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,21 @@
+NAME "AM-Stone_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\skeldeco_02.bm";
+  TEXTURES   
+  {
+    "Skelboss_house_center"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_center.tex";
+    "Skelboss_house_column"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_column.tex";
+    "Skelboss_house_stair"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_stair.tex";
+    "Skelboss_house_wall01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_wall01.tex";
+    "Skelboss_house_wall02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_wall02.tex";
+    "Skelboss_house_wall03"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_wall03.tex";
+    "Skelboss_house_wall04"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_wall04.tex";
+    "Skelboss_house_window01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_window01.tex";
+    "Skelboss_house_window02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_window02.tex";
+  }
+  ALLFRAMESBBOX	-1.3031,0.018559,-5.01412,1.3031,21.1833,5.01412;
+  COLISION
+  {
+    "Default"  {-0.754799,0.0825033,-5.24624,1.22382,17.6377,4.98599;}
+  }
+}

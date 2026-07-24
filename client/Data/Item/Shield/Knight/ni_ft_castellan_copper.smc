@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_ft_castellan_copper";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_ft_castellan_copper.bm";
+  TEXTURES   
+  {
+    "ni_ft_castellan_copper"	TFNM "Data\Item\Shield\Knight\Texture\ni_ft_castellan_copper.tex";
+  }
+  ALLFRAMESBBOX	-0.385494,-0.004046,-0.167045,0.385491,0.600337,0.164216;
+  COLISION
+  {
+  }
+}

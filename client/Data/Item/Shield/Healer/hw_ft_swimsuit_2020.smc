@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_ft_swimsuit_2020";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_ft_swimsuit_2020.bm";
+  TEXTURES   
+  {
+    "hw_ft_swimsuit_2020"	TFNM "Data\Item\Shield\Healer\Texture\hw_ft_swimsuit_2020.tex";
+  }
+  ALLFRAMESBBOX	-0.32023,-0.009551,-0.128358,0.32023,0.147909,0.114556;
+  COLISION
+  {
+  }
+}

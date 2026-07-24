@@ -1,0 +1,17 @@
+OFFSET    	-0.1,-1.08,0.6,-110,0,0;
+NAME "ma_wand_kailooks_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_WAND_kailooks_02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_wand_kailooks_02.bm";
+  TEXTURES   
+  {
+    "ma_wand_kailooks_02"	TFNM "Data\Item\Weapon\Texture\ma_wand_kailooks_02.tex";
+  }
+  ALLFRAMESBBOX	-0.730449,-0.016358,-0.316075,0.396641,0.182283,0.148702;
+  COLISION
+  {
+  }
+}

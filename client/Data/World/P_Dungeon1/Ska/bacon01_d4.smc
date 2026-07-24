@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\P_Dungeon1\Ska\bacon01_d4.bm";
+  TEXTURES   
+  {
+    "bacon_02"	TFNM "Data\World\P_Dungeon1\Ska\Texture\bacon_02.tex";
+    "bacon"	TFNM "Data\World\P_Dungeon1\Ska\Texture\bacon.tex";
+    "Detail_D4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\Detail_D4.tex";
+  }
+  ALLFRAMESBBOX	-32.752,-23.1279,-28.5051,30.2451,23.1279,28.464;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "w3_grass22";
+{
+  MESH       	TFNM "Data\World\merac\ska\w3_grass22.bm";
+  TEXTURES   
+  {
+    "w3_grass01"	TFNM "Data\World\Merac\ska\texture\w3_grass01.tex";
+  }
+  ALLFRAMESBBOX	-0.621268,-0.095211,-0.594447,0.637365,0.917622,0.598029;
+  COLISION
+  {
+  }
+}

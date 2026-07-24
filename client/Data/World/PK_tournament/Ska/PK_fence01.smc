@@ -1,0 +1,13 @@
+NAME "w2_fence01";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_fence01.bm";
+  TEXTURES   
+  {
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+    "PK_fence01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_fence01.tex";
+  }
+  ALLFRAMESBBOX	-2.06821,-0.013496,-0.130308,1.79558,1.50839,0.130308;
+  COLISION
+  {
+  }
+}

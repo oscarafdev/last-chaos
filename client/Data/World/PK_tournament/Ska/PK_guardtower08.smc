@@ -1,0 +1,16 @@
+NAME "sd2_cart1";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_guardtower_08.bm";
+  TEXTURES   
+  {
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+    "PK_roof01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_roof01.tex";
+    "PK_wood02"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_wood02.tex";
+    "PK_wood03"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_wood03.tex";
+    "PK_woodplan01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_woodplan01.tex";
+  }
+  ALLFRAMESBBOX	-6.32502,-0.033767,-6.32502,6.32502,36.9429,6.41594;
+  COLISION
+  {
+  }
+}

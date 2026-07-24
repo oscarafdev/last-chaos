@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_bd_swimsuit";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bd_swimsuit.bm";
+  TEXTURES   
+  {
+    "ti_bd_swimsuit"	TFNM "Data\Item\Shield\Titan\Texture\ti_bd_swimsuit.tex";
+  }
+  ALLFRAMESBBOX	-0.379993,0.537881,-0.17866,0.379993,1.21225,0.193901;
+  COLISION
+  {
+  }
+}

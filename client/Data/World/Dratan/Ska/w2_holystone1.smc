@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w2_holystone1";
+{
+  MESH       	TFNM "Data\world\Dratan\ska\w2_holystone1.bm";
+  TEXTURES   
+  {
+    "w2_gal"	TFNM "Data\world\Dratan\ska\texture\w2_gal.tex";
+    "w2_jewel"	TFNM "Data\world\Dratan\ska\texture\w2_jewel.tex";
+    "w2_jewelry_a"	TFNM "Data\world\Dratan\ska\texture\w2_jewelry_a.tex";
+    "w2_jewelryring"	TFNM "Data\world\Dratan\ska\texture\w2_jewelryring.tex";
+  }
+  MESH       	TFNM "Data\world\Dratan\ska\_TAG_w2_holystone1.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\world\Dratan\ska\w2_holystone1.bs";
+  ALLFRAMESBBOX	-1.66147,-0.016139,-1.56098,1.62375,3.40208,1.55047;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,3,1.5;}
+  }
+}

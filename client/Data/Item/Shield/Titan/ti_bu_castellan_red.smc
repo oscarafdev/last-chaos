@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_bu_castellan_red";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_castellan_red.bm";
+  TEXTURES   
+  {
+    "ti_bu_castellan_red"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_castellan_red.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_castellan_red_1.bm";
+  TEXTURES   
+  {
+    "ti_bu_castellan_red"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_castellan_red.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\_TAG_T_CER.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.656993,1.25815,-0.232169,0.531339,2.2154,0.224036;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,17 @@
+OFFSET    	0.1,-1.26,-0.2,-110,-1,-35;
+NAME "ma_wand_phynix";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_WAND_PHYNIX.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_wand_phynix.bm";
+  TEXTURES   
+  {
+    "ma_wand_phynix"	TFNM "Data\Item\Weapon\Texture\ma_wand_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.847266,0.0149652,-0.254389,0.717076,0.0644031,0.236218;
+  COLISION
+  {
+  }
+}

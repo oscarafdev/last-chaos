@@ -1,0 +1,19 @@
+NAME "so_vconverstion_nature_01";
+{
+  MESH       	TFNM "Data\Effect\Ska\so_vconverstion_nature_00\Plane01.bm";
+  TEXTURES   
+  {
+    "so_vconverstion_nature_03"	TFNM "Data\Effect\Ska\so_vconverstion_nature_00\so_vconverstion_nature_03.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\so_vconverstion_nature_00\Plane09.bm";
+  TEXTURES   
+  {
+    "so_vconverstion_nature_02"	TFNM "Data\Effect\Ska\so_vconverstion_nature_00\so_vconverstion_nature_02.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\so_vconverstion_nature_00\so_vconverstion_nature_01.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\so_vconverstion_nature_00\so_vconverstion_nature_01.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,6 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\ti_wp\ti_wp_soul_Gsword.AA"
+}

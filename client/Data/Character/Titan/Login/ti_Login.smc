@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_Login";
+{
+  MESH       	TFNM "Data\Character\Titan\Login\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Character\Titan\Login\_TAG_AXE_006.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\character\Titan\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  
+  SKELETON  	TFNM "Data\Character\Titan\Login\ti_Login.bs";
+  ANIMSET   	TFNM "Data\Character\Titan\ti.ba";
+  ANIMEFFECT	TFNM "Data\Character\Titan\ti.bae";  
+  ANIMSET   	TFNM "Data\Character\Titan\Login\ti_Login.ba";
+  ANIMEFFECT	TFNM "Data\Character\Titan\Login\ti_Login.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

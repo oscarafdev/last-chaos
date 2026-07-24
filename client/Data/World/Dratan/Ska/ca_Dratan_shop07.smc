@@ -1,0 +1,17 @@
+NAME "sd2_cart2";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\ca_Dratan_shop07.bm";
+  TEXTURES   
+  {
+    "ca_Dratan_roof02"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_roof02.tex";
+    "ca_Dratan_table03"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_table03.tex";
+    "ca_Dratan_wood02"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wood02.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "ca_Dratan_box01"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_box01.tex";
+    "ca_Dratan_food01"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_food01.tex";
+  }
+  ALLFRAMESBBOX	-5,-0.162265,-3.86968,5,6.73287,3.86969;
+  COLISION
+  {
+  }
+}

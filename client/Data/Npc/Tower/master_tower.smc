@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "master_tower";
+{
+  MESH       	TFNM "Data\Npc\Tower\_TAG_T_M_TOWER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Tower\master_tower.bm";
+  TEXTURES   
+  {
+    "master_tower"	TFNM "Data\Npc\Tower\Texture\master_tower.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Tower\master_tower.bs";
+  ANIMSET   	TFNM "Data\Npc\Tower\master_tower.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Tower\master_tower.bae";
+  ALLFRAMESBBOX	-2.75,0,-2.75,2.75,10.5,2.75;
+  COLISION
+  {
+    "idle"  {-2.75,0,-2.75,2.75,10.5,2.75;}
+  }
+}

@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_wedding";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bd_wedding.bm";
+  TEXTURES   
+  {
+    "hw_bd_wedding"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_wedding.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bs_wedding.bm";
+  TEXTURES   
+  {
+    "hw_bs_wedding"	TFNM "Data\Item\Shield\Healer\Texture\hw_bs_wedding.tex";
+  }
+  ALLFRAMESBBOX	-0.246618,0.532081,-0.178416,0.274043,1.22043,0.195766;
+  COLISION
+  {
+  }
+}

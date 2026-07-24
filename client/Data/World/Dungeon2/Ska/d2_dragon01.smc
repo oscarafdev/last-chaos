@@ -1,0 +1,18 @@
+NAME "d2_dragon01";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_dragon01.bm";
+  TEXTURES   
+  {
+    "Dengen2_Detail"	TFNM "Data\World\Dungeon2\Ska\Texture\Dengen2_Detail.tex";
+    "d2_ddd006"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_ddd006.tex";
+    "d2_dragon01_bo"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_dragon01_bo.tex";
+    "d2_dragon01_fc"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_dragon01_fc.tex";
+    "d2_poll06"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_poll06.tex";
+    "d2_poll011"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_poll011.tex";
+  }
+  ALLFRAMESBBOX	-2.00364,-0.060029,-2.25034,2.04965,5.11319,3.02388;
+  COLISION
+  {
+    "Default"  {-2.5,0,-2.5,2.5,5,2.5;}
+  }
+}

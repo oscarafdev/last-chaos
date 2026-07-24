@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="200" y="200" w="237" h="357" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="237" h="357" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="325" t="242" r="508" b="425" unit="61" splitmode="2" />
+    <UIText id="txt_title" x="25" y="8" w="188" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1748" str="안내" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="218" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIBase id="gro_base" x="11" y="41" w="216" h="304" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+        <UIImageSplit x="0" y="0" w="216" h="106" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" />
+        <UITextBox id="tb_desc" x="5" y="5" w="207" h="97" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="5031" split_mode="0" text_col="0xffffffff" str="%s 지역의 NPC들 앞으로 이동할 수 있는 포탈을 생성합니다. 리스트에서 이름을 클릭하면 위치 안내 또는 포탈을 사용 하실 수 있습니다.">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UITextBox>
+        <UIImageSplit x="0" y="115" w="215" h="189" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" />
+        <UIList id="list_npc" x="3" y="119" w="210" h="182" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="13" itemgap="0" item_count="1" pre_create="1">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIScrollBar x="0" y="0" w="210" h="183" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="1" item_count="0" item_per_page="13">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+                <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+                <thumb x="0" y="0" w="10" h="163" unit="7" l="185" t="32" r="195" b="71" />
+            </UIScrollBar>
+            <UIListItem id="list_item_001" x="0" y="0" w="212" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+                <UIText id="txt_npc" x="2" y="0" w="200" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="npc" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf0a769ff" color_select="0xf0a769ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIListItem>
+        </UIList>
+    </UIBase>
+    <UIBase id="gro_move" x="11" y="41" w="216" h="304" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+        <UIImageSplit x="0" y="0" w="216" h="269" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" />
+        <UIText id="txt_name" x="6" y="6" w="205" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xfff42bff" color_enter="0xfff42bff" color_select="0xfff42bff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UITextBox id="tb_desc_move" x="5" y="24" w="207" h="241" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="5031" split_mode="0" text_col="0xffffffff" str="%s 지역의 NPC들 앞으로 이동할 수 있는 포탈을 생성합니다. 리스트에서 이름을 클릭하면 위치 안내 또는 포탈을 사용 하실 수 있습니다.">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UITextBox>
+        <UIButton id="btn_list" x="19" y="279" w="63" h="21" hide="0" tex="WebBoard.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="313" str="목록" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="94" r="63" b="115" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="64" t="94" r="127" b="115" />
+            <uv type="3" l="128" t="76" r="191" b="97" />
+        </UIButton>
+        <UIButton id="btn_move" x="135" y="279" w="63" h="21" hide="0" tex="WebBoard.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4738" str="포탈 이동" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="94" r="63" b="115" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="64" t="94" r="127" b="115" />
+            <uv type="3" l="128" t="76" r="191" b="97" />
+        </UIButton>
+    </UIBase>
+    <UIBase id="gro_confirm" x="11" y="41" w="216" h="304" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+        <UIImageSplit x="0" y="0" w="216" h="269" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" />
+        <UITextBox id="tb_desc_confirm" x="5" y="5" w="207" h="259" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="4740" split_mode="0" text_col="0xffffffff" str="해당 NPC의 앞으로 이동합니다.">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UITextBox>
+        <UIButton id="btn_yes" x="19" y="279" w="63" h="21" hide="0" tex="WebBoard.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="192" str="예" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="94" r="63" b="115" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="64" t="94" r="127" b="115" />
+            <uv type="3" l="128" t="76" r="191" b="97" />
+        </UIButton>
+        <UIButton id="btn_no" x="135" y="279" w="63" h="21" hide="0" tex="WebBoard.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="193" str="아니오" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="94" r="63" b="115" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="64" t="94" r="127" b="115" />
+            <uv type="3" l="128" t="76" r="191" b="97" />
+        </UIButton>
+    </UIBase>
+</Window>

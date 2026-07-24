@@ -1,0 +1,13 @@
+NAME "Lifetree-2";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\Lifetree-2.bm";
+  TEXTURES   
+  {
+    "rock01"	TFNM "Data\World\StartZone\Ska\Texture\rock01.tex";
+    "sintree_00"	TFNM "Data\World\StartZone\Ska\Texture\sintree_00.tex";
+  }
+  ALLFRAMESBBOX	-10.8014,-0.125428,-9.35363,11.023,2.87102,12.2037;
+  COLISION
+  {
+  }
+}

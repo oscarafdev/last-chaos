@@ -1,0 +1,18 @@
+NAME "plantdoor_left_sd3";
+{
+  MESH       	TFNM "Data\World\S_Dungeon3\ska\plantdoor_left_sd3.bm";
+  TEXTURES   
+  {
+    "thorny plant_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant_sd3.tex";
+    "thorny plant branch_a_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant branch_a_sd3.tex";
+    "thorny plant branch_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant branch_sd3.tex";
+    "thorny plant_iron gate_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant_iron gate_sd3.tex";
+    "thorny plant_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant_sd3.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.20797,-0.125497,-0.129496,1.20797,4.35162,0.129496;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

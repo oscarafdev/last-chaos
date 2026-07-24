@@ -1,0 +1,12 @@
+NAME "cracker";
+{
+  MESH       	TFNM "Data\Effect\Ska\Cracker\cracker.bm";
+  TEXTURES   
+  {
+    "cracker"	TFNM "Data\Effect\Ska\Cracker\cracker.tex";
+  }
+  ALLFRAMESBBOX	-0.186199,0.015946,-0.024109,0.181055,0.394334,0.024109;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti";
+{
+  MESH       	TFNM "Data\character\Titan\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\character\Titan\ti_bd_000.bm";
+  TEXTURES   
+  {
+    "ti_bd_N_000"	TFNM "Data\character\Titan\ti_bd_N_000.tex";
+    "ti_bd_000"	TFNM "Data\character\Titan\ti_bd_000.tex";
+  }
+  MESH       	TFNM "Data\character\Titan\ti_ft_000.bm";
+  TEXTURES   
+  {
+    "ti_ft_N_000"	TFNM "Data\character\Titan\ti_ft_N_000.tex";
+    "ti_ft_000"	TFNM "Data\character\Titan\ti_ft_000.tex";
+  }
+  MESH       	TFNM "Data\character\Titan\ti_hn_000.bm";
+  TEXTURES   
+  {
+    "ti_hn_N_000"	TFNM "Data\character\Titan\ti_hn_N_000.tex";
+    "ti_hn_000"	TFNM "Data\character\Titan\ti_hn_000.tex";
+  }
+  MESH       	TFNM "Data\character\Titan\ti_bu_000.bm";
+  TEXTURES   
+  {
+    "ti_bu_N_000"	TFNM "Data\character\Titan\ti_bu_N_000.tex";
+    "ti_bu_000"	TFNM "Data\character\Titan\ti_bu_000.tex";
+  }
+  MESH       	TFNM "Data\character\Titan\ti_face_000.bm";
+  TEXTURES   
+  {
+    "ti_face_000"	TFNM "Data\character\Titan\ti_face_000.tex";
+  }
+  MESH       	TFNM "Data\Character\TITAN\ti_hair_000.bm";
+  TEXTURES   
+  {
+    "ti_face_000"	TFNM "Data\character\Titan\ti_face_000.tex";
+  }
+  SKELETON  	TFNM "Data\character\Titan\ti.bs";
+  ANIMSET   	TFNM "Data\character\Titan\ti.ba";
+  ANIMEFFECT	TFNM "Data\Character\Titan\ti.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.13,1.5;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.35,0.35,2.3,0.35;}
+    "DeathBox"  {1.05,0,-0.4,2.55,0.5,0.8;}
+  }
+}

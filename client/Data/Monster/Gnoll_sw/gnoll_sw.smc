@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "gnoll_sw";
+{
+  MESH       	TFNM "Data\Monster\Gnoll_sw\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_bd.bm";
+  TEXTURES   
+  {
+    "gnoll_sw"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.tex";
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_bd_01.bm";
+  TEXTURES   
+  {
+    "gnoll_sw"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.tex";
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_bu.bm";
+  TEXTURES   
+  {
+    "gnoll_sw"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.tex";
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_bu_01.bm";
+  TEXTURES   
+  {
+    "gnoll_sw"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.tex";
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_hn.bm";
+  TEXTURES   
+  {
+    "gnoll_sw"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.tex";
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_shield.bm";
+  TEXTURES   
+  {
+    "gnoll_sw_weapon"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_weapon.bm";
+  TEXTURES   
+  {
+    "gnoll_sw_weapon"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Gnoll_sw\gnoll_sw_hn_01.bm";
+  TEXTURES   
+  {
+    "gnoll_sw"	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.bs";
+  ANIMSET   	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Gnoll_sw\gnoll_sw.bae";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,2.1,2.5;
+  COLISION
+  {
+    "Default"  {-0.65,0,-1.2,0.65,2.1,0.6;}
+  }
+}

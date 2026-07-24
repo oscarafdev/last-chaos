@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_9F\Ska\snake_door.bm";
+  TEXTURES   
+  {
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_9F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+    "snake_door"	TFNM "Data\World\Egeha_dungeon_9F\Ska\Texter\snake_door.tex";
+  }
+  ALLFRAMESBBOX	-0.7258,0.00049,-0.655055,0.712616,3.10032,0.81437;
+  COLISION
+  {
+    "Default"  {-0.619011,-0.00898945,-0.60489,0.708204,2.78981,0.758016;}
+  }
+}

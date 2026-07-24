@@ -1,0 +1,12 @@
+NAME "plane";
+{
+  MESH       	TFNM "Data\World\Water\plane.bm";
+  TEXTURES   
+  {
+    "WaterFX"	TFNM "Data\World\Water\Texture\WaterFX.tex";
+  }
+  ALLFRAMESBBOX	-196.104,-9e-006,-196.024,197.597,9e-006,197.677;
+  COLISION
+  {
+  }
+}

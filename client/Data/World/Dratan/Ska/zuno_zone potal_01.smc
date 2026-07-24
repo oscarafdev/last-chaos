@@ -1,0 +1,14 @@
+NAME "zuno_zone potal_01";
+{
+  MESH       	TFNM "Data\world\Dratan\Ska\zuno_zone potal_01.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "castledoor_14_2"	TFNM "Data\World\Dratan\Ska\Texture\castledoor_14_2.tex";
+  }
+  ALLFRAMESBBOX	-5.30076,-0.03281,-5.26205,5.26072,30.8953,5.22295;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

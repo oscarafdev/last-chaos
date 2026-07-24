@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "heresy_general_topus";
+{
+  MESH       	TFNM "Data\Monster\Heresy\heresy_general_topus.bm";
+  TEXTURES   
+  {
+    "heresy_drillmaster_low"	TFNM "Data\Monster\Heresy\heresy_drillmaster_low.tex";
+  }
+  MESH       	TFNM "Data\Monster\Heresy\heresy_general_topus_1.bm";
+  TEXTURES   
+  {
+    "heresy_drillmaster_low-add"	TFNM "Data\Monster\Heresy\heresy_drillmaster_low-add.tex";
+  }
+  MESH       	TFNM "Data\Monster\Heresy\heresy_general_topus_2.bm";
+  TEXTURES   
+  {
+    "heresy_drillmaster_low-add"	TFNM "Data\Monster\Heresy\heresy_drillmaster_low-add.tex";
+  }
+  MESH       	TFNM "Data\Monster\Heresy\heresy_general_topus_shd.bm";
+  TEXTURES   
+  {
+    "ni_shield_013"	TFNM "Data\Monster\Heresy\ni_shield_013.tex";
+    "ni_shields_back"	TFNM "Data\Monster\Heresy\ni_shields_back.tex";
+  }
+  MESH       	TFNM "Data\Monster\Heresy\heresy_general_topus_sword.bm";
+  TEXTURES   
+  {
+    "ni_sword_016"	TFNM "Data\Monster\Heresy\ni_sword_016.tex";
+  }
+  MESH       	TFNM "Data\Monster\Heresy\_TAG_T_TOPUS.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Heresy\_TAG_TOPUSef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Heresy\_TAG_TOPUSSWORD.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Heresy\heresy_general_topus.bs";
+  ANIMSET   	TFNM "Data\Monster\Heresy\heresy_general_topus.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Heresy\heresy_general_topus.bae";
+  ALLFRAMESBBOX	-0.35,0,-0.35,0.35,2,0.35;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

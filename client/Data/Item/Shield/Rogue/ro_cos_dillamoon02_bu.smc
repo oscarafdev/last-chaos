@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cos_dillamoon02_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_dillamoon02_bu00.bm";
+  TEXTURES   
+  {
+    "ro_cos_dillamoon02_bu00"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_dillamoon02_bu00.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_dillamoon02_bu01.bm";
+  TEXTURES   
+  {
+    "ro_cos_dillamoon02_bu01"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_dillamoon02_bu01.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_dillamoon02_eff.bm";
+  TEXTURES   
+  {
+    "ro_cos_dillamoon02_eff"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_dillamoon02_eff.tex";
+  }
+  ALLFRAMESBBOX	-0.611197,0.549362,-0.182127,0.611197,2.20424,0.450168;
+  COLISION
+  {
+  }
+}

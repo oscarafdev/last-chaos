@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bu_western";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_western.bm";
+  TEXTURES   
+  {
+    "hw_bu_western"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_western.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_western_1.bm";
+  TEXTURES   
+  {
+    "hw_bu_western_1"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_western_1.tex";
+  }
+  ALLFRAMESBBOX	-0.399583,1.14493,-0.138943,0.399583,1.71869,0.12053;
+  COLISION
+  {
+  }
+}

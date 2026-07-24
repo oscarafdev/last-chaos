@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "transmute_brotherband_hunter";
+{
+  MESH       	TFNM "Data\Monster\BrotherBand\transmute_brotherband_hunter.bm";
+  TEXTURES   
+  {
+    "brotherband_guard"	TFNM "Data\Monster\BrotherBand\brotherband_guard.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\transmute_brotherband_hunter_1.bm";
+  TEXTURES   
+  {
+    "brotherband_armor03"	TFNM "Data\Monster\BrotherBand\brotherband_armor03.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\BrotherBand\transmute_brotherband_hunter.bs";
+  ANIMSET   	TFNM "Data\Monster\BrotherBand\transmute_brotherband_hunter.ba";
+  ANIMEFFECT	TFNM "Data\Monster\BrotherBand\transmute_brotherband_hunter.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.75,0.5,1.7,0.25;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

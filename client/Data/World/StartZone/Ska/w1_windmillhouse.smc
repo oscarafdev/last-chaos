@@ -1,0 +1,16 @@
+NAME "w1_windmillhouse";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_windmillhouse.bm";
+  TEXTURES   
+  {
+    "StartZonetile_roof03"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_roof03.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "st_house_01"	TFNM "Data\World\StartZone\Ska\Texture\st_house_01.tex";
+    "st_house_02"	TFNM "Data\World\StartZone\Ska\Texture\st_house_02.tex";
+    "st_house_03"	TFNM "Data\World\StartZone\Ska\Texture\st_house_03.tex";
+  }
+  ALLFRAMESBBOX	-5.08527,-0.008845,-4.86594,5.00881,8.93999,4.86594;
+  COLISION
+  {
+  }
+}

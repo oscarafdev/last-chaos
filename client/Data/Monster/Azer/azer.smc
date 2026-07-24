@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "summonfire";
+{
+  MESH       	TFNM "Data\Monster\Azer\azer_bu.bm";
+  TEXTURES   
+  {
+    "azer_bd"	TFNM "Data\Monster\Azer\azer_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Azer\azer_hn.bm";
+  TEXTURES   
+  {
+    "azer_bu"	TFNM "Data\Monster\Azer\azer_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Azer\azer_head.bm";
+  TEXTURES   
+  {
+    "azer_bu"	TFNM "Data\Monster\Azer\azer_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Azer\azer_ft.bm";
+  TEXTURES   
+  {
+    "azer_bu"	TFNM "Data\Monster\Azer\azer_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Azer\azer_staff.bm";
+  TEXTURES   
+  {
+    "azer_staff"	TFNM "Data\Monster\Azer\azer_staff.tex";
+  }
+  MESH       	TFNM "Data\Monster\Azer\azer_bd.bm";
+  TEXTURES   
+  {
+    "azer_bu"	TFNM "Data\Monster\Azer\azer_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Azer\azer_bd_1.bm";
+  TEXTURES   
+  {
+    "azer_bu"	TFNM "Data\Monster\Azer\azer_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Azer\_TAG_AZER_STAFF.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Azer\azer.bs";
+  ANIMSET   	TFNM "Data\Monster\Azer\azer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Azer\azer.bae";
+  ALLFRAMESBBOX	-0.5,0,-1,0.5,2,1;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

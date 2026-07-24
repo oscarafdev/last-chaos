@@ -1,0 +1,56 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_bu.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_head.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_head2.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_hn.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\Scorpion_mantis_bd.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_leg1.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_leg2.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_leg3.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis_tail.bm";
+  TEXTURES   
+  {
+    "scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\ScorpionMantis\scorpionmantis.bs";
+  ANIMSET   	TFNM "Data\Monster\ScorpionMantis\scorpion_mantis.ba";
+  ALLFRAMESBBOX	-2.5,0,-2,2.5,2.3,2;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

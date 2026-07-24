@@ -1,0 +1,12 @@
+NAME "collectbox";
+{
+  MESH       	TFNM "\Data\Item\Common\collectbox.bm";
+  TEXTURES   
+  {
+    "collectbox"	TFNM "\Data\Item\Common\texture\collectbox.tex";
+  }
+  ALLFRAMESBBOX	-0.157835,-0.011601,-0.152825,0.148145,0.39076,0.139039;
+  COLISION
+  {
+  }
+}

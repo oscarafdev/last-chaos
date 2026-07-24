@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="365" h="384" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="365" h="384" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="409" r="69" b="478" unit="23" splitmode="2" />
+    <UIImage id="move_area" x="0" y="0" w="364" h="22" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText x="0" y="5" w="154" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5440" str="보물 지도" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="347" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIImage id="img_map" x="3" y="22" w="359" h="359" hide="0" tex="Map_World390_0.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="512" b="512" />
+    <UIImage id="img_mark" x="0" y="0" w="38" h="38" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="130" r="38" b="168" />
+</Window>

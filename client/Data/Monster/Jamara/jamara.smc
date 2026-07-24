@@ -1,0 +1,52 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "jamara";
+{
+  MESH       	TFNM "Data\Monster\Jamara\jamara.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  MESH       	TFNM "Data\Monster\Jamara\jamara_lhn.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  MESH       	TFNM "Data\Monster\Jamara\jamara_lwing.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  MESH       	TFNM "Data\Monster\Jamara\jamara_rhn.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  MESH       	TFNM "Data\Monster\Jamara\jamara_rwing.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  MESH       	TFNM "Data\Monster\Jamara\jamara_lft.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  MESH       	TFNM "Data\Monster\Jamara\jamara_rft.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  MESH       	TFNM "Data\Monster\Jamara\jamara_tail.bm";
+  TEXTURES   
+  {
+    "jamara"	TFNM "Data\Monster\Jamara\jamara.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Jamara\jamara.bs";
+  ANIMSET   	TFNM "Data\Monster\Jamara\jamara.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Jamara\jamara.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,3.5,1.5;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

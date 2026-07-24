@@ -1,0 +1,34 @@
+NAME "w1_building01";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_building01.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_castle002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle002.tex";
+    "StartZonetile_castle003"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle003.tex";
+    "StartZonetile_roof01"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_roof01.tex";
+    "StartZonetile_terrace001"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_terrace001.tex";
+    "StartZonetile_wall002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_wall002.tex";
+    "StartZonetile_wall003"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_wall003.tex";
+    "StartZonetile_window001"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_window001.tex";
+    "w1_building1"	TFNM "Data\World\StartZone\Ska\Texture\w1_building1.tex";
+    "w1_building2"	TFNM "Data\World\StartZone\Ska\Texture\w1_building2.tex";
+    "w1_buildingdoor"	TFNM "Data\World\StartZone\Ska\Texture\w1_buildingdoor.tex";
+    "w1_church1"	TFNM "Data\World\StartZone\Ska\Texture\w1_church1.tex";
+    "w1_church2"	TFNM "Data\World\StartZone\Ska\Texture\w1_church2.tex";
+    "w1_church3"	TFNM "Data\World\StartZone\Ska\Texture\w1_church3.tex";
+    "w1_church4"	TFNM "Data\World\StartZone\Ska\Texture\w1_church4.tex";
+    "w1_churchdoor"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchdoor.tex";
+    "w1_clock"	TFNM "Data\World\StartZone\Ska\Texture\w1_clock.tex";
+    "StartZonetile_07"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_07.tex";
+    "StartZonetile_bar001"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_bar001.tex";
+    "w1_brick5"	TFNM "Data\World\StartZone\Ska\Texture\w1_brick5.tex";
+    "StartZonetile_05_2"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_05_2.tex";
+    "StartZonetile_castle001"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle001.tex";
+  }
+  ALLFRAMESBBOX	-21.5243,-0.035151,-15.5599,21.5243,44.9164,15.5599;
+  COLISION
+  {
+    "Default"  {-21.5,0,-15.5,21.5,44,15.5;}
+  }
+}

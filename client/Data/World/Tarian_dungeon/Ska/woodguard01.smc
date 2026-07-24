@@ -1,0 +1,13 @@
+NAME "woodguard01";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\woodguard01.bm";
+  TEXTURES   
+  {
+    "woodguard01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\woodguard01.tex";
+  }
+  ALLFRAMESBBOX	-2.47671,0.007261,-0.348534,2.47477,7.87191,0.348788;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="254" h="221" hide="1">
+    <UIImage id="img_base" x="0" y="0" w="254" h="221" hide="0" tex="IrisInventory.tex" l="0" t="287" r="254" b="508" />
+    <UIButton id="btn_ok" x="27" y="180" w="70" h="20" hide="0" tex="CommonBtn.tex" str_idx="191" str="확인" newtype="0">
+        <uv type="0" l="113" t="0" r="183" b="22" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="186" t="0" r="256" b="22" />
+        <uv type="3" l="186" t="0" r="256" b="22" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="153" y="180" w="70" h="22" hide="0" tex="CommonBtn.tex" str_idx="139" str="취소" newtype="0">
+        <uv type="0" l="113" t="0" r="183" b="22" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="186" t="0" r="256" b="22" />
+        <uv type="3" l="186" t="0" r="256" b="22" />
+    </UIButton>
+    <UIButton id="btn_close" x="228" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" str_idx="-1" str="" newtype="0">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIText id="text_title" x="55" y="14" w="146" h="16" hide="0" str_idx="6060" str="1번 아이리스 가방" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_explain" x="12" y="52" w="232" h="15" hide="0" str_idx="6063" str="가방을 열수 있는 열쇠를 올려주세요." color="0xffff00ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIIcon id="icon_key" x="111" y="96" w="32" h="32" hide="0" type="0" texid="0" row="0" col="0" />
+    <UIText id="text_drag" x="11" y="2" w="218" h="42" hide="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+</Window>

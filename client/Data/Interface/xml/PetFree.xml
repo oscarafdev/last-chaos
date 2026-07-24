@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="216" h="283" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="216" h="283" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="409" r="69" b="478" unit="23" splitmode="2" />
+    <UIText x="28" y="6" w="159" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2444" str="펫 봉인해제" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="move_area" x="0" y="0" w="216" h="23" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIImage x="90" y="50" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="287" t="353" r="321" b="387" />
+    <UIImageSplit x="88" y="101" w="116" h="18" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+    <UIText x="18" y="105" w="60" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="1058" str="필요나스" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImageSplit x="7" y="133" w="202" h="110" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" />
+    <UIButton id="btn_close" x="197" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIIcon id="icon_petItem" x="91" y="51" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIText id="str_nas" x="95" y="105" w="106" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="10000000" str_ellipsis="" color="0xe1b300ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_contents" x="14" y="140" w="190" h="100" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="5" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="봉인된 펫을 부활 시킵니다.\n 레벨에 따라 부활비용을 지불하셔야 합니다.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIButton id="btn_ok" x="-5" y="245" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2440" str="봉인해제" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="177" t="409" r="228" b="430" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="-5" y="245" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="177" t="409" r="228" b="430" />
+    </UIButton>
+</Window>

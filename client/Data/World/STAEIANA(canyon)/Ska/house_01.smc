@@ -1,0 +1,16 @@
+NAME "house_01";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\house_01.bm";
+  TEXTURES   
+  {
+    "house_05"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\house_05.tex";
+    "house_01"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\house_01.tex";
+    "house_02"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\house_02.tex";
+    "house_03"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\house_03.tex";
+    "house_04"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\house_04.tex";
+  }
+  ALLFRAMESBBOX	-2.53244,-0.325654,-1.83692,2.50353,2.47108,1.81579;
+  COLISION
+  {
+  }
+}

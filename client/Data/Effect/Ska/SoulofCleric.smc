@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "SoulofCleric";
+{
+  MESH       	TFNM "Data\Effect\Ska\soulofcleric.bm";
+  TEXTURES   
+  {
+    "SoulofCleric"	TFNM "Data\Effect\Ska\soulofcleric.tex";
+  }
+  ALLFRAMESBBOX	-0.183985,-0.869886,-0.049838,0.183985,1.11617,0.049825;
+  COLISION
+  {
+  }
+}

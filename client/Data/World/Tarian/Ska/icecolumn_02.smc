@@ -1,0 +1,12 @@
+NAME "icecolumn_02";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\icecolumn_02.bm";
+  TEXTURES   
+  {
+    "icecolumn_01"	TFNM "Data\World\Tarian\Ska\Texture\icecolumn_01.tex";
+  }
+  ALLFRAMESBBOX	-27.3836,-6.20379,-18.8946,27.3836,34.2232,18.8946;
+  COLISION
+  {
+  }
+}

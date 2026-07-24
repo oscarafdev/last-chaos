@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ogregladiator";
+{
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator.bm";
+  TEXTURES   
+  {
+    "upperogregladiator_1"	TFNM "Data\Monster\Ogre\upperogregladiator_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator_1.bm";
+  TEXTURES   
+  {
+    "upperogregladiator_1"	TFNM "Data\Monster\Ogre\upperogregladiator_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator_2.bm";
+  TEXTURES   
+  {
+    "upperogregladiator_1"	TFNM "Data\Monster\Ogre\upperogregladiator_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator_bd.bm";
+  TEXTURES   
+  {
+    "upperogregladiator"	TFNM "Data\Monster\Ogre\upperogregladiator.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator_bu.bm";
+  TEXTURES   
+  {
+    "upperogregladiator"	TFNM "Data\Monster\Ogre\upperogregladiator.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator_hn.bm";
+  TEXTURES   
+  {
+    "upperogregladiator"	TFNM "Data\Monster\Ogre\upperogregladiator.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator_s.bm";
+  TEXTURES   
+  {
+    "upperogregladiator_1"	TFNM "Data\Monster\Ogre\upperogregladiator_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\upperogregladiator_w.bm";
+  TEXTURES   
+  {
+    "upperogregladiator"	TFNM "Data\Monster\Ogre\upperogregladiator.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Ogre\upperogregladiator.bs";
+  ANIMSET   	TFNM "Data\Monster\Ogre\upperogregladiator.ba";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,3.5,1.5;
+  COLISION
+  {
+    "Default"  {-1.14284,-0.156388,-1.81262,1.85716,3.0436,1.18739;}
+  }
+}

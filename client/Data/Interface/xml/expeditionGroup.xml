@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="152" h="145" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="152" h="145" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="334" t="0" r="486" b="145" />
+    <UIImage id="move_area" x="0" y="0" w="152" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText id="str_title" x="2" y="0" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="그룹 1" color="0xffffa0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="138" y="3" w="12" h="12" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="354" t="166" r="366" b="178" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="371" t="166" r="383" b="178" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIList id="list_group1" x="2" y="16" w="149" h="128" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="1" item_count="8" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="149" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImageArray id="ia_pos" x="1" y="1" w="14" h="14" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="13" h="13" l="405" t="166" r="418" b="179" desc="파티장" />
+                <surface1 x="0" y="0" w="13" h="13" l="388" t="166" r="401" b="179" desc="원정대장" />
+            </UIImageArray>
+            <UIImageArray id="ia_job" x="15" y="3" w="131" h="8" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="131" h="8" l="335" t="166" r="346" b="174" desc="타이탄" />
+                <surface1 x="0" y="0" w="131" h="8" l="335" t="182" r="346" b="190" desc="기사" />
+                <surface2 x="0" y="0" w="131" h="8" l="335" t="198" r="346" b="206" desc="힐러" />
+                <surface3 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="메이지" />
+                <surface4 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="로그" />
+                <surface5 x="0" y="0" w="131" h="8" l="335" t="246" r="346" b="254" desc="소서러" />
+                <surface6 x="0" y="0" w="131" h="8" l="335" t="262" r="346" b="270" desc="나이트쉐도우" />
+                <surface7 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="EX로그" />
+                <surface8 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="아크메이지" />
+            </UIImageArray>
+            <UIText id="str_name" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_hpRect" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        </UIListItem>
+    </UIList>
+</Window>

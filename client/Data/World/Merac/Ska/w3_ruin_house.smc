@@ -1,0 +1,22 @@
+NAME "w3_ruin_house";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_ruin_house.bm";
+  TEXTURES   
+  {
+    "w3_fenceDoor01"	TFNM "Data\World\Merac\ska\texture\w3_fenceDoor01.tex";
+    "w3_housebottom02"	TFNM "Data\World\Merac\ska\texture\w3_housebottom02.tex";
+    "w3_housedecoration01"	TFNM "Data\World\Merac\ska\texture\w3_housedecoration01.tex";
+    "w3_housedoor01"	TFNM "Data\World\Merac\ska\texture\w3_housedoor01.tex";
+    "w3_houseroof01"	TFNM "Data\World\Merac\ska\texture\w3_houseroof01.tex";
+    "w3_ruin"	TFNM "Data\World\Merac\ska\texture\w3_ruin.tex";
+    "w3_ruin_a"	TFNM "Data\World\Merac\ska\texture\w3_ruin_a.tex";
+    "w3_ruin_b"	TFNM "Data\World\Merac\ska\texture\w3_ruin_b.tex";
+    "w3_ruin_c"	TFNM "Data\World\Merac\ska\texture\w3_ruin_c.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_buildingdoor02"	TFNM "Data\World\Merac\ska\texture\w3_buildingdoor02.tex";
+  }
+  ALLFRAMESBBOX	-11.238,-0.093492,-5.54699,6.81807,16.8016,7.6662;
+  COLISION
+  {
+  }
+}

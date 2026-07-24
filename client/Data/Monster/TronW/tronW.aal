@@ -1,0 +1,33 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_idle_00.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_idle_01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_walk.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_run.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_att_00.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_att_01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_skill_00.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_dam.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\tronW_die.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Monster\tronW\mldam.AA"
+}

@@ -1,0 +1,24 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "tarian_altar";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\_TAG_T_TARIAN_A.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\tarian_altar.bm";
+  TEXTURES   
+  {
+    "firefort"	TFNM "Data\World\tarian_dungeon\Ska\Texture\firefort.tex";
+    "chain"	TFNM "Data\World\tarian_dungeon\Ska\Texture\chain.tex";
+    "td_halldoor"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_halldoor.tex";
+    "td_hallpillar02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_hallpillar02.tex";
+  }
+  SKELETON  	TFNM "Data\World\tarian_dungeon\Ska\tarian_altar.bs";
+  ANIMSET   	TFNM "Data\World\tarian_dungeon\Ska\tarian_altar.ba";
+  ANIMEFFECT	TFNM "Data\World\tarian_dungeon\Ska\tarian_altar.bae";
+  ALLFRAMESBBOX	-13.423,-7e-006,-13.3306,13.4231,45.2594,13.4847;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.8,0.4;}
+  }
+}

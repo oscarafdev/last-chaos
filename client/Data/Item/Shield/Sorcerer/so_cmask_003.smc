@@ -1,0 +1,17 @@
+NAME "so_cmask_003";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_cmask_003.bm";
+  TEXTURES   
+  {
+    "so_cmask_003"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_cmask_003.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_chair_001.bm";
+  TEXTURES   
+  {
+    "so_hair_005"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hair_005.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

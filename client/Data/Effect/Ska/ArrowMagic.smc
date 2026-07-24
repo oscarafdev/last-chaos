@@ -1,0 +1,12 @@
+NAME "ArrowMagic";
+{
+  MESH       	TFNM "Data\Effect\SKA\ArrowMagic.bm";
+  TEXTURES   
+  {
+    "elf_magic_arrow"	TFNM "Data\Effect\TEXTURE\elf_magic_arrow.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

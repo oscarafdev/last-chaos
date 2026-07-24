@@ -1,0 +1,75 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "NPC_Kailooks";
+{
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_bd01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_bd01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_bd01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_bu01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_bu01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_bu01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_face01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_face01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_face01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_ft01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_ft01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_ft01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_Gsword01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_Gsword01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_Gsword01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_hair01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_hair01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_hair01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_hm01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_hm01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_hm01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_hn01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_hn01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_hn01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\NPC_kailooks_head_manto01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_manto01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_manto01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\Object01.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_bd01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_bd01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\Object02.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_bu01"	TFNM "Data\Npc\Kailooks\Texture\NPC_kailooks_head_bu01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\_TAG_ADNPC.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Kailooks\_TAG_NH.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Kailooks\NPC_kailooks_head.bs";
+  ANIMSET   	TFNM "Data\Npc\Kailooks\NPC_kailooks_head.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Kailooks\NPC_kailooks_head.bae";
+  ALLFRAMESBBOX	-2.23462,-0.551461,-3.48939,2.23347,2.24854,3.19136;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

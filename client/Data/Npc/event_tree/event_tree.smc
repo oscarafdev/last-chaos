@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "event_tree";
+{
+  MESH       	TFNM "Data\Npc\event_tree\_TAG_T_TREE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\event_tree\event_tree.bm";
+  TEXTURES   
+  {
+    "event_tree"	TFNM "Data\Npc\event_tree\Texture\event_tree.tex";
+  }
+  MESH       	TFNM "Data\Npc\event_tree\_TAG_T_TREE_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\event_tree\_TAG_T_TREE_2.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.8,0.4;}
+  }
+}

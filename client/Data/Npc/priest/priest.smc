@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "priest";
+{
+  MESH       	TFNM "Data\npc\priest\Priest01.bm";
+  TEXTURES   
+  {
+    "chargecenter_man"	TFNM "Data\npc\priest\texture\chargecenter_man.tex";
+  }
+  MESH       	TFNM "Data\npc\priest\Priest02.bm";
+  TEXTURES   
+  {
+    "chargecenter_man"	TFNM "Data\npc\priest\texture\chargecenter_man.tex";
+  }
+  MESH       	TFNM "Data\npc\priest\Priest03.bm";
+  TEXTURES   
+  {
+    "chargecenter_man"	TFNM "Data\npc\priest\texture\chargecenter_man.tex";
+  }
+  MESH       	TFNM "Data\npc\priest\Priest04.bm";
+  TEXTURES   
+  {
+    "chargecenter_man"	TFNM "Data\npc\priest\texture\chargecenter_man.tex";
+  }
+  SKELETON  	TFNM "Data\npc\priest\priest.bs";
+  ANIMSET   	TFNM "Data\npc\priest\priest.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

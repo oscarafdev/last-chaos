@@ -1,0 +1,19 @@
+NAME "w2_tent01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_tent01.bm";
+  TEXTURES   
+  {
+    "w2_tent01_flag"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent01_flag.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_tent01_up"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent01_up.tex";
+    "w2_tent01_fron"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent01_fron.tex";
+    "w2_tent01_ca"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent01_ca.tex";
+    "w2_tent01_dn"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent01_dn.tex";
+    "w2_tent02_up"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent02_up.tex";
+    "w2_tent02_dn"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent02_dn.tex";
+  }
+  ALLFRAMESBBOX	-5.68973,-0.094041,-6.75051,5.68872,9.48679,6.75051;
+  COLISION
+  {
+  }
+}

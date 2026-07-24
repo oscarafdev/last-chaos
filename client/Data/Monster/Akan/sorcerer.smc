@@ -1,0 +1,45 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sorcerer";
+{
+  MESH       	TFNM "Data\Monster\Akan\sorcerer\_TAG_T_AKSO.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Akan\sorcerer\_TAG_T_AKSOS.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akan\sorcerer\akan_ma_bd.bm";
+  TEXTURES   
+  {
+    "Akanmknight_bd_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_bd_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\sorcerer\akan_ma_bu01.bm";
+  TEXTURES   
+  {
+    "Akanmagician_stick"	TFNM "Data\Monster\akan\Texture\Akanmagician_stick.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\sorcerer\akan_ma_bu.bm";
+  TEXTURES   
+  {
+    "Akanmagician_bu_1"	TFNM "Data\Monster\akan\Texture\Akanmagician_bu_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\sorcerer\akan_ma_hm.bm";
+  TEXTURES   
+  {
+    "Akanmknight_hm_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_hm_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\sorcerer\akan_ma_stick .bm";
+  TEXTURES   
+  {
+    "Akanmagician_stick"	TFNM "Data\Monster\akan\Texture\Akanmagician_stick.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\akan\sorcerer\sorcerer.bs";
+  ANIMSET   	TFNM "Data\Monster\akan\sorcerer\sorcerer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Akan\sorcerer\sorcerer.bae";
+  ALLFRAMESBBOX	-1.3134,-0.477449,-1.75509,1.62434,3.03679,3.51162;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

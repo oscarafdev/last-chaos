@@ -1,0 +1,13 @@
+NAME "Sky_Stone";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\Sky_stone.bm";
+  TEXTURES   
+  {
+    "Sky_Stone"	TFNM "Data\World\M_combo\Ska\Texture\Sky_Stone.tex";
+    "M_combo_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+  }
+  ALLFRAMESBBOX	-7.05013,13.5444,-3.70785,1.21383,24.7889,3.52622;
+  COLISION
+  {
+  }
+}

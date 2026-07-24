@@ -1,0 +1,39 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Darknogeu";
+{
+  MESH       	TFNM "Data\Monster\Nogeu\Darknogeu\_TAG_DNogHD.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\Darknogeu\_TAG_DNogLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\Darknogeu\_TAG_DNogSWORD_.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\Darknogeu\Darknogeu_acc.bm";
+  TEXTURES   
+  {
+    "DarkNogeu_02"	TFNM "Data\Monster\Nogeu\Darknogeu\DarkNogeu_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\Darknogeu\Darknogeu_body.bm";
+  TEXTURES   
+  {
+    "DarkNogeu_01"	TFNM "Data\Monster\Nogeu\Darknogeu\DarkNogeu_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Nogeu\Darknogeu\Darknogeu_wp.bm";
+  TEXTURES   
+  {
+    "DarkNogeu_02"	TFNM "Data\Monster\Nogeu\Darknogeu\DarkNogeu_02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Nogeu\Darknogeu\Darknogeu.bs";
+  ANIMSET   	TFNM "Data\Monster\Nogeu\Darknogeu\Darknogeu.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Nogeu\Darknogeu\Darknogeu.bae";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,4.5,2.5;
+  COLISION
+  {
+    "Default"  {-2,0,-1.15,2,4.4,1.15;}
+  }
+}

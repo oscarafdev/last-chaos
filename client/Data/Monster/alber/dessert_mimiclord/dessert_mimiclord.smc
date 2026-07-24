@@ -1,0 +1,52 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dessert_mimiclord";
+{
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\body.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\box_down.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\box_up.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\eye.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\snakehead01.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\snakehead02.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\snakehead03.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\dessert_mimiclord\snakehead04.bm";
+  TEXTURES   
+  {
+    "dessert_mimiclord"	TFNM "Data\Monster\alber\dessert_mimiclord\dessert_mimiclord.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\dessert_mimiclord\mimiclord.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\dessert_mimiclord\mimiclord.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\dessert_mimiclord\mimiclord.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,1.5,1;
+  COLISION
+  {
+    "Default"  {-0.690405,0.000965595,-0.825694,0.809595,1.50097,0.674306;}
+  }
+}

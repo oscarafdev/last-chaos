@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "a-dia02";
+{
+  MESH       	TFNM "Data\Monster\Lag_conv\A_dia_boss_02.bm";
+  TEXTURES   
+  {
+    "boss_adia02_01"	TFNM "Data\Monster\Lag_conv\Texture\boss_adia02_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Lag_conv\A_dia_boss_02_weapon.bm";
+  TEXTURES   
+  {
+    "boss_adia02_03"	TFNM "Data\Monster\Lag_conv\Texture\boss_adia02_03.tex";
+  }
+  MESH       	TFNM "Data\Monster\Lag_conv\A_dia_boss_02_WING.bm";
+  TEXTURES   
+  {
+    "boss_adia02_02"	TFNM "Data\Monster\Lag_conv\Texture\boss_adia02_02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lag_conv\a-dia02.bs";
+  ANIMSET   	TFNM "Data\Monster\Lag_conv\a-dia02.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Lag_conv\a-dia02.bae";
+  ALLFRAMESBBOX	-1.25,0,-1.25,1.25,3.5,1.25;
+  COLISION
+  {
+    "Default"  {-1.25,0,-1.25,1.25,3.5,1.25;}
+  }
+}

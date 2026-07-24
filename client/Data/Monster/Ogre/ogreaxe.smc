@@ -1,0 +1,46 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ogreaxe";
+{
+  MESH       	TFNM "Data\Monster\Ogre\ogreaxe.bm";
+  TEXTURES   
+  {
+    "ogreaxe"	TFNM "Data\Monster\Ogre\ogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogreaxe_1.bm";
+  TEXTURES   
+  {
+    "ogreaxe"	TFNM "Data\Monster\Ogre\ogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogreaxe_2.bm";
+  TEXTURES   
+  {
+    "ogreaxe"	TFNM "Data\Monster\Ogre\ogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogreaxe_bd.bm";
+  TEXTURES   
+  {
+    "ogreaxe"	TFNM "Data\Monster\Ogre\ogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogreaxe_bu.bm";
+  TEXTURES   
+  {
+    "ogreaxe"	TFNM "Data\Monster\Ogre\ogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogreaxe_hn.bm";
+  TEXTURES   
+  {
+    "ogreaxe"	TFNM "Data\Monster\Ogre\ogreaxe.tex";
+  }
+  MESH       	TFNM "Data\Monster\Ogre\ogreaxe_weapon.bm";
+  TEXTURES   
+  {
+    "ogreaxe"	TFNM "Data\Monster\Ogre\ogreaxe.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Ogre\ogreaxe.bs";
+  ANIMSET   	TFNM "Data\Monster\Ogre\ogreaxe.ba";
+  ALLFRAMESBBOX	-1,0,-2,2,3.5,1;
+  COLISION
+  {
+    "Default"  {-1.14284,-0.156388,-1.81262,1.85716,3.0436,1.18739;}
+  }
+}

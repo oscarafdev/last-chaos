@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Potion";
+{
+  MESH       	TFNM "Data\npc\production\Potion.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\Potion.tex";
+  }
+  MESH       	TFNM "Data\npc\production\Potion_1.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\Potion.tex";
+  }
+  MESH       	TFNM "Data\npc\production\Potion_2.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\Potion.tex";
+  }
+  MESH       	TFNM "Data\npc\production\Potion_3.bm";
+  TEXTURES   
+  {
+    "Potion"	TFNM "Data\npc\production\Potion.tex";
+  }
+  SKELETON  	TFNM "Data\npc\production\Potion.bs";
+  ANIMSET   	TFNM "Data\npc\production\Potion.ba";
+  ALLFRAMESBBOX	-1.5,0,-2,1.5,1.2,2;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.2,0.4;}
+  }
+}

@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_wp_soul_Gsword";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\ti_gsword_00u.bm";
+  TEXTURES   
+  {
+    "ti_gsword_00u"	TFNM "Data\Npc\soul_weapon\ti_gsword_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ti_wp_soul_Gsword.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ti_wp_soul_Gsword.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\ti_wp_soul_Gsword.bae";
+  ALLFRAMESBBOX	-0.212129,0,-0.211996,0.211819,2.45,0.21203;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,2.45,0.25;}
+  }
+}

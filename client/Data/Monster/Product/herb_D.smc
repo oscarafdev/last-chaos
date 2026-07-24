@@ -1,0 +1,13 @@
+NAME "herb_D";
+{
+  MESH       	TFNM "Data\Monster\Product\herb_D.bm";
+  TEXTURES   
+  {
+    "herb_D"	TFNM "Data\Monster\Product\Texture\herb_D.tex";
+  }
+  ALLFRAMESBBOX	-0.443628,0,-0.266183,0.659617,2.02874,0.376944;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1,0.75;}
+  }
+}

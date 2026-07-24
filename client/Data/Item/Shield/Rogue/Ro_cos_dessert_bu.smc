@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ro_cos_dessert_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\Ro_cos_dessert_bu.bm";
+  TEXTURES   
+  {
+    "Ro_cos_dessert_bu_01"	TFNM "Data\Item\Shield\Rogue\Texture\Ro_cos_dessert_bu_01.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\Ro_cos_dessert_bu01.bm";
+  TEXTURES   
+  {
+    "Ro_cos_dessert_bu_01"	TFNM "Data\Item\Shield\Rogue\Texture\Ro_cos_dessert_bu_01.tex";
+    "Ro_cos_dessert_bu_02"	TFNM "Data\Item\Shield\Rogue\Texture\Ro_cos_dessert_bu_02.tex";
+  }
+  ALLFRAMESBBOX	-0.441457,0.727251,-0.130014,0.441457,1.723,0.31673;
+  COLISION
+  {
+  }
+}

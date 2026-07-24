@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="260" h="350" hide="1" align_h="0" align_v="0" tooltip="-1">
+    <UIImage id="img_base0" x="0" y="0" w="260" h="350" hide="0" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" l="0" t="0" r="260" b="350" />
+    <UIImage id="img_base1" x="15" y="39" w="228" h="292" hide="1" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" l="261" t="39" r="489" b="331" />
+    <UIText id="text_title" x="44" y="5" w="174" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="6048" str="신비한 석상의 구슬" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="240" y="5" w="16" h="16" hide="0" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="382" r="16" b="398" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="17" t="382" r="33" b="398" />
+        <uv type="3" l="17" t="382" r="33" b="398" />
+    </UIButton>
+    <UIEdit id="edit_id" x="55" y="131" w="155" h="22" hide="0" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" max="20" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="97" t="355" r="252" b="377" x="0" y="-5" w="155" h="17" />
+    </UIEdit>
+    <UIText id="text_id" x="24" y="135" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="71" str="이름" color="0xffff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_search" x="212" y="131" w="22" h="22" hide="0" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="4" t="355" r="26" b="377" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="35" t="355" r="57" b="377" />
+        <uv type="3" l="66" t="355" r="88" b="377" />
+    </UIButton>
+    <UIButton id="btn_ok" x="36" y="303" w="95" h="21" hide="0" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="257" t="351" r="352" b="372" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="257" t="373" r="352" b="394" />
+        <uv type="3" l="257" t="395" r="352" b="416" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="140" y="303" w="95" h="21" hide="0" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="257" t="351" r="352" b="372" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="257" t="373" r="352" b="394" />
+        <uv type="3" l="257" t="395" r="352" b="416" />
+    </UIButton>
+    <UITextBox id="text_box" x="22" y="45" w="214" h="80" hide="0" tex="MysteriousBead.tex" align_h="0" align_v="0" tooltip="-1" sx="0" sy="0" gap_y="0" h_align="0" str_idx="6049" text_col="0xffffffff" str="받고자 하는 캐릭터의 아이디를 검색해 주시고, 보내는 아이템 1종을 등록하여 주시길 바랍니다.">
+        <back x="0" y="0" w="214" h="80" l="0" t="413" r="214" b="493" />
+    </UITextBox>
+    <UIIcon id="icon_item_area" x="115" y="215" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" type="0" texid="0" row="0" col="0" />
+    <UIText id="text_drag_area" x="0" y="5" w="241" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+</Window>

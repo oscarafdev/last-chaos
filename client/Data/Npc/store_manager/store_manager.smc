@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "store_manager";
+{
+  MESH       	TFNM "Data\npc\store_manager\store_box.bm";
+  TEXTURES   
+  {
+    "store_box"	TFNM "Data\npc\store_manager\texture\store_box.tex";
+  }
+  MESH       	TFNM "Data\npc\store_manager\store_manager.bm";
+  TEXTURES   
+  {
+    "store_manager"	TFNM "Data\npc\store_manager\texture\store_manager.tex";
+  }
+  SKELETON  	TFNM "Data\npc\store_manager\store_manager.bs";
+  ANIMSET   	TFNM "Data\npc\store_manager\store_manager.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.486905,0,-0.255173,0.523557,1.40193,0.731149;}
+  }
+}

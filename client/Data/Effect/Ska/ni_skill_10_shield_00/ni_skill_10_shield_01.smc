@@ -1,0 +1,14 @@
+NAME "ni_skill_10_shield_01";
+{
+  MESH       	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_01.bm";
+  TEXTURES   
+  {
+    "ni_skill_10_shield_00"	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_00.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_01.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_01.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

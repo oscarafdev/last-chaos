@@ -1,0 +1,13 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\new_wood_gs-tree_c.bm";
+  TEXTURES   
+  {
+    "new_wood_gs-tree_3"	TFNM "Data\World\Dratan\Ska\Texture\new_wood_gs-tree_3.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.712364,-0.013741,-0.72174,0.662933,1.24248,0.653557;
+  COLISION
+  {
+  }
+}

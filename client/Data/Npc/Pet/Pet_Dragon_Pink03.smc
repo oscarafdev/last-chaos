@@ -1,0 +1,30 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Pet_Dragon03";
+{
+  MESH       	TFNM "Data\Npc\pet\baroroques.bm";
+  TEXTURES   
+  {
+    "baroroques"	TFNM "Data\Npc\Pet\pet_dragon_pink03.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\pet_saddle.bm";
+  TEXTURES   
+  {
+    "pet_saddle"	TFNM "Data\Npc\pet\pet_saddle.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_dragon_3.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\baroroques.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\Pet_Dragon03.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\Pet_Dragon03.bae";
+  ALLFRAMESBBOX	-3.5,0,-3,3.5,4.8,3;
+  COLISION
+  {
+    "Default"  {-3.5,0,-3,3.5,4.8,3;}
+  }
+  RIDING
+  {
+    "baroroques_Bip"  	0,0,-3.27,90,0,90;
+  }
+}

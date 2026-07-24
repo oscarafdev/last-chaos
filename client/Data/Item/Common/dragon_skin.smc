@@ -1,0 +1,13 @@
+NAME "dragon_skin";
+{
+  MESH       	TFNM "Data\Item\Common\dragon_skin.bm";
+  TEXTURES   
+  {
+    "dragon_skin"	TFNM "Data\Item\Common\texture\dragon_skin.tex";
+  }
+  ALLFRAMESBBOX	-0.098579,-0.007136,-0.170143,0.104549,0.235604,0.076099;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.12,0.1,0.1,0.12;}
+  }
+}

@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Girl";
+{
+  MESH       	TFNM "Data\npc\public\Girl.bm";
+  TEXTURES   
+  {
+    "Girl"	TFNM "Data\npc\public\Girl.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\Girl.bs";
+  ANIMSET   	TFNM "Data\npc\public\Girl.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,1.68,2;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.68,0.4;}
+  }
+}

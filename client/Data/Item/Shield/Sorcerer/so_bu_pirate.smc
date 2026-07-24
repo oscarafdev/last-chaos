@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bu_pirate";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_pirate.bm";
+  TEXTURES   
+  {
+    "so_bu_pirate"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_pirate.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_pirate_1.bm";
+  TEXTURES   
+  {
+    "so_bu_pirate"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_pirate.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_pirate_2.bm";
+  TEXTURES   
+  {
+    "so_acc_pirate"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_acc_pirate.tex";
+  }
+  ALLFRAMESBBOX	-0.550989,0.960171,-0.154318,0.553307,1.7759,0.163052;
+  COLISION
+  {
+  }
+}

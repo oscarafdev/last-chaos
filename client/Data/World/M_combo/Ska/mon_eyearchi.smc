@@ -1,0 +1,15 @@
+OFFSET    	1.42216,8.96772,-1.6675,0,-0.75,0;
+NAME "electric_lamp_001";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\mon_eyearchi.bm";
+  TEXTURES   
+  {
+    "mon_eyearchi"	TFNM "Data\World\M_combo\Ska\Texture\mon_eyearchi.tex";
+    "M_combo_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+    "M_combo_Detail_2"	TFNM "Data\World\M_combo\Texture\M_combo_Detail_2.tex";
+  }
+  ALLFRAMESBBOX	-10.0725,2.60148,-9.91175,9.94667,9.73246,10.1073;
+  COLISION
+  {
+  }
+}

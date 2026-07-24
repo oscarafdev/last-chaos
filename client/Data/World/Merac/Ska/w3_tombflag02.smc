@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w3_tombflag02";
+{
+  MESH       	TFNM "Data\world\Merac\Ska\w3_tombflag02.bm";
+  TEXTURES   
+  {
+    "merac_Detail"	TFNM "Data\world\Merac\Ska\Texture\merac_Detail.tex";
+    "w3_tomb"	TFNM "Data\world\Merac\Ska\Texture\w3_tomb.tex";
+    "w3_tombflag"	TFNM "Data\world\Merac\Ska\Texture\w3_tombflag.tex";
+  }
+  SKELETON  	TFNM "Data\world\Merac\Ska\w3_tombflag02.bs";
+  ANIMSET   	TFNM "Data\world\Merac\Ska\w3_tombflag02.ba";
+  ALLFRAMESBBOX	-3.25869,-0.07937,-0.534311,0.219358,7.12748,0.532332;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,7,0.25;}
+  }
+}

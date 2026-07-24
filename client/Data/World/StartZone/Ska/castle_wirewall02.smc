@@ -1,0 +1,13 @@
+NAME "castle_wirewall02";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\castle_wirewall02.bm";
+  TEXTURES   
+  {
+    "castle_wirewall02"	TFNM "Data\world\StartZone\Ska\Texture\castle_wirewall02.tex";
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+NAME "d2_poll07";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_poll07.bm";
+  TEXTURES   
+  {
+    "Dengen2_Detail"	TFNM "Data\World\Dungeon2\Ska\Texture\Dengen2_Detail.tex";
+    "d2_poll07_01"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_poll07_01.tex";
+    "d2_poll07_02"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_poll07_02.tex";
+  }
+  ALLFRAMESBBOX	-1.15167,-4.99663,-0.808098,1.15157,4.99663,0.808091;
+  COLISION
+  {
+    "Default"  {-1.2,-5,-0.9,1.2,5,0.9;}
+  }
+}

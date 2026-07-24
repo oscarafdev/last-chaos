@@ -1,0 +1,12 @@
+NAME "blackstone";
+{
+  MESH       	TFNM "Data\Effect\Ska\blackstone.bm";
+  TEXTURES   
+  {
+    "blackstone"	TFNM "Data\Effect\Ska\blackstone.tex";
+  }
+  ALLFRAMESBBOX	-0.08,-0.080191,-0.08,0.08,0.079809,0.08;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bu_swimsuit";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bu_swimsuit.bm";
+  TEXTURES   
+  {
+    "ma_bu_swimsuit"	TFNM "Data\Item\Shield\Mage\Texture\ma_bu_swimsuit.tex";
+  }
+  ALLFRAMESBBOX	-0.269967,1.19433,-0.194376,0.269967,1.75311,0.07024;
+  COLISION
+  {
+  }
+}

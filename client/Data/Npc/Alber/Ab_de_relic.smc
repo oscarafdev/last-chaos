@@ -1,0 +1,16 @@
+NAME "Ab_de_relic";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_de_relic.bm";
+  TEXTURES   
+  {
+    "Ab_de_relic"	TFNM "Data\Npc\Alber\Texture\Ab_de_relic.tex";
+    "Ab_de_bowls01"	TFNM "Data\Npc\Alber\Texture\Ab_de_bowls01.tex";
+    "Ab_de_bowls02"	TFNM "Data\Npc\Alber\Texture\Ab_de_bowls02.tex";
+    "Ab_de_bowls03"	TFNM "Data\Npc\Alber\Texture\Ab_de_bowls03.tex";
+  }
+  ALLFRAMESBBOX	-0.901369,-0.725669,-0.318909,0.890837,1.22539,0.797779;
+  COLISION
+  {
+    "Default"  {-0.9,0,-0.3,0.9,1,0.7;}
+  }
+}

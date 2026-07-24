@@ -1,0 +1,66 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "doomslayer";
+{
+  MESH       	TFNM "Data\Monster\Doomslayer\_TAG_T_EF.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer__bu.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer__hair.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_bd.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_bu_01.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_bu_02.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_bu_03.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_bu_04.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_ft.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_weapon.bm";
+  TEXTURES   
+  {
+    "doomslayer_weapon"	TFNM "Data\Monster\Doomslayer\doomslayer_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Doomslayer\doomslayer_hn.bm";
+  TEXTURES   
+  {
+    "doomslayer"	TFNM "Data\Monster\Doomslayer\doomslayer.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Doomslayer\doomslayer.bs";
+  ANIMSET   	TFNM "Data\Monster\Doomslayer\doomslayer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Doomslayer\doomslayer.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.3,1.5;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,2.3,0.6;}
+  }
+}

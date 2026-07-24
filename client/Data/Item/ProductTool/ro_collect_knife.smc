@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_collect_knife";
+{
+  MESH       	TFNM "Data\Item\ProductTool\ro_collect_knife.bm";
+  TEXTURES   
+  {
+    "collect_knife"	TFNM "Data\Item\ProductTool\texture\collect_knife.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

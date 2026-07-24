@@ -1,0 +1,12 @@
+NAME "Chain_02_01";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\Chain_02_01.bm";
+  TEXTURES   
+  {
+    "Chain_02"	TFNM "Data\World\M_combo\Ska\Texture\Chain_02.tex";
+  }
+  ALLFRAMESBBOX	-0.199223,-0.176573,-7.94778,0.18408,5.15672,7.21227;
+  COLISION
+  {
+  }
+}

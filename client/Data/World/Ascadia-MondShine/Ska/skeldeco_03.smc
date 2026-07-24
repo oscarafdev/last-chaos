@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\skeldeco_03.bm";
+  TEXTURES   
+  {
+    "Skelboss_house_stair"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_stair.tex";
+  }
+  ALLFRAMESBBOX	-0.317989,-0.01695,-4.49702,0.317995,7.29066,4.49702;
+  COLISION
+  {
+  }
+}

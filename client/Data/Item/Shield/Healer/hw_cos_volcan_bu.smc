@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_cos_volcan_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_volcan_bu.bm";
+  TEXTURES   
+  {
+    "hw_cos_volcan_bu_01"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_volcan_bu_01.tex";
+    "hw_cos_volcan_bu_02"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_volcan_bu_02.tex";
+  }
+  ALLFRAMESBBOX	-0.399583,1.14493,-0.163568,0.399583,1.90273,0.242334;
+  COLISION
+  {
+  }
+}

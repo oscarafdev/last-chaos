@@ -1,0 +1,14 @@
+NAME "w2_castlewarpoll04";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_castlewarpoll04.bm";
+  TEXTURES   
+  {
+    "w2_castlealtar09"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar09.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.06926,-0.04634,-2.3024,4.06926,11.1557,2.3024;
+  COLISION
+  {
+    "Default"  {-3.79129,-0.348103,-1.98558,4.09581,5.54771,2.44386;}
+  }
+}

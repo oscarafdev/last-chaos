@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "elemental_polishing";
+{
+  MESH       	TFNM "Data\Monster\Elemental\elemental_polishing.bm";
+  TEXTURES   
+  {
+    "elemental_polishing"	TFNM "Data\Monster\Elemental\elemental_polishing.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Elemental\elemental_polishing.bs";
+  ANIMSET   	TFNM "Data\Monster\Elemental\elemental_polishing.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Elemental\elemental_polishing.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,2,0.6;}
+  }
+}

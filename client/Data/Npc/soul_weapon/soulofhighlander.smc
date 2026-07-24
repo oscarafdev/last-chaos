@@ -1,0 +1,16 @@
+NAME "soulofhighlander";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\ti_axe.bm";
+  TEXTURES   
+  {
+    "ti_axe_00u"	TFNM "Data\Npc\soul_weapon\ti_axe_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ti_soul_axe.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ti_soul_axe.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\soulofhighlander.bae";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,2.5,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,2.5,0.1;}
+  }
+}

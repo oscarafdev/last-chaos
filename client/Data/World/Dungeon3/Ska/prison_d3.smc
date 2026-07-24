@@ -1,0 +1,17 @@
+NAME "prison_d3";
+{
+  MESH       	TFNM "Data\world\Dungeon3\Ska\prison_d3.bm";
+  TEXTURES   
+  {
+    "prison_d3"	TFNM "Data\world\Dungeon3\Ska\texture\prison_d3.tex";
+    "Eff_door01_b_d3"	TFNM "Data\world\Dungeon3\Ska\texture\Eff_door01_b_d3.tex";
+    "Floor06_ska01_D3_b"	TFNM "Data\world\Dungeon3\Ska\texture\FLOOR06_ska01_d3_b.tex";
+    "Web"	TFNM "Data\world\Dungeon3\Ska\texture\Web.tex";
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-0.910423,-0.016185,-0.803612,0.910423,2.54767,0.803612;
+  COLISION
+  {
+    "Default"  {-0.910425,-0.016185,-0.80361,0.910425,2.54766,0.80361;}
+  }
+}

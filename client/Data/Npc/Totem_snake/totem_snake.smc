@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "c_man";
+{
+  MESH       	TFNM "Data\Npc\Totem_snake\totem_snake_01.bm";
+  TEXTURES   
+  {
+    "Egeha_dungeon_Detail-1"	TFNM "Data\Npc\Totem_snake\Texture\Egeha_dungeon_Detail-1.tex";
+    "totem-snake"	TFNM "Data\Npc\Totem_snake\Texture\totem-snake.tex";
+  }
+  MESH       	TFNM "Data\Npc\Totem_snake\_TAG_TOTEM_SNAKE.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Totem_snake\totem_snake.bs";
+  ANIMSET   	TFNM "Data\Npc\Totem_snake\totem_snake.ba";
+  ALLFRAMESBBOX	-0.7,0,-0.65,0.7,3,0.65;
+  COLISION
+  {
+    "idle"  {-0.7,0,-0.65,0.7,3.1,0.65;}
+  }
+}

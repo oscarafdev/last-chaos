@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "pet_newhorse_step01";
+{
+  MESH       	TFNM "Data\Npc\pet\pet_newhorse_step01.bm";
+  TEXTURES   
+  {
+    "Pet_Horse01"	TFNM "Data\Npc\pet\pet_newhorse_step01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_NEWHORSE_1.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\pet_newhorse_step01.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\pet_newhorse_step01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\pet_newhorse_step01.bae";
+  ALLFRAMESBBOX	-0.25,0,-0.85,0.25,1,0.65;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.85,0.25,1,0.65;}
+  }
+}

@@ -1,0 +1,12 @@
+NAME "skeleton_bridge_1";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\skeleton_bridge_1.bm";
+  TEXTURES   
+  {
+    "skeleton_bridge"	TFNM "Data\World\STREIANA\Ska\Texture\skeleton_bridge.tex";
+  }
+  ALLFRAMESBBOX	-3.03568,0.000266,-9.1915,3.04117,8.01795,9.25726;
+  COLISION
+  {
+  }
+}

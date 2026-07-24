@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_ft_castellan_silver";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_ft_castellan_silver.bm";
+  TEXTURES   
+  {
+    "ns_ft_castellan_silver"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_ft_castellan_silver.tex";
+  }
+  ALLFRAMESBBOX	-0.297218,-0.001386,-0.165421,0.297218,0.643177,0.14989;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,39 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bloodtobido";
+{
+  MESH       	TFNM "Data\Monster\Tobido\bloodtobido.bm";
+  TEXTURES   
+  {
+    "bloodtobido"	TFNM "Data\Monster\Tobido\bloodtobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\bloodtobido_1.bm";
+  TEXTURES   
+  {
+    "bloodtobido"	TFNM "Data\Monster\Tobido\bloodtobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\bloodtobido_2.bm";
+  TEXTURES   
+  {
+    "bloodtobido"	TFNM "Data\Monster\Tobido\bloodtobido.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_BDTBH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_BDTBL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Tobido\_TAG_T_BDTBR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Tobido\bloodtobido.bs";
+  ANIMSET   	TFNM "Data\Monster\Tobido\bloodtobido.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Tobido\bloodtobido.bae";
+  ALLFRAMESBBOX	-0.9,0,-1,0.9,1.2,0.8;
+  COLISION
+  {
+    "Default"  {-0.9,0,-1,0.9,1.2,0.8;}
+  }
+}

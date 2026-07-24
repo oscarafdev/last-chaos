@@ -1,0 +1,14 @@
+NAME "ca_Dratan_jar";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_jar05.bm";
+  TEXTURES   
+  {
+    "PK_jar02"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_jar02.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-0.299837,-0.0029,-0.259666,0.299837,0.604556,0.259666;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,0.6,0.25;}
+  }
+}

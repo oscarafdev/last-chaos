@@ -1,0 +1,13 @@
+NAME "obj_06";
+{
+  MESH       	TFNM "Data\World\akantemple\Ska\deco_17.bm";
+  TEXTURES   
+  {
+    "otimazing_21"	TFNM "Data\World\akantemple\Ska\Texture\otimazing_21.tex";
+  }
+  ALLFRAMESBBOX	-0.449128,0,-0.449128,0.449128,1.56104,0.449128;
+  COLISION
+  {
+    "Default"  {-0.425685,-0.017031,-0.421789,0.393479,2.86838,0.407102;}
+  }
+}

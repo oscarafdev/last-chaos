@@ -1,0 +1,13 @@
+NAME "hw_cos_russia_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_russia_hn.bm";
+  TEXTURES   
+  {
+    "hw_cos_russia_hn"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_russia_hn.tex";
+  }
+  ALLFRAMESBBOX	-0.657636,1.05373,-0.094975,0.656073,1.47777,0.045923;
+  COLISION
+  {
+    "Default"  {-0.657636,1.05373,-0.094975,0.656074,1.47776,0.045923;}
+  }
+}

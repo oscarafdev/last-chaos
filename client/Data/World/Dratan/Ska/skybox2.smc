@@ -1,0 +1,12 @@
+NAME "skybox2";
+{
+  MESH       	TFNM "Data\world\skybox\skybox2.bm";
+  TEXTURES   
+  {
+    "skybox2"	TFNM "Data\world\skybox\skybox2.tex";
+  }
+  ALLFRAMESBBOX	-1.67929,-0.636167,-1.67929,1.67929,0.632575,1.67929;
+  COLISION
+  {
+  }
+}

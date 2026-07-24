@@ -1,0 +1,13 @@
+NAME "door_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\door_si.bm";
+  TEXTURES   
+  {
+    "door_si"	TFNM "Data\World\Merac\ska\texture\door_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.60049,-0.038005,-0.240044,1.60045,12.18,0.240044;
+  COLISION
+  {
+  }
+}

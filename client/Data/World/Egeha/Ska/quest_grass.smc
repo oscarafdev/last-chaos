@@ -1,0 +1,16 @@
+NAME "young_stgrass02";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\young_stgrass02.bm";
+  TEXTURES   
+  {
+    "young_stgrass02"	TFNM "Data\world\StartZone\Ska\Texture\young_stgrass02.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\young_stgrass02.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\young_stgrass02.ba";
+  ANIMEFFECT	TFNM "Data\World\Egeha\Ska\quest_grass.bae";
+  ALLFRAMESBBOX	-1.35244,-0.0769771,-1.41489,1.39802,2.30041,1.25335;
+  COLISION
+  {
+    "Default"  {-0.85,0,-0.85,0.85,1.5,0.85;}
+  }
+}

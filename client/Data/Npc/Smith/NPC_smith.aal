@@ -1,0 +1,9 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\npc\Smith\NPC_smith_idle02.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\npc\Smith\NPC_smith_idle01.AA"
+}

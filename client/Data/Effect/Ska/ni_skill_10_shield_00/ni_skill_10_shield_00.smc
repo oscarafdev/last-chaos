@@ -1,0 +1,24 @@
+NAME "ni_skill_10_shield_00";
+{
+  MESH       	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\Plane02.bm";
+  TEXTURES   
+  {
+    "ni_skill_10_shield_01"	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_01.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\Plane03.bm";
+  TEXTURES   
+  {
+    "ni_skill_10_shield_01"	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_01.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\Plane04.bm";
+  TEXTURES   
+  {
+    "ni_skill_10_shield_02"	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_02.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_00.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ni_skill_10_shield_00\ni_skill_10_shield_00.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

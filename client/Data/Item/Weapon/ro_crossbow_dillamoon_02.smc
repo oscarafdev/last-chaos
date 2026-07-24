@@ -1,0 +1,17 @@
+OFFSET    	-1.07,-0.13,-0.4,-140,-80,0;
+NAME "ro_crossbow_dillamoon_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_CROSSBOW_dillamoon_02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ro_crossbow_dillamoon_02.bm";
+  TEXTURES   
+  {
+    "ro_crossbow_dillamoon_02"	TFNM "Data\Item\Weapon\Texture\ro_crossbow_dillamoon_02.tex";
+  }
+  ALLFRAMESBBOX	-0.255487,-0.14672,-0.2703,0.228858,0.548866,0.282331;
+  COLISION
+  {
+  }
+}

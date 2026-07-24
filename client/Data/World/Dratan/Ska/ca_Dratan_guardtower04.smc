@@ -1,0 +1,14 @@
+NAME "sd2_cart1";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\ca_Dratan_guardtower04.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "ca_Dratan_wood02"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wood02.tex";
+    "ca_Dratan_woodplan01"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_woodplan01.tex";
+  }
+  ALLFRAMESBBOX	-8.34526,-0.101992,-2.54223,8.34525,11.7254,2.54223;
+  COLISION
+  {
+  }
+}

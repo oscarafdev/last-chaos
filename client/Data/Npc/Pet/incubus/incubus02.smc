@@ -1,0 +1,42 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "incubus02";
+{
+  MESH       	TFNM "Data\Npc\Pet\incubus\_TAG_i2HD.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\incubus\_TAG_i2LH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\incubus\_TAG_i2RH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\incubus\_TAG_i2TA.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\incubus\incubus_b.bm";
+  TEXTURES   
+  {
+    "incubus_02"	TFNM "Data\Npc\Pet\incubus\incubus_02.tex";
+  }
+  MESH       	TFNM "Data\Npc\Pet\incubus\incubus_w.bm";
+  TEXTURES   
+  {
+    "incubus_add_02"	TFNM "Data\Npc\Pet\incubus\incubus_add_02.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Pet\incubus\incubus02.bs";
+  ANIMSET   	TFNM "Data\Npc\Pet\incubus\incubus02.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Pet\incubus\incubus02.bae";
+  ALLFRAMESBBOX	-1,0,-2.5,1,5,2.5;
+  COLISION
+  {
+    "Default"  {-1,0,-2.5,1,5,2.5;}
+  }
+  RIDING
+  {
+    "Bip01 Spine2"  	-0.7,3.8,0,90,0,180;
+  }
+}

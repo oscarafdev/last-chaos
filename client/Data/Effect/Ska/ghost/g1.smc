@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "g1";
+{
+  MESH       	TFNM "Data\Effect\Ska\ghost\Object01.bm";
+  TEXTURES   
+  {
+    "Wraith_W"	TFNM "Data\Effect\Ska\ghost\Wraith_W.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ghost\wraith1_head_1.bm";
+  TEXTURES   
+  {
+    "Wraith_W"	TFNM "Data\Effect\Ska\ghost\Wraith_W.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ghost\wraith1_lhn01.bm";
+  TEXTURES   
+  {
+    "Wraith_W"	TFNM "Data\Effect\Ska\ghost\Wraith_W.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ghost\ghost.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ghost\g1.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

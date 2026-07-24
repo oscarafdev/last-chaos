@@ -1,0 +1,22 @@
+NAME "Lifetree";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\Lifetree.bm";
+  TEXTURES   
+  {
+    "sintree_vines"	TFNM "Data\World\StartZone\Ska\Texture\sintree_vines.tex";
+    "sintree_leaf01"	TFNM "Data\World\StartZone\Ska\Texture\sintree_leaf01.tex";
+    "tree_stone"	TFNM "Data\World\StartZone\Ska\Texture\tree_stone.tex";
+    "rock01"	TFNM "Data\World\StartZone\Ska\Texture\rock01.tex";
+    "sintree_00"	TFNM "Data\World\StartZone\Ska\Texture\sintree_00.tex";
+    "A_tree_01A"	TFNM "Data\World\StartZone\Ska\Texture\A_tree_01A.tex";
+    "A_tree_02A"	TFNM "Data\World\StartZone\Ska\Texture\A_tree_02A.tex";
+    "A_tree_03A"	TFNM "Data\World\StartZone\Ska\Texture\A_tree_03A.tex";
+    "sintree_leaf02"	TFNM "Data\World\StartZone\Ska\Texture\sintree_leaf02.tex";
+    "A_tree_04A"	TFNM "Data\World\StartZone\Ska\Texture\A_tree_04A.tex";
+  }
+  ALLFRAMESBBOX	-12.3214,-0.567998,-16.1393,13.0739,22.6088,12.5213;
+  COLISION
+  {
+    "Default"  {-0.309602,-0.00625956,-0.33629,0.332694,1.02493,0.348316;}
+  }
+}

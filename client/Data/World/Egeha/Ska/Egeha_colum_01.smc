@@ -1,0 +1,13 @@
+NAME "connu01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha\Ska\connu01_d4.bm";
+  TEXTURES   
+  {
+    "Egeha_boss_stone03"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_boss_stone03.tex";
+    "Egeha-Detail"	TFNM "Data\World\Egeha\Ska\Texture\Egeha-Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.828744,-2.48184,-1.30845,1.35719,2.4595,1.39649;
+  COLISION
+  {
+  }
+}

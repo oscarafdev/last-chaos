@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Nervouspango";
+{
+  MESH       	TFNM "Data\Monster\pango\v1\Pango_Nerv_body.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Variaition01"	TFNM "Data\Monster\pango\Fang_Go-Variaition01.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v1\Pango_Nerv_bomb.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Variaition01"	TFNM "Data\Monster\pango\Fang_Go-Variaition01.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v1\Pango_Nerv_hm.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Variaition01-add"	TFNM "Data\Monster\pango\Fang_Go-Variaition01-add.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\pango\v1\ner_pango.bs";
+  ANIMSET   	TFNM "Data\Monster\pango\v1\Nervouspango.ba";
+  ALLFRAMESBBOX	-0.343131,0.001077,-0.18442,0.343131,1.33019,0.373819;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.35,0.5;}
+  }
+}

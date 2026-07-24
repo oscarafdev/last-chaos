@@ -1,0 +1,30 @@
+NAME "store_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\store_si.bm";
+  TEXTURES   
+  {
+    "bookcase_si"	TFNM "Data\World\Merac\ska\texture\bookcase_si.tex";
+    "chair;table_si"	TFNM "Data\World\Merac\ska\texture\chair;table_si.tex";
+    "farmdummy_si"	TFNM "Data\World\Merac\ska\texture\farmdummy_si.tex";
+    "farmmetal_si"	TFNM "Data\World\Merac\ska\texture\farmmetal_si.tex";
+    "farmwheel_si"	TFNM "Data\World\Merac\ska\texture\farmwheel_si.tex";
+    "farmwood_si"	TFNM "Data\World\Merac\ska\texture\farmwood_si.tex";
+    "minewood_si"	TFNM "Data\World\Merac\ska\texture\minewood_si.tex";
+    "w3_Storebox01"	TFNM "Data\World\Merac\ska\texture\w3_Storebox01.tex";
+    "w3_store_book"	TFNM "Data\World\Merac\ska\texture\w3_store_book.tex";
+    "w3_store02"	TFNM "Data\World\Merac\ska\texture\w3_store02.tex";
+    "w3_store"	TFNM "Data\World\Merac\ska\texture\w3_store.tex";
+    "general shop_signboard_w3"	TFNM "Data\World\Merac\ska\texture\general shop_signboard_w3.tex";
+    "w3_medicinastuff"	TFNM "Data\World\Merac\ska\texture\w3_medicinastuff.tex";
+    "castle inside_flag_si"	TFNM "Data\World\Merac\ska\texture\castle inside_flag_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "Jbox_si"	TFNM "Data\World\Merac\ska\texture\Jbox_si.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\ska\store_si.bs";
+  ANIMSET   	TFNM "Data\World\Merac\ska\store_si.ba";
+  ALLFRAMESBBOX	-5.17331,-0.0363699,-3.88967,5.17331,3.75628,3.88967;
+  COLISION
+  {
+    "Default"  {-5.1733,0,-3.88967,5.1733,3.79265,3.88967;}
+  }
+}

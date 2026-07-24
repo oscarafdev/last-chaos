@@ -1,0 +1,34 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "compra";
+{
+  MESH       	TFNM "Data\Monster\compra\Object14.bm";
+  TEXTURES   
+  {
+    "compra_02"	TFNM "Data\Monster\compra\compra_02.tex";
+    "compra_01"	TFNM "Data\Monster\compra\compra_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\compra\_TAG_T_COMP1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\compra\_TAG_T_COMP2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\compra\_TAG_T_COMP3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\compra\_TAG_T_COMP4.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\compra\compra.bs";
+  ANIMSET   	TFNM "Data\Monster\compra\compra_idle01.ba";
+  ANIMEFFECT	TFNM "Data\Monster\compra\compra.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,3.1,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,3.1,1.5;}
+  }
+}

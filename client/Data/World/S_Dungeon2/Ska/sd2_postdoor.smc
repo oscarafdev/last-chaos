@@ -1,0 +1,15 @@
+NAME "sd2_postdoor";
+{
+  MESH       	TFNM "Data\World\S_Dungeon2\ska\sd2_postdoor.bm";
+  TEXTURES   
+  {
+    "sd2_minedoor"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_minedoor.tex";
+    "sd2_minewood5"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_minewood5.tex";
+    "S_Dengen2_Detail"	TFNM "Data\World\S_Dungeon2\ska\texture\S_Dengen2_Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.12033,-0.06199,-0.459816,4.47956,11.5409,0.472265;
+  COLISION
+  {
+    "Default"  {-4.05,0,-0.5,4.45,11.5,0.5;}
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_cos_volcan_hm";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_volcan_hm.bm";
+  TEXTURES   
+  {
+    "ti_cos_volcan_hm"	TFNM "Data\Item\Shield\Titan\Texture\ti_cos_volcan_hm.tex";
+  }
+  ALLFRAMESBBOX	-0.131151,1.84157,-0.271984,0.131151,2.34465,0.126364;
+  COLISION
+  {
+  }
+}

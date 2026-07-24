@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "skull_column";
+{
+  MESH       	TFNM "Data\World\GuildCube\Ska\skull_column.bm";
+  TEXTURES   
+  {
+    "obj-06"	TFNM "Data\World\GuildCube\Ska\Texture\obj-06.tex";
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\skull_column_1.bm";
+  TEXTURES   
+  {
+    "skull column_idle"	TFNM "Data\World\GuildCube\Ska\Texture\skull column_idle.tex";
+  }
+  MESH       	TFNM "Data\World\GuildCube\Ska\skull_column_2.bm";
+  TEXTURES   
+  {
+    "iron_chaine"	TFNM "Data\World\GuildCube\Ska\Texture\iron_chaine.tex";
+  }
+  SKELETON  	TFNM "Data\World\GuildCube\Ska\skull_column.bs";
+  ANIMSET   	TFNM "Data\World\GuildCube\Ska\skull_column.ba";
+  ALLFRAMESBBOX	-1.48431,-0.0625865,-2.47097,1.8529,16.1186,2.61797;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

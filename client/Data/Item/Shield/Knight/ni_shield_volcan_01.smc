@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_shield_volcan_01";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\_TAG_T_SHIELD_volcan_01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_shield_volcan_01.bm";
+  TEXTURES   
+  {
+    "ni_shield_volcan_01"	TFNM "Data\Item\Shield\Knight\Texture\ni_shield_volcan_01.tex";
+  }
+  ALLFRAMESBBOX	-0.843916,0.541953,-0.324085,-0.139633,1.72497,0.43941;
+  COLISION
+  {
+  }
+}

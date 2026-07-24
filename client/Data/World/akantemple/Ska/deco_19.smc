@@ -1,0 +1,17 @@
+NAME "s_dun_fireport01";
+{
+  MESH       	TFNM "Data\World\akantemple\Ska\deco_19.bm";
+  TEXTURES   
+  {
+    "deco_14 copy"	TFNM "Data\World\akantemple\Ska\Texture\deco_14 copy.tex";
+    "wall_06"	TFNM "Data\World\akantemple\Texture\wall_06.tex";
+    "building_01-03"	TFNM "Data\World\akantemple\Ska\Texture\building_01-03.tex";
+    "otimazing_15"	TFNM "Data\World\akantemple\Ska\Texture\otimazing_15.tex";
+    "wall_03"	TFNM "Data\World\akantemple\Texture\wall_03.tex";
+  }
+  ALLFRAMESBBOX	-1.71244,-0.003259,-0.410931,1.71244,1.07103,0.410932;
+  COLISION
+  {
+    "Default"  {-0.551241,-0.022693,-0.473533,0.491338,2.93675,0.516783;}
+  }
+}

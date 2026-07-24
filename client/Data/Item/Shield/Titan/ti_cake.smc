@@ -1,0 +1,34 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_cake";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\_TAG_T_CAKE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\_TAG_T_CAKE01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\_TAG_T_CAKE02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\_TAG_T_CAKE03.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cake.bm";
+  TEXTURES   
+  {
+    "ti_cake"	TFNM "Data\Item\Shield\Titan\Texture\ti_cake.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cake_01.bm";
+  TEXTURES   
+  {
+    "ti_face_000"	TFNM "Data\Item\Shield\Titan\Texture\ti_face_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

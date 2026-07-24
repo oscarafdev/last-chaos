@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "big_water_bowl";
+{
+  MESH       	TFNM "Data\Monster\water_bowl\_TAG_T_BWBOWL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\water_bowl\big_water_bowl.bm";
+  TEXTURES   
+  {
+    "big_water_bowl"	TFNM "Data\Monster\water_bowl\Texture\big_water_bowl.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\water_bowl\big_water_bowl.bs";
+  ANIMSET   	TFNM "Data\Monster\water_bowl\big_water_bowl.ba";
+  ANIMEFFECT	TFNM "Data\Monster\water_bowl\big_water_bowl.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

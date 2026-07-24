@@ -1,0 +1,17 @@
+OFFSET    	-1.07,-0.125,-0.45,-140,-80,0;
+NAME "ro_crossbow_oubli";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_CROSSBOW_oubli.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ro_crossbow_oubli.bm";
+  TEXTURES   
+  {
+    "ro_crossbow_oubli"	TFNM "Data\Item\Weapon\Texture\ro_crossbow_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.481748,-0.0183171,-0.35174,0.47093,0.117496,0.329484;
+  COLISION
+  {
+  }
+}

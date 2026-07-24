@@ -1,0 +1,16 @@
+NAME "S_Dungeon_01";
+{
+  MESH       	TFNM "Data\world\S_Dungeon1\Ska\S_Dungeon_01.bm";
+  TEXTURES   
+  {
+    "s_dun_arch01"	TFNM "Data\world\S_Dungeon1\Ska\Texture\s_dun_arch01.tex";
+    "s_dun_poll02"	TFNM "Data\world\S_Dungeon1\Ska\Texture\s_dun_poll02.tex";
+    "Dengen1_Detail"	TFNM "Data\world\S_Dungeon1\Ska\Texture\Dengen1_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\world\S_Dungeon1\Ska\S_Dungeon_01.bs";
+  ANIMSET   	TFNM "Data\world\S_Dungeon1\Ska\S_Dungeon_01.ba";
+  ALLFRAMESBBOX	-13,0,-23,13,9,23;
+  COLISION
+  {
+  }
+}

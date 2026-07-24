@@ -1,0 +1,14 @@
+NAME "Ab_de_altar01";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_de_altar01.bm";
+  TEXTURES   
+  {
+    "Ab_de_altar01_02"	TFNM "Data\Npc\Alber\Texture\Ab_de_altar01_02.tex";
+    "Ab_de_altar01_01"	TFNM "Data\Npc\Alber\Texture\Ab_de_altar01_01.tex";
+  }
+  ALLFRAMESBBOX	-4.2455,-0.3146,-4.25036,4.2455,4.61247,4.2455;
+  COLISION
+  {
+    "Default"  {-4,0,-4,4,4,4;}
+  }
+}

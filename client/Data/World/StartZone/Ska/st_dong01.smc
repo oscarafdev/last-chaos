@@ -1,0 +1,14 @@
+NAME "st_dong01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_dong01.bm";
+  TEXTURES   
+  {
+    "copperplates_01"	TFNM "Data\world\StartZone\Ska\Texture\copperplates_01.tex";
+    "copperplates_01_1"	TFNM "Data\world\StartZone\Ska\Texture\copperplates_01_1.tex";
+    "copperplates_02"	TFNM "Data\world\StartZone\Ska\Texture\copperplates_02.tex";
+  }
+  ALLFRAMESBBOX	-1.61356,-0.003045,-0.002319,1.57391,2.83315,0.115818;
+  COLISION
+  {
+  }
+}

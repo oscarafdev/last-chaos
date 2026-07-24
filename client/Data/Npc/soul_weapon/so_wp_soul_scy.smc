@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_wp_soul_scy";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\so_scythe_013.bm";
+  TEXTURES   
+  {
+    "so_scythe_013"	TFNM "Data\Npc\soul_weapon\so_scythe_013.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\so_wp_soul_scy.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\so_wp_soul_scy.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\so_wp_soul_scy.bae";
+  ALLFRAMESBBOX	-0.82085,0,-0.820911,0.820896,2.85,0.820214;
+  COLISION
+  {
+    "Default"  {-0.8,0,-0.8,0.8,2.85,0.8;}
+  }
+}

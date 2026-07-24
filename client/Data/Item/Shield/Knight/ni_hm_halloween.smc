@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_hm_halloween";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hm_halloween01.bm";
+  TEXTURES   
+  {
+    "ni_hm_halloween"	TFNM "Data\Item\Shield\Knight\Texture\ni_hm_halloween.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hm_halloween02.bm";
+  TEXTURES   
+  {
+    "ni_hm_halloween"	TFNM "Data\Item\Shield\Knight\Texture\ni_hm_halloween.tex";
+  }
+  ALLFRAMESBBOX	-0.274085,1.67337,-0.307929,0.274022,2.72033,0.25098;
+  COLISION
+  {
+  }
+}

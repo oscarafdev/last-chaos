@@ -1,0 +1,18 @@
+NAME "CandleStick_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\ReligiousHouse_01.bm";
+  TEXTURES   
+  {
+    "w6_cappela01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_cappela01.tex";
+    "w6_cappela03"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_cappela03.tex";
+    "w6_cappela02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_cappela02.tex";
+    "w6_cappela04"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_cappela04.tex";
+    "w6_cappela05"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_cappela05.tex";
+    "w6_cappela06"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_cappela06.tex";
+  }
+  ALLFRAMESBBOX	-34.1283,-0.022715,-46.7171,34.0215,54.4319,2.61186;
+  COLISION
+  {
+    "Default"  {-2.0147,-0.0314436,-0.360232,2.36323,1.81625,0.369988;}
+  }
+}

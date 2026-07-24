@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bd_Germany";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_Germany.bm";
+  TEXTURES   
+  {
+    "so_bd_Germany"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_Germany.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_Germany_1.bm";
+  TEXTURES   
+  {
+    "so_bd_000"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_000.tex";
+  }
+  ALLFRAMESBBOX	-0.263837,0.500937,-0.109821,0.263844,1.2619,0.129217;
+  COLISION
+  {
+  }
+}

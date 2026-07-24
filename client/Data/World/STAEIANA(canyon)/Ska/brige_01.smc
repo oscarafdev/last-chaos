@@ -1,0 +1,13 @@
+NAME "brige_01";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\brige_01.bm";
+  TEXTURES   
+  {
+    "brige_01"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\brige_01.tex";
+    "brige_02"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\brige_02.tex";
+  }
+  ALLFRAMESBBOX	-30,0.028559,-4.95227,30,13.7714,4.95227;
+  COLISION
+  {
+  }
+}

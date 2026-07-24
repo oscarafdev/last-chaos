@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "stone_coffin";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_coffin.bm";
+  TEXTURES   
+  {
+    "stone_coffin"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_coffin.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\_TAG_STONECONFF.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_coffin.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_coffin.ba";
+  ANIMEFFECT	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\stone_coffin.bae";
+  ALLFRAMESBBOX	-5.20083,-0.006748,-1.74837,5.41049,3.6721,1.74837;
+  COLISION
+  {
+    "Default"  {-5.5,0,-5.5,5.5,4,5.5;}
+  }
+}

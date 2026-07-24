@@ -1,0 +1,13 @@
+NAME "mushrooom";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\mushroom.bm";
+  TEXTURES   
+  {
+    "mushroom"	TFNM "Data\World\STREIANA\Ska\Texture\mushroom.tex";
+    "STREIANA_Detail"	TFNM "Data\World\STREIANA\Ska\Texture\STREIANA_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.22799,-0.003754,-4.43062,6.64488,5.61451,5.09358;
+  COLISION
+  {
+  }
+}

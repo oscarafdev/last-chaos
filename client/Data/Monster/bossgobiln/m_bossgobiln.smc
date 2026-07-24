@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "m_bossgobiln";
+{
+  MESH       	TFNM "Data\monster\bossgobiln\w2_m_goblinB_01.bm";
+  TEXTURES   
+  {
+    "w2_m_goblinB"	TFNM "Data\monster\bossgobiln\w2_m_goblinB.tex";
+  }
+  MESH       	TFNM "Data\monster\bossgobiln\w2_m_goblinB_02.bm";
+  TEXTURES   
+  {
+    "w2_m_goblinB"	TFNM "Data\monster\bossgobiln\w2_m_goblinB.tex";
+  }
+  SKELETON  	TFNM "Data\monster\bossgobiln\m_bossgobiln.bs";
+  ANIMSET   	TFNM "Data\monster\bossgobiln\m_bossgobiln.ba";
+  ANIMEFFECT	TFNM "Data\Monster\bossgobiln\m_bossgobiln.bae";
+  ALLFRAMESBBOX	-1.5,0,-4,1.5,2.5,4;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,2.5,1;}
+  }
+}

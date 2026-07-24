@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "brotherband_poet";
+{
+  MESH       	TFNM "Data\Monster\BrotherBand\brotherband_poet.bm";
+  TEXTURES   
+  {
+    "brotherband_seller"	TFNM "Data\Monster\BrotherBand\brotherband_seller.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\brotherband_poet_1.bm";
+  TEXTURES   
+  {
+    "brotherband_armor01"	TFNM "Data\Monster\BrotherBand\brotherband_armor01.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\brotherband_poet_2.bm";
+  TEXTURES   
+  {
+    "brotherband_armor01"	TFNM "Data\Monster\BrotherBand\brotherband_armor01.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\BrotherBand\brotherband_poet.bs";
+  ANIMSET   	TFNM "Data\Monster\BrotherBand\brotherband_poet.ba";
+  ANIMEFFECT	TFNM "Data\Monster\BrotherBand\brotherband_poet.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.75,0.5,1.7,0.25;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

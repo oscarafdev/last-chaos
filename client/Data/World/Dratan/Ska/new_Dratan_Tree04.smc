@@ -1,0 +1,14 @@
+NAME "new_Dratan_tree";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\new_Dratan_Tree04.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\ska\Texture\Dratan_Detail.tex";
+    "new_Dratan_Tree02"	TFNM "Data\World\Dratan\Ska\Texture\new_Dratan_Tree02.tex";
+  }
+  ALLFRAMESBBOX	-1.96886,-0.05264,-2.00239,1.96886,2.82532,2.00239;
+  COLISION
+  {
+    "Default"  {-0.498553,-0.0501833,-0.420153,0.395923,2.0141,0.476992;}
+  }
+}

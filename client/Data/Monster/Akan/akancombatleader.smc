@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "akancombatleader";
+{
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\_TAG_AKANCLW.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader.bm";
+  TEXTURES   
+  {
+    "akancombatleader"	TFNM "Data\Monster\Akan\Texture\akancombatleader.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader_1.bm";
+  TEXTURES   
+  {
+    "akancombatleader_1"	TFNM "Data\Monster\Akan\Texture\akancombatleader_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader_2.bm";
+  TEXTURES   
+  {
+    "akancombatleader"	TFNM "Data\Monster\Akan\Texture\akancombatleader.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader_3.bm";
+  TEXTURES   
+  {
+    "akancombatleader_1"	TFNM "Data\Monster\Akan\Texture\akancombatleader_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader_4.bm";
+  TEXTURES   
+  {
+    "akancombatleader"	TFNM "Data\Monster\Akan\Texture\akancombatleader.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader_5.bm";
+  TEXTURES   
+  {
+    "akancombatleader"	TFNM "Data\Monster\Akan\Texture\akancombatleader.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader_weapon.bm";
+  TEXTURES   
+  {
+    "akancombatleader_1"	TFNM "Data\Monster\Akan\Texture\akancombatleader_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader.bs";
+  ANIMSET   	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Akan\akancombatleader\akancombatleader.bae";
+  ALLFRAMESBBOX	-3.02435,-0.495508,-3.71397,2.68956,4.64639,4.74648;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,3.3,2;}
+  }
+}

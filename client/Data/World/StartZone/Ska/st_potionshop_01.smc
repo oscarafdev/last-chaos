@@ -1,0 +1,31 @@
+NAME "st_potionshop_01";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\st_potionshop_01.bm";
+  TEXTURES   
+  {
+    "StartZonetile_roof02"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_roof02.tex";
+    "st_house_01"	TFNM "Data\World\StartZone\Ska\Texture\st_house_01.tex";
+    "st_house_02"	TFNM "Data\World\StartZone\Ska\Texture\st_house_02.tex";
+    "st_house_03"	TFNM "Data\World\StartZone\Ska\Texture\st_house_03.tex";
+    "st_shop_001"	TFNM "Data\World\StartZone\Ska\Texture\st_shop_001.tex";
+    "st_shop_002"	TFNM "Data\World\StartZone\Ska\Texture\st_shop_002.tex";
+    "potion_w1"	TFNM "Data\World\StartZone\Ska\Texture\potion_w1.tex";
+    "pocket_w1"	TFNM "Data\World\StartZone\Ska\Texture\pocket_w1.tex";
+    "weaponshop_gold_w1"	TFNM "Data\World\StartZone\Ska\Texture\weaponshop_gold_w1.tex";
+    "weaponshop_jewelry box_w1"	TFNM "Data\World\StartZone\Ska\Texture\weaponshop_jewelry box_w1.tex";
+    "grocery_beans_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_beans_w1.tex";
+    "grocery_bookcase_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_bookcase_w1.tex";
+    "grocery_carpet_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_carpet_w1.tex";
+    "grocery_chair;table_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_chair;table_w1.tex";
+    "grocery_fabric_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_fabric_w1.tex";
+    "grocery_herb_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_herb_w1.tex";
+    "grocery_towel_center_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_towel_center_w1.tex";
+    "grocery_towel_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_towel_w1.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-6.9252,-0.049864,-5.27834,6.92521,9.7918,5.27834;
+  COLISION
+  {
+    "Default"  {-6.5,0,-5,6.5,9,5;}
+  }
+}

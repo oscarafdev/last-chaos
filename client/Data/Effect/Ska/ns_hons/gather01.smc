@@ -1,0 +1,19 @@
+NAME "gather01";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_hons\stone00re.bm";
+  TEXTURES   
+  {
+    "Nogeu_02"	TFNM "Data\Effect\Ska\ns_hons\Nogeu_02.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_hons\stone01re.bm";
+  TEXTURES   
+  {
+    "Nogeu_02"	TFNM "Data\Effect\Ska\ns_hons\Nogeu_02.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_hons\gather01.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_hons\gather01.ba";
+  ALLFRAMESBBOX	-0.1,-0.1,-0.1,0.1,0.1,0.1;
+  COLISION
+  {
+  }
+}

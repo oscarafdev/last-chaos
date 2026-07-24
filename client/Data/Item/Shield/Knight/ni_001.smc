@@ -1,0 +1,28 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_001.bm";
+  TEXTURES   
+  {
+    "ni_bd_001"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_001.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hn_001.bm";
+  TEXTURES   
+  {
+    "ni_hn_001"	TFNM "Data\Item\Shield\Knight\Texture\ni_hn_001.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bu_001.bm";
+  TEXTURES   
+  {
+    "ni_bu_001"	TFNM "Data\Item\Shield\Knight\Texture\ni_bu_001.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_ft_001.bm";
+  TEXTURES   
+  {
+    "ni_ft_001"	TFNM "Data\Item\Shield\Knight\Texture\ni_ft_001.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

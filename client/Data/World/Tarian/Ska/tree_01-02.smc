@@ -1,0 +1,13 @@
+NAME "Tree_01-02";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\tree_01-02.bm";
+  TEXTURES   
+  {
+    "Tree_01"	TFNM "Data\World\Tarian\Ska\Texture\tree_01.tex";
+  }
+  ALLFRAMESBBOX	-2.4624,0.034141,-2.33825,2.34619,8.34278,2.37658;
+  COLISION
+  {
+    "Default"  {-0.226568,-0.0417269,-0.226412,0.227976,1.95954,0.226658;}
+  }
+}

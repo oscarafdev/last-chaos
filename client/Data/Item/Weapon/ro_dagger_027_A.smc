@@ -1,0 +1,12 @@
+NAME "ro_dagger_b27";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ro_dagger_b27.bm";
+  TEXTURES   
+  {
+    "ro_dagger_b27"	TFNM "Data\Item\Weapon\Texture\ro_dagger_b27.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

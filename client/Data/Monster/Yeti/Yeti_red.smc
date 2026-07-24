@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Yeti_red";
+{
+  MESH       	TFNM "Data\monster\Yeti\YetiBody_led.bm";
+  TEXTURES   
+  {
+    "m_yeti_b_red"	TFNM "Data\Monster\Yeti\m_yeti_b_red.tex";
+  }
+  MESH       	TFNM "Data\monster\Yeti\YetiFace_red.bm";
+  TEXTURES   
+  {
+    "m_yeti_f2_red"	TFNM "Data\Monster\Yeti\m_yeti_f_red.tex";
+  }
+  MESH       	TFNM "Data\monster\Yeti\_TAG_T_CENTER_red.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Yeti\Yeti_red.bs";
+  ANIMSET   	TFNM "Data\monster\Yeti\Yeti_red.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Yeti\Yeti_red.bae";
+  ALLFRAMESBBOX	-2,0,-1.45,2,2.5,3.05;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,2,1;}
+  }
+}

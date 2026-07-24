@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "catsbi_cos2-3_hel";
+{
+  MESH       	TFNM "Data\Npc\pet\catsbi_cos2-3_hel.bm";
+  TEXTURES   
+  {
+    "pet_itemset-02-3"	TFNM "Data\Npc\pet\pet_itemset-02-3.tex";
+  }
+  ALLFRAMESBBOX	-0.152939,0.701261,-0.159307,0.152939,1.0887,0.223459;
+  COLISION
+  {
+    "Default"  {-0.199725,0.7,-0.168487,0.200275,1.1,0.231513;}
+  }
+}

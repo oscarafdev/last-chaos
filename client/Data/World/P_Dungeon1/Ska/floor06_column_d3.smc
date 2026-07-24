@@ -1,0 +1,15 @@
+NAME "floor06_column_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\floor06_column_d3.bm";
+  TEXTURES   
+  {
+    "FLOOR06_map01_d3"	TFNM "Data\World\Dungeon3\Ska\texture\FLOOR06_map01_d3.tex";
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+    "FLOOR06_map02_d3"	TFNM "Data\World\Dungeon3\Ska\texture\FLOOR06_map02_d3.tex";
+  }
+  ALLFRAMESBBOX	-20.3878,0.002952,-13.1602,20.3878,25.5126,13.1604;
+  COLISION
+  {
+    "Default"  {-20,0,-13,20,25,13;}
+  }
+}

@@ -1,0 +1,33 @@
+NAME "HorseRider";
+{
+  MESH       	TFNM "Data\Npc\HorseRider\pet_horse03.bm";
+  TEXTURES   
+  {
+    "HalloweenRider_02"	TFNM "Data\Npc\HorseRider\HalloweenRider_02.tex";
+  }
+  MESH       	TFNM "Data\Npc\HorseRider\halloween_crow_head.bm";
+  TEXTURES   
+  {
+    "HalloweenRider_01"	TFNM "Data\Npc\HorseRider\HalloweenRider_01.tex";
+  }
+  MESH       	TFNM "Data\Npc\HorseRider\cao_dealer_bd.bm";
+  TEXTURES   
+  {
+    "HalloweenRider_03"	TFNM "Data\Npc\HorseRider\HalloweenRider_03.tex";
+  }
+  MESH       	TFNM "Data\Npc\HorseRider\cao_dealer.bm";
+  TEXTURES   
+  {
+    "HalloweenRider_03"	TFNM "Data\Npc\HorseRider\HalloweenRider_03.tex";
+  }
+  MESH       	TFNM "Data\Npc\HorseRider\_TAG_T_HALLOWEEN.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\HorseRider\HorseRider.bs";
+  ANIMSET   	TFNM "Data\Npc\HorseRider\HorseRider.ba";
+  ALLFRAMESBBOX	-0.574836,-0.173934,-2.48719,0.574937,3.83945,1.72932;
+  COLISION
+  {
+  }
+}

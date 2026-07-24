@@ -1,0 +1,86 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "anubis_arc";
+{
+  MESH       	TFNM "Data\Monster\C_Anubis\_TAG_T_ARCBOW.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_4.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_bd.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_bow.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_weapon"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_bowtong.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_weapon"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_etc.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_hair_1.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_hair_2.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_hair_3.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_hair_5.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_hair_6.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_lhn.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_rhn.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_arc_sk.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_weapon"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkaubis_arc.bm";
+  TEXTURES   
+  {
+    "darkanubis_archer_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis_arc\darkanubis_archer_body.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\C_Anubis\anubis_arc.bs";
+  ANIMSET   	TFNM "Data\Monster\C_Anubis\anubis_arc.ba";
+  ANIMEFFECT	TFNM "Data\Monster\C_Anubis\Anubis_arc.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

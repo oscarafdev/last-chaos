@@ -1,0 +1,18 @@
+NAME "st_dungeon_gate-02";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\st_dungeon_gate-02.bm";
+  TEXTURES   
+  {
+    "StartZonetile_castle002"	TFNM "Data\World\Egeha\Ska\Texture\StartZonetile_castle002.tex";
+    "StartZonetile_castle003"	TFNM "Data\World\Egeha\Ska\Texture\StartZonetile_castle003.tex";
+    "StartZonetile_castle008"	TFNM "Data\World\Egeha\Ska\Texture\StartZonetile_castle008.tex";
+    "Detail"	TFNM "Data\World\Egeha\Ska\Texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-39.4603,-2.63141,-40.4652,30.8965,41.4723,41.8219;
+  COLISION
+  {
+    "Default"  {16.8401,-2.49284,-40.6804,30.028,41.4968,42.518;}
+    "Default"  {-27.0509,-0.353101,-40.527,-14.5993,41.6441,42.2482;}
+    "Default"  {-39.6267,-0.770296,-22.5212,-28.9166,24.3022,-8.67638;}
+  }
+}

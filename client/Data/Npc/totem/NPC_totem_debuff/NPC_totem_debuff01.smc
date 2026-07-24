@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "NPC_totem_debuff01";
+{
+  MESH       	TFNM "Data\Npc\totem\NPC_totem_debuff\_TAG_NPC_totem_debuff01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\totem\NPC_totem_debuff\NPC_totem_debuff01.bm";
+  TEXTURES   
+  {
+    "NPC_totem_debuff01"	TFNM "Data\Npc\totem\NPC_totem_debuff\NPC_totem_debuff01.tex";
+  }
+  MESH       	TFNM "Data\Npc\totem\NPC_totem_debuff\NPC_crystal_debuff01.bm";
+  TEXTURES   
+  {
+    "NPC_totem_debuff01"	TFNM "Data\Npc\totem\NPC_totem_debuff\NPC_totem_debuff01.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\totem\NPC_totem_debuff\NPC_totem_debuff01.bs";
+  ANIMSET   	TFNM "Data\Npc\totem\NPC_totem_debuff\NPC_totem_debuff01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\totem\NPC_totem_debuff\NPC_totem_debuff01.bae";
+  ALLFRAMESBBOX	-0.556131,-0.1,-0.556132,0.556131,1.6,0.556131;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

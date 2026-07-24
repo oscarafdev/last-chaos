@@ -1,0 +1,37 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "phofenian";
+{
+  MESH       	TFNM "Data\Monster\Phofenian\phofenian.bm";
+  TEXTURES   
+  {
+    "phofenian"	TFNM "Data\Monster\Phofenian\phofenian.tex";
+  }
+  MESH       	TFNM "Data\Monster\Phofenian\phofenian_head.bm";
+  TEXTURES   
+  {
+    "phofenian"	TFNM "Data\Monster\Phofenian\phofenian.tex";
+  }
+  MESH       	TFNM "Data\Monster\Phofenian\phofenian_hn.bm";
+  TEXTURES   
+  {
+    "phofenian"	TFNM "Data\Monster\Phofenian\phofenian.tex";
+  }
+  MESH       	TFNM "Data\Monster\Phofenian\phofenian_leg.bm";
+  TEXTURES   
+  {
+    "phofenian"	TFNM "Data\Monster\Phofenian\phofenian.tex";
+  }
+  MESH       	TFNM "Data\Monster\Phofenian\phofenian_tail.bm";
+  TEXTURES   
+  {
+    "phofenian"	TFNM "Data\Monster\Phofenian\phofenian.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Phofenian\phofenian.bs";
+  ANIMSET   	TFNM "Data\Monster\Phofenian\phofenian.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Phofenian\phofenian.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.8,0.75,2.3,3.2;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.8,0.75,2.3,3.2;}
+  }
+}

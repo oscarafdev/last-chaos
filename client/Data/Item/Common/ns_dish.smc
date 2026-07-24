@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_dish";
+{
+  MESH       	TFNM "Data\Item\Common\_TAG_T_NSDISH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Common\ns_dish.bm";
+  TEXTURES   
+  {
+    "dish"	TFNM "Data\Item\Common\Texture\dish.tex";
+  }
+  ALLFRAMESBBOX	0.126277,0.848738,-0.277987,0.466544,1.05718,0.069829;
+  COLISION
+  {
+  }
+}

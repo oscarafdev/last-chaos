@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "moonblade";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moonblade.bm";
+  TEXTURES   
+  {
+    "moon_blade"	TFNM "Data\Effect\Ska\ns_weapons\moon_blade.tex";
+  }
+  ALLFRAMESBBOX	-0.287663,-0.222372,-0.273472,0.287663,0.285942,0.273472;
+  COLISION
+  {
+  }
+}

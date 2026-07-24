@@ -1,0 +1,21 @@
+NAME "castle_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\castle_si.bm";
+  TEXTURES   
+  {
+    "castlewall_si"	TFNM "Data\World\Merac\ska\texture\castlewall_si.tex";
+    "castle inside_carpet_si"	TFNM "Data\World\Merac\ska\texture\castle inside_carpet_si.tex";
+    "castlewall_up_si"	TFNM "Data\World\Merac\ska\texture\castlewall_up_si.tex";
+    "castle inside_flag_si"	TFNM "Data\World\Merac\ska\texture\castle inside_flag_si.tex";
+    "castle inside_wall_si"	TFNM "Data\World\Merac\ska\texture\castle inside_wall_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "towergate_si_01"	TFNM "Data\World\Merac\ska\texture\towergate_si_01.tex";
+    "castle_si_002"	TFNM "Data\World\Merac\ska\texture\castle_si_002.tex";
+    "tile06_si"	TFNM "Data\World\Merac\ska\texture\tile06_si.tex";
+  }
+  ALLFRAMESBBOX	-43.4035,-0.141688,-71.9754,43.4035,104.274,45.7811;
+  COLISION
+  {
+    "Default"  {-43.4035,0,-58.8785,43.4035,104.415,58.8785;}
+  }
+}

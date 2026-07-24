@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_bd_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ni_bd_drop.bm";
+  TEXTURES   
+  {
+    "ni_bd_drop"	TFNM "Data\Item\Common\Texture\ni_bd_drop.tex";
+  }
+  ALLFRAMESBBOX	-0.4,0,-0.4,0.4,0.4,0.4;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "NPC_smith";
+{
+  MESH       	TFNM "Data\npc\smith_01\NPC_smith_1.bm";
+  TEXTURES   
+  {
+    "NPC_smith_1"	TFNM "Data\npc\Smith\NPC_smith_1.tex";
+  }
+  MESH       	TFNM "Data\npc\smith_01\NPC_smith_2.bm";
+  TEXTURES   
+  {
+    "NPC_smith_2"	TFNM "Data\npc\Smith\NPC_smith_2.tex";
+  }
+  MESH       	TFNM "Data\npc\smith_01\NPC_smith_3.bm";
+  TEXTURES   
+  {
+    "NPC_smith_3"	TFNM "Data\npc\Smith\NPC_smith_3.tex";
+  }
+  MESH       	TFNM "Data\Npc\Smith_01\NPC_smith.bm";
+  TEXTURES   
+  {
+    "NPC_smith_01"	TFNM "Data\Npc\Smith_01\NPC_smith_01.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Smith_01\NPC_smith.bs";
+  ANIMSET   	TFNM "Data\npc\Smith_01\NPC_smith.ba";
+  ALLFRAMESBBOX	-0.5,0,-1.25,0.5,2,0.25;
+  COLISION
+  {
+    "Default"  {-0.5,0,-1.25,0.5,2,0.25;}
+  }
+}

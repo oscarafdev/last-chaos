@@ -1,0 +1,18 @@
+NAME "effect box";
+{
+  MESH       	TFNM "Data\World\M_comTe\Ska\Effect box.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\M_comTe\Ska\_TAG_T_EFFECT.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\M_comTe\Ska\Effect box.bs";
+  ANIMSET   	TFNM "Data\World\M_comTe\Ska\Effect box.ba";
+  ANIMEFFECT	TFNM "Data\World\M_comTe\Ska\Effect box.bae";
+  ALLFRAMESBBOX	-0.1907,-0.000499,-0.118646,0.1907,0.103015,0.118646;
+  COLISION
+  {
+  }
+}

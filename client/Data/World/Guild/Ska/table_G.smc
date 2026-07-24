@@ -1,0 +1,17 @@
+NAME "table_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\table_G.bm";
+  TEXTURES   
+  {
+    "tabletree_G"	TFNM "Data\World\Guild\Ska\Texture\tabletree_G.tex";
+    "tablechair_G"	TFNM "Data\World\Guild\Ska\Texture\tablechair_G.tex";
+    "tablecloth_a_G"	TFNM "Data\World\Guild\Ska\Texture\tablecloth_a_G.tex";
+    "tablecloth_G"	TFNM "Data\World\Guild\Ska\Texture\tablecloth_G.tex";
+    "tabletree_a_G"	TFNM "Data\World\Guild\Ska\Texture\tabletree_a_G.tex";
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+  }
+  ALLFRAMESBBOX	-7.03017,0.000747,-1.63415,7.03017,1.06034,1.63415;
+  COLISION
+  {
+  }
+}

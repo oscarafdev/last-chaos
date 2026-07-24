@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hn_castellan_silver";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hn_castellan_silver.bm";
+  TEXTURES   
+  {
+    "ro_hn_castellan_silver"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hn_castellan_silver.tex";
+  }
+  ALLFRAMESBBOX	-0.595745,0.993558,-0.023706,0.595745,1.30611,0.103426;
+  COLISION
+  {
+  }
+}

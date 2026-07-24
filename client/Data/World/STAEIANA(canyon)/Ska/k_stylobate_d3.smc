@@ -1,0 +1,17 @@
+NAME "k_stylobate_d3";
+{
+  MESH       	TFNM "Data\world\STAEIANA(canyon)\Ska\k_stylobate_d3.bm";
+  TEXTURES   
+  {
+    "pillar_a_d3"	TFNM "Data\world\STAEIANA(canyon)\Ska\texture\pillar_a_d3.tex";
+    "pillar_b_d3"	TFNM "Data\world\STAEIANA(canyon)\Ska\texture\pillar_b_d3.tex";
+    "pillar_b1_d3"	TFNM "Data\world\STAEIANA(canyon)\Ska\texture\pillar_b1_d3.tex";
+    "pillar_b2_d3"	TFNM "Data\world\STAEIANA(canyon)\Ska\texture\pillar_b2_d3.tex";
+    "Detail_D3"	TFNM "Data\world\STAEIANA(canyon)\Ska\texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-7.39537,-0.037162,-10.9079,7.39537,4.03765,10.9079;
+  COLISION
+  {
+    "Default"  {-7,0,-10.5,7,4,10.5;}
+  }
+}

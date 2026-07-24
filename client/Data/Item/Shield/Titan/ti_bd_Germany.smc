@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_bd_Germany";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bd_Germany.bm";
+  TEXTURES   
+  {
+    "ti_bd_Germany"	TFNM "Data\Item\Shield\Titan\Texture\ti_bd_Germany.tex";
+  }
+  ALLFRAMESBBOX	-0.343319,0.489721,-0.184882,0.343317,1.3254,0.185238;
+  COLISION
+  {
+  }
+}

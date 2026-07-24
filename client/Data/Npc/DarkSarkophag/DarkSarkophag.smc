@@ -1,0 +1,15 @@
+NAME "DarkSarkophag";
+{
+  MESH       	TFNM "Data\Npc\DarkSarkophag\DarkSarkophag.bm";
+  TEXTURES   
+  {
+    "theosarg"	TFNM "Data\Npc\DarkSarkophag\theosarg.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\DarkSarkophag\DarkSarkophag.bs";
+  ANIMSET   	TFNM "Data\Npc\DarkSarkophag\DarkSarkophag.ba";
+  ALLFRAMESBBOX	-0.90798,-0.38445,-3.35799,0.910838,1.62871,3.35829;
+  COLISION
+  {
+    "Default"  {-0.90941,0,-3.35814,0.90941,2.01316,3.35814;}
+  }
+}

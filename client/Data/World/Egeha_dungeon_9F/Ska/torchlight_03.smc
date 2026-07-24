@@ -1,0 +1,16 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\torchlight_03.bm";
+  TEXTURES   
+  {
+    "torchlight_03-3"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\torchlight_03-3.tex";
+    "torchlight_03-1"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\torchlight_03-1.tex";
+    "torchlight_03-2"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\torchlight_03-2.tex";
+    "Bump"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\Bump.tex";
+  }
+  ALLFRAMESBBOX	-0.423296,-0.010955,-0.396713,0.424001,0.871623,0.398201;
+  COLISION
+  {
+    "Default"  {-0.429963,-0.00491965,-0.46264,0.428385,0.928137,0.434509;}
+  }
+}

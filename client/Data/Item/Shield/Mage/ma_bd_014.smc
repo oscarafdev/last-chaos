@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bd_014.bm";
+  TEXTURES   
+  {
+    "ma_bd_014"	TFNM "Data\Item\Shield\Mage\Texture\ma_bd_014.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bs_014.bm";
+  TEXTURES   
+  {
+    "ma_bs_014"	TFNM "Data\Item\Shield\Mage\Texture\ma_bs_014.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "deco_04";
+{
+  MESH       	TFNM "Data\World\LoginWorld2\Ska\deco_04.bm";
+  TEXTURES   
+  {
+    "w6_building02"	TFNM "Data\World\LoginWorld2\Ska\Texture\w6_building02.tex";
+    "w6_building04"	TFNM "Data\World\LoginWorld2\Ska\Texture\w6_building04.tex";
+  }
+  ALLFRAMESBBOX	-1.92218,0.018382,-2.03029,7.25763,17.5676,1.82274;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "PK_flag";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_flag.bm";
+  TEXTURES   
+  {
+    "PK_flag"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_flag.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  SKELETON  	TFNM "Data\World\PK_tournament\Ska\PK_flag.bs";
+  ANIMSET   	TFNM "Data\World\PK_tournament\Ska\PK_flag.ba";
+  ALLFRAMESBBOX	-10.9442,-6.20924e-005,-4.3006,0.465417,21.6207,6.20717;
+  COLISION
+  {
+    "Default"  {-0.555685,-0.108743,-0.630658,0.502295,5.24146,0.589729;}
+  }
+}

@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "cube_P";
+{
+  MESH       	TFNM "Data\Npc\Cube\cube_P.bm";
+  TEXTURES   
+  {
+    "cube_npc_purple"	TFNM "Data\Npc\Cube\cube_npc_purple.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cube\_TAG_T_CUBE_P.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Cube\cube_P.bs";
+  ANIMSET   	TFNM "Data\Npc\Cube\cube_P.ba";
+  ALLFRAMESBBOX	-1.35738,0.11239,-1.35825,1.35856,2.43389,1.35841;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

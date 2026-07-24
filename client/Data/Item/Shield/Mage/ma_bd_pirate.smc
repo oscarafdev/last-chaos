@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bd_pirate";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bd_pirate.bm";
+  TEXTURES   
+  {
+    "ma_bd_pirate"	TFNM "Data\Item\Shield\Mage\Texture\ma_bd_pirate.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bd_pirate_1.bm";
+  TEXTURES   
+  {
+    "ma_bd_pirate_1"	TFNM "Data\Item\Shield\Mage\Texture\ma_bd_pirate_1.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bd_pirate_2.bm";
+  TEXTURES   
+  {
+    "ma_bd_pirate_2"	TFNM "Data\Item\Shield\Mage\Texture\ma_bd_pirate_2.tex";
+  }
+  ALLFRAMESBBOX	-0.232958,0.81751,-0.253932,0.236813,1.36679,0.271577;
+  COLISION
+  {
+  }
+}

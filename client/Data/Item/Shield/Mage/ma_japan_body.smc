@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bu_wm_jap";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bu_wm_jap.bm";
+  TEXTURES   
+  {
+    "ma_bu_wm_jap"	TFNM "Data\Item\Shield\Mage\Texture\ma_bu_wm_jap.tex";
+  }
+  ALLFRAMESBBOX	-0.269968,1.19433,-0.196618,0.269968,1.75311,0.067354;
+  COLISION
+  {
+  }
+}

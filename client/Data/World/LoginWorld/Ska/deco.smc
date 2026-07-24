@@ -1,0 +1,14 @@
+NAME "deco";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\deco.bm";
+  TEXTURES   
+  {
+    "sheld"	TFNM "Data\World\LoginWorld\Ska\Texture\sheld.tex";
+  }
+  SKELETON  	TFNM "Data\World\LoginWorld\Ska\deco.bs";
+  ANIMSET   	TFNM "Data\World\LoginWorld\Ska\deco.ba";
+  ALLFRAMESBBOX	-0.505273,-0.001186,-0.062927,0.505273,1.0778,0.062927;
+  COLISION
+  {
+  }
+}

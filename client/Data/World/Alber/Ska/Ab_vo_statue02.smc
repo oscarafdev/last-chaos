@@ -1,0 +1,12 @@
+NAME "Ab_vo_statue02";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_statue02.bm";
+  TEXTURES   
+  {
+    "Ab_vo_statue02"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_statue02.tex";
+  }
+  ALLFRAMESBBOX	-11.2289,-2.41107,-9.75124,6.60196,10.5638,9.75124;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "bug_chandelier";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\bug_chandelier.bm";
+  TEXTURES   
+  {
+    "bug_chandelier"	TFNM "Data\World\tarian_dungeon\Ska\Texture\bug_chandelier.tex";
+  }
+  ALLFRAMESBBOX	-17.9584,-0.000323,-17.9583,17.9582,10.4925,17.9583;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

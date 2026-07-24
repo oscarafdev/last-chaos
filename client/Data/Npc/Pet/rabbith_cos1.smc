@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "rabbith_cos1";
+{
+  MESH       	TFNM "Data\Npc\pet\rabbith_cos1.bm";
+  TEXTURES   
+  {
+    "pet_itemset-01"	TFNM "Data\Npc\pet\pet_itemset-01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\rabbith_weapon1.bm";
+  TEXTURES   
+  {
+    "pet_itemset-01"	TFNM "Data\Npc\pet\pet_itemset-01.tex";
+  }
+  ALLFRAMESBBOX	-0.84289,-0.0996625,-1.07259,0.919177,2.34657,1.48377;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

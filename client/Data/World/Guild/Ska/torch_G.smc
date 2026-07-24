@@ -1,0 +1,14 @@
+NAME "torch_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\torch_G.bm";
+  TEXTURES   
+  {
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+    "torch_G"	TFNM "Data\World\Guild\Ska\Texture\torch_G.tex";
+  }
+  ALLFRAMESBBOX	-0.463581,-0.000713,-0.46935,0.463585,3.00691,0.469346;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.35,0.4,2,0.35;}
+  }
+}

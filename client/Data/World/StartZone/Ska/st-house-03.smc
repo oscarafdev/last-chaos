@@ -1,0 +1,13 @@
+NAME "st-house-03";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st-house-03.bm";
+  TEXTURES   
+  {
+    "st-house-03"	TFNM "Data\world\StartZone\Ska\texture\st-house-03.tex";
+  }
+  ALLFRAMESBBOX	-4.69557,0.007114,-4.09484,4.69728,14.1836,4.09484;
+  COLISION
+  {
+    "Default"  {-4.68949,-0.108769,-3.92814,4.45583,1.80927,3.87829;}
+  }
+}

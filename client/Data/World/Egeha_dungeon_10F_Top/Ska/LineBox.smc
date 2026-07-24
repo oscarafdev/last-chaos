@@ -1,0 +1,12 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\LineBox.bm";
+  TEXTURES   
+  {
+    "Line"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\Line.tex";
+  }
+  ALLFRAMESBBOX	-0.733759,0.934376,-0.684851,0.654383,2.43188,0.786499;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,14 @@
+NAME "s_dun_door01";
+{
+  MESH       	TFNM "Data\world\M_combo\Ska\s_dun_door01.bm";
+  TEXTURES   
+  {
+    "M_combo_Detail"	TFNM "Data\world\M_combo\Ska\Texture\M_combo_Detail.tex";
+    "s_dun_door02"	TFNM "Data\world\M_combo\Ska\Texture\s_dun_door02.tex";
+    "s_dun_door01"	TFNM "Data\world\M_combo\Ska\Texture\s_dun_door01.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

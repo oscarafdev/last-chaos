@@ -1,0 +1,46 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Dark_LB_Taran";
+{
+  MESH       	TFNM "Data\Monster\Leadingband\arm_Dark.bm";
+  TEXTURES   
+  {
+    "Dark_LeadingBand-arms"	TFNM "Data\Monster\Leadingband\Dark_LeadingBand-arms.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\body_Dark.bm";
+  TEXTURES   
+  {
+    "Dark_LeadingBand-body"	TFNM "Data\Monster\Leadingband\Dark_LeadingBand-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\boots_Dark.bm";
+  TEXTURES   
+  {
+    "Dark_LeadingBand-body"	TFNM "Data\Monster\Leadingband\Dark_LeadingBand-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\hair_Dark.bm";
+  TEXTURES   
+  {
+    "Dark_LeadingBand-body"	TFNM "Data\Monster\Leadingband\Dark_LeadingBand-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\head_Dark.bm";
+  TEXTURES   
+  {
+    "Dark_LeadingBand-body"	TFNM "Data\Monster\Leadingband\Dark_LeadingBand-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\pants_Dark.bm";
+  TEXTURES   
+  {
+    "Dark_LeadingBand-body"	TFNM "Data\Monster\Leadingband\Dark_LeadingBand-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\staff020.bm";
+  TEXTURES   
+  {
+    "ma_staff_020_021"	TFNM "Data\Monster\Leadingband\ma_staff_020_021.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Leadingband\Black_LB_Scholar.bs";
+  ANIMSET   	TFNM "Data\Monster\Leadingband\LB_Summ_Mecu_skill.ba";
+  ALLFRAMESBBOX	-0.25,0,-0.25,0.25,2,0.25;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,2,0.25;}
+  }
+}

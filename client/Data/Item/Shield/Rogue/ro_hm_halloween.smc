@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hm_halloween";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hm_halloween.bm";
+  TEXTURES   
+  {
+    "ro_hm_halloween"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hm_halloween.tex";
+  }
+  ALLFRAMESBBOX	-0.303061,1.43194,-0.23128,0.312584,1.84194,0.28053;
+  COLISION
+  {
+  }
+}

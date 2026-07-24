@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "armor_make";
+{
+  MESH       	TFNM "Data\npc\Shoper04\armor_make.bm";
+  TEXTURES   
+  {
+    "w_02_npc_shop"	TFNM "Data\npc\Shoper04\armor_make.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Shoper04\armor_make.bs";
+  ANIMSET   	TFNM "Data\npc\Shoper04\armor_make.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2.1,0.5;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,2,0.4;}
+  }
+}

@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "screctgate";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\control_of_horn_01.bm";
+  TEXTURES   
+  {
+    "control_of_horn_01"	TFNM "Data\World\Tarian\Ska\Texture\control_of_horn_01.tex";
+  }
+  SKELETON  	TFNM "Data\World\Tarian\Ska\control_of_horn.bs";
+  ANIMSET   	TFNM "Data\World\Tarian\Ska\control_of_horn.ba";
+  ANIMEFFECT	TFNM "Data\World\Tarian\Ska\control_of_horn.bae";
+  ALLFRAMESBBOX	-11.7823,-0.0854177,-10.99,15.9794,19.8962,11.5496;
+  COLISION
+  {
+    "Default"  {-13.8808,0,-11.2698,13.8808,19.9816,11.2698;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "d2_Pole10";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_Pole10.bm";
+  TEXTURES   
+  {
+    "Dengen2_Detail"	TFNM "Data\World\Dungeon2\Ska\Texture\Dengen2_Detail.tex";
+    "d2_poll02"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_poll02.tex";
+    "d2_poll011"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_poll011.tex";
+  }
+  ALLFRAMESBBOX	-1.29823,-5.48664,-1.24177,1.2982,5.48664,1.24177;
+  COLISION
+  {
+    "Default"  {-1,-5.5,-1,1,5.5,1;}
+  }
+}

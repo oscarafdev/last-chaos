@@ -1,0 +1,25 @@
+NAME "AM-Stone_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\villige_01.bm";
+  TEXTURES   
+  {
+    "w6_wall09"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall09.tex";
+    "w6_wall08"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall08.tex";
+    "w6_wall07"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall07.tex";
+    "w6_wall06"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall06.tex";
+    "w6_wall05"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall05.tex";
+    "w6_wall04"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall04.tex";
+    "w6_wall03"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall03.tex";
+    "w6_wall02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall02.tex";
+    "w6_wall01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall01.tex";
+    "w6_flag01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_flag01.tex";
+    "Ground_02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Ground_02.tex";
+    "w6_wall01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_wall01.tex";
+    "Ground_30"	TFNM "Data\World\Ascadia-MondShine\Texture\Ground_30.tex";
+  }
+  ALLFRAMESBBOX	-43.5908,0.031286,-59.2827,44.6844,39.0704,59.2827;
+  COLISION
+  {
+    "Default"  {-0.98654,-0.187951,-1.03921,1.12947,2.975,0.865703;}
+  }
+}

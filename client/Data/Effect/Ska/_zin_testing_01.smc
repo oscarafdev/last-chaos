@@ -1,0 +1,13 @@
+NAME "_zin_testing_01";
+{
+  MESH       	TFNM "Data\Effect\SKA\_zin_testing_01.bm";
+  TEXTURES   
+  {
+    "KN_SK06_HandGlow"	TFNM "Data\Effect\TEXTURE\KN_SK06_HandGlow.tex";
+  }
+  
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

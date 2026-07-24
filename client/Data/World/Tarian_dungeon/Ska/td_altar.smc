@@ -1,0 +1,15 @@
+NAME "td_altar";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_altar.bm";
+  TEXTURES   
+  {
+    "td_altar_02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_altar_02.tex";
+    "td_altar_03"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_altar_03.tex";
+    "td_altar_01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_altar_01.tex";
+    "chain"	TFNM "Data\World\tarian_dungeon\Ska\Texture\chain.tex";
+  }
+  ALLFRAMESBBOX	-49.5167,-3.7e-005,-49.5168,49.5168,30.0816,49.5168;
+  COLISION
+  {
+  }
+}

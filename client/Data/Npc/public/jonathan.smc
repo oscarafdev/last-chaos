@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "jonathan";
+{
+  MESH       	TFNM "Data\npc\public\jonathan.bm";
+  TEXTURES   
+  {
+    "Old_man"	TFNM "Data\npc\public\jonathan.tex";
+  }
+  MESH       	TFNM "Data\npc\public\jonathan_1.bm";
+  TEXTURES   
+  {
+    "Old_man"	TFNM "Data\npc\public\jonathan.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\jonathan.bs";
+  ANIMSET   	TFNM "Data\npc\public\jonathan.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,1.38,2;
+  COLISION
+  {
+    "Default"  {-0.45,0,-0.45,0.45,1.4,0.45;}
+  }
+}

@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_dagger_cos01";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_DAGGER_COS01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ro_dagger_cos01.bm";
+  TEXTURES   
+  {
+    "ro_dagger_cos01"	TFNM "Data\Item\Weapon\Texture\ro_dagger_cos01.tex";
+  }
+  ALLFRAMESBBOX	-0.583533,0.950838,-0.578087,0.548537,1.12062,0.653919;
+  COLISION
+  {
+  }
+}

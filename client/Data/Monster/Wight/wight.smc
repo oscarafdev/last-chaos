@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Wight\wight_bu.bm";
+  TEXTURES   
+  {
+    "wight"	TFNM "Data\Monster\Wight\Texture\wight.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_lhn.bm";
+  TEXTURES   
+  {
+    "wight"	TFNM "Data\Monster\Wight\Texture\wight.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_rhn.bm";
+  TEXTURES   
+  {
+    "wight"	TFNM "Data\Monster\Wight\Texture\wight.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\wight_bd.bm";
+  TEXTURES   
+  {
+    "wight"	TFNM "Data\Monster\Wight\Texture\wight.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Wight\wight.bs";
+  ANIMSET   	TFNM "Data\Monster\Wight\wight.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Wight\wight.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,2,1;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,2.30097,0.624316;}
+  }
+}

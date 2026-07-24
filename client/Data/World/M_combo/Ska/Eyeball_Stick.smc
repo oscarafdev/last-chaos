@@ -1,0 +1,15 @@
+NAME "Eyeball_Stick";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\Eyeball_Stick.bm";
+  TEXTURES   
+  {
+    "Eyeball_Stick_01_01"	TFNM "Data\World\M_combo\Ska\Texture\Eyeball_Stick_01_01.tex";
+    "Eyeball_Stick_02_01"	TFNM "Data\World\M_combo\Ska\Texture\Eyeball_Stick_02_01.tex";
+    "Eyeball_Stick_03_01"	TFNM "Data\World\M_combo\Ska\Texture\Eyeball_Stick_03_01.tex";
+    "M_combo_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.725623,-0.023272,-0.695312,0.736821,4.87269,0.695312;
+  COLISION
+  {
+  }
+}

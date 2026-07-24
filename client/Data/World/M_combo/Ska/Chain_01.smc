@@ -1,0 +1,13 @@
+NAME "stone";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\Chain_01.bm";
+  TEXTURES   
+  {
+    "Chain_01"	TFNM "Data\World\M_combo\Ska\Texture\Chain_01.tex";
+    "M_combo_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+  }
+  ALLFRAMESBBOX	-7.13194,13.4939,-3.76768,1.29193,24.8333,3.60638;
+  COLISION
+  {
+  }
+}

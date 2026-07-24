@@ -1,0 +1,15 @@
+NAME "k_torture01_d3";
+{
+  MESH       	TFNM "Data\world\Dungeon3\Ska\k_torture01_d3.bm";
+  TEXTURES   
+  {
+    "torture_D3"	TFNM "Data\world\Dungeon3\Ska\texture\torture_D3.tex";
+    "torture_ska01_D3"	TFNM "Data\world\Dungeon3\Ska\texture\torture_ska01_D3.tex";
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-2.33022,-0.011959,-1.79038,2.33022,0.895651,1.79038;
+  COLISION
+  {
+    "Default"  {-2.5,0,-2,2.5,0.9,2;}
+  }
+}

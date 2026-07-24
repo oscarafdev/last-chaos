@@ -1,0 +1,16 @@
+NAME "Eff_dor_a01";
+{
+  MESH       	TFNM "Data\Effect\SKA\Eff_dor_a02.bm";
+  TEXTURES   
+  {
+    "Eff_dor_a01_map_a"	TFNM "Data\Effect\TEXTURE\Eff_dor_a01_map_a.tex";
+    "Eff_dor_a01_map_b"	TFNM "Data\Effect\TEXTURE\Eff_dor_a01_map_b.tex";
+    "Eff_dor_a01_map_c"	TFNM "Data\Effect\TEXTURE\Eff_dor_a01_map_c.tex";
+    "merac_Detail"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_d3.tex";
+  }
+  
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

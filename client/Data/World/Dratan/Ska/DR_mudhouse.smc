@@ -1,0 +1,15 @@
+NAME "DR_mudhouse";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\DR_mudhouse.bm";
+  TEXTURES   
+  {
+    "DR_mudhouse02"	TFNM "Data\World\Dratan\Ska\Texture\DR_mudhouse02.tex";
+    "DR_mudhouse01"	TFNM "Data\World\Dratan\Ska\Texture\DR_mudhouse01.tex";
+    "DR_mudhouse03"	TFNM "Data\World\Dratan\Ska\Texture\DR_mudhouse03.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-3.14962,-0.00307,-3.72566,2.54257,3.20029,3.38722;
+  COLISION
+  {
+  }
+}

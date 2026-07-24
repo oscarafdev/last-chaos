@@ -1,0 +1,55 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns";
+{
+  MESH       	TFNM "Data\Character\NightShadow\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Character\NightShadow\_TAG_T_NSWEAP.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Character\NightShadow\_TAG_T_NSWING.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Character\NightShadow\ns_face_000.bm";
+  TEXTURES   
+  {
+    "ns_face_000"	TFNM "Data\Character\NightShadow\Texture\ns_face_000.tex";
+  }
+  MESH       	TFNM "Data\Character\NightShadow\ns_hair_000.bm";
+  TEXTURES   
+  {
+    "ns_hair_000"	TFNM "Data\Character\NightShadow\Texture\ns_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Character\NightShadow\ns_hn_000.bm";
+  TEXTURES   
+  {
+    "ns_hn_000"	TFNM "Data\Character\NightShadow\Texture\ns_hn_000.tex";
+  }
+  MESH       	TFNM "Data\Character\NightShadow\ns_bu_000.bm";
+  TEXTURES   
+  {
+    "ns_bu_000"	TFNM "Data\Character\NightShadow\Texture\ns_bu_000.tex";
+  }
+  MESH       	TFNM "Data\Character\NightShadow\ns_bd_000.bm";
+  TEXTURES   
+  {
+    "ns_ft_000"	TFNM "Data\Character\NightShadow\Texture\ns_ft_000.tex";
+    "ns_bd_000"	TFNM "Data\Character\NightShadow\Texture\ns_bd_000.tex";
+  }
+  MESH       	TFNM "Data\Character\NightShadow\ns_ft_000.bm";
+  TEXTURES   
+  {
+    "ns_ft_000"	TFNM "Data\Character\NightShadow\Texture\ns_ft_000.tex";
+  }
+  SKELETON  	TFNM "Data\Character\NightShadow\ns.bs";
+  ANIMSET   	TFNM "Data\Character\NightShadow\ns.ba";
+  ANIMEFFECT	TFNM "Data\Character\NightShadow\ns.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.2,1.5;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.35,0.35,2,0.35;}
+  }
+}

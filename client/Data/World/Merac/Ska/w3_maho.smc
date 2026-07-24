@@ -1,0 +1,20 @@
+NAME "w3maho";
+{
+  MESH       	TFNM "Data\world\Merac\Ska\w3_maho.bm";
+  TEXTURES   
+  {
+    "w3_maho"	TFNM "Data\world\Merac\Ska\Texture\w3_maho.tex";
+    "w3_outobject_A"	TFNM "Data\world\Merac\Ska\Texture\w3_outobject_A.tex";
+    "merac_Detail"	TFNM "Data\world\Merac\Ska\Texture\merac_Detail.tex";
+    "Cloud_blue"	TFNM "Data\Effect\TEXTURE\Cloud_blue.tex";
+    "w3_maho_"	TFNM "Data\Effect\TEXTURE\w3_maho_.tex";
+  }
+  SKELETON  	TFNM "Data\world\Merac\Ska\w3_maho.bs";
+  ANIMSET   	TFNM "Data\world\Merac\Ska\w3_maho.ba";
+  ANIMEFFECT	TFNM "Data\World\Merac\Ska\w3_maho.bae";
+  ALLFRAMESBBOX	-5.24363,-0.865592,-5.24547,5.24363,6.45678,5.24545;
+  COLISION
+  {
+    "Default"  {-2.5,0,-2.5,2.5,5,2.5;}
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_dsword_000";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ni_dsword_007.bm";
+  TEXTURES   
+  {
+    "ni_sword_007"	TFNM "Data\Item\Weapon\Texture\ni_sword_007.tex";
+  }
+  ALLFRAMESBBOX	-0.186108,-0.006784,-0.688253,0.26174,0.07218,0.655433;
+  COLISION
+  {
+  }
+}

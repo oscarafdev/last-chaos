@@ -1,0 +1,12 @@
+NAME "td_cage";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_cage.bm";
+  TEXTURES   
+  {
+    "td_cage"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_cage.tex";
+  }
+  ALLFRAMESBBOX	-0.896762,-2e-006,-0.754558,0.959827,4.84045,0.7514;
+  COLISION
+  {
+  }
+}

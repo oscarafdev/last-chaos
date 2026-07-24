@@ -1,0 +1,20 @@
+NAME "w4_building02";
+{
+  MESH       	TFNM "Data\World\egeha\ska\w4_building02.bm";
+  TEXTURES   
+  {
+    "w4_side01"	TFNM "Data\World\egeha\ska\texture\w4_side01.tex";
+    "w4_tile05"	TFNM "Data\World\egeha\ska\texture\w4_tile05.tex";
+    "w4_brick02"	TFNM "Data\World\egeha\ska\texture\w4_brick02.tex";
+    "w4_building02-1"	TFNM "Data\World\egeha\ska\texture\w4_building02-1.tex";
+    "w4_building02"	TFNM "Data\World\egeha\ska\texture\w4_building02.tex";
+    "w4_rock01"	TFNM "Data\World\egeha\ska\texture\w4_rock01.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-25.4664,-1.57336,-25.3478,25.4634,32.1979,42.139;
+  COLISION
+  {
+    "Default"  {-26.8972,-0.83925,-25.5693,25.8761,34.9682,20.4629;}
+    "Default"  {-11.8002,-0.512455,27.8592,12.4645,11.9621,42.6466;}
+  }
+}

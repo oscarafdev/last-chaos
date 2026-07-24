@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "heresy_shd_1";
+{
+  MESH       	TFNM "Data\Effect\Ska\Heresy\heresy_shd_1.bm";
+  TEXTURES   
+  {
+    "ni_shield_012"	TFNM "Data\Effect\Ska\Heresy\ni_shield_012.tex";
+  }
+  ALLFRAMESBBOX	-0.316674,-0.495908,-0.111841,0.316162,0.496043,0.111764;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

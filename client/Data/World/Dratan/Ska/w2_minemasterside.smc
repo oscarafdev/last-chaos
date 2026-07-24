@@ -1,0 +1,22 @@
+NAME "w2_minemasterside";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_minemasterside.bm";
+  TEXTURES   
+  {
+    "w2_sflag"	TFNM "Data\World\Dratan\Ska\Texture\w2_sflag.tex";
+    "w2_minewood1"	TFNM "Data\World\Dratan\Ska\Texture\w2_minewood1.tex";
+    "w2_minewood5"	TFNM "Data\World\Dratan\Ska\Texture\w2_minewood5.tex";
+    "w2_Ob03_bucket01"	TFNM "Data\World\Dratan\Ska\Texture\w2_Ob03_bucket01.tex";
+    "w2_sflag"	TFNM "Data\World\Dratan\Ska\Texture\w2_sflag.tex";
+    "w2_tent01_flag"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent01_flag.tex";
+    "w2_tent02_deco"	TFNM "Data\World\Dratan\Ska\Texture\w2_tent02_deco.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_shopbox01"	TFNM "Data\World\Dratan\Ska\Texture\w2_shopbox01.tex";
+  }
+  SKELETON  	TFNM "Data\World\Dratan\Ska\w2_minemasterside.bs";
+  ANIMSET   	TFNM "Data\World\Dratan\Ska\w2_minemasterside.ba";
+  ALLFRAMESBBOX	-1.35561,-0.0515613,-2.61125,1.47547,2.59699,-0.057777;
+  COLISION
+  {
+  }
+}

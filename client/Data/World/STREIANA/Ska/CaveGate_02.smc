@@ -1,0 +1,12 @@
+NAME "CaveGate_02";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\CaveGate_02.bm";
+  TEXTURES   
+  {
+    "CaveGate_02"	TFNM "Data\World\STREIANA\Ska\Texture\CaveGate_02.tex";
+  }
+  ALLFRAMESBBOX	-2.67776,-0.000374,-7.57806,2.67776,4.3375,7.63165;
+  COLISION
+  {
+  }
+}

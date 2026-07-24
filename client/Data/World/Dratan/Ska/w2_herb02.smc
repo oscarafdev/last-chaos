@@ -1,0 +1,12 @@
+NAME "w2_herb02";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_herb02.bm";
+  TEXTURES   
+  {
+    "w2_herb02"	TFNM "Data\World\Dratan\Ska\Texture\w2_herb02.tex";
+  }
+  ALLFRAMESBBOX	-0.444345,-0.162424,-0.527912,0.444353,0.859023,0.527914;
+  COLISION
+  {
+  }
+}

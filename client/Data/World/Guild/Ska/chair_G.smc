@@ -1,0 +1,12 @@
+NAME "chair_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\chair_G.bm";
+  TEXTURES   
+  {
+    "tablechair_G"	TFNM "Data\World\Guild\Ska\Texture\tablechair_G.tex";
+  }
+  ALLFRAMESBBOX	-0.286064,0,-0.466687,0.286064,1.57712,0.466683;
+  COLISION
+  {
+  }
+}

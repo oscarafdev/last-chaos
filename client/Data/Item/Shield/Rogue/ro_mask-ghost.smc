@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_mask-ghost";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_mask-ghost.bm";
+  TEXTURES   
+  {
+    "mask_ghost"	TFNM "Data\Item\Shield\Rogue\Texture\mask_ghost.tex";
+  }
+  ALLFRAMESBBOX	-0.110252,1.42809,-0.128625,0.110252,1.768,0.18697;
+  COLISION
+  {
+  }
+}

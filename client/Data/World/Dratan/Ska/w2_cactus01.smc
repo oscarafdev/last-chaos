@@ -1,0 +1,15 @@
+NAME "w2_cactus01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_cactus01.bm";
+  TEXTURES   
+  {
+    "coctus02-1"	TFNM "Data\World\Dratan\Ska\Texture\coctus02-1.tex";
+    "coctus02-2"	TFNM "Data\World\Dratan\Ska\Texture\coctus02-2.tex";
+    "coctus02-3"	TFNM "Data\World\Dratan\Ska\Texture\coctus02-3.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.436489,-0.044592,-0.406206,0.540114,1.46516,0.658128;
+  COLISION
+  {
+  }
+}

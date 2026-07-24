@@ -1,0 +1,40 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "lizard02_R";
+{
+  MESH       	TFNM "Data\Npc\pet\_TAG_LIZ02Body_R.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_LIZ02HD_R.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\liz02_R_body01.bm";
+  TEXTURES   
+  {
+    "lizard_2_r"	TFNM "Data\Npc\pet\textures\lizard_2_r.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\liz02_R_body.bm";
+  TEXTURES   
+  {
+    "lizard_2_r"	TFNM "Data\Npc\pet\textures\lizard_2_r.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\liz02_R_teeth.bm";
+  TEXTURES   
+  {
+    "lizard_2_r"	TFNM "Data\Npc\pet\textures\lizard_2_r.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\lizard02_R_hel.bm";
+  TEXTURES   
+  {
+    "lizard_2_helmet"	TFNM "Data\Npc\pet\textures\lizard_2_helmet.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\pet\lizard02_R.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\lizard02_R.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\lizard02_R.bae";
+  ALLFRAMESBBOX	-0.25,0,-0.6,0.25,0.6,1.2;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.6,0.25,0.6,1.2;}
+  }
+}

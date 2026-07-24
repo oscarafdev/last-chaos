@@ -1,0 +1,14 @@
+NAME "w1_windmillwater";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_windmillwater.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_roof03"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_roof03.tex";
+    "wo"	TFNM "Data\World\StartZone\Ska\Texture\wo.tex";
+  }
+  ALLFRAMESBBOX	-1.15599,-0.018295,-0.726932,0.8501,2.45434,0.726933;
+  COLISION
+  {
+  }
+}

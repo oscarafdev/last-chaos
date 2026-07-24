@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="AffinityUI" x="0" y="0" w="410" h="240" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="410" h="240" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="513" t="0" r="922" b="240" />
+    <UIText id="text_title" x="101" y="16" w="207" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4461" str="기부" str_ellipsis="" color="0xe2de6bff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="-4" y="4" w="16" h="16" hide="0" tex="Affinity.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="923" t="43" r="939" b="59" />
+        <uv type="1" l="939" t="43" r="955" b="59" />
+        <uv type="2" l="955" t="43" r="971" b="59" />
+        <uv type="3" l="955" t="43" r="971" b="59" />
+    </UIButton>
+    <UIList id="list_affinity" x="11" y="46" w="387" h="122" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="3" itemgap="0" item_count="5" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="1" y="0" w="385" h="121" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="20" item_count="0" item_per_page="3">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="1003" t0="15" r0="1013" b0="25" l1="993" t1="15" r1="1003" b1="25" />
+            <button2 x="0" y="0" w="10" h="10" l0="1003" t0="26" r0="1013" b0="36" l1="993" t1="26" r1="1003" b1="36" />
+            <thumb x="-2" y="0" w="10" h="101" unit="7" l="972" t="15" r="982" b="39" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="0" y="0" w="373" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_item" x="3" y="3" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="200" type="2" texid="0" row="0" col="0" />
+            <UIText id="text_name" x="42" y="12" w="218" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_cur" x="310" y="12" w="24" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_max" x="345" y="12" w="24" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIButton id="btn_sum" x="267" y="5" w="16" h="13" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="923" t="15" r="939" b="28" />
+                <uv type="1" l="939" t="15" r="955" b="28" />
+                <uv type="2" l="955" t="15" r="971" b="28" />
+                <uv type="3" l="955" t="15" r="971" b="28" />
+            </UIButton>
+            <UIButton id="btn_max" x="268" y="20" w="33" h="13" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="923" t="1" r="956" b="14" />
+                <uv type="1" l="956" t="1" r="989" b="14" />
+                <uv type="2" l="989" t="1" r="1022" b="14" />
+                <uv type="3" l="989" t="1" r="1022" b="14" />
+            </UIButton>
+            <UIButton id="btn_sub" x="284" y="5" w="16" h="13" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="923" t="29" r="939" b="42" />
+                <uv type="1" l="939" t="29" r="955" b="42" />
+                <uv type="2" l="955" t="29" r="971" b="42" />
+                <uv type="3" l="955" t="29" r="971" b="42" />
+            </UIButton>
+        </UIListItem>
+    </UIList>
+    <UIText id="text_want2donation_point" x="291" y="175" w="104" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_donation_point" x="11" y="175" w="264" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5861" str="친화도 수치" str_ellipsis="" color="0xa0a0a4ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="102" y="208" w="85" h="21" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="513" t="241" r="598" b="262" />
+        <uv type="1" l="598" t="241" r="683" b="262" />
+        <uv type="2" l="683" t="241" r="768" b="262" />
+        <uv type="3" l="683" t="241" r="768" b="262" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="223" y="208" w="85" h="21" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="513" t="241" r="598" b="262" />
+        <uv type="1" l="598" t="241" r="683" b="262" />
+        <uv type="2" l="683" t="241" r="768" b="262" />
+        <uv type="3" l="683" t="241" r="768" b="262" />
+    </UIButton>
+    <UIBase id="base_drag" x="1" y="1" w="386" h="36" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+</Window>

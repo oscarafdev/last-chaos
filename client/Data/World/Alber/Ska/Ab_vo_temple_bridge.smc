@@ -1,0 +1,13 @@
+NAME "Ab_vo_temple_bridge";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_temple_bridge.bm";
+  TEXTURES   
+  {
+    "Ab_vo_temple_bridge01"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple_bridge01.tex";
+    "Ab_vo_temple_bridge02"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple_bridge02.tex";
+  }
+  ALLFRAMESBBOX	-9.98225,-0.874416,-13.2323,9.98225,5.412,13.2168;
+  COLISION
+  {
+  }
+}

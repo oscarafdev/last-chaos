@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "soulofranger";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\_TAG_T_RCSOUL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\soul_weapon\soulofranger.bm";
+  TEXTURES   
+  {
+    "soulofranger"	TFNM "Data\Npc\soul_weapon\soulofranger.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\soulofranger.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\soulofranger.ba";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,1.4,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,1.4,0.1;}
+  }
+}

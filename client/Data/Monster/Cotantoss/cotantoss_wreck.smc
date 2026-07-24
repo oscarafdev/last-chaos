@@ -1,0 +1,35 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "contantoss_wreck";
+{
+  MESH       	TFNM "Data\Monster\Cotantoss\cotantoss_wreck_1.bm";
+  TEXTURES   
+  {
+    "cotantoss_wreck"	TFNM "Data\Monster\Cotantoss\cotantoss_wreck.tex";
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\cotantoss_wreck_2.bm";
+  TEXTURES   
+  {
+    "cotantoss_wreck"	TFNM "Data\Monster\Cotantoss\cotantoss_wreck.tex";
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\cotantoss_wreck.bm";
+  TEXTURES   
+  {
+    "cotantoss_wreck"	TFNM "Data\Monster\Cotantoss\cotantoss_wreck.tex";
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\_TAG_T_CW1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\_TAG_T_CW2.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Cotantoss\cotantoss_wreck.bs";
+  ANIMSET   	TFNM "Data\Monster\Cotantoss\cotantoss_wreck.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Cotantoss\cotantoss_wreck.bae";
+  ALLFRAMESBBOX	-1.9,0,-1.9,1.9,3.8,1.9;
+  COLISION
+  {
+    "Default"  {-1.9,0,-1.9,1.9,3.8,1.9;}
+  }
+}

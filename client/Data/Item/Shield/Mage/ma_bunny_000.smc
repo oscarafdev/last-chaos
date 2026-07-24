@@ -1,0 +1,18 @@
+NAME "ma_bunny_000";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bunnyears.bm";
+  TEXTURES   
+  {
+    "ns_bunny_000"	TFNM "Data\Item\Shield\Common\Texture\ns_bunny_000.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_hair_000.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\character\Mage\ma_face_000.tex";
+    "ma_hair_000"	TFNM "Data\character\Mage\ma_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

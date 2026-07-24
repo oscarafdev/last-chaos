@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_ft_cos_russia";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_ft_cos_russia.bm";
+  TEXTURES   
+  {
+    "ni_cos_russia_ft"	TFNM "Data\Item\Shield\Knight\Texture\ni_cos_russia_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.450963,-0.006569,-0.181668,0.450963,0.577214,0.261446;
+  COLISION
+  {
+    "Default"  {-0.450963,-0.00656903,-0.181668,0.450963,0.577214,0.261446;}
+  }
+}

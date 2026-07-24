@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_wc";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\wc\ns_ft_wc_arg.bm";
+  TEXTURES   
+  {
+    "ns_ft_wc_arg"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_ft_wc_arg.tex";
+  }
+  ALLFRAMESBBOX	-0.292476,-0.001386,-0.159304,0.292476,0.643177,0.152551;
+  COLISION
+  {
+  }
+}

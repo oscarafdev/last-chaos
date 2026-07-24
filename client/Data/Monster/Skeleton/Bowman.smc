@@ -1,0 +1,30 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bowman";
+{
+  MESH       	TFNM "Data\monster\Skeleton\_TAG_T_CENTER_sksI.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\_TAG_T_BOWMAN.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bowman.bm";
+  TEXTURES   
+  {
+    "bowman"	TFNM "Data\Monster\Skeleton\bowman.tex";
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\bowman_bow.bm";
+  TEXTURES   
+  {
+    "bowman_1"	TFNM "Data\Monster\Skeleton\bowman_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Skeleton\bowman.bs";
+  ANIMSET   	TFNM "Data\Monster\Skeleton\bowman.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Skeleton\Bowman.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

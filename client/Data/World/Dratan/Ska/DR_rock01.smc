@@ -1,0 +1,14 @@
+NAME "DR_rock01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\DR_rock01.bm";
+  TEXTURES   
+  {
+    "DR_rock01"	TFNM "Data\World\Dratan\Ska\Texture\DR_rock01.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.56756,0.003497,-1.83706,2.09982,3.52768,1.11932;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

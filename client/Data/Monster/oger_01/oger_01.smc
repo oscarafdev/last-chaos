@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\oger_01\oger_bd.bm";
+  TEXTURES   
+  {
+    "oger_01"	TFNM "Data\Monster\oger_01\oger_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\oger_01\oger_bd_1.bm";
+  TEXTURES   
+  {
+    "oger_01"	TFNM "Data\Monster\oger_01\oger_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\oger_01\oger_bu.bm";
+  TEXTURES   
+  {
+    "oger_01"	TFNM "Data\Monster\oger_01\oger_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\oger_01\oger_bu_1.bm";
+  TEXTURES   
+  {
+    "oger_01"	TFNM "Data\Monster\oger_01\oger_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\oger_01\_TAG_mob_oger.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\oger_01\oger.bs";
+  ANIMSET   	TFNM "Data\Monster\oger_01\oger.ba";
+  ANIMEFFECT	TFNM "Data\Monster\oger_01\oger_01.bae";
+  ALLFRAMESBBOX	-1.35,0,-0.75,1.35,3.5,0.75;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

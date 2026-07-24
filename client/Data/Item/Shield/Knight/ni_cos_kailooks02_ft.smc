@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_cos_kailooks02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_cos_kailooks02_ft.bm";
+  TEXTURES   
+  {
+    "ni_cos_kailooks02_ft"	TFNM "Data\Item\Shield\Knight\Texture\ni_cos_kailooks02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.394768,-9e-006,-0.21593,0.394768,0.647394,0.201166;
+  COLISION
+  {
+  }
+}

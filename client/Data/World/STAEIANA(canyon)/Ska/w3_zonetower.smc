@@ -1,0 +1,13 @@
+NAME "w3_zonetower";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\ska\w3_zonetower.bm";
+  TEXTURES   
+  {
+    "w3_zonetower"	TFNM "Data\World\STAEIANA(canyon)\ska\texture\w3_zonetower.tex";
+  }
+  ALLFRAMESBBOX	-3.28728,-0.01918,-3.07732,3.28728,8.37245,3.07732;
+  COLISION
+  {
+    "Default"  {-3,0,-3,3,8,3;}
+  }
+}

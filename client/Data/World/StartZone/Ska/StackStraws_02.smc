@@ -1,0 +1,13 @@
+NAME "StackStraws_02";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\StackStraws_02.bm";
+  TEXTURES   
+  {
+    "hay01"	TFNM "Data\World\StartZone\Ska\Texture\hay01.tex";
+  }
+  ALLFRAMESBBOX	-1.95315,0.011868,-1.97318,1.99321,3.45781,1.97318;
+  COLISION
+  {
+    "Default"  {-0.309602,-0.00625956,-0.33629,0.332694,1.02493,0.348316;}
+  }
+}

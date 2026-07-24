@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_backpack_gt";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\eg01.bm";
+  TEXTURES   
+  {
+    "elec_guitar03"	TFNM "Data\Item\Shield\Healer\Texture\elec_guitar03.tex";
+  }
+  ALLFRAMESBBOX	-0.58142,1.13824,0.096003,0.58142,1.72296,0.463572;
+  COLISION
+  {
+  }
+}

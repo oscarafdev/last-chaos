@@ -1,0 +1,12 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\World\Ascadia-MondShine(OutsideDungeon1)\an_clunm_idle.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\World\Ascadia-MondShine(OutsideDungeon1)\an_clunm_access.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\World\Ascadia-MondShine(OutsideDungeon1)\an_clunm_accessidle.AA"
+}

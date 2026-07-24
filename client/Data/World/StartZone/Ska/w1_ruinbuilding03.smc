@@ -1,0 +1,13 @@
+NAME "w1_ruinbuilding03";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_ruinbuilding03.bm";
+  TEXTURES   
+  {
+    "w1_ruinbuilding03"	TFNM "Data\World\StartZone\Ska\Texture\w1_ruinbuilding03.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.24881,0.027251,-4.07624,3.06277,4.16729,2.48641;
+  COLISION
+  {
+  }
+}

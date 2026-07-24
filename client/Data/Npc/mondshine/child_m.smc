@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "child_m";
+{
+  MESH       	TFNM "Data\Npc\mondshine\child_m_hair.bm";
+  TEXTURES   
+  {
+    "child_m"	TFNM "Data\Npc\mondshine\child_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\child_m_face.bm";
+  TEXTURES   
+  {
+    "child_m"	TFNM "Data\Npc\mondshine\child_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\child_m_bd.bm";
+  TEXTURES   
+  {
+    "child_m"	TFNM "Data\Npc\mondshine\child_m.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\mondshine\child_m.bs";
+  ANIMSET   	TFNM "Data\Npc\mondshine\child_m.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.422929,0.5,1.3,0.422929;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.3,0.5;}
+  }
+}

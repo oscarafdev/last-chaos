@@ -1,0 +1,80 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "MON_seahorse_boss";
+{
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\_TAG_MON_seahorse_boss.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\MON_seahorse_boss_amor.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\MON_seahorse_boss_body.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_body"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object01.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object02.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object03.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object04.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object06.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object07.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object08.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object09.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\Object10.bm";
+  TEXTURES   
+  {
+    "MON_seahorse_boss_amor"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\MON_seahorse_boss_amor.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\WP_seahorse_boss.bm";
+  TEXTURES   
+  {
+    "WP_seahorse_boss"	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\texture\WP_seahorse_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\_TAG_WP_seahorse_boss.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\MON_seahorse_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\MON_seahorse_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Attribute boss\MON_seahorse_boss\MON_seahorse_boss.bae";
+  ALLFRAMESBBOX	-7.11163,-0.501257,-7.98194,6.71371,4.79874,6.08628;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,4.3,0.75;}
+  }
+}

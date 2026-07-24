@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "altargate_close";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\altargate_close.bm";
+  TEXTURES   
+  {
+    "colunm_01"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\colunm_01.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\_TAG_T_ALTARGATE.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\altargate_close.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\altargate_close.ba";
+  ALLFRAMESBBOX	-9.46533,-0.0114327,-1.62985,9.46534,21.5451,1.62985;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,10,2;}
+  }
+}

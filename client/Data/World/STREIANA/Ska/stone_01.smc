@@ -1,0 +1,14 @@
+NAME "stone_01";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\stone_01.bm";
+  TEXTURES   
+  {
+    "stone_01"	TFNM "Data\World\STREIANA\Ska\Texture\stone_01.tex";
+    "stone-nomal_01"	TFNM "Data\World\STREIANA\Ska\Texture\stone-nomal_01.tex";
+  }
+  ALLFRAMESBBOX	-1.97884,-0.011668,-1.76205,1.96925,4.54545,1.93278;
+  COLISION
+  {
+    "Default"  {-2.05974,0.107254,-1.93642,1.99529,4.50143,1.93772;}
+  }
+}

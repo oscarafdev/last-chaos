@@ -1,0 +1,13 @@
+NAME "cd_parao01";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\cd_parao01.bm";
+  TEXTURES   
+  {
+    "cd_parao01"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\texture\cd_Parao01.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Texture\Siege_Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.33914,-0.024174,-0.970001,1.33914,8.59111,0.970008;
+  COLISION
+  {
+  }
+}

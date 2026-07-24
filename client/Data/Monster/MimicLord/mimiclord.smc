@@ -1,0 +1,52 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\MimicLord\body.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\MimicLord\box_down.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\MimicLord\box_up.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\MimicLord\eye.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\MimicLord\snakehead01.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\MimicLord\snakehead02.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\MimicLord\snakehead03.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  MESH       	TFNM "Data\Monster\MimicLord\snakehead04.bm";
+  TEXTURES   
+  {
+    "mimiclord"	TFNM "Data\Monster\MimicLord\Texture\mimiclord.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\MimicLord\mimiclord.bs";
+  ANIMSET   	TFNM "Data\Monster\MimicLord\mimiclord.ba";
+  ANIMEFFECT	TFNM "Data\Monster\MimicLord\mimiclord.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,1.5,1;
+  COLISION
+  {
+    "Default"  {-0.690405,0.000965595,-0.825694,0.809595,1.50097,0.674306;}
+  }
+}

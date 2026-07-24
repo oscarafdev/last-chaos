@@ -1,0 +1,14 @@
+NAME "ns_thunderstone_028";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_thunderstone_028.bm";
+  TEXTURES   
+  {
+    "thunderstone"	TFNM "Data\Effect\Ska\ns_weapons\thunderstone.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\ns_thunderstone_028.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\ns_thunderstone_028.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

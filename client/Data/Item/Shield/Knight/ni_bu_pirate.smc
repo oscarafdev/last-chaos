@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_bu_pirate";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bu_pirate.bm";
+  TEXTURES   
+  {
+    "ni_bu_pirate"	TFNM "Data\Item\Shield\Knight\Texture\ni_bu_pirate.tex";
+  }
+  ALLFRAMESBBOX	-0.636139,0.747642,-0.234393,0.636139,1.78919,0.491177;
+  COLISION
+  {
+  }
+}

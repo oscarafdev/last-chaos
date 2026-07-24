@@ -1,0 +1,47 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Black_LB_Wmagician";
+{
+  MESH       	TFNM "Data\Monster\Leadingband\Black_arm.bm";
+  TEXTURES   
+  {
+    "Black_LB-arms"	TFNM "Data\Monster\Leadingband\Black_LB-arms.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Black_body.bm";
+  TEXTURES   
+  {
+    "Black_LB-body"	TFNM "Data\Monster\Leadingband\Black_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Black_boots.bm";
+  TEXTURES   
+  {
+    "Black_LB-body"	TFNM "Data\Monster\Leadingband\Black_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Black_hair.bm";
+  TEXTURES   
+  {
+    "Black_LB-body"	TFNM "Data\Monster\Leadingband\Black_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Black_head.bm";
+  TEXTURES   
+  {
+    "Black_LB-body"	TFNM "Data\Monster\Leadingband\Black_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\Black_pants.bm";
+  TEXTURES   
+  {
+    "Black_LB-body"	TFNM "Data\Monster\Leadingband\Black_LB-body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\ma_staff_0.bm";
+  TEXTURES   
+  {
+    "ma_staff_012"	TFNM "Data\Monster\Leadingband\ma_staff_012.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Leadingband\Black_LB.bs";
+  ANIMSET   	TFNM "Data\Monster\Leadingband\Staff_Wmagician_skill.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Leadingband\Black_LB_Wmagician.bae";
+  ALLFRAMESBBOX	-0.35,0,-0.35,0.35,2.05,0.35;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.05,0.5;}
+  }
+}

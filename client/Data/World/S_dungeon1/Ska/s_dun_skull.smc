@@ -1,0 +1,12 @@
+NAME "s_dun_skull";
+{
+  MESH       	TFNM "Data\world\S_Dungeon1\Ska\s_dun_skull.bm";
+  TEXTURES   
+  {
+    "s_dun_skull"	TFNM "Data\world\S_Dungeon1\Ska\Texture\s_dun_skull.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

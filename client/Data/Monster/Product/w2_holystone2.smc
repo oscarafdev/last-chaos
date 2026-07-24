@@ -1,0 +1,14 @@
+NAME "w2_holystone2";
+{
+  MESH       	TFNM "Data\Monster\Product\w2_holystone2.bm";
+  TEXTURES   
+  {
+    "w2_jewelryring"	TFNM "Data\Monster\Product\Texture\w2_jewelryring.tex";
+    "w2_jewelry_a"	TFNM "Data\Monster\Product\Texture\w2_jewelry_a.tex";
+  }
+  ALLFRAMESBBOX	-1.67112,0,-1.67112,1.67112,4.2,1.67112;
+  COLISION
+  {
+    "Default"  {-1.25,0,-1.25,1.25,4,1.25;}
+  }
+}

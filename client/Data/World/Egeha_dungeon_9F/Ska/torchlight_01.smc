@@ -1,0 +1,13 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\torchlight_01.bm";
+  TEXTURES   
+  {
+    "Bump"	TFNM "Data\World\Egeha_dungeon_1F_7F\Texture\Bump.tex";
+    "torchlight_01"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\torchlight_01.tex";
+  }
+  ALLFRAMESBBOX	-0.074304,0.010033,-0.20555,0.073008,0.707875,0.261071;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_dsword_dillamoon_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ni_dsword_dillamoon_02_drop.bm";
+  TEXTURES   
+  {
+    "ni_sword_dillamoon_02"	TFNM "Data\Item\Weapon\Texture\ni_sword_dillamoon_02.tex";
+  }
+  ALLFRAMESBBOX	-0.297152,0.013884,-0.898651,0.48564,0.163617,0.740034;
+  COLISION
+  {
+  }
+}

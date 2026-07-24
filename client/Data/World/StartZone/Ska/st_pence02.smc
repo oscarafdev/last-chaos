@@ -1,0 +1,14 @@
+NAME "st_pence02";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_pence02.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "st_house_02"	TFNM "Data\world\StartZone\Ska\Texture\st_house_02.tex";
+  }
+  ALLFRAMESBBOX	-1.37174,-0.009573,-0.153614,1.37174,1.63296,0.153614;
+  COLISION
+  {
+    "Default"  {-1.35183,-0.0168717,-0.153072,1.37401,1.04036,0.167934;}
+  }
+}

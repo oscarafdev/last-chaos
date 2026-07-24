@@ -1,0 +1,19 @@
+NAME "cube_eff";
+{
+  MESH       	TFNM "Data\Effect\Ska\cube_eff\_TAG_T_CUBE_EFF.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Effect\Ska\cube_eff\cube_eff.bm";
+  TEXTURES   
+  {
+    "cube_eff"	TFNM "Data\Effect\Ska\cube_eff\cube_eff.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\cube_eff\cube_eff.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\cube_eff\cube_eff.ba";
+  ALLFRAMESBBOX	-0.584891,-0.0143655,-1.37548,0.571443,1.61334,0.592114;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

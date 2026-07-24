@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "doors01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\doors01.bm";
+  TEXTURES   
+  {
+    "doors01"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\doors01.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\doors01_1.bm";
+  TEXTURES   
+  {
+    "doors01"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\doors01.tex";
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\doors01.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\doors01.ba";
+  ALLFRAMESBBOX	-10.3885,-0.00205578,-9.99203,10.3906,15.0466,0.394425;
+  COLISION
+  {
+    "Default"  {-1.5,0,-2,1.5,3,2;}
+  }
+}

@@ -1,0 +1,16 @@
+NAME "w2_agrippa";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_agrippa.bm";
+  TEXTURES   
+  {
+    "w2_agrippa3"	TFNM "Data\World\Dratan\Ska\Texture\w2_agrippa3.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_agrippa1"	TFNM "Data\World\Dratan\Ska\Texture\w2_agrippa1.tex";
+    "w2_agrippa2"	TFNM "Data\World\Dratan\Ska\Texture\w2_agrippa2.tex";
+  }
+  ALLFRAMESBBOX	-0.870939,-0.010255,-0.7429,0.767839,5.879,0.736564;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,6,0.75;}
+  }
+}

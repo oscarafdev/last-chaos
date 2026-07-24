@@ -1,0 +1,21 @@
+NAME "Tree_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\watchhouse_01.bm";
+  TEXTURES   
+  {
+    "watchhouse_01"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse_01.tex";
+    "watchhouse2_1"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_1.tex";
+    "watchhouse2_2"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_2.tex";
+    "watchhouse2_3"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_3.tex";
+    "watchhouse2_4"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_4.tex";
+    "watchhouse2_5"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_5.tex";
+    "watchhouse2_6"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_6.tex";
+    "watchhouse2_7"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_7.tex";
+    "watchhouse2_8"	TFNM "Data\World\Tarian\Ska\Texture\watchhouse2_8.tex";
+  }
+  ALLFRAMESBBOX	-0.668311,-0.086313,-0.640863,0.71695,4.09801,0.682856;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

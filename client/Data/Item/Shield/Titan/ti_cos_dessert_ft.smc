@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_cos_dessert_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_dessert_ft.bm";
+  TEXTURES   
+  {
+    "ti_cos_dessert_ft"	TFNM "Data\Item\Shield\Titan\Texture\Ti_cos_dessert_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.431402,-0.003001,-0.197602,0.431402,0.674612,0.18512;
+  COLISION
+  {
+  }
+}

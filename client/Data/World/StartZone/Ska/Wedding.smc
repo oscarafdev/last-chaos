@@ -1,0 +1,14 @@
+NAME "Wedding";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\weding.bm";
+  TEXTURES   
+  {
+    "Weding_03"	TFNM "Data\World\StartZone\Ska\Texture\Weding_03.tex";
+    "Weding_02"	TFNM "Data\World\StartZone\Ska\Texture\Weding_02.tex";
+    "Weding_01"	TFNM "Data\World\StartZone\Ska\Texture\Weding_01.tex";
+  }
+  ALLFRAMESBBOX	-2.49382,0.0019,-9.53862,2.52236,6.19817,1.24802;
+  COLISION
+  {
+  }
+}

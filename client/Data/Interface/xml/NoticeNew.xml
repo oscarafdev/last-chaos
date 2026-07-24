@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="320" h="250" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIList id="list_notice" x="-3" y="0" w="32" h="175" hide="0" align_h="2" align_v="1" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="5" itemgap="3" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_item" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+            <UIText id="str_count" x="16" y="16" w="16" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0xffffffff" shadow="1" shadow_color="0x000000ff" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+</Window>

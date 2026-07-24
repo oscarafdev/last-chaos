@@ -1,0 +1,45 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "kunta";
+{
+  MESH       	TFNM "Data\Monster\akan\kunta\_TAG_AKKU.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akan\kunta\_TAG_AKKUS.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akan\kunta\kunta_bd.bm";
+  TEXTURES   
+  {
+    "Akanmknight_bd_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_bd_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\kunta\kunta_bu01.bm";
+  TEXTURES   
+  {
+    "Akankoonta_stick"	TFNM "Data\Monster\akan\Texture\Akankoonta_stick.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\kunta\kunta_hm.bm";
+  TEXTURES   
+  {
+    "Akankoonta_stick"	TFNM "Data\Monster\akan\Texture\Akankoonta_stick.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\kunta\kunta_stick.bm";
+  TEXTURES   
+  {
+    "Akankoonta_stick"	TFNM "Data\Monster\akan\Texture\Akankoonta_stick.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\kunta\Kunta_bu.bm";
+  TEXTURES   
+  {
+    "Akankoonta_bu_1"	TFNM "Data\Monster\akan\Texture\Akankoonta_bu_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\akan\kunta\kunta.bs";
+  ANIMSET   	TFNM "Data\Monster\akan\kunta\kunta.ba";
+  ANIMEFFECT	TFNM "Data\Monster\akan\kunta\kunta.bae";
+  ALLFRAMESBBOX	-2,0,-2,2,4.5,2;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,4.3,1.5;}
+  }
+}

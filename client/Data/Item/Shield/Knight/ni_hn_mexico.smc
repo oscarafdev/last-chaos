@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_hn_mexico";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hn_mexico.bm";
+  TEXTURES   
+  {
+    "ni_hn_mexico"	TFNM "Data\Item\Shield\Knight\Texture\ni_hn_mexico.tex";
+  }
+  ALLFRAMESBBOX	-0.636606,0.950968,-0.01285,0.636601,1.38719,0.134291;
+  COLISION
+  {
+  }
+}

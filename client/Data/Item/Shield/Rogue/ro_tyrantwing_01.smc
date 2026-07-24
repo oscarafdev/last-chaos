@@ -1,0 +1,12 @@
+NAME "ro_tyrantwing_01";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_tyrantwing_01.bm";
+  TEXTURES   
+  {
+    "ns_wing_024-1"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_wing_024-1.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

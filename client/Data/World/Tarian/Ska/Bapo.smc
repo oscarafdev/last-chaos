@@ -1,0 +1,13 @@
+NAME "Bapo";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\bapo.bm";
+  TEXTURES   
+  {
+    "Bapo-2"	TFNM "Data\World\Tarian\Ska\Texture\Bapo-2.tex";
+    "Bapo-1"	TFNM "Data\World\Tarian\Ska\Texture\Bapo-1.tex";
+  }
+  ALLFRAMESBBOX	-0.682735,-0.012605,-1.17438,0.744144,3.43869,0.769604;
+  COLISION
+  {
+  }
+}

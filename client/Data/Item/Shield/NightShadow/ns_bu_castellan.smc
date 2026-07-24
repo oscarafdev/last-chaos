@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_bu_castellan";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_bu_castellan.bm";
+  TEXTURES   
+  {
+    "ns_bu_castellan"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_bu_castellan.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_bu_castellan_1.bm";
+  TEXTURES   
+  {
+    "ns_bu_castellan_1"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_bu_castellan_1.tex";
+    "ns_bu_castellan"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_bu_castellan.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\_TAG_T_CE.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.587523,0.995327,-0.120541,0.587523,1.97753,0.197258;
+  COLISION
+  {
+  }
+}

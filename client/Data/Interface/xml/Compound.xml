@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="CompoundUI" x="0" y="0" w="216" h="227" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="216" h="227" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="409" r="69" b="478" unit="23" splitmode="2" />
+    <UIText id="text_title" x="4" y="4" w="210" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="723" str="힘의 상자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox x="14" y="32" w="190" h="58" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="724" split_mode="1" text_col="0xffffffff" str="합성할 일반제련석, 악세사리, 마법가루를 인벤토리에서 선택하여 넣어주십시오.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIButton id="btn_close" x="197" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIBase id="group_item" x="18" y="94" w="180" h="96" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UIImage x="44" y="3" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="287" t="353" r="321" b="387" />
+        <UIIcon id="icon_ref" x="45" y="4" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        <UIImage x="104" y="3" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="287" t="353" r="321" b="387" />
+        <UIIcon id="icon_acc" x="105" y="4" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        <UIImage x="74" y="59" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="287" t="353" r="321" b="387" />
+        <UIIcon id="icon_sug" x="75" y="60" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    </UIBase>
+    <UIButton id="btn_ok" x="38" y="196" w="51" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="177" t="409" r="228" b="430" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="129" y="196" w="51" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="177" t="409" r="228" b="430" />
+    </UIButton>
+</Window>

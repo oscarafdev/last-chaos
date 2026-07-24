@@ -1,0 +1,17 @@
+NAME "so_bunny_000";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bunnyears.bm";
+  TEXTURES   
+  {
+    "ns_bunny_000"	TFNM "Data\Item\Shield\Common\Texture\ns_bunny_000.tex";
+  }
+  MESH       	TFNM "Data\Character\Sorcerer\so_hair_001.bm";
+  TEXTURES   
+  {
+    "so_hair_001"	TFNM "Data\Character\Sorcerer\Texture\so_hair_001.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

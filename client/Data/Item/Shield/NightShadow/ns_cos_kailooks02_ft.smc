@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_cos_kailooks02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_kailooks02_ft.bm";
+  TEXTURES   
+  {
+    "ns_cos_kailooks02_ft"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_kailooks02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.30984,-5e-005,-0.174661,0.30984,0.734182,0.183245;
+  COLISION
+  {
+  }
+}

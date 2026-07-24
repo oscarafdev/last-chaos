@@ -1,0 +1,28 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "broo_prison";
+{
+  MESH       	TFNM "Data\monster\broo\broo_prison.bm";
+  TEXTURES   
+  {
+    "brooarcher"	TFNM "Data\monster\broo\brooarcher.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broo_prison_1.bm";
+  TEXTURES   
+  {
+    "brooarcher"	TFNM "Data\monster\broo\brooarcher.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broo_prison _2.bm";
+  TEXTURES   
+  {
+    "torture_ska01_D3"	TFNM "Data\monster\broo\torture_ska01_D3.tex";
+    "torture_D3"	TFNM "Data\monster\broo\torture_D3.tex";
+    "Eff_dor_a01_map_d"	TFNM "Data\monster\broo\Eff_dor_a01_map_d.tex";
+  }
+  SKELETON  	TFNM "Data\monster\broo\broo_prison.bs";
+  ANIMSET   	TFNM "Data\monster\broo\broo_prison.ba";
+  ALLFRAMESBBOX	-1.7117,-0.04196,-1.85526,1.78846,5.09149,0.422005;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

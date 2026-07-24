@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_dagger_volcan_01";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ro_dagger_volcan_01.bm";
+  TEXTURES   
+  {
+    "ro_dagger_volcan_01"	TFNM "Data\Item\Weapon\Drop\Texture\ro_dagger_volcan_01.tex";
+  }
+  ALLFRAMESBBOX	-0.227513,-0.001042,-0.446425,0.227513,0.072951,0.247761;
+  COLISION
+  {
+  }
+}

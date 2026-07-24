@@ -1,0 +1,15 @@
+NAME "sd2_post01";
+{
+  MESH       	TFNM "Data\World\S_Dungeon2\ska\sd2_post01.bm";
+  TEXTURES   
+  {
+    "sd2_minemetal1"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_minemetal1.tex";
+    "sd2_minewood2"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_minewood2.tex";
+    "S_Dengen2_Detail"	TFNM "Data\World\S_Dungeon2\ska\texture\S_Dengen2_Detail.tex";
+    "sd2_Prop_n01_a"	TFNM "Data\World\S_Dungeon2\ska\texture\sd2_Prop_n01_a.tex";
+  }
+  ALLFRAMESBBOX	-10.9999,-0.03465,-0.777975,10.9998,15.1265,0.777976;
+  COLISION
+  {
+  }
+}

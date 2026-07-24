@@ -1,0 +1,43 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "DoubleAxe";
+{
+  MESH       	TFNM "Data\monster\Orc\OrcBody.bm";
+  TEXTURES   
+  {
+    "M_Orc_b2"	TFNM "Data\monster\Orc\M_Orc_b2.tex";
+    "M_Orc_fight_body"	TFNM "Data\monster\Orc\M_Orc_fight_body.tex";
+  }
+  MESH       	TFNM "Data\monster\Orc\OrcHead.bm";
+  TEXTURES   
+  {
+    "M_Orc_b2"	TFNM "Data\monster\Orc\M_Orc_b2.tex";
+  }
+  MESH       	TFNM "Data\monster\Orc\OrcFace.bm";
+  TEXTURES   
+  {
+    "M_Orc_fight_body"	TFNM "Data\monster\Orc\M_Orc_fight_body.tex";
+    "M_Orc_w_add"	TFNM "Data\monster\Orc\M_Orc_w_add.tex";
+  }
+  MESH       	TFNM "Data\monster\Orc\OrcFist.bm";
+  TEXTURES   
+  {
+    "M_Orc_w_add"	TFNM "Data\monster\Orc\M_Orc_w_add.tex";
+  }
+  MESH       	TFNM "Data\monster\Orc\DoubleAxeWeapon.bm";
+  TEXTURES   
+  {
+    "M_Orc_w_weapon002"	TFNM "Data\monster\Orc\M_Orc_w_weapon002.tex";
+  }
+  MESH       	TFNM "Data\monster\Orc\_TAG_T_CENTER_da.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Orc\m_orc_f.bs";
+  ANIMSET   	TFNM "Data\monster\Orc\m_orc_f.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Orc\DoubleAxe.bae";
+  ALLFRAMESBBOX	-2.5,0,-3,2.5,2.5,2;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,2.3,0.4;}
+  }
+}

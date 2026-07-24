@@ -1,0 +1,18 @@
+NAME "barricade-01";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_top\Ska\LOG_Scale.bm";
+  TEXTURES   
+  {
+    "ro_face_000"	TFNM "Data\World\Egeha_dungeon_top\Ska\Texter\ro_face_000.tex";
+    "ro_festiv_bd_01"	TFNM "Data\World\Egeha_dungeon_top\Ska\Texter\ro_festiv_bd_01.tex";
+    "ro_festiv_bu_01"	TFNM "Data\World\Egeha_dungeon_top\Ska\Texter\ro_festiv_bu_01.tex";
+    "ro_festiv_ft_01"	TFNM "Data\World\Egeha_dungeon_top\Ska\Texter\ro_festiv_ft_01.tex";
+    "ro_festiv_hn_01"	TFNM "Data\World\Egeha_dungeon_top\Ska\Texter\ro_festiv_hn_01.tex";
+    "ro_hair_000"	TFNM "Data\World\Egeha_dungeon_top\Ska\Texter\ro_hair_000.tex";
+  }
+  ALLFRAMESBBOX	3e+038,3e+038,3e+038,-3e+038,-3e+038,-3e+038;
+  COLISION
+  {
+    "Default"  {-2.22571,-0.0064435,-1.17572,2.22418,2.18765,1.2345;}
+  }
+}

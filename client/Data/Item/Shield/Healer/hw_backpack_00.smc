@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_backpack_00";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_backpack_00.bm";
+  TEXTURES   
+  {
+    "hw_backpack_00"	TFNM "Data\Item\Shield\Healer\Texture\hw_backpack_00.tex";
+  }
+  ALLFRAMESBBOX	-0.58142,1.13824,0.096003,0.58142,1.72296,0.463572;
+  COLISION
+  {
+  }
+}

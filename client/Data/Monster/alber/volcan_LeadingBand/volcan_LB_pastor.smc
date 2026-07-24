@@ -1,0 +1,52 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "volcan_LB_pastor";
+{
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_arm.bm";
+  TEXTURES   
+  {
+    "volcan_LB01_arms"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB01_arms.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_body.bm";
+  TEXTURES   
+  {
+    "volcan_LB01_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB01_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_boots.bm";
+  TEXTURES   
+  {
+    "volcan_LB01_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB01_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_hair.bm";
+  TEXTURES   
+  {
+    "volcan_LB01_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB01_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_head.bm";
+  TEXTURES   
+  {
+    "volcan_LB01_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB01_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_pants.bm";
+  TEXTURES   
+  {
+    "volcan_LB01_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB01_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\D_daggerL.bm";
+  TEXTURES   
+  {
+    "ro_dagger_015"	TFNM "Data\Monster\alber\volcan_LeadingBand\ro_dagger_015.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\D_daggerR.bm";
+  TEXTURES   
+  {
+    "ro_dagger_015"	TFNM "Data\Monster\alber\volcan_LeadingBand\ro_dagger_015.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_LB.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_LB_Scholar.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\volcan_LeadingBand\Dark_LB_Scholar.bae";
+  ALLFRAMESBBOX	-0.35,0,-0.35,0.35,2.05,0.35;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.05,0.5;}
+  }
+}

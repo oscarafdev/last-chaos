@@ -1,0 +1,15 @@
+NAME "siege_coconutree_3";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\siege_coconutree_3.bm";
+  TEXTURES   
+  {
+    "Siege_coconutree_up"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_coconutree_up.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_Dratan_Detail.tex";
+    "Siege_coconutree_dn"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_coconutree_dn.tex";
+  }
+  ALLFRAMESBBOX	-1.05795,-0.021127,-1.05178,1.03817,4.18037,0.916023;
+  COLISION
+  {
+    "Default"  {-0.151956,-0.0327032,-0.173339,0.164036,1.97516,0.178948;}
+  }
+}

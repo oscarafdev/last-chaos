@@ -1,0 +1,27 @@
+NAME "noble-03-03";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\noble-03-04-01.bm";
+  TEXTURES   
+  {
+    "house3-07"	TFNM "Data\world\StartZone\Ska\Texture\house3-07.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\noble-03-04-02.bm";
+  TEXTURES   
+  {
+    "house3-09"	TFNM "Data\world\StartZone\Ska\Texture\house3-09.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\noble-03-04-03.bm";
+  TEXTURES   
+  {
+    "house3-06"	TFNM "Data\world\StartZone\Ska\Texture\house3-06.tex";
+  }
+  MESH       	TFNM "Data\world\StartZone\Ska\noble-03-04-05.bm";
+  TEXTURES   
+  {
+    "house3-08"	TFNM "Data\world\StartZone\Ska\Texture\house3-08.tex";
+  }
+  ALLFRAMESBBOX	8.23145,0.005213,-6.20099,20.0781,10.1775,6.20099;
+  COLISION
+  {
+  }
+}

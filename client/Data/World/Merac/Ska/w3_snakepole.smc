@@ -1,0 +1,20 @@
+NAME "w3_snakepole";
+{
+  MESH       	TFNM "Data\world\Merac\Ska\w3_snakepole.bm";
+  TEXTURES   
+  {
+    "w3_snakepole"	TFNM "Data\world\Merac\Ska\Texture\w3_snakepole.tex";
+    "zin_stu_a"	TFNM "Data\Effect\TEXTURE\zin_stu_a.tex";
+    "zinsnake_a"	TFNM "Data\Effect\TEXTURE\zinsnake_a.tex";
+    "merac_Detail"	TFNM "Data\world\Merac\Ska\Texture\merac_Detail.tex";
+    "light_sh_a"	TFNM "Data\Effect\TEXTURE\light_sh_a.tex";
+  }
+  SKELETON  	TFNM "Data\world\Merac\Ska\w3_snakepole.bs";
+  ANIMSET   	TFNM "Data\world\Merac\Ska\w3_snakepole.ba";
+  ANIMEFFECT	TFNM "Data\World\Merac\Ska\w3_snakepole.bae";
+  ALLFRAMESBBOX	-21.8615,-0.728866,-16.9689,21.8615,37.736,16.9689;
+  COLISION
+  {
+    "Default"  {-2,0,-2.5,2,10,1.5;}
+  }
+}

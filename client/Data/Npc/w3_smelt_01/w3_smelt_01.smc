@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w3_smelt_01";
+{
+  MESH       	TFNM "Data\Npc\w3_smelt_01\_TAG_T_W3S01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\w3_smelt_01\w3_smelt_01.bm";
+  TEXTURES   
+  {
+    "w3_smelt_01"	TFNM "Data\Npc\w3_smelt_01\w3_smelt_01.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\w3_smelt_01\w3_smelt_01.bs";
+  ANIMSET   	TFNM "Data\Npc\w3_smelt_01\w3_smelt_01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\w3_smelt_01\w3_smelt_01.bae";
+  ALLFRAMESBBOX	-0.480536,-0.00407,-0.433681,0.480575,1.3797,0.209848;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.4,0.5;}
+  }
+}

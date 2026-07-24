@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bu_wm_kro";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_wm_kro.bm";
+  TEXTURES   
+  {
+    "hw_bu_wm_kro"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_wm_kro.tex";
+  }
+  ALLFRAMESBBOX	-0.399583,1.14493,-0.139792,0.399583,1.71869,0.121583;
+  COLISION
+  {
+  }
+}

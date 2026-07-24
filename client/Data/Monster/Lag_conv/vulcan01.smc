@@ -1,0 +1,24 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "vulcan01";
+{
+  MESH       	TFNM "Data\Monster\Lag_conv\vulcan01_1.bm";
+  TEXTURES   
+  {
+    "boss_bul01_01"	TFNM "Data\Monster\Lag_conv\Texture\boss_bul01_01.tex";
+    "boss_bul01_03"	TFNM "Data\Monster\Lag_conv\Texture\boss_bul01_03.tex";
+  }
+  MESH       	TFNM "Data\Monster\Lag_conv\vulcan01_2.bm";
+  TEXTURES   
+  {
+    "boss_bul01_02"	TFNM "Data\Monster\Lag_conv\Texture\boss_bul01_02.tex";
+    "boss_bul01_04"	TFNM "Data\Monster\Lag_conv\Texture\boss_bul01_04.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lag_conv\vulcan01.bs";
+  ANIMSET   	TFNM "Data\Monster\Lag_conv\vulcan01.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Lag_conv\vulcan01.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,4,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,4,1.5;}
+  }
+}

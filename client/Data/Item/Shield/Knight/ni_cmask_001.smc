@@ -1,0 +1,18 @@
+NAME "ni_cmask_001";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_cmask_001.bm";
+  TEXTURES   
+  {
+    "ni_cmask_001"	TFNM "Data\Item\Shield\Knight\Texture\ni_cmask_001.tex";
+  }
+  MESH       	TFNM "Data\character\knight\ni_hair_000.bm";
+  TEXTURES   
+  {
+    "ni_face_000"	TFNM "Data\character\knight\ni_face_000.tex";
+    "ni_face_N_000"	TFNM "Data\character\knight\ni_face_N_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

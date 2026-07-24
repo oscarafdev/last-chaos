@@ -1,0 +1,60 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "rock_bomb";
+{
+  MESH       	TFNM "Data\Effect\Ska\rock__03.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_01.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_02.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_04.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_05.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_08.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_10.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_11.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_12.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\rock_13.bm";
+  TEXTURES   
+  {
+    "rock"	TFNM "Data\Effect\Texture\rock.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\rock_bomb.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\rock_bomb.ba";
+  ALLFRAMESBBOX	-3,0,-3,3,2,3;
+  COLISION
+  {
+  }
+}

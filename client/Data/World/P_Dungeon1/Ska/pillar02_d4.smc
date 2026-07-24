@@ -1,0 +1,13 @@
+NAME "pillar02_d4";
+{
+  MESH       	TFNM "Data\World\P_Dungeon1\Ska\pillar02_d4.bm";
+  TEXTURES   
+  {
+    "Detail_D4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\Detail_D4.tex";
+    "pd_boss_pillar01"	TFNM "Data\World\P_Dungeon1\Ska\Texture\pd_boss_pillar01.tex";
+  }
+  ALLFRAMESBBOX	-2.8112,-17.0264,-2.81121,2.8112,17.0264,2.81121;
+  COLISION
+  {
+  }
+}

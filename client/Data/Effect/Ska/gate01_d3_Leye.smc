@@ -1,0 +1,13 @@
+NAME "gate01_d3_Leye";
+{
+  MESH       	TFNM "Data\Effect\SKA\gate01_d3_Leye.bm";
+  TEXTURES   
+  {
+    "light_sh_c"	TFNM "Data\Effect\TEXTURE\light_sh_c.tex";
+  }
+ 
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

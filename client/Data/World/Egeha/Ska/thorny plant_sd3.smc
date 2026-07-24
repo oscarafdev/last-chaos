@@ -1,0 +1,13 @@
+NAME "thorny plant branch03_sd3";
+{
+  MESH       	TFNM "Data\World\S_Dungeon3\ska\thorny plant branch03_sd3.bm";
+  TEXTURES   
+  {
+    "thorny plant branch_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant branch_sd3.tex";
+    "thorny plant branch_a_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant branch_a_sd3.tex";
+  }
+  ALLFRAMESBBOX	-2.93635,-0.04426,0,2.93635,10.3994,0.000143;
+  COLISION
+  {
+  }
+}

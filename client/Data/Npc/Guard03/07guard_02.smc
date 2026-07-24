@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "07guard_02";
+{
+  MESH       	TFNM "Data\npc\Guard03\07guard_02.bm";
+  TEXTURES   
+  {
+    "07guard_02"	TFNM "Data\npc\Guard03\07guard_02.tex";
+  }
+  MESH       	TFNM "Data\npc\Guard03\07guard_02_1.bm";
+  TEXTURES   
+  {
+    "07guard_02"	TFNM "Data\npc\Guard03\07guard_02.tex";
+  }
+  MESH       	TFNM "Data\npc\Guard03\07guard_02_2.bm";
+  TEXTURES   
+  {
+    "07guard_02"	TFNM "Data\npc\Guard03\07guard_02.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Guard03\07guard_02.bs";
+  ANIMSET   	TFNM "Data\npc\Guard03\07guard_02.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1.93,0.5;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.93,0.4;}
+  }
+}

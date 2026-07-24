@@ -1,0 +1,5 @@
+MESHLODLIST
+{
+  MAX_DISTANCE 15;
+  #INCLUDE "data\world\egeha\ska\Egeha_Temple_03.am"
+}

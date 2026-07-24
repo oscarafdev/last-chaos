@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="BingoUI" x="0" y="0" w="145" h="169" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="img_back" x="0" y="0" w="145" h="169" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="409" r="69" b="478" unit="23" splitmode="2" />
+    <UIText id="text_title" x="28" y="4" w="90" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="126" y="4" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIImageSplit x="33" y="31" w="79" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="212" t="353" r="260" b="369" unit="16" splitmode="0" />
+    <UIText id="text_score" x="36" y="32" w="74" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="3190" str="점수:%d" str_ellipsis="" color="0x57ffffff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="img_bingo" x="13" y="28" w="20" h="20" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="218" t="163" r="238" b="183" />
+    <UIArray id="array_bingo" x="20" y="55" w="105" h="105" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="3" col="3" sx="0" sy="0" gapx="1" gapy="1" show_row="9">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIArrayItem id="array_item_001" x="0" y="0" w="34" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage x="0" y="0" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="167" t="353" r="201" b="387" />
+            <UIIcon id="icon_item" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        </UIArrayItem>
+    </UIArray>
+</Window>

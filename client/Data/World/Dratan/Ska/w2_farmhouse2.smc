@@ -1,0 +1,22 @@
+NAME "w2_farmhouse2";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_farmhouse2.bm";
+  TEXTURES   
+  {
+    "w2_wallgate4"	TFNM "Data\World\Dratan\Ska\Texture\w2_wallgate4.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_charge02"	TFNM "Data\World\Dratan\Ska\Texture\w2_charge02.tex";
+    "w2_charge03"	TFNM "Data\World\Dratan\Ska\Texture\w2_charge03.tex";
+    "w2_farm1-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm1-1.tex";
+    "w2_farm1"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm1.tex";
+    "w2_farm2"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm2.tex";
+    "w2_farm3"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm3.tex";
+    "w2_farm4"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm4.tex";
+    "w2_farm6"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm6.tex";
+    "w2_farmdoor1"	TFNM "Data\World\Dratan\Ska\Texture\w2_farmdoor1.tex";
+  }
+  ALLFRAMESBBOX	-26.1254,-0.021198,-18.6226,24.7829,22.0754,18.6227;
+  COLISION
+  {
+  }
+}

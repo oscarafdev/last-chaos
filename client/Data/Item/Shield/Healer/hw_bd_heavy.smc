@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_heavy";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bd_heavy.bm";
+  TEXTURES   
+  {
+    "hw_bd_heavy"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_heavy.tex";
+  }
+  ALLFRAMESBBOX	-0.306681,0.137367,-0.106717,0.3071,1.23636,0.129247;
+  COLISION
+  {
+  }
+}

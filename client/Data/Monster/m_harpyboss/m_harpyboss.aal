@@ -1,0 +1,24 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\monster\m_harpyboss\m_harpyboss_run.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\monster\m_harpyboss\m_harpyboss_att02.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\monster\m_harpyboss\m_harpyboss_da.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\monster\m_harpyboss\m_harpyboss_die.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\monster\m_harpyboss\m_harpyboss_idle01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\monster\m_harpyboss\m_harpyboss_att01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\monster\m_harpyboss\m_harpyboss_walk.AA"
+}

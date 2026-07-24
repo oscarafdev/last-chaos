@@ -1,0 +1,14 @@
+NAME "electric_lamp_001";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\mon_windsoul.bm";
+  TEXTURES   
+  {
+    "mon_windsoul"	TFNM "Data\World\M_combo\Ska\Texture\mon_windsoul.tex";
+    "M_combo_Detail_1"	TFNM "Data\World\M_combo\Texture\M_combo_Detail_1.tex";
+    "M_combo_Detail_2"	TFNM "Data\World\M_combo\Texture\M_combo_Detail_2.tex";
+  }
+  ALLFRAMESBBOX	-0.539312,-0.128669,-0.369103,0.539312,1.99647,0.27249;
+  COLISION
+  {
+  }
+}

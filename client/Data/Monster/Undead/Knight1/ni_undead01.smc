@@ -1,0 +1,58 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni";
+{
+  MESH       	TFNM "Data\Monster\Undead\Knight1\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bd_008.bm";
+  TEXTURES   
+  {
+    "ni_bd_008"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_008.tex";
+    "ni_bd_008_1"	TFNM "Data\Item\Shield\Knight\Texture\ni_bd_008_1.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bu_008.bm";
+  TEXTURES   
+  {
+    "ni_bu_008"	TFNM "Data\Item\Shield\Knight\Texture\ni_bu_008.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Knight1\ni_face_000.bm";
+  TEXTURES   
+  {
+    "ni_face_N_000"	TFNM "Data\Monster\Undead\Knight1\ni_face_N_000.tex";
+    "ni_face_000"	TFNM "Data\Monster\Undead\Knight1\ni_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_ft_008.bm";
+  TEXTURES   
+  {
+    "ni_ft_008"	TFNM "Data\Item\Shield\Knight\Texture\ni_ft_008.tex";
+  }
+  MESH       	TFNM "Data\Monster\Undead\Knight1\ni_hair_000.bm";
+  TEXTURES   
+  {
+    "ni_face_000"	TFNM "Data\Monster\Undead\Knight1\ni_face_000.tex";
+    "ni_face_N_000"	TFNM "Data\Monster\Undead\Knight1\ni_face_N_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hn_008.bm";
+  TEXTURES   
+  {
+    "ni_hn_008"	TFNM "Data\Item\Shield\Knight\Texture\ni_hn_008.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_DSWORD_009.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ni_dsword_009.bm";
+  TEXTURES   
+  {
+    "ni_dsword_009"	TFNM "Data\Item\Weapon\texture\ni_sword_009.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Undead\Knight1\ni.bs";
+  ANIMSET   	TFNM "Data\Monster\Undead\Knight1\ni.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Undead\Knight1\ni.bae";
+  ALLFRAMESBBOX	-0.35,0,-0.35,0.35,2,0.35;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.35,0.35,2,0.35;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "st-grassm";
+{
+  MESH       	TFNM "Data\world\LoginWorld\Ska\st-grassm.bm";
+  TEXTURES   
+  {
+    "st-grassm1"	TFNM "Data\world\LoginWorld\Ska\Texture\st-grassm1.tex";
+    "st-grassm2"	TFNM "Data\world\LoginWorld\Ska\Texture\st-grassm2.tex";
+  }
+  SKELETON  	TFNM "Data\world\LoginWorld\Ska\st-grassm.bs";
+  ANIMSET   	TFNM "Data\world\LoginWorld\Ska\st-grassm.ba";
+  ALLFRAMESBBOX	-2.93087,0,-4.20859,4.87754,1.19866,2.50988;
+  COLISION
+  {
+  }
+}

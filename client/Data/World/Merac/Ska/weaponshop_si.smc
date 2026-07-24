@@ -1,0 +1,24 @@
+NAME "weaponshop_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\weaponshop_si.bm";
+  TEXTURES   
+  {
+    "w3_smelt01"	TFNM "Data\World\Merac\ska\texture\w3_smelt01.tex";
+    "w3_Storebox01"	TFNM "Data\World\Merac\ska\texture\w3_Storebox01.tex";
+    "w3_arms"	TFNM "Data\World\Merac\ska\texture\w3_arms.tex";
+    "w3_fabric"	TFNM "Data\World\Merac\ska\texture\w3_fabric.tex";
+    "w3_arms fabric"	TFNM "Data\World\Merac\ska\texture\w3_arms fabric.tex";
+    "w3_smelt"	TFNM "Data\World\Merac\ska\texture\w3_smelt.tex";
+    "weapon_signboard_w3"	TFNM "Data\World\Merac\ska\texture\weapon_signboard_w3.tex";
+    "chair;table_si"	TFNM "Data\World\Merac\ska\texture\chair;table_si.tex";
+    "castle inside_flag_si"	TFNM "Data\World\Merac\ska\texture\castle inside_flag_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\ska\weaponshop_si.bs";
+  ANIMSET   	TFNM "Data\World\Merac\ska\weaponshop_si.ba";
+  ALLFRAMESBBOX	-5.49788,-0.0471262,-3.38077,5.49788,3.77436,4.26102;
+  COLISION
+  {
+    "Default"  {-5.4979,0,-3.82089,5.4979,3.82149,3.82089;}
+  }
+}

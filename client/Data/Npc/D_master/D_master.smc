@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "D_master";
+{
+  MESH       	TFNM "Data\npc\D_master\D_master_add.bm";
+  TEXTURES   
+  {
+    "D_master"	TFNM "Data\npc\D_master\D_master.tex";
+  }
+  MESH       	TFNM "Data\npc\D_master\D_master_add2.bm";
+  TEXTURES   
+  {
+    "D_master"	TFNM "Data\npc\D_master\D_master.tex";
+  }
+  MESH       	TFNM "Data\npc\D_master\D_master_body.bm";
+  TEXTURES   
+  {
+    "D_master"	TFNM "Data\npc\D_master\D_master.tex";
+  }
+  MESH       	TFNM "Data\npc\D_master\D_master_hair.bm";
+  TEXTURES   
+  {
+    "D_master"	TFNM "Data\npc\D_master\D_master.tex";
+  }
+  MESH       	TFNM "Data\npc\D_master\D_master_item.bm";
+  TEXTURES   
+  {
+    "D_master_item"	TFNM "Data\npc\D_master\D_master_item.tex";
+  }
+  SKELETON  	TFNM "Data\npc\D_master\D_master.bs";
+  ANIMSET   	TFNM "Data\npc\D_master\D_master.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

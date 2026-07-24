@@ -1,0 +1,12 @@
+NAME "st_treebase01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_treebase01.bm";
+  TEXTURES   
+  {
+    "StartZonetile_07"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_07.tex";
+  }
+  ALLFRAMESBBOX	-0.71931,-0.000943,-0.661633,0.739127,0.090412,0.60141;
+  COLISION
+  {
+  }
+}

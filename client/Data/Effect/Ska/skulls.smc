@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "skulls";
+{
+  MESH       	TFNM "Data\Effect\Ska\skulls.bm";
+  TEXTURES   
+  {
+    "skull"	TFNM "Data\Effect\Ska\ns_weapons\skull.tex";
+  }
+  ALLFRAMESBBOX	-0.140012,-0.192711,-0.174071,0.141642,0.214757,0.184938;
+  COLISION
+  {
+  }
+}

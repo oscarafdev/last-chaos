@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sluggard_hard";
+{
+  MESH       	TFNM "Data\Monster\Sluggard\sluggard_hard.bm";
+  TEXTURES   
+  {
+    "sluggard_hard"	TFNM "Data\Monster\Sluggard\sluggard_hard.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sluggard\sluggard_hard_1.bm";
+  TEXTURES   
+  {
+    "sluggard_hard"	TFNM "Data\Monster\Sluggard\sluggard_hard.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sluggard\sluggard_hard_ft.bm";
+  TEXTURES   
+  {
+    "sluggard_hard"	TFNM "Data\Monster\Sluggard\sluggard_hard.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sluggard\sluggard_hard_hn.bm";
+  TEXTURES   
+  {
+    "sluggard_hard"	TFNM "Data\Monster\Sluggard\sluggard_hard.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Sluggard\sluggard_hard.bs";
+  ANIMSET   	TFNM "Data\Monster\Sluggard\sluggard_hard.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Sluggard\sluggard_hard.bae";
+  ALLFRAMESBBOX	-1.75,0,-1.45,1.75,2.7,2.05;
+  COLISION
+  {
+    "Default"  {-1.75,0,-1.45,1.75,2.7,2.05;}
+  }
+}

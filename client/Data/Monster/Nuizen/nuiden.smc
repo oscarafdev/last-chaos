@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "nuiden";
+{
+  MESH       	TFNM "Data\monster\nuizen\nuiden.bm";
+  TEXTURES   
+  {
+    "nuiden"	TFNM "Data\monster\nuizen\nuiden.tex";
+  }
+  MESH       	TFNM "Data\monster\nuizen\nuiden_1.bm";
+  TEXTURES   
+  {
+    "nuiden"	TFNM "Data\monster\nuizen\nuiden.tex";
+  }
+  MESH       	TFNM "Data\monster\nuizen\_TAG_T_nuiden.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\nuizen\nuiden.bs";
+  ANIMSET   	TFNM "Data\monster\nuizen\nuiden.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Nuizen\nuiden.bae";
+  ALLFRAMESBBOX	-4,0,-4,4,3,4;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.75,0.6,3,0.75;}
+  }
+}

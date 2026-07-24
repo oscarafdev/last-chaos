@@ -1,0 +1,12 @@
+NAME "ArrowMagic";
+{
+  MESH       	TFNM "Data\Effect\Ska\blue_arr.bm";
+  TEXTURES   
+  {
+    "ar_fx_2color"	TFNM "Data\Effect\Ska\ar_fx_2color.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

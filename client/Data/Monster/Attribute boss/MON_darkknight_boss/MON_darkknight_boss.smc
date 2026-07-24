@@ -1,0 +1,65 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "MON_darkknight_boss";
+{
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\_TAG_ef_darkknight_boss.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\_TAG_WP_darkknight01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\_TAG_WP_darkknight02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss_bd.bm";
+  TEXTURES   
+  {
+    "MON_darkknight_boss_bd"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\MON_darkknight_boss_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss_am.bm";
+  TEXTURES   
+  {
+    "MON_darkknight_boss_bu01"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\MON_darkknight_boss_bu01.tex";
+    "MON_darkknight_boss_bd"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\MON_darkknight_boss_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss_bu01.bm";
+  TEXTURES   
+  {
+    "MON_darkknight_boss_bu01"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\MON_darkknight_boss_bu01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss_bu02.bm";
+  TEXTURES   
+  {
+    "MON_darkknight_boss_bu02"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\MON_darkknight_boss_bu02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss_hm.bm";
+  TEXTURES   
+  {
+    "MON_darkknight_boss_bu01"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\MON_darkknight_boss_bu01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss_hn.bm";
+  TEXTURES   
+  {
+    "MON_darkknight_boss_bd"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\MON_darkknight_boss_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\WP_darkknight_boss01.bm";
+  TEXTURES   
+  {
+    "WP_darkknight_boss"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\WP_darkknight_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\WP_darkknight_boss02.bm";
+  TEXTURES   
+  {
+    "WP_darkknight_boss"	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\texture\WP_darkknight_boss.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Attribute boss\MON_darkknight_boss\MON_darkknight_boss.bae";
+  ALLFRAMESBBOX	-2.94067,-0.730803,-4.55399,2.96162,2.2692,2.60084;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,3,0.5;}
+  }
+}

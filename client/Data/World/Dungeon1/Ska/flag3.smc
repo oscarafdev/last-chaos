@@ -1,0 +1,14 @@
+NAME "flag3";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\flag3.bm";
+  TEXTURES   
+  {
+    "castledoor_08"	TFNM "Data\world\Dungeon1\Ska\Texture\castledoor_08.tex";
+  }
+  SKELETON  	TFNM "Data\world\Dungeon1\Ska\flag3.bs";
+  ANIMSET   	TFNM "Data\world\Dungeon1\Ska\flag3.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

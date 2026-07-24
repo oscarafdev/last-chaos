@@ -1,0 +1,61 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "NPC_Flors";
+{
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_body01.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_body01"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_body01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_body01_01.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_body01"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_body01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_body02.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_body02"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_body02.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_body03.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_body03"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_body03.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_body04.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_body04"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_body04.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_face01.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_face01"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_face01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_hair01.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_hair01"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_hair01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_hm01.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_hm01"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_hm01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\NPC_Flors_head_staff01.bm";
+  TEXTURES   
+  {
+    "NPC_Flors_head_staff01"	TFNM "Data\Npc\Flors\Texture\NPC_Flors_head_staff01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Flors\_TAG_T_FLOR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Flors\NPC_Flors_head.bs";
+  ANIMSET   	TFNM "Data\Npc\Flors\NPC_Flors_head.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Flors\NPC_Flors_head.bae";
+  ALLFRAMESBBOX	-0.735643,-0.000649207,-1.30452,1.4798,1.94638,1.13852;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "Siege_pyramiddog";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Siege_pyramiddog.bm";
+  TEXTURES   
+  {
+    "Siege_castlepyramid01"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_castlepyramid01.tex";
+    "Siege_gs_box-02"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_gs_box-02.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.07794,-0.00655,-3.51536,1.07795,4.84885,3.51536;
+  COLISION
+  {
+    "Default"  {-1.12621,-0.0168372,-3.59225,1.10754,1.27998,3.54679;}
+  }
+}

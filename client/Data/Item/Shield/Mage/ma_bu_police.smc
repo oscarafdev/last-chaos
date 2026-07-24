@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bu_police";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bu_police.bm";
+  TEXTURES   
+  {
+    "ma_bu_police "	TFNM "Data\Item\Shield\Mage\Texture\ma_bu_police .tex";
+  }
+  ALLFRAMESBBOX	-0.281018,1.17812,-0.202595,0.281018,1.75311,0.073966;
+  COLISION
+  {
+  }
+}

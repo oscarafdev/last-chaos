@@ -1,0 +1,13 @@
+OFFSET    	-0.00015342,-0.00204992,-0.00439337,0.25,-0.25,-0.25;
+NAME "protection_a01";
+{
+  MESH       	TFNM "Data\Effect\SKA\protection_a01.bm";
+  TEXTURES   
+  {
+    "protection_a01"	TFNM "Data\Effect\TEXTURE\protection_a01.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "torture_balloon_02";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\torture_balloon_02.bm";
+  TEXTURES   
+  {
+    "torture_balloon_02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\torture_balloon_02.tex";
+  }
+  ALLFRAMESBBOX	-0.41724,-0.002947,-1.12817,0.41724,1.02717,1.16258;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

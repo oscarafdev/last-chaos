@@ -1,0 +1,14 @@
+NAME "ironball";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\ironball.bm";
+  TEXTURES   
+  {
+    "chain"	TFNM "Data\World\tarian_dungeon\Ska\Texture\chain.tex";
+    "ironball01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\ironball01.tex";
+  }
+  ALLFRAMESBBOX	-0.249492,0.000143,-0.262331,0.888251,0.497433,0.262331;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

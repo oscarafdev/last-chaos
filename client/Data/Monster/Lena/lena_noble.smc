@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "lena_noble";
+{
+  MESH       	TFNM "Data\Monster\Lena\hair.bm";
+  TEXTURES   
+  {
+    "Lena Of Noble_hair"	TFNM "Data\Monster\Lena\Lena Of Noble_hair.tex";
+  }
+  MESH       	TFNM "Data\Monster\Lena\_TAG_lenaHD.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Lena\lena_noble.bm";
+  TEXTURES   
+  {
+    "Lena Of Noble_body"	TFNM "Data\Monster\Lena\Lena Of Noble_body.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lena\lena.bs";
+  ANIMSET   	TFNM "Data\Monster\Lena\lena.ba";
+  ALLFRAMESBBOX	-0.65,0,-0.65,0.65,1.7,0.65;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.75,0.5,1.8,0.75;}
+  }
+}

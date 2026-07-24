@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "legendro_deadlyposion";
+{
+  MESH       	TFNM "Data\Monster\Legendro\legendro_deadlyposion.bm";
+  TEXTURES   
+  {
+    "legendro_deadlyposion01"	TFNM "Data\Monster\Legendro\legendro_deadlyposion01.tex";
+    "legendro_deadlyposion02"	TFNM "Data\Monster\Legendro\legendro_deadlyposion02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Legendro\legendro_deadlyposion.bs";
+  ANIMSET   	TFNM "Data\Monster\Legendro\legendro_deadlyposion.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Legendro\legendro_deadlyposion.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.2,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2.2,1.5;}
+  }
+}

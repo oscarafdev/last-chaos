@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_cos_volcan_hm";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_cos_volcan_hm.bm";
+  TEXTURES   
+  {
+    "so_cos_volcan_hm"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_cos_volcan_hm.tex";
+  }
+  ALLFRAMESBBOX	-0.110472,1.69394,-0.206693,0.110472,2.12922,0.124798;
+  COLISION
+  {
+  }
+}

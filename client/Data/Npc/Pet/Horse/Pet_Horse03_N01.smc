@@ -1,0 +1,42 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Pet_Horse03";
+{
+  MESH       	TFNM "Data\Npc\pet\Horse\_TAG_T_HORSE_3_N01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\Horse\_TAG_T_N01CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\Horse\Pet_Horse03_N01.bm";
+  TEXTURES   
+  {
+    "pet_horse03_N01"	TFNM "Data\Npc\pet\Horse\pet_horse03_N01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\Horse\pet_horse03_N01_1.bm";
+  TEXTURES   
+  {
+    "pet_horse03_N01_1"	TFNM "Data\Npc\pet\Horse\pet_horse03_N01_1.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\Horse\_TAG_T_H03N01LE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\Horse\_TAG_T_H03N01RE.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\Horse\Pet_Horse03_N01.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\Horse\Pet_Horse03_N01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\Horse\Pet_Horse03_N01.bae";
+  ALLFRAMESBBOX	-0.5,0,-1.5,0.5,3.1,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-1.5,0.5,3,1.5;}
+  }
+  RIDING
+  {
+    "Bip01 Spine1"  	0.3,1.7,0,90,0,180;
+  }
+}

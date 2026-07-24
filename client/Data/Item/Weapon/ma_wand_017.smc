@@ -1,0 +1,17 @@
+OFFSET    	0.2,-1.26,-0.05,-110,-1,-35;
+NAME "ma_wand_003";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_WAND_017.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_wand_017.bm";
+  TEXTURES   
+  {
+    "ma_wand_017"	TFNM "Data\Item\Weapon\Texture\ma_wand_017.tex";
+  }
+  ALLFRAMESBBOX	-0.738055,-0.0160152,-0.440561,0.732857,0.0907351,0.330387;
+  COLISION
+  {
+  }
+}

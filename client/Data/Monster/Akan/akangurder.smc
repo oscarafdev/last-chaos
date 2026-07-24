@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "akangurder";
+{
+  MESH       	TFNM "Data\Monster\Akan\akangurder\akangurder.bm";
+  TEXTURES   
+  {
+    "akanguarder"	TFNM "Data\Monster\Akan\Texture\akanguarder.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akangurder\akangurder_1.bm";
+  TEXTURES   
+  {
+    "akanguarder"	TFNM "Data\Monster\Akan\Texture\akanguarder.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akangurder\akangurder_2.bm";
+  TEXTURES   
+  {
+    "akanguarder"	TFNM "Data\Monster\Akan\Texture\akanguarder.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akangurder\akangurder_weapon.bm";
+  TEXTURES   
+  {
+    "akanguarder_weapon"	TFNM "Data\Monster\Akan\Texture\akanguarder_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akangurder\_TAG_AKANGW.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Akan\akangurder\akangurder.bs";
+  ANIMSET   	TFNM "Data\Monster\Akan\akangurder\akangurder.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Akan\akangurder\akangurder.bae";
+  ALLFRAMESBBOX	-2.71036,-0.151453,-3.07866,2.21905,3.53024,4.31804;
+  COLISION
+  {
+    "Default"  {-2,0,-1.5,1,2.6,1.5;}
+  }
+}

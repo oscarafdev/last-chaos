@@ -1,0 +1,38 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Fanatic_voracity";
+{
+  MESH       	TFNM "Data\Monster\Fanatic\voracity01.bm";
+  TEXTURES   
+  {
+    "Fanatic_bu"	TFNM "Data\Monster\Fanatic\Fanatic_bu.tex";
+    "Fanatic_bd"	TFNM "Data\Monster\Fanatic\Fanatic_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\voracity02.bm";
+  TEXTURES   
+  {
+    "Fanatic_adddn"	TFNM "Data\Monster\Fanatic\Fanatic_adddn.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\Lwea_vora.bm";
+  TEXTURES   
+  {
+    "a Fanatic"	TFNM "Data\Monster\Fanatic\a Fanatic.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\upperG.bm";
+  TEXTURES   
+  {
+    "Fanatic_addup"	TFNM "Data\Monster\Fanatic\Fanatic_addup.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\Rwea_vora.bm";
+  TEXTURES   
+  {
+    "a Fanatic"	TFNM "Data\Monster\Fanatic\a Fanatic.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Fanatic\fanatic_voracity.bs";
+  ANIMSET   	TFNM "Data\Monster\Fanatic\Fanatic_voracity.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Fanatic\Fanatic_voracity.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.9,0.75,2.3,0.6;
+  COLISION
+  {
+    "Default"  {-0.7,0,-0.7,0.7,2.3,0.7;}
+  }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="217" h="165" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="217" h="165" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="409" r="69" b="478" unit="23" splitmode="2" />
+    <UIText x="28" y="5" w="160" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2666" str="가입 희망 파티 설정" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="198" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIButton id="btn_normal" x="0" y="-15" w="90" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" str_idx="4743" str="일반 파티" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="262" b="453" />
+    </UIButton>
+    <UIButton id="btn_battle" x="0" y="36" w="90" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" str_idx="2662" str="전투형 파티" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="262" b="453" />
+    </UIButton>
+</Window>

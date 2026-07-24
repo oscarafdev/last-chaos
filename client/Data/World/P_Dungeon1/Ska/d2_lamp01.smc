@@ -1,0 +1,13 @@
+OFFSET    	0.009,-0.0140959,-0.00512904,0,0,0;
+NAME "d2_lamp01";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_lamp01.bm";
+  TEXTURES   
+  {
+    "lamp01"	TFNM "Data\World\Dungeon2\Ska\Texture\lamp01.tex";
+  }
+  ALLFRAMESBBOX	-0.280327,-0.498329,-0.136198,0.280327,0.498329,0.1362;
+  COLISION
+  {
+  }
+}

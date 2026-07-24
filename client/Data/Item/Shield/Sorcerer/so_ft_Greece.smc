@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_ft_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_ft_Greece.bm";
+  TEXTURES   
+  {
+    "so_hermes1_Greece"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hermes1_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.307271,-0.000585,-0.137156,0.307271,0.518573,0.122079;
+  COLISION
+  {
+  }
+}

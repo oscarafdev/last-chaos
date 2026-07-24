@@ -1,0 +1,15 @@
+NAME "w3_tree21";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w3_tree21.bm";
+  TEXTURES   
+  {
+    "w3_trees02"	TFNM "Data\World\StartZone\Ska\Texture\w3_trees02.tex";
+    "w3_tree021"	TFNM "Data\World\StartZone\Ska\Texture\w3_tree021.tex";
+    "merac_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.73534,-0.450868,-3.3788,4.82428,10.7401,4.79788;
+  COLISION
+  {
+    "Default"  {-2.97168,0,-3.38138,3.52835,7,3.11865;}
+  }
+}

@@ -1,0 +1,34 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "WyvernHigh";
+{
+  MESH       	TFNM "Data\monster\Wyvern\WyvernHigh01.bm";
+  TEXTURES   
+  {
+    "m_wm_b"	TFNM "Data\monster\Wyvern\m_wm_b.tex";
+    "m_wm_b_"	TFNM "Data\monster\Wyvern\m_wm_b_.tex";
+  }
+  MESH       	TFNM "Data\monster\Wyvern\WyvernHigh02.bm";
+  TEXTURES   
+  {
+    "m_wm_h"	TFNM "Data\monster\Wyvern\m_wm_h.tex";
+    "m_wm_h_"	TFNM "Data\monster\Wyvern\m_wm_h_.tex";
+  }
+  MESH       	TFNM "Data\monster\Wyvern\WyvernHigh03.bm";
+  TEXTURES   
+  {
+    "m_wm_w"	TFNM "Data\monster\Wyvern\m_wm_w.tex";
+    "m_wm_w_"	TFNM "Data\monster\Wyvern\m_wm_w_.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wyvern\_TAG_T_CENTER_wm.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Wyvern\WyvernHigh.bs";
+  ANIMSET   	TFNM "Data\monster\Wyvern\WyvernHigh.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Wyvern\WyvernHigh.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.4,1.5,3.4,1.4;
+  COLISION
+  {
+    "Default"  {-0.5,0,-1,0.5,3,1;}
+  }
+}

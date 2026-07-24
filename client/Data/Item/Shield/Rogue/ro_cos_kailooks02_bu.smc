@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cos_kailooks02_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_kailooks02_wing.bm";
+  TEXTURES   
+  {
+    "ro_cos_kailooks02_wing"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_kailooks02_wing.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_kailooks02_bu.bm";
+  TEXTURES   
+  {
+    "ro_cos_kailooks02_bu"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_kailooks02_bu.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_kailooks02_bu01.bm";
+  TEXTURES   
+  {
+    "ro_cos_kailooks02_bu"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_kailooks02_bu.tex";
+  }
+  ALLFRAMESBBOX	-0.4984,0.399868,-0.164099,0.498399,2.04446,0.366618;
+  COLISION
+  {
+  }
+}

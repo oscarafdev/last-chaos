@@ -1,0 +1,21 @@
+NAME "w2_pyramidtower";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\_TAG_T_PTOWER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramidtower.bm";
+  TEXTURES   
+  {
+    "w2_pyramidtower"	TFNM "Data\World\Dratan\Ska\Texture\w2_pyramidtower.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\Dratan\Ska\w2_pyramidtower.bs";
+  ANIMSET   	TFNM "Data\World\Dratan\Ska\w2_pyramidtower.ba";
+  ANIMEFFECT	TFNM "Data\World\Dratan\Ska\w2_pyramidtower.bae";
+  ALLFRAMESBBOX	-1.5071,-0.006433,-2.07037,1.50711,3.367,2.07037;
+  COLISION
+  {
+    "Default"  {-1.5,0,-2,1.5,3,2;}
+  }
+}

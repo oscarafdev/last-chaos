@@ -1,0 +1,13 @@
+OFFSET    	0,0,6,180,0,0;
+NAME "Title_BG";
+{
+  MESH       	TFNM "Data\Interface\title_bg\title_BG.bm";
+  TEXTURES   
+  {
+    "Title_BG"	TFNM "Data\Interface\title_bg\TITLE_BG.tex";
+  }
+  ALLFRAMESBBOX	-6.69834,-4.65824,0,6.69834,4.65824,0;
+  COLISION
+  {
+  }
+}

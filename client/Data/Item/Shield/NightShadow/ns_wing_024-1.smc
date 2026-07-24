@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_wing_024-1";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_wing_024-1.bm";
+  TEXTURES   
+  {
+    "ns_wing_024-1"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_wing_024-1.tex";
+  }
+  ALLFRAMESBBOX	-0.587078,0.559753,0.112568,0.587152,2.03533,0.533661;
+  COLISION
+  {
+  }
+}

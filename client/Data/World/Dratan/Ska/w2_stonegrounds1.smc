@@ -1,0 +1,14 @@
+NAME "w2_stonegrounds1";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_stonegrounds1.bm";
+  TEXTURES   
+  {
+    "w2_stonegrounds"	TFNM "Data\World\Dratan\Ska\Texture\w2_stonegrounds.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.58663,-0.576585,-1.63288,1.58662,1.50551,1.63289;
+  COLISION
+  {
+    "Default"  {-1.19582,-0.452252,-1.58381,1.39283,1.54754,1.54888;}
+  }
+}

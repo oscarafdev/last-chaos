@@ -1,0 +1,14 @@
+NAME "w3_Cross01";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_Cross01.bm";
+  TEXTURES   
+  {
+    "w3_Cross"	TFNM "Data\World\Merac\ska\texture\w3_Cross.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.503112,-0.006761,-0.244813,0.475645,1.67698,0.244813;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.5,0.5;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "w2_mineral02";
+{
+  MESH       	TFNM "Data\Monster\Product\w2_mineral02.bm";
+  TEXTURES   
+  {
+    "w2_mineral1"	TFNM "Data\Monster\Product\Texture\w2_mineral1.tex";
+    "Dratan_Detail"	TFNM "Data\Monster\Product\Texture\Dratan_Detail.tex";
+    "mine's_jewelry copy"	TFNM "Data\Monster\Product\Texture\mine's_jewelry copy.tex";
+  }
+  ALLFRAMESBBOX	-3.91505,-1.51871,-3.86467,3.90882,1.7911,3.68755;
+  COLISION
+  {
+    "Default"  {-3.5,0,-3.5,3.5,2,3.5;}
+  }
+}

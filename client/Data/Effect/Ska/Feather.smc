@@ -1,0 +1,14 @@
+NAME "Feather";
+{
+  MESH       	TFNM "Data\Effect\Ska\FX_elf_re_feather.bm";
+  TEXTURES   
+  {
+    "FX_elf_re_feather"	TFNM "Data\Effect\Texture\FX_elf_re_feather.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\FX_elf_re_feather.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\FX_elf_re_feather.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

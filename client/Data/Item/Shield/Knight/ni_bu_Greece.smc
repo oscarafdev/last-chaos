@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_bu_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_bu_Greece.bm";
+  TEXTURES   
+  {
+    "ni_bu_Greece"	TFNM "Data\Item\Shield\Knight\Texture\ni_bu_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.422025,1.20344,-0.161006,0.422015,1.78919,0.205754;
+  COLISION
+  {
+  }
+}

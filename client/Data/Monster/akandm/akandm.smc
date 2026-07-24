@@ -1,0 +1,29 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "akandm";
+{
+  MESH       	TFNM "Data\Monster\akandm\akandm.bm";
+  TEXTURES   
+  {
+    "Darkness_Wizard"	TFNM "Data\Monster\akandm\Texture\Darkness_Wizard.tex";
+  }
+  MESH       	TFNM "Data\Monster\akandm\_TAG_DW.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akandm\_TAG_DWE01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akandm\_TAG_DWE02.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\akandm\akandm.bs";
+  ANIMSET   	TFNM "Data\Monster\akandm\akandm.ba";
+  ANIMEFFECT	TFNM "Data\Monster\akandm\akandm.bae";
+  ALLFRAMESBBOX	-1.3511,-1.00219,-1.08932,1.41502,2.56294,2.06747;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.5,0.75,2.1,0.5;}
+  }
+}

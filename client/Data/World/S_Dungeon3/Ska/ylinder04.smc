@@ -1,0 +1,19 @@
+NAME "ylinder04";
+{
+  MESH       	TFNM "Data\world\S_Dungeon3\Ska\ylinder04.bm";
+  TEXTURES   
+  {
+    "tile06_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\tile06_sd3.tex";
+    "tile02_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\tile02_sd3.tex";
+    "tile03_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\tile03_sd3.tex";
+    "tile04_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\tile04_sd3.tex";
+    "tile05_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\tile05_sd3.tex";
+    "tile01_sd3"	TFNM "Data\world\S_Dungeon3\Ska\Texture\tile01_sd3.tex";
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-117.89,-199.54,-87.8962,87.8962,406.794,87.8962;
+  COLISION
+  {
+    "Default"  {-102.5,-200,-87.5,102.5,406,87.5;}
+  }
+}

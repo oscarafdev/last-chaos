@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_Login";
+{
+  MESH       	TFNM "Data\Character\Rogue\Login\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Character\Rogue\Login\_TAG_DAGGER_011.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\character\Rogue\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Character\Rogue\Login\ro_Login.bs";
+  ANIMSET   	TFNM "Data\Character\Rogue\ro.ba";
+  ANIMEFFECT	TFNM "Data\Character\Rogue\ro.bae";
+  ANIMSET   	TFNM "Data\Character\Rogue\Login\ro_Login.ba";
+  ANIMEFFECT	TFNM "Data\Character\Rogue\Login\ro_Login.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

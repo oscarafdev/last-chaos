@@ -1,0 +1,5 @@
+Package: TFNM Bin\Shaders.dll
+Name: Shader_Reflection
+Info: Shader_Desc_Reflection
+VPCode: Shader_VPCode_Reflection
+PPCode: Shader_PPCode_Reflection

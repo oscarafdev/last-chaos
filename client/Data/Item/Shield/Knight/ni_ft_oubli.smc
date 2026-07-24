@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_ft_oubli";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_ft_oubli.bm";
+  TEXTURES   
+  {
+    "ni_ft_oubli"	TFNM "Data\Item\Shield\Knight\Texture\ni_ft_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.381359,-0.012532,-0.192545,0.381359,0.640764,0.185778;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "WoldManWeapon";
+{
+  MESH       	TFNM "Data\monster\WolfMan\WolfManWeapon2.bm";
+  TEXTURES   
+  {
+    "Anubisa2"	TFNM "Data\Monster\WolfMan\Anubisa2.tex";
+  }
+  ALLFRAMESBBOX	-1.5,0.5,-1.5,1.5,2.5,1.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "stone_statue";
+{
+  MESH       	TFNM "Data\World\LoginWorld2\Ska\stone_statue.bm";
+  TEXTURES   
+  {
+    "stone statue"	TFNM "Data\World\LoginWorld2\Ska\Texture\stone statue.tex";
+  }
+  ALLFRAMESBBOX	-6.65434,-0.1162,-5.08368,6.65434,10.5348,3.83184;
+  COLISION
+  {
+    "Default"  {-6.31196,-0.0049696,-5.29387,5.86658,5.93878,2.3218;}
+  }
+}

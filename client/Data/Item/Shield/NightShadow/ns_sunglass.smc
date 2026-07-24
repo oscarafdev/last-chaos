@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_sunglass";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_sunglass.bm";
+  TEXTURES   
+  {
+    "ns_sunglass"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_sunglass.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_sunglass_1.bm";
+  TEXTURES   
+  {
+    "ns_hair_000"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.082388,1.77778,-0.083768,0.082388,2.00299,0.133621;
+  COLISION
+  {
+  }
+}

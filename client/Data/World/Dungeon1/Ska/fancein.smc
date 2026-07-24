@@ -1,0 +1,13 @@
+NAME "fancein";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\fancein.bm";
+  TEXTURES   
+  {
+    "castle_in_02"	TFNM "Data\world\Dungeon1\Ska\Texture\castle_in_02.tex";
+  }
+  ALLFRAMESBBOX	-1.99765,0,-0.186468,2.36288,1.45429,0.185941;
+  COLISION
+  {
+    "Default"  {-2.0147,-0.0314436,-0.360232,2.36323,1.81625,0.369988;}
+  }
+}

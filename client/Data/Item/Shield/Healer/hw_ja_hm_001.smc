@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_ja_hm_001";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_ja_hm_001.bm";
+  TEXTURES   
+  {
+    "hw_hair_04"	TFNM "Data\Item\Shield\Healer\Texture\hw_hair_04.tex";
+    "hw_ja_hm_001"	TFNM "Data\Item\Shield\Healer\Texture\hw_ja_hm_001.tex";
+  }
+  ALLFRAMESBBOX	-0.10107,1.41238,-0.096347,0.10107,1.87529,0.147469;
+  COLISION
+  {
+  }
+}

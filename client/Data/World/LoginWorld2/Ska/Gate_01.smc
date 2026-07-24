@@ -1,0 +1,14 @@
+NAME "cadtle_14";
+{
+  MESH       	TFNM "Data\world\Ascadia-MondShine\Ska\cadtle_14.bm";
+  TEXTURES   
+  {
+    "castledoor_14_2"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\castledoor_14_2.tex";
+    "STREIANA_Detail"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\STREIANA_Detail.tex";
+  }
+  ALLFRAMESBBOX	-5.30076,-0.03281,-5.26205,5.26072,30.8953,5.22295;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

@@ -1,0 +1,12 @@
+NAME "candlestick_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\candlestick_G.bm";
+  TEXTURES   
+  {
+    "candlestick_G"	TFNM "Data\World\Guild\Ska\Texture\candlestick_G.tex";
+  }
+  ALLFRAMESBBOX	-0.246296,0.003203,-0.243232,0.246296,0.784645,0.243231;
+  COLISION
+  {
+  }
+}

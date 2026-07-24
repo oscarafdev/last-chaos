@@ -1,0 +1,72 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Navas\navas_bu.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_head.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_head_1.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_head_2.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_head_3.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_head_4.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_head_5.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_lhn.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_rhn.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Navas\navas_bd.bm";
+  TEXTURES   
+  {
+    "navas"	TFNM "Data\Monster\Navas\Texture\navas.tex";
+    "navas_1"	TFNM "Data\Monster\Navas\Texture\navas_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Navas\navas.bs";
+  ANIMSET   	TFNM "Data\Monster\Navas\navas.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Navas\navas.bae";
+  ALLFRAMESBBOX	-3,0,-2,3,5,2;
+  COLISION
+  {
+    "Default"  {-2.4404,0.000965595,-1.57569,2.5596,5.10097,1.42431;}
+  }
+}

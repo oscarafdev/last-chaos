@@ -1,0 +1,19 @@
+NAME "Tree_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\Bridge_01.bm";
+  TEXTURES   
+  {
+    "w6_bridge01-1"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_bridge01-1.tex";
+    "w6_bridge02-1"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_bridge02-1.tex";
+    "w6_bridge02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_bridge02.tex";
+    "w6_bridge03"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_bridge03.tex";
+    "w6_bridge04"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_bridge04.tex";
+    "w6_bridge05"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_bridge05.tex";
+    "w6_bridge01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_bridge01.tex";
+  }
+  ALLFRAMESBBOX	-7.63917,0.049805,-66.2467,7.5177,77.4512,58.3634;
+  COLISION
+  {
+    "Default"  {-2.12874,-0.113515,-1.99779,2.19596,3.56301,2.10131;}
+  }
+}

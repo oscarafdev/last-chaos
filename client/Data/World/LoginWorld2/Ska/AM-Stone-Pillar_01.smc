@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\stone_pillar02.bm";
+  TEXTURES   
+  {
+    "stone_pillar"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\stone_pillar.tex";
+  }
+  ALLFRAMESBBOX	-3.76026,-0.032802,-3.08766,3.4143,11.5334,2.89283;
+  COLISION
+  {
+  }
+}

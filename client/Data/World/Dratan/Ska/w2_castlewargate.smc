@@ -1,0 +1,20 @@
+NAME "w2_castletower";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\_TAG_T_GATE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_castlewargate.bm";
+  TEXTURES   
+  {
+    "w2_castlewargate"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlewargate.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\Dratan\Ska\w2_castlewargate.bs";
+  ANIMSET   	TFNM "Data\World\Dratan\Ska\w2_castlewargate.ba";
+  ANIMEFFECT	TFNM "Data\World\Dratan\Ska\w2_castlewargate.bae";
+  ALLFRAMESBBOX	-4.04645,-0.025082,-4.04665,4.04648,98.8319,4.04664;
+  COLISION
+  {
+  }
+}

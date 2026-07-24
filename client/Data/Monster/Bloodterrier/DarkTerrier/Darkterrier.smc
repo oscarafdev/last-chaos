@@ -1,0 +1,61 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Bloodterrier\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_1.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_body"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_2.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_body"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_3.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_body"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_4.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_body"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_5.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_body"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_body.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_body"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_ft.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_body"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_weapon.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_wing"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_wing.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier_wing.bm";
+  TEXTURES   
+  {
+    "DarkTerrier_wing"	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier_wing.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier.bs";
+  ANIMSET   	TFNM "Data\Monster\Bloodterrier\DarkTerrier\DarkTerrier.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Bloodterrier\DarkTerrier\darkbloodterrier.bae";
+  ALLFRAMESBBOX	-2.5,0,-1,2.5,9,1;
+  COLISION
+  {
+    "Default"  {-2.50001,0,-1,2.50001,9,1;}
+  }
+}

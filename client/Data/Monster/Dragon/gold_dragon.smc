@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dragon";
+{
+  MESH       	TFNM "Data\Monster\Dragon\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Dragon\gold_dragon.bm";
+  TEXTURES   
+  {
+    "gold_dragon"	TFNM "Data\Monster\Dragon\gold_dragon.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Dragon\gold_dragon.bs";
+  ANIMSET   	TFNM "Data\Monster\Dragon\gold_dragon.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Dragon\gold_dragon.bae";
+  ALLFRAMESBBOX	-7.5,0,-7.5,7.5,5.5,7.5;
+  COLISION
+  {
+    "Default"  {-2,0,-2.5,2,5.3,2.5;}
+  }
+}

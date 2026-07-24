@@ -1,0 +1,61 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_1.bm";
+  TEXTURES   
+  {
+    "Bloodterrier"	TFNM "Data\Monster\Bloodterrier\Bloodterrier.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_2.bm";
+  TEXTURES   
+  {
+    "Bloodterrier"	TFNM "Data\Monster\Bloodterrier\Bloodterrier.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_3.bm";
+  TEXTURES   
+  {
+    "Bloodterrier"	TFNM "Data\Monster\Bloodterrier\Bloodterrier.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_4.bm";
+  TEXTURES   
+  {
+    "Bloodterrier"	TFNM "Data\Monster\Bloodterrier\Bloodterrier.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_5.bm";
+  TEXTURES   
+  {
+    "Bloodterrier"	TFNM "Data\Monster\Bloodterrier\Bloodterrier.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_body.bm";
+  TEXTURES   
+  {
+    "Bloodterrier"	TFNM "Data\Monster\Bloodterrier\Bloodterrier.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_ft.bm";
+  TEXTURES   
+  {
+    "Bloodterrier"	TFNM "Data\Monster\Bloodterrier\Bloodterrier.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_weapon.bm";
+  TEXTURES   
+  {
+    "Blooddterrier_wing"	TFNM "Data\Monster\Bloodterrier\Blooddterrier_wing.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\bloodterrier_wing.bm";
+  TEXTURES   
+  {
+    "Blooddterrier_wing"	TFNM "Data\Monster\Bloodterrier\Blooddterrier_wing.tex";
+  }
+  MESH       	TFNM "Data\Monster\Bloodterrier\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Bloodterrier\Bloodterrier.bs";
+  ANIMSET   	TFNM "Data\Monster\Bloodterrier\Bloodterrier.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Bloodterrier\Bloodterrier.bae";
+  ALLFRAMESBBOX	-2.5,0,-1,2.5,9,1;
+  COLISION
+  {
+    "Default"  {-2.50001,0,-1,2.50001,9,1;}
+  }
+}

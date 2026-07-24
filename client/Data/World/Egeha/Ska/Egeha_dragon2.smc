@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\EgehaDragon2\Egeha_dragon2.bm";
+  TEXTURES   
+  {
+    "Egeha_dragon_a"	TFNM "Data\Monster\EgehaDragon2\Egeha_dragon_a.tex";
+    "Egeha_dragon_b"	TFNM "Data\Monster\EgehaDragon2\Egeha_dragon_b.tex";
+  }
+  ALLFRAMESBBOX	-2.5,0,-2,2.5,2.3,2;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

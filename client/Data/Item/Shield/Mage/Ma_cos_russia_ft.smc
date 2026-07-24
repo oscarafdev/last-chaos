@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ma_cos_russia_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\Ma_cos_russia_ft.bm";
+  TEXTURES   
+  {
+    "Ma_cos_russia_ft"	TFNM "Data\Item\Shield\Mage\Texture\ma_cos_russia_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.355888,-0.000315,-0.235551,0.355888,0.644984,0.046144;
+  COLISION
+  {
+    "Default"  {-0.355888,-0.000315011,-0.235551,0.355888,0.644984,0.046144;}
+  }
+}

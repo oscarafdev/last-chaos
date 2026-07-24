@@ -1,0 +1,24 @@
+NAME "w2_farmwater";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_farmwater.bm";
+  TEXTURES   
+  {
+    "fountain_d"	TFNM "Data\World\Dratan\Ska\Texture\fountain_d.tex";
+    "fountain_f"	TFNM "Data\World\Dratan\Ska\Texture\fountain_f.tex";
+    "w2_charge03"	TFNM "Data\World\Dratan\Ska\Texture\w2_charge03.tex";
+    "w2_farm1-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm1-1.tex";
+    "w2_farm3"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm3.tex";
+    "w2_farmwater2-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_farmwater2-1.tex";
+    "w2_farmwater2"	TFNM "Data\World\Dratan\Ska\Texture\w2_farmwater2.tex";
+    "w2_farmwater3"	TFNM "Data\World\Dratan\Ska\Texture\w2_farmwater3.tex";
+    "w2_farmwater4"	TFNM "Data\World\Dratan\Ska\Texture\w2_farmwater4.tex";
+    "w2_shopbox01"	TFNM "Data\World\Dratan\Ska\Texture\w2_shopbox01.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "fountain_b"	TFNM "Data\World\Dratan\Ska\Texture\fountain_b.tex";
+    "w2_farm1"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm1.tex";
+  }
+  ALLFRAMESBBOX	-12.4547,-0.382146,-13.5583,14.9824,26.6095,13.1071;
+  COLISION
+  {
+  }
+}

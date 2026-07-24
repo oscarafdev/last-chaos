@@ -1,0 +1,14 @@
+NAME "ni_shield";
+{
+  MESH       	TFNM "Data\Effect\Ska\ni_wp\ni_shield_00u.bm";
+  TEXTURES   
+  {
+    "ni_shield_00u"	TFNM "Data\Effect\Ska\ni_wp\ni_shield_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ni_wp\shi.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ni_wp\shi.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

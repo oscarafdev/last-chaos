@@ -1,0 +1,12 @@
+NAME "item_lightstone";
+{
+  MESH       	TFNM "Data\Item\Common\item_lightstone.bm";
+  TEXTURES   
+  {
+    "item_lightstone"	TFNM "Data\Item\Common\Texture\item_lightstone.tex";
+  }
+  ALLFRAMESBBOX	-0.25,0,-0.25,0.25,0.3,0.25;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Croits";
+{
+  MESH       	TFNM "Data\Monster\Croits\Croits.bm";
+  TEXTURES   
+  {
+    "croiz"	TFNM "Data\Monster\Croits\croiz.tex";
+  }
+  MESH       	TFNM "Data\Monster\Croits\_TAG_T_CROITS.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Croits\Croits.bs";
+  ANIMSET   	TFNM "Data\Monster\Croits\Croits.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Croits\Croits.bae";
+  ALLFRAMESBBOX	-2.15,0,-2.25,2.15,3.8,2.05;
+  COLISION
+  {
+    "Default"  {-2.15,0,-2.25,2.15,3.8,2.05;}
+  }
+}

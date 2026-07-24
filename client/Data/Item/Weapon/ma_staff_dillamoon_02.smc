@@ -1,0 +1,17 @@
+OFFSET    	0.2,-1.05,0.6,110,0,0;
+NAME "ma_staff_dillamoon_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_STAFF_dillamoon_02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ma_staff_dillamoon_02.bm";
+  TEXTURES   
+  {
+    "ma_staff_dillamoon_02"	TFNM "Data\Item\Weapon\Texture\ma_staff_dillamoon_02.tex";
+  }
+  ALLFRAMESBBOX	-0.931998,-0.0274709,-0.503993,1.33053,0.252282,0.391649;
+  COLISION
+  {
+  }
+}

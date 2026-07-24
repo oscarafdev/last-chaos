@@ -1,0 +1,16 @@
+NAME "regen_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\regen_si.bm";
+  TEXTURES   
+  {
+    "regen_si"	TFNM "Data\World\Merac\ska\texture\regen_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\Ska\regen_si.bs";
+  ANIMSET   	TFNM "Data\World\Merac\Ska\regen_si.ba";
+  ANIMEFFECT	TFNM "Data\World\Merac\Ska\regen_si.bae";
+  ALLFRAMESBBOX	-7.9998,0,-7.9998,7.9998,0.223013,7.9998;
+  COLISION
+  {
+  }
+}

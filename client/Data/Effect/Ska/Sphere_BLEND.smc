@@ -1,0 +1,12 @@
+NAME "Sphere_BLEND";
+{
+  MESH       	TFNM "Data\Effect\SKA\Sphere_BLEND.bm";
+  TEXTURES   
+  {
+    "Sphere_BLEND"	TFNM "Data\Effect\TEXTURE\Sphere_BLEND.tex";
+  }
+  ALLFRAMESBBOX	-1,-1,-1,1,1,1;
+  COLISION
+  {
+  }
+}

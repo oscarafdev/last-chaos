@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\AM-Tumb_02.bm";
+  TEXTURES   
+  {
+    "skull_tumb"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\skull_tumb.tex";
+  }
+  ALLFRAMESBBOX	-0.233319,-0.004674,-0.259771,0.37246,0.578535,0.302318;
+  COLISION
+  {
+  }
+}

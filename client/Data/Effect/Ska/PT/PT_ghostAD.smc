@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "PT_ghostAD";
+{
+  MESH       	TFNM "Data\Effect\Ska\PT\PT_ghostAD.bm";
+  TEXTURES   
+  {
+    "PT_ghost"	TFNM "Data\Effect\Ska\PT\PT_ghost.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\PT\PT_ghostAD.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\PT\PT_ghostAD.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

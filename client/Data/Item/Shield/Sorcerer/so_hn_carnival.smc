@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_hn_carnival";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hn_carnival.bm";
+  TEXTURES   
+  {
+    "so_hn_carnival"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hn_carnival.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hn_carnival_1.bm";
+  TEXTURES   
+  {
+    "so_hn_carnival_1"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hn_carnival_1.tex";
+  }
+  ALLFRAMESBBOX	-0.550882,1.0439,-0.018772,0.550881,1.39513,0.088918;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "ma_wand_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ma_wand_drop.bm";
+  TEXTURES   
+  {
+    "ma_wand_drop"	TFNM "Data\Item\Common\Texture\ma_wand_drop.tex";
+  }
+  ALLFRAMESBBOX	-0.3,0,-0.3,0.3,0.5,0.3;
+  COLISION
+  {
+  }
+}

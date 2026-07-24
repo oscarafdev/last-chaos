@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "blood_ball2";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\blood_ball2.bm";
+  TEXTURES   
+  {
+    "soul_poison00"	TFNM "Data\Effect\Ska\ns_weapons\soul_poison00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\blood_ball2_1.bm";
+  TEXTURES   
+  {
+    "soul_poison00"	TFNM "Data\Effect\Ska\ns_weapons\soul_poison00.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\blood_ball2_2.bm";
+  TEXTURES   
+  {
+    "soul_poison00"	TFNM "Data\Effect\Ska\ns_weapons\soul_poison00.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\blood_ball2.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\blood_ball2.ba";
+  ALLFRAMESBBOX	-0.134726,-0.11252,-0.134726,0.134726,0.11252,0.134726;
+  COLISION
+  {
+  }
+}

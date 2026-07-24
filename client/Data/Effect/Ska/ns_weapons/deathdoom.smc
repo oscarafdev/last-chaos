@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "deathdoom";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom_1.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom_2.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom_3.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom_4.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom_5.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom_6.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\deathdoom_7.bm";
+  TEXTURES   
+  {
+    "deathdoom"	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\deathdoom.ba";
+  ALLFRAMESBBOX	-2.08909,-5.06779,-9.10816,1.97808,8.91097,-2.90781;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

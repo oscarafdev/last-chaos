@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ni_cos_dessert_hm";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\Ni_cos_dessert_hm.bm";
+  TEXTURES   
+  {
+    "ni_hair_00"	TFNM "Data\Item\Shield\Knight\Texture\ni_hair_00.tex";
+    "Ni_cos_dessert_hm"	TFNM "Data\Item\Shield\Knight\Texture\Ni_cos_dessert_hm.tex";
+  }
+  ALLFRAMESBBOX	-0.095031,1.7583,-0.145611,0.092467,1.99428,0.132016;
+  COLISION
+  {
+  }
+}

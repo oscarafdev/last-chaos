@@ -1,0 +1,25 @@
+NAME "w2_d2gate";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_d2gate.bm";
+  TEXTURES   
+  {
+    "w2_d2gate_wall"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_wall.tex";
+    "w2_d2gate_03"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_03.tex";
+    "w2_d2gate_deco"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_deco.tex";
+    "w2_d2gate_door"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_door.tex";
+    "w2_d2gate_pole01"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_pole01.tex";
+    "w2_d2gate_pole02"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_pole02.tex";
+    "w2_d2gate_pole03"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_pole03.tex";
+    "w2_d2gate_pole04"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_pole04.tex";
+    "w2_d2gate_pole05"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_pole05.tex";
+    "w2_d2gate_stairs01"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_stairs01.tex";
+    "w2_d2gate_stairs02"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_stairs02.tex";
+    "w2_d2gate_under"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_under.tex";
+    "w2_d2gate_wall"	TFNM "Data\World\Dratan\Ska\Texture\w2_d2gate_wall.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-33.4915,-0.023935,-38.1149,33.4915,48.2764,38.1149;
+  COLISION
+  {
+  }
+}

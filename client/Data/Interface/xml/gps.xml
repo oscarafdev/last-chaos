@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="300" h="350" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="300" h="350" hide="0" tex="gps.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="300" b="350" />
+    <UIText id="title" x="0" y="5" w="250" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6282" str="점술사의 마법구" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="281" y="5" w="15" h="15" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="108032" t="16896" r="116736" b="25600" />
+        <uv type="1" l="0" t="0" r="0" b="0" />
+        <uv type="2" l="229" t="33" r="246" b="50" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIImage id="in_pattern" x="64" y="67" w="168" h="167" hide="0" tex="gps.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="331" t="219" r="499" b="386" />
+    <UIImage x="57" y="60" w="186" h="186" hide="0" tex="gps.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="319" t="7" r="505" b="193" />
+    <UIImage x="90" y="214" w="118" h="43" hide="0" tex="gps.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="354" t="410" r="472" b="453" />
+    <UIEdit id="input" x="80" y="270" w="150" h="20" hide="0" tex="gps.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" max="48" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="2" t="353" r="164" b="383" x="-7" y="-10" w="162" h="20" />
+    </UIEdit>
+    <UIText x="18" y="271" w="57" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="ID :" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="desc" x="18" y="42" w="264" h="215" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="6199" split_mode="0" text_col="0xffffffff" str="위치를 확인 하고 싶은 캐릭터 명을 입력 하세요">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIButton id="btn_ok" x="-60" y="300" w="95" h="21" hide="0" tex="gps.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="386" r="96" b="408" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="0" t="408" r="96" b="430" />
+        <uv type="3" l="0" t="430" r="96" b="451" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="60" y="300" w="95" h="21" hide="0" tex="gps.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="386" r="96" b="408" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="0" t="408" r="96" b="430" />
+        <uv type="3" l="0" t="430" r="96" b="451" />
+    </UIButton>
+</Window>

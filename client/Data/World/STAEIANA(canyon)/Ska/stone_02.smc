@@ -1,0 +1,13 @@
+NAME "stone_02";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\stone_02.bm";
+  TEXTURES   
+  {
+    "FireStone_02"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\FireStone_02.tex";
+    "rock-01-02"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\rock-01-02.tex";
+  }
+  ALLFRAMESBBOX	-4.71498,-0.051605,-7.03355,4.84167,24.1421,5.23617;
+  COLISION
+  {
+  }
+}

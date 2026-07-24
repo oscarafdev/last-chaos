@@ -1,0 +1,17 @@
+NAME "ns_bunny_000";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_bunnyears.bm";
+  TEXTURES   
+  {
+    "ns_bunny_000"	TFNM "Data\Item\Shield\Common\Texture\ns_bunny_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_hair_002.bm";
+  TEXTURES   
+  {
+    "ns_hair_002"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hair_002.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

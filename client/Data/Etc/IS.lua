@@ -1,0 +1,1 @@
+loginType=0

@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "m_harpyboss";
+{
+  MESH       	TFNM "Data\monster\m_harpyboss\m_harpyboss.bm";
+  TEXTURES   
+  {
+    "w2_m_harpyB"	TFNM "Data\monster\m_harpyboss\w2_m_harpyB.tex";
+  }
+  MESH       	TFNM "Data\monster\m_harpyboss\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\m_harpyboss\m_harpyboss.bs";
+  ANIMSET   	TFNM "Data\monster\m_harpyboss\m_harpyboss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\m_harpyboss\m_harpyboss.bae";
+  ALLFRAMESBBOX	-2.5,0,-3,2.5,5,3;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,5,0.6;}
+  }
+}

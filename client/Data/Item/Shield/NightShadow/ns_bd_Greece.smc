@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_bd_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_bd_Greece.bm";
+  TEXTURES   
+  {
+    "ns_bd_Greece"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_bd_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.349398,0.029514,-0.30784,0.360142,1.29678,0.349413;
+  COLISION
+  {
+  }
+}

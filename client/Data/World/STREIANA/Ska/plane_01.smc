@@ -1,0 +1,12 @@
+NAME "plane_01";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\Plane_01.bm";
+  TEXTURES   
+  {
+    "plane_01"	TFNM "Data\World\STREIANA\Ska\Texture\plane_01.tex";
+  }
+  ALLFRAMESBBOX	-0.372661,-0.034836,-0.357732,0.372844,0.535641,0.389268;
+  COLISION
+  {
+  }
+}

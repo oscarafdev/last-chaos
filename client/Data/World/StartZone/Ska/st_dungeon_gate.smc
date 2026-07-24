@@ -1,0 +1,20 @@
+NAME "st_dungeon_gate";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\st_dungeon_gate.bm";
+  TEXTURES   
+  {
+    "StartZonetile_window"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_window.tex";
+    "StartZonetile_wall002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_wall002.tex";
+    "StartZonetile_roof02"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_roof02.tex";
+    "StartZonetile_castle007"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle007.tex";
+    "StartZonetile_castle002"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle002.tex";
+    "StartZonetile_castle003"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_castle003.tex";
+    "StartZonetile_06"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_06.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_07_1"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_07_1.tex";
+  }
+  ALLFRAMESBBOX	-38.0867,-4.41746,-40.7657,37.6867,113.343,25.2097;
+  COLISION
+  {
+  }
+}

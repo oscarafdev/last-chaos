@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_phynix";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_phynix.bm";
+  TEXTURES   
+  {
+    "ma_phynix"	TFNM "Data\Item\Shield\Mage\Texture\ma_phynix.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hair_phynix.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hair_phynix_1.bm";
+  TEXTURES   
+  {
+    "ma_hair_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.128778,1.06463,-0.152338,0.128779,2.00324,0.365391;
+  COLISION
+  {
+  }
+}

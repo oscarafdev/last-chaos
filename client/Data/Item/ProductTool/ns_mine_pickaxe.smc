@@ -1,0 +1,17 @@
+OFFSET    	0.5,-0.86,0,180,7,-55;
+NAME "ns_mine_pickaxe";
+{
+  MESH       	TFNM "Data\Item\ProductTool\_TAG_ns_mine_pickaxe.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\ProductTool\ns_mine_pickaxe.bm";
+  TEXTURES   
+  {
+    "mine_pickaxe"	TFNM "Data\Item\ProductTool\Texture\mine_pickaxe.tex";
+  }
+  ALLFRAMESBBOX	-0.368053,0.0107824,-0.960524,0.405873,0.163497,0.348613;
+  COLISION
+  {
+  }
+}

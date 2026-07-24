@@ -1,0 +1,13 @@
+NAME "st_door p1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\st_door p1.bm";
+  TEXTURES   
+  {
+    "wall_door"	TFNM "Data\World\StartZone\Ska\Texture\wall_door.tex";
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.55037,0.011909,0.050307,1.39632,6.66417,0.05031;
+  COLISION
+  {
+  }
+}

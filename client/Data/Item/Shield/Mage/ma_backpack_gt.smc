@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_backpack_gt";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\eg04.bm";
+  TEXTURES   
+  {
+    "elec_guitar01"	TFNM "Data\Item\Shield\Mage\Texture\elec_guitar01.tex";
+  }
+  ALLFRAMESBBOX	-0.251936,1.33566,0.04498,0.251936,1.76924,0.192858;
+  COLISION
+  {
+  }
+}

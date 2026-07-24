@@ -1,0 +1,15 @@
+NAME "A_chain";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_gate_02.bm";
+  TEXTURES   
+  {
+    "PK_gate_02_1"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_gate_02_1.tex";
+    "PK_gate_01_3"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_gate_01_3.tex";
+    "PK_gate_01_1"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_gate_01_1.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-0.246998,-0.00179,-2.93542,3.51715,4.51759,2.24832;
+  COLISION
+  {
+  }
+}

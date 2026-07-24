@@ -1,0 +1,14 @@
+NAME "wormnest";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\wormnest.bm";
+  TEXTURES   
+  {
+    "wormnest-1"	TFNM "Data\World\StartZone\Ska\Texture\wormnest-1.tex";
+    "wormnest-2"	TFNM "Data\World\StartZone\Ska\Texture\wormnest-2.tex";
+  }
+  ALLFRAMESBBOX	-4.96592,-0.412261,-4.012,4.96592,11.9441,4.012;
+  COLISION
+  {
+    "Default"  {-2.14591,-0.0465058,-1.13464,2.2764,1.87517,1.08729;}
+  }
+}

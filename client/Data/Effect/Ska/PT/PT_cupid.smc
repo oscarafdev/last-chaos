@@ -1,0 +1,30 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "PT_cupid";
+{
+  MESH       	TFNM "Data\Effect\Ska\PT\PT_cupid_01.bm";
+  TEXTURES   
+  {
+    "PT_cupid_01"	TFNM "Data\Effect\Ska\PT\PT_cupid_01.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\PT\PT_cupid_02.bm";
+  TEXTURES   
+  {
+    "PT_cupid_02"	TFNM "Data\Effect\Ska\PT\PT_cupid_02.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\PT\PT_cupid_arrow01.bm";
+  TEXTURES   
+  {
+    "PT_cupid_02"	TFNM "Data\Effect\Ska\PT\PT_cupid_02.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\PT\PT_cupid_arrow02.bm";
+  TEXTURES   
+  {
+    "PT_cupid_02"	TFNM "Data\Effect\Ska\PT\PT_cupid_02.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\PT\PT_cupid.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\PT\PT_cupid.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

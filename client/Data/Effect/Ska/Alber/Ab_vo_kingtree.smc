@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ab_vo_kingtree";
+{
+  MESH       	TFNM "Data\Effect\Ska\Alber\effect01.bm";
+  TEXTURES   
+  {
+    "Ab_vo_Qtree_effect"	TFNM "Data\Effect\Ska\Alber\Ab_vo_Qtree_effect.tex";
+  }
+  ALLFRAMESBBOX	-10.1751,-3.53736,-11.1093,11.1044,19.9712,11.1093;
+  COLISION
+  {
+    "Default"  {-0.9,6.9,-0.9,0.9,8.2,0.9;}
+  }
+}

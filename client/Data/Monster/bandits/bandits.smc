@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bandits";
+{
+  MESH       	TFNM "Data\monster\bandits\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+    "_TAG_ef"	TFNM "Data\monster\bandits\_TAG_ef.tex";
+  }
+  MESH       	TFNM "Data\monster\bandits\bandits.bm";
+  TEXTURES   
+  {
+    "bandits"	TFNM "Data\monster\bandits\bandits.tex";
+  }
+  MESH       	TFNM "Data\monster\bandits\bandits_wp1.bm";
+  TEXTURES   
+  {
+    "bandits_add"	TFNM "Data\monster\bandits\bandits_add.tex";
+  }
+  MESH       	TFNM "Data\monster\bandits\bandits_wp2.bm";
+  TEXTURES   
+  {
+    "bandits_add"	TFNM "Data\monster\bandits\bandits_add.tex";
+  }
+  SKELETON  	TFNM "Data\monster\bandits\bandits.bs";
+  ANIMSET   	TFNM "Data\monster\bandits\bandits.ba";
+  ANIMEFFECT	TFNM "Data\Monster\bandits\bandits.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.1,1.5;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,2,0.4;}
+  }
+}

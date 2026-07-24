@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w4_store02";
+{
+  MESH       	TFNM "Data\World\egeha\ska\w4_store02.bm";
+  TEXTURES   
+  {
+    "w4_weapon-7"	TFNM "Data\World\egeha\ska\texture\w4_weapon-7.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\egeha\ska\texture\Egeha_Detail_bil.tex";
+    "w4_weapon-2"	TFNM "Data\World\egeha\ska\texture\w4_weapon-2.tex";
+    "w4_weapon-3"	TFNM "Data\World\egeha\ska\texture\w4_weapon-3.tex";
+    "w4_market"	TFNM "Data\World\egeha\ska\texture\w4_market.tex";
+    "w4_market-3"	TFNM "Data\World\egeha\ska\texture\w4_market-3.tex";
+    "w4_weapon-1"	TFNM "Data\World\egeha\ska\texture\w4_weapon-1.tex";
+  }
+  ALLFRAMESBBOX	-7.52408,-0.268236,-6.94172,6.42361,12.0766,6.4816;
+  COLISION
+  {
+  }
+}

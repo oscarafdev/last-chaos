@@ -1,0 +1,17 @@
+NAME "regen_another_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\regen_another_si.bm";
+  TEXTURES   
+  {
+    "regen_si"	TFNM "Data\World\Merac\ska\texture\regen_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\ska\regen_another_si.bs";
+  ANIMSET   	TFNM "Data\World\Merac\ska\regen_another_si.ba";
+  ANIMEFFECT	TFNM "Data\World\Merac\Ska\regen_another_si.bae";
+  ALLFRAMESBBOX	-5.59986,-1.19059e-005,-5.59986,5.59986,0.156121,5.59986;
+  COLISION
+  {
+    "Default"  {-5.59985,0,-5.59985,5.59985,0.156133,5.59985;}
+  }
+}

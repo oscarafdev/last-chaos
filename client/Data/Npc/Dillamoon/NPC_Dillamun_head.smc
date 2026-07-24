@@ -1,0 +1,60 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "NPC_Dillamun";
+{
+  MESH       	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head_bd01.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_head_bd01"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_bd01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head_bu01_01.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_head_bu01_01"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_bu01_01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head_bu01_02.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_head_bu01_02"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_bu01_02.tex";
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head_face01.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_head_face01"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_face01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head_ft01.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_head_ft01"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_ft01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head_weapon01.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_weapon01"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_weapon01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\Object01.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_head_bd01"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_bd01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\_TAG_NH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\_TAG_T_DILLA.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head_hn01.bm";
+  TEXTURES   
+  {
+    "NPC_Dillamun_head_hn01"	TFNM "Data\Npc\Dillamoon\Texture\NPC_Dillamun_head_hn01.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head.bs";
+  ANIMSET   	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Dillamoon\NPC_Dillamun_head.bae";
+  ALLFRAMESBBOX	-1.68929,-0.554276,-2.03738,1.7776,2.14572,2.19559;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,12 @@
+NAME "w3_stree21";
+{
+  MESH       	TFNM "Data\World\merac\ska\w3_stree21.bm";
+  TEXTURES   
+  {
+    "w3_trees01"	TFNM "Data\World\merac\ska\texture\w3_trees01.tex";
+  }
+  ALLFRAMESBBOX	-0.844405,-0.226301,-0.952221,1.15451,1.77484,1.3366;
+  COLISION
+  {
+  }
+}

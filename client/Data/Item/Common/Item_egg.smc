@@ -1,0 +1,12 @@
+NAME "item_gift";
+{
+  MESH       	TFNM "Data\Item\Common\Item_egg.bm";
+  TEXTURES   
+  {
+    "item_egg"	TFNM "Data\Item\Common\Texture\item_egg.tex";
+  }
+  ALLFRAMESBBOX	-0.240024,4.2e-005,-0.18852,0.240023,0.394699,0.18852;
+  COLISION
+  {
+  }
+}

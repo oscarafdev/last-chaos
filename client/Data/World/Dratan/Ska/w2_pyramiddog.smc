@@ -1,0 +1,15 @@
+NAME "w2_pyramiddog";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramiddog.bm";
+  TEXTURES   
+  {
+    "w2_castlepyramid01"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlepyramid01.tex";
+    "dra_gs_box-02"	TFNM "Data\World\Dratan\Ska\Texture\dra_gs_box-02.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.07794,-0.00655,-3.51536,1.07795,4.84885,3.51536;
+  COLISION
+  {
+    "Default"  {-1.12621,-0.0168372,-3.59225,1.10754,1.27998,3.54679;}
+  }
+}

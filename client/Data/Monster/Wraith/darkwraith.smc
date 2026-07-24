@@ -1,0 +1,65 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Wraith\_TAG_DWRAITH_LHN.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Wraith\_TAG_DWRAITH_STAFF.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_bu.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_bu_1.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_head.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_head_1.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_head_2.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_lhn.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_rhn.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_bd.bm";
+  TEXTURES   
+  {
+    "darkwraith"	TFNM "Data\Monster\Wraith\Texture\darkwraith.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wraith\darkwraith_staff.bm";
+  TEXTURES   
+  {
+    "wraith_weapon"	TFNM "Data\Monster\Wraith\Texture\wraith_weapon.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Wraith\darkwraith.bs";
+  ANIMSET   	TFNM "Data\Monster\Wraith\darkwraith.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Wraith\darkwraith.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,3.5,1.5;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

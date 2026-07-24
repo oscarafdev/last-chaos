@@ -1,0 +1,5 @@
+Package: TFNM Bin\Shaders.dll
+Name: Shader_Base_Transparent
+Info: Shader_Desc_Base_Transparent
+VPCode: Shader_VPCode_Base_Transparent
+PPCode: Shader_PPCode_Base_Transparent

@@ -1,0 +1,64 @@
+NAME "vill";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\vill.bm";
+  TEXTURES   
+  {
+    "vill_tile02"	TFNM "Data\World\Tarian\Ska\Texture\vill_tile02.tex";
+    "vill_stall"	TFNM "Data\World\Tarian\Ska\Texture\vill_stall.tex";
+    "Goddess "	TFNM "Data\World\Tarian\Ska\Texture\Goddess .tex";
+    "center_stone"	TFNM "Data\World\Tarian\Ska\Texture\center_stone.tex";
+    "center_top"	TFNM "Data\World\Tarian\Ska\Texture\center_top.tex";
+    "fountain_1"	TFNM "Data\World\Tarian\Ska\Texture\fountain_1.tex";
+    "vill_flag01"	TFNM "Data\World\Tarian\Ska\Texture\vill_flag01.tex";
+    "vill_flag02"	TFNM "Data\World\Tarian\Ska\Texture\vill_flag02.tex";
+    "vill_023"	TFNM "Data\World\Tarian\Ska\Texture\vill_023.tex";
+    "vill_001"	TFNM "Data\World\Tarian\Ska\Texture\vill_001.tex";
+    "vill_002"	TFNM "Data\World\Tarian\Ska\Texture\vill_002.tex";
+    "vill_003"	TFNM "Data\World\Tarian\Ska\Texture\vill_003.tex";
+    "vill_004"	TFNM "Data\World\Tarian\Ska\Texture\vill_004.tex";
+    "vill_006"	TFNM "Data\World\Tarian\Ska\Texture\vill_006.tex";
+    "vill_005"	TFNM "Data\World\Tarian\Ska\Texture\vill_005.tex";
+    "vill_008"	TFNM "Data\World\Tarian\Ska\Texture\vill_008.tex";
+    "vill_007"	TFNM "Data\World\Tarian\Ska\Texture\vill_007.tex";
+    "vill_009"	TFNM "Data\World\Tarian\Ska\Texture\vill_009.tex";
+    "vill_010"	TFNM "Data\World\Tarian\Ska\Texture\vill_010.tex";
+    "vill_012"	TFNM "Data\World\Tarian\Ska\Texture\vill_012.tex";
+    "vill_011"	TFNM "Data\World\Tarian\Ska\Texture\vill_011.tex";
+    "vill_013"	TFNM "Data\World\Tarian\Ska\Texture\vill_013.tex";
+    "vill_014"	TFNM "Data\World\Tarian\Ska\Texture\vill_014.tex";
+    "vill_015"	TFNM "Data\World\Tarian\Ska\Texture\vill_015.tex";
+    "vill_016"	TFNM "Data\World\Tarian\Ska\Texture\vill_016.tex";
+    "vill_017"	TFNM "Data\World\Tarian\Ska\Texture\vill_017.tex";
+    "vill_018"	TFNM "Data\World\Tarian\Ska\Texture\vill_018.tex";
+    "vill_019"	TFNM "Data\World\Tarian\Ska\Texture\vill_019.tex";
+    "vill_021"	TFNM "Data\World\Tarian\Ska\Texture\vill_021.tex";
+    "vill_022"	TFNM "Data\World\Tarian\Ska\Texture\vill_022.tex";
+    "vill_024"	TFNM "Data\World\Tarian\Ska\Texture\vill_024.tex";
+    "vill_025"	TFNM "Data\World\Tarian\Ska\Texture\vill_025.tex";
+    "vill_026"	TFNM "Data\World\Tarian\Ska\Texture\vill_026.tex";
+    "vill_027"	TFNM "Data\World\Tarian\Ska\Texture\vill_027.tex";
+    "vill_028"	TFNM "Data\World\Tarian\Ska\Texture\vill_028.tex";
+    "vill_029"	TFNM "Data\World\Tarian\Ska\Texture\vill_029.tex";
+    "vill_030"	TFNM "Data\World\Tarian\Ska\Texture\vill_030.tex";
+    "vill_031"	TFNM "Data\World\Tarian\Ska\Texture\vill_031.tex";
+    "vill_bridge"	TFNM "Data\World\Tarian\Ska\Texture\vill_bridge.tex";
+    "vill_pillar01"	TFNM "Data\World\Tarian\Ska\Texture\vill_pillar01.tex";
+    "vill_pillar03"	TFNM "Data\World\Tarian\Ska\Texture\vill_pillar03.tex";
+    "vill_pillar02"	TFNM "Data\World\Tarian\Ska\Texture\vill_pillar02.tex";
+    "vill_stairs"	TFNM "Data\World\Tarian\Ska\Texture\vill_stairs.tex";
+    "vill_tile01"	TFNM "Data\World\Tarian\Ska\Texture\vill_tile01.tex";
+    "vill_tile03"	TFNM "Data\World\Tarian\Ska\Texture\vill_tile03.tex";
+    "vill_stairs01"	TFNM "Data\World\Tarian\Ska\Texture\vill_stairs01.tex";
+    "vill_tile04"	TFNM "Data\World\Tarian\Ska\Texture\vill_tile04.tex";
+    "vill_tile05"	TFNM "Data\World\Tarian\Ska\Texture\vill_tile05.tex";
+    "vill_tile06"	TFNM "Data\World\Tarian\Ska\Texture\vill_tile06.tex";
+    "vill_tile07"	TFNM "Data\World\Tarian\Ska\Texture\vill_tile07.tex";
+    "vill_020"	TFNM "Data\World\Tarian\Ska\Texture\vill_020.tex";
+    "vill_chain"	TFNM "Data\World\Tarian\Ska\Texture\vill_chain.tex";
+  }
+  ALLFRAMESBBOX	-97.3212,-2.91655,-100.559,97.3212,94.6746,100.559;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "nuizen";
+{
+  MESH       	TFNM "Data\monster\nuizen\nuizen.bm";
+  TEXTURES   
+  {
+    "nuizen"	TFNM "Data\monster\nuizen\nuizen.tex";
+  }
+  MESH       	TFNM "Data\monster\nuizen\_TAG_T_nuizen.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\nuizen\nuizen.bs";
+  ANIMSET   	TFNM "Data\monster\nuizen\nuizen.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Nuizen\nuizen.bae";
+  ALLFRAMESBBOX	-5,0,-5,5,1.2,5;
+  COLISION
+  {
+    "Default"  {-0.75,0,-1.25,0.75,1,1.25;}
+  }
+}

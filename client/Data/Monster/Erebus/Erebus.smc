@@ -1,0 +1,48 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Erebus";
+{
+  MESH       	TFNM "Data\Monster\Erebus\_TAG_BC.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Erebus\_TAG_BRF.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Erebus\_TAG_BRH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Erebus\_TAG_BSWORD_.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Erebus\Erebus01.bm";
+  TEXTURES   
+  {
+    "Erebus_01"	TFNM "Data\Monster\Erebus\Erebus_01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Erebus\Erebus02.bm";
+  TEXTURES   
+  {
+    "Erebus_02"	TFNM "Data\Monster\Erebus\Erebus_02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Erebus\Erebus03.bm";
+  TEXTURES   
+  {
+    "Erebus_03"	TFNM "Data\Monster\Erebus\Erebus_03.tex";
+  }
+  MESH       	TFNM "Data\Monster\Erebus\Erebus_wp.bm";
+  TEXTURES   
+  {
+    "Erebus_02"	TFNM "Data\Monster\Erebus\Erebus_02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Erebus\Erebus.bs";
+  ANIMSET   	TFNM "Data\Monster\Erebus\Erebus.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Erebus\Erebus.bae";
+  ALLFRAMESBBOX	-5,0,-5,5,8,5;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,8,5;}
+  }
+}

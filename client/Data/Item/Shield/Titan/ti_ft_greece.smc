@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_ft_greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_ft_greece.bm";
+  TEXTURES   
+  {
+    "ti_ft_greece"	TFNM "Data\Item\Shield\Titan\Texture\ti_ft_greece.tex";
+  }
+  ALLFRAMESBBOX	-0.431813,0.000842,-0.177781,0.431811,0.682333,0.188012;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,570 @@
+<?xml version="1.0" ?>
+<Window id="auction" x="0" y="0" w="750" h="550" hide="1">
+    <UIImage x="0" y="0" w="750" h="63" hide="0" tex="Auction.tex" l="0" t="0" r="750" b="63" />
+    <UIText id="str_title" x="112" y="17" w="528" h="16" hide="0" str_idx="4287" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+
+    <UIButton id="btn_close" x="730" y="4" w="16" h="16" hide="0" tex="CommonBtn.tex" str_idx="-1" str_desc="">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+        <Command cmd="CMD_CLOSE" />
+    </UIButton>
+
+    <UIImage id="img_back_favorite" x="0" y="63" w="750" h="487" hide="0" tex="Auction.tex" l="0" t="63" r="750" b="550" />
+
+    <UITab id="tab_" x="0" y="38" w="750" h="512">
+        <UICheck id="btn_tab_search" x="13" y="2" w="101" h="22" str_idx="386" desc="검색"
+            posleft="0" text_x ="0" region="0" text_area="101" h_align="1"
+            color_on="0xF2F2F2FF" color_off="0xF2F2F2FF" tex="Auction.tex">
+			<none  l="0" t="644" r="101" b="666" />
+            <check   l="0" t="621" r="101" b="643" />
+        </UICheck>
+        <UICheck id="btn_tab_regist" x="117" y="2" w="101" h="22" str_idx="2489" desc="등록"
+            posleft="0" text_x ="0" region="0" text_area="101" h_align="1"
+            color_on="0xF2F2F2FF" color_off="0xF2F2F2FF" tex="Auction.tex">
+			<none  l="0" t="644" r="101" b="666" />
+            <check   l="0" t="621" r="101" b="643" />
+        </UICheck>
+        <UICheck id="btn_tab_favorite" x="221" y="2" w="101" h="22" str_idx="5963" desc="관심 물품"
+            posleft="0" text_x ="0" region="0" text_area="101" h_align="1"
+            color_on="0xF2F2F2FF" color_off="0xF2F2F2FF" tex="Auction.tex">
+			<none  l="0" t="644" r="101" b="666" />
+            <check l="0" t="621" r="101" b="643" />
+        </UICheck>
+        
+        <UITabPage x="13" y="32" w="723" h="469" >
+            <UIImage id="img_back_search" x="0" y="0" w="723" h="469" hide="0" tex="Auction.tex" l="751" t="0" r="1474" b="469" />
+
+            <UIText x="200" y="6" w="215" h="16" hide="0" str_idx="71" desc="이름" h_align="1" />
+            <UIText x="417" y="6" w="30" h="16" hide="0" str_idx="5980" desc="" h_align="1" />            
+            <UIText x="500" y="6" w="90" h="16" hide="0" str_idx="5138" desc="" h_align="1" />
+            <UIText x="594" y="6" w="90" h="16" hide="0" str_idx="2397" desc="" h_align="1" />
+            <UIText x="687" y="6" w="30" h="16" hide="0" str_idx="1718" desc="" h_align="1" />
+
+            <UIButton id="btn_search" x="48" y="441" w="95" h="21" hide="0" tex="Auction.tex"
+                      str_idx="386" str_desc="">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>
+
+            <UITab id="tab_type" x="0" y ="0" w="730" h="475">
+                <!--<UIImage id="img_search_type" x="6" y="6" w="56" h="56" hide="0" tex="Auction.tex" l="519" t="586" r="575" b="642" />-->
+                <!--<UIImage id="img_search_sel" x="6" y="6" w="56" h="56" hide="0" tex="Auction.tex" l="576" t="586" r="632" b="642" />-->
+
+                <!--UITab 시작-->
+                <UICheck id="btn_tab_armor" x="5" y="5" w="56" h="56" str_idx="-1" desc=""
+                    posleft="0" text_x ="30" region="0" tooltip="6039"
+                    color_on="0xF2F2F2FF" color_off="0xF2F2F2FF" tex="Auction.tex">
+                    <none   l="576" t="586" r="632" b="642" />
+                    <check  l="519" t="586" r="575" b="642" />
+                </UICheck>
+
+                <UICheck id="btn_tab_sheild" x="68" y="5" w="56" h="56" str_idx="-1" desc=""
+                    posleft="0" text_x ="30" region="0" tooltip="6040"
+                    color_on="0xF2F2F2FF" color_off="0xF2F2F2FF" tex="Auction.tex">
+                    <none   l="576" t="586" r="632" b="642" />
+                    <check  l="519" t="586" r="575" b="642" />
+                </UICheck>
+
+                <UICheck id="btn_tab_etc" x="130" y="5" w="56" h="56" str_idx="-1" desc=""
+                    posleft="0" text_x ="30" region="0" tooltip="6041"
+                    color_on="0xF2F2F2FF" color_off="0xF2F2F2FF" tex="Auction.tex">
+                    <none   l="576" t="586" r="632" b="642" />
+                    <check  l="519" t="586" r="575" b="642" />
+                </UICheck>
+                
+                <UITabPage x="0" y="0" w="730" h="475" >
+                    <UIText x="450" y="6" w="46" h="16" hide="0" str_idx="85" desc="" h_align="1" />
+                    
+                    <UIList id="list_armor" x="2" y="68" w="185" h="408" pre_create="1"
+                            itemx="0" itemy="0" itemshow_num="10" itemgap="1" item_count="10" >
+                        <UIListItem x="0" y="0" w="185" h="35">
+                            <UIText id="str_title" x="1" y="0" w="185" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />
+                        </UIListItem>
+                        <!--<UIScrollBar x="0" y="0" w="185" h="365" tex="Auction.tex"
+                                     vertical="1" right="1" hide="0"
+                                     item_count="10" item_per_page="10" move_unit="16" >
+                            <back x="0" y="0" w="10" h="365"
+                                  l="0" t="0" r="0" b="0" />
+                            <button1 x="0" y="0" w="9" h="7"
+                                     l0="727" t0="566" r0="736" b0="573"
+                                     l1="727" t1="583" r1="736" b1="590" />
+                            <button2 x="0" y="0" w="9" h="7"
+                                     l0="727" t0="575" r0="736" b0="582"
+                                     l1="727" t1="592" r1="736" b1="599" />
+                            <thumb x="0" y="0" w="8" h="50" unit="9"
+                                     l="716" t="566" r="725" b="591" />
+                        </UIScrollBar>-->
+						<UIEdit id="edit_name" parent="list_item_001" x="22" y="17" w="150" h="16" max="19" tex="Auction.tex" >
+							<back x="-4" y="-2" w="150" h="14" l="198" t="621" r="352" b="637" />
+						</UIEdit>
+						<UIImage parent="list_item_005" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+						<UIImage parent="list_item_006" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+						<UIImage parent="list_item_007" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+						<UIImage parent="list_item_008" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+						<UIImage parent="list_item_009" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+						<UIImage parent="list_item_010" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+						
+						<UIEdit id="edit_lv1" parent="list_item_005" x="19" y="16" w="70" h="16" />
+						<UIEdit id="edit_lv2" parent="list_item_005" x="102" y="16" w="70" h="16" />
+						<UIEdit id="edit_pp1" parent="list_item_007" x="19" y="16" w="70" h="16" />
+						<UIEdit id="edit_pp2" parent="list_item_007" x="102" y="16" w="70" h="16" />
+						<UIEdit id="edit_mp1" parent="list_item_008" x="19" y="16" w="70" h="16" />
+						<UIEdit id="edit_mp2" parent="list_item_008" x="102" y="16" w="70" h="16" />
+						<UIEdit id="edit_price1" parent="list_item_010" x="19" y="16" w="70" h="16" />
+						<UIEdit id="edit_price2" parent="list_item_010" x="102" y="16" w="70" h="16" />
+						
+						<UIComboBox id="cb_socket1" x="18" y="16" w="70" h="144" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_009" showline="8" maxline="8" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="8"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="71" h="144" l="198" t="674" r="269" b="692" />
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_socket2" x="102" y="16" w="70" h="144" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_009" showline="8" maxline="8" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="8"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="71" h="144" l="198" t="674" r="269" b="692" />
+                        </UIComboBox>                   
+
+                        <UIComboBox id="cb_enc1" x="18" y="16" w="70" h="176" hide="0" tex="Auction.tex" h_align="1"
+                                    parent="list_item_006" showline="10" maxline="26" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="9"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="70" h="176"
+                                     l="198" t="655" r="352" b="673" />
+
+                            <UIScrollBar x="0" y="16" w="70" h="160" tex="Auction.tex"
+                                     vertical="1" right="1"
+                                     item_per_page="10" item_count="26" move_unit="16" >
+                                <back x="190" y="0" w="10" h="160"
+                                      l="198" t="621" r="352" b="637" />
+                                <button1 x="190" y="0" w="9" h="7"
+                                         l0="727" t0="566" r0="736" b0="573"
+                                         l1="727" t1="583" r1="736" b1="590" />
+                                <button2 x="190" y="142" w="9" h="7"
+                                         l0="727" t0="575" r0="736" b0="582"
+                                         l1="727" t1="592" r1="736" b1="599" />
+                                <thumb x="0" y="0" w="10" h="50" unit="9"
+                                         l="716" t="566" r="725" b="591" />
+                            </UIScrollBar>
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_enc2" x="102" y="16" w="70" h="176" hide="0" tex="Auction.tex" h_align="1"
+                                    parent="list_item_006" showline="10" maxline="26" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="9"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="70" h="176"
+                                     l="198" t="655" r="352" b="673" />
+
+                            <UIScrollBar x="0" y="16" w="70" h="160" tex="Auction.tex"
+                                     vertical="1" right="1"
+                                     item_per_page="10" item_count="26" move_unit="16" >
+                                <back x="190" y="0" w="10" h="160"
+                                      l="198" t="621" r="352" b="637" />
+                                <button1 x="190" y="0" w="9" h="7"
+                                         l0="727" t0="566" r0="736" b0="573"
+                                         l1="727" t1="583" r1="736" b1="590" />
+                                <button2 x="190" y="142" w="9" h="7"
+                                         l0="727" t0="575" r0="736" b0="582"
+                                         l1="727" t1="592" r1="736" b1="599" />
+                                <thumb x="0" y="0" w="10" h="50" unit="9"
+                                         l="716" t="566" r="725" b="591" />
+                            </UIScrollBar>
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_grade" x="18" y="16" w="154" h="160" hide="0" tex="Auction.tex" h_align="1"
+                                    parent="list_item_004" showline="9" maxline="9" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+                                    <button x="135" y="3" w="15" h="8"
+                                l0="354" t0="626" r0="369" b0="636"
+                                l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="154" h="160" l="198" t="655" r="352" b="673" />
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_type" x="18" y="16" w="154" h="256" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_003" showline="15" maxline="15" lineheight="16" space_x="0" space_y="0">
+                        <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+                        <button x="135" y="3" w="15" h="8"
+                                l0="354" t0="626" r0="369" b0="636"
+                                l1="354" t1="626" r1="369" b1="636"/>
+                        <drop_bg x="0" y="16" w="154" h="256" l="198" t="655" r="352" b="673" />
+                    </UIComboBox>
+
+                        <UIComboBox id="cb_class" x="18" y="16" w="154" h="176" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_002" showline="10" maxline="10" lineheight="16" space_x="0" space_y="0">
+                        <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+                        <button x="135" y="3" w="15" h="8"
+                                l0="354" t0="626" r0="369" b0="636"
+                                l1="354" t1="626" r1="369" b1="636"/>
+                        <drop_bg x="0" y="16" w="154" h="176" l="198" t="655" r="352" b="673" />
+                    </UIComboBox>
+                    </UIList>       
+                </UITabPage>
+
+                <UITabPage x="0" y="0" w="730" h="475" >
+                    <UIText x="450" y="6" w="46" h="16" hide="0" str_idx="87" desc="" h_align="1" />
+                    <UIList id="list_shield" x="2" y="68" w="185" h="408" pre_create="1"
+                            itemx="0" itemy="0" itemshow_num="10" itemgap="1" item_count="10" >
+                        <UIListItem x="0" y="0" w="185" h="35">
+                            <UIText id="str_title" x="1" y="0" w="185" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />
+                        </UIListItem>
+                        <!--<UIScrollBar x="0" y="0" w="185" h="365" tex="Auction.tex"
+                                     vertical="1" right="1" hide="0"
+                                     item_count="10" item_per_page="10" move_unit="16" >
+                            <back x="0" y="0" w="10" h="365"
+                                  l="0" t="0" r="0" b="0" />
+                            <button1 x="0" y="0" w="9" h="7"
+                                     l0="727" t0="566" r0="736" b0="573"
+                                     l1="727" t1="583" r1="736" b1="590" />
+                            <button2 x="0" y="0" w="9" h="7"
+                                     l0="727" t0="575" r0="736" b0="582"
+                                     l1="727" t1="592" r1="736" b1="599" />
+                            <thumb x="0" y="0" w="8" h="50" unit="9"
+                                     l="716" t="566" r="725" b="591" />
+                        </UIScrollBar>-->
+                        <UIEdit id="edit_name" parent="list_item_001" x="22" y="17" w="150" h="16" max="19" tex="Auction.tex" >
+                            <back x="-4" y="-2" w="150" h="14" l="198" t="621" r="352" b="637" />
+                        </UIEdit>
+                        <UIImage parent="list_item_005" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+                        <UIImage parent="list_item_006" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+                        <UIImage parent="list_item_007" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+                        <UIImage parent="list_item_008" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+                        <UIImage parent="list_item_009" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+                        <UIImage parent="list_item_010" x="18" y="16" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+
+                        <UIEdit id="edit_lv1" parent="list_item_005" x="19" y="16" w="70" h="16" />
+                        <UIEdit id="edit_lv2" parent="list_item_005" x="102" y="16" w="70" h="16" />
+                        <UIEdit id="edit_pp1" parent="list_item_007" x="19" y="16" w="70" h="16" />
+                        <UIEdit id="edit_pp2" parent="list_item_007" x="102" y="16" w="70" h="16" />
+                        <UIEdit id="edit_mp1" parent="list_item_008" x="19" y="16" w="70" h="16" />
+                        <UIEdit id="edit_mp2" parent="list_item_008" x="102" y="16" w="70" h="16" />
+                        <UIEdit id="edit_price1" parent="list_item_010" x="19" y="16" w="70" h="16" />
+                        <UIEdit id="edit_price2" parent="list_item_010" x="102" y="16" w="70" h="16" />
+
+                        <UIComboBox id="cb_socket1" x="18" y="16" w="70" h="144" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_009" showline="8" maxline="8" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="8"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="71" h="144" l="198" t="674" r="269" b="692" />
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_socket2" x="102" y="16" w="70" h="144" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_009" showline="8" maxline="8" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="8"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="71" h="144" l="198" t="674" r="269" b="692" />
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_enc1" x="18" y="16" w="70" h="176" hide="0" tex="Auction.tex" h_align="1"
+                                    parent="list_item_006" showline="10" maxline="26" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="9"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="70" h="176"
+                                     l="198" t="655" r="352" b="673" />
+
+                            <UIScrollBar x="0" y="16" w="70" h="160" tex="Auction.tex"
+                                     vertical="1" right="1"
+                                     item_per_page="10" item_count="26" move_unit="16" >
+                                <back x="190" y="0" w="10" h="160"
+                                      l="198" t="621" r="352" b="637" />
+                                <button1 x="190" y="0" w="9" h="7"
+                                         l0="727" t0="566" r0="736" b0="573"
+                                         l1="727" t1="583" r1="736" b1="590" />
+                                <button2 x="190" y="142" w="9" h="7"
+                                         l0="727" t0="575" r0="736" b0="582"
+                                         l1="727" t1="592" r1="736" b1="599" />
+                                <thumb x="0" y="0" w="10" h="50" unit="9"
+                                         l="716" t="566" r="725" b="591" />
+                            </UIScrollBar>
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_enc2" x="102" y="16" w="70" h="176" hide="0" tex="Auction.tex" h_align="1"
+                                    parent="list_item_006" showline="10" maxline="26" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="70" h="16" />
+                            <button x="53" y="3" w="15" h="9"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="70" h="176"
+                                     l="198" t="655" r="352" b="673" />
+
+                            <UIScrollBar x="0" y="16" w="70" h="160" tex="Auction.tex"
+                                     vertical="1" right="1"
+                                     item_per_page="10" item_count="26" move_unit="16" >
+                                <back x="190" y="0" w="10" h="160"
+                                      l="198" t="621" r="352" b="637" />
+                                <button1 x="190" y="0" w="9" h="7"
+                                         l0="727" t0="566" r0="736" b0="573"
+                                         l1="727" t1="583" r1="736" b1="590" />
+                                <button2 x="190" y="142" w="9" h="7"
+                                         l0="727" t0="575" r0="736" b0="582"
+                                         l1="727" t1="592" r1="736" b1="599" />
+                                <thumb x="0" y="0" w="10" h="50" unit="9"
+                                         l="716" t="566" r="725" b="591" />
+                            </UIScrollBar>
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_grade" x="18" y="16" w="154" h="160" hide="0" tex="Auction.tex" h_align="1"
+                                    parent="list_item_004" showline="9" maxline="9" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+                            <button x="135" y="3" w="15" h="8"
+                        l0="354" t0="626" r0="369" b0="636"
+                        l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="154" h="160" l="198" t="655" r="352" b="673" />
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_type" x="18" y="16" w="154" h="144" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_003" showline="8" maxline="8" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+                            <button x="135" y="3" w="15" h="8"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="154" h="144" l="198" t="655" r="352" b="673" />
+                        </UIComboBox>
+
+                        <UIComboBox id="cb_class" x="18" y="16" w="154" h="176" hide="0" tex="Auction.tex" h_align="1"
+                                parent="list_item_002" showline="10" maxline="10" lineheight="16" space_x="0" space_y="0">
+                            <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+                            <button x="135" y="3" w="15" h="8"
+                                    l0="354" t0="626" r0="369" b0="636"
+                                    l1="354" t1="626" r1="369" b1="636"/>
+                            <drop_bg x="0" y="16" w="154" h="176" l="198" t="655" r="352" b="673" />
+                        </UIComboBox>
+                    </UIList>
+                </UITabPage>
+
+                <UITabPage x="0" y="0" w="730" h="475" >   
+                    <UIImage x="201" y="5" w="518" h="378" hide="0" tex="Auction.tex" l="952" t="475" r="1470" b="853" />
+                    <UIText x="200" y="6" w="312" h="16" hide="0" str_idx="71" desc="이름" h_align="1" />
+                    <UIText x="517" y="6" w="72" h="16" hide="0" str_idx="2396" desc="" h_align="1" />
+                    <UIText x="594" y="6" w="90" h="16" hide="0" str_idx="2397" desc="" h_align="1" />
+                    <UIText x="687" y="6" w="30" h="16" hide="0" str_idx="1718" desc="" h_align="1" />
+                    
+                    <UIText id="str_search_etc_name" x="3" y="68" w="185" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />                    
+                    <UIText id="str_search_etc_price" x="3" y="104" w="185" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />
+                    <UIImage x="20" y="120" w="154" h="16" hide="0" tex="Auction.tex" l="198" t="638" r="352" b="654" />
+                    <UIEdit id="edit_etc_name" x="24" y="85" w="150" h="16" max="19" tex="Auction.tex" >
+                        <back x="-4" y="-2" w="150" h="14" l="198" t="621" r="352" b="637" />
+                    </UIEdit>
+                    <UIEdit id="edit_etc_price1" x="22" y="119" w="70" h="16" />
+                    <UIEdit id="edit_etc_price2" x="105" y="119" w="70" h="16" />
+                </UITabPage>
+            </UITab>
+            
+            <UIList id="list_search_res" x="201" y="25" w="521" h="361"
+                    itemx="0" itemy="0" itemshow_num="10" item_count="0" itemgap="1" tex="Auction.tex">
+                <select x="0" y="0" w="518" h="34" l="0" t="586" r="518" b="620" />
+                <UIListItem x="0" y="0" w="518" h="35">
+                    <UIIcon id="item_icon" x="0" y="0" w="34" h="34" hide="0" />
+                    <UIText id="item_name" x="40" y="12" w="170" h="16" hide="0" str_idx="" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />
+                    <UIText id="item_enc" x="217" y="12" w="30" h="16" hide="0" str="" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                    <UIText id="item_power" x="250" y="12" w="40" h="16" hide="0" str="" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                    <UIImageFont id="item_socket" x="300" y="11" w="90" h="14" hide="0" tex="Auction.tex"
+                                 fsizex="14" fsizey="14" fgap="5" src="0123" ogap="-7" str="" >
+                        <srcuv l="635" t="588" r="706" b="602" />
+                    </UIImageFont>
+                    <UIText id="item_price" x="396" y="12" w="84" h="16" hide="0" str="price" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="2" />
+                    <UIText id="item_time" x="487" y="12" w="30" h="16" hide="0" str="time" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                </UIListItem>
+            </UIList>
+
+            <UIList id="list_search_res2" x="201" y="25" w="521" h="361"
+                    itemx="0" itemy="0" itemshow_num="10" item_count="0" itemgap="1" tex="Auction.tex">
+                <select x="0" y="0" w="518" h="34" l="0" t="586" r="518" b="620" />
+                <UIListItem x="0" y="0" w="518" h="35">
+                    <UIIcon id="item_icon" x="0" y="0" w="34" h="34" hide="0" />
+                    <UIText id="item_name" x="40" y="12" w="170" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />
+                    <UIText id="item_quantity" x="317" y="12" w="70" h="16" hide="0" str="+12" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                    <UIText id="item_price" x="396" y="12" w="84" h="16" hide="0" str="price" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="2" />
+                    <UIText id="item_time" x="487" y="12" w="30" h="16" hide="0" str="time" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                </UIListItem>
+            </UIList>
+
+            <UIText id="str_page" x="439" y="395" w="38" h="16" str="0" desc="" h_align="1" />
+
+            <UIButton id="btn_left" x="420" y="392" w="12" h="20" hide="0" tex="Auction.tex" >
+                <uv type="0" l="655" t="605" r="667" b="625" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="655" t="625" r="667" b="645" />
+                <copyuv src="0" dst="3" />
+            </UIButton>
+
+            <UIButton id="btn_right" x="484" y="392" w="12" h="20" hide="0" tex="Auction.tex" >
+                <uv type="0" l="674" t="605" r="686" b="625" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="674" t="625" r="686" b="645" />
+                <copyuv src="0" dst="3" />
+            </UIButton>
+
+            <UIImage x="581" y="391" w="139" h="22" hide="0" tex="Auction.tex" l="372" t="621" r="511" b="643" />
+            <UIText id="str_search_nas" x="607" y="395" w="110" h="15" str="99,999" h_align="2" desc="" />
+
+            <UIButton id="btn_reg_favorite" x="360" y="433" w="95" h="21" hide="0" tex="Auction.tex"
+                      str_idx="5966" str_desc="">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>
+
+            <UIButton id="btn_buy" x="467" y="433" w="95" h="21" hide="0" tex="Auction.tex"
+                      str_idx="253" str_desc="">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>           
+            
+        </UITabPage>
+
+        <UITabPage id="tab_page_regist" x="13" y="32" w="723" h="469" hide="1">
+            <UIImage id="img_back_regist" x="0" y="0" w="723" h="469" hide="0" tex="Auction.tex" l="751" t="470" r="1474" b="939" />
+
+            <UIText x="200" y="6" w="312" h="16" hide="0" str_idx="71" desc="이름" h_align="1" />
+            <UIText x="517" y="6" w="72" h="16" hide="0" str_idx="2396" desc="" h_align="1" />
+            <UIText x="594" y="6" w="90" h="16" hide="0" str_idx="2397" desc="" h_align="1" />
+            <UIText x="687" y="6" w="30" h="16" hide="0" str_idx="1718" desc="" h_align="1" />
+            
+            <UIList id="list_regist_input" x="4" y="70" w="185" h="180" pre_create="1" tex="Auction.tex"
+                    itemx="0" itemy="0" itemshow_num="4" itemgap="1" item_count="4" >                
+                <UIListItem x="0" y="0" w="185" h="35">
+                    <UIText id="str_title" x="1" y="0" w="185" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />                    
+                </UIListItem>                
+            </UIList>            
+
+            <UIEdit id="edit_quantity" x="22" y="84" w="154" h="16" tex="Auction.tex" max="4" >
+                <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+            </UIEdit>
+            <UIEdit id="edit_price" x="22" y="120" w="154" h="16" tex="Auction.tex" max="16" >
+                <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+            </UIEdit>
+            <UIText id="str_fee" x="22" y="156" w="154" h="16" 
+                    str="99" h_align="2" tex="Auction.tex" >
+                <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+            </UIText>
+            <UIText id="str_deposit" x="22" y="192" w="154" h="16" 
+                    str="99" h_align="2" tex="Auction.tex">
+                <back x="0" y="0" w="154" h="16" l="198" t="621" r="352" b="637" />
+            </UIText>
+
+            <UIIcon id="icon_reg_target" x="81" y="20" w="32" h="32" />
+
+            <UIList id="list_regist" x="202" y="26" w="521" h="361" tex="Auction.tex"
+                    itemx="0" itemy="0" itemshow_num="10" item_count="10" itemgap="1" >
+                <select x="0" y="0" w="518" h="34" l="0" t="586" r="518" b="620" />
+                <UIListItem x="0" y="0" w="518" h="35">
+                    <UIIcon id="item_icon" x="0" y="0" w="34" h="34" hide="0" 
+                            type="2" texid="0" row="1" col="1"/>
+                    <UIText id="item_name" x="40" y="12" w="170" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />                    
+                    <UIText id="item_quantity" x="315" y="12" w="72" h="16" hide="0" str="Quantity" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                    <UIText id="item_price" x="395" y="12" w="84" h="16" hide="0" str="amount" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="2" />
+                    <UIText id="item_time" x="487" y="12" w="30" h="16" hide="0" str="time" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                </UIListItem>
+            </UIList>
+
+            <UIButton id="btn_regist" x="48" y="441" w="95" h="21" hide="0" tex="Auction.tex" 
+                      str_idx="2489" str_desc="">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>
+
+            <UIText id="str_reg_count" x="438" y="395" w="42" h="15" str="99" desc="" h_align="1" />
+            <UIImage x="581" y="391" w="139" h="22" hide="0" tex="Auction.tex" l="372" t="621" r="511" b="643" />
+            <UIText id="str_reg_nas" x="607" y="395" w="110" h="15" str="99,999" desc="" h_align="2" />
+
+            <UIButton id="btn_reg_cancel" x="411" y="441" w="95" h="21" hide="0" tex="Auction.tex"
+                      str_idx="5960" str_desc="">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>
+			
+            <UITextBox id="tb_premiumchar" x="9" y="233" w="170" h="190" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="7066" split_mode="1" text_col="0xd67fffff" str="">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UITextBox>
+        </UITabPage>
+
+        <UITabPage x="13" y="32" w="723" h="469" hide="1">
+            <UIText x="5" y="6" w="328" h="16" hide="0" str_idx="71" desc="이름" h_align="1" />
+            <UIText x="335" y="6" w="36" h="16" hide="0" str_idx="5980" desc="" h_align="1" />
+            <UIText x="376" y="6" w="60" h="16" hide="0" str_idx="2396" desc="" h_align="1" />
+            <UIText x="440" y="6" w="55" h="16" hide="0" str_idx="5962" desc="" h_align="1" />
+            <UIText x="500" y="6" w="90" h="16" hide="0" str_idx="5138" desc="" h_align="1" />
+            <UIText x="594" y="6" w="90" h="16" hide="0" str_idx="2397" desc="" h_align="1" />
+            <UIText x="687" y="6" w="30" h="16" hide="0" str_idx="1718" desc="" h_align="1" />
+            
+            <UIList id="list_favorite" x="4" y="24" w="715" h="361" tex="Auction.tex"
+                    itemx="0" itemy="0" itemshow_num="10" item_count="10" itemgap="1" >
+                <select x="0" y="0" w="715" h="34" l="0" t="551" r="715" b="585" />
+                <UIListItem x="0" y="0" w="715" h="35">
+                    <UIIcon id="item_icon" x="0" y="0" w="34" h="34" hide="0" />
+                    <UIText id="item_name" x="40" y="11" w="286" h="16" hide="0" str_idx="3917" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" />
+                    <UIText id="item_enc" x="333" y="11" w="32" h="16" hide="0" str="+12" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                    <UIText id="item_quantity" x="376" y="11" w="50" h="16" hide="0" str="NUM" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                    <UIText id="item_power" x="437" y="11" w="50" h="16" hide="0" str="" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                    <UIImageFont id="item_socket" x="496" y="11" w="90" h="14" hide="0" tex="Auction.tex"
+                                 fsizex="14" fsizey="14" fgap="5" src="0123" ogap="-7" str="" >
+                        <srcuv l="635" t="588" r="706" b="602" />
+                    </UIImageFont>
+                    <UIText id="item_price" x="592" y="11" w="84" h="16" hide="0" str="price" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="2" />
+                    <UIText id="item_time" x="683" y="11" w="30" h="16" hide="0" str="time" desc="" color="f2f2f2ff" shadow="0" shadow_color="181818b2" depth="0" h_align="1" />
+                </UIListItem>
+            </UIList>
+
+            <UIText id="str_fav_count" x="337" y="394" w="42" h="15" str="99/99" desc="" h_align="1" />
+
+            <UIImage x="581" y="391" w="139" h="22" hide="0" tex="Auction.tex" l="372" t="621" r="511" b="643" />
+            <UIText id="str_favorite_nas" x="607" y="395" w="110" h="15" str="99,999" desc="" h_align="2" />
+
+            <UIButton id="btn_fav_reg_cancel" x="260" y="433" w="95" h="21" hide="0" tex="Auction.tex"
+                      str_idx="5960" str_desc="">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>
+
+            <UIButton id="btn_fav_buy" x="367" y="433" w="95" h="21" hide="0" tex="Auction.tex"
+                      str_idx="253" str_desc="">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>
+			
+			<UIButton id="btn_similar" x="4" y="394" w="95" h="21" hide="0" tex="Auction.tex"
+                      str_idx="8304" str="Show similar">
+                <uv type="0" l="102" t="621" r="197" b="642" />
+                <copyuv src="0" dst="1" />
+                <uv type="2" l="102" t="643" r="197" b="664" />
+                <uv type="3" l="102" t="665" r="197" b="686" />
+            </UIButton>
+            
+        </UITabPage>
+
+    </UITab>
+
+    <UIImage id="img_favorite_item" x="0" y="0" w="518" h="34" hide="1" tex="Auction.tex" l="0" t="728" r="518" b="762" />
+
+</Window>

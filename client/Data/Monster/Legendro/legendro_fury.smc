@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "legendro_fury";
+{
+  MESH       	TFNM "Data\Monster\Legendro\legendro_fury.bm";
+  TEXTURES   
+  {
+    "legendro_fury01"	TFNM "Data\Monster\Legendro\legendro_fury01.tex";
+    "legendro_fury02"	TFNM "Data\Monster\Legendro\legendro_fury02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Legendro\legendro_fury.bs";
+  ANIMSET   	TFNM "Data\Monster\Legendro\legendro_fury.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Legendro\legendro_fury.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.2,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2.2,1.5;}
+  }
+}

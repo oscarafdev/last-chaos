@@ -1,0 +1,15 @@
+NAME "w2_farmcase2";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_farmcase2.bm";
+  TEXTURES   
+  {
+    "w2_Ob03_bucket01"	TFNM "Data\World\Dratan\Ska\Texture\w2_Ob03_bucket01.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "fountain_water"	TFNM "Data\World\Dratan\Ska\Texture\fountain_water.tex";
+  }
+  ALLFRAMESBBOX	-0.485796,-0.010426,-0.484434,0.484857,1.08255,0.484871;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1,0.5;}
+  }
+}

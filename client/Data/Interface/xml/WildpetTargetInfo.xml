@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="256" y="77" w="256" h="124" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="ia_expPet" x="0" y="104" w="256" h="20" hide="1" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="171" t="380" r="233" b="400" unit="6" splitmode="0">
+        <UIImage id="img_accExp" x="3" y="0" w="250" h="18" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="175" t="430" r="188" b="441" />
+        <UIText id="str_expPetExp" x="0" y="3" w="256" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="98.52%" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+	<UIImageSplit id="ia_inventoryPet" x="0" y="104" w="256" h="20" hide="1" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="171" t="380" r="233" b="400" unit="6" splitmode="0">
+        <UIImage id="img_inventory" x="3" y="0" w="250" h="18" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="175" t="430" r="188" b="441" />
+        <UIText id="str_inventoryPet" x="0" y="3" w="256" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="98.52%" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+    <UIImageSplit id="is_extend_back" x="0" y="76" w="256" h="31" hide="1" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="526" t="302" r="648" b="333" unit="20" splitmode="0">
+        <UIImageArray id="ia_hungry" x="25" y="6" w="19" h="19" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="4210" tooltip_width="0" render_idx="0">
+            <surface0 x="0" y="0" w="19" h="19" l="0" t="405" r="19" b="424" desc="배부름" />
+            <surface1 x="0" y="0" w="19" h="19" l="23" t="405" r="42" b="424" desc="보통" />
+            <surface2 x="0" y="0" w="19" h="19" l="46" t="405" r="65" b="424" desc="배고픔" />
+        </UIImageArray>
+        <UIImageArray id="ia_faith" x="0" y="6" w="19" h="19" hide="0" tex="new_PetInfo.tex" align_h="1" align_v="0" tooltip="4209" tooltip_width="0" render_idx="0">
+            <surface0 x="0" y="0" w="19" h="19" l="69" t="405" r="88" b="424" desc="믿음" />
+            <surface1 x="0" y="0" w="19" h="19" l="92" t="405" r="111" b="424" desc="보통" />
+            <surface2 x="0" y="0" w="19" h="19" l="115" t="405" r="134" b="424" desc="불신" />
+        </UIImageArray>
+        <UIImageArray id="ia_AIState" x="-25" y="6" w="19" h="19" hide="0" tex="new_PetInfo.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+            <surface0 x="0" y="0" w="19" h="19" l="58" t="375" r="83" b="400" desc="꺼짐" />
+            <surface1 x="0" y="0" w="19" h="19" l="2" t="375" r="27" b="400" desc="켜짐" />
+        </UIImageArray>
+        <UIText id="str_hungry" x="49" y="9" w="67" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="200/200" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="str_faith" x="142" y="9" w="67" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="200/200" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+    <UIImageSplit id="is_back" x="0" y="0" w="163" h="77" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="4" t="429" r="167" b="506" unit="40" splitmode="0">
+        <UIImage id="move_area" x="0" y="0" w="163" h="27" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        <UIButton id="btn_extend_down" x="-12" y="6" w="16" h="16" hide="0" tex="new_PetInfo.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="155" t="435" r="139" b="451" />
+            <uv type="1" l="153" t="408" r="137" b="424" />
+            <uv type="2" l="171" t="408" r="155" b="424" />
+            <uv type="3" l="0" t="0" r="0" b="0" />
+        </UIButton>
+        <UIButton id="btn_extend_up" x="-12" y="6" w="16" h="16" hide="1" tex="new_PetInfo.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="0" r="0" b="0" />
+            <uv type="1" l="137" t="408" r="153" b="424" />
+            <uv type="2" l="155" t="408" r="171" b="424" />
+            <copyuv src="0" dst="3" />
+        </UIButton>
+        <UIButton id="btn_openInfo" x="-7" y="42" w="16" h="16" hide="0" tex="new_PetInfo.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="0" t="0" r="0" b="0" />
+            <uv type="1" l="195" t="408" r="211" b="424" />
+            <uv type="2" l="214" t="408" r="230" b="424" />
+            <copyuv src="0" dst="3" />
+        </UIButton>
+        <UIText id="str_level" x="13" y="8" w="16" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="str_name" x="35" y="8" w="95" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="[P2] 코끼리 창타이" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIProgressBar id="pb_hp" x="16" y="33" w="113" h="7" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" lower="0" upper="100" step="1" offset_pos="100" auto_complete="0">
+            <bar sx="0" sy="0" l="175" t="415" r="178" b="422" />
+            <idle_text str="" color="0xffffffff" show_percent="0" />
+            <doing_text str="" color="0xffffffff" show_percent="0" />
+            <complete_text str="" color="0xffffffff" show_percent="0" />
+        </UIProgressBar>
+        <UIProgressBar id="pb_mp" x="16" y="47" w="113" h="7" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" lower="0" upper="100" step="1" offset_pos="100" auto_complete="0">
+            <bar sx="0" sy="0" l="180" t="415" r="183" b="422" />
+            <idle_text str="" color="0xffffffff" show_percent="0" />
+            <doing_text str="" color="0xffffffff" show_percent="0" />
+            <complete_text str="" color="0xffffffff" show_percent="0" />
+        </UIProgressBar>
+        <UIProgressBar id="pb_exp" x="16" y="61" w="113" h="7" hide="0" tex="new_PetInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" lower="0" upper="100" step="1" offset_pos="100" auto_complete="0">
+            <bar sx="0" sy="0" l="185" t="415" r="188" b="422" />
+            <idle_text str="" color="0xffffffff" show_percent="0" />
+            <doing_text str="" color="0xffffffff" show_percent="0" />
+            <complete_text str="" color="0xffffffff" show_percent="0" />
+        </UIProgressBar>
+        <UIText id="str_hp" x="16" y="32" w="122" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="12345/12345" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="str_mp" x="16" y="46" w="122" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="12345/12345" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="str_exp" x="16" y="60" w="122" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="98.25%" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+</Window>

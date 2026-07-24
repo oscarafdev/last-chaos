@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="449" h="470" hide="0">
+    <UIImage id="back" x="0" y="0" w="449" h="470" hide="0" tex="PetStash.tex" l="0" t="512" r="449" b="982" />
+
+    <UIButton id="btn_ok" x="178" y="435" w="95" h="21" hide="0" tex="PetStash.tex" str_idx="191" str="" newtype="0">
+        <uv type="0" l="537" t="428" r="632" b="449" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="537" t="450" r="632" b="471" />
+        <uv type="3" l="537" t="472" r="632" b="493" />
+    </UIButton>
+	
+	<UISpriteAni id="imgLCard" x="14" y="70" w="179" h="350" hide="0" tex="PetCard.tex" max="6" cur="0">
+		<uv frame="0" l="0" t="0" r="179" b="350" />
+		<uv frame="1" l="180" t="0" r="359" b="350" />
+		<uv frame="2" l="360" t="0" r="539" b="350" />		
+		<uv frame="3" l="540" t="0" r="719" b="350" />
+		<uv frame="4" l="720" t="0" r="899" b="350" />
+		<uv frame="5" l="0" t="351" r="179" b="701" />		
+	</UISpriteAni>
+	
+	<UISpriteAni id="imgRCard" x="256" y="70" w="179" h="350" hide="0" tex="PetCard.tex" max="6" cur="1">
+		<uv frame="0" l="0" t="0" r="179" b="350" />
+		<uv frame="1" l="180" t="0" r="359" b="350" />
+		<uv frame="2" l="360" t="0" r="539" b="350" />		
+		<uv frame="3" l="540" t="0" r="719" b="350" />
+		<uv frame="4" l="720" t="0" r="899" b="350" />
+		<uv frame="5" l="0" t="351" r="179" b="701" />		
+	</UISpriteAni>
+	
+	<UISpriteAni id="imgMCard" x="135" y="55" w="179" h="350" hide="0" tex="PetCard.tex" max="6" cur="2">
+		<uv frame="0" l="0" t="0" r="179" b="350" />
+		<uv frame="1" l="180" t="0" r="359" b="350" />
+		<uv frame="2" l="360" t="0" r="539" b="350" />		
+		<uv frame="3" l="540" t="0" r="719" b="350" />
+		<uv frame="4" l="720" t="0" r="899" b="350" />
+		<uv frame="5" l="0" t="351" r="179" b="701" />		
+	</UISpriteAni>	
+	
+    <UIImage id="imgSelCard" x="125" y="43" w="200" h="375" hide="1" tex="PetStash.tex" l="680" t="13" r="880" b="388" />
+</Window>

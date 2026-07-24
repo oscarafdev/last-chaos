@@ -1,0 +1,19 @@
+NAME "l_crystal";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\_TAG_T_LCRYSTAL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\M_combo\Ska\l_crystal.bm";
+  TEXTURES   
+  {
+    "l_crystal"	TFNM "Data\World\M_combo\Ska\Texture\l_crystal.tex";
+    "s_crystal"	TFNM "Data\World\M_combo\Ska\Texture\s_crystal.tex";
+  }
+  SKELETON  	TFNM "Data\World\M_combo\Ska\l_crystal.bs";
+  ANIMSET   	TFNM "Data\World\M_combo\Ska\l_crystal.ba";
+  ALLFRAMESBBOX	-196.104,-9e-006,-196.024,197.597,9e-006,197.677;
+  COLISION
+  {
+  }
+}

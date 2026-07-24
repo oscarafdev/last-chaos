@@ -1,0 +1,19 @@
+NAME "cope_1";
+{
+  MESH       	TFNM "Data\Effect\Ska\tgt_cope.bm";
+  TEXTURES   
+  {
+    "cope"	TFNM "Data\Effect\Ska\cope.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\tgt_cope1.bm";
+  TEXTURES   
+  {
+    "cope"	TFNM "Data\Effect\Ska\cope.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\tgt_cope.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\tgt_cope.ba";
+  ALLFRAMESBBOX	-0.660612,-2.23979,-0.967346,0.658879,-0.0065829,0.967597;
+  COLISION
+  {
+  }
+}

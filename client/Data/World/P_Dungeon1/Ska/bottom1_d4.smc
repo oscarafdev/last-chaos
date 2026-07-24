@@ -1,0 +1,13 @@
+NAME "bottom1_d4";
+{
+  MESH       	TFNM "Data\World\P_Dungeon1\Ska\bottom1_d4.bm";
+  TEXTURES   
+  {
+    "Detail_D4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\Detail_D4.tex";
+    "pd_bottom01"	TFNM "Data\World\P_Dungeon1\Ska\Texture\pd_bottom01.tex";
+  }
+  ALLFRAMESBBOX	-23.9893,-1.87421,-23.9893,23.9893,2.12409,23.9893;
+  COLISION
+  {
+  }
+}

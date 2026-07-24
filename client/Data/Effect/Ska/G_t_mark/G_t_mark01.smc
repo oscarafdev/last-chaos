@@ -1,0 +1,14 @@
+NAME "G_t_mark";
+{
+  MESH       	TFNM "Data\Effect\G_t_mark\G_t_mark01.bm";
+  TEXTURES   
+  {
+    "G_t_mark01"	TFNM "Data\Effect\G_t_mark\G_t_mark01.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\G_t_mark\G_t_mark.bs";
+  ANIMSET   	TFNM "Data\Effect\G_t_mark\G_t_mark01.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

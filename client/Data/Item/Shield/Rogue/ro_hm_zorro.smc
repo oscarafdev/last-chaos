@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hm_zorro";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hair_zorro.bm";
+  TEXTURES   
+  {
+    "ro_hair_000"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hm01_zorro.bm";
+  TEXTURES   
+  {
+    "ro_hm_zorro"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hm_zorro.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hm_zorro.bm";
+  TEXTURES   
+  {
+    "ro_hm_zorro"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hm_zorro.tex";
+  }
+  ALLFRAMESBBOX	-0.200928,1.46256,-0.217652,0.200928,1.78967,0.235936;
+  COLISION
+  {
+  }
+}

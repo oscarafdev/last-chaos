@@ -1,0 +1,34 @@
+NAME "w3_store02";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_store02.bm";
+  TEXTURES   
+  {
+    "w3_medicinastuff"	TFNM "Data\World\Merac\ska\texture\w3_medicinastuff.tex";
+    "w3_store2-1"	TFNM "Data\World\Merac\ska\texture\w3_store2-1.tex";
+    "w3_store02"	TFNM "Data\World\Merac\ska\texture\w3_store02.tex";
+    "w3_store_book"	TFNM "Data\World\Merac\ska\texture\w3_store_book.tex";
+    "w3_Storebox01"	TFNM "Data\World\Merac\ska\texture\w3_Storebox01.tex";
+    "w3_tent01_up2"	TFNM "Data\World\Merac\ska\texture\w3_tent01_up2.tex";
+    "w3_tent02_up"	TFNM "Data\World\Merac\ska\texture\w3_tent02_up.tex";
+    "w3_wood01_up"	TFNM "Data\World\Merac\ska\texture\w3_wood01_up.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_bookshelf01"	TFNM "Data\World\Merac\ska\texture\w3_bookshelf01.tex";
+    "w3_bucket"	TFNM "Data\World\Merac\ska\texture\w3_bucket.tex";
+    "w3_building_storeB_dome01"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_dome01.tex";
+    "w3_building_storeB_wall01"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_wall01.tex";
+    "w3_building_storeB_wall02"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_wall02.tex";
+    "w3_building_storeB_wall03"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_wall03.tex";
+    "w3_building_storeB_wall04"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_wall04.tex";
+    "w3_building_storeB_window01"	TFNM "Data\World\Merac\ska\texture\w3_building_storeB_window01.tex";
+    "w3_flag01"	TFNM "Data\World\Merac\ska\texture\w3_flag01.tex";
+    "w3_houseroof01"	TFNM "Data\World\Merac\ska\texture\w3_houseroof01.tex";
+    "w3_housetent01"	TFNM "Data\World\Merac\ska\texture\w3_housetent01.tex";
+    "w3_housewall04"	TFNM "Data\World\Merac\ska\texture\w3_housewall04.tex";
+    "w3_housewall05"	TFNM "Data\World\Merac\ska\texture\w3_housewall05.tex";
+    "w3_mascot"	TFNM "Data\World\Merac\ska\texture\w3_mascot.tex";
+  }
+  ALLFRAMESBBOX	-9.6527,-0.020073,-12.6084,9.22155,22.073,10.2905;
+  COLISION
+  {
+  }
+}

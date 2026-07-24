@@ -1,0 +1,13 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_8F\Ska\stone_4.bm";
+  TEXTURES   
+  {
+    "stone_3"	TFNM "Data\World\Egeha_dungeon_8F\Ska\Texter\stone_3.tex";
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_8F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+  }
+  ALLFRAMESBBOX	-0.321399,-0.008805,-0.326327,0.212899,0.504753,0.276934;
+  COLISION
+  {
+  }
+}

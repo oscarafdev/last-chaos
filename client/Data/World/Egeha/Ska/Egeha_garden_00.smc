@@ -1,0 +1,17 @@
+NAME "Egeha_garden_00";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_garden_00.bm";
+  TEXTURES   
+  {
+    "Egeha_garden_04"	TFNM "Data\World\egeha\ska\texture\Egeha_garden_04.tex";
+    "Egeha_garden_01"	TFNM "Data\World\egeha\ska\texture\Egeha_garden_01.tex";
+    "Egeha_garden_02"	TFNM "Data\World\egeha\ska\texture\Egeha_garden_02.tex";
+    "Egeha_garden_03"	TFNM "Data\World\egeha\ska\texture\Egeha_garden_03.tex";
+    "Detail"	TFNM "Data\World\Egeha\Ska\Texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-54.2649,-0.781129,-26.3325,54.2649,23.0638,-0.597969;
+  COLISION
+  {
+    "Default"  {-54.265,-0.78113,-26.3325,54.265,23.0638,-0.59795;}
+  }
+}

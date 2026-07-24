@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="250" h="360" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="250" h="360" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="325" t="242" r="508" b="425" unit="23" splitmode="2" />
+    <UIImage id="move_area" x="0" y="0" w="249" h="53" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText x="85" y="17" w="81" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4430" str="문양 변경" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="232" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIImageSplit x="11" y="59" w="112" h="266" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+    <UIImageSplit x="15" y="62" w="105" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="212" t="353" r="260" b="369" unit="12" splitmode="0" />
+    <UIText x="18" y="63" w="100" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4431" str="색상 선택" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIArray id="array_color" x="19" y="84" w="103" h="237" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="6" col="2" sx="9" sy="7" gapx="9" gapy="9" show_row="6">
+        <select x="-1" y="-1" w="32" h="32" l="248" t="374" r="280" b="406" />
+        <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="101" h="236" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="0" item_count="6" item_per_page="6">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+            <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+            <thumb x="0" y="0" w="10" h="216" unit="6" l="185" t="32" r="195" b="71" />
+        </UIScrollBar>
+        <UIArrayItem id="array_item_001" x="9" y="7" w="30" h="30" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage id="img_slot" x="0" y="0" w="30" h="30" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" />
+        </UIArrayItem>
+    </UIArray>
+    <UIImageSplit x="128" y="60" w="112" h="266" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+    <UIImageSplit x="132" y="62" w="105" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="212" t="353" r="260" b="369" unit="12" splitmode="0" />
+    <UIText x="136" y="63" w="100" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4432" str="문양 선택" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIArray id="array_pattern" x="136" y="84" w="103" h="237" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="6" col="2" sx="9" sy="7" gapx="9" gapy="9" show_row="6">
+        <select x="-1" y="-1" w="32" h="32" l="248" t="374" r="280" b="406" />
+        <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="101" h="236" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="0" item_count="6" item_per_page="6">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+            <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+            <thumb x="0" y="0" w="10" h="216" unit="6" l="185" t="32" r="195" b="71" />
+        </UIScrollBar>
+        <UIArrayItem id="array_item_001" x="9" y="7" w="30" h="30" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage id="img_slot" x="0" y="0" w="30" h="30" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" />
+        </UIArrayItem>
+    </UIArray>
+    <UIButton id="btn_ok" x="52" y="329" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="70" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="178" t="409" r="228" b="430" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="129" y="329" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="70" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="178" t="409" r="228" b="430" />
+    </UIButton>
+    <UIImage id="img_skull" x="0" y="0" w="30" h="30" hide="1" tex="QuestBook.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="256" t="968" r="286" b="998" />
+    <UIImage id="img_heart" x="0" y="0" w="30" h="30" hide="1" tex="QuestBook.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="288" t="968" r="318" b="998" />
+    <UIImage id="img_clover" x="0" y="0" w="30" h="30" hide="1" tex="QuestBook.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="320" t="968" r="350" b="998" />
+    <UIImage id="img_dia" x="0" y="0" w="30" h="30" hide="1" tex="QuestBook.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="352" t="968" r="382" b="998" />
+    <UIImage id="img_spade" x="0" y="0" w="30" h="30" hide="1" tex="QuestBook.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="384" t="968" r="414" b="998" />
+    <UIImage id="img_colorTemp" x="0" y="0" w="30" h="30" hide="1" tex="QuestBook.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="415" t="967" r="447" b="999" />
+</Window>

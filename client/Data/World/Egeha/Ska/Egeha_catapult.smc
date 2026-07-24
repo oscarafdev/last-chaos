@@ -1,0 +1,14 @@
+NAME "Egeha_catapult";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_catapult.bm";
+  TEXTURES   
+  {
+    "Egeha_catapult"	TFNM "Data\World\egeha\ska\texture\Egeha_catapult.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\egeha\ska\texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-2.86761,-0.221234,-10.8015,2.85845,9.97637,5.43736;
+  COLISION
+  {
+    "Default"  {-2.86761,-0.221234,-10.8015,2.85845,9.97637,5.43736;}
+  }
+}

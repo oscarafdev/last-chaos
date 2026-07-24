@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Young_woman";
+{
+  MESH       	TFNM "Data\npc\public\Young_woman.bm";
+  TEXTURES   
+  {
+    "Young_woman_face"	TFNM "Data\npc\public\Young_woman_face.tex";
+  }
+  MESH       	TFNM "Data\npc\public\Young_woman_1.bm";
+  TEXTURES   
+  {
+    "Young_woman_bu"	TFNM "Data\npc\public\Young_woman_bu.tex";
+  }
+  MESH       	TFNM "Data\npc\public\Young_woman_2.bm";
+  TEXTURES   
+  {
+    "Young_woman_bd"	TFNM "Data\npc\public\Young_woman_bd.tex";
+  }
+  SKELETON  	TFNM "Data\npc\public\Young_woman.bs";
+  ANIMSET   	TFNM "Data\npc\public\Young_woman.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,1.9,2;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.35,0.35,1.9,0.35;}
+  }
+}

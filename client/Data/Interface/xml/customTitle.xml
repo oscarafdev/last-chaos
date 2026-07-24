@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="616" h="489" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_preView" x="352" y="6" w="259" h="478" hide="1" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="622" t="67" r="623" b="68" />
+    <UIImage x="0" y="0" w="616" h="489" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="616" b="489" />
+    <UIImage id="move_area" x="0" y="0" w="344" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText id="str_title" x="62" y="13" w="224" h="18" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="7079" str="나만의 호칭 제작" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="324" y="4" w="16" h="16" hide="0" tex="Cashshop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="122" t="258" r="138" b="274" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="140" t="258" r="156" b="274" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIIcon id="icon_cashitem" x="156" y="66" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="7080" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UITextBox id="tb_guide" x="22" y="120" w="302" h="103" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="자신만의 독창적인 타이틀을 제작 할 수 있는 곳입니다.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar id="scroll_guide" x="0" y="0" w="301" h="101" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="15" item_count="2" item_per_page="7">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="951" t0="0" r0="961" b0="10" l1="939" t1="0" r1="949" b1="10" />
+            <button2 x="0" y="0" w="10" h="10" l0="951" t0="12" r0="961" b0="22" l1="939" t1="12" r1="949" b1="22" />
+            <thumb x="0" y="0" w="10" h="81" unit="8" l="927" t="0" r="937" b="39" />
+        </UIScrollBar>
+    </UITextBox>
+    <UIEdit id="edit_titleName" x="32" y="254" w="282" h="20" hide="0" align_h="0" align_v="0" tooltip="7093" tooltip_width="0" max="30" passwd="0" cursor_move="1" only_num="0">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+    <UIText x="25" y="78" w="70" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="7085" str="호칭 색상" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="25" y="128" w="70" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="7086" str="호칭 배경 색상" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="25" y="178" w="70" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="7087" str="이펙트" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="img_selectColor" x="96" y="302" w="220" h="42" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0">
+        <UIButton id="btn_color_left" x="5" y="0" w="17" h="22" hide="0" tex="CustomTitle.tex" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="619" t="125" r="635" b="147" />
+            <uv type="1" l="619" t="152" r="635" b="174" />
+            <uv type="2" l="619" t="179" r="635" b="201" />
+            <uv type="3" l="619" t="206" r="635" b="228" />
+        </UIButton>
+        <UIButton id="btn_color_right" x="-5" y="0" w="17" h="22" hide="0" tex="CustomTitle.tex" align_h="2" align_v="1" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="639" t="125" r="656" b="147" />
+            <uv type="1" l="639" t="152" r="656" b="174" />
+            <uv type="2" l="639" t="179" r="656" b="201" />
+            <uv type="3" l="639" t="206" r="657" b="227" />
+        </UIButton>
+        <UIArray id="array_color" x="28" y="2" w="163" h="37" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="5" sx="10" sy="4" gapx="2" gapy="0" show_row="5">
+            <select x="-4" y="-9" w="34" h="45" l="621" t="228" r="655" b="273" />
+            <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIArrayItem id="array_item_001" x="10" y="4" w="27" h="27" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIImage id="img_slot_color" x="0" y="0" w="26" h="27" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="618" t="63" r="644" b="90" />
+            </UIArrayItem>
+        </UIArray>
+    </UIImage>
+    <UIImage id="img_selectBackColor" x="96" y="351" w="220" h="42" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0">
+        <UIButton id="btn_Backcolor_left" x="5" y="0" w="17" h="22" hide="0" tex="CustomTitle.tex" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="619" t="125" r="635" b="147" />
+            <uv type="1" l="619" t="152" r="635" b="174" />
+            <uv type="2" l="619" t="179" r="635" b="201" />
+            <uv type="3" l="619" t="206" r="635" b="228" />
+        </UIButton>
+        <UIButton id="btn_Backcolor_right" x="-5" y="0" w="17" h="22" hide="0" tex="CustomTitle.tex" align_h="2" align_v="1" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="639" t="125" r="656" b="147" />
+            <uv type="1" l="639" t="152" r="656" b="174" />
+            <uv type="2" l="639" t="179" r="656" b="201" />
+            <uv type="3" l="639" t="206" r="657" b="227" />
+        </UIButton>
+        <UIArray id="array_Backcolor" x="28" y="2" w="163" h="37" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="5" sx="10" sy="4" gapx="2" gapy="0" show_row="5">
+            <select x="-4" y="-9" w="34" h="45" l="621" t="228" r="655" b="273" />
+            <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIArrayItem id="array_item_001" x="10" y="4" w="27" h="27" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIImage id="img_slot_color" x="0" y="0" w="26" h="27" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="618" t="63" r="644" b="90" />
+            </UIArrayItem>
+        </UIArray>
+    </UIImage>
+    <UIImage id="img_selectEffect" x="96" y="400" w="220" h="42" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0">
+        <UIButton id="btn_Effect_left" x="5" y="0" w="17" h="22" hide="0" tex="CustomTitle.tex" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="619" t="125" r="635" b="147" />
+            <uv type="1" l="619" t="152" r="635" b="174" />
+            <uv type="2" l="619" t="179" r="635" b="201" />
+            <uv type="3" l="619" t="206" r="635" b="228" />
+        </UIButton>
+        <UIButton id="btn_Effect_right" x="-5" y="0" w="17" h="22" hide="0" tex="CustomTitle.tex" align_h="2" align_v="1" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="639" t="125" r="656" b="147" />
+            <uv type="1" l="639" t="152" r="656" b="174" />
+            <uv type="2" l="639" t="179" r="656" b="201" />
+            <uv type="3" l="639" t="206" r="657" b="227" />
+        </UIButton>
+        <UIArray id="array_Effect" x="28" y="2" w="163" h="37" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="5" sx="10" sy="4" gapx="2" gapy="0" show_row="5">
+            <select x="-4" y="-9" w="34" h="45" l="621" t="228" r="655" b="273" />
+            <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIArrayItem id="array_item_001" x="10" y="4" w="27" h="27" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIImage id="img_slot_color" x="0" y="0" w="26" h="27" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="618" t="92" r="644" b="119" />
+            </UIArrayItem>
+        </UIArray>
+    </UIImage>
+    <UIButton id="btn_make" x="77" y="458" w="85" h="22" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="7088" str="호칭 제작" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="618" t="39" r="703" b="61" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="705" t="39" r="790" b="61" />
+        <uv type="3" l="792" t="39" r="877" b="61" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="182" y="458" w="85" h="22" hide="0" tex="CustomTitle.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="618" t="39" r="703" b="61" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="705" t="39" r="790" b="61" />
+        <uv type="3" l="792" t="39" r="877" b="61" />
+    </UIButton>
+</Window>

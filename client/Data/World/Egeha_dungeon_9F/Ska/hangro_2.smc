@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_9F\Ska\hangro_2.bm";
+  TEXTURES   
+  {
+    "hangro_2"	TFNM "Data\World\Egeha_dungeon_9F\Ska\Texter\hangro_2.tex";
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_9F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+  }
+  ALLFRAMESBBOX	-0.634894,-0.022101,-0.64621,0.649935,1.49238,0.638618;
+  COLISION
+  {
+    "Default"  {-0.696127,-0.0251952,-0.683989,0.722051,1.4363,0.63168;}
+  }
+}

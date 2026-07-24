@@ -1,0 +1,13 @@
+OFFSET    	-0.2,-0.96,0,180,4,0;
+NAME "ns_collect_knife";
+{
+  MESH       	TFNM "Data\Item\ProductTool\ns_collect_knife.bm";
+  TEXTURES   
+  {
+    "collect_knife"	TFNM "Data\Item\ProductTool\texture\collect_knife.tex";
+  }
+  ALLFRAMESBBOX	0.217018,0.00026238,-0.42634,0.266419,0.0521972,0.0475644;
+  COLISION
+  {
+  }
+}

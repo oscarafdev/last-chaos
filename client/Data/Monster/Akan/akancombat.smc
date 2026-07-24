@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "akancombat";
+{
+  MESH       	TFNM "Data\Monster\Akan\akancombat\akancombat_1.bm";
+  TEXTURES   
+  {
+    "akancombat_1"	TFNM "Data\Monster\Akan\Texture\akancombat_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombat\akancombat_2.bm";
+  TEXTURES   
+  {
+    "akancombat"	TFNM "Data\Monster\Akan\Texture\akancombat.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombat\akancombat_3.bm";
+  TEXTURES   
+  {
+    "akancombat_1"	TFNM "Data\Monster\Akan\Texture\akancombat_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombat\akancombat_4.bm";
+  TEXTURES   
+  {
+    "akancombat"	TFNM "Data\Monster\Akan\Texture\akancombat.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombat\akancombat_weapon.bm";
+  TEXTURES   
+  {
+    "akancombat_1"	TFNM "Data\Monster\Akan\Texture\akancombat_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombat\akancombat.bm";
+  TEXTURES   
+  {
+    "akancombat"	TFNM "Data\Monster\Akan\Texture\akancombat.tex";
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombat\_TAG_AKANCH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Akan\akancombat\_TAG_T_AKANC.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Akan\akancombat\akancombat.bs";
+  ANIMSET   	TFNM "Data\Monster\Akan\akancombat\akancombat.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Akan\akancombat\akancombat.bae";
+  ALLFRAMESBBOX	-1.19342,-0.294007,-2.74748,1.82627,3.30467,2.99654;
+  COLISION
+  {
+    "Default"  {-1,0,-1.4,1.6,2.1,1.2;}
+  }
+}

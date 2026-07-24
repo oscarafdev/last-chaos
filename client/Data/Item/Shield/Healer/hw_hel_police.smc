@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_hel_police";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hm_police01.bm";
+  TEXTURES   
+  {
+    "hw_hair_police"	TFNM "Data\Item\Shield\Healer\Texture\hw_hair_police.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hm_police.bm";
+  TEXTURES   
+  {
+    "hw_hat_police"	TFNM "Data\Item\Shield\Healer\Texture\hw_hat_police.tex";
+  }
+  ALLFRAMESBBOX	-0.153927,1.46115,-0.111889,0.153927,1.88484,0.159223;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\barrack_02.bm";
+  TEXTURES   
+  {
+    "barrack02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\barrack02.tex";
+  }
+  ALLFRAMESBBOX	-2.21634,-0.017693,-2.09791,2.21634,3.76616,2.08451;
+  COLISION
+  {
+  }
+}

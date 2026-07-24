@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_crossbow_sp2";
+{
+  MESH       	TFNM "Data\Effect\Ska\ro_crossbow_sp_2.bm";
+  TEXTURES   
+  {
+    "ro_crossbow_sp"	TFNM "Data\Effect\Ska\ro_crossbow_sp.tex";
+  }
+  ALLFRAMESBBOX	-0.355319,-0.012268,-0.063294,-0.000208,0.016347,0.146326;
+  COLISION
+  {
+  }
+}

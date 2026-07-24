@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bd_wm_sen";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_wm_sen.bm";
+  TEXTURES   
+  {
+    "so_bd_wm_sen"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_wm_sen.tex";
+  }
+  ALLFRAMESBBOX	-0.237978,0.500937,-0.119426,0.237967,1.26082,0.13234;
+  COLISION
+  {
+  }
+}

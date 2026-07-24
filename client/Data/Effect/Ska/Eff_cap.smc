@@ -1,0 +1,13 @@
+NAME "Eff_cap";
+{
+  MESH       	TFNM "Data\Effect\SKA\Eff_cap.bm";
+  TEXTURES   
+  {
+    "Eff_capmap"	TFNM "Data\Effect\TEXTURE\Eff_capmap.tex";
+    "Eff_capmap0"	TFNM "Data\Effect\TEXTURE\Eff_capmap0.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

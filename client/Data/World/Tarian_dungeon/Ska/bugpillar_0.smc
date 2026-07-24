@@ -1,0 +1,13 @@
+NAME "bugpillar_0";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\bugpillar_0.bm";
+  TEXTURES   
+  {
+    "bugpillar_0"	TFNM "Data\World\tarian_dungeon\Ska\Texture\bugpillar_0.tex";
+  }
+  ALLFRAMESBBOX	-1.04732,-1e-006,-1.6004,1.04732,30,3.17391;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

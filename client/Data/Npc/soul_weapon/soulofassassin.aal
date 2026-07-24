@@ -1,0 +1,9 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\soul_weapon\soulofassassin_idle.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\soul_weapon\soulofassassin_start.AA"
+}

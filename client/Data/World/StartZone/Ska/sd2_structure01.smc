@@ -1,0 +1,18 @@
+NAME "sd2_structure01";
+{
+  MESH       	TFNM "Data\World\StartZone\ska\sd2_structure01.bm";
+  TEXTURES   
+  {
+    "sd2_minewood5"	TFNM "Data\World\StartZone\ska\texture\sd2_minewood5.tex";
+    "sd2_minewood1"	TFNM "Data\World\StartZone\ska\texture\sd2_minewood1.tex";
+    "sd2_minewood2"	TFNM "Data\World\StartZone\ska\texture\sd2_minewood2.tex";
+    "sd2_minewood4"	TFNM "Data\World\StartZone\ska\texture\sd2_minewood4.tex";
+    "sd2_minewood5"	TFNM "Data\World\StartZone\ska\texture\sd2_minewood5.tex";
+    "sd2_minemetal2"	TFNM "Data\World\StartZone\ska\texture\sd2_minemetal2.tex";
+  }
+  ALLFRAMESBBOX	-4.45377,-0.021495,-17.1263,6.59234,34.9786,13.4864;
+  COLISION
+  {
+    "Default"  {-4.5,0,-17.5,6.5,35,17.5;}
+  }
+}

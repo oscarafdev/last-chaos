@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="216" h="302" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImage id="img_title" x="0" y="0" w="216" h="22" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="216" b="22" />
+    <UIText id="text_shoptitle" x="27" y="5" w="163" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="263" str="상점" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="197" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIImage id="img_mySlot" x="0" y="22" w="216" h="98" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="283" r="216" b="381">
+        <UIArray id="arry_Trade" x="11" y="6" w="174" h="70" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" row="2" col="5" sx="0" sy="0" gapx="3" gapy="3" show_row="2">
+            <select x="0" y="0" w="32" h="32" l="213" t="374" r="245" b="406" />
+            <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIArrayItem id="array_item_001" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+                <UIIcon id="icon_item" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+            </UIArrayItem>
+        </UIArray>
+        <UIText id="text_tradeNas" x="100" y="79" w="79" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_selectSlot" x="0" y="120" w="216" h="151" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="131" r="216" b="282">
+        <UIArray id="arry_Select" x="11" y="6" w="192" h="140" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" row="4" col="5" sx="0" sy="0" gapx="3" gapy="3" show_row="4">
+            <select x="0" y="0" w="32" h="32" l="213" t="374" r="245" b="406" />
+            <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIScrollBar id="scroll_select" x="0" y="0" w="192" h="139" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="17" item_count="4" item_per_page="4">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+                <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+                <thumb x="0" y="0" w="10" h="119" unit="6" l="185" t="32" r="195" b="71" />
+            </UIScrollBar>
+            <UIArrayItem id="array_item_001" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+                <UIIcon id="icon_item" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+            </UIArrayItem>
+        </UIArray>
+    </UIImage>
+    <UIImage id="img_bottom" x="0" y="271" w="216" h="32" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="30" r="216" b="62">
+        <UIText id="text_myNas" x="27" y="10" w="71" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIButton id="btn_ok" x="106" y="4" w="51" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="판매" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="71" t="409" r="122" b="430" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="124" t="409" r="175" b="430" />
+            <uv type="3" l="177" t="409" r="228" b="430" />
+        </UIButton>
+        <UIButton id="btn_cancel" x="160" y="4" w="51" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="71" t="409" r="122" b="430" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="124" t="409" r="175" b="430" />
+            <uv type="3" l="177" t="409" r="228" b="430" />
+        </UIButton>
+    </UIImage>
+    <UIImage id="img_lease" x="0" y="310" w="216" h="175" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="0" b="0">
+        <UIImage x="0" y="0" w="216" h="154" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="284" r="216" b="286" />
+        <UIImage x="7" y="4" w="202" h="146" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="26" t="42" r="97" b="48">
+            <UIText id="text_name" x="4" y="-40" w="90" h="15" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3065" str="무기이름" str_ellipsis="" color="0xfff377ff" color_enter="0xfff377ff" color_select="0xfff377ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="4" y="-24" w="90" h="15" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3066" str="무기레벨" str_ellipsis="" color="0xfff377ff" color_enter="0xfff377ff" color_select="0xfff377ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="4" y="-8" w="90" h="15" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3067" str="사용클래스" str_ellipsis="" color="0xfff377ff" color_enter="0xfff377ff" color_select="0xfff377ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="4" y="8" w="90" h="15" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="85" str="공격력" str_ellipsis="" color="0xfff377ff" color_enter="0xfff377ff" color_select="0xfff377ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="4" y="24" w="90" h="15" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="86" str="마법공격력" str_ellipsis="" color="0xfff377ff" color_enter="0xfff377ff" color_select="0xfff377ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText x="4" y="40" w="90" h="15" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3071" str="대여기간" str_ellipsis="" color="0xfff377ff" color_enter="0xfff377ff" color_select="0xfff377ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_nameVal" x="0" y="10" w="200" h="15" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="+12 도망자의 대검" str_ellipsis="" color="0xfff377ff" color_enter="0xfff377ff" color_select="0xfff377ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_level" x="35" y="-24" w="90" h="15" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="53" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_job" x="35" y="-8" w="90" h="15" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="Healer" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_att" x="35" y="8" w="90" h="15" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="132 + 165" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_matt" x="35" y="24" w="90" h="15" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_time" x="35" y="40" w="90" h="15" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="1 days" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIImage>
+        <UIImage x="0" y="154" w="216" h="21" hide="0" tex="Shop.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="358" r="216" b="381" />
+        <UIText id="text_lease" x="98" y="157" w="83" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+</Window>

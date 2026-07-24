@@ -1,0 +1,24 @@
+NAME "collect01";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_hons\leap01re.bm";
+  TEXTURES   
+  {
+    "magic_line_02"	TFNM "Data\Effect\Ska\ns_hons\magic_line_02.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_hons\leap02re.bm";
+  TEXTURES   
+  {
+    "magic_line_02"	TFNM "Data\Effect\Ska\ns_hons\magic_line_02.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_hons\leapre.bm";
+  TEXTURES   
+  {
+    "magic_line_02"	TFNM "Data\Effect\Ska\ns_hons\magic_line_02.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_hons\collect01.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_hons\collect01.ba";
+  ALLFRAMESBBOX	-0.125,-0.1,-0.125,0.125,0.15,0.125;
+  COLISION
+  {
+  }
+}

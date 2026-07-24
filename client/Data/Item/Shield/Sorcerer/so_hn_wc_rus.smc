@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_hn_wc_rus";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_hn_wc_rus.bm";
+  TEXTURES   
+  {
+    "so_hn_wc_rus"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_hn_wc_rus.tex";
+  }
+  ALLFRAMESBBOX	-0.550888,1.0439,-0.018882,0.550884,1.38524,0.0851;
+  COLISION
+  {
+  }
+}

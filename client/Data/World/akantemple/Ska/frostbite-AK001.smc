@@ -1,0 +1,70 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Deathknight";
+{
+  MESH       	TFNM "Data\World\akantemple\Ska\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_bu_01.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\World\akantemple\Ska\dn_bu.tex";
+    "dn_bu_NRM"	TFNM "Data\World\akantemple\Ska\dn_bu_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_bu.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\World\akantemple\Ska\dn_bu.tex";
+    "dn_bu_NRM"	TFNM "Data\World\akantemple\Ska\dn_bu_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_bu_02.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\World\akantemple\Ska\dn_bu.tex";
+    "dn_bu_NRM"	TFNM "Data\World\akantemple\Ska\dn_bu_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_bu_03.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\World\akantemple\Ska\dn_bu.tex";
+    "dn_bu_NRM"	TFNM "Data\World\akantemple\Ska\dn_bu_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_face.bm";
+  TEXTURES   
+  {
+    "dn_bu"	TFNM "Data\World\akantemple\Ska\dn_bu.tex";
+    "dn_bd"	TFNM "Data\World\akantemple\Ska\dn_bd.tex";
+    "dn_bu_NRM"	TFNM "Data\World\akantemple\Ska\dn_bu_NRM.tex";
+    "dn_bd_NRM"	TFNM "Data\World\akantemple\Ska\dn_bd_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_hn.bm";
+  TEXTURES   
+  {
+    "dn_bd"	TFNM "Data\World\akantemple\Ska\dn_bd.tex";
+    "dn_bd_NRM"	TFNM "Data\World\akantemple\Ska\dn_bd_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_shield.bm";
+  TEXTURES   
+  {
+    "dn_weapon"	TFNM "Data\World\akantemple\Ska\dn_weapon.tex";
+    "dn_weapon_NRM"	TFNM "Data\World\akantemple\Ska\dn_weapon_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_sword.bm";
+  TEXTURES   
+  {
+    "dn_weapon"	TFNM "Data\World\akantemple\Ska\dn_weapon.tex";
+    "dn_weapon_NRM"	TFNM "Data\World\akantemple\Ska\dn_weapon_NRM.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\dn_bd.bm";
+  TEXTURES   
+  {
+    "dn_bd"	TFNM "Data\World\akantemple\Ska\dn_bd.tex";
+    "dn_bd_NRM"	TFNM "Data\World\akantemple\Ska\dn_bd_NRM.tex";
+  }
+  SKELETON  	TFNM "Data\World\akantemple\Ska\Deathknight.bs";
+  ALLFRAMESBBOX	-7,0,-7,7,5.6,7;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1,1.5,5.6,1;}
+  }
+}

@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bu_greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_greece01.bm";
+  TEXTURES   
+  {
+    "hw_bu_greece"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_greece.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_greece02.bm";
+  TEXTURES   
+  {
+    "hw_bu_greece"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_greece.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_greece.bm";
+  TEXTURES   
+  {
+    "hw_bu_greece"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_greece.tex";
+  }
+  ALLFRAMESBBOX	-0.399583,0.055105,-0.154954,0.399583,1.71869,0.202523;
+  COLISION
+  {
+  }
+}

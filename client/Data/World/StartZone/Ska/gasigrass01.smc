@@ -1,0 +1,12 @@
+NAME "gasigrass01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\gasigrass01.bm";
+  TEXTURES   
+  {
+    "s_smallivy_001"	TFNM "Data\world\StartZone\Ska\Texture\s_smallivy_001.tex";
+  }
+  ALLFRAMESBBOX	-0.04798,-8.1e-005,-0.043703,0.047873,0.095419,0.04476;
+  COLISION
+  {
+  }
+}

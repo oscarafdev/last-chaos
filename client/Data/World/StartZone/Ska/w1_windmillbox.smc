@@ -1,0 +1,15 @@
+NAME "w1_windmillbox";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_windmillbox.bm";
+  TEXTURES   
+  {
+    "st_house_02"	TFNM "Data\World\StartZone\Ska\Texture\st_house_02.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "ma"	TFNM "Data\World\StartZone\Ska\Texture\ma.tex";
+  }
+  ALLFRAMESBBOX	-1.77775,-0.035044,-3.22483,1.77775,4.12489,3.2248;
+  COLISION
+  {
+    "Default"  {-1.75,0,-3.2,1.75,4.1,3.2;}
+  }
+}

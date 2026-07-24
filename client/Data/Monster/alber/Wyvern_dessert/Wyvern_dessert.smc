@@ -1,0 +1,35 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Wyvern_dessert";
+{
+  MESH       	TFNM "Data\Monster\alber\Wyvern_dessert\Wyvern01.bm";
+  TEXTURES   
+  {
+    "wm_dessert"	TFNM "Data\Monster\alber\Wyvern_dessert\wm_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\Wyvern_dessert\Wyvern02.bm";
+  TEXTURES   
+  {
+    "wm_h_dessert"	TFNM "Data\Monster\alber\Wyvern_dessert\wm_h_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\Wyvern_dessert\Wyvern03.bm";
+  TEXTURES   
+  {
+    "wm_1_dessert"	TFNM "Data\Monster\alber\Wyvern_dessert\wm_1_dessert.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\Wyvern_dessert\Wyvern_tag.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\alber\Wyvern_dessert\_TAG_T_CENTER_wy.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\alber\Wyvern_dessert\Wyvern.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\Wyvern_dessert\Wyvern.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\Wyvern_dessert\Wyvern.bae";
+  ALLFRAMESBBOX	-2.5,0,-3,2.5,5,3;
+  COLISION
+  {
+    "Default"  {-1.1,0,-1.75,1.1,4,0.75;}
+  }
+}

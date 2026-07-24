@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "stone_02";
+{
+  MESH       	TFNM "Data\World\EgehaCave_01\Ska\stone_02.bm";
+  TEXTURES   
+  {
+    "CaveStone_01"	TFNM "Data\World\EgehaCave_01\Ska\Texture\CaveStone_01.tex";
+  }
+  ALLFRAMESBBOX	-2.2825,-0.101759,-2.97083,3.41819,3.72037,2.3686;
+  COLISION
+  {
+    "Default"  {-2.31538,-0.0246589,-2.99345,3.39549,3.73629,2.09962;}
+  }
+}

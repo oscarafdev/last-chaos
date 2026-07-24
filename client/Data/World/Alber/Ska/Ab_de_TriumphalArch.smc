@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ab_de_TriumphalArch";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_TriumphalArch.bm";
+  TEXTURES   
+  {
+    "Ab_de_TriumphalArch04"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch04.tex";
+    "Ab_de_TriumphalArch05"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch05.tex";
+    "Ab_de_TriumphalArch06"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch06.tex";
+    "Ab_de_TriumphalArch07"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch07.tex";
+    "Ab_de_TriumphaArch02"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphaArch02.tex";
+    "Ab_de_TriumphalArch01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch01.tex";
+    "Ab_de_TriumphalArch03"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch03.tex";
+  }
+  SKELETON  	TFNM "Data\World\Alber\Ska\Ab_de_TriumphalArch.bs";
+  ANIMSET   	TFNM "Data\World\Alber\Ska\Ab_de_TriumphalArch.ba";
+  ALLFRAMESBBOX	-17.288,-2.63279,-10.8277,17.288,18.9949,7.12704;
+  COLISION
+  {
+  }
+}

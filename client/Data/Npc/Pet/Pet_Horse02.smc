@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Pet_Horse02";
+{
+  MESH       	TFNM "Data\Npc\pet\Pet_Horse02.bm";
+  TEXTURES   
+  {
+    "Pet_Horse02"	TFNM "Data\Npc\pet\pet_horse02.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_HORSE_2.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\pet_horse02.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\Pet_Horse02.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\Pet_Horse02.bae";
+  ALLFRAMESBBOX	-0.4,0,-1.35,0.4,1.8,1.15;
+  COLISION
+  {
+    "Default"  {-0.4,0,-1.35,0.4,1.8,1.15;}
+  }
+}

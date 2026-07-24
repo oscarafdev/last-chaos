@@ -1,0 +1,55 @@
+name: lastchaos-2018
+
+services:
+  database:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${LC_DB_PASSWORD:-lastchaos}
+      MARIADB_ROOT_HOST: "%"
+    ports:
+      - "${LC_DB_PORT:-3306}:3306"
+    volumes:
+      - database-data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test:
+        - CMD
+        - healthcheck.sh
+        - --connect
+        - --innodb_initialized
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        LC_LOCALE: ${LC_LOCALE:-usa}
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      DB_HOST: database
+      DB_PASSWORD: ${LC_DB_PASSWORD:-lastchaos}
+      SERVER_BIND_IP: ${LC_SERVER_BIND_IP:-0.0.0.0}
+      SERVER_PUBLIC_IP: ${LC_SERVER_PUBLIC_IP:-127.0.0.1}
+      ENABLE_CASH_SERVER: ${LC_ENABLE_CASH_SERVER:-true}
+    ports:
+      - "3000:3000"
+      - "4001:4001"
+      - "4006:4006"
+      - "4101:4101"
+      - "4102:4102"
+      - "4112:4112"
+      - "50401:50401"
+    volumes:
+      - server-logs:/opt/lastchaos/LogFiles
+
+volumes:
+  database-data:
+  server-logs:

@@ -1,0 +1,13 @@
+NAME "_zin_testing";
+{
+  MESH       	TFNM "Data\Effect\SKA\_zin_testing.bm";
+  TEXTURES   
+  {
+    "Mage_mahoA"	TFNM "Data\Effect\TEXTURE\Mage_mahoA.tex";
+  }
+
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

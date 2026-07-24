@@ -1,0 +1,26 @@
+OFFSET    	0,0,0.2,180,0,0;
+NAME "blackdeer";
+{
+  MESH       	TFNM "Data\monster\Animals\_TAG_T_CENTER_bdeer.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Animals\blackdeer.bm";
+  TEXTURES   
+  {
+    "blackdeer"	TFNM "Data\Monster\Animals\blackdeer.tex";
+  }
+  MESH       	TFNM "Data\Monster\Animals\blackdeer_1.bm";
+  TEXTURES   
+  {
+    "blackdeer_1"	TFNM "Data\Monster\Animals\blackdeer_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Animals\blackdeer.bs";
+  ANIMSET   	TFNM "Data\Monster\Animals\blackdeer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Animals\blackdeer.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.55,0.75,2,0.95;
+  COLISION
+  {
+    "Default"  {-0.7,0,-0.7,0.7,1.8,0.7;}
+  }
+}

@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "normal_leadingband_evilspirit";
+{
+  MESH       	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_face.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_summons_bu"	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bu.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_summons_bu"	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_arm.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_summons_bu"	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_hn.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_summons_bu"	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bd.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_summons_bd"	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_ft.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_summons_bd"	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\_TAG_NLEVS_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Leadingband\_TAG_NLEVS_2.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit.bs";
+  ANIMSET   	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Leadingband\normal_leadingband_evilspirit.bae";
+  ALLFRAMESBBOX	-0.65,0,-0.65,0.65,2.3,0.65;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.65,0.65,2.3,0.65;}
+  }
+}

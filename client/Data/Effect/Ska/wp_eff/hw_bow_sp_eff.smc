@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bow_sp_eff";
+{
+  MESH       	TFNM "Data\Effect\Ska\wp_eff\hw_bow_sp_eff.bm";
+  TEXTURES   
+  {
+    "hw_bow_sp"	TFNM "Data\Effect\Ska\wp_eff\hw_bow_sp.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

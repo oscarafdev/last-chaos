@@ -1,0 +1,18 @@
+NAME "mineral_G";
+{
+  MESH       	TFNM "Data\Monster\Product\mineral_G.bm";
+  TEXTURES   
+  {
+    "mineral_G"	TFNM "Data\Monster\Product\Texture\mineral_G.tex";
+  }
+  MESH       	TFNM "Data\Monster\Product\mineral_G_1.bm";
+  TEXTURES   
+  {
+    "mineral_G"	TFNM "Data\Monster\Product\Texture\mineral_G.tex";
+  }
+  ALLFRAMESBBOX	-3.395,0,-3.67094,3.66348,5,3.74113;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1,0.75;}
+  }
+}

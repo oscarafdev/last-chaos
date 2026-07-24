@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "volcan_nuiden";
+{
+  MESH       	TFNM "Data\Monster\alber\volcan_nuiden\nuiden.bm";
+  TEXTURES   
+  {
+    "volcan_nuiden"	TFNM "Data\Monster\alber\volcan_nuiden\volcan_nuiden.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_nuiden\nuiden_1.bm";
+  TEXTURES   
+  {
+    "volcan_nuiden"	TFNM "Data\Monster\alber\volcan_nuiden\volcan_nuiden.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_nuiden\_TAG_T_nuiden.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\alber\volcan_nuiden\nuiden.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\volcan_nuiden\nuiden.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\volcan_nuiden\nuiden.bae";
+  ALLFRAMESBBOX	-4,0,-4,4,3,4;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.75,0.6,3,0.75;}
+  }
+}

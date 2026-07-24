@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "DarkZobie_S";
+{
+  MESH       	TFNM "Data\Monster\Zombi\_TAG_T_CENTER_dz.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Zombi\DarkZombi_S\DarkZombi_S.bm";
+  TEXTURES   
+  {
+    "DarkZombi_s"	TFNM "Data\Monster\Zombi\DarkZombi_S\DarkZombi_s.tex";
+  }
+  SKELETON  	TFNM "Data\monster\Zombi\DryZombi.bs";
+  ANIMSET   	TFNM "Data\monster\Zombi\DryZombi.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Zombi\DryZombi.bae";
+  ALLFRAMESBBOX	-1.25,0,-0.8,1.25,2,2.2;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.35,0.35,1.8,0.35;}
+  }
+}

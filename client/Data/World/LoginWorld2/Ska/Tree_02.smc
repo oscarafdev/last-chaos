@@ -1,0 +1,14 @@
+NAME "Tree_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\Tree_02.bm";
+  TEXTURES   
+  {
+    "tree01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\tree01.tex";
+    "tree01_02"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\tree01_02.tex";
+  }
+  ALLFRAMESBBOX	-7.48137,0.000543,-7.90089,7.48137,14.3265,7.90089;
+  COLISION
+  {
+    "Default"  {-0.937781,-0.145556,-1.02923,1.55453,2.32331,1.30554;}
+  }
+}

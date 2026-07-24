@@ -1,0 +1,17 @@
+OFFSET    	-0.45,-1.16,0.55,180,0,50;
+NAME "ti_axe_phynix";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_AXE_PHYNIX.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ti_axe_phynix.bm";
+  TEXTURES   
+  {
+    "ti_axe_phynix"	TFNM "Data\Item\Weapon\Texture\ti_axe_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.458341,-0.0261105,-1.29769,0.488611,0.107515,1.12185;
+  COLISION
+  {
+  }
+}

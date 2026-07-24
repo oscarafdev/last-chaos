@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="216" h="242" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImageSplit x="0" y="0" w="216" h="242" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="325" t="242" r="508" b="425" unit="23" splitmode="2" />
+    <UIImage id="move_area" x="0" y="0" w="215" h="43" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText x="69" y="16" w="80" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4978" str="보석 제거" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="198" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UITextBox x="15" y="54" w="188" h="80" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="4987" split_mode="0" text_col="0xffffffff" str="소켓에 있는 보석을 제거 시 모든 보석이 높은 확률로 파괴될 수 있습니다. 그래도 보석 제거를 하시겠습니까?">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIImage x="0" y="132" w="34" h="34" hide="0" tex="SocketSystemCombine.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" l="69" t="260" r="103" b="294" />
+    <UIText id="text_nas" x="0" y="178" w="184" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4979" str="제거 비용" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="0" y="202" w="80" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4971" str="제거" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="70" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="176" t="409" r="228" b="430" />
+    </UIButton>
+    <UIIcon id="icon_item" x="0" y="133" w="32" h="32" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+</Window>

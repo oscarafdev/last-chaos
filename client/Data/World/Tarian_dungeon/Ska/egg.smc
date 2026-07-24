@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "egg";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\egg.bm";
+  TEXTURES   
+  {
+    "karabak_egg"	TFNM "Data\World\tarian_dungeon\Ska\Texture\karabak_egg.tex";
+  }
+  SKELETON  	TFNM "Data\World\tarian_dungeon\Ska\egg.bs";
+  ANIMSET   	TFNM "Data\World\tarian_dungeon\Ska\egg.ba";
+  ALLFRAMESBBOX	-0.397658,-1.63047e-007,-0.407419,0.395134,0.967461,0.478494;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1,0.4;}
+  }
+}

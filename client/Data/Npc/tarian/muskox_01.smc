@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "muskox_01";
+{
+  MESH       	TFNM "Data\Npc\tarian\muskox_01.bm";
+  TEXTURES   
+  {
+    "muskox_01"	TFNM "Data\Npc\tarian\muskox_01.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\tarian\muskox_01.bs";
+  ANIMSET   	TFNM "Data\Npc\tarian\muskox_01.ba";
+  ALLFRAMESBBOX	-0.92795,0.00623399,-0.968255,0.92795,0.879528,0.968255;
+  COLISION
+  {
+  }
+}

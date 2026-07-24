@@ -1,0 +1,23 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Dratan\ska\w2_altar.bm";
+  TEXTURES   
+  {
+    "w2_altar_poll"	TFNM "Data\World\Dratan\ska\Texture\w2_altar_poll.tex";
+    "w2_altar_poll"	TFNM "Data\World\Dratan\ska\Texture\w2_altar_poll.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_altar1"	TFNM "Data\World\Dratan\ska\Texture\w2_altar1.tex";
+    "w2_altar2"	TFNM "Data\World\Dratan\ska\Texture\w2_altar2.tex";
+    "w2_altar3"	TFNM "Data\World\Dratan\ska\Texture\w2_altar3.tex";
+    "w2_altar5"	TFNM "Data\World\Dratan\ska\Texture\w2_altar5.tex";
+    "w2_altar8"	TFNM "Data\World\Dratan\ska\Texture\w2_altar8.tex";
+    "w2_altar9"	TFNM "Data\World\Dratan\ska\Texture\w2_altar9.tex";
+    "w2_altar10-1"	TFNM "Data\World\Dratan\ska\Texture\w2_altar10-1.tex";
+    "w2_altar10-2"	TFNM "Data\World\Dratan\ska\Texture\w2_altar10-2.tex";
+    "w2_altar10"	TFNM "Data\World\Dratan\ska\Texture\w2_altar10.tex";
+  }
+  ALLFRAMESBBOX	-34.1217,-0.037705,-34.1224,34.1223,44.4891,34.1239;
+  COLISION
+  {
+  }
+}

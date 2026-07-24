@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_dsword_kailooks_02";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ni_dsword_kailooks_02_drop.bm";
+  TEXTURES   
+  {
+    "ni_sword_kailooks_02"	TFNM "Data\Item\Weapon\Texture\ni_sword_kailooks_02.tex";
+  }
+  ALLFRAMESBBOX	-0.370593,0.002607,-0.962545,0.237889,0.180711,0.856463;
+  COLISION
+  {
+  }
+}

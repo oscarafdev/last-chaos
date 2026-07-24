@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "tower01";
+{
+  MESH       	TFNM "Data\Npc\Gguard\tower01.bm";
+  TEXTURES   
+  {
+    "tower01"	TFNM "Data\Npc\Gguard\tower01.tex";
+  }
+  MESH       	TFNM "Data\Npc\Gguard\_TAG_ef_tower01.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Gguard\tower01.bs";
+  ANIMSET   	TFNM "Data\Npc\Gguard\tower01.ba";
+  ALLFRAMESBBOX	-20,0,-20,20,16,20;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,16,2;}
+  }
+}

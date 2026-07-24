@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ab_de_magicstone";
+{
+  MESH       	TFNM "Data\Npc\Alber\_TAG_MS.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Alber\ab_de_magicstone.bm";
+  TEXTURES   
+  {
+    "ab_de_magicstone"	TFNM "Data\Npc\Alber\Texture\ab_de_magicstone.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Alber\ab_de_magicstone.bs";
+  ANIMSET   	TFNM "Data\Npc\Alber\ab_de_magicstone.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Alber\ab_de_magicstone.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,7,1;
+  COLISION
+  {
+    "Default"  {-1,0.15,-1,1,7.15,1;}
+  }
+}

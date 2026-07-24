@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="183" h="277" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="183" h="277" hide="0" tex="upgrade_fusion.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="10" t="9" r="193" b="286"/>
+    <UIText x="0" y="6" w="159" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="8270" str="Upgrade fusion" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="move_area" x="0" y="0" w="183" h="23" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIImage x="0" y="50" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" l="287" t="353" r="321" b="387" />
+    <!--UIImageSplit x="7" y="133" w="202" h="110" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="106" t="456" r="136" b="486" unit="10" splitmode="2" /-->
+    <UIButton id="btn_close" x="163" y="4" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    
+    <!--UIText id="text_needed" x="140" y="61" w="32" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0 / 3" str_ellipsis="" color="0xff4500ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText-->
+
+	<UIEdit id="text_amount" x="9" y="112" w="32" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" max="5" passwd="0" cursor_move="1" only_num="1">
+        <CandidateUV l="0" t="0" r="0" b="0" />
+        <ReadUV l="0" t="0" r="0" b="0" />
+        <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+    </UIEdit>
+	<UIButton id="btn_minus" x="53" y="112" w="12" h="20" hide="0" tex="Auction.tex" >
+		<uv type="0" l="655" t="605" r="667" b="625" />
+		<copyuv src="0" dst="1" />
+		<uv type="2" l="655" t="625" r="667" b="645" />
+		<copyuv src="0" dst="3" />
+	</UIButton>
+	<UIButton id="btn_plus" x="118" y="112" w="12" h="20" hide="0" tex="Auction.tex" >
+		<uv type="0" l="674" t="605" r="686" b="625" />
+		<copyuv src="0" dst="1" />
+		<uv type="2" l="674" t="625" r="686" b="645" />
+		<copyuv src="0" dst="3" />
+	</UIButton>
+	<UIIcon id="icon_upgrade" x="0" y="50" w="32" h="32" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0"/>
+	<!--UIButton id="btn_all" x="143" y="100" w="32" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="MAX" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="177" t="409" r="228" b="430" />
+    </UIButton-->
+    <UITextBoxEx id="tb_contents" x="12" y="152" w="155" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" split_mode="0" text_base_col="0xffffffff" str_idx="8271" />
+
+	
+    <UIButton id="btn_ok" x="-32" y="240" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2440" str="봉인해제" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="177" t="409" r="228" b="430" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="-15" y="240" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="177" t="409" r="228" b="430" />
+    </UIButton>
+</Window>

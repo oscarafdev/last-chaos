@@ -1,0 +1,17 @@
+NAME "barricade-01";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_8F\Ska\TAITAN_Scale.bm";
+  TEXTURES   
+  {
+    "ti_face_000_new"	TFNM "Data\World\Egeha_dungeon_8F\Ska\Texter\ti_face_000_new.tex";
+    "ti_festiv_bd_01"	TFNM "Data\World\Egeha_dungeon_8F\Ska\Texter\ti_festiv_bd_01.tex";
+    "ti_festiv_bu_01"	TFNM "Data\World\Egeha_dungeon_8F\Ska\Texter\ti_festiv_bu_01.tex";
+    "ti_festiv_ft_01"	TFNM "Data\World\Egeha_dungeon_8F\Ska\Texter\ti_festiv_ft_01.tex";
+    "ti_festiv_hn_01"	TFNM "Data\World\Egeha_dungeon_8F\Ska\Texter\ti_festiv_hn_01.tex";
+  }
+  ALLFRAMESBBOX	3e+038,3e+038,3e+038,-3e+038,-3e+038,-3e+038;
+  COLISION
+  {
+    "Default"  {-2.22571,-0.0064435,-1.17572,2.22418,2.18765,1.2345;}
+  }
+}

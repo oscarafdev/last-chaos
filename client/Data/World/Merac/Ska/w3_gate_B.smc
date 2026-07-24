@@ -1,0 +1,15 @@
+NAME "w3_gate_B";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_gate_B.bm";
+  TEXTURES   
+  {
+    "w3_chain"	TFNM "Data\World\Merac\ska\texture\w3_chain.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_outobject_A"	TFNM "Data\World\Merac\ska\texture\w3_outobject_A.tex";
+    "w3_outobject_C"	TFNM "Data\World\Merac\ska\texture\w3_outobject_C.tex";
+  }
+  ALLFRAMESBBOX	-3.16781,-0.000505,-1.79203,3.16781,5.91859,1.79203;
+  COLISION
+  {
+  }
+}

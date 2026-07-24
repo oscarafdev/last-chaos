@@ -1,0 +1,12 @@
+NAME "barricade-01";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_top\Ska\Study.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	3e+038,3e+038,3e+038,-3e+038,-3e+038,-3e+038;
+  COLISION
+  {
+    "Default"  {-2.22571,-0.0064435,-1.17572,2.22418,2.18765,1.2345;}
+  }
+}

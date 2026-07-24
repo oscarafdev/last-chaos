@@ -1,0 +1,15 @@
+NAME "w3_tree14";
+{
+  MESH       	TFNM "Data\World\merac\ska\w3_tree14.bm";
+  TEXTURES   
+  {
+    "merac_Detail"	TFNM "Data\World\merac\ska\texture\merac_Detail.tex";
+    "w3_tree021"	TFNM "Data\World\merac\ska\texture\w3_tree021.tex";
+    "w3_tree05"	TFNM "Data\World\merac\ska\texture\w3_tree05.tex";
+  }
+  ALLFRAMESBBOX	-5.52009,-0.159732,-5.53735,5.0194,10.7931,4.54708;
+  COLISION
+  {
+    "Default"  {-1.24316,0,-1.55383,1.75684,7,1.44616;}
+  }
+}

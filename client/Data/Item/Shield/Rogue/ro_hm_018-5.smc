@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hm_018-5";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_EYE01-5.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_EYE02-5.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hm_018-5.bm";
+  TEXTURES   
+  {
+    "ro_hm_018-5"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hm_018-5.tex";
+  }
+  ALLFRAMESBBOX	-0.140386,1.53521,-0.089356,0.140385,1.79735,0.125486;
+  COLISION
+  {
+  }
+}

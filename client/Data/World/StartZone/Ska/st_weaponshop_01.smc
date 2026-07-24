@@ -1,0 +1,25 @@
+NAME "st_weaponshop_01";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\st_weaponshop_01.bm";
+  TEXTURES   
+  {
+    "StartZonetile_roof03"	TFNM "Data\World\StartZone\Ska\Texture\StartZonetile_roof03.tex";
+    "ma"	TFNM "Data\World\StartZone\Ska\Texture\ma.tex";
+    "st_house_01"	TFNM "Data\World\StartZone\Ska\Texture\st_house_01.tex";
+    "st_house_02"	TFNM "Data\World\StartZone\Ska\Texture\st_house_02.tex";
+    "st_house_03"	TFNM "Data\World\StartZone\Ska\Texture\st_house_03.tex";
+    "st_shop_001"	TFNM "Data\World\StartZone\Ska\Texture\st_shop_001.tex";
+    "st_shop_002"	TFNM "Data\World\StartZone\Ska\Texture\st_shop_002.tex";
+    "weaponshop_display_w1"	TFNM "Data\World\StartZone\Ska\Texture\weaponshop_display_w1.tex";
+    "weaponshop_fabric_w1"	TFNM "Data\World\StartZone\Ska\Texture\weaponshop_fabric_w1.tex";
+    "weaponshop_jewelry box_w1"	TFNM "Data\World\StartZone\Ska\Texture\weaponshop_jewelry box_w1.tex";
+    "weaponshop_weapons_w1"	TFNM "Data\World\StartZone\Ska\Texture\weaponshop_weapons_w1.tex";
+    "grocery_fabric_w1"	TFNM "Data\World\StartZone\Ska\Texture\grocery_fabric_w1.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-9.53712,-0.029218,-6.80254,9.53712,9.58656,6.80254;
+  COLISION
+  {
+    "Default"  {-9.5,0,-6.5,9.5,9,6.5;}
+  }
+}

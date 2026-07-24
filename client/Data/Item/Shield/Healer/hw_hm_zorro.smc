@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_hm_zorro";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hair_zorro.bm";
+  TEXTURES   
+  {
+    "hw_hair_000"	TFNM "Data\Item\Shield\Healer\Texture\hw_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hm_zorro.bm";
+  TEXTURES   
+  {
+    "hw_hm_zorro"	TFNM "Data\Item\Shield\Healer\Texture\hw_hm_zorro.tex";
+  }
+  ALLFRAMESBBOX	-0.132505,1.48148,-0.116707,0.132505,2.00729,0.166648;
+  COLISION
+  {
+  }
+}

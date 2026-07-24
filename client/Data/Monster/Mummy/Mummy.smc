@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Mummy";
+{
+  MESH       	TFNM "Data\monster\Mummy\Mummy.bm";
+  TEXTURES   
+  {
+    "m_mu"	TFNM "Data\monster\Mummy\m_mu.tex";
+  }
+  MESH       	TFNM "Data\monster\Mummy\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Mummy\Mummy.bs";
+  ANIMSET   	TFNM "Data\monster\Mummy\Mummy.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Mummy\Mummy.bae";
+  ALLFRAMESBBOX	-1.25,0,-1.5,1.25,2,1.5;
+  COLISION
+  {
+    "Default"  {-0.40428,0,-0.4,0.40428,1.8,0.4;}
+  }
+}

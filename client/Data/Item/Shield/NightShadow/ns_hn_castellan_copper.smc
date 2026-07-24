@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_hn_castellan_copper";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_hn_castellan_copper.bm";
+  TEXTURES   
+  {
+    "ns_hn_castellan_copper"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hn_castellan_copper.tex";
+  }
+  ALLFRAMESBBOX	-0.524275,0.905156,-0.088991,0.524275,1.51226,0.142246;
+  COLISION
+  {
+  }
+}

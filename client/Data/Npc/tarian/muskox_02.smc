@@ -1,0 +1,12 @@
+NAME "muskox_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\muskox_02.bm";
+  TEXTURES   
+  {
+    "muskox_02"	TFNM "Data\World\Tarian\Ska\Texture\muskox_02.tex";
+  }
+  ALLFRAMESBBOX	-0.209231,-0.002557,-0.260217,0.209561,0.25594,0.163359;
+  COLISION
+  {
+  }
+}

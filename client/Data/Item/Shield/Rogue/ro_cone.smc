@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cone";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cone.bm";
+  TEXTURES   
+  {
+    "ro_cone"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cone.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cone_01.bm";
+  TEXTURES   
+  {
+    "ro_hair_000"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

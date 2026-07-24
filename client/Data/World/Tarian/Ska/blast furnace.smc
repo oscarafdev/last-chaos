@@ -1,0 +1,25 @@
+NAME "blast furnace";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\BlastFurnace.bm";
+  TEXTURES   
+  {
+    "blast furnace_12"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_12.tex";
+    "blast furnace_01"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_01.tex";
+    "blast furnace_02"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_02.tex";
+    "blast furnace_03"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_03.tex";
+    "blast furnace_04"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_04.tex";
+    "blast furnace_05"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_05.tex";
+    "blast furnace_06"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_06.tex";
+    "blast furnace_07"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_07.tex";
+    "blast furnace_08"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_08.tex";
+    "blast furnace_09"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_09.tex";
+    "blast furnace_10"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_10.tex";
+    "blast furnace_11"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_11.tex";
+    "blast furnace_13"	TFNM "Data\World\Tarian\Ska\Texture\blast furnace_13.tex";
+  }
+  ALLFRAMESBBOX	-18.869,-0.239692,-18.8332,18.4788,23.8676,18.5258;
+  COLISION
+  {
+    "Default"  {-2,0,-4,2,0.3,4;}
+  }
+}

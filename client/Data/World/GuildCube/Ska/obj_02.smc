@@ -1,0 +1,13 @@
+NAME "obj_02";
+{
+  MESH       	TFNM "Data\World\GuildCube\Ska\obj_02.bm";
+  TEXTURES   
+  {
+    "obj-02"	TFNM "Data\World\GuildCube\Ska\Texture\obj-02.tex";
+    "obj-S02"	TFNM "Data\World\GuildCube\Ska\Texture\obj-S02.tex";
+  }
+  ALLFRAMESBBOX	0.001552,0.000777,-0.102439,0.146938,0.473201,0.102439;
+  COLISION
+  {
+  }
+}

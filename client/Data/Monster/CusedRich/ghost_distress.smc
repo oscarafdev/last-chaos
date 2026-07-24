@@ -1,0 +1,58 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ghost_distress";
+{
+  MESH       	TFNM "Data\Monster\CusedRich\_TAG_GDRH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\_TAG_GDLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\_TAG_T_GDE_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\_TAG_T_GDE_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_distress_face.bm";
+  TEXTURES   
+  {
+    "ghost_distress_bu"	TFNM "Data\Monster\CusedRich\ghost_distress_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_distress_bu.bm";
+  TEXTURES   
+  {
+    "ghost_distress_bu"	TFNM "Data\Monster\CusedRich\ghost_distress_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_distress_arm.bm";
+  TEXTURES   
+  {
+    "ghost_distress_bu"	TFNM "Data\Monster\CusedRich\ghost_distress_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_distress_hn.bm";
+  TEXTURES   
+  {
+    "ghost_distress_bu"	TFNM "Data\Monster\CusedRich\ghost_distress_bu.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_distress_bd.bm";
+  TEXTURES   
+  {
+    "ghost_distress_bd"	TFNM "Data\Monster\CusedRich\ghost_distress_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\CusedRich\ghost_distress_ft.bm";
+  TEXTURES   
+  {
+    "ghost_distress_bd"	TFNM "Data\Monster\CusedRich\ghost_distress_bd.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\CusedRich\ghost_distress.bs";
+  ANIMSET   	TFNM "Data\Monster\CusedRich\ghost_distress.ba";
+  ANIMEFFECT	TFNM "Data\Monster\CusedRich\ghost_distress.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2.2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2.2,0.5;}
+  }
+}

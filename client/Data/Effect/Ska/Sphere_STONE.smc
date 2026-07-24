@@ -1,0 +1,13 @@
+NAME "Sphere_STONE";
+{
+  MESH       	TFNM "Data\Effect\SKA\Sphere_STONE.bm";
+  TEXTURES   
+  {
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+    "Sphere_STONE"	TFNM "Data\Effect\TEXTURE\Sphere_STONE.tex";
+  }
+  ALLFRAMESBBOX	-1,-1,-1,1,1,1;
+  COLISION
+  {
+  }
+}

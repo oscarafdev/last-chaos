@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "j_shoper";
+{
+  MESH       	TFNM "Data\npc\Shoper03\j_shoper_b.bm";
+  TEXTURES   
+  {
+    "j_shoper_b"	TFNM "Data\npc\Shoper03\j_shoper_b.tex";
+  }
+  MESH       	TFNM "Data\npc\Shoper03\j_shpoer_f.bm";
+  TEXTURES   
+  {
+    "j_shoper_f"	TFNM "Data\npc\Shoper03\j_shoper_f.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Shoper03\j_shoper.bs";
+  ANIMSET   	TFNM "Data\npc\Shoper03\j_shoper.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,2,1;}
+  }
+}

@@ -1,0 +1,14 @@
+NAME "Eff_dor_a04e";
+{
+  MESH       	TFNM "Data\Effect\SKA\Eff_dor_a04e.bm";
+  TEXTURES   
+  {
+    "Eff_dor_a01_map_e"	TFNM "Data\Effect\TEXTURE\Eff_dor_a01_map_e.tex";
+    "light_sh_c"	TFNM "Data\Effect\TEXTURE\light_sh_c.tex";
+  }
+  
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

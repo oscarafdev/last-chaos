@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="news_html" x="0" y="0" w="750" h="500" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" w_percent="80" h_percent="80" w_margin="0" h_margin="0">
+    <!--<UIImage id="img_back" x="0" y="0" w="750" h="500" hide="0" tex="notice_all.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="750" b="500" />-->
+	
+	<UIImage id="img_back_t" x="0" y="0" w="500" h="75" hide="0" tex="notice_all.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" l="196" t="0" r="197" b="75" w_percent="100" w_margin="175" />
+	<UIImage id="img_back_b" x="0" y="0" w="500" h="20" hide="0" tex="notice_all.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" l="196" t="480" r="197" b="500" w_percent="100" w_margin="175" />
+	<UIImage id="img_back_l" x="0" y="0" w="20" h="480" hide="0" tex="notice_all.tex" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" l="0" t="76" r="20" b="77" h_percent="100" h_margin="8" />
+	<UIImage id="img_back_r" x="0" y="0" w="20" h="480" hide="0" tex="notice_all.tex" align_h="2" align_v="1" tooltip="-1" tooltip_width="0" l="730" t="76" r="750" b="77" h_percent="100" h_margin="8" />
+	
+	<UIImage id="img_back_tl" x="0" y="0" w="195" h="75" hide="0" tex="notice_all.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="195" b="75" />
+	<UIImage id="img_back_tr" x="0" y="0" w="195" h="75" hide="0" tex="notice_all.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" l="555" t="0" r="750" b="75" />
+	<UIImage id="img_back_bl" x="0" y="0" w="195" h="20" hide="0" tex="notice_all.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" l="0" t="480" r="195" b="500" />
+	<UIImage id="img_back_br" x="0" y="0" w="195" h="20" hide="0" tex="notice_all.tex" align_h="2" align_v="2" tooltip="-1" tooltip_width="0" l="555" t="480" r="750" b="500" />
+	
+    <UIButton id="btn_close" x="-4" y="4" w="16" h="16" hide="0" tex="notice_all.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="751" t="21" r="767" b="37" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="769" t="21" r="785" b="37" />
+        <uv type="3" l="769" t="21" r="785" b="37" />
+    </UIButton>
+    <UIBase id="base_web" x="0" y="70" w="721" h="418" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" w_percent="100" h_percent="100" w_margin="14" h_margin="41" />
+    <UIText id="text_title" x="0" y="28" w="599" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="252" str="공지사항" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="base_drag_area" x="0" y="0" w="729" h="64" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" w_percent="100" w_margin="15"/>
+</Window>

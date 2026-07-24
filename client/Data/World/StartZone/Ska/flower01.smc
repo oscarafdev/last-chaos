@@ -1,0 +1,12 @@
+NAME "flower01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\flower01.bm";
+  TEXTURES   
+  {
+    "s_flower_002"	TFNM "Data\world\StartZone\Ska\Texture\s_flower_002.tex";
+  }
+  ALLFRAMESBBOX	-0.041468,0,-0.03491,0.038573,0.062342,0.038407;
+  COLISION
+  {
+  }
+}

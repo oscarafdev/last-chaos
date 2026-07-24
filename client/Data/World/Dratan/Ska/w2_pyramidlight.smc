@@ -1,0 +1,14 @@
+NAME "w2_pyramidlight";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramidlight.bm";
+  TEXTURES   
+  {
+    "w2_castlepyramid01"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlepyramid01.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.859706,-0.005421,-0.744519,0.859707,7.21473,0.744526;
+  COLISION
+  {
+    "Default"  {-0.728216,-0.038549,-0.723005,0.718906,1.92568,0.718095;}
+  }
+}

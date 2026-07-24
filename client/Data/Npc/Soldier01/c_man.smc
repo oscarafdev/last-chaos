@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "c_man";
+{
+  MESH       	TFNM "Data\npc\Soldier01\cavalryman.bm";
+  TEXTURES   
+  {
+    "patrol_01"	TFNM "Data\npc\Soldier01\patrol_01.tex";
+    "pt_bump_01"	TFNM "Data\npc\Soldier01\pt_bump_01.tex";
+  }
+  MESH       	TFNM "Data\npc\Soldier01\cavalryman_m.bm";
+  TEXTURES   
+  {
+    "axe"	TFNM "Data\npc\Soldier01\axe.tex";
+    "axe-sp"	TFNM "Data\npc\Soldier01\axe-sp.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Soldier01\c_man.bs";
+  ANIMSET   	TFNM "Data\npc\Soldier01\c_man.ba";
+  ALLFRAMESBBOX	-0.254765,-0.0119337,-0.159947,0.29725,2.20024,0.547696;
+  COLISION
+  {
+    "idle"  {-0.361092,0,-0.379874,0.298898,1.97341,0.218315;}
+  }
+}

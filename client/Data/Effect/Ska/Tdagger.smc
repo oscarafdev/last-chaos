@@ -1,0 +1,18 @@
+NAME "Tdagger";
+{
+  MESH       	TFNM "Data\Effect\Ska\_TAG_T_TDAGGER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Effect\Ska\Tdagger.bm";
+  TEXTURES   
+  {
+    "soulofassassin"	TFNM "Data\Effect\Ska\soulofassassin.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\Tdagger.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\Tdagger.ba";
+  ALLFRAMESBBOX	-0.087976,-0.404504,-0.018297,0.0879751,0.404504,0.018298;
+  COLISION
+  {
+  }
+}

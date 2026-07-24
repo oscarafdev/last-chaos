@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "soulofassassin";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\_TAG_T_RDSOUL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\soul_weapon\soulofassassin.bm";
+  TEXTURES   
+  {
+    "soulofassassin"	TFNM "Data\Npc\soul_weapon\soulofassassin.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\soulofassassin.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\soulofassassin.ba";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,1.3,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,1.3,0.1;}
+  }
+}

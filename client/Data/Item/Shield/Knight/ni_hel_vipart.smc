@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_hel_vipart";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\wc\ni_hair_wc_ger.bm";
+  TEXTURES   
+  {
+    "ni_face_000"	TFNM "Data\Item\Shield\Knight\Texture\ni_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_hel_vipart.bm";
+  TEXTURES   
+  {
+    "ni_hm2_vipart"	TFNM "Data\Item\Shield\Knight\Texture\ni_hm2_vipart.tex";
+  }
+  ALLFRAMESBBOX	-0.092702,1.74956,-0.121049,0.092493,1.99672,0.179313;
+  COLISION
+  {
+  }
+}

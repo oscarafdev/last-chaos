@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "a_prisoner-carriage";
+{
+  MESH       	TFNM "Data\World\akantemple\Ska\a_prisoner-carriage.bm";
+  TEXTURES   
+  {
+    "a_prisoner-carriage"	TFNM "Data\World\akantemple\Ska\Texture\a_prisoner-carriage.tex";
+  }
+  MESH       	TFNM "Data\World\akantemple\Ska\a_prisoner-carriage_1.bm";
+  TEXTURES   
+  {
+    "a_prisoner-carriage_1"	TFNM "Data\World\akantemple\Ska\Texture\a_prisoner-carriage_1.tex";
+  }
+  ALLFRAMESBBOX	-1.43852,4e-006,-4.86402,1.43852,4.05007,2.97414;
+  COLISION
+  {
+    "Default"  {-1.40906,-0.00980043,-4.85381,1.58025,4.38802,2.59168;}
+  }
+}

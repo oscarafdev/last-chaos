@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_de_backpack_02";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_de_backpack_02.bm";
+  TEXTURES   
+  {
+    "de_backpack_02"	TFNM "Data\Item\Shield\NightShadow\Texture\de_backpack_02.tex";
+  }
+  ALLFRAMESBBOX	-0.815576,1.17576,0.130188,0.81567,2.04197,0.657241;
+  COLISION
+  {
+  }
+}

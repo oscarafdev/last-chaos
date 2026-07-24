@@ -1,0 +1,63 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "MON_wind_boss";
+{
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\_TAG_ef_MON_wind_boss.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\MON_wind_boss_body01.bm";
+  TEXTURES   
+  {
+    "MON_wind_boss_body01"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body01.tex";
+    "MON_wind_boss_body02"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body02.tex";
+    "MON_wind_boss_body03"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body03.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\MON_wind_boss_face.bm";
+  TEXTURES   
+  {
+    "MON_wind_boss_face"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_face.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\MON_wind_boss_hair.bm";
+  TEXTURES   
+  {
+    "MON_wind_boss_hair"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_hair.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\Object01.bm";
+  TEXTURES   
+  {
+    "MON_wind_boss_body02"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\Object02.bm";
+  TEXTURES   
+  {
+    "MON_wind_boss_body02"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\Object03.bm";
+  TEXTURES   
+  {
+    "MON_wind_boss_body01"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\Object04.bm";
+  TEXTURES   
+  {
+    "MON_wind_boss_body01"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body01.tex";
+    "MON_wind_boss_body02"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\MON_wind_boss_body02.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\WP_wind_boss.bm";
+  TEXTURES   
+  {
+    "WP_wind_boss"	TFNM "Data\Monster\Attribute boss\MON_wind_boss\texture\WP_wind_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Attribute boss\MON_wind_boss\_TAG_BOW_wind_boss.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Attribute boss\MON_wind_boss\MON_wind_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\Attribute boss\MON_wind_boss\MON_wind_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Attribute boss\MON_wind_boss\MON_wind_boss.bae";
+  ALLFRAMESBBOX	-1.43923,-0.351822,-1.44642,1.5344,1.64818,1.64664;
+  COLISION
+  {
+    "Default"  {-0.3,0,-0.3,0.3,2,0.3;}
+  }
+}

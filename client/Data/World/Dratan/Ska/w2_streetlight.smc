@@ -1,0 +1,19 @@
+NAME "w2_streetlight";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_streetlight.bm";
+  TEXTURES   
+  {
+    "w2_streetlight"	TFNM "Data\World\Dratan\Ska\Texture\w2_streetlight.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_castlewall1"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlewall1.tex";
+    "w2_house001"	TFNM "Data\World\Dratan\Ska\Texture\w2_house001.tex";
+    "w2_house005"	TFNM "Data\World\Dratan\Ska\Texture\w2_house005.tex";
+    "w2_house008"	TFNM "Data\World\Dratan\Ska\Texture\w2_house008.tex";
+    "w2_castlebottom9"	TFNM "Data\World\Dratan\Texture\w2_castlebottom9.tex";
+  }
+  ALLFRAMESBBOX	-0.548647,-0.007797,-0.543187,0.548591,6.03547,0.543187;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,6,0.5;}
+  }
+}

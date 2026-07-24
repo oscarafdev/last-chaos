@@ -1,0 +1,5 @@
+Package: TFNM Bin\Shaders.dll
+Name: Shader_Detail_Specular
+Info: Shader_Desc_Detail_Specular
+VPCode: Shader_VPCode_Detail_Specular
+PPCode: Shader_PPCode_Detail_Specular

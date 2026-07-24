@@ -1,0 +1,32 @@
+NAME "w2_store01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_store01.bm";
+  TEXTURES   
+  {
+    "w2_house008"	TFNM "Data\World\Dratan\Ska\Texture\w2_house008.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_house002"	TFNM "Data\World\Dratan\Ska\Texture\w2_house002.tex";
+    "w2_house004"	TFNM "Data\World\Dratan\Ska\Texture\w2_house004.tex";
+    "w2_house005"	TFNM "Data\World\Dratan\Ska\Texture\w2_house005.tex";
+    "w2_house007"	TFNM "Data\World\Dratan\Ska\Texture\w2_house007.tex";
+    "w2_book01"	TFNM "Data\World\Dratan\Ska\Texture\w2_book01.tex";
+    "w2_bookshelf01"	TFNM "Data\World\Dratan\Ska\Texture\w2_bookshelf01.tex";
+    "w2_cloth01"	TFNM "Data\World\Dratan\Ska\Texture\w2_cloth01.tex";
+    "w2_curtain01"	TFNM "Data\World\Dratan\Ska\Texture\w2_curtain01.tex";
+    "w2_jar01"	TFNM "Data\World\Dratan\Ska\Texture\w2_jar01.tex";
+    "w2_Ob02_goods01"	TFNM "Data\World\Dratan\Ska\Texture\w2_Ob02_goods01.tex";
+    "w2_Ob03_bucket01"	TFNM "Data\World\Dratan\Ska\Texture\w2_Ob03_bucket01.tex";
+    "w2_shoptable01"	TFNM "Data\World\Dratan\Ska\Texture\w2_shoptable01.tex";
+    "w2_shoptent01"	TFNM "Data\World\Dratan\Ska\Texture\w2_shoptent01.tex";
+    "w2_sign001"	TFNM "Data\World\Dratan\Ska\Texture\w2_sign001.tex";
+    "w2_sign002"	TFNM "Data\World\Dratan\Ska\Texture\w2_sign002.tex";
+    "w2_house008"	TFNM "Data\World\Dratan\Ska\Texture\w2_house008.tex";
+    "w2_carpet01"	TFNM "Data\World\Dratan\Ska\Texture\w2_carpet01.tex";
+    "w2_shopbox01"	TFNM "Data\World\Dratan\Ska\Texture\w2_shopbox01.tex";
+  }
+  ALLFRAMESBBOX	-14.784,-0.054292,-14.4972,14.783,13.23,15.1144;
+  COLISION
+  {
+    "Default"  {-14.5,0,-15,8.5,13,7;}
+  }
+}

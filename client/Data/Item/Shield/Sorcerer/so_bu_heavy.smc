@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bu_heavy";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_heavy.bm";
+  TEXTURES   
+  {
+    "so_bu_heavy"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_heavy.tex";
+  }
+  ALLFRAMESBBOX	-0.499029,1.17173,-0.122651,0.499028,1.7759,0.129223;
+  COLISION
+  {
+  }
+}

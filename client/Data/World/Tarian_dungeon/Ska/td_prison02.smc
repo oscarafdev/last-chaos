@@ -1,0 +1,14 @@
+NAME "td_prison02";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_prison02.bm";
+  TEXTURES   
+  {
+    "td_firefort02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_firefort02.tex";
+    "td_prison01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_prison01.tex";
+    "pri01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\pri01.tex";
+  }
+  ALLFRAMESBBOX	-18.1789,-8e-006,-0.392322,18.1789,9.20973,0.509514;
+  COLISION
+  {
+  }
+}

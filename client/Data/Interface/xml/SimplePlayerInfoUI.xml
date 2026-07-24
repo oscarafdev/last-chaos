@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="SimplePlayerInfoUI" x="0" y="0" w="307" h="120" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImageArray id="img_ep_back" x="91" y="25" w="236" h="83" hide="0" tex="EnergyGage.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" render_idx="1">
+        <surface0 x="0" y="0" w="216" h="64" l="16" t="8" r="232" b="72" desc="normal" />
+        <surface1 x="0" y="0" w="216" h="64" l="236" t="83" r="452" b="147" desc="premium" />
+        <UIImage id="img_ep_gage" x="23" y="40" w="166" h="21" hide="0" tex="EnergyGage.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="30" t="80" r="196" b="101" />
+    </UIImageArray>
+    <UIImageArray id="img_back" x="0" y="0" w="278" h="126" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" render_idx="1">
+        <surface0 x="0" y="0" w="278" h="93" l="0" t="0" r="278" b="93" desc="normal" />
+        <surface1 x="0" y="0" w="276" h="126" l="101" t="746" r="377" b="872" desc="premium" />
+    </UIImageArray>
+    <UIProgressBar id="pb_hp" x="19" y="32" w="120" h="7" hide="0" tex="TopUI.tex" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="0" b="0" lower="0" upper="100" step="1" offset_pos="100" auto_complete="0">
+        <bar sx="0" sy="0" l="287" t="220" r="289" b="228" />
+        <idle_text str="" color="0xffffffff" show_percent="0" />
+        <doing_text str="" color="0xffffffff" show_percent="0" />
+        <complete_text str="" color="0xffffffff" show_percent="0" />
+        <UIText id="text_hp" x="0" y="-3" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4411" str="HP" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_hp_value" x="7" y="-4" w="87" h="15" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="9/14" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIProgressBar>
+    <UIProgressBar id="pb_mp" x="19" y="-12" w="120" h="7" hide="0" tex="TopUI.tex" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="0" b="0" lower="0" upper="100" step="1" offset_pos="100" auto_complete="0">
+        <bar sx="0" sy="0" l="293" t="220" r="294" b="228" />
+        <idle_text str="" color="0xffffffff" show_percent="0" />
+        <doing_text str="" color="0xffffffff" show_percent="0" />
+        <complete_text str="" color="0xffffffff" show_percent="0" />
+        <UIText id="text_mp" x="0" y="-3" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4412" str="MP" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_mp_value" x="7" y="-4" w="87" h="15" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="21/19" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIProgressBar>
+    <UIProgressBar id="pb_exp" x="19" y="0" w="120" h="7" hide="0" tex="TopUI.tex" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="0" b="0" lower="0" upper="100" step="1" offset_pos="100" auto_complete="0">
+        <bar sx="0" sy="0" l="297" t="220" r="299" b="228" />
+        <idle_text str="" color="0xffffffff" show_percent="0" />
+        <doing_text str="" color="0xffffffff" show_percent="0" />
+        <complete_text str="" color="0xffffffff" show_percent="0" />
+        <UIText id="text_exp" x="0" y="-2" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4413" str="EXP" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText id="text_exp_value" x="7" y="-3" w="87" h="15" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="0.00%" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIProgressBar>
+    <UIText id="text_player_name" x="14" y="6" w="100" h="15" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="로또1등담첨자" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImageArray id="img_char_face" x="3" y="8" w="78" h="78" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" render_idx="0">
+        <surface0 x="0" y="0" w="78" h="78" l="925" t="428" r="1003" b="506" desc="타이탄" />
+        <surface1 x="0" y="0" w="78" h="78" l="837" t="344" r="915" b="422" desc="나이트" />
+        <surface2 x="0" y="0" w="78" h="78" l="750" t="427" r="828" b="505" desc="힐러" />
+        <surface3 x="0" y="0" w="78" h="78" l="837" t="428" r="915" b="506" desc="메이지" />
+        <surface4 x="0" y="0" w="78" h="78" l="925" t="256" r="1003" b="334" desc="로그" />
+        <surface5 x="0" y="0" w="78" h="78" l="925" t="342" r="1003" b="420" desc="소서러" />
+        <surface6 x="0" y="0" w="78" h="78" l="837" t="258" r="915" b="336" desc="나이트셰도우" />
+        <surface7 x="0" y="0" w="78" h="78" l="715" t="129" r="793" b="207" desc="Ex로그" />
+        <surface8 x="0" y="0" w="78" h="78" l="837" t="174" r="915" b="252" desc="" />
+        <surface9 x="0" y="0" w="78" h="78" l="751" t="341" r="828" b="418" desc="클레스없음" />
+    </UIImageArray>
+    <UIText id="text_lv" x="73" y="18" w="20" h="15" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="7" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_monster_energy" x="279" y="51" w="27" h="28" hide="0" tex="EnergyGage.tex" align_h="0" align_v="0" tooltip="7101" tooltip_color="0xffffffff" tooltip_width="200" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="245" t="9" r="272" b="37" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="245" t="44" r="272" b="72" />
+        <uv type="3" l="395" t="9" r="422" b="37" />
+    </UIButton>
+    <UIImageArray id="img_ns_soul_gage_back" x="98" y="74" w="202" h="46" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" render_idx="1">
+        <surface0 x="1" y="0" w="202" h="46" l="802" t="123" r="1004" b="169" desc="normal" />
+        <surface1 x="1" y="6" w="201" h="40" l="102" t="880" r="303" b="920" desc="premium" />
+        <UIImage id="img_soul_0" x="2" y="11" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_1" x="19" y="9" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_2" x="36" y="7" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_3" x="53" y="7" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_4" x="70" y="8" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_5" x="87" y="10" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_6" x="104" y="13" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_7" x="121" y="15" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_8" x="138" y="14" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+        <UIImage id="img_soul_9" x="155" y="11" w="18" h="18" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="573" t="227" r="591" b="245" />
+    </UIImageArray>
+    <UIImage id="img_dungeon_time_none" x="0" y="65" w="33" h="33" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="653" t="228" r="686" b="261" />
+    <UISpriteAni id="img_dungeon_time" x="0" y="65" w="33" h="33" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" cur="1" delay_time="100" play="0">
+        <uv l="691" t="228" r="724" b="261" />
+        <uv l="729" t="228" r="762" b="261" />
+    </UISpriteAni>
+    <UIImageSplit id="img_dungeon_time_popup_back" x="0" y="0" w="216" h="313" hide="1" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="229" r="85" b="251" unit="9" splitmode="2">
+        <UIList id="list_dungeon" x="7" y="7" w="193" h="301" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="19" itemgap="1" item_count="18" pre_create="1">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem id="list_item_001" x="0" y="0" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+                <UIText id="text_dungeon_name" x="0" y="0" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4959" str="던전 몬스터 경험치를 추가로 획득" str_ellipsis="" color="0xff8600ff" color_enter="0xff8600ff" color_select="0xff8600ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIListItem>
+        </UIList>
+    </UIImageSplit>
+</Window>

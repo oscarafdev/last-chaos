@@ -1,0 +1,71 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "golem01";
+{
+  MESH       	TFNM "Data\Monster\Golem01\_TAG_T_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_bd.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_bd_1.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_bu.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_bu_1.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_bu_2.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_ft.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_ft_1.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_head.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_hn.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem01_hn_1.bm";
+  TEXTURES   
+  {
+    "golem"	TFNM "Data\Monster\Golem01\golem.tex";
+  }
+  MESH       	TFNM "Data\Monster\Golem01\golem02_weapon.bm";
+  TEXTURES   
+  {
+    "golem01"	TFNM "Data\Monster\Golem01\golem01.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Golem01\golem02.bs";
+  ANIMSET   	TFNM "Data\Monster\Golem01\golem02.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Golem01\golem02.bae";
+  ALLFRAMESBBOX	-7.5,0,-7.5,7.5,3.9,7.5;
+  COLISION
+  {
+    "Default"  {-1,0,-0.6,1,3.8,0.8;}
+  }
+}

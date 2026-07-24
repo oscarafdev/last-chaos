@@ -1,0 +1,13 @@
+NAME "Ab_de_PollutedSoil";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_de_PollutedSoil.bm";
+  TEXTURES   
+  {
+    "Ab_de_PollutedSoil"	TFNM "Data\Npc\Alber\Texture\Ab_de_PollutedSoil.tex";
+  }
+  ALLFRAMESBBOX	-1.94114,-0.22185,-1.34414,1.92317,1.10335,1.31606;
+  COLISION
+  {
+    "Default"  {-2,0,-1.5,2,1,1.5;}
+  }
+}

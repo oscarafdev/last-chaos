@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="skill_new" x="0" y="0" w="800" h="590" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_base" x="0" y="0" w="800" h="590" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="401" t="0" r="1201" b="590" />
+    <UIImage id="img_sub_back_right" x="400" y="76" w="381" h="475" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="668" r="381" b="1143" />
+    <UIImage id="img_sub_back_left" x="19" y="79" w="381" h="475" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="19" t="80" r="399" b="555" />
+    <UIText id="text_title" x="104" y="13" w="592" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="91" str="스킬" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_drag_area" x="0" y="0" w="780" h="41" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="780" y="5" w="16" h="16" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="1235" t="40" r="1251" b="56" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="1252" t="40" r="1268" b="56" />
+        <uv type="3" l="1252" t="40" r="1268" b="56" />
+    </UIButton>
+    <UIText id="text_skill_point" x="463" y="551" w="137" h="15" hide="0" align_h="0" align_v="0" tooltip="6207" tooltip_width="0" str_idx="-1" str="123123123" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_money" x="633" y="551" w="137" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1123335568" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="base_tooltip" x="441" y="547" w="21" h="21" hide="0" align_h="0" align_v="0" tooltip="3311" tooltip_width="150" />
+    <UITab id="tab_skill" x="42" y="43" w="719" h="478" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UICheck id="cb_class_0" x="0" y="7" w="110" h="38" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="힐러" posleft="1" text_x="0" region="0" text_area="110" h_align="1" color_on="0xffff00ff" color_off="0x808080ff" edge="0">
+            <none l="1463" t="1" r="1578" b="39" />
+            <check l="1235" t="1" r="1345" b="39" />
+        </UICheck>
+        <UICheck id="cb_class_1" x="115" y="7" w="110" h="38" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="힐러" posleft="1" text_x="0" region="0" text_area="110" h_align="1" color_on="0xffff00ff" color_off="0x808080ff" edge="0">
+            <none l="1463" t="1" r="1578" b="39" />
+            <check l="1235" t="1" r="1345" b="39" />
+        </UICheck>
+        <UICheck id="cb_class_2" x="230" y="7" w="110" h="38" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="힐러" posleft="1" text_x="0" region="0" text_area="110" h_align="1" color_on="0xffff00ff" color_off="0x808080ff" edge="0">
+            <none l="1463" t="1" r="1578" b="39" />
+            <check l="1235" t="1" r="1345" b="39" />
+        </UICheck>
+        <UITabPage id="page_class_0" x="0" y="57" w="719" h="421" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIArray id="array_class_0" x="0" y="0" w="719" h="421" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="8" sx="25" sy="18" gapx="40" gapy="22" show_row="5">
+                <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIArrayItem id="array_item_001" x="25" y="18" w="44" h="58" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIIcon id="icon_skill" x="6" y="6" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+                    <UIImage id="img_base_active" x="0" y="0" w="44" h="58" hide="1" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1376" t="43" r="1420" b="101" />
+                    <UIImage id="img_base_passive" x="0" y="0" w="44" h="58" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1428" t="43" r="1472" b="101" />
+                    <UIText id="text_skill_level" x="-1" y="41" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="10/15" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIButton id="btn_plus" x="30" y="42" w="13" h="13" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="1213" t="70" r="1226" b="83" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="1213" t="84" r="1226" b="97" />
+                        <uv type="3" l="1213" t="98" r="1226" b="111" />
+                    </UIButton>
+                    <UIImage id="img_skill_active" x="0" y="0" w="44" h="58" hide="1" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1273" t="43" r="1317" b="101" />
+                    <UIImage id="img_skill_passive" x="0" y="0" w="44" h="58" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1324" t="43" r="1368" b="101" />
+                    <UIImage id="img_arrow_bot" x="15" y="58" w="15" h="23" hide="1" tex="skill_new.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+                    <UIImage id="img_arrow_top" x="15" y="0" w="15" h="81" hide="1" tex="skill_new.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+                </UIArrayItem>
+                <UIScrollBar id="scroll" x="0" y="0" w="720" h="420" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="58" item_count="7" item_per_page="5">
+                    <back x="0" y="0" w="9" h="420" l="1203" t="0" r="1212" b="380" />
+                    <button1 x="0" y="0" w="9" h="7" l0="1223" t0="0" r0="1232" b0="7" l1="1213" t1="0" r1="1222" b1="7" />
+                    <button2 x="0" y="0" w="9" h="7" l0="1223" t0="62" r0="1232" b0="69" l1="1213" t1="62" r1="1222" b1="69" />
+                    <thumb x="0" y="0" w="9" h="290" unit="10" l="1223" t="8" r="1232" b="61" />
+                </UIScrollBar>
+            </UIArray>
+            <UIImage id="img_levelup_effect" x="0" y="0" w="44" h="58" hide="1" tex="skill_new.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1481" t="43" r="1525" b="101" />
+        </UITabPage>
+        <UITabPage id="page_class_1" x="0" y="57" w="719" h="421" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIArray id="array_class_1" x="0" y="0" w="719" h="421" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="8" sx="25" sy="18" gapx="40" gapy="22" show_row="5">
+                <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIArrayItem id="array_item_001" x="25" y="18" w="44" h="58" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIIcon id="icon_skill" x="6" y="6" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+                    <UIImage id="img_base_active" x="0" y="0" w="44" h="58" hide="1" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1376" t="43" r="1420" b="101" />
+                    <UIImage id="img_base_passive" x="0" y="0" w="44" h="58" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1428" t="43" r="1472" b="101" />
+                    <UIText id="text_skill_level" x="-1" y="41" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="10/15" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIButton id="btn_plus" x="30" y="42" w="13" h="13" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="1213" t="70" r="1226" b="83" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="1213" t="84" r="1226" b="97" />
+                        <uv type="3" l="1213" t="98" r="1226" b="111" />
+                    </UIButton>
+                    <UIImage id="img_skill_active" x="0" y="0" w="44" h="58" hide="1" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1273" t="43" r="1317" b="101" />
+                    <UIImage id="img_skill_passive" x="0" y="0" w="44" h="58" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1324" t="43" r="1368" b="101" />
+                    <UIImage id="img_arrow_bot" x="15" y="58" w="15" h="23" hide="1" tex="skill_new.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+                    <UIImage id="img_arrow_top" x="15" y="0" w="15" h="81" hide="1" tex="skill_new.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+                </UIArrayItem>
+                <UIScrollBar id="scroll" x="0" y="0" w="720" h="420" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="58" item_count="7" item_per_page="5">
+                    <back x="0" y="0" w="9" h="420" l="1203" t="0" r="1212" b="380" />
+                    <button1 x="0" y="0" w="9" h="7" l0="1223" t0="0" r0="1232" b0="7" l1="1213" t1="0" r1="1222" b1="7" />
+                    <button2 x="0" y="0" w="9" h="7" l0="1223" t0="62" r0="1232" b0="69" l1="1213" t1="62" r1="1222" b1="69" />
+                    <thumb x="0" y="0" w="9" h="290" unit="10" l="1223" t="8" r="1232" b="61" />
+                </UIScrollBar>
+            </UIArray>
+        </UITabPage>
+        <UITabPage id="page_class_2" x="0" y="57" w="719" h="421" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIArray id="array_class_2" x="0" y="0" w="719" h="421" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="8" sx="25" sy="18" gapx="40" gapy="22" show_row="5">
+                <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIArrayItem id="array_item_001" x="25" y="18" w="44" h="58" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIIcon id="icon_skill" x="6" y="6" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+                    <UIImage id="img_base_active" x="0" y="0" w="44" h="58" hide="1" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1376" t="43" r="1420" b="101" />
+                    <UIImage id="img_base_passive" x="0" y="0" w="44" h="58" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1428" t="43" r="1472" b="101" />
+                    <UIText id="text_skill_level" x="-1" y="41" w="30" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="10/15" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIButton id="btn_plus" x="30" y="42" w="13" h="13" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                        <uv type="0" l="1213" t="70" r="1226" b="83" />
+                        <copyuv src="0" dst="1" />
+                        <uv type="2" l="1213" t="84" r="1226" b="97" />
+                        <uv type="3" l="1213" t="98" r="1226" b="111" />
+                    </UIButton>
+                    <UIImage id="img_skill_active" x="0" y="0" w="44" h="58" hide="1" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1273" t="43" r="1317" b="101" />
+                    <UIImage id="img_skill_passive" x="0" y="0" w="44" h="58" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="1324" t="43" r="1368" b="101" />
+                    <UIImage id="img_arrow_bot" x="15" y="58" w="15" h="23" hide="1" tex="skill_new.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+                    <UIImage id="img_arrow_top" x="15" y="0" w="15" h="81" hide="1" tex="skill_new.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+                </UIArrayItem>
+                <UIScrollBar id="scroll" x="0" y="0" w="720" h="420" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="58" item_count="7" item_per_page="5">
+                    <back x="0" y="0" w="9" h="420" l="1203" t="0" r="1212" b="380" />
+                    <button1 x="0" y="0" w="9" h="7" l0="1223" t0="0" r0="1232" b0="7" l1="1213" t1="0" r1="1222" b1="7" />
+                    <button2 x="0" y="0" w="9" h="7" l0="1223" t0="62" r0="1232" b0="69" l1="1213" t1="62" r1="1222" b1="69" />
+                    <thumb x="0" y="0" w="9" h="290" unit="10" l="1223" t="8" r="1232" b="61" />
+                </UIScrollBar>
+            </UIArray>
+        </UITabPage>
+    </UITab>
+    <UIImage x="19" y="79" w="381" h="19" hide="0" tex="Skill_New.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="20" t="80" r="400" b="99" />
+</Window>

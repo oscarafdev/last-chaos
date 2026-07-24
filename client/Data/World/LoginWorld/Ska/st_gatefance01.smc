@@ -1,0 +1,13 @@
+NAME "st_gatefance01";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\st_gatefance01.bm";
+  TEXTURES   
+  {
+    "StartZonetile_07"	TFNM "Data\World\LoginWorld\Ska\Texture\StartZonetile_07.tex";
+  }
+  ALLFRAMESBBOX	-0.368715,0,-0.402768,0.370308,1.76933,0.402768;
+  COLISION
+  {
+    "Default"  {-0.381315,0.000244081,-0.397697,0.355059,0.852618,0.404779;}
+  }
+}

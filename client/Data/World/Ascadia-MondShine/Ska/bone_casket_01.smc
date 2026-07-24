@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\AM-Bone-casket_01.bm";
+  TEXTURES   
+  {
+    "bone_casket"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\bone_casket.tex";
+  }
+  ALLFRAMESBBOX	-1.05667,0.004773,-0.837635,1.05667,0.55369,0.310687;
+  COLISION
+  {
+  }
+}

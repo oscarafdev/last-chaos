@@ -1,0 +1,13 @@
+NAME "mushroom_01";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\mushroom_01.bm";
+  TEXTURES   
+  {
+    "mushroom_02"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\mushroom_02.tex";
+    "mushroom_01"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\mushroom_01.tex";
+  }
+  ALLFRAMESBBOX	-2.67251,-0.003035,-3.28545,2.67251,4.36571,3.28545;
+  COLISION
+  {
+  }
+}

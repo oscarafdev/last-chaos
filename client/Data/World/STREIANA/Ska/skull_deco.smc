@@ -1,0 +1,15 @@
+NAME "skull_deco";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\skull_deco.bm";
+  TEXTURES   
+  {
+    "skull"	TFNM "Data\World\STREIANA\Ska\Texture\skull.tex";
+    "STREIANA_Detail"	TFNM "Data\World\STREIANA\Ska\Texture\STREIANA_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\STREIANA\Ska\skull_deco.bs";
+  ANIMSET   	TFNM "Data\World\STREIANA\Ska\skull_deco.ba";
+  ALLFRAMESBBOX	-196.104,-9e-006,-196.024,197.597,9e-006,197.677;
+  COLISION
+  {
+  }
+}

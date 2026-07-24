@@ -1,0 +1,48 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Leapslug";
+{
+  MESH       	TFNM "Data\Monster\Slug\_TAG_SlugLFA.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Slug\_TAG_SlugLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Slug\_TAG_SlugRFA.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Slug\acce02.bm";
+  TEXTURES   
+  {
+    "Leapslug"	TFNM "Data\Monster\Slug\Leapslug.tex";
+  }
+  MESH       	TFNM "Data\Monster\Slug\acce.bm";
+  TEXTURES   
+  {
+    "Leapslug"	TFNM "Data\Monster\Slug\Leapslug.tex";
+  }
+  MESH       	TFNM "Data\Monster\Slug\body.bm";
+  TEXTURES   
+  {
+    "Leapslug"	TFNM "Data\Monster\Slug\Leapslug.tex";
+  }
+  MESH       	TFNM "Data\Monster\Slug\wp.bm";
+  TEXTURES   
+  {
+    "weapon"	TFNM "Data\Monster\Slug\weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Slug\_TAG_Slugwp.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Slug\Leapslug.bs";
+  ANIMSET   	TFNM "Data\Monster\Slug\Leapslug.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Slug\Leapslug.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,3,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,3,1;}
+  }
+}

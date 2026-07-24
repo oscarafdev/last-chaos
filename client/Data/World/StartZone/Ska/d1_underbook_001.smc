@@ -1,0 +1,18 @@
+NAME "d1_underbook_001";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_underbook_001.bm";
+  TEXTURES   
+  {
+    "d1_underbook_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_underbook_001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_underbook_002.bm";
+  TEXTURES   
+  {
+    "d1_book_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_book_001.tex";
+  }
+  ALLFRAMESBBOX	-0.315856,-0.003721,-0.272209,0.313298,1.36105,0.266962;
+  COLISION
+  {
+    "Default"  {-0.349644,-0.00488031,-0.287434,0.336103,1.36094,0.287096;}
+  }
+}

@@ -1,0 +1,28 @@
+NAME "ns_yellowstone_027";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\_TAG_T_Yellowstone.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_core_027.bm";
+  TEXTURES   
+  {
+    "ns_yellowstone_core"	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_core.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_layer1_027.bm";
+  TEXTURES   
+  {
+    "ns_yellowstone_layer1"	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_layer1.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_layer2_027.bm";
+  TEXTURES   
+  {
+    "ns_yellowstone_layer1"	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_layer1.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_027.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\ns_yellowstone_027.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

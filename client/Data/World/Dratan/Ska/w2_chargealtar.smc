@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w2_chargealtar";
+{
+  MESH       	TFNM "Data\world\Dratan\ska\w2_chargealtar.bm";
+  TEXTURES   
+  {
+    "startstone"	TFNM "Data\world\Dratan\ska\texture\startstone.tex";
+    "w2_castle21"	TFNM "Data\world\Dratan\ska\texture\w2_castle21.tex";
+    "w2_castle22"	TFNM "Data\world\Dratan\ska\texture\w2_castle22.tex";
+    "w2_charge02"	TFNM "Data\world\Dratan\ska\texture\w2_charge02.tex";
+    "w2_charge01"	TFNM "Data\world\Dratan\ska\texture\w2_charge01.tex";
+    "w2_charge03"	TFNM "Data\world\Dratan\ska\texture\w2_charge03.tex";
+    "w2_wallgate4"	TFNM "Data\world\Dratan\ska\texture\w2_wallgate4.tex";
+    "w2_jewelryring"	TFNM "Data\world\Dratan\ska\texture\w2_jewelryring.tex";
+    "w2_jewelry_a"	TFNM "Data\world\Dratan\ska\texture\w2_jewelry_a.tex";
+  }
+  MESH       	TFNM "Data\world\Dratan\ska\_Tag_w2_chargealtar.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\world\Dratan\ska\w2_chargealtar.bs";
+  ANIMSET   	TFNM "Data\world\Dratan\ska\w2_chargealtar.ba";
+  ALLFRAMESBBOX	-8.7227,-0.0315907,-9.06867,9.35577,26.4132,9.36263;
+  COLISION
+  {
+  }
+}

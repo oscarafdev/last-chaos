@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Bothersomepango";
+{
+  MESH       	TFNM "Data\Monster\pango\v2\Pango_Bother_body.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Variaition02"	TFNM "Data\Monster\pango\Fang_Go-Variaition02.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v2\Pango_Bother_hm.bm";
+  TEXTURES   
+  {
+    "Pang_Go-Variaition02-add"	TFNM "Data\Monster\pango\Pang_Go-Variaition02-add.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v2\_TAG_PG_HAND_.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\pango\v2\Pango_Bother_bomb.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Variaition02"	TFNM "Data\Monster\pango\Fang_Go-Variaition02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\pango\v2\Bothersomepango.bs";
+  ANIMSET   	TFNM "Data\Monster\pango\v2\Bothersomepango.ba";
+  ANIMEFFECT	TFNM "Data\Monster\pango\Bothersomepango.bae";
+  ALLFRAMESBBOX	-0.627463,-0.170769,-1.15045,0.807796,1.25823,0.791228;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.2,0.5;}
+  }
+}

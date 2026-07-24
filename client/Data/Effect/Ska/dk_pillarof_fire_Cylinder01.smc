@@ -1,0 +1,12 @@
+NAME "dk_pillarof_fire_Cylinder01";
+{
+  MESH       	TFNM "Data\Effect\SKA\dk_pillarof_fire_Cylinder01.bm";
+  TEXTURES   
+  {
+    "firetga_a(M)"	TFNM "Data\Effect\TEXTURE\firetga_a(M).tex";
+  }
+  ALLFRAMESBBOX	-1.9411,-1e-006,-1.9411,1.9411,5,1.9411;
+  COLISION
+  {
+  }
+}

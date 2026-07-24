@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "pango_grinch";
+{
+  MESH       	TFNM "Data\Monster\pango\pango_grinch01.bm";
+  TEXTURES   
+  {
+    "pango_grinch01"	TFNM "Data\Monster\pango\pango_grinch01.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\pango_grinch02.bm";
+  TEXTURES   
+  {
+    "pango_grinch02"	TFNM "Data\Monster\pango\pango_grinch02.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\pango-grinch01_bomb.bm";
+  TEXTURES   
+  {
+    "pango_grinch01"	TFNM "Data\Monster\pango\pango_grinch01.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\pango\pango_grinch.bs";
+  ANIMSET   	TFNM "Data\Monster\pango\pango_grinch.ba";
+  ALLFRAMESBBOX	-0.343131,0.001077,-0.18442,0.343131,1.33019,0.373819;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.35,0.4;}
+  }
+}

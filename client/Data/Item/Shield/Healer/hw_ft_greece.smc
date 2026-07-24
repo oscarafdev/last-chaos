@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_ft_greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_ft_greece.bm";
+  TEXTURES   
+  {
+    "hw_ft_greece"	TFNM "Data\Item\Shield\Healer\Texture\hw_ft_greece.tex";
+  }
+  ALLFRAMESBBOX	-0.324698,-0.000191,-0.155292,0.324698,0.558683,0.104729;
+  COLISION
+  {
+  }
+}

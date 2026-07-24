@@ -1,0 +1,113 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "christmastree";
+{
+  MESH       	TFNM "Data\Npc\Christmas_tree\christmastree_1.bm";
+  TEXTURES   
+  {
+    "Christmastree_tree1"	TFNM "Data\Npc\Christmas_tree\Christmastree_tree1.tex";
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\christmastree_star.bm";
+  TEXTURES   
+  {
+    "Christmastree_deco"	TFNM "Data\Npc\Christmas_tree\Christmastree_deco.tex";
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE5.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE6.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE7.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE8.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE9.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE10.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE11.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE12.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE13.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE14.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE15.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE16.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE17.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE18.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE19.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE20.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_TREE21.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Christmas_tree\_TAG_T_STAR.bm";
+  TEXTURES   
+  {
+  }
+  ANIMSET   	TFNM "Data\Npc\Christmas_tree\christmastree.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Christmas_tree\christmastree.bae";
+  ALLFRAMESBBOX	-2.24254,-5e-006,-2.18566,2.14105,12.0011,2.10354;
+  COLISION
+  {
+    "Default"  {-2.24254,-4.76837e-006,-2.18566,2.14105,12.0011,2.10354;}
+  }
+}

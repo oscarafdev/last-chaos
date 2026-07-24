@@ -1,0 +1,14 @@
+NAME "floor05_sculpture_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\floor05_sculpture_d3.bm";
+  TEXTURES   
+  {
+    "sculpture_d3"	TFNM "Data\World\Dungeon3\Ska\texture\sculpture_d3.tex";
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-0.28597,-0.026665,-15.3771,0.285968,13.153,15.3771;
+  COLISION
+  {
+    "Default"  {-0.5,0,14,0.5,10,15;}
+  }
+}

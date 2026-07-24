@@ -1,0 +1,23 @@
+NAME "d1_b_fireport001";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_b_fireport001_01.bm";
+  TEXTURES   
+  {
+    "d1_b_fireport001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_b_fireport001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_b_fireport001_02.bm";
+  TEXTURES   
+  {
+    "d1_b_fireport003"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_b_fireport003.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_b_fireport001_03.bm";
+  TEXTURES   
+  {
+    "d1_b_fireport002"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_b_fireport002.tex";
+  }
+  ALLFRAMESBBOX	-0.38558,-0.00032,-0.386684,0.379101,1.10969,0.377996;
+  COLISION
+  {
+    "Default"  {-0.492438,-0.00483423,-0.401285,0.488558,1.12699,0.401369;}
+  }
+}

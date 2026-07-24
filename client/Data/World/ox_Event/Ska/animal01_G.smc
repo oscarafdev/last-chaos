@@ -1,0 +1,12 @@
+NAME "animal01_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\animal01_G.bm";
+  TEXTURES   
+  {
+    "animal01_G"	TFNM "Data\World\Guild\Ska\Texture\animal01_G.tex";
+  }
+  ALLFRAMESBBOX	-0.479607,0.003328,-0.411148,0.479614,1.85878,0.411143;
+  COLISION
+  {
+  }
+}

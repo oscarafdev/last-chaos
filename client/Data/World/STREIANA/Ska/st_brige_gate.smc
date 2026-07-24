@@ -1,0 +1,22 @@
+NAME "st_brige_gate";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_brige_gate_1.bm";
+  TEXTURES   
+  {
+    "skull"	TFNM "Data\World\STREIANA\Ska\Texture\skull.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_brige_gate_2.bm";
+  TEXTURES   
+  {
+    "bine"	TFNM "Data\World\STREIANA\Ska\Texture\bine.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\st_brige_gate_3.bm";
+  TEXTURES   
+  {
+    "st_bridge"	TFNM "Data\World\STREIANA\Ska\Texture\st_bridge.tex";
+  }
+  ALLFRAMESBBOX	-2.08976,-0.001402,-0.248896,2.08976,3.83227,0.248896;
+  COLISION
+  {
+  }
+}

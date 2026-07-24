@@ -1,0 +1,20 @@
+NAME "w5_pupa";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_pupa.bm";
+  TEXTURES   
+  {
+    "w5_pupa"	TFNM "Data\World\STREIANA\Ska\Texture\w5_pupa.tex";
+    "w5_pupa_nomal"	TFNM "Data\World\STREIANA\Ska\Texture\w5_pupa_nomal.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\w5_pupa_1.bm";
+  TEXTURES   
+  {
+    "w5_pupa_1"	TFNM "Data\World\STREIANA\Ska\Texture\w5_pupa_1.tex";
+  }
+  SKELETON  	TFNM "Data\World\STREIANA\Ska\w5_pupa.bs";
+  ANIMSET   	TFNM "Data\World\STREIANA\Ska\w5_pupa.ba";
+  ALLFRAMESBBOX	-1.04208,-0.0184202,-1.10756,1.03513,2.27851,0.908303;
+  COLISION
+  {
+  }
+}

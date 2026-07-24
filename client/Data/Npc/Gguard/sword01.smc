@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sword01";
+{
+  MESH       	TFNM "Data\Npc\Gguard\_TAG_T_SWORD01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Gguard\sword01.bm";
+  TEXTURES   
+  {
+    "sword"	TFNM "Data\Npc\Gguard\sword.tex";
+    "swordstone"	TFNM "Data\Npc\Gguard\swordstone.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Gguard\sword01.bs";
+  ANIMSET   	TFNM "Data\Npc\Gguard\sword01.ba";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,1.92,2.5;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.74,0.75,1.92,0.74;}
+  }
+}

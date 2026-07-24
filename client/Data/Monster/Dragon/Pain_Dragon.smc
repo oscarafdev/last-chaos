@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dragon";
+{
+  MESH       	TFNM "Data\Monster\Dragon\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Dragon\Pain_Dragon.bm";
+  TEXTURES   
+  {
+    "dragon"	TFNM "Data\Monster\Dragon\Pain_Dragon.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Dragon\Pain_Dragon.bs";
+  ANIMSET   	TFNM "Data\Monster\Dragon\Pain_Dragon.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Dragon\Pain_Dragon.bae";
+  ALLFRAMESBBOX	-7.5,0,-7.5,7.5,5.5,7.5;
+  COLISION
+  {
+    "Default"  {-2,0,-2.5,2,5.3,2.5;}
+  }
+}

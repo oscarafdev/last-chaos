@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "m_ramian";
+{
+  MESH       	TFNM "Data\monster\ramian\w2_m_lamia_01.bm";
+  TEXTURES   
+  {
+    "w2_m_lamia_01"	TFNM "Data\monster\ramian\w2_m_lamia_01.tex";
+    "w2_m_lamia_02"	TFNM "Data\monster\ramian\w2_m_lamia_02.tex";
+  }
+  MESH       	TFNM "Data\monster\ramian\w2_m_lamia_02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\monster\ramian\w2_m_lamia_03.bm";
+  TEXTURES   
+  {
+    "w2_m_lamia_01"	TFNM "Data\monster\ramian\w2_m_lamia_01.tex";
+  }
+  SKELETON  	TFNM "Data\monster\ramian\m_ramian.bs";
+  ANIMSET   	TFNM "Data\monster\ramian\m_ramian.ba";
+  ANIMEFFECT	TFNM "Data\Monster\ramian\m_ramian.bae";
+  ALLFRAMESBBOX	-5,0,-5,5,4.2,5;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.425,0.65,3.8,0.825;}
+  }
+}

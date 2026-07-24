@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "D_master";
+{
+  MESH       	TFNM "Data\Npc\npc_renin\npc_renin_body.bm";
+  TEXTURES   
+  {
+    "npc_old_man_body"	TFNM "Data\Npc\npc_renin\npc_old_man_body.tex";
+  }
+  MESH       	TFNM "Data\Npc\npc_renin\npc_renin_head.bm";
+  TEXTURES   
+  {
+    "npc_old_man_face"	TFNM "Data\Npc\npc_renin\npc_old_man_face.tex";
+  }
+  MESH       	TFNM "Data\Npc\npc_renin\npc_renin_leg.bm";
+  TEXTURES   
+  {
+    "npc_old_man_leg"	TFNM "Data\Npc\npc_renin\npc_old_man_leg.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\npc_renin\npc_renin.bs";
+  ANIMSET   	TFNM "Data\Npc\npc_renin\npc_renin.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.458255,-0.0255778,-0.385739,0.544423,1.49915,0.249256;}
+  }
+}

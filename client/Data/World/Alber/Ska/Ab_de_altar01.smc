@@ -1,0 +1,13 @@
+NAME "Ab_de_altar01";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_altar01.bm";
+  TEXTURES   
+  {
+    "Ab_de_altar01_01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_altar01_01.tex";
+    "Ab_de_altar01_02"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_altar01_02.tex";
+  }
+  ALLFRAMESBBOX	-4.04333,-2e-006,-4.04796,4.04333,4.69245,4.04333;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,42 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "assassinbug_b";
+{
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_b_head.bm";
+  TEXTURES   
+  {
+    "assassinbug_b"	TFNM "Data\Monster\AssassinBug\assassinbug_b.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_b_bd.bm";
+  TEXTURES   
+  {
+    "assassinbug_b"	TFNM "Data\Monster\AssassinBug\assassinbug_b.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_b_ft.bm";
+  TEXTURES   
+  {
+    "assassinbug_b"	TFNM "Data\Monster\AssassinBug\assassinbug_b.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_b_tail.bm";
+  TEXTURES   
+  {
+    "assassinbug_b"	TFNM "Data\Monster\AssassinBug\assassinbug_b.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_b_w1.bm";
+  TEXTURES   
+  {
+    "assassinbug_b"	TFNM "Data\Monster\AssassinBug\assassinbug_b.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_b_w2.bm";
+  TEXTURES   
+  {
+    "assassinbug_b"	TFNM "Data\Monster\AssassinBug\assassinbug_b.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\AssassinBug\assassinbug_b.bs";
+  ANIMSET   	TFNM "Data\Monster\AssassinBug\assassinbug_b.ba";
+  ANIMEFFECT	TFNM "Data\Monster\AssassinBug\assassinbug_b.bae";
+  ALLFRAMESBBOX	-3.5,0,-4,3.5,4,4;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,3,1.5;}
+  }
+}

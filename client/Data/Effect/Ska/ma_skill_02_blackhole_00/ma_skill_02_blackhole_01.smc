@@ -1,0 +1,12 @@
+NAME "ma_skill_02_blackhole_01";
+{
+  MESH       	TFNM "Data\Effect\Ska\ma_skill_02_blackhole_00\ma_skill_02_blackhole_01.bm";
+  TEXTURES   
+  {
+    "ma_skill_02_blackhole_02"	TFNM "Data\Effect\Ska\ma_skill_02_blackhole_00\ma_skill_02_blackhole_02.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

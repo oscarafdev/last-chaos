@@ -1,0 +1,13 @@
+NAME "cd_Particiantomb03";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\cd_Particiantomb03.bm";
+  TEXTURES   
+  {
+    "cd_Particiantomb02"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\texture\cd_Particiantomb02.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Texture\Siege_Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-9.23669,-0.063404,-5.43818,9.2367,7.74559,5.43818;
+  COLISION
+  {
+  }
+}

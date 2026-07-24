@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Roots_01";
+{
+  MESH       	TFNM "Data\World\EgehaCave_01\Ska\column_01.bm";
+  TEXTURES   
+  {
+    "column_01"	TFNM "Data\World\EgehaCave_01\Ska\Texture\column_01.tex";
+  }
+  ALLFRAMESBBOX	-5.07184,-0.583972,-3.59152,3.89549,13.5187,4.48427;
+  COLISION
+  {
+    "Default"  {-3.08595,-0.184754,-2.8032,3.86698,5.22042,3.05153;}
+  }
+}

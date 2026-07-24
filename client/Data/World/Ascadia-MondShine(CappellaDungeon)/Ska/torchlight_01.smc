@@ -1,0 +1,12 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)\Ska\torchlight_01.bm";
+  TEXTURES   
+  {
+    "torchlight_01"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)\Ska\Texture\torchlight_01.tex";
+  }
+  ALLFRAMESBBOX	-0.074304,0.010033,-0.20555,0.073008,0.707875,0.261071;
+  COLISION
+  {
+  }
+}

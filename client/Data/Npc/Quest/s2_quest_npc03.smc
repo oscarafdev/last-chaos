@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "s2_quest_npc03";
+{
+  MESH       	TFNM "Data\npc\Quest\s2_quest_npc03.bm";
+  TEXTURES   
+  {
+    "s2_quest_npc003"	TFNM "Data\npc\Quest\texture\s2_quest_npc003.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Quest\s2_quest_npc03.bs";
+  ANIMSET   	TFNM "Data\npc\Quest\s2_quest_npc03.ba";
+  ALLFRAMESBBOX	-1,0,-0.5,1,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.46918,0,-0.435263,0.889377,1.9857,0.468819;}
+  }
+}

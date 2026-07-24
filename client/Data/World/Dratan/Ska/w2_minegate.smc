@@ -1,0 +1,21 @@
+NAME "w2_minegate";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_minegate.bm";
+  TEXTURES   
+  {
+    "w2_minerail"	TFNM "Data\World\Dratan\Ska\Texture\w2_minerail.tex";
+    "w2_wallgate7"	TFNM "Data\World\Dratan\Ska\Texture\w2_wallgate7.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_farm3"	TFNM "Data\World\Dratan\Ska\Texture\w2_farm3.tex";
+    "w2_farmwater3"	TFNM "Data\World\Dratan\Ska\Texture\w2_farmwater3.tex";
+    "w2_minemetal1"	TFNM "Data\World\Dratan\Ska\Texture\w2_minemetal1.tex";
+    "w2_minemetal2"	TFNM "Data\World\Dratan\Ska\Texture\w2_minemetal2.tex";
+    "w2_minewood2"	TFNM "Data\World\Dratan\Ska\Texture\w2_minewood2.tex";
+    "w2_minewood4-1"	TFNM "Data\World\Dratan\Ska\Texture\w2_minewood4-1.tex";
+    "w2_minewood5"	TFNM "Data\World\Dratan\Ska\Texture\w2_minewood5.tex";
+  }
+  ALLFRAMESBBOX	-14.4852,-0.110454,-5.74777,14.4852,12.638,5.6302;
+  COLISION
+  {
+  }
+}

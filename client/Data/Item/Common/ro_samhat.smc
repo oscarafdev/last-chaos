@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ro_samhat.bm";
+  TEXTURES   
+  {
+    "ro_samhat"	TFNM "Data\Item\Common\Texture\ro_samhat.tex";
+  }
+  ALLFRAMESBBOX	-0.3,0,-0.3,0.3,0.3,0.3;
+  COLISION
+  {
+  }
+}

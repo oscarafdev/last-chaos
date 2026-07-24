@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="ChattingOptionUI" x="0" y="0" w="126" h="182" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="img_bg" x="0" y="0" w="126" h="182" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="382" t="746" r="508" b="928" unit="49" splitmode="0">
+        <UIText x="0" y="5" w="88" h="14" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="7095" str="채팅 설정" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIList id="list_option" x="0" y="30" w="116" h="112" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="6" itemgap="2" item_count="7" pre_create="1">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIListItem id="list_item_001" x="0" y="0" w="113" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UICheck id="cb_option" x="-18" y="0" w="15" h="14" hide="0" tex="TopUI.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="92" str="일반" posleft="1" text_x="70" region="90" text_area="70" h_align="0" edge="0">
+					<color none="0xaaaaaaff" check="0xf2f2f2ff" none_disable="0xaaaaaaff" check_disable="0xaaaaaaff"/>
+					<none l="551" t="891" r="566" b="905" />
+					<check l="567" t="891" r="582" b="905" />
+					<none_disable l="567" t="891" r="582" b="905" />
+					<check_disable l="567" t="891" r="582" b="905" />
+                </UICheck>
+                <UIImage id="img_color" x="-3" y="3" w="8" h="8" hide="0" tex="TopUI.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" l="572" t="912" r="580" b="920" />
+            </UIListItem>
+        </UIList>
+        <UIButton id="btn_ok" x="6" y="-7" w="55" h="22" hide="0" tex="TopUI.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" str_idx="7096" str="적용" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="624" t="798" r="679" b="820" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="680" t="798" r="735" b="820" />
+            <uv type="3" l="624" t="823" r="679" b="845" />
+        </UIButton>
+        <UIButton id="btn_reset" x="-6" y="-7" w="55" h="22" hide="0" tex="TopUI.tex" align_h="2" align_v="2" tooltip="-1" tooltip_width="0" str_idx="194" str="초기화" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="624" t="798" r="679" b="820" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="680" t="798" r="735" b="820" />
+            <uv type="3" l="624" t="823" r="679" b="845" />
+        </UIButton>
+        <UIButton id="btn_close" x="-2" y="4" w="16" h="16" hide="0" tex="TopUI.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="512" t="890" r="528" b="906" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="529" t="890" r="545" b="906" />
+            <uv type="3" l="529" t="890" r="545" b="906" />
+        </UIButton>
+        <UIBase id="base_drag" x="0" y="0" w="109" h="22" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    </UIImageSplit>
+    <UIImage id="img_sub_bg" x="0" y="0" w="108" h="139" hide="1" tex="TopUI.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" l="511" t="746" r="619" b="885">
+        <UIButton id="btn_ok" x="0" y="-7" w="55" h="22" hide="0" tex="TopUI.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="1417" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="624" t="798" r="679" b="820" />
+            <copyuv src="0" dst="1" />
+            <uv type="2" l="680" t="798" r="735" b="820" />
+            <uv type="3" l="624" t="823" r="679" b="845" />
+        </UIButton>
+        <UIArray id="arr_color_box" x="9" y="18" w="90" h="90" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="5" col="5" sx="0" sy="0" gapx="2" gapy="2" show_row="5">
+            <select x="-1" y="-3" w="18" h="23" l="628" t="855" r="647" b="881" />
+            <mouse_over x="0" y="0" w="16" h="16" l="512" t="910" r="528" b="926" />
+            <UIArrayItem id="array_item_001" x="0" y="0" w="16" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIImage id="img_col" x="0" y="0" w="16" h="16" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="587" t="890" r="603" b="906" />
+            </UIArrayItem>
+        </UIArray>
+    </UIImage>
+</Window>

@@ -1,0 +1,14 @@
+NAME "wash01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\wash01.bm";
+  TEXTURES   
+  {
+    "wash01"	TFNM "Data\world\StartZone\Ska\Texture\wash01.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\wash01.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\wash01.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

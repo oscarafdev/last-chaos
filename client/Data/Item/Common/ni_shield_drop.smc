@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_shield_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ni_shield_drop.bm";
+  TEXTURES   
+  {
+    "ni_shield_drop"	TFNM "Data\Item\Common\Texture\ni_shield_drop.tex";
+    "ni_shield_dorp_01"	TFNM "Data\Item\Common\Texture\ni_shield_dorp_01.tex";
+  }
+  ALLFRAMESBBOX	-0.45,0,-0.45,0.45,0.3,0.45;
+  COLISION
+  {
+  }
+}

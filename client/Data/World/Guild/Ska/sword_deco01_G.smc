@@ -1,0 +1,12 @@
+NAME "sword_deco01_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\sword_deco01_G.bm";
+  TEXTURES   
+  {
+    "sword_deco01_G"	TFNM "Data\World\Guild\Ska\Texture\sword_deco01_G.tex";
+  }
+  ALLFRAMESBBOX	-0.856952,0.004646,-0.086976,0.856952,1.53001,0.086976;
+  COLISION
+  {
+  }
+}

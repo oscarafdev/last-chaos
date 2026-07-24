@@ -1,0 +1,14 @@
+NAME "lampbottom_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\lampbottom_d3.bm";
+  TEXTURES   
+  {
+    "metal_d3"	TFNM "Data\World\Dungeon3\Ska\texture\metal_d3.tex";
+    "Eff_door01_d3"	TFNM "Data\World\Dungeon3\Ska\texture\Eff_door01_d3.tex";
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-3.55247,0.086289,-2.83342,3.55244,2.8263,2.83341;
+  COLISION
+  {
+  }
+}

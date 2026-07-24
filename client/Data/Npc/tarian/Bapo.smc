@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bapo";
+{
+  MESH       	TFNM "Data\Npc\tarian\bapo.bm";
+  TEXTURES   
+  {
+    "bapo_1"	TFNM "Data\Npc\tarian\bapo_1.tex";
+  }
+  MESH       	TFNM "Data\Npc\tarian\bapo_1.bm";
+  TEXTURES   
+  {
+    "bapo_2"	TFNM "Data\Npc\tarian\bapo_2.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\tarian\bapo.bs";
+  ANIMSET   	TFNM "Data\Npc\tarian\bapo.ba";
+  ALLFRAMESBBOX	-3.52776,-0.062325,-4.80622,3.52776,17.0034,4.80622;
+  COLISION
+  {
+    "Default"  {-4.5,0,-5.5,4.5,14,5.5;}
+  }
+}

@@ -1,0 +1,13 @@
+NAME "stone_statue";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\column_03.bm";
+  TEXTURES   
+  {
+    "column_03"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\column_03.tex";
+  }
+  ALLFRAMESBBOX	-13.8315,-0.016607,-2.38167,13.8315,31.4834,2.38168;
+  COLISION
+  {
+    "Default"  {-6.31196,-0.0049696,-5.29387,5.86658,5.93878,2.3218;}
+  }
+}

@@ -1,0 +1,60 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw";
+{
+  MESH       	TFNM "Data\Monster\undead\Healer2\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bd_012.bm";
+  TEXTURES   
+  {
+    "hw_bd_012"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_012.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bs_012.bm";
+  TEXTURES   
+  {
+    "hw_bs_012"	TFNM "Data\Item\Shield\Healer\Texture\hw_bs_012.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_012.bm";
+  TEXTURES   
+  {
+    "hw_bu_012"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_012.tex";
+  }
+  MESH       	TFNM "Data\Monster\undead\Healer2\hw_face_000.bm";
+  TEXTURES   
+  {
+    "hw_face_000"	TFNM "Data\Monster\undead\Healer2\hw_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_ft_012.bm";
+  TEXTURES   
+  {
+    "hw_ft_012"	TFNM "Data\Item\Shield\Healer\Texture\hw_ft_012.tex";
+  }
+  MESH       	TFNM "Data\Monster\undead\Healer2\hw_hair_000.bm";
+  TEXTURES   
+  {
+    "hw_hair_000"	TFNM "Data\Monster\undead\Healer2\hw_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hn_012.bm";
+  TEXTURES   
+  {
+    "hw_hn_012"	TFNM "Data\Item\Shield\Healer\Texture\hw_hn_012.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_BOW_012.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\hw_bow_012.bm";
+  TEXTURES   
+  {
+    "hw_bow_012"	TFNM "Data\Item\Weapon\texture\hw_bow_012.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Undead\Healer2\hw.bs";
+  ANIMSET   	TFNM "Data\Monster\Undead\Healer2\hw.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Undead\Healer2\hw.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.32,0,-0.32,0.32,1.8,0.32;}
+  }
+}

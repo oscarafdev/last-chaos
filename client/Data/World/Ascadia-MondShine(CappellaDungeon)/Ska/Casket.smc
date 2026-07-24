@@ -1,0 +1,12 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)\Ska\bone_casket01.bm";
+  TEXTURES   
+  {
+    "bone_casket"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)\Ska\Texture\bone_casket.tex";
+  }
+  ALLFRAMESBBOX	-0.934011,0.001096,-0.548913,0.934011,0.539838,0.548913;
+  COLISION
+  {
+  }
+}

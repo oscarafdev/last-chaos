@@ -1,0 +1,15 @@
+NAME "d1_archpoll05";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_archpoll05.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\world\Dungeon1\Ska\Texture\Dengen1_Detail.tex";
+    "Gate_01"	TFNM "Data\world\Dungeon1\Ska\Texture\Gate_01.tex";
+    "Pole_41"	TFNM "Data\world\Dungeon1\Ska\Texture\Pole_41.tex";
+  }
+  ALLFRAMESBBOX	-0.570781,-0.005842,-0.542156,0.529488,22.78,0.557844;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,23,0.75;}
+  }
+}

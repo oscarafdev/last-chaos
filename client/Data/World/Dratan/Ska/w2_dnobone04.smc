@@ -1,0 +1,13 @@
+NAME "w2_dnobone04";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_dnobone04.bm";
+  TEXTURES   
+  {
+    "w2_bone01"	TFNM "Data\World\Dratan\Ska\Texture\w2_bone01.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.49178,-0.18062,-1.36148,2.06699,1.30752,1.36599;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "roots-1";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\roots-1.bm";
+  TEXTURES   
+  {
+    "roots-1"	TFNM "Data\Effect\Ska\ns_weapons\roots-1.tex";
+  }
+  ALLFRAMESBBOX	-0.099026,-0.104123,-0.094265,0.099026,0.104123,0.094265;
+  COLISION
+  {
+  }
+}

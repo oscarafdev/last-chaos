@@ -1,0 +1,17 @@
+NAME "item_goje";
+{
+  MESH       	TFNM "Data\Item\Common\_TAG_T_ITEM_GOJE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Common\item_goje.bm";
+  TEXTURES   
+  {
+    "item_goje"	TFNM "Data\Item\Common\Texture\item_goje.tex";
+  }
+  ALLFRAMESBBOX	-0.25,0,-0.25,0.25,0.5,0.25;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,0.5,0.25;}
+  }
+}

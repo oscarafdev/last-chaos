@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="197" h="57" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="is_backNormal" x="0" y="0" w="197" h="57" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="507" t="79" r="706" b="136" unit="75" splitmode="0">
+        <UIText id="str_nameN" x="55" y="2" w="94" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+    <UIImageSplit id="is_backMob" x="0" y="0" w="197" h="57" hide="1" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="507" t="0" r="706" b="57" unit="75" splitmode="0">
+        <UIText id="str_nameM" x="41" y="2" w="141" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+    <UIImageSplit id="is_backPartyMob" x="0" y="0" w="197" h="79" hide="1" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="302" t="0" r="501" b="80" unit="75" splitmode="0">
+        <UIText id="str_namePM" x="43" y="2" w="138" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImageSplit>
+    <UIText id="str_level" x="18" y="17" w="12" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_hp" x="47" y="20" w="120" h="17" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="img_move" x="0" y="0" w="197" h="22" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIImage id="img_hp" x="47" y="32" w="120" h="8" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="286" t="220" r="289" b="228" />
+    <UIImage id="img_FameMark" x="160" y="2" w="12" h="12" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="295" t="236" r="305" b="246" />
+    <UIImageArray id="ia_attrAtt" x="186" y="22" w="19" h="19" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+        <surface0 x="0" y="0" w="18" h="18" l="266" t="717" r="304" b="755" desc="무" />
+        <surface1 x="0" y="0" w="18" h="18" l="266" t="757" r="304" b="795" desc="불" />
+        <surface2 x="0" y="0" w="18" h="18" l="266" t="798" r="304" b="836" desc="물" />
+        <surface3 x="0" y="0" w="18" h="18" l="266" t="880" r="304" b="918" desc="대지" />
+        <surface4 x="0" y="0" w="18" h="18" l="266" t="839" r="304" b="877" desc="바람" />
+        <surface5 x="0" y="0" w="18" h="18" l="266" t="962" r="304" b="1000" desc="암흑" />
+        <surface6 x="0" y="0" w="18" h="18" l="266" t="921" r="304" b="959" desc="빛" />
+    </UIImageArray>
+    <UIImageArray id="ia_attrDef" x="198" y="10" w="19" h="19" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+        <surface0 x="0" y="0" w="18" h="18" l="307" t="717" r="345" b="755" desc="무" />
+        <surface1 x="0" y="0" w="18" h="18" l="307" t="757" r="345" b="795" desc="불" />
+        <surface2 x="0" y="0" w="18" h="18" l="307" t="798" r="345" b="836" desc="물" />
+        <surface3 x="0" y="0" w="18" h="18" l="307" t="880" r="345" b="918" desc="대지" />
+        <surface4 x="0" y="0" w="18" h="18" l="307" t="839" r="345" b="877" desc="바람" />
+        <surface5 x="0" y="0" w="18" h="18" l="307" t="962" r="345" b="1000" desc="암흑" />
+        <surface6 x="0" y="0" w="18" h="18" l="307" t="921" r="345" b="959" desc="빛" />
+    </UIImageArray>
+    <UIImageArray id="ia_syndicate" x="12" y="34" w="34" h="34" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+        <surface0 x="0" y="0" w="34" h="34" l="920" t="0" r="954" b="34" desc="카이룩스" />
+        <surface1 x="0" y="0" w="34" h="34" l="955" t="0" r="989" b="34" desc="딜라문" />
+        <surface2 x="0" y="0" w="34" h="34" l="990" t="0" r="1024" b="34" desc="플로르" />
+    </UIImageArray>
+</Window>

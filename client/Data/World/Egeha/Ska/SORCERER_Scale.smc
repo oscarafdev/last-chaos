@@ -1,0 +1,12 @@
+NAME "box1";
+{
+  MESH       	TFNM "Data\World\Egeha_\Ska\SORCERER_Scale.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.286758,0,-0.321385,0.326813,0.950124,0.325293;
+  COLISION
+  {
+    "Default"  {-0.309602,-0.00625956,-0.33629,0.332694,1.02493,0.348316;}
+  }
+}

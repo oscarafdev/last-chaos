@@ -1,0 +1,29 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ugly_kabarak";
+{
+  MESH       	TFNM "Data\Monster\kabarak\Ugly_kabarak\_TAG_UKABALT.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\kabarak\Ugly_kabarak\_TAG_UKABART.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\kabarak\Ugly_kabarak\_TAG_UKABATO.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\kabarak\Ugly_kabarak\Ugly_kabarak.bm";
+  TEXTURES   
+  {
+    "uglykabarak"	TFNM "Data\Monster\kabarak\Ugly_kabarak\uglykabarak.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\kabarak\Ugly_kabarak\Ugly_kabarak.bs";
+  ANIMSET   	TFNM "Data\Monster\kabarak\Ugly_kabarak\Ugly_kabarak.ba";
+  ANIMEFFECT	TFNM "Data\Monster\kabarak\Ugly_kabarak\Ugly_kabarak.bae";
+  ALLFRAMESBBOX	-1.8313,-0.313145,-1.98801,3.54998,2.98251,2.98796;
+  COLISION
+  {
+    "Default"  {-1.85,0,-2,1.85,2,1.8;}
+  }
+}

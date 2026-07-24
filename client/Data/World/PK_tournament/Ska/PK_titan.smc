@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "PK_titan";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_titan.bm";
+  TEXTURES   
+  {
+    "PK_titan"	TFNM "Data\World\PK_tournament\Ska\Texture\pk_titan.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-0.370399,0.002595,-0.232111,0.370399,2.12125,0.233078;
+  COLISION
+  {
+    "Default"  {-0.283124,-0.0149686,-0.242044,0.27045,1.15975,0.261082;}
+  }
+}

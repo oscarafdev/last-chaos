@@ -1,0 +1,17 @@
+NAME "ruinhome3";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\ruinhome3.bm";
+  TEXTURES   
+  {
+    "cao_house_03"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_03.tex";
+    "cao_StartZonetile_roof03"	TFNM "Data\World\StartZone\Ska\Texture\cao_StartZonetile_roof03.tex";
+    "cao_StartZonetile_roof02"	TFNM "Data\World\StartZone\Ska\Texture\cao_StartZonetile_roof02.tex";
+    "cao_house_01"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_01.tex";
+    "cao_house_02"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_02.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-6.27079,-0.970731,-7.33548,7.49272,10.91,2.5534;
+  COLISION
+  {
+  }
+}

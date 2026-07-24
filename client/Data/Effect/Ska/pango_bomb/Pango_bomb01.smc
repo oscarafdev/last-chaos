@@ -1,0 +1,20 @@
+NAME "Pango_bomb01";
+{
+  MESH       	TFNM "Data\Effect\Ska\pango_bomb\Pbomb01.bm";
+  TEXTURES   
+  {
+    "Fang_Go-Default"	TFNM "Data\Effect\Ska\pango_bomb\Fang_Go-Default.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\pango_bomb\_TAG_bomb.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\pango_bomb\Pango_bomb.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\pango_bomb\bomb.ba";
+  ANIMEFFECT	TFNM "Data\Effect\Ska\pango_bomb\Pango_bomb01.bae";
+  ALLFRAMESBBOX	-0.06,-0.05,-0.06,0.06,0.17,0.06;
+  COLISION
+  {
+    "Default"  {-0.06,-0.05,-0.06,0.06,0.19,0.06;}
+  }
+}

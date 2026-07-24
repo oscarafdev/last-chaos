@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_witch";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_witch.bm";
+  TEXTURES   
+  {
+    "ma_witch"	TFNM "Data\Item\Shield\Mage\Texture\ma_witch.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_witch_1.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_face_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

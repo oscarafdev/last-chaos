@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bd_swimsuit";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_swimsuit.bm";
+  TEXTURES   
+  {
+    "so_bd_swimsuit"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_swimsuit.tex";
+  }
+  ALLFRAMESBBOX	-0.224013,0.690563,-0.118987,0.224013,1.2619,0.131929;
+  COLISION
+  {
+  }
+}

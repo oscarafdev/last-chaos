@@ -1,0 +1,14 @@
+OFFSET    	-16.4342,-0.451274,-84.721,0,0,0;
+NAME "w1_chaocolumn";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_chaocolumn.bm";
+  TEXTURES   
+  {
+    "w1_chaocolumn"	TFNM "Data\World\StartZone\Ska\Texture\w1_chaocolumn.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-2.48876,-0.361807,-1.62992,3.00529,17.0548,3.86412;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_hair_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hair_Greece01.bm";
+  TEXTURES   
+  {
+    "ma_hair_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hair_Greece02.bm";
+  TEXTURES   
+  {
+    "ma_hair_Greece"	TFNM "Data\Item\Shield\Mage\Texture\ma_hair_Greece.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_hair_Greece.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_face_000.tex";
+  }
+  ALLFRAMESBBOX	-0.075544,1.06463,-0.141776,0.075544,1.98363,0.365391;
+  COLISION
+  {
+  }
+}

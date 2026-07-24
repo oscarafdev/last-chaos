@@ -1,0 +1,38 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Funatic_supervisor";
+{
+  MESH       	TFNM "Data\Monster\Fanatic\Fanatic_plunderer.bm";
+  TEXTURES   
+  {
+    "Fanatic_bd"	TFNM "Data\Monster\Fanatic\Fanatic_bd.tex";
+    "Fanatic_bu-a"	TFNM "Data\Monster\Fanatic\Fanatic_bu-a.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\rope.bm";
+  TEXTURES   
+  {
+    "Fanatic_adddn0"	TFNM "Data\Monster\Fanatic\Fanatic_adddn0.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\upperG.bm";
+  TEXTURES   
+  {
+    "Fanatic_addup"	TFNM "Data\Monster\Fanatic\Fanatic_addup.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\Lbomb.bm";
+  TEXTURES   
+  {
+    "bomb"	TFNM "Data\Monster\Fanatic\bomb.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\Rbomb.bm";
+  TEXTURES   
+  {
+    "bomb"	TFNM "Data\Monster\Fanatic\bomb.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Fanatic\Fanatic_plunderer.bs";
+  ANIMSET   	TFNM "Data\Monster\Fanatic\Funatic_supervisor.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Fanatic\Funatic_supervisor.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.9,0.75,2.3,0.6;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2.3,0.75;}
+  }
+}

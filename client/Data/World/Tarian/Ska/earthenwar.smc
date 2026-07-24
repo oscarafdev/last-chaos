@@ -1,0 +1,12 @@
+NAME "earthenwar";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\earthenwar.bm";
+  TEXTURES   
+  {
+    "earthenware_01"	TFNM "Data\World\Tarian\Ska\Texture\earthenware_01.tex";
+  }
+  ALLFRAMESBBOX	-0.120812,0.000202,-0.120812,0.120812,0.134464,0.120812;
+  COLISION
+  {
+  }
+}

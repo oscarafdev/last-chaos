@@ -1,0 +1,15 @@
+NAME "w2_coconutree";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_coconutree.bm";
+  TEXTURES   
+  {
+    "w2_coconutree_up"	TFNM "Data\World\Dratan\Ska\Texture\w2_coconutree_up.tex";
+    "w2_coconutree_dn"	TFNM "Data\World\Dratan\Ska\Texture\w2_coconutree_dn.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.870449,-0.076327,-1.4188,1.80986,4.79155,0.923336;
+  COLISION
+  {
+    "Default"  {-0.16205,-0.112911,-0.195867,0.236472,1.94827,0.171398;}
+  }
+}

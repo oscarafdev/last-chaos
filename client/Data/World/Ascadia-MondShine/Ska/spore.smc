@@ -1,0 +1,24 @@
+NAME "spore";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\spore.bm";
+  TEXTURES   
+  {
+    "spore"	TFNM "Data\World\Ascadia-MondShine\Ska\spore.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\spore ring.bm";
+  TEXTURES   
+  {
+    "spore_ring"	TFNM "Data\World\Ascadia-MondShine\Ska\spore_ring.tex";
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\_TAG_SPORE.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine\Ska\spore.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine\Ska\spore.ba";
+  ALLFRAMESBBOX	-0.506148,-0.00633147,-0.410326,0.497118,1.75028,0.378892;
+  COLISION
+  {
+    "Default"  {-1.5,0,-2,1.5,3,2;}
+  }
+}

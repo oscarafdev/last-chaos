@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "josu";
+{
+  MESH       	TFNM "Data\Monster\BrotherBand\josu.bm";
+  TEXTURES   
+  {
+    "brotherband_guard"	TFNM "Data\Monster\BrotherBand\brotherband_guard.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\josu_1.bm";
+  TEXTURES   
+  {
+    "brotherband_armor03"	TFNM "Data\Monster\BrotherBand\brotherband_armor03.tex";
+  }
+  MESH       	TFNM "Data\Monster\BrotherBand\_TAG_JOSU.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\BrotherBand\josu.bs";
+  ANIMSET   	TFNM "Data\Monster\BrotherBand\josu.ba";
+  ANIMEFFECT	TFNM "Data\Monster\BrotherBand\josu.bae";
+  ALLFRAMESBBOX	-2,0,-2,2,4.3,2;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,4.3,2;}
+  }
+}

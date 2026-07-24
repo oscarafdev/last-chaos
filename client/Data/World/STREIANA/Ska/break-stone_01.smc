@@ -1,0 +1,15 @@
+NAME "break-stone_01";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\break-ston.bm";
+  TEXTURES   
+  {
+    "tail_01"	TFNM "Data\World\STREIANA\Ska\Texture\tail_01.tex";
+    "tail"	TFNM "Data\World\STREIANA\Ska\Texture\tail.tex";
+    "tail_02"	TFNM "Data\World\STREIANA\Ska\Texture\tail_02.tex";
+    "STREIANA_Detail"	TFNM "Data\World\STREIANA\Ska\Texture\STREIANA_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.455366,0.006507,-0.253532,0.446586,0.997626,0.091966;
+  COLISION
+  {
+  }
+}

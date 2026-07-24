@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Sahaquiel";
+{
+  MESH       	TFNM "Data\Npc\Sahaquiel\angel_wing_eff.bm";
+  TEXTURES   
+  {
+    "Wings"	TFNM "Data\Npc\Sahaquiel\Wings.tex";
+  }
+  MESH       	TFNM "Data\Npc\Sahaquiel\Cloak.bm";
+  TEXTURES   
+  {
+    "angel_monk_cowl_2"	TFNM "Data\Npc\Sahaquiel\angel_monk_cowl_2.tex";
+  }
+  MESH       	TFNM "Data\Npc\Sahaquiel\Hood.bm";
+  TEXTURES   
+  {
+    "angel_monk_hood"	TFNM "Data\Npc\Sahaquiel\angel_monk_hood.tex";
+  }
+  MESH       	TFNM "Data\Npc\Sahaquiel\ns_bu_001.bm";
+  TEXTURES   
+  {
+    "angel_monk_cowl_1"	TFNM "Data\Npc\Sahaquiel\angel_monk_cowl_1.tex";
+  }
+  MESH       	TFNM "Data\Npc\Sahaquiel\ns_bu_022_002.bm";
+  TEXTURES   
+  {
+    "angel_monk_shoulders"	TFNM "Data\Npc\Sahaquiel\angel_monk_shoulders.tex";
+  }
+  MESH       	TFNM "Data\Npc\Sahaquiel\ns_face_01.bm";
+  TEXTURES   
+  {
+    "angel_monk_head"	TFNM "Data\Npc\Sahaquiel\angel_monk_head.tex";
+  }
+  MESH       	TFNM "Data\Npc\Sahaquiel\ns_ft_01.bm";
+  TEXTURES   
+  {
+    "angel_monk_feet"	TFNM "Data\Npc\Sahaquiel\angel_monk_feet.tex";
+  }
+  MESH       	TFNM "Data\Npc\Sahaquiel\ns_hn_001.bm";
+  TEXTURES   
+  {
+    "angel_monk_hands"	TFNM "Data\Npc\Sahaquiel\angel_monk_hands.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Sahaquiel\Sahaquiel.bs";
+  ANIMSET   	TFNM "Data\Npc\Sahaquiel\Sahaquiel.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

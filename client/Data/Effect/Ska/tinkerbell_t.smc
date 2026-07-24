@@ -1,0 +1,24 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "tinkerbell";
+{
+  MESH       	TFNM "Data\effect\SKA\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\effect\SKA\tinkerbell01.bm";
+  TEXTURES   
+  {
+    "tinkerbell"	TFNM "Data\effect\TEXTURE\tinkerbell.tex";
+  }
+  MESH       	TFNM "Data\effect\SKA\tinkerbell_1.bm";
+  TEXTURES   
+  {
+    "tinkerbell"	TFNM "Data\effect\TEXTURE\tinkerbell.tex";
+  }
+  SKELETON  	TFNM "Data\effect\SKA\tinkerbell.bs";
+  ANIMSET   	TFNM "Data\effect\SKA\tinkerbell.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

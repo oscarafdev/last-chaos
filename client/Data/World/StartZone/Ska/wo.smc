@@ -1,0 +1,15 @@
+NAME "wo";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\wo.bm";
+  TEXTURES   
+  {
+    "wo"	TFNM "Data\world\StartZone\Ska\texture\wo.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\wo.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\wo.ba";
+  ALLFRAMESBBOX	-1.05047,0.0395081,-0.622362,0.765931,2.05966,0.622362;
+  COLISION
+  {
+    "Default"  {-0.854674,-0.0625429,-0.636855,0.760909,0.984205,0.582572;}
+  }
+}

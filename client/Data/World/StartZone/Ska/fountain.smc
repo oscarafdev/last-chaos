@@ -1,0 +1,14 @@
+NAME "fountain";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\fountain.bm";
+  TEXTURES   
+  {
+    "water"	TFNM "Data\world\StartZone\Ska\Texture\water.tex";
+    "water-mark"	TFNM "Data\world\StartZone\Ska\Texture\water-mark.tex";
+  }
+  ALLFRAMESBBOX	-6.78634,-0.001718,-6.47606,6.81152,6.94839,6.45049;
+  COLISION
+  {
+    "Default"  {-7,0,-7,7,6,7;}
+  }
+}

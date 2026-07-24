@@ -1,0 +1,16 @@
+NAME "molding03p_d3";
+{
+  MESH       	TFNM "Data\world\Dungeon3\Ska\k_molding03p_d3.bm";
+  TEXTURES   
+  {
+    "k_molding01_d3"	TFNM "Data\world\Dungeon3\Ska\texture\k_molding01_d3.tex";
+    "k_molding02_d3"	TFNM "Data\world\Dungeon3\Ska\texture\k_molding02_d3.tex";
+    "k_molding03_d3"	TFNM "Data\world\Dungeon3\Ska\texture\k_molding03_d3.tex";
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-0.73993,0,-0.171264,0.73993,13.4547,1.03193;
+  COLISION
+  {
+    "Default"  {-0.73993,0,-0.171266,0.73993,13.4547,1.03193;}
+  }
+}

@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "m_trollboss";
+{
+  MESH       	TFNM "Data\monster\troll\m_trollboss.bm";
+  TEXTURES   
+  {
+    "S2_Trol_boss"	TFNM "Data\monster\troll\S2_Trol_boss.tex";
+  }
+  MESH       	TFNM "Data\monster\troll\m_trollboss_01.bm";
+  TEXTURES   
+  {
+    "S2_Trol_boss_axe"	TFNM "Data\monster\troll\S2_Trol_boss_axe.tex";
+  }
+  MESH       	TFNM "Data\monster\troll\_TAG_T_CENTER_trbo.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\troll\m_trollboss.bs";
+  ANIMSET   	TFNM "Data\monster\troll\m_trollboss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\troll\m_trollboss.bae";
+  ALLFRAMESBBOX	-2,0,-4.5,2,3,2.5;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,2.8,1;}
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "SoulofWizard";
+{
+  MESH       	TFNM "Data\Effect\Ska\soulofwizard.bm";
+  TEXTURES   
+  {
+    "SoulofWizard"	TFNM "Data\Effect\Ska\soulofwizard.tex";
+  }
+  ALLFRAMESBBOX	-0.18848,-1.05354,-0.050027,0.187319,1.05084,0.050028;
+  COLISION
+  {
+  }
+}

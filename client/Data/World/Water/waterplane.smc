@@ -1,0 +1,14 @@
+NAME "waterplane";
+{
+  MESH       	TFNM "Data\World\Water\waterplane.bm";
+  TEXTURES   
+  {
+    "WaterFX"	TFNM "Data\World\Water\Texture\WaterFX.tex";
+  }
+  SKELETON  	TFNM "Data\World\Water\waterplane.bs";
+  ANIMSET   	TFNM "Data\World\Water\waterplane.ba";
+  ALLFRAMESBBOX	-3.00005,0,-3.00005,3.00005,0,3.00005;
+  COLISION
+  {
+  }
+}

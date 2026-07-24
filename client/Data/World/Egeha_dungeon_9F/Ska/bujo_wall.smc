@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_9F\Ska\bujo_wall.bm";
+  TEXTURES   
+  {
+    "bujo_wall"	TFNM "Data\World\Egeha_dungeon_9F\Ska\Texter\bujo_wall.tex";
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_9F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+  }
+  ALLFRAMESBBOX	-1.03904,-0.501711,0.055035,1.03904,0.854235,0.096507;
+  COLISION
+  {
+    "Default"  {-1.0877,-0.507325,0.0304838,1.02974,0.880696,0.103568;}
+  }
+}

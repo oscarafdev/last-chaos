@@ -1,0 +1,18 @@
+NAME "ma_cmask_003";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_cmask_003.bm";
+  TEXTURES   
+  {
+    "ma_cmask_003"	TFNM "Data\Item\Shield\Mage\Texture\ma_cmask_003.tex";
+  }
+  MESH       	TFNM "Data\character\Mage\ma_hair_000.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\character\Mage\ma_face_000.tex";
+    "ma_hair_000"	TFNM "Data\character\Mage\ma_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,21 @@
+NAME "w2_minemasterside";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_minemasterside.bm";
+  TEXTURES   
+  {
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+    "PK_tent02_deco"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_tent02_deco.tex";
+    "PK_minewood1"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_minewood1.tex";
+    "PK_minewood5"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_minewood5.tex";
+    "PK_tent01_flag"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_tent01_flag.tex";
+    "PK_Ob03_bucket01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_Ob03_bucket01.tex";
+    "PK_sflag"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_sflag.tex";
+    "PK_shopbox01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_shopbox01.tex";
+  }
+  SKELETON  	TFNM "Data\World\PK_tournament\Ska\PK_minemasterside.bs";
+  ANIMSET   	TFNM "Data\World\PK_tournament\Ska\PK_minemasterside.ba";
+  ALLFRAMESBBOX	-1.35561,-0.0515613,-2.61125,1.47547,2.59699,-0.057777;
+  COLISION
+  {
+  }
+}

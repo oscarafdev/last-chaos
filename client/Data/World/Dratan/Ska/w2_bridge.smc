@@ -1,0 +1,18 @@
+NAME "w2_bridge";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_bridge.bm";
+  TEXTURES   
+  {
+    "w2_castlebottom5"	TFNM "Data\World\Dratan\Texture\w2_castlebottom5.tex";
+    "w2_wallgate4"	TFNM "Data\World\Dratan\Ska\Texture\w2_wallgate4.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_bridge"	TFNM "Data\World\Dratan\Ska\Texture\w2_bridge.tex";
+    "w2_castlebottom6"	TFNM "Data\World\Dratan\Texture\w2_castlebottom6.tex";
+    "w2_castlebottom9"	TFNM "Data\World\Dratan\Texture\w2_castlebottom9.tex";
+  }
+  ALLFRAMESBBOX	-6.02141,-0.027273,-3.00441,5.97847,5.51322,3.00403;
+  COLISION
+  {
+    "Default"  {-6,0,-3,6,5,3;}
+  }
+}

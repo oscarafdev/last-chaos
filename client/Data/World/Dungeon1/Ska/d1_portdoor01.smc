@@ -1,0 +1,13 @@
+NAME "d1_portdoor01";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_portdoor01.bm";
+  TEXTURES   
+  {
+    "Dengen1_Detail"	TFNM "Data\world\Dungeon1\Texture\Dengen1_Detail.tex";
+    "dengen1_tile04"	TFNM "Data\World\Dungeon1\Ska\Texture\dengen1_tile04.tex";
+  }
+  ALLFRAMESBBOX	-3.45445,-0.01497,-0.383333,3.45445,3.4423,0.383333;
+  COLISION
+  {
+  }
+}

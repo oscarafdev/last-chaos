@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="character_select" x="0" y="0" w="1024" h="768" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIBase id="left_ui" x="0" y="0" w="313" h="695" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0">
+        <UIImage id="img_slot_info_base" x="-27" y="35" w="341" h="146" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="907" t="287" r="1248" b="433">
+            <UIText id="text_expansion_title" x="35" y="19" w="248" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5707" str="추가 슬롯 사용 기간 :" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UITextBox id="tb_expansion_desc" x="28" y="20" w="272" h="105" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="6" sy="15" gap_y="0" h_align="0" str_idx="5702" split_mode="1" text_col="0xffffffff" str="총 8개까지의 캐릭터 생성이 가능 합니다. 기간이 만료 된 이후에는 이미 생성된 캐릭터의 플레이는 가능 하지만 캐릭터의 생성은 4개까지로 제한 됩니다.">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar x="0" y="0" w="272" h="105" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="5" item_count="4" item_per_page="6">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="131" y="0" w="16" h="12" l0="805" t0="743" r0="821" b0="755" l1="784" t1="743" r1="800" b1="755" />
+                    <button2 x="131" y="5" w="16" h="12" l0="805" t0="759" r0="821" b0="771" l1="784" t1="759" r1="800" b1="771" />
+                    <thumb x="0" y="0" w="0" h="81" unit="0" l="0" t="0" r="0" b="0" />
+                </UIScrollBar>
+            </UITextBox>
+            <UIImage id="img_slot_info_title" x="27" y="-30" w="223" h="49" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="475" t="220" r="698" b="269">
+                <UIText id="text_slot_info_title" x="51" y="20" w="87" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6096" str="슬롯 정보" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIImage>
+        </UIImage>
+        <UIList id="list_character_slot_left" x="0" y="100" w="290" h="535" hide="0" tex="intro_common.tex" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="4" itemgap="10" item_count="4" pre_create="0">
+            <select x="-13" y="-8" w="293" h="120" l="1563" t="442" r="1869" b="570" />
+            <over x="0" y="0" w="298" h="114" l="1240" t="450" r="1538" b="564" />
+            <UIListItem id="list_item_001" x="0" y="0" w="291" h="123" hide="0" align_h="0" align_v="0" tooltip="6093" tooltip_width="150">
+                <UIImageArray id="img_array_class" x="16" y="13" w="78" h="78" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="9">
+                    <surface0 x="0" y="0" w="78" h="78" l="505" t="493" r="583" b="571" desc="" />
+                    <surface1 x="0" y="0" w="78" h="78" l="584" t="493" r="662" b="571" desc="" />
+                    <surface2 x="0" y="0" w="78" h="78" l="663" t="493" r="741" b="571" desc="" />
+                    <surface3 x="0" y="0" w="78" h="78" l="742" t="493" r="820" b="571" desc="" />
+                    <surface4 x="0" y="0" w="78" h="78" l="821" t="493" r="899" b="571" desc="" />
+                    <surface5 x="0" y="0" w="78" h="78" l="505" t="572" r="583" b="650" desc="" />
+                    <surface6 x="0" y="0" w="78" h="78" l="584" t="572" r="662" b="650" desc="" />
+                    <surface7 x="0" y="0" w="78" h="78" l="663" t="572" r="741" b="650" desc="" />
+                    <surface8 x="0" y="0" w="78" h="78" l="742" t="572" r="820" b="650" desc="" />
+                    <surface9 x="0" y="0" w="78" h="78" l="821" t="651" r="899" b="729" desc="" />
+                </UIImageArray>
+                <UIImageArray id="img_array_char_slot" x="0" y="0" w="293" h="123" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="1">
+                    <surface0 x="0" y="0" w="293" h="123" l="915" t="450" r="1208" b="573" desc="" />
+                    <surface1 x="0" y="0" w="293" h="123" l="915" t="591" r="1208" b="714" desc="" />
+                    <surface2 x="0" y="0" w="293" h="123" l="915" t="732" r="1208" b="855" desc="" />
+                </UIImageArray>
+                <UITextBox id="tb_class_name" x="22" y="90" w="69" h="28" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="5" gap_y="0" h_align="1" str_idx="-1" split_mode="1" text_col="0xffff00ff" str="Night">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UITextBox>
+                <UIText id="text_name" x="110" y="40" w="126" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="피부암통키" color="0xffffffff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_level" x="110" y="54" w="126" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Lv 999" color="0xffffffff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_guild" x="110" y="69" w="126" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="짱짱맨길드" color="0xffa0ffff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_del_time" x="110" y="84" w="126" h="15" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="23:59" color="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIButton id="btn_char_delete" x="72" y="1" w="30" h="30" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="2999" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                    <uv type="0" l="1232" t="722" r="1262" b="752" />
+                    <uv type="1" l="1268" t="722" r="1298" b="752" />
+                    <uv type="2" l="1232" t="758" r="1262" b="788" />
+                    <uv type="3" l="1268" t="758" r="1298" b="788" />
+                </UIButton>
+                <UIButton id="btn_char_del_cancel" x="72" y="1" w="30" h="30" hide="1" tex="intro_common.tex" align_h="0" align_v="0" tooltip="6095" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                    <uv type="0" l="1304" t="722" r="1334" b="752" />
+                    <uv type="1" l="1340" t="722" r="1370" b="752" />
+                    <uv type="2" l="1304" t="758" r="1334" b="788" />
+                    <uv type="3" l="1340" t="758" r="1370" b="788" />
+                </UIButton>
+            </UIListItem>
+        </UIList>
+    </UIBase>
+    <UIBase id="right_ui" x="0" y="0" w="295" h="695" hide="0" align_h="2" align_v="1" tooltip="-1" tooltip_width="0">
+        <UIList id="list_character_slot_right" x="0" y="100" w="291" h="535" hide="0" tex="intro_common.tex" align_h="2" align_v="1" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="4" itemgap="10" item_count="4" pre_create="0">
+            <select x="-4" y="0" w="304" h="114" l="1869" t="450" r="1563" b="564" />
+            <over x="0" y="0" w="298" h="114" l="1538" t="450" r="1240" b="564" />
+            <UIListItem id="list_item_001" x="0" y="0" w="291" h="123" hide="0" align_h="0" align_v="0" tooltip="6093" tooltip_width="150">
+                <UIImageArray id="img_array_class" x="197" y="13" w="78" h="78" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="9">
+                    <surface0 x="0" y="0" w="78" h="78" l="583" t="493" r="505" b="571" desc="" />
+                    <surface1 x="0" y="0" w="78" h="78" l="662" t="493" r="584" b="571" desc="" />
+                    <surface2 x="0" y="0" w="78" h="78" l="741" t="493" r="663" b="571" desc="" />
+                    <surface3 x="0" y="0" w="78" h="78" l="820" t="493" r="742" b="571" desc="" />
+                    <surface4 x="0" y="0" w="78" h="78" l="899" t="493" r="821" b="571" desc="" />
+                    <surface5 x="0" y="0" w="78" h="78" l="583" t="572" r="505" b="650" desc="" />
+                    <surface6 x="0" y="0" w="78" h="78" l="662" t="572" r="584" b="650" desc="" />
+                    <surface7 x="0" y="0" w="78" h="78" l="741" t="572" r="663" b="650" desc="" />
+                    <surface8 x="0" y="0" w="78" h="78" l="820" t="572" r="742" b="650" desc="" />
+                    <surface9 x="0" y="0" w="78" h="78" l="899" t="651" r="821" b="729" desc="" />
+                </UIImageArray>
+                <UIImageArray id="img_array_char_slot" x="0" y="0" w="293" h="123" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="1">
+                    <surface0 x="0" y="0" w="293" h="123" l="1208" t="450" r="915" b="573" desc="" />
+                    <surface1 x="0" y="0" w="293" h="123" l="1208" t="591" r="915" b="714" desc="" />
+                    <surface2 x="0" y="0" w="293" h="123" l="1208" t="732" r="915" b="855" desc="" />
+                </UIImageArray>
+                <UITextBox id="tb_class_name" x="204" y="90" w="69" h="30" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="5" gap_y="0" h_align="1" str_idx="-1" split_mode="0" text_col="0xffff00ff" str="Night">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UITextBox>
+                <UIText id="text_name" x="58" y="40" w="126" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="피부암통키" color="0xffffffff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_level" x="58" y="54" w="126" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Lv 999" color="0xffffffff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_guild" x="58" y="69" w="126" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="짱짱맨길드" color="0xffa0ffff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIText id="text_del_time" x="58" y="84" w="126" h="15" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="23:59" color="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="-1">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+                <UIButton id="btn_char_delete" x="189" y="1" w="30" h="30" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="2999" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                    <uv type="0" l="1232" t="722" r="1262" b="752" />
+                    <uv type="1" l="1268" t="722" r="1298" b="752" />
+                    <uv type="2" l="1232" t="758" r="1262" b="788" />
+                    <uv type="3" l="1268" t="758" r="1298" b="788" />
+                </UIButton>
+                <UIButton id="btn_char_del_cancel" x="189" y="1" w="30" h="30" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="6095" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                    <uv type="0" l="1304" t="722" r="1334" b="752" />
+                    <uv type="1" l="1340" t="722" r="1370" b="752" />
+                    <uv type="2" l="1304" t="758" r="1334" b="788" />
+                    <uv type="3" l="1340" t="758" r="1370" b="788" />
+                </UIButton>
+            </UIListItem>
+        </UIList>
+        <UIImage id="img_server_change_base" x="25" y="40" w="320" h="103" hide="0" tex="intro_common.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" l="1296" t="288" r="1616" b="391">
+            <UIButton id="btn_server_change" x="176" y="31" w="101" h="40" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6098" str="서버 변경" newtype="0" edge="1" text_color="0xffff00ff">
+                <uv type="0" l="1629" t="283" r="1730" b="323" />
+                <uv type="1" l="1737" t="283" r="1838" b="323" />
+                <uv type="2" l="1629" t="329" r="1730" b="369" />
+                <uv type="3" l="1737" t="329" r="1838" b="369" />
+            </UIButton>
+            <UIText id="text_server" x="63" y="33" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="서버군이름" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="text_channel" x="63" y="55" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="채널이름" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_server_change" x="63" y="-25" w="223" h="49" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="698" t="220" r="475" b="269">
+                <UIText id="text_server_change_title" x="92" y="20" w="87" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6097" str="서버 정보" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                </UIText>
+            </UIImage>
+        </UIImage>
+    </UIBase>
+    <UIButton id="btn_press_ok" x="0" y="-20" w="257" h="51" hide="0" tex="intro_common.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="1" text_color="0xffff00ff">
+        <uv type="0" l="704" t="56" r="961" b="107" />
+        <uv type="1" l="704" t="111" r="961" b="162" />
+        <uv type="2" l="704" t="166" r="961" b="217" />
+        <uv type="3" l="704" t="221" r="961" b="272" />
+    </UIButton>
+    <UIImage id="img_cancel_base" x="0" y="0" w="111" h="100" hide="0" tex="intro_common.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" l="774" t="910" r="885" b="1010">
+        <UIButton id="btn_exit_game" x="74" y="14" w="22" h="22" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="6099" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="888" t="911" r="910" b="933" />
+            <uv type="1" l="914" t="911" r="936" b="933" />
+            <uv type="2" l="888" t="937" r="910" b="959" />
+            <uv type="3" l="914" t="937" r="936" b="959" />
+        </UIButton>
+    </UIImage>
+</Window>

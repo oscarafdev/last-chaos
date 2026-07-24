@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_cos_kailooks02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_kailooks02_ft.bm";
+  TEXTURES   
+  {
+    "hw_cos_kailooks02_ft"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_kailooks02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.32532,-1e-006,-0.150963,0.32532,0.681851,0.122967;
+  COLISION
+  {
+  }
+}

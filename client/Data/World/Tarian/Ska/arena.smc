@@ -1,0 +1,42 @@
+NAME "arena";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\arena.bm";
+  TEXTURES   
+  {
+    "Arena_tile_01"	TFNM "Data\World\Tarian\Ska\Texture\Arena_tile_01.tex";
+    "Arena_bottom_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_bottom_00.tex";
+    "Arena_bottom_01"	TFNM "Data\World\Tarian\Ska\Texture\Arena_bottom_01.tex";
+    "Arena_bottom_02"	TFNM "Data\World\Tarian\Ska\Texture\Arena_bottom_02.tex";
+    "Arena_bottom_03"	TFNM "Data\World\Tarian\Ska\Texture\Arena_bottom_03.tex";
+    "Arena_bottom_04"	TFNM "Data\World\Tarian\Ska\Texture\Arena_bottom_04.tex";
+    "Arena_bottom_05"	TFNM "Data\World\Tarian\Ska\Texture\Arena_bottom_05.tex";
+    "Arena_brick_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_brick_00.tex";
+    "Arena_brick_02"	TFNM "Data\World\Tarian\Ska\Texture\Arena_brick_02.tex";
+    "Arena_brick_03"	TFNM "Data\World\Tarian\Ska\Texture\Arena_brick_03.tex";
+    "Arena_ceiling_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_ceiling_00.tex";
+    "Arena_entrance_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_entrance_00.tex";
+    "Arena_entrance_01"	TFNM "Data\World\Tarian\Ska\Texture\Arena_entrance_01.tex";
+    "Arena_entrance_02"	TFNM "Data\World\Tarian\Ska\Texture\Arena_entrance_02.tex";
+    "Arena_entrance_03"	TFNM "Data\World\Tarian\Ska\Texture\Arena_entrance_03.tex";
+    "Arena_gate_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_gate_00.tex";
+    "Arena_gate_01"	TFNM "Data\World\Tarian\Ska\Texture\Arena_gate_01.tex";
+    "Arena_gate_02"	TFNM "Data\World\Tarian\Ska\Texture\Arena_gate_02.tex";
+    "Arena_gate_03"	TFNM "Data\World\Tarian\Ska\Texture\Arena_gate_03.tex";
+    "Arena_gate_04"	TFNM "Data\World\Tarian\Ska\Texture\Arena_gate_04.tex";
+    "Arena_gate_05"	TFNM "Data\World\Tarian\Ska\Texture\Arena_gate_05.tex";
+    "Arena_prison_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_prison_00.tex";
+    "Arena_prison_01"	TFNM "Data\World\Tarian\Ska\Texture\Arena_prison_01.tex";
+    "Arena_stairs_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_stairs_00.tex";
+    "Arena_stairs_01"	TFNM "Data\World\Tarian\Ska\Texture\Arena_stairs_01.tex";
+    "Arena_tile_00"	TFNM "Data\World\Tarian\Ska\Texture\Arena_tile_00.tex";
+    "speak_table"	TFNM "Data\World\Tarian\Ska\Texture\speak_table.tex";
+    "view_chair"	TFNM "Data\World\Tarian\Ska\Texture\view_chair.tex";
+    "Dengen1_Detail"	TFNM "Data\World\Tarian\Ska\Texture\Dengen1_Detail.tex";
+    "Arena_stone_wall"	TFNM "Data\World\Tarian\Ska\Texture\Arena_stone_wall.tex";
+  }
+  ALLFRAMESBBOX	-121.892,0.238168,-110.74,121.892,64.8544,110.74;
+  COLISION
+  {
+    "Default"  {-5,0,-5,5,30,5;}
+  }
+}

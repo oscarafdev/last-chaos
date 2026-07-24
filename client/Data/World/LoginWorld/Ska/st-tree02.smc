@@ -1,0 +1,18 @@
+NAME "st-tree02";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\st-tree02.bm";
+  TEXTURES   
+  {
+    "TREEunder_03"	TFNM "Data\World\LoginWorld\Ska\texture\TREEunder_03.tex";
+  }
+  MESH       	TFNM "Data\World\LoginWorld\Ska\st-tree02-1.bm";
+  TEXTURES   
+  {
+    "TREEup_03"	TFNM "Data\World\LoginWorld\Ska\texture\TREEup_03.tex";
+  }
+  ALLFRAMESBBOX	-7.27466,0,-6.5,6.51403,17.3752,6.5;
+  COLISION
+  {
+    "Default"  {-1.6047,-0.11221,-1.76058,1.26212,4.66195,1.26426;}
+  }
+}

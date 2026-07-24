@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ab_de_dnbone";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_de_dnbone.bm";
+  TEXTURES   
+  {
+    "Ab_de_bone01"	TFNM "Data\Npc\Alber\Texture\Ab_de_bone01.tex";
+  }
+  ALLFRAMESBBOX	-7.34883,-1.26613,-10.8689,8.22335,4.78802,8.98617;
+  COLISION
+  {
+    "Default"  {-7.06274,0,-10.5,7.93726,6.05416,8.5;}
+  }
+}

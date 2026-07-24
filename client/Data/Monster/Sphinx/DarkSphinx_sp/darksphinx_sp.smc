@@ -1,0 +1,47 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sphinx_sp";
+{
+  MESH       	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darksphinx_sp_bd.bm";
+  TEXTURES   
+  {
+    "darkspearman_legs"	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darkspearman_legs.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darksphinx_sp_bu.bm";
+  TEXTURES   
+  {
+    "darkspearman_body"	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darkspearman_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darksphinx_sp_lhn.bm";
+  TEXTURES   
+  {
+    "darkspearman_body"	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darkspearman_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darksphinx_sp_rhn.bm";
+  TEXTURES   
+  {
+    "darkspearman_body"	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darkspearman_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darksphinx_sp_sk.bm";
+  TEXTURES   
+  {
+    "darkspearman_legs"	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darkspearman_legs.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darksphinx_sp_wp01.bm";
+  TEXTURES   
+  {
+    "darkspearman_weapon"	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darkspearman_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darksphinx_sp_wp02.bm";
+  TEXTURES   
+  {
+    "darkspearman_weapon"	TFNM "Data\Monster\Sphinx\DarkSphinx_sp\darkspearman_weapon.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Sphinx\sphinx_sp.bs";
+  ANIMSET   	TFNM "Data\Monster\Sphinx\sphinx_sp.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Sphinx\sphinx_sp.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

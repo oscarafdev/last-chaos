@@ -1,0 +1,22 @@
+NAME "w2_washing01";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_gs_house-01.bm";
+  TEXTURES   
+  {
+    "w2_gs_tile-07"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-07.tex";
+    "w2_gs_box-01"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_box-01.tex";
+    "w2_gs_box-02"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_box-02.tex";
+    "w2_gs_bujo-01"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_bujo-01.tex";
+    "w2_gs_tile-01"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-01.tex";
+    "w2_gs_tile-02"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-02.tex";
+    "w2_gs_tile-03"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-03.tex";
+    "w2_gs_tile-04"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-04.tex";
+    "w2_gs_tile-05"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-05.tex";
+    "w2_gs_tile-06"	TFNM "Data\World\Dratan\Ska\Texture\w2_gs_tile-06.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-34.1204,-0.139467,-22.1669,34.1204,19.9919,22.1669;
+  COLISION
+  {
+  }
+}

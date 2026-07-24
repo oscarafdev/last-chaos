@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="216" h="400" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="216" h="400" hide="0" tex="SkillLearn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="216" b="400" />
+    <UIImage id="move_area" x="0" y="0" w="216" h="24" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText x="28" y="4" w="159" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2190" str="애완동물 훈련" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="197" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UITab id="tab_main" x="13" y="32" w="192" h="173" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UICheck x="0" y="0" w="95" h="18" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2174" str="커맨드" posleft="0" text_x="0" region="0" text_area="95" h_align="1" color_on="0xdec666ff" color_off="0x6d6a6fff" edge="0">
+            <none l="0" t="0" r="0" b="0" />
+            <check l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UICheck x="96" y="0" w="95" h="18" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="91" str="스킬" posleft="0" text_x="0" region="0" text_area="95" h_align="1" color_on="0xdec666ff" color_off="0x6d6a6fff" edge="0">
+            <none l="0" t="0" r="0" b="0" />
+            <check l="0" t="0" r="0" b="0" />
+        </UICheck>
+        <UITabPage x="0" y="19" w="191" h="154" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIList id="list_cmd" x="1" y="0" w="189" h="155" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="3" itemy="4" itemshow_num="3" itemgap="3" item_count="0" pre_create="0">
+                <select x="0" y="0" w="171" h="35" l="265" t="166" r="474" b="200" />
+                <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar x="1" y="0" w="188" h="153" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="33" item_count="0" item_per_page="3">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+                    <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+                    <thumb x="-6" y="0" w="10" h="133" unit="7" l="185" t="32" r="195" b="71" />
+                </UIScrollBar>
+                <UIListItem id="list_item_001" x="3" y="4" w="173" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIImage x="0" y="0" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="167" t="353" r="201" b="387" />
+                    <UIIcon id="icon_item" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIImageSplit x="39" y="1" w="131" h="33" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+                    <UIText id="text_name" x="44" y="3" w="124" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="집중력향상" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="text_levelSp" x="79" y="18" w="87" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Lv 1 SP 0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIListItem>
+            </UIList>
+        </UITabPage>
+        <UITabPage x="0" y="19" w="191" h="154" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIList id="list_skill" x="1" y="0" w="189" h="155" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="3" itemy="4" itemshow_num="4" itemgap="3" item_count="0" pre_create="0">
+                <select x="0" y="0" w="171" h="35" l="265" t="166" r="474" b="200" />
+                <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar x="1" y="0" w="188" h="153" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="33" item_count="0" item_per_page="4">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+                    <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+                    <thumb x="-6" y="0" w="10" h="133" unit="7" l="185" t="32" r="195" b="71" />
+                </UIScrollBar>
+                <UIListItem id="list_item_001" x="3" y="4" w="173" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIImage x="0" y="0" w="34" h="34" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="167" t="353" r="201" b="387" />
+                    <UIIcon id="icon_item" x="1" y="1" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIImageSplit x="39" y="1" w="131" h="33" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="72" t="456" r="102" b="486" unit="10" splitmode="2" />
+                    <UIText id="text_name" x="44" y="3" w="124" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="집중력향상" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                    <UIText id="text_levelSp" x="79" y="18" w="87" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Lv 1 SP 0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIListItem>
+            </UIList>
+        </UITabPage>
+    </UITab>
+    <UIList id="list_contents" x="13" y="206" w="191" h="127" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="5" itemy="0" itemshow_num="0" itemgap="0" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="2" y="0" w="188" h="126" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="0" item_count="0" item_per_page="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="168" t0="33" r0="178" b0="43" l1="156" t1="33" r1="166" b1="43" />
+            <button2 x="0" y="0" w="10" h="10" l0="168" t0="45" r0="178" b0="55" l1="156" t1="45" r1="166" b1="55" />
+            <thumb x="-6" y="0" w="10" h="106" unit="7" l="185" t="32" r="195" b="71" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="0" y="0" w="192" h="128" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    </UIList>
+    <UIText x="20" y="342" w="86" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="2181" str="기술 포인트" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_abilitypoint" x="119" y="342" w="81" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xbda99fff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="63" y="368" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="269" str="습득" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="70" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="176" t="409" r="228" b="430" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="136" y="368" w="70" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="70" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="176" t="409" r="228" b="430" />
+    </UIButton>
+</Window>

@@ -1,0 +1,13 @@
+NAME "armor_type_A";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\armor_type_A.bm";
+  TEXTURES   
+  {
+    "armor_type_A"	TFNM "Data\World\tarian_dungeon\Ska\Texture\armor_type_A.tex";
+  }
+  ALLFRAMESBBOX	-0.688034,-0.01619,-0.475439,1.05543,2.99757,0.973206;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

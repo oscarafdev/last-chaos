@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "farmer_keeper";
+{
+  MESH       	TFNM "Data\npc\farmer\farmer_keeper.bm";
+  TEXTURES   
+  {
+    "farmmaster"	TFNM "Data\npc\farmer\texture\farmer_keeper.tex";
+  }
+  MESH       	TFNM "Data\npc\farmer\farmer_keeper02.bm";
+  TEXTURES   
+  {
+    "farmmaster"	TFNM "Data\npc\farmer\texture\farmer_keeper.tex";
+  }
+  SKELETON  	TFNM "Data\npc\farmer\farmer_keeper.bs";
+  ANIMSET   	TFNM "Data\npc\farmer\farmer_keeper.ba";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2.3,0.75;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.3,0.5,2,0.7;}
+  }
+}

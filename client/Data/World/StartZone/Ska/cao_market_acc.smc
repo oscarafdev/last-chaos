@@ -1,0 +1,30 @@
+NAME "cao_market_acc";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\cao_market_acc.bm";
+  TEXTURES   
+  {
+    "cao_wall_up"	TFNM "Data\World\StartZone\Ska\Texture\cao_wall_up.tex";
+    "barricade-01"	TFNM "Data\World\StartZone\Ska\Texture\barricade-01.tex";
+    "cao_amor2"	TFNM "Data\World\StartZone\Ska\Texture\cao_amor2.tex";
+    "cao_amor"	TFNM "Data\World\StartZone\Ska\Texture\cao_amor.tex";
+    "cao_house_01"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_01.tex";
+    "cao_house_02"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_02.tex";
+    "cao_house_02_2"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_02_2.tex";
+    "cao_house_03"	TFNM "Data\World\StartZone\Ska\Texture\cao_house_03.tex";
+    "cao_ma"	TFNM "Data\World\StartZone\Ska\Texture\cao_ma.tex";
+    "cao_mana"	TFNM "Data\World\StartZone\Ska\Texture\cao_mana.tex";
+    "cao_shop_001"	TFNM "Data\World\StartZone\Ska\Texture\cao_shop_001.tex";
+    "cao_shop_002"	TFNM "Data\World\StartZone\Ska\Texture\cao_shop_002.tex";
+    "cao_StartZonetile_roof02"	TFNM "Data\World\StartZone\Ska\Texture\cao_StartZonetile_roof02.tex";
+    "cao_StartZonetile_roof03"	TFNM "Data\World\StartZone\Ska\Texture\cao_StartZonetile_roof03.tex";
+    "cao_top"	TFNM "Data\World\StartZone\Ska\Texture\cao_top.tex";
+    "cao_wall2"	TFNM "Data\World\StartZone\Ska\Texture\cao_wall2.tex";
+    "cao_wall"	TFNM "Data\World\StartZone\Ska\Texture\cao_wall.tex";
+    "cao_wall_up2"	TFNM "Data\World\StartZone\Ska\Texture\cao_wall_up2.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-5.27847,-0.476772,-9.14776,5.4031,9.7852,8.02295;
+  COLISION
+  {
+  }
+}

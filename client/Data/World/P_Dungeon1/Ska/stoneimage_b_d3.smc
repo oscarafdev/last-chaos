@@ -1,0 +1,14 @@
+NAME "stoneimage_b_d3";
+{
+  MESH       	TFNM "Data\World\P_Dungeon1\Ska\stoneimage_b_d3.bm";
+  TEXTURES   
+  {
+    "stone image_d3"	TFNM "Data\World\P_Dungeon1\Texture\stone image_d3.tex";
+    "Dengen1_Detail"	TFNM "Data\World\P_Dungeon1\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-2.5671,-0.029856,-1.7997,2.5671,8.8978,1.79972;
+  COLISION
+  {
+    "Default"  {-2.5671,0,-1.79971,2.5671,8.92766,1.79971;}
+  }
+}

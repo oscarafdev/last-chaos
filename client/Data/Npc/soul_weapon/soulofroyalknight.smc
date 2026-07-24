@@ -1,0 +1,16 @@
+NAME "soulofroyalknight";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\ni_sword.bm";
+  TEXTURES   
+  {
+    "ni_sword_00u"	TFNM "Data\Npc\soul_weapon\ni_sword_00u.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\ni_soul_Ds.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\ni_soul_Ds.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\soulofroyalknight.bae";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,2.3,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,2.3,0.1;}
+  }
+}

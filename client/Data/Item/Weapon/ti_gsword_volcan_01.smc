@@ -1,0 +1,17 @@
+OFFSET    	0.45,-1.15,0.9,180,0,-50;
+NAME "ti_gsword_volcan_01";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_GSWORD_volcan_01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ti_gsword_volcan_01.bm";
+  TEXTURES   
+  {
+    "ti_gsword_volcan_01"	TFNM "Data\Item\Weapon\Texture\ti_gsword_volcan_01.tex";
+  }
+  ALLFRAMESBBOX	-0.405534,-0.0191704,-0.951218,0.375584,0.171173,1.46092;
+  COLISION
+  {
+  }
+}

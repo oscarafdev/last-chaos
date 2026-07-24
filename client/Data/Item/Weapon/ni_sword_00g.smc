@@ -1,0 +1,17 @@
+OFFSET    	0.6,-1.03,0.2,-160,0.25,-57;
+NAME "ni_sword_00g";
+{
+  MESH       	TFNM "Data\Item\Weapon\ni_sword_00g.bm";
+  TEXTURES   
+  {
+    "ni_sword_00g"	TFNM "Data\Item\Weapon\Texture\ni_sword_00g.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_SWORD_00g.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.329254,-0.0448111,-0.687564,0.175038,0.0475559,0.634375;
+  COLISION
+  {
+  }
+}

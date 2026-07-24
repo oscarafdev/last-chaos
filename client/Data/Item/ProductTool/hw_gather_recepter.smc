@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_gather_recepter";
+{
+  MESH       	TFNM "Data\Item\ProductTool\hw_gather_recepter.bm";
+  TEXTURES   
+  {
+    "gather_recepter"	TFNM "Data\Item\ProductTool\texture\gather_recepter.tex";
+  }
+  MESH       	TFNM "Data\Item\ProductTool\_TAG_hw_gather_recepter.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

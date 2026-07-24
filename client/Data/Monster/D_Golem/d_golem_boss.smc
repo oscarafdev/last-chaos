@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "d_golem_boss";
+{
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_boss.bm";
+  TEXTURES   
+  {
+    "d_golem_boss"	TFNM "Data\Monster\D_Golem\d_golem_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_boss_bd.bm";
+  TEXTURES   
+  {
+    "d_golem_boss"	TFNM "Data\Monster\D_Golem\d_golem_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_boss_hn.bm";
+  TEXTURES   
+  {
+    "d_golem_boss_hn"	TFNM "Data\Monster\D_Golem\d_golem_boss_hn.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\_TAG_T_DGBH.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\D_Golem\d_golem_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\D_Golem\d_golem_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\D_Golem\d_golem_boss.bae";
+  ALLFRAMESBBOX	-3,0,-3,3,5,3;
+  COLISION
+  {
+    "Default"  {-3,0,-3,3,5,3;}
+  }
+}

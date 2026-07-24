@@ -1,0 +1,14 @@
+NAME "A_pole";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\A_pole.bm";
+  TEXTURES   
+  {
+    "A_pole"	TFNM "Data\World\PK_tournament\Ska\Texture\A_pole.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-1.49424,-1e-006,-0.266786,1.49424,5.55701,0.266874;
+  COLISION
+  {
+    "Default"  {-0.181719,-0.0496156,-0.178704,0.169669,1.34629,0.179336;}
+  }
+}

@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "leadingband_evilspirit";
+{
+  MESH       	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_evilspirit_bu"	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_bu.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_1.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_evilspirit_bd"	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_bd.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_2.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_evilspirit_bu"	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_bu.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_3.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_evilspirit_bu"	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_bu.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_4.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_evilspirit_bd"	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_bd.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_5.bm";
+  TEXTURES   
+  {
+    "normal_leadingband_evilspirit_bu"	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit_bu.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\leadingband_evilspirit\normal_leadingband_evilspirit.ba";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2.3,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2.3,0.75;}
+  }
+}

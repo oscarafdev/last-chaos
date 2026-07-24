@@ -1,0 +1,14 @@
+NAME "foot";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\foot.bm";
+  TEXTURES   
+  {
+    "eff_stone_coffin"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\eff_stone_coffin.tex";
+    "stone_coffin"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\Texture\stone_coffin.tex";
+  }
+  ALLFRAMESBBOX	-5.20083,-0.006738,-1.77564,5.4105,3.69952,1.77564;
+  COLISION
+  {
+    "Default"  {-5.13633,0.0212414,-1.47738,5.31876,5.82789,1.56877;}
+  }
+}

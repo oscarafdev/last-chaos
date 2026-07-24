@@ -1,0 +1,16 @@
+NAME "sd2_cart1";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\ca_Dratan_guardtower_09.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "ca_Dratan_roof01"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_roof01.tex";
+    "ca_Dratan_wood02"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wood02.tex";
+    "ca_Dratan_wood03"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_wood03.tex";
+    "ca_Dratan_woodplan01"	TFNM "Data\World\Dratan\Ska\Texture\ca_Dratan_woodplan01.tex";
+  }
+  ALLFRAMESBBOX	-4.90516,-0.023699,-7.86795,4.90517,33.8053,7.86794;
+  COLISION
+  {
+  }
+}

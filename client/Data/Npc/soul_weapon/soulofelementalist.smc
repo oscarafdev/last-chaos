@@ -1,0 +1,16 @@
+NAME "soulofelementalist";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\so_sta.bm";
+  TEXTURES   
+  {
+    "so_staff_019"	TFNM "Data\Npc\soul_weapon\so_staff_019.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\so_soul_sta.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\so_soul_sta.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\soulofelementalist.bae";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,2.6,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,2.6,0.1;}
+  }
+}

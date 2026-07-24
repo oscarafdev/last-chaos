@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_hn_oubli";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hn_oubli.bm";
+  TEXTURES   
+  {
+    "hw_hn_oubli"	TFNM "Data\Item\Shield\Healer\Texture\hw_hn_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.660072,1.05597,-0.046184,0.660072,1.50854,0.162865;
+  COLISION
+  {
+  }
+}

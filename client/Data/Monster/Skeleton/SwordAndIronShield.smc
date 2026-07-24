@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "SwordAndIronShield";
+{
+  MESH       	TFNM "Data\monster\Skeleton\SwordAndIronShield01.bm";
+  TEXTURES   
+  {
+    "m_skeleton_001"	TFNM "Data\Monster\Skeleton\m_skeleton_001.tex";
+    "m_skeleton_001_01"	TFNM "Data\Monster\Skeleton\m_skeleton_001_01.tex";
+  }
+  MESH       	TFNM "Data\monster\Skeleton\SwordAndIronShield03.bm";
+  TEXTURES   
+  {
+    "IronShield"	TFNM "Data\Monster\Skeleton\IronShield.tex";
+  }
+  MESH       	TFNM "Data\monster\Skeleton\_TAG_T_CENTER_sksI.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Skeleton\SwordAndIronShield.bm";
+  TEXTURES   
+  {
+    "IronSword"	TFNM "Data\Monster\Skeleton\IronSword.tex";
+  }
+  SKELETON  	TFNM "Data\monster\Skeleton\SwordAndIronShield.bs";
+  ANIMSET   	TFNM "Data\monster\Skeleton\SwordAndIronShield.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Skeleton\SwordAndIronShield.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,1.8,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1.8,0.75;}
+  }
+}

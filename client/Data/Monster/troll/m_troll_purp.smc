@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "m_troll_purp";
+{
+  MESH       	TFNM "Data\monster\troll\m_troll_purp.bm";
+  TEXTURES   
+  {
+    "m_troll_purp"	TFNM "Data\monster\troll\m_troll_purp.tex";
+  }
+  MESH       	TFNM "Data\monster\troll\m_troll_purp_01.bm";
+  TEXTURES   
+  {
+    "m_troll_purp_01"	TFNM "Data\monster\troll\m_troll_01.tex";
+  }
+  MESH       	TFNM "Data\monster\troll\m_troll_purp_02.bm";
+  TEXTURES   
+  {
+    "m_troll_purp_01"	TFNM "Data\monster\troll\m_troll_purp_01.tex";
+  }
+  MESH       	TFNM "Data\monster\troll\_TAG_T_CENTER_trp.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\troll\m_troll_purp.bs";
+  ANIMSET   	TFNM "Data\monster\troll\m_troll_purp.ba";
+  ANIMEFFECT	TFNM "Data\Monster\troll\m_troll_purp.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,1.2,1.5;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1,0.4;}
+  }
+}

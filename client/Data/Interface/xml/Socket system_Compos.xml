@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="193" h="309" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="193" h="309" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="193" b="309" />
+    <UIImage id="move_area" x="0" y="0" w="193" h="36" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIImage id="img_chaos_back" x="17" y="36" w="159" h="173" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="333" r="159" b="506" />
+    <UIText id="text_title" x="60" y="16" w="73" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5927" str="일반보석 합성" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="175" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIIcon id="icon_jewel1" x="33" y="57" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_jewel2" x="80" y="57" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_jewel3" x="127" y="57" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_scroll" x="127" y="116" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="icon_result" x="80" y="161" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UITextBox id="tb_guide" x="0" y="214" w="173" h="30" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIText id="text_nas" x="44" y="252" w="129" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ok" x="55" y="280" w="80" h="21" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5933" str="합성" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="71" t="432" r="134" b="453" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="135" t="432" r="198" b="453" />
+        <uv type="3" l="199" t="432" r="262" b="453" />
+    </UIButton>
+    <UIImage id="img_result_normal" x="68" y="149" w="56" h="56" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="195" t="57" r="251" b="113" />
+    <UIImage id="img_result_chaos" x="68" y="149" w="56" h="56" hide="0" tex="Jewel_Compos.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="195" t="0" r="251" b="56" />
+</Window>

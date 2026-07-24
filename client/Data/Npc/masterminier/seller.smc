@@ -1,0 +1,45 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "seller";
+{
+  MESH       	TFNM "Data\npc\masterminier\seller01.bm";
+  TEXTURES   
+  {
+    "w2_minewood1"	TFNM "Data\npc\masterminier\texture\w2_minewood1.tex";
+    "w2_minewood5"	TFNM "Data\npc\masterminier\texture\w2_minewood5.tex";
+    "w2_Ob03_bucket01"	TFNM "Data\npc\masterminier\texture\w2_Ob03_bucket01.tex";
+    "w2_shopbox01"	TFNM "Data\npc\masterminier\texture\w2_shopbox01.tex";
+    "w2_tent01_flag"	TFNM "Data\npc\masterminier\texture\w2_tent01_flag.tex";
+  }
+  MESH       	TFNM "Data\npc\masterminier\seller02.bm";
+  TEXTURES   
+  {
+    "minemaster"	TFNM "Data\npc\masterminier\texture\seller.tex";
+  }
+  MESH       	TFNM "Data\npc\masterminier\seller03.bm";
+  TEXTURES   
+  {
+    "minemaster"	TFNM "Data\npc\masterminier\texture\seller.tex";
+  }
+  MESH       	TFNM "Data\npc\masterminier\seller04.bm";
+  TEXTURES   
+  {
+    "minemaster"	TFNM "Data\npc\masterminier\texture\seller.tex";
+  }
+  MESH       	TFNM "Data\npc\masterminier\seller05.bm";
+  TEXTURES   
+  {
+    "minemaster"	TFNM "Data\npc\masterminier\texture\seller.tex";
+  }
+  MESH       	TFNM "Data\npc\masterminier\seller06.bm";
+  TEXTURES   
+  {
+    "minemaster"	TFNM "Data\npc\masterminier\texture\seller.tex";
+  }
+  SKELETON  	TFNM "Data\npc\masterminier\seller.bs";
+  ANIMSET   	TFNM "Data\npc\masterminier\seller.ba";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2,1.5;
+  COLISION
+  {
+    "Default"  {-0.65,0,-1,0.65,1.8,1;}
+  }
+}

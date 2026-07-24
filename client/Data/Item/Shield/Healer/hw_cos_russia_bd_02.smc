@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_cos_russia_bd_02";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_russia_bd_02.bm";
+  TEXTURES   
+  {
+    "hw_cos_russia_bd"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_russia_bd.tex";
+  }
+  ALLFRAMESBBOX	-0.338047,0.486361,-0.10547,0.3349,1.21389,0.166532;
+  COLISION
+  {
+    "Default"  {-0.338047,0.486361,-0.10547,0.3349,1.21389,0.166532;}
+  }
+}

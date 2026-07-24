@@ -1,0 +1,17 @@
+OFFSET    	0.4,-1.09,0.4,140,-0.5,-50;
+NAME "so_staff_phynix";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_SO_STAFF_PHYNIX.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\so_staff_phynix.bm";
+  TEXTURES   
+  {
+    "so_staff_phynix"	TFNM "Data\Item\Weapon\Texture\so_staff_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.764106,-0.0256454,-0.932689,0.835447,0.0588229,0.961324;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+NAME "w5_torne02";
+{
+  MESH       	TFNM "Data\World\streiana\ska\w5_torne02.bm";
+  TEXTURES   
+  {
+    "w5_torne"	TFNM "Data\World\streiana\ska\texture\w5_torne.tex";
+    "w5_torne_nomal"	TFNM "Data\World\STREIANA\Ska\Texture\w5_torne_nomal.tex";
+  }
+  ALLFRAMESBBOX	-8.95602,0,-3.62042,0.737002,7.12555,3.03205;
+  COLISION
+  {
+  }
+}

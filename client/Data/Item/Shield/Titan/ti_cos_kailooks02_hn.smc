@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_cos_kailooks02_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_kailooks02_hn.bm";
+  TEXTURES   
+  {
+    "ti_cos_kailooks02_hn"	TFNM "Data\Item\Shield\Titan\Texture\ti_cos_kailooks02_hn.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_cos_kailooks02_hn01.bm";
+  TEXTURES   
+  {
+    "ti_cos_kailooks02_hn"	TFNM "Data\Item\Shield\Titan\Texture\ti_cos_kailooks02_hn.tex";
+  }
+  ALLFRAMESBBOX	-0.77341,1.01201,-0.058229,0.77341,1.63075,0.185775;
+  COLISION
+  {
+  }
+}

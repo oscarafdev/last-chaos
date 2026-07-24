@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Hw_cos_dessert_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\Hw_cos_dessert_ft.bm";
+  TEXTURES   
+  {
+    "Hw_cos_dessert_ft"	TFNM "Data\Item\Shield\Healer\Texture\Hw_cos_dessert_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.332937,-0.003001,-0.157956,0.332937,0.652297,0.14749;
+  COLISION
+  {
+  }
+}

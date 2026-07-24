@@ -1,0 +1,13 @@
+NAME "hw_skill_02_miracle_01";
+{
+  MESH       	TFNM "Data\Effect\Ska\hw_skill_02_miracle_00\hw_skill_02_miracle_01.bm";
+  TEXTURES   
+  {
+    "hw_skill_02_miracle_00"	TFNM "Data\Effect\Ska\hw_skill_02_miracle_00\hw_skill_02_miracle_00.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\hw_skill_02_miracle_00\hw_skill_02_miracle_01.bs";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

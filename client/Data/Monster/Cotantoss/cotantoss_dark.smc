@@ -1,0 +1,35 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "contantoss_dark";
+{
+  MESH       	TFNM "Data\Monster\Cotantoss\cotantoss_dark.bm";
+  TEXTURES   
+  {
+    "cotantoss_dark"	TFNM "Data\Monster\Cotantoss\cotantoss_dark.tex";
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\cotantoss_dark_1.bm";
+  TEXTURES   
+  {
+    "cotantoss_dark"	TFNM "Data\Monster\Cotantoss\cotantoss_dark.tex";
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\cotantoss_dark_2.bm";
+  TEXTURES   
+  {
+    "cotantoss_dark"	TFNM "Data\Monster\Cotantoss\cotantoss_dark.tex";
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\_TAG_T_CD1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Cotantoss\_TAG_T_CD2.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Cotantoss\cotantoss_dark.bs";
+  ANIMSET   	TFNM "Data\Monster\Cotantoss\cotantoss_dark.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Cotantoss\cotantoss_dark.bae";
+  ALLFRAMESBBOX	-1.9,0,-1.9,1.9,3.8,1.9;
+  COLISION
+  {
+    "Default"  {-1.9,0,-1.9,1.9,3.8,1.9;}
+  }
+}

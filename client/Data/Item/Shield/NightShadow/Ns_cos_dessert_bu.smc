@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ns_cos_dessert_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\Ns_cos_dessert_bu.bm";
+  TEXTURES   
+  {
+    "Ns_cos_dessert_bu_01"	TFNM "Data\Item\Shield\NightShadow\Texture\Ns_cos_dessert_bu_01.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\Ns_cos_dessert_bu01.bm";
+  TEXTURES   
+  {
+    "Ns_cos_dessert_bu_01"	TFNM "Data\Item\Shield\NightShadow\Texture\Ns_cos_dessert_bu_01.tex";
+    "Ns_cos_dessert_bu_02"	TFNM "Data\Item\Shield\NightShadow\Texture\Ns_cos_dessert_bu_02.tex";
+  }
+  ALLFRAMESBBOX	-0.52109,0.726292,-0.130442,0.521087,1.99676,0.39934;
+  COLISION
+  {
+  }
+}

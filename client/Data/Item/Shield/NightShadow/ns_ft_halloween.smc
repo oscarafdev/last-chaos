@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_ft_halloween";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_ft_halloween.bm";
+  TEXTURES   
+  {
+    "ns_ft_halloween"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_ft_halloween.tex";
+  }
+  ALLFRAMESBBOX	-0.220439,0.058235,0.09989,0.21861,0.071354,0.113009;
+  COLISION
+  {
+  }
+}

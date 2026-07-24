@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_ukrglass";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ukrglass.bm";
+  TEXTURES   
+  {
+    "ro_ukrglass"	TFNM "Data\Item\Shield\Rogue\Texture\ro_ukrglass.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ukrglass_1.bm";
+  TEXTURES   
+  {
+    "ro_hair_000"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.098427,1.53845,-0.10471,0.098427,1.772,0.154355;
+  COLISION
+  {
+  }
+}

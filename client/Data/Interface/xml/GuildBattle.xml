@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="1" w="657" h="313" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+    <UIImage x="0" y="0" w="657" h="313" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" l="0" t="0" r="657" b="313" />
+    <UIText id="txt_title" x="0" y="10" w="500" h="20" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6479" str="길드전투 챌린지 시스템" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="6" y="46" w="77" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="1389" str="전투 시간 :" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIComboBox id="cb_time" x="85" y="45" w="100" h="96" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" maxline="8" lineheight="16" space_x="1" space_y="1" showline="5">
+        <back x="0" y="0" w="100" h="16" l="0" t="0" r="0" b="0" />
+        <button x="85" y="2" w="10" h="10" l0="7" t0="805" r0="17" b0="815" l1="7" t1="793" r1="17" b1="803" />
+        <drop_bg x="0" y="15" w="100" h="98" l="782" t="793" r="812" b="823" />
+        <UIScrollBar x="0" y="16" w="100" h="80" hide="1" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="2" item_count="26" item_per_page="5">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="19" t0="793" r0="29" b0="803" l1="7" t1="793" r1="17" b1="803" />
+            <button2 x="0" y="142" w="10" h="10" l0="19" t0="805" r0="29" b0="815" l1="7" t1="805" r1="17" b1="815" />
+            <thumb x="0" y="0" w="10" h="17" unit="6" l="135" t="789" r="145" b="828" />
+        </UIScrollBar>
+    </UIComboBox>
+    <UIButton id="btn_close" x="637" y="4" w="16" h="16" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="34" t="793" r="50" b="809" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="52" t="793" r="68" b="809" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIText x="15" y="72" w="76" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="920" str="길드 이름" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="93" y="72" w="76" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="4344" str="길드 마스터" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="171" y="72" w="76" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3862" str="길드원 인원" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="248" y="72" w="57" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="3863" str="길드 평균 레벨" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="306" y="72" w="98" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6481" str="승리/ 총 전투횟수" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="405" y="72" w="92" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6482" str="Stake NAS" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="498" y="72" w="83" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6483" str="Stake GP" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="581" y="72" w="62" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6480" str="전투시간" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIList id="list_" x="15" y="90" w="628" h="143" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" itemx="0" itemy="0" itemshow_num="7" itemgap="2" item_count="0" pre_create="1">
+        <select x="0" y="0" w="626" h="13" l="152" t="812" r="778" b="825" />
+        <over x="0" y="0" w="626" h="13" l="152" t="793" r="778" b="806" />
+        <UIListItem id="list_item_001" x="0" y="0" w="628" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0">
+            <UIText id="name" x="0" y="0" w="77" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="최강" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="master" x="77" y="0" w="77" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="나야" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="num" x="155" y="0" w="77" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="15" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="avg_lv" x="233" y="0" w="57" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="123" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="win" x="290" y="0" w="99" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="10 / 15" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="nas" x="389" y="0" w="93" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="1,000,000" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="gp" x="482" y="0" w="84" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="1,000,000" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="time" x="566" y="0" w="62" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="30" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIButton id="btn_prev" x="277" y="239" w="11" h="19" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="75" t="793" r="86" b="812" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="103" t="793" r="114" b="812" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_next" x="369" y="239" w="11" h="19" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="89" t="793" r="100" b="812" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="117" t="793" r="128" b="812" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIText x="292" y="242" w="38" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="2681" str="이전" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="328" y="242" w="38" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="2680" str="다음" str_ellipsis="" color="0xf2f2f2ff" color_enter="0xf2f2f2ff" color_select="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_challenge" x="512" y="242" w="132" h="21" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6485" str="챌린지 도전하기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="7" t="832" r="139" b="853" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="140" t="832" r="272" b="853" />
+        <uv type="3" l="273" t="832" r="405" b="854" />
+    </UIButton>
+    <UIButton id="btn_reg" x="7" y="281" w="132" h="21" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="6488" str="길드전투 챌린지 등록" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="7" t="832" r="139" b="853" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="140" t="832" r="272" b="853" />
+        <uv type="3" l="273" t="832" r="405" b="854" />
+    </UIButton>
+    <UIButton id="btn_close2" x="512" y="281" w="132" h="21" hide="0" tex="Guild_challenge.tex" align_h="0" align_v="0" tooltip="-1" tooltip_color="0xffffffff" tooltip_width="0" str_idx="870" str="닫기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="7" t="832" r="139" b="853" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="140" t="832" r="272" b="853" />
+        <uv type="3" l="273" t="832" r="405" b="854" />
+    </UIButton>
+</Window>

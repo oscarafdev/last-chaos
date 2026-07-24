@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="1024" h="768" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIList id="list_party" x="0" y="100" w="161" h="413" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="7" itemgap="0" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIBase id="drag_area" x="0" y="0" w="161" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="161" h="57" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImage id="img_back" x="0" y="0" w="161" h="57" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="721" t="0" r="883" b="57" />
+            <UIImage id="img_hpRect" x="32" y="27" w="100" h="6" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+            <UIImage id="img_hp" x="32" y="27" w="100" h="6" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="307" t="240" r="310" b="245" />
+            <UIImage id="img_mpRect" x="32" y="37" w="100" h="6" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+            <UIImage id="img_mp" x="32" y="37" w="65" h="6" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="312" t="240" r="315" b="245" />
+            <UIText id="str_name" x="30" y="2" w="96" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="str_level" x="2" y="17" w="20" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="30" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIButton id="btn_buff" x="125" y="3" w="10" h="10" hide="0" tex="TopUI.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="284" t="236" r="294" b="246" />
+                <uv type="1" l="295" t="236" r="305" b="246" />
+                <uv type="2" l="0" t="0" r="0" b="0" />
+                <uv type="3" l="0" t="0" r="0" b="0" />
+            </UIButton>
+            <UIImageArray id="ia_pos" x="12" y="2" w="14" h="14" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="13" h="13" l="405" t="166" r="418" b="179" desc="파티장" />
+                <surface1 x="0" y="0" w="13" h="13" l="388" t="166" r="401" b="179" desc="원정대장" />
+            </UIImageArray>
+        </UIListItem>
+    </UIList>
+</Window>

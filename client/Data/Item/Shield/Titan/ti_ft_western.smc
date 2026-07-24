@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_ft_western";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_ft_western.bm";
+  TEXTURES   
+  {
+    "ti_ft_western"	TFNM "Data\Item\Shield\Titan\Texture\ti_ft_western.tex";
+  }
+  ALLFRAMESBBOX	-0.421248,-0.002755,-0.185134,0.421437,0.559797,0.246342;
+  COLISION
+  {
+  }
+}

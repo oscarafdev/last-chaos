@@ -1,0 +1,13 @@
+NAME "ITEM_treasure02";
+{
+  MESH       	TFNM "Data\Item\Common\ITEM_treasure02.bm";
+  TEXTURES   
+  {
+    "ITEM_treasure"	TFNM "Data\Item\Common\Texture\ITEM_treasure.tex";
+  }
+  ALLFRAMESBBOX	-0.227592,-0.001063,-0.176828,0.224055,0.371287,0.174614;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.25,0.25,0.8,0.25;}
+  }
+}

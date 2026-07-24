@@ -1,0 +1,12 @@
+NAME "cowhead_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\ska\cowhead_d3.bm";
+  TEXTURES   
+  {
+    "w3_buildingdoor01"	TFNM "Data\World\Merac\ska\texture\w3_buildingdoor01.tex";
+  }
+  ALLFRAMESBBOX	-5.99131,-3.46438,-1.41943,5.99113,3.46438,1.41943;
+  COLISION
+  {
+  }
+}

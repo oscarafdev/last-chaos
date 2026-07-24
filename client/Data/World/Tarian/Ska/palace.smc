@@ -1,0 +1,16 @@
+NAME "palace";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\palace.bm";
+  TEXTURES   
+  {
+    "doorofDC005"	TFNM "Data\World\Tarian\Ska\Texture\doorofDC005.tex";
+    "doorofDC001"	TFNM "Data\World\Tarian\Ska\Texture\doorofDC001.tex";
+    "doorofDC002"	TFNM "Data\World\Tarian\Ska\Texture\doorofDC002.tex";
+    "doorofDC003"	TFNM "Data\World\Tarian\Ska\Texture\doorofDC003.tex";
+    "doorofDC004"	TFNM "Data\World\Tarian\Ska\Texture\doorofDC004.tex";
+  }
+  ALLFRAMESBBOX	-9.17396,-0.07118,-19.062,9.17396,37.8772,19.062;
+  COLISION
+  {
+  }
+}

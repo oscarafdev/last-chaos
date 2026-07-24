@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\totem_snake_04.bm";
+  TEXTURES   
+  {
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+    "totem-snake"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\totem-snake.tex";
+  }
+  ALLFRAMESBBOX	-2.09999,-0.046618,-0.629605,0.477984,1.71839,1.00946;
+  COLISION
+  {
+    "Default"  {-2.12084,-1.32977,-0.67417,0.49518,1.9631,1.09987;}
+  }
+}

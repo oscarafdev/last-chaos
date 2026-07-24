@@ -1,0 +1,13 @@
+NAME "mCutter";
+{
+  MESH       	TFNM "Data\effect\SKA\mCutter.bm";
+  TEXTURES   
+  {
+    "mCutter"	TFNM "Data\effect\TEXTURE\mCutter.tex";
+  }
+  SKELETON  	TFNM "Data\effect\SKA\mCutter.bs";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

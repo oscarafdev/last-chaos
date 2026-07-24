@@ -1,0 +1,12 @@
+NAME "cao_g_acc4";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\cao_g_acc4.bm";
+  TEXTURES   
+  {
+    "cao_wall"	TFNM "Data\World\StartZone\Ska\Texture\cao_wall.tex";
+  }
+  ALLFRAMESBBOX	-16.7278,-3.00061,-11.9018,16.7278,7.20107,11.9018;
+  COLISION
+  {
+  }
+}

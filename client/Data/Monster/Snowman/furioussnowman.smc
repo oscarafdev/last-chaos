@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "furioussnowman";
+{
+  MESH       	TFNM "Data\Monster\Snowman\furioussnowman.bm";
+  TEXTURES   
+  {
+    "furioussnowman"	TFNM "Data\Monster\Snowman\Furioussnowman.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\furioussnowman_1.bm";
+  TEXTURES   
+  {
+    "Furioussnowman_1"	TFNM "Data\Monster\Snowman\Furioussnowman_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\furioussnowman_2.bm";
+  TEXTURES   
+  {
+    "furioussnowman"	TFNM "Data\Monster\Snowman\Furioussnowman.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Snowman\furioussnowman.bs";
+  ANIMSET   	TFNM "Data\Monster\Snowman\furioussnowman.ba";
+  ALLFRAMESBBOX	-1,0,-1,1,2.65,1;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

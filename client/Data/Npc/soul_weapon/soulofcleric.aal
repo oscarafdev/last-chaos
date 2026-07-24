@@ -1,0 +1,9 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\soul_weapon\soulofcleric_start.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Npc\soul_weapon\soulofcleric_idle.AA"
+}

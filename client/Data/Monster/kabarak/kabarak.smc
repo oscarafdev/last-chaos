@@ -1,0 +1,29 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "kabarak";
+{
+  MESH       	TFNM "Data\Monster\kabarak\kabarak.bm";
+  TEXTURES   
+  {
+    "kabarak"	TFNM "Data\Monster\kabarak\kabarak.tex";
+  }
+  MESH       	TFNM "Data\Monster\kabarak\_TAG_KABALT.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\kabarak\_TAG_KABART.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\kabarak\_TAG_KABATO.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\kabarak\kabarak.bs";
+  ANIMSET   	TFNM "Data\Monster\kabarak\kabarak.ba";
+  ANIMEFFECT	TFNM "Data\Monster\kabarak\kabarak.bae";
+  ALLFRAMESBBOX	-0.874294,-0.163595,-1.24035,2.20569,1.49269,1.49399;
+  COLISION
+  {
+    "Default"  {-0.8,0,-0.59,0.8,1.1,0.91;}
+  }
+}

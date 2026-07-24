@@ -1,0 +1,12 @@
+NAME "st_window";
+{
+  MESH       	TFNM "Data\world\STREIANA\Ska\st_window.bm";
+  TEXTURES   
+  {
+    "st_window_potal"	TFNM "Data\World\STREIANA\Ska\Texture\st_window_potal.tex";
+  }
+  ALLFRAMESBBOX	-0.223921,-0.013439,0,0.223921,0.40603,0;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,16 @@
+NAME "warp_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\warp_si.bm";
+  TEXTURES   
+  {
+    "warp_si"	TFNM "Data\World\Merac\ska\texture\warp_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\Ska\warp_si.bs";
+  ANIMSET   	TFNM "Data\World\Merac\Ska\warp_si.ba";
+  ANIMEFFECT	TFNM "Data\World\Merac\Ska\warp_si.bae";
+  ALLFRAMESBBOX	-3.9999,-0.023198,-3.9999,3.9999,0.199815,3.9999;
+  COLISION
+  {
+  }
+}

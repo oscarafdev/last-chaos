@@ -1,0 +1,13 @@
+NAME "bossgateR_sd3";
+{
+  MESH       	TFNM "Data\World\S_Dungeon3\ska\bossgateR_sd3.bm";
+  TEXTURES   
+  {
+    "bossgate_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\bossgate_sd3.tex";
+  }
+  ALLFRAMESBBOX	0.018697,-0.034117,-0.155994,2.44915,8.69567,0.176119;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

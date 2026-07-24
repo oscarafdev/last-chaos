@@ -1,0 +1,12 @@
+NAME "candlelight_00";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\candlelight_00.bm";
+  TEXTURES   
+  {
+    "candlelight_00"	TFNM "Data\World\tarian_dungeon\Ska\Texture\candlelight_00.tex";
+  }
+  ALLFRAMESBBOX	-0.30314,-3e-006,-0.085202,0.30314,1.07132,0.085202;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Siege_altarstatue_m";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Siege_altarstatue_m.bm";
+  TEXTURES   
+  {
+    "Siege_altarstatue_m"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_altarstatue_m.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.70414,0.010833,-1.43,1.70414,10.3278,1.43;
+  COLISION
+  {
+    "Default"  {-0.990199,-0.0647591,-1.23479,0.962482,3.35755,0.951089;}
+  }
+}

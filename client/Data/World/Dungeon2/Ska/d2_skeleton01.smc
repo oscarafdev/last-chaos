@@ -1,0 +1,16 @@
+NAME "d2_skeleton01";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_skeleton01.bm";
+  TEXTURES   
+  {
+    "tile-6"	TFNM "Data\World\Dungeon2\Ska\Texture\tile-6.tex";
+    "d2_backwall01"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_backwall01.tex";
+    "d2_skeleton01"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_skeleton01.tex";
+    "d2_prison01"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_prison01.tex";
+    "Dengen2_Detail"	TFNM "Data\World\Dungeon2\Ska\Texture\Dengen2_Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.58011,-5.55062,-2.46877,4.58012,5.55063,2.40768;
+  COLISION
+  {
+  }
+}

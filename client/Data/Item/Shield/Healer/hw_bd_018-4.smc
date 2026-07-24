@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_018-4";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\_TAG_BD18-4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bd_018-4.bm";
+  TEXTURES   
+  {
+    "hw_bd_018-4"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_018-4.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bd_018-4_1.bm";
+  TEXTURES   
+  {
+    "hw_bd_018-4_1"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_018-4_1.tex";
+  }
+  ALLFRAMESBBOX	-0.246618,0.532081,-0.170585,0.247037,1.27727,0.173827;
+  COLISION
+  {
+  }
+}

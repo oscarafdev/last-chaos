@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_bu_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ns_bu_drop.bm";
+  TEXTURES   
+  {
+    "ns_bu_drop"	TFNM "Data\Item\Common\Texture\ns_bu_drop.tex";
+  }
+  ALLFRAMESBBOX	-0.30136,-0.000277,-0.283441,0.301359,0.266804,0.28825;
+  COLISION
+  {
+    "Default"  {-0.3,0,-0.3,0.3,0.28,0.3;}
+  }
+}

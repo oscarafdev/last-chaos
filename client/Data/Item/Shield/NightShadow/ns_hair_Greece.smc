@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_hair_Greece";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_hair_Greece.bm";
+  TEXTURES   
+  {
+    "ns_hair_Greece"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hair_Greece.tex";
+  }
+  ALLFRAMESBBOX	-0.082388,1.77778,-0.083625,0.082388,2.00299,0.133621;
+  COLISION
+  {
+  }
+}

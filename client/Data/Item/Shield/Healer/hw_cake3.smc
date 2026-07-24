@@ -1,0 +1,34 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_cake3";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\_TAG_T_CAKE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\_TAG_T_CAKE01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\_TAG_T_CAKE03.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\_TAG_T_CAKE02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cake3.bm";
+  TEXTURES   
+  {
+    "hw_cake3"	TFNM "Data\Item\Shield\Healer\Texture\hw_cake3.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cake3_1.bm";
+  TEXTURES   
+  {
+    "hw_hair_000"	TFNM "Data\Item\Shield\Healer\Texture\hw_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.131603,1.46075,-0.152918,0.130699,2.04501,0.159253;
+  COLISION
+  {
+  }
+}

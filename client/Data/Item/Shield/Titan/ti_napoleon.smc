@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_napoleon";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_napoleon_cap.bm";
+  TEXTURES   
+  {
+    "ti_napoleon"	TFNM "Data\Item\Shield\Titan\Texture\ti_napoleon.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_napoleon_hair.bm";
+  TEXTURES   
+  {
+    "ti_face_000"	TFNM "Data\Item\Shield\Titan\Texture\ti_face_000.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,14 @@
+NAME "w3_zonewall";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_zonewall.bm";
+  TEXTURES   
+  {
+    "w3_magiczone"	TFNM "Data\World\Merac\ska\texture\w3_magiczone.tex";
+    "w3_zonewall"	TFNM "Data\World\Merac\ska\texture\w3_zonewall.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-3.45019,-0.010446,-0.640044,2.04485,6.50653,0.640044;
+  COLISION
+  {
+  }
+}

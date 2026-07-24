@@ -1,0 +1,9 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\npc\priest\priest_idle_01.AA"
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\npc\priest\priest_idle_02.AA"
+}

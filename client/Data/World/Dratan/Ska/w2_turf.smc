@@ -1,0 +1,16 @@
+NAME "w2_turf";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_turf.bm";
+  TEXTURES   
+  {
+    "w2_box_grass"	TFNM "Data\World\Dratan\Ska\Texture\w2_box_grass.tex";
+    "w2_box_grass"	TFNM "Data\World\Dratan\Ska\Texture\w2_box_grass.tex";
+    "w2_box_grass_a"	TFNM "Data\World\Dratan\Ska\Texture\w2_box_grass_a.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_altar2"	TFNM "Data\World\Dratan\Ska\Texture\w2_altar2.tex";
+  }
+  ALLFRAMESBBOX	-4.27587,-0.000838,-4.27587,4.27587,0.405091,4.27587;
+  COLISION
+  {
+  }
+}

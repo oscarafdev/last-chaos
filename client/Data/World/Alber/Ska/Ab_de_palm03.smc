@@ -1,0 +1,12 @@
+NAME "Ab_de_palm03";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_palm03.bm";
+  TEXTURES   
+  {
+    "Ab_de_palm01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_palm01.tex";
+  }
+  ALLFRAMESBBOX	-2.60836,-0.124516,-0.974143,1.23223,7.31156,3.27044;
+  COLISION
+  {
+  }
+}

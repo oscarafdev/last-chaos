@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_sunglass";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_sunglass.bm";
+  TEXTURES   
+  {
+    "ro_sunglass"	TFNM "Data\Item\Shield\Rogue\Texture\ro_sunglass.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_sunglass_1.bm";
+  TEXTURES   
+  {
+    "ro_hair_000"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.098427,1.53845,-0.10471,0.098427,1.772,0.154355;
+  COLISION
+  {
+  }
+}

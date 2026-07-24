@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_arc_Login";
+{
+  MESH       	TFNM "Data\Character\Mage_Arc\Login\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Character\Mage_Arc\Login\ma_arc_Login.bs";
+  ANIMSET   	TFNM "Data\Character\Mage_Arc\Login\ma_arc_Login.ba";
+  ANIMSET   	TFNM "Data\Character\Mage\ma.ba";
+  ANIMEFFECT	TFNM "Data\Character\Mage_Arc\Login\ma_arc_Login.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

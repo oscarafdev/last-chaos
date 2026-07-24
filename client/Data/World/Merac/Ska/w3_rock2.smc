@@ -1,0 +1,15 @@
+NAME "w3_rock2";
+{
+  MESH       	TFNM "Data\World\merac\ska\w3_rock2.bm";
+  TEXTURES   
+  {
+    "w3_rock"	TFNM "Data\World\merac\ska\texture\w3_rock.tex";
+    "merac_Detail"	TFNM "Data\World\merac\ska\texture\merac_Detail.tex";
+    "w3_rock2"	TFNM "Data\World\merac\ska\texture\w3_rock2.tex";
+  }
+  ALLFRAMESBBOX	-4.21343,-0.645932,-4.34045,5.40739,4.79702,5.08074;
+  COLISION
+  {
+    "Default"  {-4.28676,-3,-4.30494,4.71326,5,4.69506;}
+  }
+}

@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "d_golem_ice";
+{
+  MESH       	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice.bm";
+  TEXTURES   
+  {
+    "d_golem_ice"	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice_bd.bm";
+  TEXTURES   
+  {
+    "d_golem_ice"	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice_hn.bm";
+  TEXTURES   
+  {
+    "d_golem_ice_hn"	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice_1.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice.bs";
+  ANIMSET   	TFNM "Data\Monster\D_Golem\ugly_d_golem_ice.ba";
+  ALLFRAMESBBOX	-1.35029,-0.126616,-2.20093,1.74126,2.4614,2.49363;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\column_01.bm";
+  TEXTURES   
+  {
+    "Skelboss_house_column"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\Skelboss_house_column.tex";
+  }
+  ALLFRAMESBBOX	-1.91034,-0.072533,-2.66172,2.03716,8.8976,2.38201;
+  COLISION
+  {
+  }
+}

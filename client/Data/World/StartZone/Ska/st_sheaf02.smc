@@ -1,0 +1,12 @@
+NAME "st_sheaf02";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_sheaf02.bm";
+  TEXTURES   
+  {
+    "st_sheaf"	TFNM "Data\world\StartZone\Ska\Texture\st_sheaf.tex";
+  }
+  ALLFRAMESBBOX	-0.619595,-0.042692,-0.48412,0.619595,2.02862,0.48412;
+  COLISION
+  {
+  }
+}

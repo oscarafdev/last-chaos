@@ -1,0 +1,25 @@
+NAME "w2_pyramid";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_pyramid.bm";
+  TEXTURES   
+  {
+    "w2_castlealtar05"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar05.tex";
+    "w2_castleTile03"	TFNM "Data\World\Dratan\Ska\Texture\w2_castleTile03.tex";
+    "w2_paraoaltar02"	TFNM "Data\World\Dratan\Ska\Texture\w2_paraoaltar02.tex";
+    "w2_paraoaltar"	TFNM "Data\World\Dratan\Ska\Texture\w2_paraoaltar.tex";
+    "w2_castlealtar01"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar01.tex";
+    "w2_castlealtar03"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar03.tex";
+    "w2_castlealtar04"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar04.tex";
+    "w2_castlealtar06"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar06.tex";
+    "w2_castlealtar07"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar07.tex";
+    "w2_castlealtar08"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlealtar08.tex";
+    "w2_castlepyramid01"	TFNM "Data\World\Dratan\Ska\Texture\w2_castlepyramid01.tex";
+    "w2_castleTile01"	TFNM "Data\World\Dratan\Ska\Texture\w2_castleTile01.tex";
+    "w2_castleTile02"	TFNM "Data\World\Dratan\Ska\Texture\w2_castleTile02.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-111.348,-9.31652,-111.348,111.348,78.6629,111.348;
+  COLISION
+  {
+  }
+}

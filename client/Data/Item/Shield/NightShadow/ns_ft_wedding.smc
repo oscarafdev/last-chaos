@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_ft_wedding";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_ft_wedding.bm";
+  TEXTURES   
+  {
+    "ns_ft_wedding"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_ft_wedding.tex";
+  }
+  ALLFRAMESBBOX	-0.293219,0.00056,-0.15729,0.293219,0.643177,0.149681;
+  COLISION
+  {
+  }
+}

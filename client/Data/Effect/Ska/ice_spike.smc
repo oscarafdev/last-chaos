@@ -1,0 +1,35 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ice_spike";
+{
+  MESH       	TFNM "Data\Effect\Ska\ice_1.bm";
+  TEXTURES   
+  {
+    "ap_cave_001"	TFNM "Data\Effect\Texture\ap_cave_001.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ice_4.bm";
+  TEXTURES   
+  {
+    "ap_cave_001"	TFNM "Data\Effect\Texture\ap_cave_001.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ice_5.bm";
+  TEXTURES   
+  {
+    "ap_cave_001"	TFNM "Data\Effect\Texture\ap_cave_001.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ice_6.bm";
+  TEXTURES   
+  {
+    "ap_cave_001"	TFNM "Data\Effect\Texture\ap_cave_001.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ice_7.bm";
+  TEXTURES   
+  {
+    "ap_cave_001"	TFNM "Data\Effect\Texture\ap_cave_001.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ice_spike.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ice_spike.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

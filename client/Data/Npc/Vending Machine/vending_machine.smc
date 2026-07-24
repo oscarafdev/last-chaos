@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "vending_machine";
+{
+  MESH       	TFNM "Data\Npc\Vending Machine\vending_machine.bm";
+  TEXTURES   
+  {
+    "vending_machine"	TFNM "Data\Npc\Vending Machine\vending_machine.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Vending Machine\vending_machine.bs";
+  ANIMSET   	TFNM "Data\Npc\Vending Machine\vending_machine.ba";
+  ALLFRAMESBBOX	-1.99908,-1.745e-005,-2.89687,1.89279,10.2108,1.51222;
+  COLISION
+  {
+    "Default"  {-2.2,0,-3.2,2.2,10.5,1.8;}
+  }
+}

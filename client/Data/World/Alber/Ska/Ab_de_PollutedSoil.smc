@@ -1,0 +1,13 @@
+NAME "Ab_de_PollutedSoil";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\ab_de_PollutedSoil.bm";
+  TEXTURES   
+  {
+    "Ab_de_PollutedSoil"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_PollutedSoil.tex";
+  }
+  ALLFRAMESBBOX	-4.85286,-0.330919,-3.36036,4.80793,2.98208,3.29016;
+  COLISION
+  {
+    "Default"  {-4.85286,-0.330919,-3.36036,4.80793,2.98208,3.29016;}
+  }
+}

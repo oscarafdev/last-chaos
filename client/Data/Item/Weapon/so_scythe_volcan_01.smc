@@ -1,0 +1,17 @@
+OFFSET    	-0.2,1.2,0.4,-140,0,130;
+NAME "so_scythe_volcan_01";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_BLADE_volcan_01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\so_scythe_volcan_01.bm";
+  TEXTURES   
+  {
+    "so_scythe_volcan_01"	TFNM "Data\Item\Weapon\Texture\so_scythe_volcan_01.tex";
+  }
+  ALLFRAMESBBOX	-1.11464,0.0280368,-1.1617,0.767978,0.221347,0.738068;
+  COLISION
+  {
+  }
+}

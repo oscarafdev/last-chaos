@@ -1,0 +1,13 @@
+NAME "d1_b_table_003";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_b_table_003.bm";
+  TEXTURES   
+  {
+    "d1_b_table_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_b_table_001.tex";
+  }
+  ALLFRAMESBBOX	-0.373018,-0.004968,-0.531142,0.497582,0.488809,0.426697;
+  COLISION
+  {
+    "Default"  {-0.370774,-0.00465435,-0.516039,0.179966,0.494672,0.431937;}
+  }
+}

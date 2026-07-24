@@ -1,0 +1,13 @@
+NAME "td_firefort";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_firefort.bm";
+  TEXTURES   
+  {
+    "td_firefort02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_firefort02.tex";
+    "td_firefort01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_firefort01.tex";
+  }
+  ALLFRAMESBBOX	-0.859625,0,-0.859626,0.859626,2.03565,0.859625;
+  COLISION
+  {
+  }
+}

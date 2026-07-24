@@ -1,0 +1,40 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "healer";
+{
+  MESH       	TFNM "Data\Monster\Akan\healer\_TAG_T_AKHL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Akan\healer\_TAG_T_AKHLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\akan\healer\akan_hl_bd.bm";
+  TEXTURES   
+  {
+    "Akanmknight_bd_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_bd_001.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\healer\akan_hl_bu.bm";
+  TEXTURES   
+  {
+    "Akanhealer_bu_1"	TFNM "Data\Monster\akan\Texture\Akanhealer_bu_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\healer\akan_hl_bu_01.bm";
+  TEXTURES   
+  {
+    "Akanhealer_bu_2"	TFNM "Data\Monster\akan\Texture\Akanhealer_bu_2.tex";
+  }
+  MESH       	TFNM "Data\Monster\akan\healer\akan_hl_hm.bm";
+  TEXTURES   
+  {
+    "Akanmknight_hm_001"	TFNM "Data\Monster\akan\Texture\Akanmknight_hm_001.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\akan\healer\healer.bs";
+  ANIMSET   	TFNM "Data\Monster\akan\healer\healer.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Akan\healer\healer.bae";
+  ALLFRAMESBBOX	-0.886457,-0.114757,-0.966047,0.889257,2.16864,3.09356;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

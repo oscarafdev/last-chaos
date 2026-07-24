@@ -1,0 +1,39 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "eagles03";
+{
+  MESH       	TFNM "Data\Npc\Pet\eagles\eagles03_01.bm";
+  TEXTURES   
+  {
+    "eagls03-2"	TFNM "Data\Npc\Pet\eagles\eagls03-2.tex";
+  }
+  MESH       	TFNM "Data\Npc\Pet\eagles\eagles03_02.bm";
+  TEXTURES   
+  {
+    "eagls03-1"	TFNM "Data\Npc\Pet\eagles\eagls03-1.tex";
+  }
+  MESH       	TFNM "Data\Npc\Pet\eagles\eagles03_03.bm";
+  TEXTURES   
+  {
+    "eagls03-1"	TFNM "Data\Npc\Pet\eagles\eagls03-1.tex";
+  }
+  MESH       	TFNM "Data\Npc\Pet\eagles\_TAG_E03HD.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\eagles\_TAG_E03LH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Pet\eagles\_TAG_E03RH.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Pet\eagles\eagles03.bs";
+  ANIMSET   	TFNM "Data\Npc\Pet\eagles\eagles03.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Pet\eagles\eagles03.bae";
+  ALLFRAMESBBOX	-2.0068,-0.204871,-1,1.9932,5.29513,1;
+  COLISION
+  {
+    "Default"  {-2,0,-1,2,5.5,1;}
+  }
+}

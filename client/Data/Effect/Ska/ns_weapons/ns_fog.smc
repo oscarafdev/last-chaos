@@ -1,0 +1,24 @@
+NAME "ns_fog";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_fog1.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_weapons\ns_fog.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_fog2.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_weapons\ns_fog.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\ns_fog3.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_weapons\ns_fog.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\ns_fog.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\fog.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

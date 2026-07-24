@@ -1,0 +1,13 @@
+NAME "plant-01";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\plant_01.bm";
+  TEXTURES   
+  {
+    "jkh-plant-01"	TFNM "Data\World\StartZone\Ska\Texture\jkh-plant-01.tex";
+  }
+  ALLFRAMESBBOX	-1.94817,0.006521,-1.80118,1.51576,1.68727,1.78183;
+  COLISION
+  {
+    "Default"  {-2.14591,-0.0465058,-1.13464,2.2764,1.87517,1.08729;}
+  }
+}

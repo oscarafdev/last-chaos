@@ -1,0 +1,12 @@
+NAME "Deco_03";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\deco_03.bm";
+  TEXTURES   
+  {
+    "w6_buildingC01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\w6_buildingC01.tex";
+  }
+  ALLFRAMESBBOX	-2.36736,0.06377,0,2.36733,6.70602,0;
+  COLISION
+  {
+  }
+}

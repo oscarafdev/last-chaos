@@ -1,0 +1,16 @@
+NAME "door02_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\door02_d3.bm";
+  TEXTURES   
+  {
+    "Eff_door01_d3"	TFNM "Data\World\Dungeon3\Ska\texture\Eff_door01_d3.tex";
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+    "Eff_door02_b_d3"	TFNM "Data\World\Dungeon3\Ska\texture\Eff_door02_b_d3.tex";
+    "metal_d3"	TFNM "Data\World\Dungeon3\Ska\texture\metal_d3.tex";
+  }
+  ALLFRAMESBBOX	-4.67759,0.012331,-0.456261,4.67763,10.0413,0.45625;
+  COLISION
+  {
+    "Default"  {-4.5,0,-0.5,4.5,10,0.5;}
+  }
+}

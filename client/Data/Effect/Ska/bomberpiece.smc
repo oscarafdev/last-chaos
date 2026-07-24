@@ -1,0 +1,14 @@
+NAME "bomberpiece";
+{
+  MESH       	TFNM "Data\Effect\Ska\Object01.bm";
+  TEXTURES   
+  {
+    "kidbomber"	TFNM "Data\Effect\Ska\kidbomber.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\bomberpiece.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\bomberpiece.ba";
+  ALLFRAMESBBOX	-4.51234,0.548472,-4.14793,4.44666,4.47843,4.98245;
+  COLISION
+  {
+  }
+}

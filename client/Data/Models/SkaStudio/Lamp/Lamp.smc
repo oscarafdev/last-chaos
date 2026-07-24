@@ -1,0 +1,12 @@
+NAME "Lamp";
+{
+  MESH       	TFNM "Models\SkaStudio\Lamp\Lamp.bm";
+  TEXTURES   
+  {
+    "SpotLight"	TFNM "Models\SkaStudio\Lamp\SpotLight.tex";
+  }
+  COLISION
+  {
+  }
+  COLOR		0xFFFFFFFE;
+}

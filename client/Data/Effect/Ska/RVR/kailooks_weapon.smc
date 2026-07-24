@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "NPC_kailooks_weapon";
+{
+  MESH       	TFNM "Data\Effect\Ska\RVR\NPC_kailooks_weapon.bm";
+  TEXTURES   
+  {
+    "NPC_kailooks_head_weapon01"	TFNM "Data\Effect\Ska\RVR\NPC_kailooks_head_weapon01.tex";
+  }
+  ALLFRAMESBBOX	-0.407979,0.004044,-0.084535,0.179818,2.55135,0.090674;
+  COLISION
+  {
+  }
+}

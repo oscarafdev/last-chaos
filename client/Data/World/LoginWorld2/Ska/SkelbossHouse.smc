@@ -1,0 +1,21 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\LoginWorld2\Ska\SkelbossHouse.bm";
+  TEXTURES   
+  {
+    "Skelboss_house_bottom"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_bottom.tex";
+    "Skelboss_house_center"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_center.tex";
+    "Skelboss_house_column"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_column.tex";
+    "Skelboss_house_stair"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_stair.tex";
+    "Skelboss_house_wall01"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_wall01.tex";
+    "Skelboss_house_wall02"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_wall02.tex";
+    "Skelboss_house_wall03"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_wall03.tex";
+    "Skelboss_house_wall04"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_wall04.tex";
+    "Skelboss_house_window01"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_window01.tex";
+    "Skelboss_house_window02"	TFNM "Data\World\LoginWorld2\Ska\Texture\Skelboss_house_window02.tex";
+  }
+  ALLFRAMESBBOX	-28.3718,-0.706799,-11.5569,27.9733,30.3002,11.5569;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+NAME "Ab_vo_templegate02";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_templegate02.bm";
+  TEXTURES   
+  {
+    "Ab_vo_temple08"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple08.tex";
+    "Ab_vo_templegate03"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_templegate03.tex";
+    "Ab_vo_templegate01"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_templegate01.tex";
+    "Ab_vo_templegate02"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_templegate02.tex";
+  }
+  ALLFRAMESBBOX	-13.1145,-2.27709,-5.62642,15.8458,22.6507,5.73928;
+  COLISION
+  {
+  }
+}

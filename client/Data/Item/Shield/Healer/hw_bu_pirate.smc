@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bu_pirate";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bu_pirate.bm";
+  TEXTURES   
+  {
+    "hw_bu_pirate"	TFNM "Data\Item\Shield\Healer\Texture\hw_bu_pirate.tex";
+  }
+  ALLFRAMESBBOX	-0.611808,1.08084,-0.13504,0.611808,1.71869,0.116597;
+  COLISION
+  {
+  }
+}

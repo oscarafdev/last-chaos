@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bu_018-5";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\_TAG_BU-5.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_018-5.bm";
+  TEXTURES   
+  {
+    "so_bu_018-5"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_018-5.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_018-5_1.bm";
+  TEXTURES   
+  {
+    "so_bu_018-5_1"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_018-5_1.tex";
+  }
+  ALLFRAMESBBOX	-0.377317,1.22236,-0.12866,0.377307,1.80137,0.144423;
+  COLISION
+  {
+  }
+}

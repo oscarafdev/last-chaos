@@ -1,0 +1,13 @@
+NAME "w2_tombstone";
+{
+  MESH       	TFNM "Data\World\akantemple\Ska\deco_21.bm";
+  TEXTURES   
+  {
+    "deco_21"	TFNM "Data\World\akantemple\Ska\Texture\deco_21.tex";
+    "deco_21-01"	TFNM "Data\World\akantemple\Ska\Texture\deco_21-01.tex";
+  }
+  ALLFRAMESBBOX	-7.78138,-0.013339,-7.78138,7.78138,6.96855,7.78138;
+  COLISION
+  {
+  }
+}

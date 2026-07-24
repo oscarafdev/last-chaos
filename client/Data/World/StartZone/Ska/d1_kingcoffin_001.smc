@@ -1,0 +1,18 @@
+NAME "d1_kingcoffin_001";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_kingcoffin_001_01.bm";
+  TEXTURES   
+  {
+    "d1_kingcoffin_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_kingcoffin_001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_kingcoffin_001_02.bm";
+  TEXTURES   
+  {
+    "d1_kingcoffin_002"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_kingcoffin_002.tex";
+  }
+  ALLFRAMESBBOX	-0.682075,-0.013403,-1.81339,0.682075,1.30471,1.81339;
+  COLISION
+  {
+    "Default"  {-0.693545,-0.073221,-1.85253,0.682363,1.28496,1.86684;}
+  }
+}

@@ -1,0 +1,19 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Hw_cos_dessert_bd";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\Hw_cos_dessert_bd.bm";
+  TEXTURES   
+  {
+    "Hw_cos_dessert_bd_01"	TFNM "Data\Item\Shield\Healer\Texture\Hw_cos_dessert_bd_01.tex";
+    "Hw_cos_dessert_bd_02"	TFNM "Data\Item\Shield\Healer\Texture\Hw_cos_dessert_bd_02.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\Hw_cos_dessert_bd_03.bm";
+  TEXTURES   
+  {
+    "Hw_cos_dessert_bd_03"	TFNM "Data\Item\Shield\Healer\Texture\Hw_cos_dessert_bd_03.tex";
+  }
+  ALLFRAMESBBOX	-0.273827,0.532081,-0.12556,0.273827,1.25396,0.177138;
+  COLISION
+  {
+  }
+}

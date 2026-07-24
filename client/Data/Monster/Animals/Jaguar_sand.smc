@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Jaguar_sand";
+{
+  MESH       	TFNM "Data\monster\Animals\Jaguar_sand.bm";
+  TEXTURES   
+  {
+    "animal02"	TFNM "Data\monster\Animals\animal02.tex";
+  }
+  MESH       	TFNM "Data\monster\Animals\_TAG_T_CENTER_jaguar_sand.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Animals\Jaguar_sand.bs";
+  ANIMSET   	TFNM "Data\monster\Animals\Jaguar_sand.ba";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,1.6,1.5;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.9,0.65,1.8,0.9;}
+  }
+}

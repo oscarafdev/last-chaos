@@ -1,0 +1,15 @@
+NAME "newchao_flag4";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\newchao_flag4.bm";
+  TEXTURES   
+  {
+    "newchao_flag-01 "	TFNM "Data\World\StartZone\Ska\Texture\newchao_flag-01 .tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\newchao_flag4.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\newchao_flag4.ba";
+  ALLFRAMESBBOX	-0.769671,-0.00734226,-0.311899,1.52914,5.04601,0.311662;
+  COLISION
+  {
+    "Default"  {0,0,0,0,0,0;}
+  }
+}

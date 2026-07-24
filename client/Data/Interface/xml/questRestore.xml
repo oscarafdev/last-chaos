@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="279" h="417" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="279" h="417" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="457" r="279" b="874" />
+    <UIText id="str_title" x="0" y="6" w="179" h="15" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6190" str="복구 완료" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="move_title" x="0" y="0" w="279" h="24" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_content" x="16" y="32" w="248" h="70" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="2" gap_y="0" h_align="0" str_idx="-1" split_mode="1" text_col="0xffffffff" str="10개의 포기된 퀘스트가 모두 복구되었습니다. NPC를 통해 퀘스트를 다시 받으시기 바랍니다.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIButton id="btn_close" x="-3" y="4" w="16" h="16" hide="0" tex="quest.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="193" t="909" r="209" b="925" />
+        <uv type="2" l="211" t="909" r="227" b="925" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIText x="33" y="117" w="214" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="7003" str="복구된 퀘스트" color="0xa0a0a4ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIList id="list_info" x="14" y="138" w="251" h="239" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="3" itemy="0" itemshow_num="0" itemgap="3" item_count="0" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar id="list_scroll" x="0" y="0" w="251" h="237" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="0" scroll_pos="0" move_unit="10" item_count="0" item_per_page="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="239" y="0" w="10" h="10" l0="242" t0="909" r0="252" b0="919" l1="230" t1="909" r1="240" b1="919" />
+            <button2 x="239" y="226" w="10" h="10" l0="242" t0="921" r0="252" b0="931" l1="230" t1="921" r1="240" b1="931" />
+            <thumb x="239" y="0" w="10" h="217" unit="10" l="255" t="893" r="265" b="932" />
+        </UIScrollBar>
+    </UIList>
+    <UIButton id="btn_ok" x="104" y="385" w="70" h="22" hide="0" tex="Quest.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="0" r="0" b="0" />
+        <uv type="1" l="0" t="926" r="70" b="948" />
+        <uv type="2" l="73" t="926" r="143" b="948" />
+        <uv type="3" l="0" t="951" r="70" b="973" />
+    </UIButton>
+</Window>

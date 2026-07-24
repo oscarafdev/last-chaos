@@ -1,0 +1,50 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Uglysnowman";
+{
+  MESH       	TFNM "Data\Monster\Snowman\uglysnowman.bm";
+  TEXTURES   
+  {
+    "Uglysnowman_1"	TFNM "Data\Monster\Snowman\Uglysnowman_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\uglysnowman_1.bm";
+  TEXTURES   
+  {
+    "Uglysnowman_1"	TFNM "Data\Monster\Snowman\Uglysnowman_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\uglysnowman_2.bm";
+  TEXTURES   
+  {
+    "Uglysnowman_1"	TFNM "Data\Monster\Snowman\Uglysnowman_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\uglysnowman_bd.bm";
+  TEXTURES   
+  {
+    "Uglysnowman"	TFNM "Data\Monster\Snowman\Uglysnowman.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\uglysnowman_bu.bm";
+  TEXTURES   
+  {
+    "Uglysnowman"	TFNM "Data\Monster\Snowman\Uglysnowman.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\uglysnowman_hn.bm";
+  TEXTURES   
+  {
+    "Uglysnowman"	TFNM "Data\Monster\Snowman\Uglysnowman.tex";
+  }
+  MESH       	TFNM "Data\Monster\Snowman\_TAG_T_USL.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Snowman\_TAG_T_USR.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Snowman\uglysnowman.bs";
+  ANIMSET   	TFNM "Data\Monster\Snowman\uglysnowman.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Snowman\uglysnowman.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,2.65,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,3,1;}
+  }
+}

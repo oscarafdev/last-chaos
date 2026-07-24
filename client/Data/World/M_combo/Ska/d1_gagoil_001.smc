@@ -1,0 +1,25 @@
+NAME "d1_gagoil_001";
+{
+  MESH       	TFNM "Data\world\M_combo\Ska\d1_gagoilb_001.bm";
+  TEXTURES   
+  {
+    "d1_gagoilb_001"	TFNM "Data\world\M_combo\Ska\Texture\d1_gagoilb_001.tex";
+    "d1_gagoilb_001_n"	TFNM "Data\world\M_combo\Ska\Texture\d1_gagoilb_001_n.tex";
+  }
+  MESH       	TFNM "Data\world\M_combo\Ska\d1_undeadst_001_03.bm";
+  TEXTURES   
+  {
+    "d1_undeadst_003"	TFNM "Data\world\M_combo\Ska\Texture\d1_undeadst_003.tex";
+  }
+  MESH       	TFNM "Data\world\M_combo\Ska\d1_gagoilw_001.bm";
+  TEXTURES   
+  {
+    "d1_gagoilw_001_n"	TFNM "Data\world\M_combo\Ska\Texture\d1_gagoilw_001_n.tex";
+    "d1_gagoilw_001"	TFNM "Data\world\M_combo\Ska\Texture\d1_gagoilw_001.tex";
+  }
+  ALLFRAMESBBOX	-0.80706,-0.001689,-1.44238,0.80706,1.57515,0.91415;
+  COLISION
+  {
+    "Default"  {-0.805545,-0.0757887,-1.18702,0.827055,1.56447,0.951155;}
+  }
+}

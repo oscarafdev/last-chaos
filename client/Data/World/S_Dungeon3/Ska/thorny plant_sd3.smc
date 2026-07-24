@@ -1,0 +1,16 @@
+NAME "thorny plant_sd3";
+{
+  MESH       	TFNM "Data\World\S_Dungeon3\ska\thorny plant_sd3.bm";
+  TEXTURES   
+  {
+    "thorny plant branch_a_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant branch_a_sd3.tex";
+    "thorny plant branch_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant branch_sd3.tex";
+    "thorny plant_sd3"	TFNM "Data\World\S_Dungeon3\ska\texture\thorny plant_sd3.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-6.66435,-0.17291,-0.940338,6.66468,9.8085,0.940338;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "electric_lamp_001";
+{
+  MESH       	TFNM "Data\World\M_combo\Ska\electric_lamp_001.bm";
+  TEXTURES   
+  {
+    "electric_lamp_001"	TFNM "Data\World\M_combo\Ska\Texture\electric_lamp_001.tex";
+    "electric_lamp_002"	TFNM "Data\World\M_combo\Ska\Texture\electric_lamp_002.tex";
+    "M_combo_Detail"	TFNM "Data\World\M_combo\Ska\Texture\M_combo_Detail.tex";
+    "sphere01"	TFNM "Data\World\M_combo\Ska\Texture\sphere01.tex";
+  }
+  ALLFRAMESBBOX	-0.8737,0.025769,-0.869883,0.868034,5.92547,0.877971;
+  COLISION
+  {
+  }
+}

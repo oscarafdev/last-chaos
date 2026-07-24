@@ -1,0 +1,40 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dryspider";
+{
+  MESH       	TFNM "Data\Monster\Dryspider\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\dryspider.bm";
+  TEXTURES   
+  {
+    "dryspider"	TFNM "Data\Monster\Dryspider\dryspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\dryspider_ft_01.bm";
+  TEXTURES   
+  {
+    "dryspider"	TFNM "Data\Monster\Dryspider\dryspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\dryspider_ft_02.bm";
+  TEXTURES   
+  {
+    "dryspider"	TFNM "Data\Monster\Dryspider\dryspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\dryspider_ft_03.bm";
+  TEXTURES   
+  {
+    "dryspider"	TFNM "Data\Monster\Dryspider\dryspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dryspider\dryspider_ft_04.bm";
+  TEXTURES   
+  {
+    "dryspider"	TFNM "Data\Monster\Dryspider\dryspider.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Dryspider\dryspider.bs";
+  ANIMSET   	TFNM "Data\Monster\Dryspider\dryspider.ba";
+  ALLFRAMESBBOX	-2,0,-2,2,2,2;
+  COLISION
+  {
+    "Default"  {-1.85,0,-1.85,1.85,2,1.85;}
+  }
+}

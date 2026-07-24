@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_cos_dillamoon02_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_dillamoon02_hn00.bm";
+  TEXTURES   
+  {
+    "ns_cos_dillamoon02_hn00"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_dillamoon02_hn00.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_dillamoon02_hn01.bm";
+  TEXTURES   
+  {
+    "ns_cos_dillamoon02_hn01"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_dillamoon02_hn01.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_dillamoon02_hn02.bm";
+  TEXTURES   
+  {
+    "ns_cos_dillamoon02_hn02"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_dillamoon02_hn02.tex";
+  }
+  ALLFRAMESBBOX	-0.617148,0.823244,-0.144077,0.643811,1.58096,0.218986;
+  COLISION
+  {
+  }
+}

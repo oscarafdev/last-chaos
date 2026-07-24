@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_ft_017-1";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_T_FT117-1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_T_FT217-1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ft_017-1.bm";
+  TEXTURES   
+  {
+    "ro_ft_017-1"	TFNM "Data\Item\Shield\Rogue\Texture\ro_ft_017-1.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ft_017-1_1.bm";
+  TEXTURES   
+  {
+    "ro_ft_017-1"	TFNM "Data\Item\Shield\Rogue\Texture\ro_ft_017-1.tex";
+  }
+  ALLFRAMESBBOX	-0.246907,-0.001609,-0.160994,0.246907,0.628589,0.104086;
+  COLISION
+  {
+  }
+}

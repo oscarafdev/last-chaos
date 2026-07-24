@@ -1,0 +1,17 @@
+OFFSET    	0.6,-1.03,0.2,-160,0.25,-57;
+NAME "ni_sword_phynix";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_SWORD_PHYNIX.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\ni_sword_phynix.bm";
+  TEXTURES   
+  {
+    "ni_sword_phynix"	TFNM "Data\Item\Weapon\Texture\ni_sword_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.358807,-0.0408845,-0.809177,0.282188,0.064341,0.705298;
+  COLISION
+  {
+  }
+}

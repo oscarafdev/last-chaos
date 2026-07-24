@@ -1,0 +1,15 @@
+NAME "castledoor";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\castledoor.bm";
+  TEXTURES   
+  {
+    "castledoor_09"	TFNM "Data\world\StartZone\Ska\Texture\castledoor_09.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\castledoor.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\castledoor.ba";
+  ALLFRAMESBBOX	-0.0974259,0,-0.120181,1.1889,2.75901,0.137986;
+  COLISION
+  {
+    "Default"  {-0.118977,-0.0236632,-0.0984166,1.17366,2.81264,0.123318;}
+  }
+}

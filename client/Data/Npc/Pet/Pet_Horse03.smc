@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Pet_Horse03";
+{
+  MESH       	TFNM "Data\Npc\pet\Pet_Horse03.bm";
+  TEXTURES   
+  {
+    "Pet_Horse03"	TFNM "Data\Npc\pet\pet_horse03.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_HORSE_3.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\Pet_Horse03.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\Pet_Horse03.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\Pet_Horse03.bae";
+  ALLFRAMESBBOX	-0.5,0,-1.5,0.5,3.1,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-1.5,0.5,3,1.5;}
+  }
+  RIDING
+  {
+    "Bip02"  	1.59,0,0.6,0,0,90;
+  }
+}

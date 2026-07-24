@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_Login";
+{
+  MESH       	TFNM "Data\Character\MAGE\Login\_TAG_WAND_002.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Character\MAGE\Login\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\character\Mage\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Character\MAGE\Login\ma_Login.bs";
+  ANIMSET   	TFNM "Data\character\Mage\ma.ba";
+  ANIMEFFECT   	TFNM "Data\character\Mage\ma.bae";
+  ANIMSET   	TFNM "Data\Character\MAGE\Login\ma_Login.ba";
+  ANIMEFFECT	TFNM "Data\Character\Mage\Login\ma_Login.bae";
+  
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,12 @@
+NAME "icecolumn_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\wildstone_02.bm";
+  TEXTURES   
+  {
+    "wildstone_02"	TFNM "Data\World\Tarian\Ska\Texture\wildstone_02.tex";
+  }
+  ALLFRAMESBBOX	-35.4338,-1.62113,-42.7084,35.5599,54.8192,41.4404;
+  COLISION
+  {
+  }
+}

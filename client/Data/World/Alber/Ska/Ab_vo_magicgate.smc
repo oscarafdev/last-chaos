@@ -1,0 +1,20 @@
+NAME "Ab_vo_magicgate";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\_TAG_T_VMG.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_magicgate.bm";
+  TEXTURES   
+  {
+    "Ab_vo_magicgate01"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_magicgate01.tex";
+    "Ab_vo_magicgate02"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_magicgate02.tex";
+  }
+  SKELETON  	TFNM "Data\World\Alber\Ska\Ab_vo_magicgate.bs";
+  ANIMSET   	TFNM "Data\World\Alber\Ska\Ab_vo_magicgate.ba";
+  ANIMEFFECT	TFNM "Data\World\Alber\Ska\Ab_vo_magicgate.bae";
+  ALLFRAMESBBOX	-11.7175,-8.87258e-007,-3.0264,12.309,15.4527,1.43215;
+  COLISION
+  {
+  }
+}

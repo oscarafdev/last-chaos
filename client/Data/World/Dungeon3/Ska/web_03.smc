@@ -1,0 +1,13 @@
+NAME "web_03";
+{
+  MESH       	TFNM "Data\world\Dungeon3\Ska\web_03.bm";
+  TEXTURES   
+  {
+    "Web"	TFNM "Data\world\Dungeon3\Ska\texture\Web.tex";
+  }
+  ALLFRAMESBBOX	-0.958175,-3.00502,-0.128117,0.958175,3.00502,0.128117;
+  COLISION
+  {
+    "Default"  {-0.958175,-3.00502,-0.128117,0.958175,3.00503,0.128117;}
+  }
+}

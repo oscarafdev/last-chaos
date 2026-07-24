@@ -1,0 +1,82 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "anubis";
+{
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_hair_1.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_hair_2.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_hair_3.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_hair_4.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_hair_5.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_hair_6.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_bu.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_lhn.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_rhn.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_bd.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_sk.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_etc.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_etc_1.bm";
+  TEXTURES   
+  {
+    "anubis"	TFNM "Data\Monster\C_Anubis\Texture\anubis.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\anubis_weapon.bm";
+  TEXTURES   
+  {
+    "anubis_wp"	TFNM "Data\Monster\C_Anubis\Texture\anubis_wp.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\C_Anubis\Anubis.bs";
+  ANIMSET   	TFNM "Data\Monster\C_Anubis\Anubis.ba";
+  ANIMEFFECT	TFNM "Data\Monster\C_Anubis\Anubis.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

@@ -1,0 +1,22 @@
+NAME "into";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\_TAG_T_DM_TOWER01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Dratan\Ska\_TAG_T_DM_TOWER02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Dratan\Ska\new_Dratan_master_tower02.bm";
+  TEXTURES   
+  {
+    "new_daratan_master_tower02"	TFNM "Data\World\Dratan\Ska\Texture\new_daratan_master_tower02.tex";
+    "Dengen1_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-17.5,0,-17.5,17.5,20.5,17.5;
+  COLISION
+  {
+    "Default"  {-17,0,-1.5,17,3,1.5;}
+  }
+}

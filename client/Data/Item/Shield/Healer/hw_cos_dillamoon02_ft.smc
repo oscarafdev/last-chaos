@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_cos_dillamoon02_ft";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_cos_dillamoon02_ft00.bm";
+  TEXTURES   
+  {
+    "hw_cos_dillamoon02_ft"	TFNM "Data\Item\Shield\Healer\Texture\hw_cos_dillamoon02_ft.tex";
+  }
+  ALLFRAMESBBOX	-0.33003,-0.002365,-0.178227,0.33003,0.707647,0.123018;
+  COLISION
+  {
+  }
+}

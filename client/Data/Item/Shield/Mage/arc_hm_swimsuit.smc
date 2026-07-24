@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "arc_hm_swimsuit";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\arc_hm_swimsuit.bm";
+  TEXTURES   
+  {
+    "arc_hm_swimsuit01"	TFNM "Data\Item\Shield\Mage\Texture\arc_hm_swimsuit01.tex";
+    "arc_hm_swimsuit02"	TFNM "Data\Item\Shield\Mage\Texture\arc_hm_swimsuit02.tex";
+    "arc_hm_swimsuit03"	TFNM "Data\Item\Shield\Mage\Texture\arc_hm_swimsuit03.tex";
+  }
+  ALLFRAMESBBOX	-0.087635,1.66563,-0.160734,0.117275,2.00978,0.069776;
+  COLISION
+  {
+  }
+}

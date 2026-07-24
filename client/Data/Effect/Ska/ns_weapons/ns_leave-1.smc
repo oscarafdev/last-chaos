@@ -1,0 +1,7 @@
+NAME "ns_leave-1";
+{
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

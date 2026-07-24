@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "D_master";
+{
+  MESH       	TFNM "Data\Npc\npc_ramton\body01.bm";
+  TEXTURES   
+  {
+    "N_nopc_body_001"	TFNM "Data\Npc\npc_ramton\N_nopc_body_001.tex";
+  }
+  MESH       	TFNM "Data\Npc\npc_ramton\face_03.bm";
+  TEXTURES   
+  {
+    "N_nopc_FACE_001"	TFNM "Data\Npc\npc_ramton\N_nopc_FACE_001.tex";
+  }
+  MESH       	TFNM "Data\Npc\npc_ramton\Object06.bm";
+  TEXTURES   
+  {
+    "N_nopc_body_001"	TFNM "Data\Npc\npc_ramton\N_nopc_body_001.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\npc_ramton\npc_ramton.bs";
+  ANIMSET   	TFNM "Data\Npc\npc_ramton\npc_ramton_idel001.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.484782,0.0153978,-0.439904,0.401865,1.7154,0.41443;}
+  }
+}

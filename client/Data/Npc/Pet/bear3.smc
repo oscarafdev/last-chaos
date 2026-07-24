@@ -1,0 +1,48 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bear3";
+{
+  MESH       	TFNM "Data\Npc\pet\bear3.bm";
+  TEXTURES   
+  {
+    "bear3"	TFNM "Data\Npc\pet\bear3.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\bear3_bd.bm";
+  TEXTURES   
+  {
+    "bear3"	TFNM "Data\Npc\pet\bear3.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\bear3_bu.bm";
+  TEXTURES   
+  {
+    "bear3"	TFNM "Data\Npc\pet\bear3.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\bear3_bu_1.bm";
+  TEXTURES   
+  {
+    "bear3"	TFNM "Data\Npc\pet\bear3.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_B3_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_B3_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_B3_3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_B3_4.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\bear3.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\bear3.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\bear3.bae";
+  ALLFRAMESBBOX	-1.6,0,-1.6,1.6,2,1.6;
+  COLISION
+  {
+    "Default"  {-0.518034,0,-1.4741,0.481966,1.3,0.725903;}
+  }
+}

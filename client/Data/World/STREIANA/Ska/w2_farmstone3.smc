@@ -1,0 +1,15 @@
+NAME "w2_farmstone3";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\w2_farmstone3.bm";
+  TEXTURES   
+  {
+    "w2_tombstone3"	TFNM "Data\World\STREIANA\Ska\Texture\w2_tombstone3.tex";
+    "STREIANA_Detail"	TFNM "Data\World\STREIANA\Ska\Texture\STREIANA_Detail.tex";
+    "w2_farmstone1"	TFNM "Data\World\STREIANA\Ska\Texture\w2_farmstone1.tex";
+  }
+  ALLFRAMESBBOX	-3.73858,-0.048884,-3.04419,3.57951,17.0004,4.27391;
+  COLISION
+  {
+    "Default"  {-2.5,0,-2.5,2.5,15,2.5;}
+  }
+}

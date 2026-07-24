@@ -1,0 +1,27 @@
+OFFSET    	0,-5.06915,13.9274,0,0,0;
+NAME "RoyalRumble";
+{
+  MESH       	TFNM "Data\World\Pk_RoyalRumble\Ska\RoyalRumble.bm";
+  TEXTURES   
+  {
+    "pk-01"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-01.tex";
+    "pk-02"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-02.tex";
+    "pk-03"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-03.tex";
+    "pk-04"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-04.tex";
+    "pk-05"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-05.tex";
+    "pk-06"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-06.tex";
+    "pk-07"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-07.tex";
+    "pk-08"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-08.tex";
+    "pk-09"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-09.tex";
+    "pk-10"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-10.tex";
+    "pk-11"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-11.tex";
+    "pk-12"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-12.tex";
+    "pk-13"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-13.tex";
+    "pk-14"	TFNM "Data\World\Pk_RoyalRumble\Ska\Texture\pk-14.tex";
+  }
+  ALLFRAMESBBOX	-43.0762,-5.06919,-51.6081,43.0762,34.7544,79.4628;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

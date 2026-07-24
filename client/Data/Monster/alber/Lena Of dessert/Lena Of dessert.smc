@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Lena Of dessert";
+{
+  MESH       	TFNM "Data\Monster\alber\Lena Of dessert\pet_horse02.bm";
+  TEXTURES   
+  {
+    "Lena Of dessert_body"	TFNM "Data\Monster\alber\Lena Of dessert\Lena Of dessert_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\Lena Of dessert\hair.bm";
+  TEXTURES   
+  {
+    "Lena Of dessert_hair"	TFNM "Data\Monster\alber\Lena Of dessert\Lena Of dessert_hair.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\Lena Of dessert\_TAG_lenaHD.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\alber\Lena Of dessert\lena.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\Lena Of dessert\lena.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\Lena Of dessert\lena.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,1.7,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1.8,0.75;}
+  }
+}

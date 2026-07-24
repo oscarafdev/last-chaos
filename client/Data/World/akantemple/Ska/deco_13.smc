@@ -1,0 +1,12 @@
+NAME "obj_06";
+{
+  MESH       	TFNM "Data\World\akantemple\Ska\deco_13.bm";
+  TEXTURES   
+  {
+    "wizard_01"	TFNM "Data\World\akantemple\Ska\Texture\wizard_01.tex";
+  }
+  ALLFRAMESBBOX	-6.89398,-6.2e-005,-6.89398,6.89398,6.1e-005,6.89398;
+  COLISION
+  {
+  }
+}

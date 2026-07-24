@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="512" h="461" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="512" h="461" hide="0" tex="Affinity.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="512" b="461" />
+    <UIText id="text_title" x="0" y="18" w="207" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4480" str="친화도 정보" str_ellipsis="" color="0xc0c000ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="492" y="5" w="16" h="16" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="923" t="43" r="939" b="59" />
+        <uv type="1" l="939" t="43" r="955" b="59" />
+        <uv type="2" l="955" t="43" r="971" b="59" />
+        <uv type="3" l="966" t="43" r="982" b="59" />
+    </UIButton>
+    <UIText x="167" y="186" w="117" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5861" str="친화도 수치" str_ellipsis="" color="0xffff00ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_affinity_point" x="167" y="210" w="117" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xffff00ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="img_map" x="168" y="247" w="113" h="113" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0">
+        <UIImage x="0" y="0" w="13" h="18" hide="0" tex="Map.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" l="127" t="64" r="140" b="82" />
+    </UIImage>
+    <UIText id="text_admin_pos" x="179" y="422" w="92" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xff00ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="177" y="45" w="291" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_admin_npc_name" x="180" y="371" w="90" h="41" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="7" h_align="1" str_idx="-1" split_mode="0" text_col="0xffffffff" str="">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UITextBox id="tb_npc_desc" x="168" y="44" w="331" h="126" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="6" sy="16" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="331" h="126" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="1" item_count="0" item_per_page="8">
+            <back x="10" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="1003" t0="15" r0="1013" b0="25" l1="993" t1="15" r1="1003" b1="25" />
+            <button2 x="0" y="0" w="10" h="10" l0="1003" t0="26" r0="1013" b0="36" l1="993" t1="26" r1="1003" b1="36" />
+            <thumb x="-2" y="0" w="10" h="106" unit="7" l="972" t="15" r="982" b="39" />
+        </UIScrollBar>
+        <UIText id="text_npc_name" x="6" y="1" w="309" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UITextBox>
+    <UIList id="list_npc" x="11" y="45" w="153" h="400" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="10" itemgap="0" item_count="10" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="-1" w="152" h="399" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="37" item_count="0" item_per_page="10">
+            <back x="10" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="1003" t0="15" r0="1013" b0="25" l1="993" t1="15" r1="1003" b1="25" />
+            <button2 x="0" y="0" w="10" h="10" l0="1003" t0="26" r0="1013" b0="36" l1="993" t1="26" r1="1003" b1="36" />
+            <thumb x="-2" y="0" w="10" h="379" unit="7" l="972" t="15" r="982" b="39" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="0" y="0" w="141" h="40" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_npc" x="4" y="2" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="0" texid="0" row="0" col="0" />
+            <UIText id="text_name" x="46" y="11" w="90" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UITab id="tab_donation_list" x="288" y="247" w="214" h="199" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UICheck x="4" y="1" w="63" h="21" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4288" str="아이템" posleft="1" text_x="0" region="0" text_area="63" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="513" t="263" r="576" b="284" />
+            <check l="639" t="263" r="702" b="284" />
+        </UICheck>
+        <UICheck x="73" y="1" w="63" h="21" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="99" str="퀘스트" posleft="1" text_x="0" region="0" text_area="63" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="513" t="263" r="576" b="284" />
+            <check l="639" t="263" r="702" b="284" />
+        </UICheck>
+        <UICheck x="143" y="1" w="63" h="21" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="448" str="몬스터" posleft="1" text_x="0" region="0" text_area="63" h_align="1" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+            <none l="513" t="263" r="576" b="284" />
+            <check l="639" t="263" r="702" b="284" />
+        </UICheck>
+        <UITabPage id="tp_item" x="0" y="41" w="213" h="158" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIList id="list_item" x="0" y="0" w="213" h="158" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="3" itemgap="0" item_count="3" pre_create="1">
+                <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar x="0" y="0" w="211" h="156" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="1" item_count="0" item_per_page="3">
+                    <back x="10" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="0" y="0" w="10" h="10" l0="1003" t0="15" r0="1013" b0="25" l1="993" t1="15" r1="1003" b1="25" />
+                    <button2 x="0" y="0" w="10" h="10" l0="1003" t0="26" r0="1013" b0="36" l1="993" t1="26" r1="1003" b1="36" />
+                    <thumb x="-2" y="0" w="10" h="136" unit="7" l="972" t="15" r="982" b="39" />
+                </UIScrollBar>
+                <UIListItem id="list_item_001" x="0" y="0" w="200" h="51" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIIcon id="icon_item" x="7" y="10" w="34" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIText id="text_name" x="57" y="19" w="138" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIListItem>
+            </UIList>
+            <UIText x="0" y="-15" w="187" h="12" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5859" str="기부 아이템 정보" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UITabPage>
+        <UITabPage id="tp_quest" x="0" y="41" w="213" h="158" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIList id="list_quest" x="0" y="0" w="213" h="158" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="3" itemgap="-1" item_count="3" pre_create="1">
+                <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar x="0" y="0" w="211" h="156" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="1" item_count="0" item_per_page="3">
+                    <back x="10" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="0" y="0" w="10" h="10" l0="1003" t0="15" r0="1013" b0="25" l1="993" t1="15" r1="1003" b1="25" />
+                    <button2 x="0" y="0" w="10" h="10" l0="1003" t0="26" r0="1013" b0="36" l1="993" t1="26" r1="1003" b1="36" />
+                    <thumb x="-2" y="0" w="10" h="136" unit="7" l="972" t="15" r="982" b="39" />
+                </UIScrollBar>
+                <UIListItem id="list_item_001" x="0" y="0" w="200" h="52" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIIcon id="icon_item" x="7" y="10" w="34" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIText id="text_name" x="57" y="19" w="138" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIListItem>
+            </UIList>
+            <UIText x="0" y="-15" w="187" h="12" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5860" str="세력 퀘스트 정보" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UITabPage>
+        <UITabPage id="tp_monster" x="0" y="41" w="213" h="158" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIList id="list_monster" x="0" y="0" w="213" h="158" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="3" itemgap="-1" item_count="3" pre_create="1">
+                <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar x="0" y="0" w="211" h="156" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="1" item_count="0" item_per_page="3">
+                    <back x="10" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="0" y="0" w="10" h="10" l0="1003" t0="15" r0="1013" b0="25" l1="993" t1="15" r1="1003" b1="25" />
+                    <button2 x="0" y="0" w="10" h="10" l0="1003" t0="26" r0="1013" b0="36" l1="993" t1="26" r1="1003" b1="36" />
+                    <thumb x="-2" y="0" w="10" h="136" unit="7" l="972" t="15" r="982" b="39" />
+                </UIScrollBar>
+                <UIListItem id="list_item_001" x="0" y="0" w="200" h="52" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                    <UIIcon id="icon_item" x="7" y="10" w="34" h="34" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+                    <UIText id="text_name" x="57" y="19" w="138" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    </UIText>
+                </UIListItem>
+            </UIList>
+            <UIText x="0" y="-15" w="187" h="12" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5867" str="세력 몬스터 정보" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UITabPage>
+    </UITab>
+    <UIBase id="base_drag" x="0" y="0" w="492" h="38" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    <UIBase id="base_reward_group" x="287" y="174" w="214" h="68" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+        <UIArray id="array_reward" x="0" y="-9" w="156" h="24" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" row="1" col="5" sx="0" sy="0" gapx="8" gapy="0" show_row="1">
+            <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <UIArrayItem id="array_item_001" x="0" y="0" w="24" h="24" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                <UIIcon id="icon_reward" x="0" y="0" w="24" h="24" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+            </UIArrayItem>
+        </UIArray>
+        <UIButton id="btn_prev" x="1" y="12" w="17" h="25" hide="0" tex="Affinity.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="924" t="63" r="941" b="88" />
+            <uv type="1" l="924" t="97" r="941" b="122" />
+            <uv type="2" l="924" t="131" r="941" b="156" />
+            <uv type="3" l="924" t="165" r="941" b="190" />
+        </UIButton>
+        <UIButton id="btn_next" x="-4" y="12" w="17" h="25" hide="0" tex="Affinity.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="949" t="63" r="966" b="88" />
+            <uv type="1" l="949" t="97" r="966" b="122" />
+            <uv type="2" l="949" t="131" r="966" b="156" />
+            <uv type="3" l="949" t="165" r="966" b="190" />
+        </UIButton>
+        <UIText id="text_reward_page" x="0" y="-4" w="100" h="14" hide="0" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIBase>
+</Window>

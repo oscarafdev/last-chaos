@@ -1,0 +1,30 @@
+OFFSET    	0,0.06,0.09,180,0,0;
+NAME "ns_magmaball";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moonstone.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_weapons\ns_magmaball.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\leave_ball.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_weapons\ns_magmaball.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\leave_ball_1.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_weapons\ns_magmaball.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\moonstone.bm";
+  TEXTURES   
+  {
+    "moonstone"	TFNM "Data\Effect\Ska\ns_weapons\moonstone.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\leave_ball.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\leave_ball.ba";
+  ALLFRAMESBBOX	-0.08,-0.073689,-0.08,0.08,0.086312,0.08;
+  COLISION
+  {
+  }
+}

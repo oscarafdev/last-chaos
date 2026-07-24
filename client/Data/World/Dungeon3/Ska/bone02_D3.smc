@@ -1,0 +1,13 @@
+NAME "bone02_D3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\bone02_D3.bm";
+  TEXTURES   
+  {
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+    "bone01_d3"	TFNM "Data\World\Dungeon3\Ska\texture\bone01_d3.tex";
+  }
+  ALLFRAMESBBOX	-6.30609,0.016028,-0.567599,6.30609,1.0675,0.567601;
+  COLISION
+  {
+  }
+}

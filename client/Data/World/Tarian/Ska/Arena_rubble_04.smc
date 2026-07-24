@@ -1,0 +1,14 @@
+NAME "Arena_rubble_04";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\Arena_rubble_04.bm";
+  TEXTURES   
+  {
+    "Arena_bottom_06"	TFNM "Data\World\Tarian\Ska\Texture\Arena_bottom_06.tex";
+    "Arena_brick_04"	TFNM "Data\World\Tarian\Ska\Texture\Arena_brick_04.tex";
+  }
+  ALLFRAMESBBOX	-2.90612,0,-5.89851,2.96644,5.69113,4.94284;
+  COLISION
+  {
+    "Default"  {-2.93628,0,-5.4207,2.93628,5.69113,5.4207;}
+  }
+}

@@ -1,0 +1,13 @@
+NAME "deco_05";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\fish_01.bm";
+  TEXTURES   
+  {
+    "fiah"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\fiah.tex";
+    "ma"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\ma.tex";
+  }
+  ALLFRAMESBBOX	-1.18825,-0.006207,-0.441512,1.22967,0.415764,0.456184;
+  COLISION
+  {
+  }
+}

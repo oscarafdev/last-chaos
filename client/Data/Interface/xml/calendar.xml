@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="691" h="512" hide="1">
+    <UIImage id="calendar_back" x="0" y="0" w="691" h="512" hide="0" tex="CalendarUi.tex" l="0" t="0" r="691" b="512" />
+    <UIText id="text_border_year" x="284" y="26" w="60" h="14" hide="0" str_idx="-1" str="Year" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_border_month" x="349" y="26" w="60" h="14" hide="0" str_idx="5989" str="1월" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_drag" x="0" y="0" w="671" h="22" hide="0" str_idx="-1" str="" color="0x0" shadow="0" shadow_color="0x181818b2" h_align="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_prev_arrow" x="268" y="23" w="11" h="19" hide="0" tex="CalendarUi.tex" str_idx="-1" str="" newtype="0">
+        <uv type="0" l="115" t="513" r="125" b="531" />
+        <uv type="1" l="0" t="0" r="0" b="0" />
+        <uv type="2" l="115" t="533" r="125" b="551" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_next_arrow" x="413" y="23" w="11" h="19" hide="0" tex="CalendarUi.tex" str_idx="-1" str="" newtype="0">
+        <uv type="0" l="134" t="513" r="144" b="531" />
+        <uv type="1" l="0" t="0" r="0" b="0" />
+        <uv type="2" l="134" t="533" r="144" b="551" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_close" x="671" y="4" w="16" h="16" hide="0" tex="CalendarUi.tex" str_idx="-1" str="" newtype="0">
+        <uv type="0" l="76" t="513" r="91" b="528" />
+        <uv type="1" l="0" t="0" r="0" b="0" />
+        <uv type="2" l="93" t="513" r="108" b="528" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIText id="week_0" x="18" y="68" w="91" h="16" hide="0" str_idx="6012" str="일요일" color="0xff0000ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="week_1" x="112" y="68" w="91" h="16" hide="0" str_idx="6006" str="월요일" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="week_2" x="206" y="68" w="91" h="16" hide="0" str_idx="6007" str="화요일" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="week_3" x="300" y="68" w="91" h="16" hide="0" str_idx="6008" str="수요일" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="week_4" x="394" y="68" w="91" h="16" hide="0" str_idx="6009" str="목요일" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="week_5" x="488" y="68" w="91" h="16" hide="0" str_idx="6010" str="금요일" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="week_6" x="582" y="68" w="91" h="16" hide="0" str_idx="6011" str="토요일" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIArray id="day_array" x="18" y="88" w="655" h="405" hide="0" tex="CalendarUi.tex" row="6" col="7" sx="0" sy="0" gapx="4" gapy="4" show_row="6">
+        <select x="0" y="0" w="90" h="64" l="786" t="440" r="876" b="504" />
+        <mouse_over x="-1" y="-1" w="92" h="66" l="692" t="439" r="784" b="505" />
+        <UIArrayItem id="array_item_001" x="0" y="0" w="90" h="64" hide="0">
+            <UIImage id="img_date_back" x="0" y="0" w="90" h="64" hide="0" tex="CalendarUi.tex" l="878" t="439" r="970" b="505" />
+            <UIImage id="img_event" x="0" y="0" w="90" h="64" hide="1" l="0" t="0" r="90" b="64" />
+            <UIText id="text_day_number" x="5" y="5" w="10" h="10" hide="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_plus" x="70" y="5" w="15" h="15" hide="1" tex="CalendarUi.tex" l="44" t="513" r="59" b="528" />
+            <UIText id="text_evt_name" x="5" y="50" w="85" h="15" hide="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIArrayItem>
+        <UIImage id="img_today" x="-5" y="-5" w="34" h="51" hide="0" tex="CalendarUi.tex" l="956" t="6" r="990" b="57" />
+    </UIArray>
+</Window>

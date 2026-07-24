@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bu_drop";
+{
+  MESH       	TFNM "Data\Item\Common\so_hn_drop.bm";
+  TEXTURES   
+  {
+    "so_hd_drop"	TFNM "Data\Item\Common\Texture\so_hd_drop.tex";
+  }
+  ALLFRAMESBBOX	-0.3,0,-0.3,0.3,0.4,0.3;
+  COLISION
+  {
+  }
+}

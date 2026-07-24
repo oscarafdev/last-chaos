@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Barpon";
+{
+  MESH       	TFNM "Data\Monster\Musk\barpon\barpon.bm";
+  TEXTURES   
+  {
+    "Barpon"	TFNM "Data\Monster\Musk\barpon\Barpon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Musk\barpon\barponice.bm";
+  TEXTURES   
+  {
+    "Barpon"	TFNM "Data\Monster\Musk\barpon\Barpon.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Musk\barpon\barpon.bs";
+  ANIMSET   	TFNM "Data\Monster\Musk\barpon\Barpon.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Musk\barpon\Barpon.bae";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,4,2.5;
+  COLISION
+  {
+    "Default"  {-2.5,0,-2.5,2.5,4,2.5;}
+  }
+}

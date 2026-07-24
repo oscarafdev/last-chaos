@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "fanatic_bomb";
+{
+  MESH       	TFNM "Data\Effect\Ska\_TAG_T_FBOMB.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Effect\Ska\fanatic_bomb.bm";
+  TEXTURES   
+  {
+    "fanatic_bomb"	TFNM "Data\Effect\Ska\fanatic_bomb.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\fanatic_bomb.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\fanatic_bomb.ba";
+  ANIMEFFECT	TFNM "Data\Effect\Ska\fanatic_bomb.bae";
+  ALLFRAMESBBOX	-0.15,0,-0.15,0.15,0.5,0.15;
+  COLISION
+  {
+    "Default"  {-0.15,0,-0.15,0.15,0.5,0.15;}
+  }
+}

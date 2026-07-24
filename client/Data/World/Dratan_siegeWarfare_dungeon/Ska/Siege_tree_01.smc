@@ -1,0 +1,15 @@
+NAME "Siege_tree_01";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Siege_tree_01.bm";
+  TEXTURES   
+  {
+    "Siege_tree_01_1"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_tree_01_1.tex";
+    "Siege_tree_01_2"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_tree_01_2.tex";
+    "Siege_Dratan_Detail"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Ska\Texture\Siege_Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-4.9064,-0.139838,-4.61936,6.37801,12.0951,5.75886;
+  COLISION
+  {
+    "Default"  {-1.20885,-0.866977,-0.601105,1.40106,12.2417,1.28984;}
+  }
+}

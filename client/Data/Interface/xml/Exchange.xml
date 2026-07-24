@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="ExchangeUI" x="0" y="0" w="216" h="452" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="216" h="452" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="216" b="452" />
+    <UIText x="57" y="4" w="100" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="149" str="교환" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="198" y="4" w="14" h="14" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="219" t="15" r="233" b="29" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="219" t="0" r="233" b="14" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIText id="text_id" x="19" y="32" w="83" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="0" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIBase id="base_drag" x="0" y="0" w="198" h="22" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    <UIArray id="arr_user_item" x="14" y="51" w="172" h="68" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="2" col="5" sx="0" sy="0" gapx="3" gapy="3" show_row="2">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="190" h="71" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="0" item_count="2" item_per_page="2">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="9" h="7" l0="230" t0="62" r0="239" b0="69" l1="219" t1="62" r1="228" b1="69" />
+            <button2 x="0" y="0" w="9" h="7" l0="230" t0="71" r0="239" b0="78" l1="219" t1="71" r1="228" b1="78" />
+            <thumb x="0" y="0" w="9" h="57" unit="7" l="219" t="32" r="228" b="56" />
+        </UIScrollBar>
+        <UIArrayItem id="array_item_001" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_item" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        </UIArrayItem>
+    </UIArray>
+    <UIText id="text_user_gold" x="101" y="123" w="83" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="0" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIArray id="arr_my_item" x="14" y="150" w="171" h="67" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="2" col="5" sx="0" sy="0" gapx="3" gapy="3" show_row="10">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="190" h="69" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="0" item_count="2" item_per_page="2">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="9" h="7" l0="230" t0="62" r0="239" b0="69" l1="219" t1="62" r1="228" b1="69" />
+            <button2 x="0" y="0" w="9" h="7" l0="230" t0="71" r0="239" b0="78" l1="219" t1="71" r1="228" b1="78" />
+            <thumb x="0" y="0" w="9" h="55" unit="7" l="219" t="32" r="228" b="56" />
+        </UIScrollBar>
+        <UIArrayItem id="array_item_001" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_item" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        </UIArrayItem>
+    </UIArray>
+    <UIText id="text_my_gold" x="101" y="223" w="83" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="0" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIArray id="arr_inven" x="14" y="249" w="191" h="137" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="4" col="5" sx="0" sy="0" gapx="3" gapy="3" show_row="4">
+        <select x="0" y="0" w="32" h="32" l="218" t="80" r="250" b="112" />
+        <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="190" h="136" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="24" item_count="4" item_per_page="4">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="9" h="7" l0="230" t0="62" r0="239" b0="69" l1="219" t1="62" r1="228" b1="69" />
+            <button2 x="0" y="0" w="9" h="7" l0="230" t0="71" r0="239" b0="78" l1="219" t1="71" r1="228" b1="78" />
+            <thumb x="0" y="0" w="9" h="122" unit="9" l="219" t="32" r="228" b="56" />
+        </UIScrollBar>
+        <UIArrayItem id="array_item_001" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIIcon id="icon_item" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+        </UIArrayItem>
+    </UIArray>
+    <UIText id="text_inven_gold" x="77" y="392" w="107" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="0" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_ready" x="11" y="420" w="63" h="21" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="148" str="준비 완료" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="454" r="63" b="475" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="64" t="454" r="127" b="475" />
+        <uv type="3" l="128" t="454" r="191" b="475" />
+    </UIButton>
+    <UIButton id="btn_trade" x="76" y="420" w="63" h="21" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="127" str="교환" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="454" r="63" b="475" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="64" t="454" r="127" b="475" />
+        <uv type="3" l="128" t="454" r="191" b="475" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="141" y="420" w="63" h="21" hide="0" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="0" t="454" r="63" b="475" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="64" t="454" r="127" b="475" />
+        <uv type="3" l="128" t="454" r="191" b="475" />
+    </UIButton>
+    <UIImage id="img_no_exchange" x="0" y="0" w="32" h="32" hide="1" tex="Exchange.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="218" t="115" r="250" b="147" />
+</Window>

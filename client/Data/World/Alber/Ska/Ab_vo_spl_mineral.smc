@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ab_vo_spl_mineral";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_spl_mineral_01.bm";
+  TEXTURES   
+  {
+    "Ab_vo_spl_mineral"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_spl_mineral.tex";
+  }
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_spl_mineral_02.bm";
+  TEXTURES   
+  {
+    "Ab_vo_spl_mineral"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_spl_mineral.tex";
+  }
+  SKELETON  	TFNM "Data\World\Alber\Ska\Ab_vo_spl_mineral.bs";
+  ANIMSET   	TFNM "Data\World\Alber\Ska\Ab_vo_spl_mineral.ba";
+  ANIMEFFECT	TFNM "Data\World\Alber\Ska\Ab_vo_spl_mineral.bae";
+  ALLFRAMESBBOX	-0.963008,-0.023969,-0.888987,0.906074,1.27166,0.888987;
+  COLISION
+  {
+    "Default"  {-0.963007,-0.0239691,-0.888985,0.906073,1.27166,0.888985;}
+  }
+}

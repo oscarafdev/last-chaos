@@ -1,0 +1,11 @@
+NAME "altarfloor_1";
+{
+  MESH       	TFNM "Data\Effect\Ska\_TAG_T_ALTARFLOOR.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.05,0,-0.05,0.05,0.1,0.05;
+  COLISION
+  {
+  }
+}

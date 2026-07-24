@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "skeleton_mark";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\_TAG_T_SMARK.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\skeleton_mark.bm";
+  TEXTURES   
+  {
+    "skeleton_mark"	TFNM "Data\World\STREIANA\Ska\Texture\skeleton_mark.tex";
+    "STREIANA_Detail"	TFNM "Data\World\STREIANA\Ska\Texture\STREIANA_Detail.tex";
+  }
+  SKELETON  	TFNM "Data\World\STREIANA\Ska\skeleton_mark.bs";
+  ANIMSET   	TFNM "Data\World\STREIANA\Ska\skeleton_mark.ba";
+  ALLFRAMESBBOX	-0.605124,-0.00876414,-0.336866,0.605123,3.10187,0.336866;
+  COLISION
+  {
+  }
+}

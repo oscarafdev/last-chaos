@@ -1,0 +1,12 @@
+NAME "Ab_de_tent02";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_tent02.bm";
+  TEXTURES   
+  {
+    "Ab_de_tent02"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_tent02.tex";
+  }
+  ALLFRAMESBBOX	-5.96668,-0.02662,-5.96668,5.96668,8.47676,6.45074;
+  COLISION
+  {
+  }
+}

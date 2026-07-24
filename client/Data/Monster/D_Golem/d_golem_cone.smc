@@ -1,0 +1,27 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "d_golem_cone";
+{
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_cone_hn.bm";
+  TEXTURES   
+  {
+    "d_golem_cone"	TFNM "Data\Monster\D_Golem\d_golem_cone.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_cone.bm";
+  TEXTURES   
+  {
+    "d_golem_cone"	TFNM "Data\Monster\D_Golem\d_golem_cone.tex";
+  }
+  MESH       	TFNM "Data\Monster\D_Golem\d_golem_cone_bd.bm";
+  TEXTURES   
+  {
+    "d_golem_cone"	TFNM "Data\Monster\D_Golem\d_golem_cone.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\D_Golem\d_golem_cone.bs";
+  ANIMSET   	TFNM "Data\Monster\D_Golem\d_golem_cone.ba";
+  ANIMEFFECT	TFNM "Data\Monster\D_Golem\d_golem_cone.bae";
+  ALLFRAMESBBOX	-1.5,0,-1.5,1.5,2.8,1.5;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2.8,1.5;}
+  }
+}

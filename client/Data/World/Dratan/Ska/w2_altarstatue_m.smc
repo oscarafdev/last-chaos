@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sd2_post02";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_altarstatue_m.bm";
+  TEXTURES   
+  {
+    "w2_altarstatue_m"	TFNM "Data\World\Dratan\Ska\Texture\w2_altarstatue_m.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.70414,0.010833,-1.43,1.70414,10.3278,1.43;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

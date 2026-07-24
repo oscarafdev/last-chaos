@@ -1,0 +1,82 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "anubis";
+{
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_bd.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_bu.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_etc.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_etc_1.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_hair_1.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_hair_2.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_hair_3.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_hair_4.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_hair_5.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_hair_6.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_lhn.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_rhn.bm";
+  TEXTURES   
+  {
+    "darkanubis_body"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_sk.bm";
+  TEXTURES   
+  {
+    "darkanubis_skirt"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_skirt.tex";
+  }
+  MESH       	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_weapon.bm";
+  TEXTURES   
+  {
+    "darkanubis_skirt"	TFNM "Data\Monster\C_Anubis\DarkAnubis\darkanubis_skirt.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\C_Anubis\Anubis.bs";
+  ANIMSET   	TFNM "Data\Monster\C_Anubis\Anubis.ba";
+  ANIMEFFECT	TFNM "Data\Monster\C_Anubis\Anubis.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.75,0.75,2,0.75;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

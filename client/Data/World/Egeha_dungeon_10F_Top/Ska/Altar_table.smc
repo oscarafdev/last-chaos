@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Altar_table.bm";
+  TEXTURES   
+  {
+    "altar_table"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\altar_table.tex";
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+  }
+  ALLFRAMESBBOX	-1.47806,-0.001492,-0.688816,1.37763,1.26951,1.06522;
+  COLISION
+  {
+    "Default"  {-1.39456,-0.0287919,-0.756009,1.38607,0.985483,0.740047;}
+  }
+}

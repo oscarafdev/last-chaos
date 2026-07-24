@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_hair_005";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_hair_005.bm";
+  TEXTURES   
+  {
+    "ti_hair_005"	TFNM "Data\Item\Shield\Titan\Texture\ti_hair_005.tex";
+  }
+  ALLFRAMESBBOX	-0.181736,1.84486,-0.141916,0.182076,2.1498,0.191323;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,23 @@
+NAME "lamplight";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\lamplight_1.bm";
+  TEXTURES   
+  {
+    "skull"	TFNM "Data\World\STREIANA\Ska\Texture\skull.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\lamplight_2.bm";
+  TEXTURES   
+  {
+    "hut_06"	TFNM "Data\World\STREIANA\Ska\Texture\hut_06.tex";
+  }
+  MESH       	TFNM "Data\World\STREIANA\Ska\_TAG_T_LAMP.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\STREIANA\Ska\lamplight.bs";
+  ANIMSET   	TFNM "Data\World\STREIANA\Ska\lamplight.ba";
+  ALLFRAMESBBOX	-0.345482,0.0324747,-0.369427,0.343629,2.53731,0.371882;
+  COLISION
+  {
+  }
+}

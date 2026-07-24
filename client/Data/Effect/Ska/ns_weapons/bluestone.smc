@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bluestone";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\bluestone.bm";
+  TEXTURES   
+  {
+    "bluestone"	TFNM "Data\Effect\Ska\ns_weapons\bluestone.tex";
+  }
+  ALLFRAMESBBOX	-0.08,-0.073689,-0.08,0.08,0.086312,0.08;
+  COLISION
+  {
+  }
+}

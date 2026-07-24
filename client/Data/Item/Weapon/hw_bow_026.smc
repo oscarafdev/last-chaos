@@ -1,0 +1,17 @@
+OFFSET    	-0.15,-1.15,0,150,0,45;
+NAME "hw_bow_026";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_BOW_026.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\hw_bow_026.bm";
+  TEXTURES   
+  {
+    "hw_bow_026"	TFNM "Data\Item\Weapon\Texture\hw_bow_026.tex";
+  }
+  ALLFRAMESBBOX	-0.155407,-0.0192662,-0.416269,0.806882,0.0726236,0.938533;
+  COLISION
+  {
+  }
+}

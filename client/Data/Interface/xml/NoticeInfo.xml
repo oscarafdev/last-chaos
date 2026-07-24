@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="280" h="119" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="is_back" x="0" y="0" w="280" h="119" hide="0" tex="MessageBox.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="81" t="256" r="111" b="286" unit="8" splitmode="2" />
+    <UIText id="str_title" x="0" y="5" w="280" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="알림 종류" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIList id="list_notice" x="0" y="19" w="280" h="100" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="5" itemy="3" itemshow_num="5" itemgap="3" item_count="1" pre_create="0">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem x="5" y="0" w="270" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText id="str_name" x="0" y="0" w="250" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+		<UIScrollBar id="list_scroll" x="0" y="0" w="276" h="96" hide="0" tex="Auction.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="17" item_count="0" item_per_page="5">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="297" y="1" w="10" h="8" l0="727" t0="583" r0="736" b0="590" l1="727" t1="566" r1="736" b1="573" />
+            <button2 x="297" y="87" w="10" h="8" l0="727" t0="592" r0="736" b0="599" l1="727" t1="575" r1="736" b1="582" />
+            <thumb x="0" y="0" w="9" h="80" unit="10" l="716" t="566" r="725" b="591" />
+        </UIScrollBar>
+    </UIList>
+</Window>

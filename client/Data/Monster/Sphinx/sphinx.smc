@@ -1,0 +1,42 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "sphinx";
+{
+  MESH       	TFNM "Data\Monster\Sphinx\sphinx_face.bm";
+  TEXTURES   
+  {
+    "sphinx_face"	TFNM "Data\Monster\Sphinx\Texture\sphinx_face.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\sphinx_bu.bm";
+  TEXTURES   
+  {
+    "sphinx_body"	TFNM "Data\Monster\Sphinx\Texture\sphinx_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\sphinx_hn.bm";
+  TEXTURES   
+  {
+    "sphinx_body"	TFNM "Data\Monster\Sphinx\Texture\sphinx_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\sphinx_bd.bm";
+  TEXTURES   
+  {
+    "sphinx_body"	TFNM "Data\Monster\Sphinx\Texture\sphinx_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\sphinx_ft.bm";
+  TEXTURES   
+  {
+    "sphinx_body"	TFNM "Data\Monster\Sphinx\Texture\sphinx_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\Sphinx\sphinx_wing.bm";
+  TEXTURES   
+  {
+    "sphinx_face"	TFNM "Data\Monster\Sphinx\Texture\sphinx_face.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Sphinx\sphinx.bs";
+  ANIMSET   	TFNM "Data\Monster\Sphinx\sphinx.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Sphinx\sphinx.bae";
+  ALLFRAMESBBOX	-0.9,0,-0.9,0.9,2.2,0.9;
+  COLISION
+  {
+    "Default"  {-0.9,0,-0.9,0.9,2.2,0.9;}
+  }
+}

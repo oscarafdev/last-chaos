@@ -1,0 +1,13 @@
+NAME "wall01_d4";
+{
+  MESH       	TFNM "Data\World\P_Dungeon1\Ska\wall01_d4.bm";
+  TEXTURES   
+  {
+    "pd_boss_wall01"	TFNM "Data\World\P_Dungeon1\Ska\Texture\pd_boss_wall01.tex";
+    "Detail_D4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\Detail_D4.tex";
+  }
+  ALLFRAMESBBOX	-94.0121,-52.6211,-102.877,95.6133,52.6217,108.812;
+  COLISION
+  {
+  }
+}

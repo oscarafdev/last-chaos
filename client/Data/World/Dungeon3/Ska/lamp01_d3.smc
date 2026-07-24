@@ -1,0 +1,18 @@
+NAME "lamp01_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\lamp01_d3.bm";
+  TEXTURES   
+  {
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+    "Eff_door01_d3"	TFNM "Data\World\Dungeon3\Ska\texture\Eff_door01_d3.tex";
+    "metal_d3"	TFNM "Data\World\Dungeon3\Ska\texture\metal_d3.tex";
+  }
+  SKELETON  	TFNM "Data\world\Dungeon3\Ska\lamp01_d3.bs";
+  ANIMSET   	TFNM "Data\world\Dungeon3\Ska\lamp01_d3.ba";
+  ANIMEFFECT	TFNM "Data\world\Dungeon3\Ska\lamp01_d3.bae";
+  ALLFRAMESBBOX	-1.3868,-0.008299,-1.31306,1.3868,1.70183,1.31306;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2,1.5;}
+  }
+}

@@ -1,0 +1,13 @@
+NAME "skull_box";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\skull_box.bm";
+  TEXTURES   
+  {
+    "skull"	TFNM "Data\World\tarian_dungeon\Ska\Texture\skull.tex";
+    "skull_box"	TFNM "Data\World\tarian_dungeon\Ska\Texture\skull_box.tex";
+  }
+  ALLFRAMESBBOX	-1.07523,0.003833,-0.825058,1.07523,1.80312,0.825058;
+  COLISION
+  {
+  }
+}

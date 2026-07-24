@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_sunglass";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_sunglass.bm";
+  TEXTURES   
+  {
+    "ma_sunglass"	TFNM "Data\Item\Shield\Mage\Texture\ma_sunglass.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_sunglass_1.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_face_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_sunglass_2.bm";
+  TEXTURES   
+  {
+    "ma_hair_000"	TFNM "Data\Item\Shield\Mage\Texture\ma_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.075544,1.06463,-0.142388,0.075544,2.00324,0.365391;
+  COLISION
+  {
+  }
+}

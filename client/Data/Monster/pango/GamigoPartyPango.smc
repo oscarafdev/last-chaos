@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "GamigoPartyPango";
+{
+  MESH       	TFNM "Data\Monster\pango\v3\gamigopango_body.bm";
+  TEXTURES   
+  {
+    "Pando_GamigoParty"	TFNM "Data\Monster\pango\Pando_GamigoParty.tex";
+    "ball"	TFNM "Data\Monster\pango\ball.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v3\gamigopango_hair.bm";
+  TEXTURES   
+  {
+    "Pando_GamigoParty"	TFNM "Data\Monster\pango\Pando_GamigoParty.tex";
+  }
+  MESH       	TFNM "Data\Monster\pango\v3\gamigopango_waterbaloon.bm";
+  TEXTURES   
+  {
+    "ball"	TFNM "Data\Monster\pango\ball.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\pango\v3\gamigopango.bs";
+  ANIMSET   	TFNM "Data\Monster\pango\GamigoPartyPango.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1.5,0.5;
+  COLISION
+  {
+  }
+}

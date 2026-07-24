@@ -1,0 +1,14 @@
+NAME "amor_type_B";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\amor_type_B.bm";
+  TEXTURES   
+  {
+    "amor_type_B01"	TFNM "Data\World\tarian_dungeon\Ska\Texture\amor_type_B01.tex";
+    "amor_type_B02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\amor_type_B02.tex";
+  }
+  ALLFRAMESBBOX	-0.692842,0.000354,-0.472945,0.692842,2.81836,0.472945;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

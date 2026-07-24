@@ -1,0 +1,18 @@
+NAME "stone_F";
+{
+  MESH       	TFNM "Data\Monster\Product\stone_F.bm";
+  TEXTURES   
+  {
+    "stone_F"	TFNM "Data\Monster\Product\Texture\stone_F.tex";
+  }
+  MESH       	TFNM "Data\Monster\Product\stone_F_1.bm";
+  TEXTURES   
+  {
+    "w2_jewelryring"	TFNM "Data\Monster\Product\Texture\w2_jewelryring.tex";
+  }
+  ALLFRAMESBBOX	-1.72939,0,-1.7004,1.61293,4.2,1.64193;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,1,0.75;}
+  }
+}

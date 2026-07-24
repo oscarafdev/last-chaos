@@ -1,0 +1,14 @@
+NAME "sd2_cart2";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_shop05.bm";
+  TEXTURES   
+  {
+    "PK_shop02"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_shop02.tex";
+    "PK_wood02"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_wood02.tex";
+    "pk_To_tile04_NRM"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM.tex";
+  }
+  ALLFRAMESBBOX	-3.33886,-0.028141,-1.51613,3.33886,2.68215,1.51613;
+  COLISION
+  {
+  }
+}

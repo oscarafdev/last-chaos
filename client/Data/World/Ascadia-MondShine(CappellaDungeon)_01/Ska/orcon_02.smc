@@ -1,0 +1,14 @@
+NAME "orcon_02";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\orcon_02.bm";
+  TEXTURES   
+  {
+    "orcon_03"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Texture\orcon_03.tex";
+    "Chair_01"	TFNM "Data\World\Ascadia-MondShine(CappellaDungeon)_01\Ska\Texture\Chair_01.tex";
+  }
+  ALLFRAMESBBOX	-2.78709,-0.020119,-1.88238,2.70984,9.28733,3.9534;
+  COLISION
+  {
+    "Default"  {-2.96059,-0.104625,-1.83413,2.45676,7.31145,3.92635;}
+  }
+}

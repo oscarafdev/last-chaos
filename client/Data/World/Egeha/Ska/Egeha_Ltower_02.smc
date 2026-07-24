@@ -1,0 +1,15 @@
+NAME "Egeha_Ltower_02";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_Ltower_02.bm";
+  TEXTURES   
+  {
+    "Egeha_Ltower_02"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Ltower_02.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\egeha\ska\texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-2.95994,-0.456211,-6.6173,2.95993,12.3828,6.6173;
+  COLISION
+  {
+    "Default"  {-3.61052,-0.252095,-2.00431,2.49062,2.85781,6.62181;}
+    "Default"  {-1.34335,-0.127752,-6.60537,2.58358,13.2537,-2.75167;}
+  }
+}

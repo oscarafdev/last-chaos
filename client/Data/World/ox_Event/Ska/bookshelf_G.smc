@@ -1,0 +1,13 @@
+NAME "bookshelf_G";
+{
+  MESH       	TFNM "Data\World\Guild\Ska\bookshelf_G.bm";
+  TEXTURES   
+  {
+    "bookshelf_G"	TFNM "Data\World\Guild\Ska\Texture\bookshelf_G.tex";
+    "Detail_G"	TFNM "Data\World\Guild\Ska\Texture\Detail_G.tex";
+  }
+  ALLFRAMESBBOX	-0.693005,0.000444,-0.249994,0.693004,2.9121,0.249994;
+  COLISION
+  {
+  }
+}

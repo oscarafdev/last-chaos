@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="GuildStashUseRecordUI" x="0" y="0" w="599" h="199" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="599" h="199" hide="0" tex="Guild Stash Use Record.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="599" b="199" />
+    <UIBase id="base_drag" x="0" y="0" w="579" h="22" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" />
+    <UIText id="text_title" x="0" y="8" w="234" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5544" str="[%s]길드 창고 이용 기록" str_ellipsis="" color="0xe2de6bff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="-4" y="4" w="16" h="16" hide="0" tex="Affinity.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="923" t="43" r="939" b="59" />
+        <uv type="1" l="939" t="43" r="955" b="59" />
+        <uv type="2" l="955" t="43" r="971" b="59" />
+        <uv type="3" l="955" t="43" r="971" b="59" />
+    </UIButton>
+    <UIList id="list_record" x="10" y="49" w="586" h="117" hide="0" tex="Guild Stash Use Record.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="0" item_count="10" pre_create="0">
+        <select x="0" y="0" w="567" h="14" l="300" t="224" r="395" b="236" />
+        <over x="0" y="0" w="567" h="14" l="300" t="205" r="395" b="217" />
+        <UIScrollBar x="0" y="0" w="583" h="118" hide="0" tex="Guild Stash Use Record.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="0" right="1" scroll_pos="0" move_unit="9" item_count="0" item_per_page="8">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="10" h="10" l0="214" t0="209" r0="224" b0="219" l1="202" t1="209" r1="212" b1="219" />
+            <button2 x="0" y="0" w="10" h="10" l0="214" t0="221" r0="224" b0="231" l1="202" t1="221" r1="212" b1="231" />
+            <thumb x="0" y="0" w="10" h="98" unit="7" l="231" t="208" r="241" b="247" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="0" y="0" w="567" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText id="txt_tm" x="2" y="0" w="153" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_name" x="158" y="0" w="114" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_inout" x="276" y="0" w="113" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_item_name" x="392" y="0" w="129" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_cnt" x="525" y="0" w="40" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+    <UIText x="11" y="30" w="155" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5545" str="일시" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="166" y="30" w="118" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5214" str="캐릭터 명" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="284" y="30" w="116" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5546" str="입/출고 여부" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="400" y="30" w="133" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5547" str="아이템 명(내역)" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="533" y="30" w="44" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5548" str="개수" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_more" x="215" y="172" w="80" h="21" hide="0" tex="Guild Stash Use Record.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5541" str="더보기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="5" t="205" r="68" b="226" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="69" t="205" r="132" b="226" />
+        <uv type="3" l="69" t="205" r="132" b="226" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="304" y="172" w="80" h="21" hide="0" tex="Guild Stash Use Record.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="870" str="닫기" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="5" t="205" r="68" b="226" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="69" t="205" r="132" b="226" />
+        <uv type="3" l="69" t="205" r="132" b="226" />
+    </UIButton>
+</Window>

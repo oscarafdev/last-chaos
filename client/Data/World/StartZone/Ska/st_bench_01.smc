@@ -1,0 +1,14 @@
+NAME "st_bench_01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\st_bench_01.bm";
+  TEXTURES   
+  {
+    "st_bench_01_02"	TFNM "Data\world\StartZone\Ska\Texture\st_bench_01_02.tex";
+    "st_bench_01_01"	TFNM "Data\world\StartZone\Ska\Texture\st_bench_01_01.tex";
+  }
+  ALLFRAMESBBOX	-1.00921,-0.003155,-0.611387,1.00921,1.44079,0.388613;
+  COLISION
+  {
+    "Default"  {-1.04919,-0.00633299,-0.553256,1.0441,0.287382,0.461177;}
+  }
+}

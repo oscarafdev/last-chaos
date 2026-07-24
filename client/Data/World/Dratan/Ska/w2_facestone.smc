@@ -1,0 +1,13 @@
+NAME "w2_facestone";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_facestone.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_facestone"	TFNM "Data\World\Dratan\Ska\Texture\w2_facestone.tex";
+  }
+  ALLFRAMESBBOX	-2.16055,-0.445803,-2.00273,1.91229,2.51488,2.22425;
+  COLISION
+  {
+  }
+}

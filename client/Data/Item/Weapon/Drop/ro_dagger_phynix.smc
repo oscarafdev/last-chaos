@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_dagger_phynix";
+{
+  MESH       	TFNM "Data\Item\Weapon\Drop\ro_dagger_phynix.bm";
+  TEXTURES   
+  {
+    "ro_dagger_phynix"	TFNM "Data\Item\Weapon\Drop\Texture\ro_dagger_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.224517,-0.006667,-0.411016,0.229526,0.057915,0.394322;
+  COLISION
+  {
+  }
+}

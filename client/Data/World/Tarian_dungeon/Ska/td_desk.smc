@@ -1,0 +1,21 @@
+NAME "td_desk";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_desk.bm";
+  TEXTURES   
+  {
+    "tube"	TFNM "Data\World\tarian_dungeon\Ska\Texture\tube.tex";
+    "bottle"	TFNM "Data\World\tarian_dungeon\Ska\Texture\bottle.tex";
+    "dish"	TFNM "Data\World\tarian_dungeon\Ska\Texture\dish.tex";
+    "td_desk"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_desk.tex";
+    "tube02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\tube02.tex";
+    "tube03"	TFNM "Data\World\tarian_dungeon\Ska\Texture\tube03.tex";
+    "tube04"	TFNM "Data\World\tarian_dungeon\Ska\Texture\tube04.tex";
+    "books"	TFNM "Data\World\tarian_dungeon\Ska\Texture\books.tex";
+    "books1"	TFNM "Data\World\tarian_dungeon\Ska\Texture\books1.tex";
+    "books2"	TFNM "Data\World\tarian_dungeon\Ska\Texture\books2.tex";
+  }
+  ALLFRAMESBBOX	-2.46277,0,-0.627107,2.46277,5.85169,0.988838;
+  COLISION
+  {
+  }
+}

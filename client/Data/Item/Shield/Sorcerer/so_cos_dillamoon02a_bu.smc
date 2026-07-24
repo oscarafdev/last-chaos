@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_cos_dillamoon02_bu";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_cos_dillamoon02_bu00.bm";
+  TEXTURES   
+  {
+    "so_cos_dillamoon02_bu00"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_cos_dillamoon02_bu00.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_cos_dillamoon02_bu01.bm";
+  TEXTURES   
+  {
+    "so_cos_dillamoon02_bu01"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_cos_dillamoon02_bu01.tex";
+  }
+  ALLFRAMESBBOX	-0.753373,0.371182,-0.180841,0.753373,2.41101,0.467182;
+  COLISION
+  {
+  }
+}

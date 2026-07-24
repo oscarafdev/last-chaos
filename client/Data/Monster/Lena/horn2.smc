@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "horn";
+{
+  MESH       	TFNM "Data\Monster\Lena\horn2.bm";
+  TEXTURES   
+  {
+    "Lena Of Noble_body"	TFNM "Data\Monster\Lena\Lena Of Noble_body.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Lena\horn2.bs";
+  ALLFRAMESBBOX	-0.427884,-0.252882,-0.22956,0.427884,0.254492,0.04073;
+  COLISION
+  {
+    "Default"  {-0.5,-0.26,-0.5,0.5,0.24,0.5;}
+  }
+}

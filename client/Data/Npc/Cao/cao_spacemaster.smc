@@ -1,0 +1,43 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "cao_spacemaster";
+{
+  MESH       	TFNM "Data\Npc\Cao\cao_spacemaster_bu.bm";
+  TEXTURES   
+  {
+    "cao_spacemaster"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_spacemaster_bu_1.bm";
+  TEXTURES   
+  {
+    "cao_spacemaster"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster.tex";
+    "cao_spacemaster_1"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster_1.tex";
+    "cao_spacemaster_1"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster_1.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_spacemaster_bu_2.bm";
+  TEXTURES   
+  {
+    "cao_spacemaster"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_spacemaster_hn.bm";
+  TEXTURES   
+  {
+    "cao_spacemaster"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_spacemaster_bd.bm";
+  TEXTURES   
+  {
+    "cao_spacemaster"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_spacemaster_ft.bm";
+  TEXTURES   
+  {
+    "cao_spacemaster_2"	TFNM "Data\Npc\Cao\Texture\cao_spacemaster_2.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Cao\cao_spacemaster.bs";
+  ANIMSET   	TFNM "Data\Npc\Cao\cao_spacemaster.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

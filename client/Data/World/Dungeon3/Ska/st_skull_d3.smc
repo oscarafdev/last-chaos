@@ -1,0 +1,13 @@
+NAME "st_skull_d3";
+{
+  MESH       	TFNM "Data\world\Dungeon3\Ska\st_skull_d3.bm";
+  TEXTURES   
+  {
+    "st_cross"	TFNM "Data\world\Dungeon3\Ska\texture\st_cross.tex";
+  }
+  ALLFRAMESBBOX	-1.39538,0.005741,-0.148746,1.39538,3.80141,0.495588;
+  COLISION
+  {
+    "Default"  {-1.25,0,-0.25,1.25,3.5,0.25;}
+  }
+}

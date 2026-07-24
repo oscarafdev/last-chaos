@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_mask-scream";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_mask-scream.bm";
+  TEXTURES   
+  {
+    "mask_scream"	TFNM "Data\Item\Shield\Titan\Texture\mask_scream.tex";
+  }
+  ALLFRAMESBBOX	-0.125211,1.72991,-0.182288,0.12521,2.15647,0.163558;
+  COLISION
+  {
+  }
+}

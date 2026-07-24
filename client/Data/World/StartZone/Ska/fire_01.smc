@@ -1,0 +1,13 @@
+NAME "fire_01";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\fire_01.bm";
+  TEXTURES   
+  {
+    "fire_01"	TFNM "Data\world\StartZone\Ska\texture\fire_01.tex";
+  }
+  ALLFRAMESBBOX	-0.824089,-0.001547,-0.824099,0.824109,1.0425,0.824099;
+  COLISION
+  {
+    "Default"  {-0.755801,-0.0141964,-0.810912,0.785187,1.05319,0.821884;}
+  }
+}

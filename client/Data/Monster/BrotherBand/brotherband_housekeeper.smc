@@ -1,0 +1,17 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "brotherband_housekeeper";
+{
+  MESH       	TFNM "Data\Monster\BrotherBand\brotherband_housekeeper.bm";
+  TEXTURES   
+  {
+    "brotherband_collector"	TFNM "Data\Monster\BrotherBand\brotherband_collector.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\BrotherBand\brotherband_housekeeper.bs";
+  ANIMSET   	TFNM "Data\Monster\BrotherBand\brotherband_housekeeper.ba";
+  ANIMEFFECT	TFNM "Data\Monster\BrotherBand\brotherband_housekeeper.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.75,0.5,1.7,0.25;
+  COLISION
+  {
+    "Default"  {-0.75,0,-0.75,0.75,2,0.75;}
+  }
+}

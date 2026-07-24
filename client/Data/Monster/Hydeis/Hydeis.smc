@@ -1,0 +1,63 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Hydeis";
+{
+  MESH       	TFNM "Data\Monster\Hydeis\_TAG_HDLE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\_TAG_HDLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\_TAG_HDRE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\_TAG_HDwp.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\hydeis_bd.bm";
+  TEXTURES   
+  {
+    "Hydeis"	TFNM "Data\Monster\Hydeis\hydeis.tex";
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\hydeis_bu.bm";
+  TEXTURES   
+  {
+    "Hydeis"	TFNM "Data\Monster\Hydeis\hydeis.tex";
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\hydeis_bu_1.bm";
+  TEXTURES   
+  {
+    "Hydeis"	TFNM "Data\Monster\Hydeis\hydeis.tex";
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\hydeis_head_1.bm";
+  TEXTURES   
+  {
+    "Hydeis"	TFNM "Data\Monster\Hydeis\hydeis.tex";
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\hydeis_lhn.bm";
+  TEXTURES   
+  {
+    "Hydeis"	TFNM "Data\Monster\Hydeis\hydeis.tex";
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\hydeis_rhn.bm";
+  TEXTURES   
+  {
+    "Hydeis"	TFNM "Data\Monster\Hydeis\hydeis.tex";
+  }
+  MESH       	TFNM "Data\Monster\Hydeis\hydeis_scythe.bm";
+  TEXTURES   
+  {
+    "hydeis_wp"	TFNM "Data\Monster\Hydeis\hydeis_wp.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Hydeis\hydeis.bs";
+  ANIMSET   	TFNM "Data\Monster\Hydeis\Hydeis.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Hydeis\Hydeis.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,5,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,5,1;}
+  }
+}

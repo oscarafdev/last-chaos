@@ -1,0 +1,34 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cake3";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_T_CAKE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_T_CAKE01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_T_CAKE02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\_TAG_T_CAKE03.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cake3.bm";
+  TEXTURES   
+  {
+    "ro_cake3"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cake3.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cake3_1.bm";
+  TEXTURES   
+  {
+    "ro_hair_000"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.124586,1.53845,-0.126269,0.12373,1.91812,0.154355;
+  COLISION
+  {
+  }
+}

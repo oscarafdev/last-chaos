@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "pet_demonbat01";
+{
+  MESH       	TFNM "Data\Npc\pet\pet_demonbat01.bm";
+  TEXTURES   
+  {
+    "pet_demonbat01"	TFNM "Data\Npc\pet\textures\pet_demonbat01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\pet_demonbat01_1.bm";
+  TEXTURES   
+  {
+    "pet_demonbat01"	TFNM "Data\Npc\pet\textures\pet_demonbat01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_BATHD.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\pet_demonbat01.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\pet_demonbat01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\pet_bat.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.4,0.5,1,0.6;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.4,0.5,1,0.6;}
+  }
+}

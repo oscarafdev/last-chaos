@@ -1,0 +1,16 @@
+NAME "w3_cemetery_02";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_cemetery_02.bm";
+  TEXTURES   
+  {
+    "w3_mascot"	TFNM "Data\World\Merac\ska\texture\w3_mascot.tex";
+    "w3_skeleton"	TFNM "Data\World\Merac\ska\texture\w3_skeleton.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_buildingdoor01"	TFNM "Data\World\Merac\ska\texture\w3_buildingdoor01.tex";
+  }
+  ALLFRAMESBBOX	-0.634797,-0.012574,-0.191702,0.634816,1.89266,0.191702;
+  COLISION
+  {
+    "Default"  {-0.35,0,-0.35,0.35,2,0.35;}
+  }
+}

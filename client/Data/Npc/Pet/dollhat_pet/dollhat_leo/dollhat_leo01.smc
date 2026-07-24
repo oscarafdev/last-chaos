@@ -1,0 +1,66 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "dollhat_leo01";
+{
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo01.bm";
+  TEXTURES   
+  {
+    "dollhat_leo01"	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_dollhat_leo01_HS1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_dollhat_leo01_HS2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_dollhat_leo01_HS3.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_dollhat_leo01_HS4.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_dollhat_leo01_HS5.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_dollhat_leo01_HS6.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_T_dollhat_leo01_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_T_dollhat_leo01_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\_TAG_T_dollhat_leo01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo01_hs1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo01_hs2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo02.bm";
+  TEXTURES   
+  {
+    "dollhat_leo02"	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo02.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo01.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\dollhat_pet\dollhat_leo\dollhat_leo01.bae";
+  ALLFRAMESBBOX	-0.4,0,-0.4,0.4,0.5,0.4;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,0.4,0.4;}
+  }
+}

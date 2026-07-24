@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "godness_stone";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\_TAG_T_GSTONE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\godness_stone.bm";
+  TEXTURES   
+  {
+    "godness_stone"	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\godness_stone.tex";
+  }
+  SKELETON  	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\godness_stone.bs";
+  ANIMSET   	TFNM "Data\World\Ascadia-MondShine(OutsideDungeon1)\Ska\godness_stone.ba";
+  ALLFRAMESBBOX	-7.29415,-4.9192e-006,-3.93179,7.29414,24.037,3.93181;
+  COLISION
+  {
+    "Default"  {-3.84353,-0.100941,-3.91639,3.76668,13.9114,3.96608;}
+  }
+}

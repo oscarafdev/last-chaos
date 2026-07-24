@@ -1,0 +1,6 @@
+ANIMSETLIST
+{
+  TRESHOLD 0;
+  COMPRESION FALSE;
+  #INCLUDE "Data\Effect\Ska\ef_ex_sk16_d_hit\ef_ex_sk16_d_hit.AA"
+}

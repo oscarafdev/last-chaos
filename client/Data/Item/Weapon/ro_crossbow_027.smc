@@ -1,0 +1,12 @@
+NAME "ro_crossbow_027";
+{
+  MESH       	TFNM "Data\Item\Weapon\ro_crossbow_027.bm";
+  TEXTURES   
+  {
+    "ro_crossbow_027"	TFNM "Data\Item\Weapon\Texture\ro_crossbow_027.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

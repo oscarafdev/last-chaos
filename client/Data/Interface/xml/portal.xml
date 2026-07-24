@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="301" h="197" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="301" h="47" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="301" b="47" />
+    <UIImage x="0" y="47" w="301" h="120" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="49" r="301" b="68" />
+    <UIImage x="0" y="167" w="301" h="30" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="71" r="301" b="101" />
+    <UIImage id="move_area" x="0" y="0" w="301" h="23" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText x="25" y="5" w="240" h="13" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="222" str="포탈" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="13" y="30" w="118" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="223" str="존" color="0xffc057ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText x="133" y="30" w="146" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="224" str="장소" color="0xffc057ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="269" y="4" w="14" h="14" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="321" t="1" r="336" b="16" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="306" t="1" r="321" b="16" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_move" x="161" y="171" w="63" h="21" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="221" str="이동" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="360" t="2" r="423" b="23" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="426" t="2" r="489" b="23" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="227" y="171" w="63" h="21" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="360" t="2" r="423" b="23" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="426" t="2" r="489" b="23" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIList id="list_menu" x="12" y="47" w="280" h="120" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="6" itemy="2" itemshow_num="7" itemgap="2" item_count="0" pre_create="0">
+        <select x="-6" y="0" w="261" h="15" l="325" t="26" r="335" b="41" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIScrollBar x="0" y="0" w="280" h="121" hide="0" tex="Portal.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="0" item_count="0" item_per_page="7">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            <button1 x="0" y="0" w="9" h="7" l0="347" t0="2" r0="356" b0="9" l1="337" t1="2" r1="346" b1="9" />
+            <button2 x="0" y="0" w="9" h="7" l0="347" t0="10" r0="356" b0="17" l1="337" t1="10" r1="346" b1="17" />
+            <thumb x="0" y="0" w="9" h="107" unit="6" l="307" t="16" r="316" b="40" />
+        </UIScrollBar>
+        <UIListItem id="list_item_001" x="6" y="2" w="267" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIText id="txt_zone" x="0" y="0" w="113" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="쥬노" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIText id="txt_pos" x="120" y="0" w="141" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="거시기" color="0xc0c0c0ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIListItem>
+    </UIList>
+</Window>

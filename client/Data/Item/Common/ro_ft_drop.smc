@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_ft_drop";
+{
+  MESH       	TFNM "Data\Item\Common\ro_ft_drop.bm";
+  TEXTURES   
+  {
+    "ro_ft_drop"	TFNM "Data\Item\Common\Texture\ro_ft_drop.tex";
+  }
+  ALLFRAMESBBOX	-0.3,0,-0.25,0.3,0.55,0.25;
+  COLISION
+  {
+  }
+}

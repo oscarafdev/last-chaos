@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_hel_mexico";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_hel_mexico.bm";
+  TEXTURES   
+  {
+    "hw_hel_mexico"	TFNM "Data\Item\Shield\Healer\Texture\hw_hel_mexico.tex";
+  }
+  ALLFRAMESBBOX	-0.297534,1.46115,-0.353718,0.297534,1.95039,0.293393;
+  COLISION
+  {
+  }
+}

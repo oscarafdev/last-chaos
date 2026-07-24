@@ -1,0 +1,20 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "heart";
+{
+  MESH       	TFNM "Data\Effect\Ska\heart_1.bm";
+  TEXTURES   
+  {
+    "heart"	TFNM "Data\Effect\Texture\heart.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\heart_2.bm";
+  TEXTURES   
+  {
+    "heart"	TFNM "Data\Effect\Texture\heart.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\heart.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\heart.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

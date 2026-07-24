@@ -1,0 +1,18 @@
+NAME "castlewall_001";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\castlewall_001.bm";
+  TEXTURES   
+  {
+    "StartZonetile_05_2"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_05_2.tex";
+    "StartZonetile_06"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_06.tex";
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "StartZonetile_castle008"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_castle008.tex";
+    "StartZonetile_detail"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_detail.tex";
+    "StartZonetile_07"	TFNM "Data\world\StartZone\Ska\Texture\StartZonetile_07.tex";
+  }
+  ALLFRAMESBBOX	-5.13184,-0.023649,-40.8688,5.13184,12.6361,40.8688;
+  COLISION
+  {
+    "Default"  {-5,0,-40.5,5,12,40.5;}
+  }
+}

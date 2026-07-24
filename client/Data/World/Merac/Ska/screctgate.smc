@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "scectgate";
+{
+  MESH       	TFNM "Data\World\Merac\Ska\_TAG_T_SCRE.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Merac\Ska\screctgate.bm";
+  TEXTURES   
+  {
+    "stone_1"	TFNM "Data\World\Merac\Ska\Texture\stone_1.tex";
+  }
+  MESH       	TFNM "Data\World\Merac\Ska\screctgate_1.bm";
+  TEXTURES   
+  {
+    "stone_2"	TFNM "Data\World\Merac\Ska\Texture\stone_2.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\Ska\screctgate.bs";
+  ANIMSET   	TFNM "Data\World\Merac\Ska\screctgate.ba";
+  ANIMEFFECT	TFNM "Data\World\Merac\Ska\screctgate.bae";
+  ALLFRAMESBBOX	-6,-0.245617,-6,6,14.0077,6;
+  COLISION
+  {
+    "Default"  {-6,0,-6,6,14.1,6;}
+  }
+}

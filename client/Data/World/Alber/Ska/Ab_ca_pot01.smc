@@ -1,0 +1,12 @@
+NAME "Ab_ca_pot01";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_ca_pot01.bm";
+  TEXTURES   
+  {
+    "Ab_ca_pot01"	TFNM "Data\World\Alber\Ska\Texture\Ab_ca_pot01.tex";
+  }
+  ALLFRAMESBBOX	-0.749985,-0.017885,-0.870489,0.749985,1.13861,0.870488;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_ft_phynix";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_ft_phynix.bm";
+  TEXTURES   
+  {
+    "ni_ft_phynix"	TFNM "Data\Item\Shield\Knight\Texture\ni_ft_phynix.tex";
+  }
+  ALLFRAMESBBOX	-0.388538,-0.003924,-0.221108,0.388329,0.762214,0.191536;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,46 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "volcan_LB_Summons";
+{
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_body.bm";
+  TEXTURES   
+  {
+    "volcan_LB02_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB02_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_boots.bm";
+  TEXTURES   
+  {
+    "volcan_LB02_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB02_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_hair.bm";
+  TEXTURES   
+  {
+    "volcan_LB02_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB02_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_hand.bm";
+  TEXTURES   
+  {
+    "volcan_LB02_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB02_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_head.bm";
+  TEXTURES   
+  {
+    "volcan_LB02_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB02_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_pants.bm";
+  TEXTURES   
+  {
+    "volcan_LB02_body"	TFNM "Data\Monster\alber\volcan_LeadingBand\volcan_LB02_body.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_LeadingBand\ma_staff_10.bm";
+  TEXTURES   
+  {
+    "ma_staff_011"	TFNM "Data\Monster\alber\volcan_LeadingBand\ma_staff_011.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_LB.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\volcan_LeadingBand\Nor_LB_Summons.ba";
+  ALLFRAMESBBOX	-0.35,0,-0.35,0.35,2.05,0.35;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.18,0.25,2.05,0.22;}
+  }
+}

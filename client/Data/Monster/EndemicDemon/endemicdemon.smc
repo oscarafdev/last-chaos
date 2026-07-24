@@ -1,0 +1,60 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\EndemicDemon\bocordemon_bu.bm";
+  TEXTURES   
+  {
+    "bocordemon"	TFNM "Data\Monster\EndemicDemon\bocordemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\bocordemon_bd.bm";
+  TEXTURES   
+  {
+    "bocordemon"	TFNM "Data\Monster\EndemicDemon\bocordemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\bocordemon_bu_1.bm";
+  TEXTURES   
+  {
+    "bocordemon"	TFNM "Data\Monster\EndemicDemon\bocordemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\bocordemon_hn.bm";
+  TEXTURES   
+  {
+    "bocordemon"	TFNM "Data\Monster\EndemicDemon\bocordemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\bocordemon_weapon.bm";
+  TEXTURES   
+  {
+    "bocordemon_weapon"	TFNM "Data\Monster\EndemicDemon\bocordemon_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\chair.bm";
+  TEXTURES   
+  {
+    "chair"	TFNM "Data\Monster\EndemicDemon\chair.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\endemicdemon_bd.bm";
+  TEXTURES   
+  {
+    "endemicdemon"	TFNM "Data\Monster\EndemicDemon\endemicdemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\endemicdemon_bu.bm";
+  TEXTURES   
+  {
+    "endemicdemon"	TFNM "Data\Monster\EndemicDemon\endemicdemon.tex";
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\_TAG_BOCORDEMON_STAFF.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\EndemicDemon\_TAG_EDEMICDEMON.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\EndemicDemon\endemicdemon.bs";
+  ANIMSET   	TFNM "Data\Monster\EndemicDemon\endemicdemon.ba";
+  ANIMEFFECT	TFNM "Data\Monster\EndemicDemon\endemicdemon.bae";
+  ALLFRAMESBBOX	-1.5,0,-3.55,1.5,5,4.95;
+  COLISION
+  {
+    "Default"  {-1.44041,0.000965595,-3.25,1.55959,5.00097,3.25;}
+  }
+}

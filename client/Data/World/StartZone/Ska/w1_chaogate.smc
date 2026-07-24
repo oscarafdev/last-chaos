@@ -1,0 +1,13 @@
+NAME "w1_chaogate";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_chaogate.bm";
+  TEXTURES   
+  {
+    "w1_chaogate"	TFNM "Data\World\StartZone\Ska\Texture\w1_chaogate.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	31.652,0.236101,76.2444,45.0168,38.8973,89.2148;
+  COLISION
+  {
+  }
+}

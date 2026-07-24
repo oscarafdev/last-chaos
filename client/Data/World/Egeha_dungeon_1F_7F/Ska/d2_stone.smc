@@ -1,0 +1,18 @@
+NAME "d2_stone";
+{
+  MESH       	TFNM "Data\World\Dungeon2\Ska\d2_stone.bm";
+  TEXTURES   
+  {
+    "d2_wi_body_N"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_wi_body_N.tex";
+    "d2_wi_leg_N"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_wi_leg_N.tex";
+    "d2_wi_sword_N"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_wi_sword_N.tex";
+    "d2_wi_sword"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_wi_sword.tex";
+    "d2_wi_body"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_wi_body.tex";
+    "d2_wi_leg"	TFNM "Data\World\Dungeon2\Ska\Texture\d2_wi_leg.tex";
+  }
+  ALLFRAMESBBOX	-1.48467,-3.61091,-1.49173,1.48466,3.61091,1.49172;
+  COLISION
+  {
+    "Default"  {-1.75,-3.5,-1.25,1.75,3.5,1.25;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "flag01_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\flag01_d3.bm";
+  TEXTURES   
+  {
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+    "deco_flag01"	TFNM "Data\World\Dungeon3\Ska\texture\deco_flag01.tex";
+    "flag01"	TFNM "Data\World\Dungeon3\Ska\texture\flag01.tex";
+  }
+  ALLFRAMESBBOX	-2.89783,0.086503,-0.283105,2.89782,21.6986,0.283109;
+  COLISION
+  {
+    "Default"  {-2.5,0,-0.25,2.5,21,0.25;}
+  }
+}

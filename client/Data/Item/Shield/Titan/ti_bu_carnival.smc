@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ti_bu_carnival";
+{
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_carnival.bm";
+  TEXTURES   
+  {
+    "ti_bu_carnival"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_carnival.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_carnival_1.bm";
+  TEXTURES   
+  {
+    "ti_bu_carnival_1"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_carnival_1.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Titan\ti_bu_carnival_2.bm";
+  TEXTURES   
+  {
+    "ti_bu_carnival_1"	TFNM "Data\Item\Shield\Titan\Texture\ti_bu_carnival_1.tex";
+  }
+  ALLFRAMESBBOX	-0.647008,1.25819,-0.233772,0.647007,2.1807,0.326342;
+  COLISION
+  {
+  }
+}

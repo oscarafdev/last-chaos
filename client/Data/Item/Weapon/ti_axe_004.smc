@@ -1,0 +1,17 @@
+OFFSET    	-0.45,-1.16,0.55,-180,-2.5,50;
+NAME "ti_axe_004";
+{
+  MESH       	TFNM "Data\Item\Weapon\ti_axe_004.bm";
+  TEXTURES   
+  {
+    "ti_axe_004"	TFNM "Data\Item\Weapon\Texture\ti_axe_004.tex";
+  }
+  MESH       	TFNM "Data\Item\Weapon\_TAG_AXE_004.bm";
+  TEXTURES   
+  {
+  }
+  ALLFRAMESBBOX	-0.38542,-0.0258261,-1.05358,0.411191,0.247398,0.938576;
+  COLISION
+  {
+  }
+}

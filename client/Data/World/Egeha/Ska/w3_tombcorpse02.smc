@@ -1,0 +1,14 @@
+NAME "w3_tombcorpse02";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_tombcorpse02.bm";
+  TEXTURES   
+  {
+    "w3_tomb"	TFNM "Data\World\Merac\ska\texture\w3_tomb.tex";
+    "Detail"	TFNM "Data\World\Egeha\Ska\Texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.499042,-0.101913,-2.62128,1.5959,4.56299,0.971711;
+  COLISION
+  {
+    "Default"  {-0.508943,0,-0.265197,0.491059,4.00001,0.734803;}
+  }
+}

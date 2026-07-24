@@ -1,0 +1,14 @@
+NAME "w2_entrance01";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\PK_entrance01.bm";
+  TEXTURES   
+  {
+    "w2_entrance01"	TFNM "Data\World\PK_tournament\Ska\Texture\PK_entrance01.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-1.88168,-0.024404,-0.109101,1.88168,2.38396,0.109101;
+  COLISION
+  {
+    "Default"  {-1.87157,-0.0376226,-0.150364,1.86983,1.39448,0.123459;}
+  }
+}

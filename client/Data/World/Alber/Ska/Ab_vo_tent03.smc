@@ -1,0 +1,15 @@
+NAME "Ab_vo_tent03";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_tent03.bm";
+  TEXTURES   
+  {
+    "Ab_vo_tent03_04"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_tent03_04.tex";
+    "Ab_vo_tent03_01"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_tent03_01.tex";
+    "Ab_vo_tent03_02"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_tent03_02.tex";
+    "Ab_vo_tent03_03"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_tent03_03.tex";
+  }
+  ALLFRAMESBBOX	-7.09246,-0.000342,-6.6264,6.53933,13.3284,7.1481;
+  COLISION
+  {
+  }
+}

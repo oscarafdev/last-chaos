@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "So_cos_dessert_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\So_cos_dessert_hn.bm";
+  TEXTURES   
+  {
+    "So_cos_dessert_hn"	TFNM "Data\Item\Shield\Sorcerer\Texture\So_cos_dessert_hn.tex";
+  }
+  ALLFRAMESBBOX	-0.561314,1.03744,-0.028505,0.561314,1.47592,0.118907;
+  COLISION
+  {
+  }
+}

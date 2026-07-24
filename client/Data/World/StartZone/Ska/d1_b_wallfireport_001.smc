@@ -1,0 +1,12 @@
+NAME "d1_b_wallfireport_001";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_b_wallfireport_001.bm";
+  TEXTURES   
+  {
+    "d1_b_wallfireport_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_b_wallfireport_001.tex";
+  }
+  ALLFRAMESBBOX	-0.111993,0.004158,-0.139554,0.111993,0.378318,0.139554;
+  COLISION
+  {
+  }
+}

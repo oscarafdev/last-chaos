@@ -1,0 +1,37 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "teeloy";
+{
+  MESH       	TFNM "Data\Monster\Teeloy\teeloy_bd.bm";
+  TEXTURES   
+  {
+    "teeloy"	TFNM "Data\Monster\Teeloy\teeloy.tex";
+  }
+  MESH       	TFNM "Data\Monster\Teeloy\teeloy_bu.bm";
+  TEXTURES   
+  {
+    "teeloy"	TFNM "Data\Monster\Teeloy\teeloy.tex";
+  }
+  MESH       	TFNM "Data\Monster\Teeloy\teeloy_tail.bm";
+  TEXTURES   
+  {
+    "teeloy"	TFNM "Data\Monster\Teeloy\teeloy.tex";
+  }
+  MESH       	TFNM "Data\Monster\Teeloy\teeloy_wing.bm";
+  TEXTURES   
+  {
+    "teeloy"	TFNM "Data\Monster\Teeloy\teeloy.tex";
+  }
+  MESH       	TFNM "Data\Monster\Teeloy\teeloy_hn.bm";
+  TEXTURES   
+  {
+    "teeloy"	TFNM "Data\Monster\Teeloy\teeloy.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Teeloy\teeloy.bs";
+  ANIMSET   	TFNM "Data\Monster\Teeloy\teeloy.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Teeloy\teeloy.bae";
+  ALLFRAMESBBOX	-2,0,-2,2,2,2;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,2,2;}
+  }
+}

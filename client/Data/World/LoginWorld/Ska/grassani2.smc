@@ -1,0 +1,14 @@
+NAME "grassani2";
+{
+  MESH       	TFNM "Data\world\StartZone\Ska\grassani2.bm";
+  TEXTURES   
+  {
+    "grass_03"	TFNM "Data\World\LoginWorld\Ska\Texture\grass_03.tex";
+  }
+  SKELETON  	TFNM "Data\world\StartZone\Ska\grassani2.bs";
+  ANIMSET   	TFNM "Data\world\StartZone\Ska\grassani2.ba";
+  ALLFRAMESBBOX	-0.942838,0,-0.942602,1.05716,1.5,1.0574;
+  COLISION
+  {
+  }
+}

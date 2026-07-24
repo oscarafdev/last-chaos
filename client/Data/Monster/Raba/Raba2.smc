@@ -1,0 +1,41 @@
+OFFSET    	0.1,0,-0.3,180,0,0;
+NAME "Raba";
+{
+  MESH       	TFNM "Data\monster\Raba\Raba01_2.bm";
+  TEXTURES   
+  {
+    "w2_m_goblin2"	TFNM "Data\Monster\Raba\w2_m_goblin2.tex";
+  }
+  MESH       	TFNM "Data\monster\Raba\Raba02_2.bm";
+  TEXTURES   
+  {
+    "w2_m_goblin2"	TFNM "Data\Monster\Raba\w2_m_goblin2.tex";
+  }
+  MESH       	TFNM "Data\monster\Raba\Raba04_2.bm";
+  TEXTURES   
+  {
+    "w2_m_goblin2"	TFNM "Data\Monster\Raba\w2_m_goblin2.tex";
+  }
+  MESH       	TFNM "Data\monster\Raba\Raba05_2.bm";
+  TEXTURES   
+  {
+    "w2_m_goblin2"	TFNM "Data\Monster\Raba\w2_m_goblin2.tex";
+  }
+  MESH       	TFNM "Data\monster\Raba\Raba03_2.bm";
+  TEXTURES   
+  {
+    "w2_m_goblin2"	TFNM "Data\Monster\Raba\w2_m_goblin2.tex";
+  }
+  MESH       	TFNM "Data\monster\Raba\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Raba\Raba2.bs";
+  ANIMSET   	TFNM "Data\monster\Raba\Raba2.ba";
+  ANIMEFFECT	TFNM "Data\monster\Raba\Raba2.bae";
+  ALLFRAMESBBOX	-2,0,-2.5,2,2.4,1.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.95,0.5,2,0.35;}
+  }
+}

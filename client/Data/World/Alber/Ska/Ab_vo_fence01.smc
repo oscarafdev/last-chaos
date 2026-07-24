@@ -1,0 +1,12 @@
+NAME "Ab_vo_fence01";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_fence01.bm";
+  TEXTURES   
+  {
+    "Ab_vo_magicgate02"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_magicgate02.tex";
+  }
+  ALLFRAMESBBOX	-1.76101,-0.000265,-0.309349,1.76101,3.52657,0.30935;
+  COLISION
+  {
+  }
+}

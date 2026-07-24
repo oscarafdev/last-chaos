@@ -1,0 +1,14 @@
+NAME "Egeha_Lwall_01";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_Lwall_01.bm";
+  TEXTURES   
+  {
+    "Egeha_Lwall_01"	TFNM "Data\World\egeha\ska\texture\Egeha_Lwall_01.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\egeha\ska\texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-2.55005,-0.253184,-4.74501,2.55005,16.9667,4.74501;
+  COLISION
+  {
+    "Default"  {-2.55005,-0.253183,-4.74501,2.55005,16.9667,4.74501;}
+  }
+}

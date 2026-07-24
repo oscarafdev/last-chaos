@@ -1,0 +1,17 @@
+NAME "chungcha02_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\chungcha02_si.bm";
+  TEXTURES   
+  {
+    "chung-cha_dragon_si"	TFNM "Data\World\Merac\ska\texture\chung-cha_dragon_si.tex";
+    "chung-cha_tm_si"	TFNM "Data\World\Merac\ska\texture\chung-cha_tm_si.tex";
+    "chung-cha_tmr_si"	TFNM "Data\World\Merac\ska\texture\chung-cha_tmr_si.tex";
+    "chung-cha_wheel side_si"	TFNM "Data\World\Merac\ska\texture\chung-cha_wheel side_si.tex";
+    "w3_chain"	TFNM "Data\World\Merac\ska\texture\w3_chain.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-18.5942,-4.2812,-17.3905,17.3144,18.0979,18.0921;
+  COLISION
+  {
+  }
+}

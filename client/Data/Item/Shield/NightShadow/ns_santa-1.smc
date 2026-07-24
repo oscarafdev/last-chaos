@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_santa-1";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_santa-1.bm";
+  TEXTURES   
+  {
+    "ns_santa_1"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_santa_1.tex";
+  }
+  ALLFRAMESBBOX	-0.088903,1.77778,-0.092844,0.087447,2.08242,0.213516;
+  COLISION
+  {
+  }
+}

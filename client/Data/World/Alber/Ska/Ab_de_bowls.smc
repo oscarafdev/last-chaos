@@ -1,0 +1,14 @@
+NAME "Ab_de_bowls";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_bowls.bm";
+  TEXTURES   
+  {
+    "Ab_de_bowls02"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_bowls02.tex";
+    "Ab_de_bowls03"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_bowls03.tex";
+    "Ab_de_bowls01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_bowls01.tex";
+  }
+  ALLFRAMESBBOX	-1.11778,-0.416046,-0.775239,1.11778,0.746774,0.775239;
+  COLISION
+  {
+  }
+}

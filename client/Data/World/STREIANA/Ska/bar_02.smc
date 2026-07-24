@@ -1,0 +1,13 @@
+NAME "bar_02";
+{
+  MESH       	TFNM "Data\World\STREIANA\Ska\bar_02.bm";
+  TEXTURES   
+  {
+    "hut_02"	TFNM "Data\World\STREIANA\Ska\Texture\hut_02.tex";
+    "STREIANA_Detail"	TFNM "Data\World\STREIANA\Ska\Texture\STREIANA_Detail.tex";
+  }
+  ALLFRAMESBBOX	-0.386506,0.091361,-0.430125,0.404013,11.3964,0.349404;
+  COLISION
+  {
+  }
+}

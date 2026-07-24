@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_cos_volcan_hm";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_cos_volcan_hm.bm";
+  TEXTURES   
+  {
+    "ro_cos_volcan_hm"	TFNM "Data\Item\Shield\Rogue\Texture\ro_cos_volcan_hm.tex";
+  }
+  ALLFRAMESBBOX	-0.109978,1.54024,-0.177248,0.109978,1.94775,0.153751;
+  COLISION
+  {
+  }
+}

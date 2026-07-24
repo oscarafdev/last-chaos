@@ -1,0 +1,15 @@
+NAME "w3_snakeangel";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_snakeangel.bm";
+  TEXTURES   
+  {
+    "w3_snakeangel"	TFNM "Data\World\Merac\ska\texture\w3_snakeangel.tex";
+    "w3_angelwing"	TFNM "Data\World\Merac\ska\texture\w3_angelwing.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+  }
+  ALLFRAMESBBOX	-28.2842,-0.044354,-17.4541,28.2842,33.897,17.4541;
+  COLISION
+  {
+    "Default"  {-0.803342,0.0309578,13.85,0.696658,15.031,15.35;}
+  }
+}

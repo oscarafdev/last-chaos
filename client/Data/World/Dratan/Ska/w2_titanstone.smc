@@ -1,0 +1,18 @@
+NAME "w2_titanstone";
+{
+  MESH       	TFNM "Data\World\Dratan\ska\w2_titanstone.bm";
+  TEXTURES   
+  {
+    "w2_wi_sword"	TFNM "Data\World\Dratan\ska\Texture\w2_wi_sword.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_wi_body"	TFNM "Data\World\Dratan\ska\Texture\w2_wi_body.tex";
+    "w2_castle11"	TFNM "Data\World\Dratan\ska\Texture\w2_castle11.tex";
+    "w2_castle13"	TFNM "Data\World\Dratan\ska\Texture\w2_castle13.tex";
+    "w2_castle19"	TFNM "Data\World\Dratan\ska\Texture\w2_castle19.tex";
+    "w2_castle20"	TFNM "Data\World\Dratan\ska\Texture\w2_castle20.tex";
+  }
+  ALLFRAMESBBOX	-7.1565,-0.01885,-8.24723,7.15656,30.1991,8.24723;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "volcan_kerspider";
+{
+  MESH       	TFNM "Data\Monster\alber\volcan_kerspider\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_kerspider\dryspider.bm";
+  TEXTURES   
+  {
+    "volcan_kerspider"	TFNM "Data\Monster\alber\volcan_kerspider\volcan_kerspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_kerspider\dryspider_ft_01.bm";
+  TEXTURES   
+  {
+    "volcan_kerspider"	TFNM "Data\Monster\alber\volcan_kerspider\volcan_kerspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_kerspider\dryspider_ft_02.bm";
+  TEXTURES   
+  {
+    "volcan_kerspider"	TFNM "Data\Monster\alber\volcan_kerspider\volcan_kerspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_kerspider\dryspider_ft_03.bm";
+  TEXTURES   
+  {
+    "volcan_kerspider"	TFNM "Data\Monster\alber\volcan_kerspider\volcan_kerspider.tex";
+  }
+  MESH       	TFNM "Data\Monster\alber\volcan_kerspider\dryspider_ft_04.bm";
+  TEXTURES   
+  {
+    "volcan_kerspider"	TFNM "Data\Monster\alber\volcan_kerspider\volcan_kerspider.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\alber\volcan_kerspider\dryspider.bs";
+  ANIMSET   	TFNM "Data\Monster\alber\volcan_kerspider\dryspider.ba";
+  ANIMEFFECT	TFNM "Data\Monster\alber\volcan_kerspider\Kerspider.bae";
+  ALLFRAMESBBOX	-1.75,0,-1.6,1.75,1.6,1.6;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,1.6,1.5;}
+  }
+}

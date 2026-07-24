@@ -1,0 +1,41 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "workerdec";
+{
+  MESH       	TFNM "Data\Monster\Dec\workerdec_1.bm";
+  TEXTURES   
+  {
+    "workerdec"	TFNM "Data\Monster\Dec\workerdec.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dec\workerdec_bd.bm";
+  TEXTURES   
+  {
+    "dec_body01"	TFNM "Data\Monster\Dec\dec_body01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dec\workerdec_bu.bm";
+  TEXTURES   
+  {
+    "dec_body01"	TFNM "Data\Monster\Dec\dec_body01.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dec\workerdec_bu_1.bm";
+  TEXTURES   
+  {
+    "workerdec"	TFNM "Data\Monster\Dec\workerdec.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dec\workerdec_head.bm";
+  TEXTURES   
+  {
+    "dec_head"	TFNM "Data\Monster\Dec\dec_head.tex";
+  }
+  MESH       	TFNM "Data\Monster\Dec\workerdec_hn.bm";
+  TEXTURES   
+  {
+    "dec_body01"	TFNM "Data\Monster\Dec\dec_body01.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Dec\workerdec.bs";
+  ANIMSET   	TFNM "Data\Monster\Dec\workerdec.ba";
+  ALLFRAMESBBOX	-1.79546,-0.31549,-3.53164,1.78724,4.15051,1.32778;
+  COLISION
+  {
+    "Default"  {-1.21856,-0.0147567,-1.44576,1.28143,3.18524,1.05423;}
+  }
+}

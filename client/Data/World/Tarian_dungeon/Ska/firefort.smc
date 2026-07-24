@@ -1,0 +1,23 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "firefort";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\_TAG_T_FIREFORT.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\firefort.bm";
+  TEXTURES   
+  {
+    "firefort"	TFNM "Data\World\tarian_dungeon\Ska\Texture\firefort.tex";
+    "chain"	TFNM "Data\World\tarian_dungeon\Ska\Texture\chain.tex";
+    "td_altar_03"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_altar_03.tex";
+  }
+  SKELETON  	TFNM "Data\World\tarian_dungeon\Ska\firefort.bs";
+  ANIMSET   	TFNM "Data\World\tarian_dungeon\Ska\firefort.ba";
+  ANIMEFFECT	TFNM "Data\World\tarian_dungeon\Ska\firefort.bae";
+  ALLFRAMESBBOX	-0.642007,0,-0.741327,0.642007,8.19952,0.741325;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.4,0.4,1.8,0.4;}
+  }
+}

@@ -1,0 +1,15 @@
+NAME "frontwall_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\frontwall_si.bm";
+  TEXTURES   
+  {
+    "wallbone_si"	TFNM "Data\World\Merac\ska\texture\wallbone_si.tex";
+    "castlewall_si"	TFNM "Data\World\Merac\ska\texture\castlewall_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "defaultwall_si"	TFNM "Data\World\Merac\ska\texture\defaultwall_si.tex";
+  }
+  ALLFRAMESBBOX	-39.2133,-0.091441,-25.1896,39.2461,21.5458,25.1896;
+  COLISION
+  {
+  }
+}

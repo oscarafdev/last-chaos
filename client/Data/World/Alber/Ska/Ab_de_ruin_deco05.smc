@@ -1,0 +1,13 @@
+NAME "Ab_de_ruin_deco05";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_ruin_deco05.bm";
+  TEXTURES   
+  {
+    "Ab_de_brokentemple_07"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_brokentemple_07.tex";
+    "Ab_de_TriumphalArch06"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_TriumphalArch06.tex";
+  }
+  ALLFRAMESBBOX	-3.20077,-0.00587,-1.11466,3.20077,4.5713,1.11466;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ab_vo_Qtree_poison";
+{
+  MESH       	TFNM "Data\Effect\Ska\Alber\poison_effect.bm";
+  TEXTURES   
+  {
+    "Ab_vo_Qtree_effect"	TFNM "Data\Effect\Ska\Alber\Ab_vo_Qtree_effect.tex";
+  }
+  ALLFRAMESBBOX	-0.98612,-0.013175,-1.27451,1.24142,13.6445,0.697761;
+  COLISION
+  {
+    "Default"  {-0.9,6.9,-0.9,0.9,8.2,0.9;}
+  }
+}

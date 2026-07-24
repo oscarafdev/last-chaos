@@ -1,0 +1,13 @@
+NAME "Ab_vo_volcano";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_vo_volcano.bm";
+  TEXTURES   
+  {
+    "Ab_vo_volcano"	TFNM "Data\Npc\Alber\Texture\Ab_vo_volcano.tex";
+  }
+  ALLFRAMESBBOX	-2.722,-0.156559,-2.69814,2.72117,2.21886,2.69831;
+  COLISION
+  {
+    "Default"  {-2.5,0,-2.5,2.5,2.3,2.5;}
+  }
+}

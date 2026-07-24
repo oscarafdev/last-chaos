@@ -1,0 +1,17 @@
+NAME "td_table";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_table.bm";
+  TEXTURES   
+  {
+    "table2"	TFNM "Data\World\tarian_dungeon\Ska\Texture\table2.tex";
+    "table"	TFNM "Data\World\tarian_dungeon\Ska\Texture\table.tex";
+    "book"	TFNM "Data\World\tarian_dungeon\Ska\Texture\book.tex";
+    "etc"	TFNM "Data\World\tarian_dungeon\Ska\Texture\etc.tex";
+    "paper"	TFNM "Data\World\tarian_dungeon\Ska\Texture\paper.tex";
+    "glass"	TFNM "Data\World\tarian_dungeon\Ska\Texture\glass.tex";
+  }
+  ALLFRAMESBBOX	-4.62705,-0.033647,-2.24277,4.62705,5.29808,2.24276;
+  COLISION
+  {
+  }
+}

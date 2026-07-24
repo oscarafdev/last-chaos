@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so";
+{
+  MESH       	TFNM "Data\Character\Sorcerer\so_bd_000.bm";
+  TEXTURES   
+  {
+    "so_bd_000"	TFNM "Data\Character\Sorcerer\so_bd_000.tex";
+  }
+  MESH       	TFNM "Data\Character\Sorcerer\so_bu_000.bm";
+  TEXTURES   
+  {
+    "so_bu_000"	TFNM "Data\Character\Sorcerer\so_bu_000.tex";
+  }
+  MESH       	TFNM "Data\Character\Sorcerer\so_face_000.bm";
+  TEXTURES   
+  {
+    "so_face_000"	TFNM "Data\Character\Sorcerer\so_face_000.tex";
+  }
+  MESH       	TFNM "Data\Character\Sorcerer\so_ft_000.bm";
+  TEXTURES   
+  {
+    "so_ft_000"	TFNM "Data\Character\Sorcerer\so_ft_000.tex";
+  }
+  MESH       	TFNM "Data\Character\Sorcerer\so_hair_000.bm";
+  TEXTURES   
+  {
+    "so_hair_000"	TFNM "Data\Character\Sorcerer\so_hair_000.tex";
+  }
+  MESH       	TFNM "Data\Character\Sorcerer\so_hn_000.bm";
+  TEXTURES   
+  {
+    "so_hn_000"	TFNM "Data\Character\Sorcerer\so_hn_000.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bd_004_1.bm";
+  TEXTURES   
+  {
+    "so_bd_004"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bd_004.tex";
+  }
+  MESH       	TFNM "Data\Character\Sorcerer\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Character\Sorcerer\so.bs";
+  ANIMSET   	TFNM "Data\Character\Sorcerer\so.ba";
+  ANIMEFFECT	TFNM "Data\Character\Sorcerer\so.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.3,0.5,2,0.3;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.4,0.5,2,0.4;}
+  }
+}

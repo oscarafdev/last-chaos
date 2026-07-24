@@ -1,0 +1,12 @@
+NAME "td_chair02";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_chair02.bm";
+  TEXTURES   
+  {
+    "td_chair02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_chair02.tex";
+  }
+  ALLFRAMESBBOX	-0.196911,-0.000443,-0.240378,0.196912,0.53688,0.240378;
+  COLISION
+  {
+  }
+}

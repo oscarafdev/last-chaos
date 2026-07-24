@@ -1,0 +1,13 @@
+NAME "w1_chaoentrance";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\w1_chaoentrance.bm";
+  TEXTURES   
+  {
+    "w1_chaoentrance"	TFNM "Data\World\StartZone\Ska\Texture\w1_chaoentrance.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-6.17505,0.173087,84.6058,14.0087,24.0238,91.1527;
+  COLISION
+  {
+  }
+}

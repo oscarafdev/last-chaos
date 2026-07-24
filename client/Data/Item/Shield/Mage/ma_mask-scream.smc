@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_mask-scream";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_mask-scream.bm";
+  TEXTURES   
+  {
+    "mask_scream"	TFNM "Data\Item\Shield\Mage\Texture\mask_scream.tex";
+  }
+  ALLFRAMESBBOX	-0.104169,1.5781,-0.17568,0.104169,1.91893,0.100654;
+  COLISION
+  {
+  }
+}

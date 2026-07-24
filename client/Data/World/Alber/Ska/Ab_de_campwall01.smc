@@ -1,0 +1,14 @@
+NAME "Ab_de_campwall01";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_campwall01.bm";
+  TEXTURES   
+  {
+    "Ab_de_camp_02"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_camp_02.tex";
+    "Ab_de_camp_04"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_camp_04.tex";
+    "Ab_de_camp_01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_camp_01.tex";
+  }
+  ALLFRAMESBBOX	-10.9124,-5e-006,-1.12649,10.9124,9.20313,1.71466;
+  COLISION
+  {
+  }
+}

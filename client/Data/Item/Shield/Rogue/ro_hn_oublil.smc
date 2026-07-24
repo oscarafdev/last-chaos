@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_hn_oubli";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_hn_oublil.bm";
+  TEXTURES   
+  {
+    "ro_hn_oubli"	TFNM "Data\Item\Shield\Rogue\Texture\ro_hn_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.590907,0.988321,-0.014421,0.590907,1.43677,0.159588;
+  COLISION
+  {
+  }
+}

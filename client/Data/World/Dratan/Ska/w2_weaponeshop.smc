@@ -1,0 +1,34 @@
+NAME "w2_weaponeshop";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_weaponeshop.bm";
+  TEXTURES   
+  {
+    "w2_carpet01"	TFNM "Data\World\Dratan\Ska\Texture\w2_carpet01.tex";
+    "w2_house005"	TFNM "Data\World\Dratan\Ska\Texture\w2_house005.tex";
+    "w2_house008"	TFNM "Data\World\Dratan\Ska\Texture\w2_house008.tex";
+    "w2_Ob03_bucket01"	TFNM "Data\World\Dratan\Ska\Texture\w2_Ob03_bucket01.tex";
+    "w2_shopbox01"	TFNM "Data\World\Dratan\Ska\Texture\w2_shopbox01.tex";
+    "w2_shoptable01"	TFNM "Data\World\Dratan\Ska\Texture\w2_shoptable01.tex";
+    "w2_sign001"	TFNM "Data\World\Dratan\Ska\Texture\w2_sign001.tex";
+    "w2_sign002"	TFNM "Data\World\Dratan\Ska\Texture\w2_sign002.tex";
+    "w2_wpshop_bucket01"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_bucket01.tex";
+    "w2_wpshop_fire01"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_fire01.tex";
+    "w2_wpshop_pole01"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_pole01.tex";
+    "w2_wpshop_shield"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_shield.tex";
+    "w2_wpshop_sign01"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_sign01.tex";
+    "w2_wpshop_sign02"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_sign02.tex";
+    "w2_wpshop_stone"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_stone.tex";
+    "w2_wpshop_sword"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_sword.tex";
+    "w2_wpshop_tree"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_tree.tex";
+    "w2_wpshop_treeT"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_treeT.tex";
+    "w2_wpshop_wall01"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_wall01.tex";
+    "w2_wpshop_wall03"	TFNM "Data\World\Dratan\Ska\Texture\w2_wpshop_wall03.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_house004"	TFNM "Data\World\Dratan\Ska\Texture\w2_house004.tex";
+    "w2_frontwall1"	TFNM "Data\World\Dratan\Ska\Texture\W2_frontwall1.tex";
+  }
+  ALLFRAMESBBOX	-12.6899,-0.090274,-11.0321,12.6901,20.8835,11.0322;
+  COLISION
+  {
+  }
+}

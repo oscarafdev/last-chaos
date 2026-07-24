@@ -1,0 +1,51 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "quanian_boss";
+{
+  MESH       	TFNM "Data\Monster\Quanian\quanian_boss.bm";
+  TEXTURES   
+  {
+    "quanian_boss"	TFNM "Data\Monster\Quanian\quanian_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_boss_1.bm";
+  TEXTURES   
+  {
+    "quanian_skull"	TFNM "Data\Monster\Quanian\quanian_skull.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_boss_lhn.bm";
+  TEXTURES   
+  {
+    "quanian_boss"	TFNM "Data\Monster\Quanian\quanian_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_boss_tail.bm";
+  TEXTURES   
+  {
+    "quanian_boss"	TFNM "Data\Monster\Quanian\quanian_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_boss_weapon.bm";
+  TEXTURES   
+  {
+    "quanian_boss_weapon"	TFNM "Data\Monster\Quanian\quanian_boss_weapon.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_boss_rhn.bm";
+  TEXTURES   
+  {
+    "quanian_boss"	TFNM "Data\Monster\Quanian\quanian_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\quanian_boss_ft.bm";
+  TEXTURES   
+  {
+    "quanian_boss"	TFNM "Data\Monster\Quanian\quanian_boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Quanian\_TAG_QBSWORD.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Quanian\quanian_boss.bs";
+  ANIMSET   	TFNM "Data\Monster\Quanian\quanian_boss.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Quanian\quanian_boss.bae";
+  ALLFRAMESBBOX	-4,0,-4,4,6,4;
+  COLISION
+  {
+    "Default"  {-4,0,-4,4,6,4;}
+  }
+}

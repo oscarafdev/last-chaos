@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bu_pirate";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bu_pirate.bm";
+  TEXTURES   
+  {
+    "ma_bu_pirate"	TFNM "Data\Item\Shield\Mage\Texture\ma_bu_pirate.tex";
+  }
+  ALLFRAMESBBOX	-0.282192,1.15131,-0.194357,0.282192,1.75311,0.073041;
+  COLISION
+  {
+  }
+}

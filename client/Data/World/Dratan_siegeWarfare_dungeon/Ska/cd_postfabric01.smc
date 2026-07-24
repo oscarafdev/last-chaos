@@ -1,0 +1,14 @@
+OFFSET    	-0.140282,2.91428,0.592918,0,0,0;
+NAME "cd_postfabric01";
+{
+  MESH       	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\cd_postfabric01.bm";
+  TEXTURES   
+  {
+    "cd_postfabric01"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\ska\texture\cd_Postfabric01.tex";
+    "Dra_sw_BmpMap_06"	TFNM "Data\World\Dratan_siegeWarfare_dungeon\Texture\Dra_sw_BmpMap_06.tex";
+  }
+  ALLFRAMESBBOX	-9.64605,-0.0665143,0.241231,9.36546,5.89509,0.94461;
+  COLISION
+  {
+  }
+}

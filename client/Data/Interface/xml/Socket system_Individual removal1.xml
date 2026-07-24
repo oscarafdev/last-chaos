@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="173" h="396" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="173" h="396" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="173" b="396" />
+    <UIImage id="move_area" x="0" y="0" w="173" h="36" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText x="54" y="13" w="68" h="16" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5897" str="보석 개별 제거" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="155" y="3" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <copyuv src="0" dst="3" />
+    </UIButton>
+    <UIIcon id="item_num1" x="70" y="106" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="item_num2" x="70" y="51" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="item_num3" x="119" y="78" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="item_num4" x="119" y="133" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="item_num5" x="70" y="161" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="item_num6" x="21" y="133" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="item_num7" x="21" y="78" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIIcon id="item_num0" x="70" y="234" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="2" texid="0" row="0" col="0" />
+    <UIButton id="btn_ok" x="0" y="275" w="80" h="21" hide="0" tex="CommonBtn.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="148" str="준비 완료" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="70" t="409" r="122" b="430" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="124" t="409" r="175" b="430" />
+        <uv type="3" l="176" t="409" r="228" b="430" />
+    </UIButton>
+    <UITextBox id="tb_guide" x="0" y="304" w="155" h="60" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="장비를 올려놓은 후 제거를 원하는 소켓의 보석을 선택하여 주세요.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIImage x="0" y="366" w="161" h="22" hide="0" tex="CommonBtn.tex" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" l="265" t="68" r="426" b="90" />
+    <UIText id="text_nas" x="11" y="370" w="130" h="16" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="0" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="img_block1" x="69" y="105" w="34" h="34" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="0" r="208" b="34" />
+    <UIImage id="img_block2" x="69" y="50" w="34" h="34" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="0" r="208" b="34" />
+    <UIImage id="img_block3" x="118" y="77" w="34" h="34" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="0" r="208" b="34" />
+    <UIImage id="img_block4" x="118" y="132" w="34" h="34" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="0" r="208" b="34" />
+    <UIImage id="img_block5" x="69" y="160" w="34" h="34" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="0" r="208" b="34" />
+    <UIImage id="img_block6" x="20" y="132" w="34" h="34" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="0" r="208" b="34" />
+    <UIImage id="img_block7" x="20" y="77" w="34" h="34" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="0" r="208" b="34" />
+    <UIImage id="img_select1" x="64" y="102" w="44" h="40" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="35" r="218" b="79" />
+    <UIImage id="img_select2" x="64" y="47" w="44" h="40" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="35" r="218" b="79" />
+    <UIImage id="img_select3" x="113" y="74" w="44" h="40" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="35" r="218" b="79" />
+    <UIImage id="img_select4" x="113" y="129" w="44" h="40" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="35" r="218" b="79" />
+    <UIImage id="img_select5" x="64" y="157" w="44" h="40" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="35" r="218" b="79" />
+    <UIImage id="img_select6" x="15" y="129" w="44" h="40" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="35" r="218" b="79" />
+    <UIImage id="img_select7" x="15" y="74" w="44" h="40" hide="0" tex="SocketSystemEx.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="174" t="35" r="218" b="79" />
+</Window>

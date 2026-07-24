@@ -1,0 +1,13 @@
+NAME "d1_archgate03";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_archgate03.bm";
+  TEXTURES   
+  {
+    "Gate_01"	TFNM "Data\world\Dungeon1\Ska\Texture\Gate_01.tex";
+    "Dengen1_Detail"	TFNM "Data\world\Dungeon1\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-3.69899,-0.000868,-0.745,3.76368,12.5051,0.745;
+  COLISION
+  {
+  }
+}

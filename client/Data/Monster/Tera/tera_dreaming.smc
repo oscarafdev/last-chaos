@@ -1,0 +1,37 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "tera_dreaming";
+{
+  MESH       	TFNM "Data\Monster\Tera\tera_dreaming_body.bm";
+  TEXTURES   
+  {
+    "tera_dreaming"	TFNM "Data\Monster\Tera\tera_dreaming.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_dreaming_foot.bm";
+  TEXTURES   
+  {
+    "tera_dreaming"	TFNM "Data\Monster\Tera\tera_dreaming.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_dreaming_hand.bm";
+  TEXTURES   
+  {
+    "tera_dreaming"	TFNM "Data\Monster\Tera\tera_dreaming.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_dreaming_head.bm";
+  TEXTURES   
+  {
+    "tera_dreaming"	TFNM "Data\Monster\Tera\tera_dreaming.tex";
+  }
+  MESH       	TFNM "Data\Monster\Tera\tera_dreaming_tail.bm";
+  TEXTURES   
+  {
+    "tera_dreaming"	TFNM "Data\Monster\Tera\tera_dreaming.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Tera\tera_dreaming.bs";
+  ANIMSET   	TFNM "Data\Monster\Tera\tera_dreaming.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Tera\tera_dreaming.bae";
+  ALLFRAMESBBOX	-0.65,0,-0.55,0.65,1.2,0.75;
+  COLISION
+  {
+    "Default"  {-0.65,0,-0.55,0.65,1.2,0.75;}
+  }
+}

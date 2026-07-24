@@ -1,0 +1,5 @@
+MESHLODLIST
+{
+  MAX_DISTANCE 15;
+  #INCLUDE "d:\ss_se\data\npc\smith_01\NPC_smith_3.am"
+}

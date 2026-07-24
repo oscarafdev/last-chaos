@@ -1,0 +1,5 @@
+MESHLODLIST
+{
+  MAX_DISTANCE 15;
+  #INCLUDE "ata\effect\ska\g_t_mark\Box01.am"
+}

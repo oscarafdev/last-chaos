@@ -1,0 +1,12 @@
+NAME "hw_chair_000";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_chair_000.bm";
+  TEXTURES   
+  {
+    "ma_hair_11_01"	TFNM "Data\Character\Mage\ma_hair_11_01.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

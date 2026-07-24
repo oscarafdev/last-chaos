@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_cos_xmas_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_cos_xmas_hn.bm";
+  TEXTURES   
+  {
+    "ni_cos_xmas_hn"	TFNM "Data\Item\Shield\Knight\Texture\ni_cos_xmas_hn.tex";
+  }
+  ALLFRAMESBBOX	-0.573874,1.02801,-0.030549,0.573874,1.28092,0.105629;
+  COLISION
+  {
+  }
+}

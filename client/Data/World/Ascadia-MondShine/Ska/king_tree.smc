@@ -1,0 +1,12 @@
+NAME "w2_altar";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\king_tree.bm";
+  TEXTURES   
+  {
+    "king_tree copy"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\king_tree copy.tex";
+  }
+  ALLFRAMESBBOX	-15.4154,-0.145527,-11.9069,15.4258,36.5898,7.1895;
+  COLISION
+  {
+  }
+}

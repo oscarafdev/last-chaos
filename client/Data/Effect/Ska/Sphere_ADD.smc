@@ -1,0 +1,12 @@
+NAME "Sphere_ADD";
+{
+  MESH       	TFNM "Data\Effect\SKA\Sphere_ADD.bm";
+  TEXTURES   
+  {
+    "Sphere_ADD"	TFNM "Data\Effect\TEXTURE\Sphere_ADD.tex";
+  }
+  ALLFRAMESBBOX	-1,-1,-1,1,1,1;
+  COLISION
+  {
+  }
+}

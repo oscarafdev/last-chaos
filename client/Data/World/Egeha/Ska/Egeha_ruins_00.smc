@@ -1,0 +1,19 @@
+NAME "w4_store_03";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_ruins_00.bm";
+  TEXTURES   
+  {
+    "Egeha_ruins_06"	TFNM "Data\World\egeha\ska\texture\Egeha_ruins_06.tex";
+    "Egeha_ruins_01"	TFNM "Data\World\egeha\ska\texture\Egeha_ruins_01.tex";
+    "Egeha_ruins_02"	TFNM "Data\World\egeha\ska\texture\Egeha_ruins_02.tex";
+    "Egeha_ruins_03"	TFNM "Data\World\egeha\ska\texture\Egeha_ruins_03.tex";
+    "Egeha_ruins_04"	TFNM "Data\World\egeha\ska\texture\Egeha_ruins_04.tex";
+    "Egeha_ruins_05"	TFNM "Data\World\egeha\ska\texture\Egeha_ruins_05.tex";
+    "Egeha_Detail_bil"	TFNM "Data\World\Egeha\Ska\Texture\Egeha_Detail_bil.tex";
+  }
+  ALLFRAMESBBOX	-28.1859,-0.332504,-24.6992,27.924,16.0869,28.9367;
+  COLISION
+  {
+    "Default"  {-28.1859,-0.332504,-24.6992,27.924,16.0869,28.9367;}
+  }
+}

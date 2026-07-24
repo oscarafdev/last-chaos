@@ -1,0 +1,14 @@
+NAME "st_wallfance01";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\st_wallfance01.bm";
+  TEXTURES   
+  {
+    "StartZonetile_castlewall01"	TFNM "Data\World\LoginWorld\Ska\Texture\StartZonetile_castlewall01.tex";
+    "StartZonetile_07"	TFNM "Data\World\LoginWorld\Ska\Texture\StartZonetile_07.tex";
+  }
+  ALLFRAMESBBOX	-1.21625,0,-0.235006,1.21625,1.31089,0.235006;
+  COLISION
+  {
+    "Default"  {-1.19969,0.00379401,-0.291245,1.20941,0.928669,0.237255;}
+  }
+}

@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ab_vo_tower03_dummy";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_vo_tower03_effectdumy.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\Alber\Ab_vo_tower03.bs";
+  ANIMSET   	TFNM "Data\Npc\Alber\Ab_vo_tower03.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Alber\Ab_vo_tower03_dummy.bae";
+  ALLFRAMESBBOX	-11.5,-11.5,-11.5,11.5,11.5,11.5;
+  COLISION
+  {
+    "Default"  {-13,-5,-13,13,21,13;}
+  }
+}

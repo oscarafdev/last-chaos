@@ -1,0 +1,12 @@
+NAME "st_plant01";
+{
+  MESH       	TFNM "Data\World\STAEIANA(canyon)\Ska\ST_plant01.bm";
+  TEXTURES   
+  {
+    "st_plant01"	TFNM "Data\World\STAEIANA(canyon)\Ska\Texture\ST_plant01.tex";
+  }
+  ALLFRAMESBBOX	-0.668294,-0.07228,-0.587533,0.441162,0.890068,0.616396;
+  COLISION
+  {
+  }
+}

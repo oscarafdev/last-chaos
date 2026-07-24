@@ -1,0 +1,15 @@
+NAME "Dr_newhunter_castledoor_08";
+{
+  MESH       	TFNM "Data\world\Dratan\Ska\Dr_newhunter_castledoor_08.bm";
+  TEXTURES   
+  {
+    "Dr_newhunter_castledoor_08"	TFNM "Data\World\Dratan\Ska\Texture\Dr_newhunter_castledoor_08.tex";
+  }
+  SKELETON  	TFNM "Data\world\Dratan\Ska\Dr_newhunter_castledoor_08.bs";
+  ANIMSET   	TFNM "Data\world\Dratan\Ska\Dr_newhunter_castledoor_08.ba";
+  ALLFRAMESBBOX	-0.454919,0.36538,-0.438375,0.455567,3.46089,0.469395;
+  COLISION
+  {
+    "Default"  {-0.450064,0.348988,-0.441976,0.431744,0.958383,0.479535;}
+  }
+}

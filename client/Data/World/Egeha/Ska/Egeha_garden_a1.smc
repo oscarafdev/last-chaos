@@ -1,0 +1,14 @@
+NAME "Egeha_garden_00";
+{
+  MESH       	TFNM "Data\World\egeha\ska\Egeha_garden_a1.bm";
+  TEXTURES   
+  {
+    "Egeha_garden_a1"	TFNM "Data\World\egeha\ska\texture\Egeha_garden_a1.tex";
+    "Detail"	TFNM "Data\World\Egeha\Ska\Texture\Detail.tex";
+  }
+  ALLFRAMESBBOX	-1.01317,-0.175135,-1.15733,1.01317,11.0676,1.15733;
+  COLISION
+  {
+    "Default"  {-1.01317,-0.175135,-1.15733,1.01317,11.0676,1.15733;}
+  }
+}

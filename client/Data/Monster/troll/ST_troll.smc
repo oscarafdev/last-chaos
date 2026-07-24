@@ -1,0 +1,22 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ST_troll";
+{
+  MESH       	TFNM "Data\Monster\troll\ST_troll.bm";
+  TEXTURES   
+  {
+    "ST_troll01"	TFNM "Data\Monster\troll\ST_troll01.tex";
+  }
+  MESH       	TFNM "Data\Monster\troll\ST_troll_1.bm";
+  TEXTURES   
+  {
+    "ST_troll02"	TFNM "Data\Monster\troll\ST_troll02.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\troll\ST_troll.bs";
+  ANIMSET   	TFNM "Data\Monster\troll\ST_troll.ba";
+  ANIMEFFECT	TFNM "Data\Monster\troll\ST_troll.bae";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,1.3,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.3,0.5;}
+  }
+}

@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "D_master";
+{
+  MESH       	TFNM "Data\Npc\npc_rooin\npc_rooin.bm";
+  TEXTURES   
+  {
+    "npc_rooin"	TFNM "Data\Npc\npc_rooin\npc_rooin.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\npc_rooin\npc_rooin.bs";
+  ANIMSET   	TFNM "Data\Npc\npc_rooin\npc_rooin.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

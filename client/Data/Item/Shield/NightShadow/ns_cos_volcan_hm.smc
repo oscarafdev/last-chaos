@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_cos_volcan_hm";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_cos_volcan_hm.bm";
+  TEXTURES   
+  {
+    "ns_cos_volcan_hm"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_cos_volcan_hm.tex";
+  }
+  ALLFRAMESBBOX	-0.122395,1.72973,-0.196848,0.122395,2.19279,0.190638;
+  COLISION
+  {
+  }
+}

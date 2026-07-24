@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_mask-ghost";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_mask-ghost.bm";
+  TEXTURES   
+  {
+    "mask_ghost"	TFNM "Data\Item\Shield\NightShadow\Texture\mask_ghost.tex";
+  }
+  ALLFRAMESBBOX	-0.124046,1.64132,-0.125639,0.124046,2.0291,0.234398;
+  COLISION
+  {
+  }
+}

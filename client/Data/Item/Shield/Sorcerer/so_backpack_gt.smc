@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_backpack_gt";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_backpack_gt.bm";
+  TEXTURES   
+  {
+    "elec_guitar03"	TFNM "Data\Item\Shield\Sorcerer\Texture\elec_guitar03.tex";
+  }
+  ALLFRAMESBBOX	-0.361706,0.712268,0.12557,0.381952,1.89433,0.196604;
+  COLISION
+  {
+  }
+}

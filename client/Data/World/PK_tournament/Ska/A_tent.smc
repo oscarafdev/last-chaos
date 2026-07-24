@@ -1,0 +1,13 @@
+NAME "A_tent";
+{
+  MESH       	TFNM "Data\World\PK_tournament\Ska\A_tent.bm";
+  TEXTURES   
+  {
+    "A_tent"	TFNM "Data\World\PK_tournament\Ska\Texture\A_tent.tex";
+    "pk_To_tile04_NRM_01"	TFNM "Data\World\PK_tournament\Texture\pk_To_tile04_NRM_01.tex";
+  }
+  ALLFRAMESBBOX	-2.66955,-8e-006,-2.32334,2.66955,4.44001,2.32334;
+  COLISION
+  {
+  }
+}

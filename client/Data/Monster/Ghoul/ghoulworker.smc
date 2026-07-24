@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ghoulworker";
+{
+  MESH       	TFNM "Data\monster\ghoul\_TAG_T_ghoulworker.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\monster\ghoul\ghoulworker.bm";
+  TEXTURES   
+  {
+    "ghoulworker"	TFNM "Data\monster\ghoul\ghoulworker.tex";
+  }
+  SKELETON  	TFNM "Data\monster\ghoul\ghoulworker.bs";
+  ANIMSET   	TFNM "Data\monster\ghoul\ghoulworker.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Ghoul\ghoulworker.bae";
+  ALLFRAMESBBOX	-4,0,-4,4,2,4;
+  COLISION
+  {
+    "Default"  {-0.75,0,-1,0.75,2,1;}
+  }
+}

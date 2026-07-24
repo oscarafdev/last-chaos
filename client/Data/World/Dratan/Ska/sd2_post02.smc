@@ -1,0 +1,16 @@
+NAME "sd2_post02";
+{
+  MESH       	TFNM "Data\World\Dratan\ska\sd2_post02.bm";
+  TEXTURES   
+  {
+    "sd2_minewood4"	TFNM "Data\World\Dratan\ska\texture\sd2_minewood4.tex";
+    "S_Dengen2_Detail"	TFNM "Data\World\Dratan\ska\texture\S_Dengen2_Detail.tex";
+    "sd2_minewood2"	TFNM "Data\World\Dratan\ska\texture\sd2_minewood2.tex";
+    "sd2_minewood3"	TFNM "Data\World\Dratan\ska\texture\sd2_minewood3.tex";
+  }
+  ALLFRAMESBBOX	-4.57642,-0.052215,-0.605654,4.57641,14.9889,0.605636;
+  COLISION
+  {
+    "Default"  {-4,0,-0.5,4,15,0.5;}
+  }
+}

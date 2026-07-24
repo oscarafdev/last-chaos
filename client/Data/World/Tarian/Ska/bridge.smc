@@ -1,0 +1,143 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "bridge";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge01.bm";
+  TEXTURES   
+  {
+    "ta_pillar"	TFNM "Data\World\Tarian\Ska\Texture\ta_pillar.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge03.bm";
+  TEXTURES   
+  {
+    "ta_brg05"	TFNM "Data\World\Tarian\Ska\Texture\ta_brg05.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge04.bm";
+  TEXTURES   
+  {
+    "ta_brg06"	TFNM "Data\World\Tarian\Ska\Texture\ta_brg06.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge05.bm";
+  TEXTURES   
+  {
+    "ta_brg03"	TFNM "Data\World\Tarian\Ska\Texture\ta_brg03.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge06.bm";
+  TEXTURES   
+  {
+    "ta_brg04"	TFNM "Data\World\Tarian\Ska\Texture\ta_brg04.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge07.bm";
+  TEXTURES   
+  {
+    "ta_brg01"	TFNM "Data\World\Tarian\Ska\Texture\ta_brg01.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge08.bm";
+  TEXTURES   
+  {
+    "ta_brg02"	TFNM "Data\World\Tarian\Ska\Texture\ta_brg02.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE02.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE03.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE04.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE05.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE06.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE07.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE08.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE09.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE10.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE11.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE12.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE13.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE14.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE15.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE16.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE17.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE18.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE19.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE20.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE21.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE22.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\bridge02.bm";
+  TEXTURES   
+  {
+    "ta_pillar"	TFNM "Data\World\Tarian\Ska\Texture\ta_pillar.tex";
+  }
+  MESH       	TFNM "Data\World\Tarian\Ska\_TAG_T_BRIDGE23.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\World\Tarian\Ska\bridge.bs";
+  ANIMSET   	TFNM "Data\World\Tarian\Ska\bridge.ba";
+  ALLFRAMESBBOX	-27.9722,-0.586788,-74.5734,27.9722,15.1994,74.5734;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,5,0.5;}
+  }
+}

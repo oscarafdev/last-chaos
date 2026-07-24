@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="331" h="382" hide="1" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_back" x="0" y="0" w="331" h="382" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="331" b="382" />
+    <UIImage id="move_area" x="0" y="0" w="331" h="36" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+    <UIText id="str_title" x="60" y="13" w="212" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4493" str="원정대" color="0xffffa0ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="308" y="4" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <uv type="3" l="155" t="74" r="169" b="88" />
+    </UIButton>
+    <UIButton id="btn_add" x="141" y="353" w="89" h="22" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4577" str="대원추가" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="113" t="0" r="182" b="21" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="186" t="0" r="255" b="21" />
+        <uv type="3" l="145" t="178" r="214" b="199" />
+    </UIButton>
+    <UIButton id="btn_cancel" x="236" y="353" w="89" h="22" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="139" str="취소" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="113" t="0" r="182" b="21" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="186" t="0" r="255" b="21" />
+        <uv type="3" l="145" t="178" r="214" b="199" />
+    </UIButton>
+    <UIList id="list_group1" x="14" y="61" w="150" h="128" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="1" item_count="8" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="149" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImageArray id="ia_pos" x="1" y="1" w="14" h="14" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="13" h="13" l="405" t="166" r="418" b="179" desc="파티장" />
+                <surface1 x="0" y="0" w="13" h="13" l="388" t="166" r="401" b="179" desc="원정대장" />
+            </UIImageArray>
+            <UIImageArray id="ia_job" x="15" y="3" w="131" h="8" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="131" h="8" l="335" t="166" r="346" b="174" desc="" />
+                <surface1 x="0" y="0" w="131" h="8" l="335" t="182" r="346" b="190" desc="" />
+                <surface2 x="0" y="0" w="131" h="8" l="335" t="198" r="346" b="206" desc="" />
+                <surface3 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+                <surface4 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface5 x="0" y="0" w="131" h="8" l="335" t="246" r="346" b="254" desc="" />
+                <surface6 x="0" y="0" w="131" h="8" l="335" t="262" r="346" b="270" desc="" />
+                <surface7 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface8 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+            </UIImageArray>
+            <UIText id="str_name" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_hpRect" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        </UIListItem>
+    </UIList>
+    <UIList id="list_group2" x="168" y="61" w="150" h="128" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="1" item_count="8" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="149" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImageArray id="ia_pos" x="1" y="1" w="14" h="14" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="1">
+                <surface0 x="0" y="0" w="13" h="13" l="405" t="166" r="418" b="179" desc="파티장" />
+                <surface1 x="0" y="0" w="13" h="13" l="388" t="166" r="401" b="179" desc="원정대장" />
+            </UIImageArray>
+            <UIImageArray id="ia_job" x="15" y="3" w="131" h="8" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="1">
+                <surface0 x="0" y="0" w="131" h="8" l="335" t="166" r="346" b="174" desc="" />
+                <surface1 x="0" y="0" w="131" h="8" l="335" t="182" r="346" b="190" desc="" />
+                <surface2 x="0" y="0" w="131" h="8" l="335" t="198" r="346" b="206" desc="" />
+                <surface3 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+                <surface4 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface5 x="0" y="0" w="131" h="8" l="335" t="246" r="346" b="254" desc="" />
+                <surface6 x="0" y="0" w="131" h="8" l="335" t="262" r="346" b="270" desc="" />
+                <surface7 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface8 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+            </UIImageArray>
+            <UIText id="str_name" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_hpRect" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        </UIListItem>
+    </UIList>
+    <UIList id="list_group3" x="14" y="214" w="150" h="128" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="1" item_count="8" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="149" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImageArray id="ia_pos" x="1" y="1" w="14" h="14" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="1">
+                <surface0 x="0" y="0" w="13" h="13" l="405" t="166" r="418" b="179" desc="파티장" />
+                <surface1 x="0" y="0" w="13" h="13" l="388" t="166" r="401" b="179" desc="원정대장" />
+            </UIImageArray>
+            <UIImageArray id="ia_job" x="15" y="3" w="131" h="8" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="2">
+                <surface0 x="0" y="0" w="131" h="8" l="335" t="166" r="346" b="174" desc="" />
+                <surface1 x="0" y="0" w="131" h="8" l="335" t="182" r="346" b="190" desc="" />
+                <surface2 x="0" y="0" w="131" h="8" l="335" t="198" r="346" b="206" desc="" />
+                <surface3 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+                <surface4 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface5 x="0" y="0" w="131" h="8" l="335" t="246" r="346" b="254" desc="" />
+                <surface6 x="0" y="0" w="131" h="8" l="335" t="262" r="346" b="270" desc="" />
+                <surface7 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface8 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+            </UIImageArray>
+            <UIText id="str_name" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_hpRect" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        </UIListItem>
+    </UIList>
+    <UIList id="list_group4" x="168" y="214" w="150" h="128" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" itemx="0" itemy="0" itemshow_num="8" itemgap="1" item_count="8" pre_create="1">
+        <select x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        <UIListItem id="list_item_001" x="0" y="0" w="149" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+            <UIImageArray id="ia_pos" x="1" y="1" w="14" h="14" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+                <surface0 x="0" y="0" w="13" h="13" l="405" t="166" r="418" b="179" desc="파티장" />
+                <surface1 x="0" y="0" w="13" h="13" l="388" t="166" r="401" b="179" desc="원정대장" />
+            </UIImageArray>
+            <UIImageArray id="ia_job" x="15" y="3" w="131" h="8" hide="0" tex="Expedition.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="5">
+                <surface0 x="0" y="0" w="131" h="8" l="335" t="166" r="346" b="174" desc="" />
+                <surface1 x="0" y="0" w="131" h="8" l="335" t="182" r="346" b="190" desc="" />
+                <surface2 x="0" y="0" w="131" h="8" l="335" t="198" r="346" b="206" desc="" />
+                <surface3 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+                <surface4 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface5 x="0" y="0" w="131" h="8" l="335" t="246" r="346" b="254" desc="" />
+                <surface6 x="0" y="0" w="131" h="8" l="335" t="262" r="346" b="270" desc="" />
+                <surface7 x="0" y="0" w="131" h="8" l="335" t="230" r="346" b="238" desc="" />
+                <surface8 x="0" y="0" w="131" h="8" l="335" t="214" r="346" b="222" desc="" />
+            </UIImageArray>
+            <UIText id="str_name" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIImage id="img_hpRect" x="16" y="1" w="131" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+        </UIListItem>
+    </UIList>
+    <UIText id="str_group1" x="16" y="42" w="146" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="그룹1" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_group2" x="170" y="42" w="146" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="그룹2" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_group3" x="16" y="194" w="146" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="그룹3" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_group4" x="170" y="194" w="146" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="그룹4" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+</Window>

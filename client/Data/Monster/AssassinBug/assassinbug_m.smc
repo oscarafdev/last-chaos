@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_m_head.bm";
+  TEXTURES   
+  {
+    "assassinbug_m"	TFNM "Data\Monster\AssassinBug\assassinbug_m.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_m_bd.bm";
+  TEXTURES   
+  {
+    "assassinbug_m"	TFNM "Data\Monster\AssassinBug\assassinbug_m.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_m_ft.bm";
+  TEXTURES   
+  {
+    "assassinbug_m"	TFNM "Data\Monster\AssassinBug\assassinbug_m.tex";
+  }
+  MESH       	TFNM "Data\Monster\AssassinBug\assassinbug_m_tail.bm";
+  TEXTURES   
+  {
+    "assassinbug_m"	TFNM "Data\Monster\AssassinBug\assassinbug_m.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\AssassinBug\assassinbug_m.bs";
+  ANIMSET   	TFNM "Data\Monster\AssassinBug\assassinbug.ba";
+  ANIMEFFECT	TFNM "Data\Monster\AssassinBug\assassinbug_m.bae";
+  ALLFRAMESBBOX	-1,0,-0.75,1,3.5,0.75;
+  COLISION
+  {
+    "Default"  {-1.04041,0.000965595,-0.775704,1.1596,3.501,0.624316;}
+  }
+}

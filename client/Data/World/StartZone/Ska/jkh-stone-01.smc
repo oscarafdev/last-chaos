@@ -1,0 +1,13 @@
+NAME "jkh-stone-01";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\Stone_01.bm";
+  TEXTURES   
+  {
+    "jkh-stone-01"	TFNM "Data\World\StartZone\Ska\Texture\jkh-stone-01.tex";
+  }
+  ALLFRAMESBBOX	-7.7888,-0.026471,-14.4374,8.07872,8.52617,14.4374;
+  COLISION
+  {
+    "Default"  {-2.14591,-0.0465058,-1.13464,2.2764,1.87517,1.08729;}
+  }
+}

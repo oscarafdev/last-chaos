@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ma_cos_dessert_hn";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\Ma_cos_dessert_hn.bm";
+  TEXTURES   
+  {
+    "Ma_cos_dessert_hn_01"	TFNM "Data\Item\Shield\Mage\Texture\Ma_cos_dessert_hn_01.tex";
+    "Ma_cos_dessert_hn_02"	TFNM "Data\Item\Shield\Mage\Texture\Ma_cos_dessert_hn_02.tex";
+  }
+  ALLFRAMESBBOX	-0.690611,1.1048,-0.063853,0.690611,1.51929,0.090903;
+  COLISION
+  {
+  }
+}

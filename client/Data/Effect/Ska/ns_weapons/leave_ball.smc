@@ -1,0 +1,25 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "leave_ball";
+{
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\leave_ball.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_leave.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\leave_ball_1.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_leave.tex";
+  }
+  MESH       	TFNM "Data\Effect\Ska\ns_weapons\leave_ball_2.bm";
+  TEXTURES   
+  {
+    "ns_leave"	TFNM "Data\Effect\Ska\ns_leave.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\ns_weapons\leave_ball.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\ns_weapons\leave_ball.ba";
+  ALLFRAMESBBOX	-0.134726,-0.11252,-0.134726,0.134726,0.11252,0.134726;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "SwordAndShield";
+{
+  MESH       	TFNM "Data\monster\Skeleton\SwordAndShield01.bm";
+  TEXTURES   
+  {
+    "m_sks_001"	TFNM "Data\monster\Skeleton\m_sks_001.tex";
+    "m_sks_001_01"	TFNM "Data\monster\Skeleton\m_sks_001_01.tex";
+  }
+  MESH       	TFNM "Data\monster\Skeleton\SwordAndShield02.bm";
+  TEXTURES   
+  {
+    "m_sks_02"	TFNM "Data\monster\Skeleton\m_sks_02.tex";
+  }
+  MESH       	TFNM "Data\monster\Skeleton\SwordAndShield03.bm";
+  TEXTURES   
+  {
+    "m_sks_03"	TFNM "Data\monster\Skeleton\m_sks_03.tex";
+  }
+  MESH       	TFNM "Data\monster\Skeleton\_TAG_T_CENTER_sks.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\Skeleton\SwordAndShield.bs";
+  ANIMSET   	TFNM "Data\monster\Skeleton\SwordAndShield.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Skeleton\SwordAndShield.bae";
+  ALLFRAMESBBOX	-0.75,0,-0.7,0.75,1.8,2.3;
+  COLISION
+  {
+    "Default"  {-0.4,0,-0.5,0.4,1.5,0.5;}
+  }
+}

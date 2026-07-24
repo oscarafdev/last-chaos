@@ -1,0 +1,21 @@
+NAME "Ab_vo_temple";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_vo_temple.bm";
+  TEXTURES   
+  {
+    "Ab_vo_temple01"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple01.tex";
+    "Ab_vo_temple03"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple03.tex";
+    "Ab_vo_temple04"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple04.tex";
+    "Ab_vo_temple05"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple05.tex";
+    "Ab_vo_temple06"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple06.tex";
+    "Ab_vo_temple07"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple07.tex";
+    "Ab_vo_temple08"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple08.tex";
+    "Ab_vo_temple_statue"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_temple_statue.tex";
+    "Ab_vo_templegate02"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_templegate02.tex";
+    "Ab_vo_templegate03"	TFNM "Data\World\Alber\Ska\Texture\Ab_vo_templegate03.tex";
+  }
+  ALLFRAMESBBOX	-30.9305,-1.54136,-16.8293,30.9305,40.4176,52.7941;
+  COLISION
+  {
+  }
+}

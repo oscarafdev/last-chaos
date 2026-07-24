@@ -1,0 +1,18 @@
+NAME "knightstone_w1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\knightstone_w1.bm";
+  TEXTURES   
+  {
+    "stone_juno"	TFNM "Data\World\StartZone\Ska\Texture\stone_juno.tex";
+    "fountain01_juno"	TFNM "Data\World\StartZone\Ska\Texture\fountain01_juno.tex";
+    "Knightstone_juno011"	TFNM "Data\World\StartZone\Ska\Texture\Knightstone_juno011.tex";
+    "Knightstone_juno022"	TFNM "Data\World\StartZone\Ska\Texture\Knightstone_juno022.tex";
+    "w1_churchpoll"	TFNM "Data\World\StartZone\Ska\Texture\w1_churchpoll.tex";
+    "Dengen1_Detail"	TFNM "Data\world\StartZone\Ska\Texture\Dengen1_Detail.tex";
+  }
+  ALLFRAMESBBOX	-3.25919,-0.015542,-6.05556,3.25919,18.4968,6.04996;
+  COLISION
+  {
+    "Default"  {-3,0,-6,3,18,6;}
+  }
+}

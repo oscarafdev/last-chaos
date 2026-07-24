@@ -1,0 +1,17 @@
+OFFSET    	-0.53,1.17,0.2,-140,0,130;
+NAME "so_scythe_oubli";
+{
+  MESH       	TFNM "Data\Item\Weapon\_TAG_SCYTHE_OUBLI.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Item\Weapon\so_scythe_oubli.bm";
+  TEXTURES   
+  {
+    "so_scythe_oubli"	TFNM "Data\Item\Weapon\Texture\so_scythe_oubli.tex";
+  }
+  ALLFRAMESBBOX	-0.999319,0.0182357,-1.39237,0.613991,0.143883,0.472639;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "scamp";
+{
+  MESH       	TFNM "Data\monster\scamp\_TAG_T_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\monster\scamp\scamp.bm";
+  TEXTURES   
+  {
+    "scamp"	TFNM "Data\monster\scamp\scamp.tex";
+  }
+  MESH       	TFNM "Data\monster\scamp\scamp_1.bm";
+  TEXTURES   
+  {
+    "scamp_add"	TFNM "Data\monster\scamp\scamp_add.tex";
+  }
+  SKELETON  	TFNM "Data\monster\scamp\scamp.bs";
+  ANIMSET   	TFNM "Data\monster\scamp\scamp.ba";
+  ANIMEFFECT	TFNM "Data\Monster\scamp\scamp.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,1.5,1;
+  COLISION
+  {
+    "Default"  {-0.44365,0,-0.459638,0.45635,1.33,0.440362;}
+  }
+}

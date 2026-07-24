@@ -1,0 +1,13 @@
+NAME "streetlight";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\streetlight.bm";
+  TEXTURES   
+  {
+    "streetlight"	TFNM "Data\World\LoginWorld\Ska\Texture\streetlight.tex";
+  }
+  ALLFRAMESBBOX	-0.161861,-0.003221,-0.16186,0.16186,2.51772,0.16186;
+  COLISION
+  {
+    "Default"  {-0.171745,-0.0144585,-0.165404,0.174292,0.499911,0.160242;}
+  }
+}

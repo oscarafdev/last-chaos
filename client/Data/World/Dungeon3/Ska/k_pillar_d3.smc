@@ -1,0 +1,14 @@
+NAME "k_pillar_d3";
+{
+  MESH       	TFNM "Data\world\Dungeon3\Ska\k_pillar_d3.bm";
+  TEXTURES   
+  {
+    "pillar_a_d3"	TFNM "Data\world\Dungeon3\Ska\texture\pillar_a_d3.tex";
+    "Detail_D3"	TFNM "Data\world\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-1.68652,-0.033227,-1.64189,1.58987,20.0793,1.38288;
+  COLISION
+  {
+    "Default"  {-2,0,-2,2,5,2;}
+  }
+}

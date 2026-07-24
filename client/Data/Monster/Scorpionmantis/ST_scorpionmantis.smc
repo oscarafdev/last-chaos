@@ -1,0 +1,62 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ST_scorpionmantis";
+{
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_head.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_head2.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_bu.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_Scorpion_mantis_bd.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_hn.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_leg1.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_leg2.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_leg3.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_tail.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  MESH       	TFNM "Data\Monster\ScorpionMantis\ST_scorpion_mantis_s.bm";
+  TEXTURES   
+  {
+    "ST_scorpionmantis"	TFNM "Data\Monster\ScorpionMantis\ST_scorpionmantis.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\ScorpionMantis\ST_Scorpion_mantis.bs";
+  ANIMSET   	TFNM "Data\Monster\ScorpionMantis\ST_Scorpion_mantis.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Scorpionmantis\ST_scorpionmantis.bae";
+  ALLFRAMESBBOX	-2,0,-2,2,3,2;
+  COLISION
+  {
+    "Default"  {-1.5,0,-1.5,1.5,2.5,1.5;}
+  }
+}

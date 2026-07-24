@@ -1,0 +1,12 @@
+NAME "Ab_de_campladder";
+{
+  MESH       	TFNM "Data\World\Alber\Ska\Ab_de_campladder.bm";
+  TEXTURES   
+  {
+    "Ab_de_camp_01"	TFNM "Data\World\Alber\Ska\Texture\Ab_de_camp_01.tex";
+  }
+  ALLFRAMESBBOX	-0.745053,-3e-006,-0.022783,0.745053,7.35643,0.060543;
+  COLISION
+  {
+  }
+}

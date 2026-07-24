@@ -1,0 +1,26 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "broobutcher";
+{
+  MESH       	TFNM "Data\monster\broo\broobutcher.bm";
+  TEXTURES   
+  {
+    "broobutcher"	TFNM "Data\monster\broo\broobutcher.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\broobutcher_1.bm";
+  TEXTURES   
+  {
+    "broobutcher"	TFNM "Data\monster\broo\broobutcher.tex";
+  }
+  MESH       	TFNM "Data\monster\broo\_TAG_butcher_CENTER.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\monster\broo\broobutcher.bs";
+  ANIMSET   	TFNM "Data\monster\broo\broobutcher.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Broo\broobutcher.bae";
+  ALLFRAMESBBOX	-4,0,-4,4,3.1,4;
+  COLISION
+  {
+    "Default"  {-0.9,0,-1.1,0.9,3,0.7;}
+  }
+}

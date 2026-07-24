@@ -1,0 +1,54 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "padocs";
+{
+  MESH       	TFNM "Data\Monster\Padocs\_TAG_T_PADOCS.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Padocs\_TAG_T_PADOCSLH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Padocs\_TAG_T_PADOCSRH.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Monster\Padocs\padocs_bu.bm";
+  TEXTURES   
+  {
+    "padocs_1"	TFNM "Data\Monster\Padocs\Texture\padocs_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Padocs\padocs_bd.bm";
+  TEXTURES   
+  {
+    "padocs_2"	TFNM "Data\Monster\Padocs\Texture\padocs_2.tex";
+  }
+  MESH       	TFNM "Data\Monster\Padocs\padocs_bs.bm";
+  TEXTURES   
+  {
+    "padocs_1"	TFNM "Data\Monster\Padocs\Texture\padocs_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Padocs\padocs_bu_1.bm";
+  TEXTURES   
+  {
+    "padocs_2"	TFNM "Data\Monster\Padocs\Texture\padocs_2.tex";
+  }
+  MESH       	TFNM "Data\Monster\Padocs\padocs_head.bm";
+  TEXTURES   
+  {
+    "padocs_1"	TFNM "Data\Monster\Padocs\Texture\padocs_1.tex";
+  }
+  MESH       	TFNM "Data\Monster\Padocs\padocs_hn.bm";
+  TEXTURES   
+  {
+    "padocs_2"	TFNM "Data\Monster\Padocs\Texture\padocs_2.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Padocs\padocs.bs";
+  ANIMSET   	TFNM "Data\Monster\Padocs\padocs.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Padocs\padocs.bae";
+  ALLFRAMESBBOX	-1.075,0,-1.075,1.075,3.5,1.075;
+  COLISION
+  {
+    "Default"  {-1.075,0,-1.075,1.075,3.5,1.075;}
+  }
+}

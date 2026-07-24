@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="Loading" x="0" y="0" w="1024" h="768" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0">
+    <UIImage id="img_zone" x="0" y="-9" w="1024" h="512" hide="0" tex="F_01.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" l="0" t="0" r="1024" b="512" />
+    <UIImage id="img_loding_top" x="0" y="0" w="1024" h="119" hide="0" tex="Loading.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="0" r="1024" b="119">
+        <UIImage id="img_lc_logo" x="-8" y="25" w="236" h="109" hide="0" tex="Loading.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" l="1" t="119" r="237" b="228" />
+    </UIImage>
+    <UIImage id="img_loading_bot" x="0" y="0" w="1024" h="137" hide="0" tex="Loading.tex" align_h="0" align_v="2" tooltip="-1" tooltip_width="0" l="0" t="375" r="1024" b="512" />
+    <UIImage id="img_loadingbar" x="0" y="-32" w="990" h="54" hide="0" tex="Loading.tex" align_h="1" align_v="2" tooltip="-1" tooltip_width="0" l="17" t="317" r="1007" b="371" />
+    <UIImage id="img_zone_name" x="0" y="55" w="512" h="64" hide="0" tex="F_01_NAME.tex" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" l="0" t="0" r="512" b="64" />
+    <UITextBox id="tb_tip" x="0" y="182" w="710" h="50" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="2" h_align="1" str_idx="-1" split_mode="0" text_col="0xffffffff" str="">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+</Window>

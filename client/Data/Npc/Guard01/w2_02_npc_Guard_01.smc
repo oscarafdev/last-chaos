@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "w2_02_npc_Guard_01";
+{
+  MESH       	TFNM "Data\npc\Guard01\w2_02_npc_Guard_01.bm";
+  TEXTURES   
+  {
+    "w2_02_npc_Guard"	TFNM "Data\npc\Guard01\w2_02_npc_Guard.tex";
+  }
+  MESH       	TFNM "Data\npc\Guard01\w2_02_npc_Guard_01_2.bm";
+  TEXTURES   
+  {
+    "w2_02_npc_Guard"	TFNM "Data\npc\Guard01\w2_02_npc_Guard.tex";
+  }
+  SKELETON  	TFNM "Data\npc\Guard01\w2_npc_guard01.bs";
+  ANIMSET   	TFNM "Data\npc\Guard01\w2_npc_guard01.ba";
+  ALLFRAMESBBOX	-1,0,-0.8,1,2.2,1.2;
+  COLISION
+  {
+    "Default"  {-0.45,0,-0.45,0.45,2.2,0.45;}
+  }
+}

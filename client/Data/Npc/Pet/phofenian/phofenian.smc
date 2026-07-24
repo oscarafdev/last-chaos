@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "phofenian";
+{
+  MESH       	TFNM "Data\Npc\pet\phofenian\pho_bd.bm";
+  TEXTURES   
+  {
+    "Po"	TFNM "Data\Npc\pet\phofenian\Po.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\pet\phofenian\phofenian.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\phofenian\phofenian.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\phofenian\phofenian.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,2.8,4;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,2.8,4;}
+  }
+  RIDING
+  {
+    "Bip01"  	0.43,0,-1.4,90,0,90;
+  }
+}

@@ -1,0 +1,13 @@
+NAME "gate02_d3";
+{
+  MESH       	TFNM "Data\World\Dungeon3\Ska\gate02_d3.bm";
+  TEXTURES   
+  {
+    "gate02_d3"	TFNM "Data\World\Dungeon3\Ska\texture\gate02_d3.tex";
+    "Detail_D3"	TFNM "Data\World\Dungeon3\Ska\texture\Detail_D3.tex";
+  }
+  ALLFRAMESBBOX	-12.2434,-0.022776,-3.04055,12.2434,19.9801,3.04052;
+  COLISION
+  {
+  }
+}

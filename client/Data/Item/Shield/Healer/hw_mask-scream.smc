@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_mask-scream";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_mask-scream.bm";
+  TEXTURES   
+  {
+    "mask_scream"	TFNM "Data\Item\Shield\Healer\Texture\mask_scream.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_mask-scream_1.bm";
+  TEXTURES   
+  {
+    "hw_hair_000"	TFNM "Data\Item\Shield\Healer\Texture\hw_hair_000.tex";
+  }
+  ALLFRAMESBBOX	-0.115221,1.46115,-0.129091,0.112416,1.87885,0.159223;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,15 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "pupu";
+{
+  MESH       	TFNM "Data\Effect\Ska\pupu.bm";
+  TEXTURES   
+  {
+    "pupu"	TFNM "Data\Effect\Ska\pupu.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\pupu.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\pupu.ba";
+  ALLFRAMESBBOX	-0.660612,-2.23979,-0.967346,0.658879,-0.0065829,0.967597;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,29 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "panda01";
+{
+  MESH       	TFNM "Data\Npc\pet\pander01_body.bm";
+  TEXTURES   
+  {
+    "panda01"	TFNM "Data\Npc\pet\textures\panda01.tex";
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_P1_1.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_P1_2.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\pet\_TAG_T_P1_3.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Npc\pet\panda01.bs";
+  ANIMSET   	TFNM "Data\Npc\pet\panda01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\pet\panda01.bae";
+  ALLFRAMESBBOX	-0.624654,-0.0864745,-0.697239,0.681227,1.17964,0.75249;
+  COLISION
+  {
+    "Default"  {-0.25,0,-0.6,0.25,0.6,0.6;}
+  }
+}

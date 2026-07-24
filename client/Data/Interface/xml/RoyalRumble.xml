@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="10" y="200" w="112" h="49" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="113" h="48" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="8" t="195" r="121" b="243" />
+    <UIImageFont id="imgfont" x="28" y="20" w="45" h="21" hide="0" tex="NamePopup.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" fsizex="22" fsizey="21" fgap="0" ogap="-3" src="0123456789" str="3" h_align="1">
+        <srcuv l="2" t="47" r="222" b="68" />
+    </UIImageFont>
+</Window>

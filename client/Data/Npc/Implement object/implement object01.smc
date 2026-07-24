@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "implement object01";
+{
+  MESH       	TFNM "Data\Npc\Implement object\_TAG_T_IO01.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\Implement object\implement object01.bm";
+  TEXTURES   
+  {
+    "implement object01"	TFNM "Data\Npc\Implement object\implement object01.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Implement object\implement object01.bs";
+  ANIMSET   	TFNM "Data\Npc\Implement object\implement object01.ba";
+  ANIMEFFECT	TFNM "Data\Npc\Implement object\implement object01.bae";
+  ALLFRAMESBBOX	-0.246907,-0.246908,-3.4e-005,0.246907,0.246908,0;
+  COLISION
+  {
+    "Default"  {-0.255298,-0.248095,-0.241011,0.244703,0.251905,0.258989;}
+  }
+}

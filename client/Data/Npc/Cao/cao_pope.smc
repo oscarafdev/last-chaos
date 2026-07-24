@@ -1,0 +1,31 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "cao_dealer";
+{
+  MESH       	TFNM "Data\Npc\Cao\cao_pope_head.bm";
+  TEXTURES   
+  {
+    "cao_pope"	TFNM "Data\Npc\Cao\Texture\cao_pope.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_pope_bu.bm";
+  TEXTURES   
+  {
+    "cao_pope"	TFNM "Data\Npc\Cao\Texture\cao_pope.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_pope_hn.bm";
+  TEXTURES   
+  {
+    "cao_pope"	TFNM "Data\Npc\Cao\Texture\cao_pope.tex";
+  }
+  MESH       	TFNM "Data\Npc\Cao\cao_pope_bd.bm";
+  TEXTURES   
+  {
+    "cao_pope"	TFNM "Data\Npc\Cao\Texture\cao_pope.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\Cao\cao_pope.bs";
+  ANIMSET   	TFNM "Data\Npc\Cao\cao_pope.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

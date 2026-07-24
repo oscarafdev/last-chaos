@@ -1,0 +1,33 @@
+NAME "d1_backhero_002";
+{
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_backhero3.bm";
+  TEXTURES   
+  {
+    "d1_underbook_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_underbook_001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_backhero4.bm";
+  TEXTURES   
+  {
+    "d1_book_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_book_001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_backhero5.bm";
+  TEXTURES   
+  {
+    "d1_underbook_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_underbook_001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_backhero6.bm";
+  TEXTURES   
+  {
+    "d1_book_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_book_001.tex";
+  }
+  MESH       	TFNM "Data\world\Dungeon1\Ska\d1_backhero7.bm";
+  TEXTURES   
+  {
+    "d1_underbook_001"	TFNM "Data\world\Dungeon1\Ska\Texture\d1_underbook_001.tex";
+  }
+  ALLFRAMESBBOX	-0.752466,-0.014836,-0.245003,0.765075,2.83365,2.04396;
+  COLISION
+  {
+    "Default"  {-0.75149,-0.031455,-0.27933,0.807614,2.80239,2.06843;}
+  }
+}

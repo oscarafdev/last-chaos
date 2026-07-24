@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "SoulofWitch";
+{
+  MESH       	TFNM "Data\Effect\Ska\SoulofWitch.bm";
+  TEXTURES   
+  {
+    "SoulofWitch"	TFNM "Data\Effect\Ska\soulofwitch.tex";
+  }
+  ALLFRAMESBBOX	-0.15578,-0.983703,-0.031535,0.285466,0.983705,0.031535;
+  COLISION
+  {
+  }
+}

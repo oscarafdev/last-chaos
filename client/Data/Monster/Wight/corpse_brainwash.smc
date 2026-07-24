@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "berseker";
+{
+  MESH       	TFNM "Data\Monster\Wight\corpse_brainwash_bu.bm";
+  TEXTURES   
+  {
+    "corpse_brainwash"	TFNM "Data\Monster\Wight\Texture\corpse_brainwash.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\corpse_brainwash_lhn.bm";
+  TEXTURES   
+  {
+    "corpse_brainwash"	TFNM "Data\Monster\Wight\Texture\corpse_brainwash.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\corpse_brainwash_rhn.bm";
+  TEXTURES   
+  {
+    "corpse_brainwash"	TFNM "Data\Monster\Wight\Texture\corpse_brainwash.tex";
+  }
+  MESH       	TFNM "Data\Monster\Wight\corpse_brainwash_bd.bm";
+  TEXTURES   
+  {
+    "corpse_brainwash"	TFNM "Data\Monster\Wight\Texture\corpse_brainwash.tex";
+  }
+  SKELETON  	TFNM "Data\Monster\Wight\corpse_brainwash.bs";
+  ANIMSET   	TFNM "Data\Monster\Wight\corpse_brainwash.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Wight\corpse_brainwash.bae";
+  ALLFRAMESBBOX	-0.85,0,-0.85,0.85,2.2,0.85;
+  COLISION
+  {
+    "Default"  {-0.85,0,-0.85,0.85,2.2,0.85;}
+  }
+}

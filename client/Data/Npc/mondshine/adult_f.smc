@@ -1,0 +1,16 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "adult_f";
+{
+  MESH       	TFNM "Data\Npc\mondshine\adult_f.bm";
+  TEXTURES   
+  {
+    "adult_f"	TFNM "Data\Npc\mondshine\adult_f.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\mondshine\adult_f.bs";
+  ANIMSET   	TFNM "Data\Npc\mondshine\adult_f.ba";
+  ALLFRAMESBBOX	-0.501217,-0.0257878,-0.520787,0.501217,1.53313,0.424618;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,1.55,0.5;}
+  }
+}

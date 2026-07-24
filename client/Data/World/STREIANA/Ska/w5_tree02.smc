@@ -1,0 +1,15 @@
+NAME "w5_tree02";
+{
+  MESH       	TFNM "Data\World\streiana\ska\w5_tree02.bm";
+  TEXTURES   
+  {
+    "w5_tree01-1"	TFNM "Data\World\streiana\ska\texture\w5_tree01-1.tex";
+    "w5_tree01-2"	TFNM "Data\World\streiana\ska\texture\w5_tree01-2.tex";
+    "w5_tree01"	TFNM "Data\World\STREIANA\Ska\Texture\w5_tree01.tex";
+    "STREIANA_Detail"	TFNM "Data\World\STREIANA\Ska\Texture\STREIANA_Detail.tex";
+  }
+  ALLFRAMESBBOX	-6.63217,-0.383997,-5.61464,4.40864,14.0759,7.08902;
+  COLISION
+  {
+  }
+}

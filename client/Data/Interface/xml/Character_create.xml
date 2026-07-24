@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="character_create" x="0" y="0" w="1024" h="768" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIBase id="center_ui_top" x="0" y="0" w="414" h="200" hide="0" align_h="1" align_v="0" tooltip="-1" tooltip_width="0">
+        <UIImageArray id="ia_seljob_left" x="50" y="20" w="93" h="90" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="8">
+            <surface0 x="0" y="0" w="93" h="90" l="1099" t="131" r="1192" b="221" desc="" />
+            <surface1 x="0" y="0" w="93" h="90" l="1198" t="131" r="1291" b="221" desc="" />
+            <surface2 x="0" y="0" w="93" h="90" l="1297" t="131" r="1390" b="221" desc="" />
+            <surface3 x="0" y="0" w="93" h="90" l="1396" t="131" r="1489" b="221" desc="" />
+            <surface4 x="0" y="0" w="93" h="90" l="1495" t="131" r="1588" b="221" desc="" />
+            <surface5 x="0" y="0" w="93" h="90" l="1594" t="131" r="1687" b="221" desc="" />
+            <surface6 x="0" y="0" w="93" h="90" l="1693" t="131" r="1786" b="221" desc="" />
+            <surface7 x="0" y="0" w="93" h="90" l="1792" t="131" r="1885" b="221" desc="" />
+            <surface8 x="0" y="0" w="93" h="90" l="1891" t="131" r="1984" b="221" desc="" />
+        </UIImageArray>
+        <UIImageArray id="ia_seljob_center" x="143" y="26" w="124" h="121" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="0">
+            <surface0 x="0" y="0" w="124" h="121" l="968" t="4" r="1092" b="125" desc="" />
+            <surface1 x="0" y="0" w="124" h="121" l="1103" t="4" r="1227" b="125" desc="" />
+            <surface2 x="0" y="0" w="124" h="121" l="1238" t="4" r="1362" b="125" desc="" />
+            <surface3 x="0" y="0" w="124" h="121" l="1373" t="4" r="1497" b="125" desc="" />
+            <surface4 x="0" y="0" w="124" h="121" l="1508" t="4" r="1632" b="125" desc="" />
+            <surface5 x="0" y="0" w="124" h="121" l="1643" t="4" r="1767" b="125" desc="" />
+            <surface6 x="0" y="0" w="124" h="121" l="1778" t="4" r="1902" b="125" desc="" />
+            <surface7 x="0" y="0" w="124" h="121" l="1913" t="4" r="2037" b="125" desc="" />
+            <surface8 x="0" y="0" w="124" h="121" l="968" t="134" r="1092" b="255" desc="" />
+        </UIImageArray>
+        <UIImageArray id="ia_seljob_right" x="269" y="20" w="93" h="90" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" render_idx="1">
+            <surface0 x="0" y="0" w="93" h="90" l="1099" t="131" r="1192" b="221" desc="" />
+            <surface1 x="0" y="0" w="93" h="90" l="1198" t="131" r="1291" b="221" desc="" />
+            <surface2 x="0" y="0" w="93" h="90" l="1297" t="131" r="1390" b="221" desc="" />
+            <surface3 x="0" y="0" w="93" h="90" l="1396" t="131" r="1489" b="221" desc="" />
+            <surface4 x="0" y="0" w="93" h="90" l="1495" t="131" r="1588" b="221" desc="" />
+            <surface5 x="0" y="0" w="93" h="90" l="1594" t="131" r="1687" b="221" desc="" />
+            <surface6 x="0" y="0" w="93" h="90" l="1693" t="131" r="1786" b="221" desc="" />
+            <surface7 x="0" y="0" w="93" h="90" l="1792" t="131" r="1885" b="221" desc="" />
+            <surface8 x="0" y="0" w="93" h="90" l="1891" t="131" r="1984" b="221" desc="" />
+        </UIImageArray>
+        <UIImage id="img_seljob_bg" x="-179" y="0" w="772" h="95" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="909" r="772" b="1004" />
+        <UIText id="str_seljob" x="162" y="14" w="88" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Arc Mage" str_ellipsis="" color="0xff8000ff" shadow="1" shadow_color="0xff" h_align="1" edge="-1">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIImage id="img_seljob_left_arrow" x="-8" y="22" w="53" h="84" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="939" t="861" r="992" b="945" />
+        <UIButton id="btn_seljob_left" x="0" y="30" w="36" h="68" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="524" t="70" r="560" b="138" />
+            <uv type="1" l="608" t="70" r="644" b="138" />
+            <uv type="2" l="524" t="146" r="560" b="214" />
+            <uv type="3" l="608" t="146" r="644" b="214" />
+        </UIButton>
+        <UIImage id="img_seljob_right_arrow" x="370" y="22" w="53" h="84" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="994" t="861" r="1047" b="945" />
+        <UIButton id="btn_seljob_right" x="378" y="30" w="36" h="68" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="565" t="70" r="601" b="138" />
+            <uv type="1" l="649" t="70" r="685" b="138" />
+            <uv type="2" l="565" t="146" r="601" b="214" />
+            <uv type="3" l="649" t="146" r="685" b="214" />
+        </UIButton>
+    </UIBase>
+    <UIBase id="center_ui_bottom" x="0" y="0" w="414" h="200" hide="0" align_h="1" align_v="2" tooltip="-1" tooltip_width="0">
+        <UIButton id="btn_rotation_left" x="108" y="9" w="54" h="34" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="386" t="730" r="440" b="764" />
+            <uv type="1" l="386" t="774" r="440" b="808" />
+            <uv type="2" l="386" t="818" r="440" b="852" />
+            <uv type="3" l="386" t="862" r="440" b="896" />
+        </UIButton>
+        <UIButton id="btn_zoomin" x="166" y="9" w="37" h="37" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="444" t="733" r="481" b="770" />
+            <uv type="1" l="444" t="777" r="481" b="814" />
+            <uv type="2" l="444" t="821" r="481" b="858" />
+            <uv type="3" l="444" t="865" r="481" b="902" />
+        </UIButton>
+        <UIButton id="btn_zoomout" x="207" y="9" w="37" h="37" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="484" t="733" r="521" b="770" />
+            <uv type="1" l="484" t="777" r="521" b="814" />
+            <uv type="2" l="484" t="821" r="521" b="858" />
+            <uv type="3" l="484" t="865" r="521" b="902" />
+        </UIButton>
+        <UIButton id="btn_rotation_right" x="248" y="9" w="54" h="34" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="525" t="730" r="579" b="764" />
+            <uv type="1" l="525" t="774" r="579" b="808" />
+            <uv type="2" l="525" t="818" r="579" b="852" />
+            <uv type="3" l="525" t="862" r="579" b="896" />
+        </UIButton>
+        <UIText id="str_name" x="107" y="62" w="200" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="5214" str="캐릭터 명" str_ellipsis="" color="0xffff00ff" shadow="1" shadow_color="0xff" h_align="1" edge="-1">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIImage id="img_Newname" x="78" y="74" w="257" h="51" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="704" t="1" r="961" b="52" />
+        <UIEdit id="eb_Newname" x="115" y="90" w="186" h="20" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" max="16" passwd="0" cursor_move="1" only_num="0">
+            <CandidateUV l="0" t="0" r="0" b="0" />
+            <ReadUV l="0" t="0" r="0" b="0" />
+            <back l="0" t="0" r="0" b="0" x="0" y="0" w="0" h="0" />
+        </UIEdit>
+        <UIButton id="btn_ok" x="78" y="132" w="257" h="51" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="191" str="확인" newtype="0" edge="1" text_color="0xffff00ff">
+            <uv type="0" l="704" t="56" r="961" b="107" />
+            <uv type="1" l="704" t="111" r="961" b="162" />
+            <uv type="2" l="704" t="166" r="961" b="217" />
+            <uv type="3" l="704" t="221" r="961" b="272" />
+        </UIButton>
+    </UIBase>
+    <UIBase id="Left_ui" x="0" y="0" w="380" h="768" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0">
+        <UIImage id="img_job_bg" x="-25" y="205" w="340" h="180" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="512" t="282" r="889" b="474">
+            <UITextBox id="tb_job_dec" x="35" y="21" w="248" h="125" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="3" sy="3" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar id="scroll_job_dec" x="0" y="0" w="248" h="125" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="10" item_count="0" item_per_page="9">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="0" y="0" w="16" h="12" l0="805" t0="743" r0="821" b0="755" l1="784" t1="743" r1="800" b1="755" />
+                    <button2 x="0" y="0" w="16" h="12" l0="805" t0="759" r0="821" b0="771" l1="784" t1="759" r1="800" b1="771" />
+                    <thumb x="0" y="0" w="9" h="101" unit="10" l="0" t="0" r="0" b="0" />
+                </UIScrollBar>
+            </UITextBox>
+        </UIImage>
+        <UIImage id="img_job_title_bg" x="0" y="170" w="223" h="49" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="475" t="220" r="698" b="269">
+            <UIText id="str_job_title" x="51" y="20" w="87" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Arc Mage" str_ellipsis="" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIImage>
+        <UIImage id="img_job2_bg" x="-25" y="435" w="340" h="180" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="512" t="282" r="889" b="474">
+            <UITextBox id="tb_job2_dec" x="35" y="21" w="248" h="125" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="3" sy="3" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xffffffff" str="">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                <UIScrollBar id="scroll_job2_dec" x="0" y="0" w="248" h="125" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" vertical="1" right="1" scroll_pos="0" move_unit="10" item_count="0" item_per_page="9">
+                    <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <button1 x="0" y="0" w="16" h="12" l0="805" t0="743" r0="821" b0="755" l1="784" t1="743" r1="800" b1="755" />
+                    <button2 x="0" y="0" w="16" h="12" l0="805" t0="759" r0="821" b0="771" l1="784" t1="759" r1="800" b1="771" />
+                    <thumb x="0" y="0" w="9" h="101" unit="10" l="0" t="0" r="0" b="0" />
+                </UIScrollBar>
+            </UITextBox>
+        </UIImage>
+        <UIImage id="img_job2_title_bg" x="0" y="400" w="250" h="49" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="475" t="220" r="698" b="269">
+            <UIText id="str_job2_title" x="51" y="20" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="1224" str="전직 정보" str_ellipsis="" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIImage>
+    </UIBase>
+    <UIBase id="Right_ui" x="0" y="0" w="380" h="768" hide="0" align_h="2" align_v="1" tooltip="-1" tooltip_width="0">
+        <UIImage id="img_info_bg" x="65" y="205" w="340" h="180" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="889" t="282" r="512" b="474">
+            <UIImage id="img_sel_face_bg" x="80" y="35" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="585" t="857" r="779" b="905">
+                <UIArray id="array_face" x="0" y="0" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="5" sx="9" sy="9" gapx="4" gapy="0" show_row="5">
+                    <select x="-10" y="-10" w="42" h="42" l="836" t="817" r="878" b="859" />
+                    <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <UIArrayItem id="array_item_001" x="9" y="9" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                        <UIImage id="img_slot_face" x="0" y="0" w="32" h="32" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="594" t="704" r="626" b="736" />
+                        <UIText id="str_number" x="23" y="18" w="9" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1" str_ellipsis="" color="0xffff00ff" shadow="1" shadow_color="0xff" h_align="0" edge="-1">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        </UIText>
+                    </UIArrayItem>
+                </UIArray>
+            </UIImage>
+            <UIText id="str_face_title" x="80" y="21" w="194" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="144" str="얼굴" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIButton id="btn_face_left" x="58" y="45" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="785" t="777" r="803" b="803" />
+                <uv type="1" l="785" t="811" r="803" b="837" />
+                <uv type="2" l="785" t="845" r="803" b="871" />
+                <uv type="3" l="785" t="879" r="803" b="905" />
+            </UIButton>
+            <UIButton id="btn_face_right" x="280" y="45" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="811" t="777" r="827" b="803" />
+                <uv type="1" l="811" t="811" r="827" b="837" />
+                <uv type="2" l="811" t="845" r="827" b="871" />
+                <uv type="3" l="811" t="879" r="827" b="905" />
+            </UIButton>
+            <UIImage id="img_sel_hair_bg" x="80" y="100" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="585" t="857" r="779" b="905">
+                <UIArray id="array_hair" x="0" y="0" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="5" sx="9" sy="9" gapx="4" gapy="0" show_row="5">
+                    <select x="-10" y="-10" w="42" h="42" l="836" t="817" r="878" b="859" />
+                    <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <UIArrayItem id="array_item_001" x="9" y="9" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                        <UIImage id="img_slot_hair" x="0" y="0" w="32" h="32" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="594" t="758" r="626" b="790" />
+                        <UIText id="str_number" x="23" y="18" w="9" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1" str_ellipsis="" color="0xffff00ff" shadow="1" shadow_color="0xff" h_align="0" edge="-1">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        </UIText>
+                    </UIArrayItem>
+                </UIArray>
+            </UIImage>
+            <UIText id="str_hair_title" x="80" y="86" w="194" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="143" str="헤어" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIButton id="btn_hair_left" x="58" y="110" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="785" t="777" r="803" b="803" />
+                <uv type="1" l="785" t="811" r="803" b="837" />
+                <uv type="2" l="785" t="845" r="803" b="871" />
+                <uv type="3" l="785" t="879" r="803" b="905" />
+            </UIButton>
+            <UIButton id="btn_hair_right" x="280" y="110" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="811" t="777" r="827" b="803" />
+                <uv type="1" l="811" t="811" r="827" b="837" />
+                <uv type="2" l="811" t="845" r="827" b="871" />
+                <uv type="3" l="811" t="879" r="827" b="905" />
+            </UIButton>
+        </UIImage>
+        <UIImage id="img_char_info_bg" x="120" y="170" w="260" h="49" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="698" t="220" r="475" b="269">
+            <UIText id="str_char_info_title" x="60" y="20" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6100" str="캐릭터 정보" str_ellipsis="" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIImage>
+        <UIImage id="img_preview_bg" x="65" y="435" w="340" h="180" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="889" t="282" r="512" b="474">
+            <UIImage id="img_sel_wear_bg" x="80" y="35" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="585" t="857" r="779" b="905">
+                <UIArray id="array_wear" x="0" y="0" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="5" sx="9" sy="9" gapx="4" gapy="0" show_row="5">
+                    <select x="-10" y="-10" w="42" h="42" l="836" t="817" r="878" b="859" />
+                    <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <UIArrayItem id="array_item_001" x="9" y="9" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                        <UIImage id="img_slot_wear" x="0" y="0" w="32" h="32" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="594" t="812" r="626" b="844" />
+                        <UIText id="str_number" x="23" y="18" w="9" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="1" str_ellipsis="" color="0xffff00ff" shadow="1" shadow_color="0xff" h_align="0" edge="-1">
+                            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                        </UIText>
+                    </UIArrayItem>
+                </UIArray>
+            </UIImage>
+            <UIText id="str_wear_title" x="80" y="21" w="194" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6101" str="방어구 미리보기" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIButton id="btn_wear_left" x="58" y="45" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="785" t="777" r="803" b="803" />
+                <uv type="1" l="785" t="811" r="803" b="837" />
+                <uv type="2" l="785" t="845" r="803" b="871" />
+                <uv type="3" l="785" t="879" r="803" b="905" />
+            </UIButton>
+            <UIButton id="btn_wear_right" x="280" y="45" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="811" t="777" r="827" b="803" />
+                <uv type="1" l="811" t="811" r="827" b="837" />
+                <uv type="2" l="811" t="845" r="827" b="871" />
+                <uv type="3" l="811" t="879" r="827" b="905" />
+            </UIButton>
+            <UIImage id="img_sel_social_bg" x="80" y="100" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="585" t="857" r="779" b="905">
+                <UIArray id="array_social" x="0" y="0" w="194" h="48" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" row="1" col="5" sx="9" sy="9" gapx="4" gapy="0" show_row="5">
+                    <select x="-10" y="-10" w="42" h="42" l="836" t="817" r="878" b="859" />
+                    <mouse_over x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+                    <UIArrayItem id="array_item_001" x="9" y="9" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+                        <UIIcon id="icon_slot_social" x="0" y="0" w="32" h="32" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" type="1" texid="0" row="0" col="0" />
+                    </UIArrayItem>
+                </UIArray>
+            </UIImage>
+            <UIText id="str_social_title" x="80" y="86" w="194" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6102" str="소셜 미리보기" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+            <UIButton id="btn_social_left" x="58" y="110" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="785" t="777" r="803" b="803" />
+                <uv type="1" l="785" t="811" r="803" b="837" />
+                <uv type="2" l="785" t="845" r="803" b="871" />
+                <uv type="3" l="785" t="879" r="803" b="905" />
+            </UIButton>
+            <UIButton id="btn_social_right" x="280" y="110" w="18" h="26" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+                <uv type="0" l="811" t="777" r="827" b="803" />
+                <uv type="1" l="811" t="811" r="827" b="837" />
+                <uv type="2" l="811" t="845" r="827" b="871" />
+                <uv type="3" l="811" t="879" r="827" b="905" />
+            </UIButton>
+        </UIImage>
+        <UIImage id="img_char_preview_bg" x="120" y="400" w="260" h="49" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="698" t="220" r="475" b="269">
+            <UIText id="str_char_preview_title" x="60" y="20" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6103" str="캐릭터 미리보기" str_ellipsis="" color="0xff8000ff" shadow="0" shadow_color="0x181818b2" h_align="2" edge="0">
+                <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+            </UIText>
+        </UIImage>
+    </UIBase>
+    <UIImage id="img_close_bg" x="0" y="0" w="111" h="100" hide="0" tex="intro_common.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" l="774" t="910" r="885" b="1010">
+        <UIButton id="btn_close" x="74" y="14" w="22" h="22" hide="0" tex="intro_common.tex" align_h="0" align_v="0" tooltip="6106" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+            <uv type="0" l="888" t="911" r="910" b="933" />
+            <uv type="1" l="914" t="911" r="936" b="933" />
+            <uv type="2" l="888" t="937" r="910" b="959" />
+            <uv type="3" l="914" t="937" r="936" b="959" />
+        </UIButton>
+    </UIImage>
+    <UIImage id="img_wheel" x="0" y="3" w="400" h="500" hide="0" align_h="1" align_v="1" tooltip="-1" tooltip_width="0" l="0" t="0" r="0" b="0" />
+</Window>

@@ -1,0 +1,25 @@
+NAME "w3_house01";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_house01.bm";
+  TEXTURES   
+  {
+    "w3_outobject_flagA"	TFNM "Data\World\Merac\ska\texture\w3_outobject_flagA.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_housebottom01"	TFNM "Data\World\Merac\ska\texture\w3_housebottom01.tex";
+    "w3_housedoor01"	TFNM "Data\World\Merac\ska\texture\w3_housedoor01.tex";
+    "w3_housefense01"	TFNM "Data\World\Merac\ska\texture\w3_housefense01.tex";
+    "w3_houseroof01"	TFNM "Data\World\Merac\ska\texture\w3_houseroof01.tex";
+    "w3_housetent01"	TFNM "Data\World\Merac\ska\texture\w3_housetent01.tex";
+    "w3_housewall02"	TFNM "Data\World\Merac\ska\texture\w3_housewall02.tex";
+    "w3_housewall03"	TFNM "Data\World\Merac\ska\texture\w3_housewall03.tex";
+    "w3_housewall04"	TFNM "Data\World\Merac\ska\texture\w3_housewall04.tex";
+    "w3_housebottom02"	TFNM "Data\World\Merac\ska\texture\w3_housebottom02.tex";
+  }
+  SKELETON  	TFNM "Data\World\Merac\ska\w3_house01.bs";
+  ANIMSET   	TFNM "Data\World\Merac\ska\w3_house01.ba";
+  ALLFRAMESBBOX	-4.75481,-0.0344589,-9.99706,4.7548,14.8095,10.1914;
+  COLISION
+  {
+    "Default"  {-4.75,0,-10,4.75,15,10;}
+  }
+}

@@ -1,0 +1,14 @@
+NAME "middlewall_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\middlewall_si.bm";
+  TEXTURES   
+  {
+    "wallbone_si"	TFNM "Data\World\Merac\ska\texture\wallbone_si.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "defaultwall_si"	TFNM "Data\World\Merac\ska\texture\defaultwall_si.tex";
+  }
+  ALLFRAMESBBOX	-61.0543,-0.258792,-23.4341,58.8725,21.3785,25.6408;
+  COLISION
+  {
+  }
+}

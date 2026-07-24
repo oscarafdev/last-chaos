@@ -1,0 +1,13 @@
+NAME "Ab_vo_deadman";
+{
+  MESH       	TFNM "Data\Npc\Alber\Ab_vo_deadman.bm";
+  TEXTURES   
+  {
+    "Ab_vo_deadman"	TFNM "Data\Npc\Alber\Texture\Ab_vo_deadman.tex";
+  }
+  ALLFRAMESBBOX	-0.669515,-0.146749,-0.655742,0.669515,1.31239,1.70113;
+  COLISION
+  {
+    "Default"  {-0.669515,0,-0.65574,0.669515,2,1.70113;}
+  }
+}

@@ -1,0 +1,32 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "D_master";
+{
+  MESH       	TFNM "Data\Npc\npc_ran\npc_ran_body.bm";
+  TEXTURES   
+  {
+    "npc_ran_body"	TFNM "Data\Npc\npc_ran\npc_ran_body.tex";
+  }
+  MESH       	TFNM "Data\Npc\npc_ran\npc_ran_face.bm";
+  TEXTURES   
+  {
+    "npc_ran_face"	TFNM "Data\Npc\npc_ran\npc_ran_face.tex";
+  }
+  MESH       	TFNM "Data\Npc\npc_ran\npc_ran_hand.bm";
+  TEXTURES   
+  {
+    "npc_ran_foot"	TFNM "Data\Npc\npc_ran\npc_ran_foot.tex";
+  }
+  MESH       	TFNM "Data\Npc\npc_ran\npc_ran_leg.bm";
+  TEXTURES   
+  {
+    "npc_ran_leg"	TFNM "Data\Npc\npc_ran\npc_ran_leg.tex";
+    "npc_ran_leg"	TFNM "Data\Npc\npc_ran\npc_ran_leg.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\npc_ran\npc_ran.bs";
+  ANIMSET   	TFNM "Data\Npc\npc_ran\npc_ran_idel001.ba";
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+    "Default"  {-0.492146,8.9407e-007,-0.350205,0.473879,1.77293,0.336141;}
+  }
+}

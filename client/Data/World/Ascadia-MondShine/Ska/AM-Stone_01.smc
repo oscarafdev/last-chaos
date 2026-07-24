@@ -1,0 +1,13 @@
+NAME "AM-Stone_01";
+{
+  MESH       	TFNM "Data\World\Ascadia-MondShine\Ska\stone_01.bm";
+  TEXTURES   
+  {
+    "AM-Stone_01"	TFNM "Data\World\Ascadia-MondShine\Ska\Texture\AM-Stone_01.tex";
+  }
+  ALLFRAMESBBOX	-3.39535,-2e-006,-3.23715,4.25456,7.15053,3.17723;
+  COLISION
+  {
+    "Default"  {-3.37752,-0.180436,-3.37832,4.05826,7.05745,3.31891;}
+  }
+}

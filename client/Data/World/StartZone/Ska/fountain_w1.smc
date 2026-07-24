@@ -1,0 +1,18 @@
+NAME "fountain_w1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\fountain_w1.bm";
+  TEXTURES   
+  {
+    "fountain01_juno"	TFNM "Data\World\StartZone\Ska\Texture\fountain01_juno.tex";
+    "fountain02_juno"	TFNM "Data\World\StartZone\Ska\Texture\fountain02_juno.tex";
+    "fountain03_juno"	TFNM "Data\World\StartZone\Ska\Texture\fountain03_juno.tex";
+    "stone_juno"	TFNM "Data\World\StartZone\Ska\Texture\stone_juno.tex";
+    "Dengen1_Detail"	TFNM "Data\World\StartZone\Ska\Texture\Dengen1_Detail.tex";
+    "centertower1_juno"	TFNM "Data\World\StartZone\Ska\Texture\centertower1_juno.tex";
+  }
+  ALLFRAMESBBOX	-23.0313,-0.009269,-23.0313,23.0313,11.2791,23.0313;
+  COLISION
+  {
+    "Default"  {-23,0,-23,23,11,23;}
+  }
+}

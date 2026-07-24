@@ -1,0 +1,14 @@
+NAME "Chang_01";
+{
+  MESH       	TFNM "Data\World\LoginWorld\Ska\Chang_01.bm";
+  TEXTURES   
+  {
+    "axe"	TFNM "Data\World\LoginWorld\Ska\Texture\axe.tex";
+  }
+  SKELETON  	TFNM "Data\World\LoginWorld\Ska\Chang_01.bs";
+  ANIMSET   	TFNM "Data\World\LoginWorld\Ska\Chang_01.ba";
+  ALLFRAMESBBOX	-0.353761,0.001581,0.388594,0.394999,2.97744,0.601135;
+  COLISION
+  {
+  }
+}

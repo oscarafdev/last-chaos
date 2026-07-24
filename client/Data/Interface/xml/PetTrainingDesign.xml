@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="100" h="100" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIText id="text_name" x="0" y="0" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="날렵함의 균형" str_ellipsis="" color="0xffc672ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UITextBox id="tb_contents" x="0" y="22" w="156" h="60" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" sx="0" sy="0" gap_y="0" h_align="0" str_idx="-1" split_mode="0" text_col="0xc5c5c5ff" str="힘, 체질, 민첩이 영구적으로 상승됩니다.">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UITextBox>
+    <UIText id="text_info" x="0" y="122" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="필요 레벨 : 75" str_ellipsis="" color="0xbda99fff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_Add" x="0" y="85" w="150" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="499" str="퍼스널던전 전용 스킬" str_ellipsis="" color="0xcacacaff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="text_space" x="0" y="0" w="100" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+</Window>

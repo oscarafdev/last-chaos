@@ -1,0 +1,17 @@
+NAME "kb_baeacon_d3";
+{
+  MESH       	TFNM "Data\world\LoginWorld2\Ska\kb_baeacon_d3.bm";
+  TEXTURES   
+  {
+    "kn_beacon_d3"	TFNM "Data\world\LoginWorld2\Ska\Texture\kn_beacon_d3.tex";
+    "Detail_D3"	TFNM "Data\world\LoginWorld2\Ska\Texture\Detail_D3.tex";
+  }
+  SKELETON  	TFNM "Data\world\LoginWorld2\Ska\kb_baeacon_d3.bs";
+  ANIMSET   	TFNM "Data\world\LoginWorld2\Ska\kb_baeacon_d3.ba";
+  ANIMEFFECT	TFNM "Data\world\LoginWorld2\Ska\kb_baeacon_d3.bae";
+  ALLFRAMESBBOX	-0.01201,-0.390536,-0.390536,1.06588,2.36228,0.390536;
+  COLISION
+  {
+    "Default"  {-0.012009,-0.390536,-0.390536,1.06588,2.36228,0.390536;}
+  }
+}

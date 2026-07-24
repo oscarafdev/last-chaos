@@ -1,0 +1,13 @@
+NAME "castleside02_si";
+{
+  MESH       	TFNM "Data\World\Merac\ska\castleside02_si.bm";
+  TEXTURES   
+  {
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "castlewall_si"	TFNM "Data\World\Merac\ska\texture\castlewall_si.tex";
+  }
+  ALLFRAMESBBOX	-20.4415,-0.208931,-7.52669,20.4417,61.0048,7.52668;
+  COLISION
+  {
+  }
+}

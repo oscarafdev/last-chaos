@@ -1,0 +1,14 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "Ab_vo_mineral_eff";
+{
+  MESH       	TFNM "Data\Effect\Ska\Alber\Ab_vo_mineral_eff.bm";
+  TEXTURES   
+  {
+    "Ab_vo_spl_mineral"	TFNM "Data\Effect\Ska\Alber\Ab_vo_spl_mineral.tex";
+  }
+  ALLFRAMESBBOX	-0.454965,-0.011324,-0.344155,0.394984,0.545968,0.405227;
+  COLISION
+  {
+    "Default"  {-0.9,6.9,-0.9,0.9,8.2,0.9;}
+  }
+}

@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ni_ft_023-1";
+{
+  MESH       	TFNM "Data\Item\Shield\Knight\ni_ft_023-1.bm";
+  TEXTURES   
+  {
+    "ni_ft_023-1"	TFNM "Data\Item\Shield\Knight\Texture\ni_ft_023-1.tex";
+  }
+  ALLFRAMESBBOX	-0.394247,-0.013516,-0.17732,0.394244,0.611113,0.185219;
+  COLISION
+  {
+  }
+}

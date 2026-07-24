@@ -1,0 +1,15 @@
+NAME "jell";
+{
+  MESH       	TFNM "Data\Effect\Ska\jell\jell01.bm";
+  TEXTURES   
+  {
+    "jel"	TFNM "Data\Effect\Ska\jell\jel.tex";
+  }
+  SKELETON  	TFNM "Data\Effect\Ska\jell\jell.bs";
+  ANIMSET   	TFNM "Data\Effect\Ska\jell\jell.ba";
+  ALLFRAMESBBOX	-0.584891,-0.0143655,-1.37548,0.571443,1.61334,0.592114;
+  COLISION
+  {
+    "Default"  {-0.5,0,-0.5,0.5,2,0.5;}
+  }
+}

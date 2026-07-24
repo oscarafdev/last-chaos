@@ -1,0 +1,14 @@
+NAME "flag";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\flag02.bm";
+  TEXTURES   
+  {
+    "vill_flag02"	TFNM "Data\World\Tarian\Ska\Texture\vill_flag02.tex";
+  }
+  SKELETON  	TFNM "Data\World\Tarian\Ska\flag.bs";
+  ANIMSET   	TFNM "Data\World\Tarian\Ska\flag.ba";
+  ALLFRAMESBBOX	-1.06446,-5.55842,-2.81601,9.42663,22.8171,1.05584;
+  COLISION
+  {
+  }
+}

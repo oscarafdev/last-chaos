@@ -1,0 +1,14 @@
+NAME "bacon01_d4";
+{
+  MESH       	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\tree root_03.bm";
+  TEXTURES   
+  {
+    "Egeha_dungeon_Detail-1"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\Egeha_dungeon_Detail-1.tex";
+    "tree root_03"	TFNM "Data\World\Egeha_dungeon_1F_7F\Ska\Texter\tree root_03.tex";
+  }
+  ALLFRAMESBBOX	-0.887197,0.002058,-1.54781,0.537822,11.8583,0.640974;
+  COLISION
+  {
+    "Default"  {-1.3574,-0.00955719,-1.59581,0.705029,11.9686,0.681168;}
+  }
+}

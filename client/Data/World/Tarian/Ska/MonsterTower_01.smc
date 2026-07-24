@@ -1,0 +1,18 @@
+NAME "MonsterTower_01";
+{
+  MESH       	TFNM "Data\World\Tarian\Ska\MonsterTower_01.bm";
+  TEXTURES   
+  {
+    "tower07"	TFNM "Data\World\Tarian\Ska\Texture\tower07.tex";
+    "tower01"	TFNM "Data\World\Tarian\Ska\Texture\tower01.tex";
+    "tower02"	TFNM "Data\World\Tarian\Ska\Texture\tower02.tex";
+    "tower03"	TFNM "Data\World\Tarian\Ska\Texture\tower03.tex";
+    "tower04"	TFNM "Data\World\Tarian\Ska\Texture\tower04.tex";
+    "tower05"	TFNM "Data\World\Tarian\Ska\Texture\tower05.tex";
+    "tower06"	TFNM "Data\World\Tarian\Ska\Texture\tower06.tex";
+  }
+  ALLFRAMESBBOX	-16.2402,-0.01932,-15.7062,16.2402,67.1189,15.7062;
+  COLISION
+  {
+  }
+}

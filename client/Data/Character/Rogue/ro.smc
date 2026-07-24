@@ -1,0 +1,47 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro";
+{
+  MESH       	TFNM "Data\character\Rogue\ro_bd_000.bm";
+  TEXTURES   
+  {
+    "ro_bd_000"	TFNM "Data\character\Rogue\ro_bd_000.tex";
+  }
+  MESH       	TFNM "Data\character\Rogue\ro_bu_000.bm";
+  TEXTURES   
+  {
+    "ro_bu_000"	TFNM "Data\character\Rogue\ro_bu_000.tex";
+  }
+  MESH       	TFNM "Data\character\Rogue\ro_face_000.bm";
+  TEXTURES   
+  {
+    "ro_face_000"	TFNM "Data\character\Rogue\ro_face_000.tex";
+  }
+  MESH       	TFNM "Data\character\Rogue\ro_ft_000.bm";
+  TEXTURES   
+  {
+    "ro_ft_000"	TFNM "Data\character\Rogue\ro_ft_000.tex";
+  }
+  MESH       	TFNM "Data\character\Rogue\ro_hair_000.bm";
+  TEXTURES   
+  {
+    "ro_hair_000"	TFNM "Data\character\Rogue\ro_hair_000.tex";
+  }
+  MESH       	TFNM "Data\character\Rogue\ro_hn_000.bm";
+  TEXTURES   
+  {
+    "ro_hn_000"	TFNM "Data\character\Rogue\ro_hn_000.tex";
+  }
+  MESH       	TFNM "Data\character\Rogue\_TAG_ef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\character\Rogue\ro.bs";
+  ANIMSET   	TFNM "Data\character\Rogue\ro.ba";
+  ANIMEFFECT	TFNM "Data\Character\Rogue\ro.bae";
+  ALLFRAMESBBOX	-2.5,0,-2.5,2.5,1.77,2.5;
+  COLISION
+  {
+    "Default"  {-0.3,0,-0.3,0.3,1.78,0.3;}
+    "DeathBox"  {-0.3,0,-0.1,0.7,0.5,1.7;}
+  }
+}

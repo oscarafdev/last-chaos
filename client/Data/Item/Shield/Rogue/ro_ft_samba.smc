@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ro_ft_samba";
+{
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ft_samba.bm";
+  TEXTURES   
+  {
+    "ro_ft_samba"	TFNM "Data\Item\Shield\Rogue\Texture\ro_ft_samba.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Rogue\ro_ft01_samba.bm";
+  TEXTURES   
+  {
+    "ro_ft01_samba"	TFNM "Data\Item\Shield\Rogue\Texture\ro_ft01_samba.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

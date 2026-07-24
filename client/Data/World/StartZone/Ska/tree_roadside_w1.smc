@@ -1,0 +1,14 @@
+NAME "tree_roadside_w1";
+{
+  MESH       	TFNM "Data\World\StartZone\Ska\tree_roadside_w1.bm";
+  TEXTURES   
+  {
+    "n_roadside tree_up_w1"	TFNM "Data\World\StartZone\Ska\Texture\n_roadside tree_up_w1.tex";
+    "n_tree_under_w1"	TFNM "Data\World\StartZone\Ska\Texture\n_tree_under_w1.tex";
+  }
+  ALLFRAMESBBOX	-6.63742,-0.027944,-5.69342,6.63739,16.3712,5.69342;
+  COLISION
+  {
+    "Default"  {-1.05,0,-0.45,0.45,4,1.05;}
+  }
+}

@@ -1,0 +1,13 @@
+NAME "td_chandelier_02";
+{
+  MESH       	TFNM "Data\World\tarian_dungeon\Ska\td_chandelier_02.bm";
+  TEXTURES   
+  {
+    "td_chandelier_02"	TFNM "Data\World\tarian_dungeon\Ska\Texture\td_chandelier_02.tex";
+    "chain"	TFNM "Data\World\tarian_dungeon\Ska\Texture\chain.tex";
+  }
+  ALLFRAMESBBOX	-1.92106,-0.004625,-1.92106,1.92106,7.00683,1.92106;
+  COLISION
+  {
+  }
+}

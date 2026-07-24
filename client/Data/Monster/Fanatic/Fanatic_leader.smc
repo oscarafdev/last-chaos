@@ -1,0 +1,48 @@
+OFFSET    	0,0.23,0,180,0,0;
+NAME "Fanatic_leader";
+{
+  MESH       	TFNM "Data\Monster\Fanatic\Fanatic_leader.bm";
+  TEXTURES   
+  {
+    "Fanatic_bu"	TFNM "Data\Monster\Fanatic\Fanatic_bu.tex";
+    "Fanatic_bd"	TFNM "Data\Monster\Fanatic\Fanatic_bd.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\Lwea.bm";
+  TEXTURES   
+  {
+    "a fanatic Boss"	TFNM "Data\Monster\Fanatic\a fanatic Boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\pants.bm";
+  TEXTURES   
+  {
+    "Fanatic_amor-dn"	TFNM "Data\Monster\Fanatic\Fanatic_amor-dn.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\Rwea.bm";
+  TEXTURES   
+  {
+    "a fanatic Boss"	TFNM "Data\Monster\Fanatic\a fanatic Boss.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\shcover.bm";
+  TEXTURES   
+  {
+    "Fanatic_amor-up"	TFNM "Data\Monster\Fanatic\Fanatic_amor-up.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\cover.bm";
+  TEXTURES   
+  {
+    "Fanatic_amor-up"	TFNM "Data\Monster\Fanatic\Fanatic_amor-up.tex";
+    "Fanatic_amor-dn"	TFNM "Data\Monster\Fanatic\Fanatic_amor-dn.tex";
+  }
+  MESH       	TFNM "Data\Monster\Fanatic\_TAG_FBef.bm";
+  TEXTURES   
+  {
+  }
+  SKELETON  	TFNM "Data\Monster\Fanatic\fanatic_leader.bs";
+  ANIMSET   	TFNM "Data\Monster\Fanatic\Fanatic_leader.ba";
+  ANIMEFFECT	TFNM "Data\Monster\Fanatic\Fanatic_leader.bae";
+  ALLFRAMESBBOX	-1,0,-1,1,3.8,1;
+  COLISION
+  {
+    "Default"  {-1,0,-1,1,3.8,1;}
+  }
+}

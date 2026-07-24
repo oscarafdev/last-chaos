@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_bd_019";
+{
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bd_019.bm";
+  TEXTURES   
+  {
+    "ma_bd_019"	TFNM "Data\Item\Shield\Mage\Texture\ma_bd_019.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Mage\ma_bd_019_1.bm";
+  TEXTURES   
+  {
+    "ma_bd_019_1"	TFNM "Data\Item\Shield\Mage\Texture\ma_bd_019_1.tex";
+  }
+  ALLFRAMESBBOX	-0.273084,0.859054,-0.164784,0.273084,1.27682,0.120978;
+  COLISION
+  {
+  }
+}

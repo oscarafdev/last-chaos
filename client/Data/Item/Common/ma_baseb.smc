@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ma_baseb";
+{
+  MESH       	TFNM "Data\Item\Common\ma_baseb.bm";
+  TEXTURES   
+  {
+    "baseball_helmet"	TFNM "Data\Item\Common\Texture\baseball_helmet.tex";
+  }
+  MESH       	TFNM "Data\Item\Common\ma_hair_baseb.bm";
+  TEXTURES   
+  {
+    "ma_face_000"	TFNM "Data\Item\Common\Texture\ma_face_000.tex";
+  }
+  ALLFRAMESBBOX	-0.089077,1.7448,-0.202127,0.089077,1.92823,0.056821;
+  COLISION
+  {
+  }
+}

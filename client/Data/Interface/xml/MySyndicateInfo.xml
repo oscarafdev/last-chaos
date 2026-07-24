@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window x="0" y="0" w="512" h="340" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImage x="0" y="0" w="512" h="340" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="512" t="684" r="1024" b="1024" />
+    <UIText x="105" y="16" w="303" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6155" str="직위 체계 및 정보" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="move_title" x="0" y="0" w="512" h="37" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIButton id="btn_close" x="490" y="4" w="16" h="16" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" newtype="0" edge="0" text_color="0xf2f2f2ff">
+        <uv type="0" l="211" t="33" r="227" b="49" />
+        <copyuv src="0" dst="1" />
+        <uv type="2" l="229" t="33" r="245" b="49" />
+        <uv type="3" l="0" t="0" r="0" b="0" />
+    </UIButton>
+    <UIText id="str_king_name" x="346" y="59" w="122" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="Ranma" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_myrvrpos" x="302" y="102" w="198" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="▶ 나의 직위 : 견습기사" str_ellipsis="" color="0xffffffff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIText id="str_myrvrbuff" x="302" y="121" w="198" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="▶ 직위 혜택 : " str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+        <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+    </UIText>
+    <UIImage id="img_kayinfo" x="11" y="43" w="280" h="280" hide="1" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="523" t="402" r="803" b="682">
+        <UIText x="0" y="36" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6144" str="제왕" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="60" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6143" str="공작" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="82" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6142" str="후작" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="104" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6141" str="백작" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="126" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6140" str="자작" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="148" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6139" str="남작" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="170" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6138" str="지휘관" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="192" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6137" str="상급기사" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="214" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6136" str="정식기사" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="236" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6135" str="견습기사" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIImage x="295" y="6" w="34" h="34" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="717" t="296" r="751" b="330" />
+        <UIImage x="459" y="0" w="27" h="51" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="716" t="333" r="743" b="384" />
+    </UIImage>
+    <UIImage id="img_dealinfo" x="11" y="43" w="280" h="280" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="523" t="727" r="803" b="1007">
+        <UIText x="0" y="43" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6151" str="깨달음을 얻은 자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="76" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6150" str="지혜를 획득한 자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="106" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6149" str="진의를 아는 자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="136" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6148" str="현명한 자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="166" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6147" str="숙련자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="196" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6146" str="견습자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIText x="0" y="226" w="275" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="6145" str="초심자" str_ellipsis="" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="1" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+        <UIImage x="295" y="6" w="34" h="34" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="681" t="296" r="715" b="330" />
+        <UIImage x="459" y="0" w="27" h="51" hide="0" tex="NewCharacterInfo.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="683" t="333" r="710" b="384" />
+    </UIImage>
+</Window>

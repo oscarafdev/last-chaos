@@ -1,0 +1,15 @@
+NAME "w2_cactus_g03";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_cactus_g03.bm";
+  TEXTURES   
+  {
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+    "w2_cactus_g01"	TFNM "Data\World\Dratan\Ska\Texture\w2_cactus_g01.tex";
+    "w2_cactus_g02"	TFNM "Data\World\Dratan\Ska\Texture\w2_cactus_g02.tex";
+    "w2_cactus_g03"	TFNM "Data\World\Dratan\Ska\Texture\w2_cactus_g03.tex";
+  }
+  ALLFRAMESBBOX	-0.402829,-0.043395,-0.229146,0.419218,1.95472,0.284978;
+  COLISION
+  {
+  }
+}

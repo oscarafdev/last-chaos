@@ -1,0 +1,36 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "old_m";
+{
+  MESH       	TFNM "Data\Npc\mondshine\old_m_head.bm";
+  TEXTURES   
+  {
+    "old_m"	TFNM "Data\Npc\mondshine\old_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\old_m_beard.bm";
+  TEXTURES   
+  {
+    "old_m"	TFNM "Data\Npc\mondshine\old_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\old_m_bd.bm";
+  TEXTURES   
+  {
+    "old_m"	TFNM "Data\Npc\mondshine\old_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\old_m_bag.bm";
+  TEXTURES   
+  {
+    "old_m"	TFNM "Data\Npc\mondshine\old_m.tex";
+  }
+  MESH       	TFNM "Data\Npc\mondshine\old_m_stick.bm";
+  TEXTURES   
+  {
+    "old_m_1"	TFNM "Data\Npc\mondshine\old_m_1.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\mondshine\old_m.bs";
+  ANIMSET   	TFNM "Data\Npc\mondshine\old_m.ba";
+  ALLFRAMESBBOX	-0.622012,-0.0641174,-0.954223,0.622012,1.772,0.539998;
+  COLISION
+  {
+    "Default"  {-0.6,0,-0.6,0.6,1.8,0.6;}
+  }
+}

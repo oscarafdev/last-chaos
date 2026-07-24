@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window id="UIMap_Option" x="0" y="0" w="150" h="456" hide="1" align_h="0" align_v="0" tooltip="-1" tooltip_width="0">
+    <UIImageSplit id="img_back" x="0" y="0" w="150" h="456" hide="0" tex="CommonBtn.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="0" t="229" r="85" b="251" unit="9" splitmode="2" />
+    <UIImage id="img_quest_a" x="7" y="7" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="279" t="5" r="301" b="27">
+        <UIText id="text_quest_a" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="7004" str="퀘스트 완료" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_quest_q" x="7" y="32" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="255" t="5" r="277" b="27">
+        <UIText id="text_quest_q" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="99" str="퀘스트" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_shop" x="7" y="57" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="303" t="5" r="325" b="27">
+        <UIText id="text_shop" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="263" str="상점" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_stash" x="7" y="82" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="399" t="5" r="421" b="27">
+        <UIText id="text_stash" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="823" str="창고" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_teleport" x="7" y="107" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="375" t="5" r="397" b="27">
+        <UIText id="text_teleport" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="4089" str="공간 이동" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_guild" x="7" y="132" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="327" t="5" r="349" b="27">
+        <UIText id="text_guild" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="75" str="길드" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_affinity" x="7" y="157" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="351" t="5" r="373" b="27">
+        <UIText id="text_affinity" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="4462" str="친화도" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_auction" x="7" y="182" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="423" t="5" r="445" b="27">
+        <UIText id="text_auction" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="6017" str="거래대행" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_char_manager" x="7" y="207" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="447" t="5" r="469" b="27">
+        <UIText id="text_char_manager" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="6209" str="캐릭터 관리" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_job_master" x="7" y="232" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="279" t="29" r="301" b="51">
+        <UIText id="text_job_master" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="6210" str="스킬 마스터" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_war" x="7" y="257" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="303" t="29" r="325" b="51">
+        <UIText id="text_war" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="2417" str="공성" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_pet_manager" x="7" y="282" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="471" t="5" r="493" b="27">
+        <UIText id="text_pet_manager" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="6211" str="애완동물 조련사" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_express" x="7" y="307" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="255" t="29" r="277" b="51">
+        <UIText id="text_express" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="6037" str="신비한 석상" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_else" x="7" y="332" w="22" h="22" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="327" t="29" r="349" b="51">
+        <UIText id="text_else" x="23" y="0" w="50" h="14" hide="0" align_h="0" align_v="1" tooltip="-1" tooltip_width="0" str_idx="446" str="NPC" color="0xf2f2f2ff" shadow="1" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_monster" x="10" y="361" w="14" h="15" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="355" t="32" r="369" b="47">
+        <UIText id="text_monster" x="21" y="0" w="50" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="448" str="몬스터" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_guild_group" x="10" y="386" w="14" h="15" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="378" t="32" r="392" b="47">
+        <UIText id="text_guild_group" x="21" y="0" w="50" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="75" str="길드" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_party" x="10" y="411" w="14" h="15" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="402" t="32" r="416" b="47">
+        <UIText id="text_party" x="21" y="0" w="50" h="15" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="97" str="파티" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UIImage id="img_fellowship" x="10" y="436" w="14" h="15" hide="0" tex="Map.tex" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" l="426" t="32" r="440" b="47">
+        <UIText id="text_fellowship" x="21" y="0" w="50" h="14" hide="0" align_h="0" align_v="0" tooltip="-1" tooltip_width="0" str_idx="4493" str="원정대" color="0xf2f2f2ff" shadow="0" shadow_color="0x181818b2" h_align="0" edge="0">
+            <back x="0" y="0" w="0" h="0" l="0" t="0" r="0" b="0" />
+        </UIText>
+    </UIImage>
+    <UICheck id="cb_quest_a" x="-8" y="12" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_quest_q" x="-8" y="37" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_shop" x="-8" y="62" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_stash" x="-8" y="87" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_teleport" x="-8" y="112" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_guild" x="-8" y="137" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_affinity" x="-8" y="162" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_auction" x="-8" y="187" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_char_manager" x="-8" y="212" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_job_master" x="-8" y="237" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_war" x="-8" y="262" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_pet_manager" x="-8" y="287" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_express" x="-8" y="312" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_else" x="-8" y="337" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_monster" x="-8" y="362" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_guild_group" x="-8" y="387" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_party" x="-8" y="412" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+    <UICheck id="cb_fellowship" x="-8" y="437" w="13" h="13" hide="0" tex="CommonBtn.tex" align_h="2" align_v="0" tooltip="-1" tooltip_width="0" str_idx="-1" str="" posleft="1" text_x="0" region="0" text_area="0" h_align="0" color_on="0xf2f2f2ff" color_off="0xaaaaaaff" edge="0">
+        <none l="139" t="75" r="152" b="88" />
+        <check l="119" t="75" r="132" b="88" />
+    </UICheck>
+</Window>

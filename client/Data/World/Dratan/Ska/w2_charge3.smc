@@ -1,0 +1,14 @@
+NAME "w2_charge3";
+{
+  MESH       	TFNM "Data\World\Dratan\Ska\w2_charge3.bm";
+  TEXTURES   
+  {
+    "startstone"	TFNM "Data\World\Dratan\Ska\Texture\startstone.tex";
+    "w2_castle21"	TFNM "Data\World\Dratan\Ska\Texture\w2_castle21.tex";
+    "Dratan_Detail"	TFNM "Data\World\Dratan\Ska\Texture\Dratan_Detail.tex";
+  }
+  ALLFRAMESBBOX	-2.74509,-0.015718,-2.27687,2.74795,7.41219,2.28387;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,18 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "hw_bd_samba";
+{
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_bd_samba.bm";
+  TEXTURES   
+  {
+    "hw_bd_samba"	TFNM "Data\Item\Shield\Healer\Texture\hw_bd_samba.tex";
+  }
+  MESH       	TFNM "Data\Item\Shield\Healer\hw_sk_samba.bm";
+  TEXTURES   
+  {
+    "hw_sk_smaba"	TFNM "Data\Item\Shield\Healer\Texture\hw_sk_smaba.tex";
+  }
+  ALLFRAMESBBOX	-0.5,0,-0.5,0.5,2,0.5;
+  COLISION
+  {
+  }
+}

@@ -1,0 +1,21 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "trap";
+{
+  MESH       	TFNM "Data\Npc\ro_weapon\_TAG_T_RTRAP.bm";
+  TEXTURES   
+  {
+  }
+  MESH       	TFNM "Data\Npc\ro_weapon\trap.bm";
+  TEXTURES   
+  {
+    "trap"	TFNM "Data\Npc\ro_weapon\trap.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\ro_weapon\trap.bs";
+  ANIMSET   	TFNM "Data\Npc\ro_weapon\trap.ba";
+  ANIMEFFECT	TFNM "Data\Npc\ro_weapon\trap.bae";
+  ALLFRAMESBBOX	-0.2,0,-0.2,0.2,0.3,0.2;
+  COLISION
+  {
+    "Default"  {-0.2,0,-0.2,0.2,0.3,0.2;}
+  }
+}

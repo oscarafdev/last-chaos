@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "so_bu_halloween";
+{
+  MESH       	TFNM "Data\Item\Shield\Sorcerer\so_bu_halloween.bm";
+  TEXTURES   
+  {
+    "so_bu_halloween"	TFNM "Data\Item\Shield\Sorcerer\Texture\so_bu_halloween.tex";
+  }
+  ALLFRAMESBBOX	-0.506673,0.669315,-0.146286,0.506673,1.7759,0.223173;
+  COLISION
+  {
+  }
+}

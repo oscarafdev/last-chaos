@@ -1,0 +1,5 @@
+Package: TFNM Bin\Shaders.dll
+Name: Shader_Invisible
+Info: Shader_Desc_Invisible
+VPCode: Shader_VPCode_Invisible
+PPCode: Shader_PPCode_Invisible

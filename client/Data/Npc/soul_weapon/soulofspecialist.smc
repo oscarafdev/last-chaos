@@ -1,0 +1,16 @@
+NAME "soulofspecialist";
+{
+  MESH       	TFNM "Data\Npc\soul_weapon\so_scythe.bm";
+  TEXTURES   
+  {
+    "so_scythe_013"	TFNM "Data\Npc\soul_weapon\so_scythe_013.tex";
+  }
+  SKELETON  	TFNM "Data\Npc\soul_weapon\so_soul_scy.bs";
+  ANIMSET   	TFNM "Data\Npc\soul_weapon\so_soul_scy.ba";
+  ANIMEFFECT	TFNM "Data\Npc\soul_weapon\soulofspecialist.bae";
+  ALLFRAMESBBOX	-0.1,0,-0.1,0.1,2.9,0.1;
+  COLISION
+  {
+    "Default"  {-0.1,0,-0.1,0.1,2.9,0.1;}
+  }
+}

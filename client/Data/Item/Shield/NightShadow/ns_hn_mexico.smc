@@ -1,0 +1,13 @@
+OFFSET    	0,0,0,180,0,0;
+NAME "ns_hn_mexico";
+{
+  MESH       	TFNM "Data\Item\Shield\NightShadow\ns_hn_mexico.bm";
+  TEXTURES   
+  {
+    "ns_hn_mexico"	TFNM "Data\Item\Shield\NightShadow\Texture\ns_hn_mexico.tex";
+  }
+  ALLFRAMESBBOX	-0.512487,0.905156,-0.088991,0.512487,1.51226,0.142246;
+  COLISION
+  {
+  }
+}

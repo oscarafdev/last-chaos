@@ -1,0 +1,13 @@
+NAME "bone01_d4";
+{
+  MESH       	TFNM "Data\World\P_Dungeon1\Ska\bone01_d4.bm";
+  TEXTURES   
+  {
+    "bone_d4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\bone_d4.tex";
+    "Detail_D4"	TFNM "Data\World\P_Dungeon1\Ska\Texture\Detail_D4.tex";
+  }
+  ALLFRAMESBBOX	-0.210796,-0.189449,-0.210796,0.210796,0.189449,0.210796;
+  COLISION
+  {
+  }
+}

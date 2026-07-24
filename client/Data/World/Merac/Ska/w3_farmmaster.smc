@@ -1,0 +1,20 @@
+NAME "w3_farmmaster";
+{
+  MESH       	TFNM "Data\World\Merac\ska\w3_farmmaster.bm";
+  TEXTURES   
+  {
+    "w3_Theifhouse_wood01"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wood01.tex";
+    "w3_bucket"	TFNM "Data\World\Merac\ska\texture\w3_bucket.tex";
+    "w3_farmdummy"	TFNM "Data\World\Merac\ska\texture\w3_farmdummy.tex";
+    "w3_farmwater2"	TFNM "Data\World\Merac\ska\texture\w3_farmwater2.tex";
+    "w3_minewood4-1"	TFNM "Data\World\Merac\ska\texture\w3_minewood4-1.tex";
+    "w3_Storebox01"	TFNM "Data\World\Merac\ska\texture\w3_Storebox01.tex";
+    "w3_Theifhouse_wheel"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wheel.tex";
+    "merac_Detail"	TFNM "Data\World\Merac\ska\texture\merac_Detail.tex";
+    "w3_Theifhouse_wood02"	TFNM "Data\World\Merac\ska\texture\w3_Theifhouse_wood02.tex";
+  }
+  ALLFRAMESBBOX	-4.10042,-0.076236,-3.41643,4.1004,2.4506,3.41646;
+  COLISION
+  {
+  }
+}
