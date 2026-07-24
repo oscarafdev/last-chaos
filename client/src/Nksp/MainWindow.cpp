@@ -10,6 +10,7 @@
 #include "CmdLine.h"
 #include "Engine/GameState.h"
 #include <Engine/Network/Web.h>
+#include <Common/CefUiMessages.h>
 //#include "Social/TLastChaosApplication.h"
 
 #ifdef KALYDO
@@ -162,7 +163,6 @@ long FAR PASCAL WindowProc_Normal( HWND hWnd, UINT message,
 			if (g_web.GetWebHandle())
 			{
 				g_web.UpdatePos();
-				SetFocus(g_web.GetWebHandle());
 			}
 		}
 		break;
@@ -222,13 +222,45 @@ long FAR PASCAL WindowProc_Normal( HWND hWnd, UINT message,
 }
 
 
+static BOOL _bCefPanelDragging = FALSE;
+static POINT _ptCefDragStart = {0, 0};
+static int _iCefDragStartX = 0;
+static int _iCefDragStartY = 0;
+
 BOOL CALLBACK WebDialogProcPtr(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	if (uMsg >= WM_MOUSEFIRST && uMsg <= WM_MOUSELAST)
-		return TRUE;
-
 	switch(uMsg)
 	{
+	case WM_LC_CEF_DRAG_BEGIN:
+		GetCursorPos(&_ptCefDragStart);
+		g_web.GetPos(_iCefDragStartX, _iCefDragStartY);
+		_bCefPanelDragging = TRUE;
+		SetCapture(hDlg);
+		return TRUE;
+	case WM_LC_CEF_DRAG_MOVE:
+		if (_bCefPanelDragging)
+		{
+			POINT cursor;
+			GetCursorPos(&cursor);
+			g_web.SetPos(
+				_iCefDragStartX + cursor.x - _ptCefDragStart.x,
+				_iCefDragStartY + cursor.y - _ptCefDragStart.y);
+		}
+		return TRUE;
+	case WM_LC_CEF_DRAG_END:
+		_bCefPanelDragging = FALSE;
+		if (GetCapture() == hDlg)
+			ReleaseCapture();
+		return TRUE;
+	case WM_LC_CEF_CLOSE:
+		_bCefPanelDragging = FALSE;
+		if (GetCapture() == hDlg)
+			ReleaseCapture();
+		ShowWindow(hDlg, SW_HIDE);
+		return TRUE;
+	case WM_CAPTURECHANGED:
+		_bCefPanelDragging = FALSE;
+		break;
 	case WM_PARENTNOTIFY:
 		{
 			WORD loMessage = LOWORD(wParam);

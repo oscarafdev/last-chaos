@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.21)
 set(CMAKE_CONFIGURATION_TYPES Debug Release)
 project(LastChaosCefWebPage LANGUAGES C CXX)
 
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../Common")
+
 set(CEF_ROOT "" CACHE PATH "Path to the extracted CEF binary distribution")
 if(NOT EXISTS "${CEF_ROOT}/cmake/FindCEF.cmake")
   message(FATAL_ERROR "CEF_ROOT does not point to a CEF binary distribution")

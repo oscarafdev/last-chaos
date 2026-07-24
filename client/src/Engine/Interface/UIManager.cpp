@@ -1328,10 +1328,7 @@ void CUIManager::Render( CDrawPort *pdp, CProjection3D* pprProjection )
 	{
 		if( m_bMouseInsideUIs )
 		{
-			if (!g_web.GetWebHandle())
-			{
-				GetMouseCursor()->SetCursorType( m_umctTypeInUI );
-			}
+			GetMouseCursor()->SetCursorType( m_umctTypeInUI );
 		}
 		else
 			m_umctTypeInUI = UMCT_NORMAL;
@@ -3296,12 +3293,6 @@ void CUIManager::MsgProc( MSG *pMsg, BOOL *pbIMEProc )
 	if (STAGEMGR()->GetCurStage() == eSTAGE_INTRO || STAGEMGR()->GetCurStage() == eSTAGE_ZONELOADING)
 		return;
 
-	if (g_web.IsWebHandle() == TRUE)
-	{
-		MsgProcWeb(pMsg);
-		return;
-	}
-
 	if(_pGameState->GetGameMode() == CGameState::GM_RESTART ||
 		_pNetwork->bMoveCharacterSelectUI == TRUE) 
 	{
@@ -3955,14 +3946,7 @@ void CUIManager::MsgProc( MSG *pMsg, BOOL *pbIMEProc )
 
 	case WM_SETCURSOR:			//강동민 수정 시작 시스템 마우스 작업	09.09
 		{
-			if (g_web.GetWebHandle())
-			{
-				GetMouseCursor()->SetCursorNULL();
-			}
-			else
-			{
-				GetMouseCursor()->SetCursorType();
-			}
+			GetMouseCursor()->SetCursorType();
 		}
 		break;					//강동민 수정 끝 시스템 마우스 작업		09.09
 		

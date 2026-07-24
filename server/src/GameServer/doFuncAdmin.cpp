@@ -10606,8 +10606,8 @@ void do_GMTestCef(CPC* ch, const char* arg, std::vector<std::string>& vec)
 	packet->type = MSG_EXTEND;
 	packet->subType = MSG_EX_CEF_UI;
 	packet->thirdType = MSG_EX_CEF_UI_OPEN;
-	packet->width = 900;
-	packet->height = 600;
+	packet->width = 520;
+	packet->height = 360;
 	strncpy(packet->route, "test", CEF_UI_MAX_ROUTE_LENGTH);
 	strncpy(packet->parameters, safeParameters.c_str(), CEF_UI_MAX_PARAMETER_LENGTH);
 	strncpy(packet->playerName, ch->GetName(), CEF_UI_MAX_PLAYER_LENGTH);

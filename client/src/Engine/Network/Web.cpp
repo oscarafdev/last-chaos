@@ -238,8 +238,6 @@ BOOL cWeb::OpenWebPage(HWND hDlg)
 		m_hWebWnd = NULL;
 		return FALSE;
 	}
-	CUIManager::getSingleton()->GetMouseCursor()->SetCursorNULL();
-	
 	return TRUE;
 }
 
@@ -277,8 +275,6 @@ BOOL cWeb::CloseWebPage(HWND hDlg)
 			UnEmbedBrowserObject(m_hWebWnd);
 		m_hWebWnd = NULL;
 		
-		CUIManager::getSingleton()->GetMouseCursor()->SetCursorType();
-
 		return TRUE;
 	}
 	return FALSE;
@@ -287,21 +283,15 @@ BOOL cWeb::CloseWebPage(HWND hDlg)
 void cWeb::SetWebPosition(INDEX nWidth, INDEX nHeight)
 {
 	extern ENGINE_API HWND	_hwndMain;
-	extern INDEX	sam_bFullScreenActive;
-	RECT	rtMain;
-	GetWindowRect(_hwndMain, &rtMain);
+	RECT rcClient = {0, 0, 0, 0};
+	GetClientRect(_hwndMain, &rcClient);
+	const INDEX clientWidth = (INDEX)(rcClient.right - rcClient.left);
+	const INDEX clientHeight = (INDEX)(rcClient.bottom - rcClient.top);
 
-	if (IsFullScreen(sam_bFullScreenActive))
-	{
-		m_nPosX = (m_pixMaxI+m_pixMinI - nWidth) / 2; m_nPosY = ( m_pixMaxJ + m_pixMinJ - nHeight ) / 2;
-	}
-	else
-	{
-		m_nPosX = (rtMain.right+rtMain.left - nWidth) / 2; m_nPosY = ( rtMain.bottom+rtMain.top - nHeight ) / 2;
-	}
-	//m_nPosX = (m_pixMaxI+m_pixMinI - nWidth) / 2; m_nPosY = ( m_pixMaxJ + m_pixMinJ - nHeight ) / 2;
-
-	m_nWidth = nWidth; m_nHeight = nHeight;
+	m_nWidth = Min(nWidth, clientWidth);
+	m_nHeight = Min(nHeight, clientHeight);
+	m_nPosX = Max((INDEX)0, (clientWidth - m_nWidth) / 2);
+	m_nPosY = Max((INDEX)0, (clientHeight - m_nHeight) / 2);
 }
 
 void cWeb::SetPos( int x, int y )
@@ -324,14 +314,14 @@ void cWeb::UpdatePos()
 		return;
 
 	extern ENGINE_API HWND	_hwndMain;
-	RECT	rcMain;
-	int nOffY = GetSystemMetrics(SM_CYCAPTION);
-	nOffY += GetSystemMetrics(SM_CYDLGFRAME);
-	int nOffX = GetSystemMetrics(SM_CXDLGFRAME);
+	RECT rcClient = {0, 0, 0, 0};
+	GetClientRect(_hwndMain, &rcClient);
+	const INDEX maxX = Max((INDEX)0, (INDEX)rcClient.right - m_nWidth);
+	const INDEX maxY = Max((INDEX)0, (INDEX)rcClient.bottom - m_nHeight);
+	m_nPosX = Clamp(m_nPosX, (INDEX)0, maxX);
+	m_nPosY = Clamp(m_nPosY, (INDEX)0, maxY);
 
-	GetWindowRect(_hwndMain, &rcMain);
-
-	MoveWindow(_hDlgWeb, rcMain.left + nOffX + m_nPosX, rcMain.top + nOffY + m_nPosY, m_nWidth, m_nHeight, FALSE);
+	MoveWindow(_hDlgWeb, m_nPosX, m_nPosY, m_nWidth, m_nHeight, FALSE);
 	UpdateWindow(_hDlgWeb);
 }
 

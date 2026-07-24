@@ -142,7 +142,7 @@ void CefRuntime::CreateBrowserOnUiThread(
 		if (parent != parent_)
 			return;
 		client = new CefBrowserClient(
-			pendingUrl_, (ModuleDirectory() / "cef-ui").wstring());
+			parent, pendingUrl_, (ModuleDirectory() / "cef-ui").wstring());
 		client_ = client;
 	}
 

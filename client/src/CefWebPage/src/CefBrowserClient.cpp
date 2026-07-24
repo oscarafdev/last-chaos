@@ -1,4 +1,5 @@
 #include "CefBrowserClient.h"
+#include "CefUiMessages.h"
 
 #include "include/base/cef_callback.h"
 #include "include/base/cef_bind.h"
@@ -9,13 +10,22 @@
 
 #include <windows.h>
 
-CefBrowserClient::CefBrowserClient(std::string initialUrl, std::wstring uiRoot)
-	: pendingUrl_(std::move(initialUrl)),
+CefBrowserClient::CefBrowserClient(
+	HWND parent,
+	std::string initialUrl,
+	std::wstring uiRoot)
+	: parent_(parent),
+	  pendingUrl_(std::move(initialUrl)),
 	  uiRoot_(std::move(uiRoot))
 {
 }
 
 CefRefPtr<CefLifeSpanHandler> CefBrowserClient::GetLifeSpanHandler()
+{
+	return this;
+}
+
+CefRefPtr<CefLoadHandler> CefBrowserClient::GetLoadHandler()
 {
 	return this;
 }
@@ -39,6 +49,42 @@ void CefBrowserClient::OnBeforeClose(CefRefPtr<CefBrowser> browser)
 	browser_ = nullptr;
 }
 
+void CefBrowserClient::OnLoadEnd(
+	CefRefPtr<CefBrowser> browser,
+	CefRefPtr<CefFrame> frame,
+	int httpStatusCode)
+{
+	CEF_REQUIRE_UI_THREAD();
+	if (!frame->IsMain())
+		return;
+
+	HWND browserWindow = browser->GetHost()->GetWindowHandle();
+	if (browserWindow != NULL)
+	{
+		InvalidateRect(browserWindow, nullptr, FALSE);
+		UpdateWindow(browserWindow);
+	}
+	if (IsWindow(parent_))
+	{
+		// The legacy DirectX 9 host may not repaint a newly loaded modern CEF
+		// child until its frame changes. Refresh without moving or activating it.
+		SetWindowPos(
+			parent_,
+			nullptr,
+			0,
+			0,
+			0,
+			0,
+			SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER |
+				SWP_NOACTIVATE | SWP_FRAMECHANGED);
+		RedrawWindow(
+			parent_,
+			nullptr,
+			nullptr,
+			RDW_INVALIDATE | RDW_ALLCHILDREN | RDW_UPDATENOW);
+	}
+}
+
 CefRefPtr<CefResourceRequestHandler>
 CefBrowserClient::GetResourceRequestHandler(
 	CefRefPtr<CefBrowser> browser,
@@ -51,12 +97,17 @@ CefBrowserClient::GetResourceRequestHandler(
 {
 	const std::string url = request->GetURL();
 	const std::string testRoute = "lcui://test";
-	if (url.compare(0, testRoute.size(), testRoute) != 0)
+	const std::string actionRoute = "lcui://action/";
+	if (url.compare(0, testRoute.size(), testRoute) != 0 &&
+		url.compare(0, actionRoute.size(), actionRoute) != 0)
 	{
 		return nullptr;
 	}
 
-	disableDefaultHandling = true;
+	if (url.compare(0, actionRoute.size(), actionRoute) == 0)
+		HandleUiAction(url);
+
+	disableDefaultHandling = false;
 	return this;
 }
 
@@ -67,6 +118,16 @@ CefRefPtr<CefResourceHandler> CefBrowserClient::GetResourceHandler(
 {
 	const std::string url = request->GetURL();
 	const std::string testRoute = "lcui://test";
+	const std::string actionRoute = "lcui://action/";
+	if (url.compare(0, actionRoute.size(), actionRoute) == 0)
+	{
+		static const char response[] = "ok";
+		CefRefPtr<CefStreamReader> stream =
+			CefStreamReader::CreateForData(
+				const_cast<char*>(response), sizeof(response) - 1);
+		return new CefStreamResourceHandler("text/plain", stream);
+	}
+
 	if (url.compare(0, testRoute.size(), testRoute) != 0)
 		return nullptr;
 
@@ -76,6 +137,30 @@ CefRefPtr<CefResourceHandler> CefBrowserClient::GetResourceHandler(
 		return nullptr;
 
 	return new CefStreamResourceHandler("text/html", stream);
+}
+
+bool CefBrowserClient::HandleUiAction(const std::string& url)
+{
+	const std::string actionRoute = "lcui://action/";
+	const size_t actionEnd = url.find('?', actionRoute.size());
+	const std::string action = url.substr(
+		actionRoute.size(), actionEnd - actionRoute.size());
+	UINT message = 0;
+
+	if (action == "drag-start")
+		message = WM_LC_CEF_DRAG_BEGIN;
+	else if (action == "drag-move")
+		message = WM_LC_CEF_DRAG_MOVE;
+	else if (action == "drag-end")
+		message = WM_LC_CEF_DRAG_END;
+	else if (action == "close")
+		message = WM_LC_CEF_CLOSE;
+	else
+		return false;
+
+	if (IsWindow(parent_))
+		PostMessage(parent_, message, 0, 0);
+	return true;
 }
 
 void CefBrowserClient::Navigate(std::string url)

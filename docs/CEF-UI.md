@@ -24,6 +24,28 @@ dinámicamente. `CefSubprocess.exe` ejecuta los procesos renderer/GPU. Así se
 evita enlazar el ABI de Chromium directamente con `Nksp.exe` y se conserva un
 límite apto para migrar las UI gradualmente.
 
+El diálogo web es una ventana hija del cliente. Sus coordenadas siempre son
+relativas al área de juego, por lo que acompaña a la ventana principal al
+moverla y nunca puede salir de sus límites. Sólo el rectángulo del panel recibe
+entrada de Chromium; el resto de la pantalla conserva el movimiento, la cámara
+y las UI nativas.
+
+## Interacción del panel
+
+La vista `test` usa un panel de 520×360:
+
+- la barra superior se puede arrastrar;
+- la `X` cierra y destruye la instancia web;
+- el panel queda limitado al área visible del juego;
+- mover la ventana del juego no altera su posición relativa;
+- los parámetros continúan llegando desde el servidor.
+
+Las acciones HTML no manipulan ventanas Win32 directamente. La vista llama a
+rutas internas `lcui://action/*`; `CWebPage.dll` las traduce a un conjunto
+pequeño de mensajes privados (`drag-start`, `drag-move`, `drag-end` y `close`)
+y el cliente ejecuta la operación. Este puente explícito es reutilizable para
+futuras vistas sin exponer una API nativa arbitraria a JavaScript.
+
 ## Compilar
 
 Desde PowerShell:
@@ -84,8 +106,8 @@ inesperados.
 ## Límites de esta primera iteración
 
 - Existe una sola ventana web, igual que en la implementación anterior.
-- El puente JavaScript↔cliente todavía no está expuesto; debe diseñarse con una
-  lista explícita de métodos antes de migrar UI interactiva.
+- El puente JavaScript→cliente sólo expone las acciones de ventana documentadas;
+  cada nueva capacidad deberá agregarse a una lista explícita.
 - HTTP y HTTPS siguen disponibles para usos heredados de `CWebPage`, pero la
   orden `/testcef` sólo acepta la ruta lógica `test`.
 - Los parámetros están limitados a 1024 bytes en el servidor.

@@ -125,8 +125,8 @@ void CSessionState::ReceiveCefUiMessage(CNetworkMessage* istr)
 		strcmp(packet->route, "test") != 0)
 		return;
 
-	const INDEX safeWidth = Clamp(packet->width, 320, 1600);
-	const INDEX safeHeight = Clamp(packet->height, 240, 1000);
+	const INDEX safeWidth = Clamp(packet->width, 420, 520);
+	const INDEX safeHeight = Clamp(packet->height, 300, 360);
 	std::string url = "lcui://test?player=";
 	url += EncodeCefUiParameter(packet->playerName);
 	url += "&parameters=";

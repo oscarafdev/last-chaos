@@ -1404,7 +1404,11 @@ int SubMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int 
 		while( PeekMessage( &msg, NULL, 0, 0, PM_REMOVE)) 
 		{
 			// if it is not a mouse message
-			if( !(msg.message>=WM_MOUSEFIRST && msg.message<=WM_MOUSELAST) || g_web.IsWebHandle() ) 
+			const BOOL bMouseMessage = msg.message >= WM_MOUSEFIRST && msg.message <= WM_MOUSELAST;
+			const HWND hWeb = g_web.GetWebHandle();
+			const BOOL bWebMouseMessage = bMouseMessage && hWeb != NULL &&
+				(msg.hwnd == hWeb || IsChild(hWeb, msg.hwnd));
+			if (!bMouseMessage || bWebMouseMessage)
 			{
 				// if not system key messages
 				if( !(msg.message==WM_KEYDOWN&& msg.wParam==VK_F10
