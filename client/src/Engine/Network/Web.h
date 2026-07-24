@@ -89,7 +89,7 @@ private:
 	WEB_STATUS		m_eStatus;
 	CSharedWebData	m_sharedData;
 	cThreadWrapper	*m_pThread;
-	const HMODULE	m_hWebPage = nullptr;
+	HMODULE			m_hWebPage;
 	HWND			m_hWebWnd;
 	INDEX			m_WebDlgID;
 	fn_WebDlgCallBack* m_fnWebCallBack;

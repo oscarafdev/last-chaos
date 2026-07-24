@@ -123,11 +123,12 @@ UINT WINAPI WebThreadFunction(void *parameter)
 
 cWeb::cWeb()
 : m_eStatus( WS_PREBEGIN )
+, m_hWebPage(nullptr)
 {
 	m_sharedData.ResetAll();
 	m_pThread = new cThreadWrapper(WebThreadFunction);
 
-	const HMODULE m_hWebPage = LoadLibrary(TEXT("CWebPage.dll"));
+	m_hWebPage = LoadLibrary(TEXT("CWebPage.dll"));
 
 	if (m_hWebPage != nullptr)
 	{
@@ -228,8 +229,15 @@ BOOL cWeb::Read(std::string &strContent, std::string &strError)		//요청했던 web 
 
 BOOL cWeb::OpenWebPage(HWND hDlg)
 {
+	if (EmbedBrowserObject == nullptr)
+		return FALSE;
+
 	m_hWebWnd = hDlg;
-	EmbedBrowserObject(hDlg);
+	if (FAILED(EmbedBrowserObject(hDlg)))
+	{
+		m_hWebWnd = NULL;
+		return FALSE;
+	}
 	CUIManager::getSingleton()->GetMouseCursor()->SetCursorNULL();
 	
 	return TRUE;
@@ -265,7 +273,8 @@ BOOL cWeb::CloseWebPage(HWND hDlg)
 {
 	if (m_hWebWnd)
 	{
-		UnEmbedBrowserObject(m_hWebWnd);
+		if (UnEmbedBrowserObject != nullptr)
+			UnEmbedBrowserObject(m_hWebWnd);
 		m_hWebWnd = NULL;
 		
 		CUIManager::getSingleton()->GetMouseCursor()->SetCursorType();
@@ -328,8 +337,8 @@ void cWeb::UpdatePos()
 
 void cWeb::SetWebUrl( std::string& url )
 {
-	if (m_hWebWnd == NULL)
+	if (m_hWebWnd == NULL || DisplayHTMLPage == nullptr)
 		return;
 
-	DisplayHTMLPage(m_hWebWnd, CTString(url.c_str()));
+	DisplayHTMLPage(m_hWebWnd, url.c_str());
 }

@@ -245,13 +245,14 @@ BOOL CALLBACK WebDialogProcPtr(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lPara
 		break;
 	case WM_SHOWWINDOW:
 		{
-			if (g_web.IsWebHandle())
+			if (wParam != FALSE)
+			{
+				if (!g_web.IsWebHandle())
+					g_web.OpenWebPage(hDlg);
+			}
+			else if (g_web.IsWebHandle())
 			{
 				g_web.CloseWebPage(hDlg);
-			}
-			else
-			{
-				g_web.OpenWebPage(hDlg);
 			}
 		}
 		break;

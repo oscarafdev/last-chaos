@@ -471,6 +471,7 @@ private:
 	//-------------------------------------------------------------
 	// Extend
 	bool RecvExtend(CNetworkMessage* istr);
+	void ReceiveCefUiMessage(CNetworkMessage* istr);
 	void recvExRestart(CNetworkMessage* istr);
 	void recvExMonsterCombo(CNetworkMessage* istr);
 

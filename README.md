@@ -130,6 +130,9 @@ La guía detallada para seleccionar español, operar eventos y administrar
 permisos GM está en
 [`docs/IDIOMAS-EVENTOS-ADMIN.md`](docs/IDIOMAS-EVENTOS-ADMIN.md).
 
+La integración experimental de Chromium Embedded Framework y el comando
+`/testcef` se documentan en [`docs/CEF-UI.md`](docs/CEF-UI.md).
+
 ## Decisiones y límites conocidos
 
 1. La descarga original ocupa 8,4 GB sólo en `LC2018` porque replica el árbol

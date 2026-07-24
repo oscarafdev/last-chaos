@@ -30,6 +30,7 @@
 #include "../ShareLib/packetType/ptype_old_do_skill.h"
 #include "../ShareLib/packetType/ptype_old_do_sskill.h"
 #include "../ShareLib/packetType/ptype_attendance.h"
+#include "../ShareLib/packetType/ptype_cef_ui.h"
 
 #ifdef DURABILITY
 #include "../ShareLib/packetType/ptype_durability.h"
@@ -10586,6 +10587,32 @@ void do_guild_battle_list(CPC* ch, const char* arg, std::vector<std::string>& ve
 		SayMsg(rmsg, MSG_CHAT_GM, 0, "", "", message.c_str());
 		SEND_Q(rmsg, ch->m_desc);
 	}
+}
+
+
+void do_GMTestCef(CPC* ch, const char* arg, std::vector<std::string>& vec)
+{
+	if (ch == NULL || ch->m_desc == NULL)
+		return;
+
+	const char* parameters = (arg != NULL) ? arg : "";
+	std::string safeParameters(parameters);
+	if (safeParameters.length() > CEF_UI_MAX_PARAMETER_LENGTH)
+		safeParameters.resize(CEF_UI_MAX_PARAMETER_LENGTH);
+
+	CNetMsg::SP rmsg(new CNetMsg);
+	pTypeCefUi* packet = reinterpret_cast<pTypeCefUi*>(rmsg->m_buf);
+	memset(packet, 0, sizeof(pTypeCefUi));
+	packet->type = MSG_EXTEND;
+	packet->subType = MSG_EX_CEF_UI;
+	packet->thirdType = MSG_EX_CEF_UI_OPEN;
+	packet->width = 900;
+	packet->height = 600;
+	strncpy(packet->route, "test", CEF_UI_MAX_ROUTE_LENGTH);
+	strncpy(packet->parameters, safeParameters.c_str(), CEF_UI_MAX_PARAMETER_LENGTH);
+	strncpy(packet->playerName, ch->GetName(), CEF_UI_MAX_PLAYER_LENGTH);
+	rmsg->setSize(sizeof(pTypeCefUi));
+	SEND_Q(rmsg, ch->m_desc);
 }
 
 void do_test( CPC* ch, const char* arg, std::vector<std::string>& vec )

@@ -272,6 +272,7 @@ void CGMCmdList::load(void)
 	add(new CGMCmd(GM_CMD_GUILD_BATTLE_CORE, 9, do_guild_battle_score));
 	add(new CGMCmd(GM_CMD_GUILD_BATTLE_LIST, 9, do_guild_battle_list));
 
+	add(new CGMCmd(GM_CMD_TEST_CEF, 9, do_GMTestCef));
 	add(new CGMCmd(GM_CMD_TEST_COMMAND, 9, do_test));
 	
 	add(new CGMCmd(GM_CMD_GUILD_MEMBER_OUT_TIME, 9, do_GM_Guild_Memberout_Time));

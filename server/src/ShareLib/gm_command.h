@@ -318,6 +318,7 @@
 #define		GM_CMD_GUILD_BATTLE_LIST				"g_battle_ing"
 
 
+#define		GM_CMD_TEST_CEF							"testcef"
 #define		GM_CMD_TEST_COMMAND						"test"					// 테스트 명령어
 
 #define		GM_CMD_GUILD_MEMBER_OUT_TIME			"g_m_out_time"
