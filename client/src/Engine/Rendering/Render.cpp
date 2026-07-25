@@ -33,6 +33,7 @@
 #include <Engine/Math/Geometry.inl>
 
 #include <Engine/Graphics/DrawPort.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/Graphics/Fog_internal.h>
 
@@ -1109,7 +1110,7 @@ void CRenderer::DrawToScreen(void)
 			{
 				if(re_iIndex == IDX_MAIN_RENDERER)
 				{
-					// Brush Polygon에 캐릭터 쉐도우를 그립니다.
+					// Dibuja la sombra del personaje sobre el poligono del brush.
 					RenderShadowToBrushPolygon(re_prProjection->pr_ViewerPlacement);
 				}
 			}
@@ -1213,6 +1214,8 @@ void CRenderer::DrawToScreen(void)
 	// User interface
 	if( re_iIndex == IDX_MAIN_RENDERER && re_pdpDrawPort )
 	{
+		GetDirectX12Backend().BeginDrawPortScope(
+			DX12_DRAWPORT_SCOPE_UI);
 		CUIManager::getSingleton()->Render( re_pdpDrawPort, re_prProjection );
 		g_iShowName = iShowNameOld;
 		g_iShowNameItem = iShowNameItemOld;
@@ -1499,7 +1502,7 @@ void CRenderer::RenderShadowToBrushPolygon(const CPlacement3D &plEye)
 		FLOAT3D			vPoint;
 		FLOATplane3D	plPlane;
 		
-		// NOTE : 아래 컨테이너를 루프 바깥으로 빼고서, 브러시 폴리곤을 한꺼번에 처리하도록 하자.
+		// NOTA: Conviene sacar el contenedor del bucle y procesar juntos los poligonos del brush.
 		CDynamicContainer<CBrushPolygon> dcPolygons;
 		//en.GetNearPolygonsInSphere(35.0f, dcPolygons);
 		
@@ -1630,11 +1633,11 @@ void CRenderer::RenderSkaModelShadowToTerrain(CTerrain *ptrTerrain, const CPlace
 		INDEX iOldFilter, iOldAnisotropy;
 		gfxGetTextureFiltering( iOldFilter, iOldAnisotropy);
 		
-		// 외곽선을 해결하기 위해서 필터링 적용
-		// 필터링 off
-		// 확대 될경우엔 아무래도 필터링을 켜는것이 보기 좋다.
-		// 그러나 스프라이트는 투명색과 필터링이 일어나기때문에
-		// 투명색과의 경계부분이 테두리가 생길수있다.	
+		// Aplica filtrado para corregir el contorno.
+		// Filtrado desactivado.
+		// Al ampliar la imagen, el filtrado activado suele verse mejor.
+		// Sin embargo, los sprites combinan color transparente y filtrado,
+		// por lo que puede aparecer un borde en el limite del color transparente.
 		INDEX iNewFilter=202, iNewAnisotropy=1;
 		gfxSetTextureFiltering( iNewFilter, iNewAnisotropy);
 		
@@ -1858,14 +1861,14 @@ void CRenderer::RenderSkaModelShadowToTerrain(CTerrain *ptrTerrain, const CPlace
 				hr = _pGfx->gl_pd3d9Device->SetTextureStageState( 0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_COUNT4|D3DTTFF_PROJECTED );	D3D_CHECKERROR(hr);
 				
 				//////////////////////////////////////////////////////////////////////////
-				// Fog 및 Haze의 적용.
-				// NOTE : 2월 11일 작업 내용.			
-				// NOTE : 그림자를 캐릭터가 Fog내에 있을 때 처리하는 경우에는 캐릭터가 Fog 위쪽있을경우,
-				// NOTE : 그림자는 Terrain위에 생기게 된다.  즉, 그림자는 Terrain위에 생기므로,
-				// NOTE : 지형에 Fog가 적용되어있을 때 처리해줌.
-				// NOTE : 각 정점마다 Fog와 Haze로부터 영향받은 알파값을 계산해야 하기 때문에 Triangle마다 처리했으나,
-				// NOTE : 최적화가 가능한 부분(추후 작업)
-				// NOTE : 전체 정점의 알파값을 미리 변경한뒤에 한꺼번에 렌더링하는 식으로 수정할것.
+				// Aplicacion de niebla y bruma.
+				// NOTA: Trabajo realizado el 11 de febrero.
+				// NOTA: Si la sombra se procesa con el personaje dentro de la niebla y este queda por encima,
+				// la sombra se genera sobre el terreno. Como se proyecta sobre el terreno,
+				// debe procesarse cuando la niebla se aplica al terreno.
+				// NOTA: Antes se procesaba por triangulo para calcular en cada vertice el alfa afectado por niebla y bruma.
+				// NOTA: Esta parte admite una optimizacion posterior.
+				// NOTA: Se debe calcular primero el alfa de todos los vertices y renderizarlos juntos.
 				
 				Matrix12 matObjToView;
 				TR_GetObjToViewMatrix(matObjToView);
@@ -2097,8 +2100,8 @@ void CRenderer::Render(void)
 			re_pdpDrawPort->FillZBuffer(ZBUF_BACK);
 		}
 
-		// NOTE : 월드 내에 Terrain 엔티티가 하나만 들어가게 될 경우에는
-		// NOTE : Terrain 엔티티를 외부로 빼놓아도 좋을듯...
+		// NOTA: Si el mundo llega a contener una sola entidad de terreno,
+		// podria ser conveniente mantener esa entidad fuera del contenedor general.
 		if(re_lhActiveTerrains.IsEmpty())
 		{
 			// for all entities in world 

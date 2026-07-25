@@ -66,9 +66,9 @@ enum GfxPolyMode
 #define GFX_TEXCOORD3        (1UL<<5)
 #define GFX_NORMAL_STREAM    (1UL<<6)
 #define GFX_WEIGHT_STREAM    (1UL<<7)
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define GFX_TANGENT_STREAM   (1UL<<8)
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 
 
 
@@ -90,10 +90,10 @@ enum GfxLockType
 #define GFX_TEXIDX (2)
 #define GFX_NORIDX (6)
 #define GFX_WGHIDX (7)
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define GFX_TANIDX (8)
 #define GFX_REAL_TANIDX (3)
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 
 // vertex array index and mask
 #define GFX_VBA_POS 0
@@ -101,24 +101,24 @@ enum GfxLockType
 #define GFX_VBA_WGH 2
 #define GFX_VBA_COL 3
 #define GFX_VBA_TEX 4
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define GFX_VBA_TAN 12
 #define GFX_MAX_VBA 13  // 8 texture coords
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 
 #define GFX_VBM_POS (1L<<GFX_VBA_POS)
 #define GFX_VBM_NOR (1L<<GFX_VBA_NOR)
 #define GFX_VBM_WGH (1L<<GFX_VBA_WGH)
 #define GFX_VBM_COL (1L<<GFX_VBA_COL)
 #define GFX_VBM_TEX (1L<<GFX_VBA_TEX)
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define GFX_VBM_TAN (1L<<GFX_VBA_TAN)
 #define GFX_MAX_VBM (1L<<6)
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define GFX_ALL_VBM ((GFX_MAX_VBM-1)|GFX_VBM_TAN)
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 
 
 // sizes
@@ -129,9 +129,9 @@ enum GfxLockType
 #define GFX_COLSIZE (4*sizeof(UBYTE))
 #define GFX_WGHSIZE (4*sizeof(UBYTE)*2)
 #define GFX_IDXSIZE (1*sizeof(UWORD))
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define GFX_TANSIZE (4*sizeof(FLOAT))
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 
 // functions initialization for OGL, D3D or NONE (dummy)
 extern void GFX_SetFunctionPointers( INDEX iAPI);
@@ -378,6 +378,11 @@ struct VertexBuffer {
 public:
 	INDEX vb_i1stLockedVertex[GFX_MAX_VBA];
 	void *vb_paReadArray[GFX_MAX_VBA]; // pointers to read array(s) that exist in this buffer (non-exist = NULL)
+	void *vb_paDx12Mirror[GFX_MAX_VBA]; // espejo CPU para streams estaticos usados por DirectX 12
+	void *vb_paDx12LockedArray[GFX_MAX_VBA];
+	INDEX vb_iDx12FirstLockedVertex[GFX_MAX_VBA];
+	INDEX vb_ctDx12LockedVertices[GFX_MAX_VBA];
+	BOOL vb_abDx12MirrorOwned[GFX_MAX_VBA];
 	union {
 		void *vb_paWriteArray[GFX_MAX_VBA]; // pointers to write array(s)...
 		LPDIRECT3DVERTEXBUFFER9 vb_pavbWrite[GFX_MAX_VBA];
@@ -410,18 +415,18 @@ extern ULONG gfxGetVertexBufferMask( const INDEX iBindNo, INDEX &ctTexCoordArray
 // lock/unlock one vertex buffer for reading or writing (if iID<16, lock dynamic vertex buffer)
 #define gfxLockVertexSubBuffer   gfxLockSubBuffer
 #define gfxLockNormalSubBuffer   gfxLockSubBuffer
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define gfxLockTangentSubBuffer   gfxLockSubBuffer
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define gfxLockWeightSubBuffer   gfxLockSubBuffer
 #define gfxLockTexCoordSubBuffer gfxLockSubBuffer
 extern void* (*gfxLockSubBuffer)( const INDEX iID, const INDEX i1stVertex, const INDEX ctVertices,
 																	const enum GfxLockType eLockType/*=GFX_WRITE*/);
 #define gfxUnlockVertexSubBuffer   gfxUnlockSubBuffer
 #define gfxUnlockNormalSubBuffer   gfxUnlockSubBuffer
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define gfxUnlockTangentSubBuffer   gfxUnlockSubBuffer
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define gfxUnlockWeightSubBuffer   gfxUnlockSubBuffer
 #define gfxUnlockTexCoordSubBuffer gfxUnlockSubBuffer
 extern void (*gfxUnlockSubBuffer)( const INDEX iID, const INDEX ctVertices/*=0*/);
@@ -432,9 +437,9 @@ extern void (*gfxSetVertexSubBuffer)( const INDEX iID, const INDEX i1stVertex/*=
 // set normal, weight and color sub-buffers
 // (when setting texture coord sub-buffer, iUnit = to which texture unit set this array; -1 = current unit)
 #define gfxSetNormalSubBuffer   gfxSetSubBuffer
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define gfxSetTangentSubBuffer   gfxSetSubBuffer
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 #define gfxSetWeightSubBuffer   gfxSetSubBuffer
 #define gfxSetTexCoordSubBuffer gfxSetSubBuffer
 extern void (*gfxSetSubBuffer)(const INDEX iID, const INDEX iUnit/*=-1*/, const INDEX tedt, const INDEX tedt2);

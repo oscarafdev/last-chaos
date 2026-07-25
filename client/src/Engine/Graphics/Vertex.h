@@ -17,13 +17,13 @@ struct GFXNormal
 	FLOAT nx,ny,nz;
 };
 
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificaci처n: mapa normal en espacio tangente (0.1).
 struct GFXTangent
 {
   FLOAT tx,ty,tz;
   FLOAT sb;
 };
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificaci처n: mapa normal en espacio tangente (0.1).
 
 struct GFXTexCoord
 {

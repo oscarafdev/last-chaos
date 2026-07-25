@@ -24,6 +24,7 @@
 #include <Engine/Graphics/DrawPort.h>
 #include <Engine/Graphics/Font.h>
 #include <Engine/Graphics/MultiMonitor.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 
 #include <Engine/Templates/DynamicStackArray.h>
 #include <Engine/Templates/DynamicStackArray.cpp>
@@ -1872,7 +1873,7 @@ static void AdjustGammaRamp( CViewPort *pvp);
 static FLOAT _fMinAvailPhys = UpperLimit(1.0f);
 
 
-//안태훈 수정 시작	//(For Win98)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon para Win98 (0.1)
 //////////////////////////////////////////////////////////
 //  Function Name  
 //      GetOSVersionType
@@ -1926,7 +1927,7 @@ static int WINAPI GetOSVersionType()
     
     return nOSVersion; 
 }
-//안태훈 수정 끝	//(For Win98)(0.1)
+// Fin de modificacion de Ahn Tae-hoon para Win98 (0.1)
  
 /*
  * swap buffers in a viewport
@@ -2063,14 +2064,39 @@ void CGfxLibrary::SwapBuffers( CViewPort *pvp, const BOOL bWaitForRetrace/*=FALS
 		// end scene rendering
 		HRESULT hr;
 		if( GFX_bRenderingScene) {
+			if (!GetDirectX12Backend().ClosePendingUiScope())
+				CPrintF("DX12 error: No se pudo cerrar la pasada UI.\n");
 			hr = gl_pd3d9Device->EndScene(); 
 			D3D_CHECKERROR(hr);
+
+			// Entrega a DX12 el backbuffer que la swap chain va a presentar.
+			IDirect3DSurface9* pRenderTarget9 = NULL;
+			HRESULT hrRenderTarget = E_FAIL;
+			if (pvp->vp9_pSwapChain != NULL) {
+				hrRenderTarget = pvp->vp9_pSwapChain->GetBackBuffer(
+					0, D3DBACKBUFFER_TYPE_MONO, &pRenderTarget9);
+			} else {
+				hrRenderTarget = gl_pd3d9Device->GetBackBuffer(
+					0, 0, D3DBACKBUFFER_TYPE_MONO, &pRenderTarget9);
+			}
+			if (SUCCEEDED(hrRenderTarget)) {
+				if (!GetDirectX12Backend().AcquireRenderTarget(pRenderTarget9, pvp->vp_hWnd))
+					CPrintF("DX12 error: No se pudo adquirir el render target.\n");
+				pRenderTarget9->Release();
+			}
+
+			// Envia el trabajo nativo y devuelve el recurso antes de presentarlo.
+			if (GetDirectX12Backend().IsFrameOpen()
+				&& !GetDirectX12Backend().EndFrame())
+				CPrintF("DX12 error: No se pudo enviar el contexto del frame.\n");
 		}
 		CDisplayMode dm;
 		GetCurrentDisplayMode(dm);
 		ASSERT( (dm.dm_pixSizeI==0 && dm.dm_pixSizeJ==0) || (dm.dm_pixSizeI!=0 && dm.dm_pixSizeJ!=0));
 
-//안태훈 수정 시작	//(For Win98)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon para Win98 (0.1)
+		if (!GetDirectX12Backend().ShouldBypassLegacyPresent())
+		{
 		//if(GetOSVersionType() > 3)
 		{
 			// PC can swap in windowed mode
@@ -2174,7 +2200,8 @@ void CGfxLibrary::SwapBuffers( CViewPort *pvp, const BOOL bWaitForRetrace/*=FALS
 				}
 			}
 		}
-//안태훈 수정 끝	//(For Win98)(0.1)
+		}
+// Fin de modificacion de Ahn Tae-hoon para Win98 (0.1)
 
 		// force finishing of all rendering operations (if required)
 		if( d3d_iFinish==3) gfxFinish(FALSE);
@@ -2286,8 +2313,13 @@ BOOL CGfxLibrary::LockRaster( CRaster *praToLock)
 			HRESULT hr = gl_pd3d9Device->BeginScene(); 
 			D3D_CHECKERROR(hr);
 			bRes = (hr==D3D_OK);
+			if (bRes && !GetDirectX12Backend().BeginFrame()) {
+				CPrintF("DX12 error: No se pudo iniciar el contexto del frame.\n");
+				gl_pd3d9Device->EndScene();
+				bRes = FALSE;
+			}
 		} // mark it
-		GFX_bRenderingScene = TRUE;
+		GFX_bRenderingScene = bRes;
 	} // done
 	else {
 		CPrintF("CGfxLibrary: SetCurrentViewport Error!.\n");

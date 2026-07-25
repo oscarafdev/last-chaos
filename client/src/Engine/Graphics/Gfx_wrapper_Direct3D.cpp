@@ -5,6 +5,7 @@
 #include <Engine/Templates/DynamicContainer.cpp>
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/Graphics/Gfx_Direct3D_Functions.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 
 
 CStaticStackArray<VertexShaderProgram>	_avsVertexShaderProgram;
@@ -1548,6 +1549,8 @@ static void d3d_DeleteTexture( ULONG64 &ulTexObject)
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
 	MEMTRACK_FREE( (void*)(ulTexObject^0x80000000));
+	GetDirectX12Backend().ForgetLegacyTexture(
+		(LPDIRECT3DTEXTURE9)ulTexObject);
 	D3DRELEASE( (LPDIRECT3DTEXTURE9&)ulTexObject, TRUE);
 	ulTexObject = NONE;
 
@@ -1647,6 +1650,12 @@ static void *d3d_LockSubBuffer( const INDEX iID, const INDEX i1stVertex, const I
 		}
 	}
 
+	if( iBind>0 && eLockType!=GFX_READ) {
+		vb.vb_paDx12LockedArray[iType] = pRet;
+		vb.vb_iDx12FirstLockedVertex[iType] = i1stVertex;
+		vb.vb_ctDx12LockedVertices[iType] = ctVertices;
+	}
+
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 
 	// mark that buffer has been locked
@@ -1690,6 +1699,22 @@ static void d3d_UnlockSubBuffer( const INDEX iID, const INDEX ctVertices/*=0*/)
 	// static buffer?
 	else {
 		ASSERT( ctVertices==0); // cannot adjust size of static buffer
+		if( vb.vb_ctDx12LockedVertices[iType]>0
+		 && vb.vb_paDx12Mirror[iType]!=NULL
+		 && vb.vb_paDx12LockedArray[iType]!=NULL) {
+			const SLONG slTypeSize = GetVBTypeSize(iType);
+			const SLONG slOffset =
+				vb.vb_iDx12FirstLockedVertex[iType] * slTypeSize;
+			const SLONG slSize =
+				vb.vb_ctDx12LockedVertices[iType] * slTypeSize;
+			CopyLongs(
+				(ULONG*)vb.vb_paDx12LockedArray[iType],
+				(ULONG*)((UBYTE*)vb.vb_paDx12Mirror[iType] + slOffset),
+				slSize/sizeof(ULONG));
+		}
+		vb.vb_paDx12LockedArray[iType] = NULL;
+		vb.vb_iDx12FirstLockedVertex[iType] = 0;
+		vb.vb_ctDx12LockedVertices[iType] = 0;
 		// if read/write array was locked for writing, we must copy read to write buffer (i.e. synchronize)
 		LPDIRECT3DVERTEXBUFFER9 pd3dVB = vb.vb_pavbWrite[iType];
 		if( vb.vb_ctLockedVertices[iType]>0) {
@@ -1765,6 +1790,12 @@ static void d3d_SetVertexSubBuffer( const INDEX iID, const INDEX i1stVertex/*=0*
 
 	// set vertex count and offset
 	GFX_ctVertices = (ctVertices>0) ? ctVertices : vb.vb_ctVertices;
+	if( iBind>0 && vb.vb_paDx12Mirror[iType]!=NULL) {
+		GetDirectX12Backend().SetLegacy3DStaticVertexArray(
+			(const FLOAT*)((const UBYTE*)vb.vb_paDx12Mirror[iType]
+				+ i1stVertex*GetVBTypeSize(iType)),
+			(UINT)GFX_ctVertices);
+	}
 	hr = _pGfx->gl_pd3d9Device->SetIndices( _pGfx->gl_pd3dIdx/*, i1stVertex*/);
 	D3D_CHECKERROR(hr);
 
@@ -1809,6 +1840,35 @@ static void d3d_SetSubBuffer(const INDEX iID, const INDEX iUnit/*=-1*/, const IN
 	D3D_CHECKERROR(hr);
 	_bUsingDynamicBuffer = FALSE;
 	GFX_ctVertices = (tedt2 > 0) ? tedt2 : vb.vb_ctVertices;
+	if( iBind>0 && vb.vb_paDx12Mirror[iType]!=NULL) {
+		const UBYTE* pubMirror =
+			(const UBYTE*)vb.vb_paDx12Mirror[iType]
+			+ tedt*GetVBTypeSize(iType);
+		// El stream físico de tangentes es el 3 y se solapa con el rango
+		// numérico de UV. Clasificamos primero por el tipo lógico del buffer.
+		if( iType==GFX_VBA_TAN) {
+			GetDirectX12Backend().SetLegacy3DStaticTangentArray(
+				(const FLOAT*)pubMirror,
+				(UINT)GFX_ctVertices);
+		} else if( iStream>=GFX_TEXIDX && iStream<GFX_TEXIDX+4) {
+			GetDirectX12Backend().SetLegacy3DStaticTexCoordArray(
+				(UINT)(iStream-GFX_TEXIDX),
+				(const FLOAT*)pubMirror,
+				(UINT)GFX_ctVertices);
+		} else if( iStream==GFX_NORIDX) {
+			GetDirectX12Backend().SetLegacy3DStaticNormalArray(
+				(const FLOAT*)pubMirror,
+				(UINT)GFX_ctVertices);
+		} else if( iStream==GFX_COLIDX) {
+			GetDirectX12Backend().SetLegacy3DStaticD3DColorArray(
+				(const ULONG*)pubMirror,
+				(UINT)GFX_ctVertices);
+		} else if( iStream==GFX_WGHIDX) {
+			GetDirectX12Backend().SetLegacy3DStaticWeightArray(
+				(const BYTE*)pubMirror,
+				(UINT)GFX_ctVertices);
+		}
+	}
 	hr = _pGfx->gl_pd3d9Device->SetIndices(_pGfx->gl_pd3dIdx);
 	D3D_CHECKERROR(hr);
 
@@ -1836,6 +1896,9 @@ static void d3d_SetVertexArray( GFXVertex *pvtx, INDEX ctVtx)
 	// copy vertices there and unlock
 	CopyLongs( (ULONG*)pvtx, (ULONG*)pVA, ctVtx*sizeof(GFXVertex)/sizeof(FLOAT));
 	UnlockVertexArray_D3D();
+	GetDirectX12Backend().SetLegacy3DVertexArray(
+		(const FLOAT*)pvtx,
+		(UINT)ctVtx);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1853,6 +1916,9 @@ static void d3d_SetNormalArray( GFXNormal *pnor)
 	// copy vertices there and unlock
 	CopyLongs( (ULONG*)pnor, (ULONG*)pNA, GFX_ctVertices*sizeof(GFXNormal)/sizeof(FLOAT));
 	UnlockNormalArray_D3D();
+	GetDirectX12Backend().SetLegacy3DNormalArray(
+		(const FLOAT*)pnor,
+		(UINT)GFX_ctVertices);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1869,6 +1935,9 @@ static void d3d_SetWeightArray( GFXWeight *pwgh)
 	// copy vertices there and unlock
 	CopyLongs( (ULONG*)pwgh, (ULONG*)pWA, GFX_ctVertices*sizeof(GFXWeight)/sizeof(ULONG));
 	UnlockWeightArray_D3D();
+	GetDirectX12Backend().SetLegacy3DWeightArray(
+		(const BYTE*)pwgh,
+		(UINT)GFX_ctVertices);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1886,6 +1955,9 @@ static void d3d_SetColorArray( GFXColor *pcol)
 	// convert vertices there and unlock
 	abgr2argb( (ULONG*)pcol, (ULONG*)pCA, GFX_ctVertices*sizeof(GFXColor)/sizeof(ULONG));
 	UnlockColorArray_D3D();
+	GetDirectX12Backend().SetLegacy3DColorArray(
+		(const ULONG*)pcol,
+		(UINT)GFX_ctVertices);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1905,6 +1977,14 @@ static void d3d_SetTexCoordArray( GFXTexCoord *ptex, BOOL bProjectiveMapping/*=F
 	const SLONG slSize = bProjectiveMapping ? sizeof(GFXTexCoord4) : sizeof(GFXTexCoord);
 	CopyLongs( (ULONG*)ptex, (ULONG*)pTA, GFX_ctVertices*slSize/sizeof(FLOAT));
 	UnlockTexCoordArray_D3D();
+	if( GFX_iActiveTexUnit>=0
+		&& GFX_iActiveTexUnit<4
+		&& !bProjectiveMapping) {
+		GetDirectX12Backend().SetLegacy3DTexCoordArray(
+			(UINT)GFX_iActiveTexUnit,
+			(const FLOAT*)ptex,
+			(UINT)GFX_ctVertices);
+	}
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1919,6 +1999,7 @@ static void d3d_SetConstantColor( COLOR col)
 	const ULONG d3dColor = rgba2argb(col);
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_AMBIENT, d3dColor);
 	D3D_CHECKERROR(hr); 
+	GetDirectX12Backend().SetLegacy3DConstantColor((ULONG)col);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }

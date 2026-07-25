@@ -671,6 +671,13 @@ extern void InitVertexBuffers(void)
 	// set one for dynamic array
 	VertexBuffer &vb  = _avbVertexBuffers.Push();
 	vb.vb_ulLockMask  = NONE;
+	for( INDEX iVA=0; iVA<GFX_MAX_VBA; iVA++) {
+		vb.vb_paDx12Mirror[iVA] = NULL;
+		vb.vb_paDx12LockedArray[iVA] = NULL;
+		vb.vb_iDx12FirstLockedVertex[iVA] = 0;
+		vb.vb_ctDx12LockedVertices[iVA] = 0;
+		vb.vb_abDx12MirrorOwned[iVA] = FALSE;
+	}
 //	//(Add Tagent-space Normal Map)(0.1)
 //	vb.vb_ulArrayMask = GFX_VBM_POS|GFX_VBM_NOR|GFX_VBM_WGH|GFX_VBM_COL|GFX_VBM_TEX; //
 	vb.vb_ulArrayMask = GFX_VBM_POS|GFX_VBM_NOR|GFX_VBM_WGH|GFX_VBM_COL|GFX_VBM_TEX|GFX_VBM_TAN;
@@ -739,10 +746,21 @@ extern INDEX gfxCreateVertexBuffer( const INDEX ctVertices, ULONG ulTypeMask, IN
 
 		for( iVA=0; iVA<GFX_MAX_VBA; iVA++) {
 			vb.vb_paReadArray[iVA] = vb.vb_paWriteArray[iVA] = NULL;
+			vb.vb_paDx12Mirror[iVA] = NULL;
+			vb.vb_paDx12LockedArray[iVA] = NULL;
+			vb.vb_iDx12FirstLockedVertex[iVA] = 0;
+			vb.vb_ctDx12LockedVertices[iVA] = 0;
+			vb.vb_abDx12MirrorOwned[iVA] = FALSE;
 			vb.vb_i1stLockedVertex[iVA] = vb.vb_ctLockedVertices[iVA] = 0;
 			if( !((ulTypeMask>>iVA)&1)) continue;
 			const SLONG slSize = ctVertices*_aslVBTypeSizes[iVA];
-			if( bRead) vb.vb_paReadArray[iVA] = AllocMemory(slSize);
+			if( bRead) {
+				vb.vb_paReadArray[iVA] = AllocMemory(slSize);
+				vb.vb_paDx12Mirror[iVA] = vb.vb_paReadArray[iVA];
+			} else {
+				vb.vb_paDx12Mirror[iVA] = AllocMemory(slSize);
+				vb.vb_abDx12MirrorOwned[iVA] = TRUE;
+			}
 			HRESULT hr = pd3dDev->CreateVertexBuffer(slSize, dwFlags, 0, D3DPOOL_DEFAULT, &vb.vb_pavbWrite[iVA], NULL);
 			if( hr!=D3D_OK) break;  // out of memory (probably)
 			slTotalSize += slSize;
@@ -754,9 +772,16 @@ extern INDEX gfxCreateVertexBuffer( const INDEX ctVertices, ULONG ulTypeMask, IN
 //	//(DevPartner Bug Fix)(2005-01-10)
 			for( iVA=0; iVA<GFX_MAX_VBA; iVA++)
 			{
+				if( vb.vb_abDx12MirrorOwned[iVA]
+				 && vb.vb_paDx12Mirror[iVA]!=NULL) {
+					FreeMemory(vb.vb_paDx12Mirror[iVA]);
+				}
+				vb.vb_paDx12Mirror[iVA] = NULL;
+				vb.vb_paDx12LockedArray[iVA] = NULL;
+				vb.vb_abDx12MirrorOwned[iVA] = FALSE;
 				if((ulTypeMask>>iVA)&1)
 				{
-					if(vb.vb_paReadArray[iVA]==NULL)
+					if(vb.vb_paReadArray[iVA]!=NULL)
 					{
 						FreeMemory( vb.vb_paReadArray[iVA]);
 						vb.vb_paReadArray[iVA] = NULL;
@@ -830,6 +855,12 @@ extern void gfxDeleteVertexBuffer( const INDEX iBindNo)
 */
 
 		for( iVA=0; iVA<GFX_MAX_VBA; iVA++) {
+			if( vb.vb_abDx12MirrorOwned[iVA] && vb.vb_paDx12Mirror[iVA]!=NULL) {
+				FreeMemory(vb.vb_paDx12Mirror[iVA]);
+			}
+			vb.vb_paDx12Mirror[iVA] = NULL;
+			vb.vb_paDx12LockedArray[iVA] = NULL;
+			vb.vb_abDx12MirrorOwned[iVA] = FALSE;
 			if( vb.vb_paWriteArray[iVA] == NULL) continue;
 			D3DRELEASE( vb.vb_pavbWrite[iVA], TRUE);
 			vb.vb_pavbWrite[iVA] = NULL;

@@ -1,0 +1,233 @@
+#include "stdh.h"
+
+#include <Engine/Graphics/DirectX12LegacyShaderFamily.h>
+
+namespace
+{
+	struct VertexFamilyEntry
+	{
+		UINT64 fingerprint;
+		DirectX12LegacyVertexFamily family;
+		bool normals;
+		bool weights;
+		bool tangents;
+	};
+
+	struct PixelFamilyEntry
+	{
+		UINT64 fingerprint;
+		DirectX12LegacyPixelFamily family;
+		UINT textureCount;
+	};
+
+	struct ReplacementPairEntry
+	{
+		UINT64 vertexFingerprint;
+		UINT64 pixelFingerprint;
+	};
+
+	const VertexFamilyEntry VERTEX_FAMILIES[] = {
+		{ 0x88CDE6E1231B48B2ULL, DX12_LEGACY_VS_RIGID_LIT,
+			true, false, false },
+		{ 0xF1D814903AF5DCC7ULL, DX12_LEGACY_VS_RIGID_LIT,
+			true, false, false },
+		{ 0xBFDAAD52F7C28AAFULL, DX12_LEGACY_VS_RIGID_LIT,
+			true, false, false },
+		{ 0x6518E1E655486C62ULL, DX12_LEGACY_VS_RIGID_LIT_PROJECTED,
+			true, false, false },
+		{ 0x77EC9C4A77F77E37ULL, DX12_LEGACY_VS_RIGID_REFLECTED,
+			true, false, false },
+		{ 0x56FBA5FFC803EDB0ULL, DX12_LEGACY_VS_SKINNED_LIT_PROJECTED,
+			true, true, false },
+		{ 0x03F0F9B6ED714154ULL, DX12_LEGACY_VS_SKINNED_LIT,
+			true, true, false },
+		{ 0x0BDAEBAB2645C412ULL, DX12_LEGACY_VS_SKINNED_TANGENT,
+			true, true, true },
+		{ 0x81B4D7CBDC31B625ULL, DX12_LEGACY_VS_SKINNED_POSITION,
+			false, true, false },
+		{ 0xE1AA07F9418DE37EULL, DX12_LEGACY_VS_SKINNED_POSITION,
+			false, true, false },
+		{ 0x20771BEF807EB60EULL, DX12_LEGACY_VS_PROJECTED_ONE,
+			false, false, false },
+		{ 0xCF210A6C5DC33E8CULL, DX12_LEGACY_VS_PROJECTED_TWO,
+			false, false, false },
+		{ 0xCB70C2B162AECF3FULL, DX12_LEGACY_VS_PROJECTED_FOUR,
+			false, false, false },
+		{ 0x58BF46CA623CB0F3ULL, DX12_LEGACY_VS_VERTEX_COLOR,
+			false, false, false },
+		{ 0x4B5B9BE51A8EFA7EULL, DX12_LEGACY_VS_RIGID_TANGENT,
+			true, false, true },
+		{ 0x3C15F8B8DEBF2EC8ULL,
+			DX12_LEGACY_VS_RIGID_LIT_REFLECTED,
+			true, false, false },
+		{ 0xF6F2AA8EA79D28BCULL, DX12_LEGACY_VS_SKINNED_LIT,
+			true, true, false },
+		{ 0x3217ECE2D2C1D96AULL,
+			DX12_LEGACY_VS_RIGID_TANGENT_PROJECTED,
+			true, false, true },
+		{ 0x7873727C8ED9D187ULL,
+			DX12_LEGACY_VS_SKINNED_TANGENT_SPECULAR,
+			true, true, true }
+	};
+
+	const PixelFamilyEntry PIXEL_FAMILIES[] = {
+		{ 0x000D90AFD69D7DA9ULL,
+			DX12_LEGACY_PS_BASE_ALPHA_INVERTED, 1 },
+		{ 0x10848222350BDA01ULL,
+			DX12_LEGACY_PS_TERRAIN_FOUR_LAYER, 4 },
+		{ 0x391B8FA0541C9735ULL,
+			DX12_LEGACY_PS_BLEND_TWO, 2 },
+		{ 0x3CA2992E872AB363ULL,
+			DX12_LEGACY_PS_CONSTANT, 0 },
+		{ 0x4BDD3F424E9CB4D1ULL,
+			DX12_LEGACY_PS_REFLECTION, 3 },
+		{ 0x4E91DDD261F074A2ULL,
+			DX12_LEGACY_PS_DETAIL, 2 },
+		{ 0x7BD479383778B972ULL,
+			DX12_LEGACY_PS_ALPHA_MASK, 2 },
+		{ 0x8BF0F79F73B2CD3CULL,
+			DX12_LEGACY_PS_BASE_ALPHA_CONSTANT, 1 },
+		{ 0x92778B02E5A59285ULL,
+			DX12_LEGACY_PS_VERTEX_COLOR, 1 },
+		{ 0x93145689E4FC29A7ULL,
+			DX12_LEGACY_PS_TEXTURE_ALPHA_SELECT, 1 },
+		{ 0xB3762CA90A8E2CCEULL,
+			DX12_LEGACY_PS_TEXTURE_CONSTANT, 1 },
+		{ 0xB5BD45A8BA08F65BULL,
+			DX12_LEGACY_PS_NORMAL_MAP, 2 },
+		{ 0xC266DC4B1D39418FULL,
+			DX12_LEGACY_PS_LIT_BASE, 1 },
+		{ 0xF769B9454292AD44ULL,
+			DX12_LEGACY_PS_DETAIL_REFLECTION, 3 },
+		{ 0xD9A8DB50746FD55DULL,
+			DX12_LEGACY_PS_REFLECTION, 3 },
+		{ 0xE76E3479530FF2CBULL,
+			DX12_LEGACY_PS_BASE_ALPHA_REFLECTION, 3 },
+		{ 0xB019C7A089216D68ULL,
+			DX12_LEGACY_PS_BASE_ALPHA_DETAIL, 2 },
+		{ 0xF91A55624E94D8A1ULL,
+			DX12_LEGACY_PS_NORMAL_MAP_REFLECTION, 3 },
+		{ 0x5B3BD26F0B904B3DULL,
+			DX12_LEGACY_PS_NORMAL_MAP_REFLECTION_MASK, 3 },
+		{ 0x77162620F6305229ULL,
+			DX12_LEGACY_PS_NORMAL_MAP_SPECULAR, 2 }
+	};
+
+	const ReplacementPairEntry REPLACEMENT_PAIRS[] = {
+		{ 0x88CDE6E1231B48B2ULL, 0x4E91DDD261F074A2ULL },
+		{ 0xF1D814903AF5DCC7ULL, 0xC266DC4B1D39418FULL },
+		{ 0xBFDAAD52F7C28AAFULL, 0x000D90AFD69D7DA9ULL },
+		{ 0xBFDAAD52F7C28AAFULL, 0x8BF0F79F73B2CD3CULL },
+		{ 0x6518E1E655486C62ULL, 0xF769B9454292AD44ULL },
+		{ 0x6518E1E655486C62ULL, 0xE76E3479530FF2CBULL },
+		{ 0x77EC9C4A77F77E37ULL, 0x4BDD3F424E9CB4D1ULL },
+		{ 0x77EC9C4A77F77E37ULL, 0xD9A8DB50746FD55DULL },
+		{ 0x56FBA5FFC803EDB0ULL, 0x4BDD3F424E9CB4D1ULL },
+		{ 0x03F0F9B6ED714154ULL, 0xC266DC4B1D39418FULL },
+		{ 0x0BDAEBAB2645C412ULL, 0xB5BD45A8BA08F65BULL },
+		{ 0x81B4D7CBDC31B625ULL, 0x93145689E4FC29A7ULL },
+		{ 0xE1AA07F9418DE37EULL, 0x3CA2992E872AB363ULL },
+		{ 0x20771BEF807EB60EULL, 0xB3762CA90A8E2CCEULL },
+		{ 0xCF210A6C5DC33E8CULL, 0x391B8FA0541C9735ULL },
+		{ 0xCF210A6C5DC33E8CULL, 0x7BD479383778B972ULL },
+		{ 0xCB70C2B162AECF3FULL, 0x10848222350BDA01ULL },
+		{ 0x58BF46CA623CB0F3ULL, 0x92778B02E5A59285ULL },
+		{ 0x4B5B9BE51A8EFA7EULL, 0xB5BD45A8BA08F65BULL },
+		{ 0x3C15F8B8DEBF2EC8ULL, 0xB019C7A089216D68ULL },
+		{ 0xF6F2AA8EA79D28BCULL, 0x000D90AFD69D7DA9ULL },
+		{ 0x3217ECE2D2C1D96AULL, 0xF91A55624E94D8A1ULL },
+		{ 0x3217ECE2D2C1D96AULL, 0x5B3BD26F0B904B3DULL },
+		{ 0x56FBA5FFC803EDB0ULL, 0xD9A8DB50746FD55DULL },
+		{ 0x7873727C8ED9D187ULL, 0x77162620F6305229ULL }
+	};
+
+	bool IsReplacementPairImplemented(
+		UINT64 vertexFingerprint,
+		UINT64 pixelFingerprint)
+	{
+		for (UINT iEntry = 0;
+			iEntry < sizeof(REPLACEMENT_PAIRS)
+				/ sizeof(REPLACEMENT_PAIRS[0]);
+			++iEntry)
+		{
+			if (REPLACEMENT_PAIRS[iEntry].vertexFingerprint
+					== vertexFingerprint
+				&& REPLACEMENT_PAIRS[iEntry].pixelFingerprint
+					== pixelFingerprint)
+				return true;
+		}
+		return false;
+	}
+
+	bool IsReplacementPairValidated(
+		UINT64 vertexFingerprint,
+		UINT64 pixelFingerprint)
+	{
+		// Una pareja implementada sólo puede omitir su draw D3D9 después de
+		// superar la prueba visual combinada. Autorizar todas las familias
+		// inventariadas a la vez ocultaba terreno multipass y producía parches
+		// negros por diferencias de orden entre ambos command streams.
+		return (vertexFingerprint == 0x88CDE6E1231B48B2ULL
+				&& pixelFingerprint == 0x4E91DDD261F074A2ULL)
+			|| (vertexFingerprint == 0xF1D814903AF5DCC7ULL
+				&& pixelFingerprint == 0xC266DC4B1D39418FULL);
+	}
+}
+
+bool GetDirectX12LegacyShaderFamily(
+	UINT64 vertexFingerprint,
+	UINT64 pixelFingerprint,
+	UINT texturePassCount,
+	DirectX12LegacyShaderFamily* pFamily)
+{
+	if (pFamily == NULL)
+		return false;
+	ZeroMemory(pFamily, sizeof(*pFamily));
+	pFamily->vertex = vertexFingerprint == 0
+		? DX12_LEGACY_VS_FIXED
+		: DX12_LEGACY_VS_UNKNOWN;
+	pFamily->pixel = pixelFingerprint == 0
+		? DX12_LEGACY_PS_FIXED
+		: DX12_LEGACY_PS_UNKNOWN;
+	pFamily->textureCount = texturePassCount;
+
+	for (UINT iEntry = 0;
+		iEntry < sizeof(VERTEX_FAMILIES) / sizeof(VERTEX_FAMILIES[0]);
+		++iEntry)
+	{
+		if (VERTEX_FAMILIES[iEntry].fingerprint == vertexFingerprint)
+		{
+			pFamily->vertex = VERTEX_FAMILIES[iEntry].family;
+			pFamily->requiresNormals = VERTEX_FAMILIES[iEntry].normals;
+			pFamily->requiresWeights = VERTEX_FAMILIES[iEntry].weights;
+			pFamily->requiresTangents = VERTEX_FAMILIES[iEntry].tangents;
+			break;
+		}
+	}
+	for (UINT iEntry = 0;
+		iEntry < sizeof(PIXEL_FAMILIES) / sizeof(PIXEL_FAMILIES[0]);
+		++iEntry)
+	{
+		if (PIXEL_FAMILIES[iEntry].fingerprint == pixelFingerprint)
+		{
+			pFamily->pixel = PIXEL_FAMILIES[iEntry].family;
+			pFamily->textureCount = PIXEL_FAMILIES[iEntry].textureCount;
+			break;
+		}
+	}
+	pFamily->nativeRigidPipeline =
+		vertexFingerprint == 0x88CDE6E1231B48B2ULL
+		&& pixelFingerprint == 0x4E91DDD261F074A2ULL;
+	pFamily->replacementValidated =
+		IsReplacementPairValidated(
+			vertexFingerprint,
+			pixelFingerprint);
+	pFamily->requiresSourceTexCoords =
+		pFamily->textureCount > 0
+		&& pFamily->vertex != DX12_LEGACY_VS_PROJECTED_ONE
+		&& pFamily->vertex != DX12_LEGACY_VS_PROJECTED_TWO
+		&& pFamily->vertex != DX12_LEGACY_VS_PROJECTED_FOUR;
+	return pFamily->vertex != DX12_LEGACY_VS_UNKNOWN
+		&& pFamily->pixel != DX12_LEGACY_PS_UNKNOWN
+		&& pFamily->textureCount <= 4;
+}

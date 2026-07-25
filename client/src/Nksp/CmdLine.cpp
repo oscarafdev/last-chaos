@@ -1,6 +1,7 @@
 #include "StdH.h"
 
 #include <Engine/CurrentVersion.h>
+#include <Engine/Testing/ClientTestAutomation.h>
 #include "CmdLine.h"
 
 extern CTString cmd_strWorld = "";  // world to load
@@ -80,17 +81,34 @@ CTString GetNextParam(void)
 void ParseCommandLine(CTString strCmd)
 {
   cmd_strOutput = "";
-  cmd_strOutput+=CTString(0, TRANS("Command line: '%s'\n"), strCmd);
+  // La línea puede contener credenciales de prueba. Nunca registramos su
+  // contenido para evitar que la contraseña termine en Nksp.log.
+  cmd_strOutput+="Command line parsed.\n";
   // if no command line
   if (strlen(strCmd) == 0) {
     // do nothing
     return;
   }
   _strCmd = strCmd;
+  CTString testUser = "";
+  CTString testPassword = "";
+  INDEX testServer = 0;
+  INDEX testChannel = 0;
+  INDEX testCharacter = 0;
 
   FOREVER {
     CTString strWord = GetNextParam();
     if (strWord=="") {
+      if (testUser.Length() > 0 && testPassword.Length() > 0) {
+        CClientTestAutomation::Instance().ConfigureLogin(
+          testUser,
+          testPassword);
+        CClientTestAutomation::Instance().ConfigureWorldSelection(
+          testServer,
+          testChannel,
+          testCharacter);
+        cmd_strOutput+="Test auto-login enabled.\n";
+      }
       cmd_strOutput+="\n";
       return;
     } else if (strWord=="+level") {
@@ -116,6 +134,15 @@ void ParseCommandLine(CTString strCmd)
       _fnmCDPath = GetNextParam();
     } else if (strWord=="+password") {
       cmd_strPassword = GetNextParam();
+    } else if (strWord=="+testautologin") {
+      testUser = GetNextParam();
+      testPassword = GetNextParam();
+    } else if (strWord=="+testserver") {
+      GetNextParam().ScanF("%d", &testServer);
+    } else if (strWord=="+testchannel") {
+      GetNextParam().ScanF("%d", &testChannel);
+    } else if (strWord=="+testcharacter") {
+      GetNextParam().ScanF("%d", &testCharacter);
     } else if (strWord=="+connect") {
       cmd_strServer = GetNextParam();
       const char *pcColon = strchr(cmd_strServer, ':');

@@ -1,4 +1,4 @@
-﻿
+
 // DIRECT3D "LOW-LEVEL" INTERFACE (COMMON)
 
 #include "stdh.h"
@@ -20,10 +20,11 @@
 //#ifdef SE1_D3D
 #include <Engine/Graphics/Gfx_Direct3D.h>
 #include <Engine/Graphics/Gfx_Direct3D_Functions.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(Add & Modify SSSE Effect)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: agregar y modificar el efecto SSSE (0.1).
 #include <Engine/Effect/EffectCommon.h>
-//ѕИЕВИЖ јцБ¤ іЎ	//(Add & Modify SSSE Effect)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: agregar y modificar el efecto SSSE (0.1).
 
 #undef new
 //#include <d3dx9core.h>
@@ -334,7 +335,7 @@ extern void GetShaderDeclaration_D3D9(D3DVERTEXELEMENT9* ulRetDecl, ULONG ulStre
 		e.Usage = D3DDECLUSAGE_TANGENT;
 		e.UsageIndex = 0;
 
-		//*(++ulRetDecl) = D3DVSD_STREAM(8);	//їшє»
+		//*(++ulRetDecl) = D3DVSD_STREAM(8);	// Version original.
 		*(++ulRetDecl) = e;
 		ulStreamFlags &= ~GFX_TANGENT_STREAM;
 	}
@@ -353,7 +354,7 @@ extern void GetShaderDeclaration_D3D9(D3DVERTEXELEMENT9* ulRetDecl, ULONG ulStre
 
 
 // Compile vertex program from given vertex program source code
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(DevPartner Bug Fix)(2005-01-13)
+// Inicio de modificacion de Ahn Tae-hoon: correccion de DevPartner (2005-01-13).
 #define D3DXSHADER_SKIPVALIDATION                 (1 << 1)
 #define D3DX_FILTER_NONE 1
 
@@ -572,7 +573,7 @@ extern ULONG *CompilePixelProgram_D3D(const char *strPixelProgram, ID3DXBuffer *
 	D3D_CHECKERROR(hr);
 	return (ULONG*)(*ppOut)->GetBufferPointer();
 }
-//ѕИЕВИЖ јцБ¤ іЎ	//(DevPartner Bug Fix)(2005-01-13)
+// Fin de modificacion de Ahn Tae-hoon: correccion de DevPartner (2005-01-13).
 
 
 // construct vertex shader out of streams' bit-mask
@@ -741,9 +742,9 @@ static DWORD _dwColLockFlags[GFX_MAXLAYERS];  // for colors
 static DWORD _dwTexLockFlags[GFX_MAXLAYERS];  // for texture coords
 static LPDIRECT3DVERTEXBUFFER9 _pd3dLockedVtx = NULL;
 static LPDIRECT3DVERTEXBUFFER9 _pd3dLockedNor = NULL;
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 static LPDIRECT3DVERTEXBUFFER9 _pd3dLockedTan = NULL;
-//ѕИЕВИЖ јцБ¤ іЎ	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 static LPDIRECT3DVERTEXBUFFER9 _pd3dLockedWgh = NULL;
 static LPDIRECT3DVERTEXBUFFER9 _pd3dLockedCol = NULL;
 static LPDIRECT3DVERTEXBUFFER9 _pd3dLockedTex = NULL;
@@ -886,16 +887,16 @@ extern void SetupIndexArray_D3D( INDEX ctIndices)
 // initialize Direct3D driver
 BOOL CGfxLibrary::InitDriver_D3D(void)
 {
-	// check for presence of DirectX 9
-	CPrintF("Init Driver D3D9.\n");
+	// D3D9 is loaded only as the Windows translation entry point. Rendering is
+	// performed by the explicitly supplied D3D12 device and command queue.
+	CPrintF("Init DirectX 12 backend (D3D9On12 transition layer).\n");
 	gl_hiDriver = LoadLibrary("D3D9.DLL"); // ###
 	if (gl_hiDriver == NONE) {
-		// not present - BUAHHAHAHAHAR :)
-		CPrintF("DX9 error: API not installed.\n");
+		CPrintF("DX12 error: D3D9On12 entry module is not installed.\n");
 		gl_gaAPI[GAT_D3D].ga_ctAdapters = 0;
 		return FALSE;
 	}
-	CPrintF("DX9 info: Load d3d9.dll done.\n");
+	CPrintF("DX12 info: D3D9On12 entry module loaded.\n");
 
 	// Load D3DX
 	if (!D3DXAssembleShader || !D3DXDisassembleShader || !D3DXLoadSurfaceFromSurface)
@@ -923,28 +924,15 @@ BOOL CGfxLibrary::InitDriver_D3D(void)
 	}
 	CPrintF("DX9 info: Load d3dx9_43.dll done.\n");
 
-	// query DX9 interface
-	IDirect3D9* (WINAPI * pDirect3DCreate9)(UINT SDKVersion);
-	pDirect3DCreate9 = (IDirect3D9 * (WINAPI*)(UINT SDKVersion))GetProcAddress((HMODULE)gl_hiDriver, "Direct3DCreate9");
-	if (pDirect3DCreate9 == NULL) {
-		// cannot init
-		CPrintF("DX9 error: Cannot get entry procedure address.\n");
+	// Create a native D3D12 device/queue and bind the compatibility interface
+	// to those exact objects. There is intentionally no native-D3D9 fallback.
+	if (!GetDirectX12Backend().Initialize((HMODULE)gl_hiDriver, &gl_pD3D9)) {
+		CPrintF("DX12 error: Cannot initialize D3D12 or D3D9On12.\n");
 		FreeLibrary((HMODULE)gl_hiDriver);
 		gl_hiDriver = NONE;
 		return FALSE;
 	}
-	CPrintF("DX9 Info: Query DX9 interface done.\n");
-
-	// init DX9
-	gl_pD3D9 = pDirect3DCreate9(D3D_SDK_VERSION);
-	if (gl_pD3D9 == NULL) {
-		// cannot start
-		CPrintF("DX9 error: Cannot be initialized.\n");
-		FreeLibrary((HMODULE)gl_hiDriver);
-		gl_hiDriver = NONE;
-		return FALSE;
-	}
-	CPrintF("DX9 Info: Init DX9 interface done.\n");
+	CPrintF("DX12 info: Native device and graphics queue initialized.\n");
 
 	// made it!
 	return TRUE;
@@ -971,10 +959,16 @@ void CGfxLibrary::EndDriver_D3D(void)
 		gl_pd3d9Device->SetGammaRamp(/* #### [in] UINT iSwapChain */ 0, NONE, pgrtSystemGamma);
 	}
 
+	// El backend conserva referencias a texturas D3D9 del ultimo lote de UI.
+	// Debe vaciarlas mientras el dispositivo y sus objetos COM siguen vivos.
+	GetDirectX12Backend().Shutdown();
+
 	// shutdown device and d3d
 	INDEX iRef;
 	iRef = gl_pd3d9Device->Release();
 	iRef = gl_pD3D9->Release();
+	gl_pd3d9Device = NULL;
+	gl_pD3D9 = NULL;
 }
 
 
@@ -1068,7 +1062,7 @@ void CGfxLibrary::InitContext_D3D()
 	CDisplayAdapter& da = gl_gaAPI[GAT_D3D].ga_adaAdapter[gl_iCurrentAdapter];
 	CPrintF("  (%s, %s, %s)\n\n", da.da_strVendor, da.da_strRenderer, da.da_strVersion);
 
-	// <-- ErrorLog.txt에 디스플레이 정보를 기록하기 위한 부분
+	// <-- Sección para registrar la información de pantalla en ErrorLog.txt.
 	extern CTString _strDisplayDriver;
 	extern CTString _strDisplayDriverVersion;
 	_strDisplayDriver = da.da_strRenderer;
@@ -1212,7 +1206,7 @@ void CGfxLibrary::InitContext_D3D()
 	else CPrintF(TRANS("  Vertical syncronization cannot be disabled.\n"));
 
 	// determine support for vertex shader (i.e. program)
-	// Date : 2006-05-16(오후 4:48:55), By eons
+	// Fecha: 2006-05-16 (16:48:55), por eons.
 	gl_ulFlags &= ~GLF_VERTEXPROGRAM;
 	if (_pGfx->gl_pd3d9Caps.MaxStreams >= 8 && _pGfx->gl_pd3d9Caps.VertexShaderVersion >= 0x0101 && _pGfx->gl_pd3d9Caps.MaxVertexShaderConst >= 96) {
 		gl_ulFlags |= GLF_VERTEXPROGRAM;
@@ -1227,7 +1221,7 @@ void CGfxLibrary::InitContext_D3D()
 	BOOL bPS14 = TRUE;
 
 	if (d3dCaps.PixelShaderVersion < D3DPS_VERSION(1, 4))
-	{ // ps 1.4가 지원 되지 않는다.
+	{ // Pixel Shader 1.4 no es compatible.
 		bPS14 = FALSE;
 	}
 
@@ -1356,9 +1350,9 @@ void CGfxLibrary::InitContext_D3D()
 	ReloadMeshes();
 	if (shd_bCacheAll) CacheShadows();
 
-	//안태훈 수정 시작	//(Add & Modify SSSE Effect)(0.1)
+	// Inicio de la modificación de Ahn Tae-hoon. // (Agregar y modificar el efecto SSSE) (0.1)
 	//	Initialize_EffectSystem();
-	//안태훈 수정 끝	//(Add & Modify SSSE Effect)(0.1)
+	// Fin de la modificación de Ahn Tae-hoon. // (Agregar y modificar el efecto SSSE) (0.1)
 }
 
 /*
@@ -1373,7 +1367,7 @@ void CGfxLibrary::InitContext_D3D()
 	CDisplayAdapter &da = gl_gaAPI[GAT_D3D].ga_adaAdapter[gl_iCurrentAdapter];
 	CPrintF( "  (%s, %s, %s)\n\n", da.da_strVendor, da.da_strRenderer, da.da_strVersion);
 
-	// <-- ErrorLog.txtїЎ µрЅєЗГ·№АМ Б¤єёё¦ ±в·ПЗП±в А§ЗС єОєР
+	// <-- Seccion para registrar la informacion de pantalla en ErrorLog.txt.
 	extern CTString _strDisplayDriver;
 	extern CTString _strDisplayDriverVersion;
 	_strDisplayDriver = da.da_strRenderer;
@@ -1513,7 +1507,7 @@ void CGfxLibrary::InitContext_D3D()
 	} else CPrintF( TRANS("  Vertical syncronization cannot be disabled.\n"));
 
 	// determine support for vertex shader (i.e. program)
-	// Date : 2006-05-16(їАИД 4:48:55), By eons
+	// Fecha: 2006-05-16 (4:48:55 p. m.), por eons.
 	gl_ulFlags &= ~GLF_VERTEXPROGRAM;
 	if( _pGfx->gl_pd3dCaps.MaxStreams>=8 && _pGfx->gl_pd3dCaps.VertexShaderVersion>=0x0101 && _pGfx->gl_pd3dCaps.MaxVertexShaderConst>=96 ) {
 		gl_ulFlags |= GLF_VERTEXPROGRAM;
@@ -1528,7 +1522,7 @@ void CGfxLibrary::InitContext_D3D()
 	BOOL bPS14 = TRUE;
 
 	if (d3dCaps.PixelShaderVersion < D3DPS_VERSION(1,4))
-	{ // ps 1.4°Ў Бцїш µЗБц ѕКґВґЩ.
+	{ // Pixel Shader 1.4 no es compatible.
 		bPS14 = FALSE;
 	}
 
@@ -1656,9 +1650,9 @@ void CGfxLibrary::InitContext_D3D()
 	ReloadMeshes();
 	if( shd_bCacheAll) CacheShadows();
 
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(Add & Modify SSSE Effect)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: agregar y modificar el efecto SSSE (0.1).
 //	Initialize_EffectSystem();
-//ѕИЕВИЖ јцБ¤ іЎ	//(Add & Modify SSSE Effect)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: agregar y modificar el efecto SSSE (0.1).
 }
 */
 
@@ -1700,9 +1694,9 @@ static D3DFORMAT FindDepthFormat_D3D( INDEX iAdapter, D3DFORMAT d3dfColor, INDEX
 	if( iDepthBits<21) pd3dfDepthTable = &ad3df16BitsTable[0];
 	else if( iDepthBits<28) pd3dfDepthTable = &ad3df24BitsTable[0];
 
-//°­µї№О јцБ¤ ЅГАЫ
+// Inicio de modificacion de Kang Dong-min.
 	/*
-	// D3DFMT_D24S8·О јіБ¤ЗФ.
+	// Configura el formato como D3DFMT_D24S8.
 	D3DFORMAT d3dfDepth = pd3dfDepthTable[2];
 	HRESULT hr;
 	hr = _pGfx->gl_pD3D->CheckDeviceFormat( iAdapter, d3dDevType, d3dfColor, D3DUSAGE_DEPTHSTENCIL, D3DRTYPE_SURFACE, d3dfDepth);
@@ -1713,7 +1707,7 @@ static D3DFORMAT FindDepthFormat_D3D( INDEX iAdapter, D3DFORMAT d3dfColor, INDEX
 		return d3dfDepth; // done if found
 		*/
 
-	// їшє».
+	// Version original.
 	// loop thru table
 	for( INDEX i=0; i<ctTries; i++)
 	{ // fetch format from table
@@ -1724,7 +1718,7 @@ static D3DFORMAT FindDepthFormat_D3D( INDEX iAdapter, D3DFORMAT d3dfColor, INDEX
 		hr = _pGfx->gl_pD3D9->CheckDepthStencilMatch( iAdapter, d3dDevType, d3dfColor, d3dfColor, d3dfDepth);
 		if( hr==D3D_OK) return d3dfDepth; // done if found
 	}
-//°­µї№О јцБ¤ іЎ
+// Fin de modificacion de Kang Dong-min.
 
 	// not found :(
 	iDepthBits = 0;
@@ -1806,16 +1800,16 @@ BOOL CGfxLibrary::InitDisplay_D3D( INDEX iAdapter, PIX pixSizeI, PIX pixSizeJ, e
 		d3dPresentParams.BackBufferWidth  = 8;
 		d3dPresentParams.BackBufferHeight = 8;
 		d3dPresentParams.BackBufferFormat = d3dColorFormat;
-//°­µї№О јцБ¤ ЅГАЫ
+// Inicio de modificacion de Kang Dong-min.
 		/*
 		d3dPresentParams.EnableAutoDepthStencil = TRUE;
 		d3dDepthFormat = FindDepthFormat_D3D( iAdapter, d3dColorFormat, iZDepth);
 		d3dPresentParams.AutoDepthStencilFormat = d3dDepthFormat;
 		*/
-		// їшє».
+		// Version original.
 		d3dPresentParams.EnableAutoDepthStencil = FALSE;		
 		d3dDepthFormat = FindDepthFormat_D3D( iAdapter, d3dColorFormat, iZDepth);		
-//°­µї№О јцБ¤ іЎ
+// Fin de modificacion de Kang Dong-min.
 		iZDepth = BitsFromDepthFormat_D3D(d3dDepthFormat);
 		gl_iSwapInterval = -1;
 
@@ -1845,26 +1839,32 @@ BOOL CGfxLibrary::InitDisplay_D3D( INDEX iAdapter, PIX pixSizeI, PIX pixSizeJ, e
 	extern HWND _hwndMain;
 	extern const D3DDEVTYPE d3dDevType;
 	hr = gl_pD3D9->CreateDevice( iAdapter, d3dDevType, _hwndMain, dwVP, &d3dPresentParams, &gl_pd3d9Device);
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(5th Closed beta)(0.2)
+// Inicio de modificacion de Ahn Tae-hoon: quinta beta cerrada (0.2).
 	/*
 	IUnknown *pD3DDev = NULL;
 	if(S_OK == gl_pd3dDevice->QueryInterface(IID_IDirect3DDevice8, (void**)&pD3DDev))
 	{
 		if(pD3DDev != gl_pd3dDevice)
 		{
-			ASSERTALWAYS("D3D Device »эјєЅГ №®Б¦ »э±и.");
+			ASSERTALWAYS("D3D Device »????? ?®?¦ »?±?.");
 			ExitProcess(1);
 			return FALSE;
 		}
 	}
 	*/
-//ѕИЕВИЖ јцБ¤ іЎ	//(5th Closed beta)(0.2)
+// Fin de modificacion de Ahn Tae-hoon: quinta beta cerrada (0.2).
 	if( hr!=D3D_OK) return FALSE;
+	if (!GetDirectX12Backend().AttachD3D9Device(gl_pd3d9Device)) {
+		CPrintF("DX12 error: No se pudo conectar IDirect3DDevice9On12.\n");
+		gl_pd3d9Device->Release();
+		gl_pd3d9Device = NULL;
+		return FALSE;
+	}
 	gl_d3dColorFormat = d3dColorFormat;
 	gl_d3dDepthFormat = d3dDepthFormat;
 	gl_ctDepthBits = iZDepth & 0x7FFFFFF; // clamp stencil presence flag
-//°­µї№О јцБ¤ ЅГАЫ
-	// їшє»
+// Inicio de modificacion de Kang Dong-min.
+	// Version original.
 	if( iZDepth & 0x8000000) 
 		gl_ulFlags |= GLF_STENCILBUFFER; 
 	else 
@@ -1872,7 +1872,7 @@ BOOL CGfxLibrary::InitDisplay_D3D( INDEX iAdapter, PIX pixSizeI, PIX pixSizeJ, e
 	/*
 	gl_ulFlags |= GLF_STENCILBUFFER; 
 	*/
-//°­µї№О јцБ¤ іЎ
+// Fin de modificacion de Kang Dong-min.
 
 	// sehan
 	d3d_bDeviceChanged = TRUE;
@@ -2117,7 +2117,7 @@ extern inline void UnlockNormalArray_D3D(void)
  _pd3dLockedNor = NULL;
 }
 
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(Add Tagent-space Normal Map)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 extern inline void *LockTangentArray_D3D(void)
 {
   ASSERT( _bUsingDynamicBuffer);
@@ -2150,7 +2150,7 @@ extern inline void UnlockTangentArray_D3D(void)
   D3D_CHECKERROR(hr);
  _pd3dLockedTan = NULL;
 }
-//ѕИЕВИЖ јцБ¤ іЎ	//(Add Tagent-space Normal Map)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
 
 
 // prepare weight array for D3D
@@ -2363,9 +2363,9 @@ extern void ClearStreams(void)
 	}
 }
 
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(For Performance)(0.2)
+// Inicio de modificacion de Ahn Tae-hoon: rendimiento (0.2).
 #include <Engine/Base/Statistics_Internal.h>
-//ѕИЕВИЖ јцБ¤ іЎ	//(For Performance)(0.2)
+// Fin de modificacion de Ahn Tae-hoon: rendimiento (0.2).
 // prepare and draw arrays
 extern void DrawElements_D3D( INDEX ctIndices, const UWORD *puwIndices)
 {
@@ -2506,18 +2506,67 @@ elemEnd:
 		gfxSetPixelProgram(NONE);
 	}
 
-//ѕИЕВИЖ јцБ¤ ЅГАЫ	//(For Performance)(0.2)
+// Inicio de modificacion de Ahn Tae-hoon: rendimiento (0.2).
 	_sfStats.IncrementCounter(CStatForm::SCI_DPCOUNT);
-//ѕИЕВИЖ јцБ¤ іЎ	//(For Performance)(0.2)
+// Fin de modificacion de Ahn Tae-hoon: rendimiento (0.2).
+	// Conserva la identidad COM del backbuffer visible para separar los
+	// render targets auxiliares antes de capturar geometria nativa.
+	if (!GetDirectX12Backend().HasLegacyPresentationRenderTarget()
+		&& _pGfx->gl_pvpActive != NULL)
+	{
+		IDirect3DSurface9* pPresentationSurface9 = NULL;
+		HRESULT hrPresentation = E_FAIL;
+		if (_pGfx->gl_pvpActive->vp9_pSwapChain != NULL)
+		{
+			hrPresentation =
+				_pGfx->gl_pvpActive->vp9_pSwapChain->GetBackBuffer(
+					0,
+					D3DBACKBUFFER_TYPE_MONO,
+					&pPresentationSurface9);
+		}
+		else
+		{
+			hrPresentation = pd3dDev->GetBackBuffer(
+				0,
+				0,
+				D3DBACKBUFFER_TYPE_MONO,
+				&pPresentationSurface9);
+		}
+		if (SUCCEEDED(hrPresentation))
+		{
+			GetDirectX12Backend().SetLegacyPresentationRenderTarget(
+				pPresentationSurface9);
+			pPresentationSurface9->Release();
+		}
+	}
+	// Captura la ruta compatible para reproducirla en DirectX 12. El modo
+	// de reemplazo omite solamente el envio D3D9 que fue capturado.
+	const bool native3DCaptured =
+		GetDirectX12Backend().QueueLegacy3DIndexedDraw(
+		pd3dDev,
+		(const USHORT*)puwIndices,
+		(UINT)ctIndices,
+		_bUsingDynamicBuffer!=FALSE,
+		GFX_bUseVertexProgram!=FALSE,
+		GFX_bUsePixelProgram!=FALSE,
+		GFX_bColorArray!=FALSE,
+		_bProjectiveMapping!=FALSE,
+		(UINT)_iTexPass);
+
 	// draw indices
 	ASSERT( ctVtxUsed>0);
-	// try without offset
-    // https://learn.microsoft.com/en-us/windows/win32/direct3d9/rendering-from-vertex-and-index-buffers
-	hr = pd3dDev->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, // #### [in] BaseVertexIndex Type : INT
-		// Offset from the start of the vertex buffer to the first vertex
-		0  // Offset = 0
-		, iVtxStart, ctVtxUsed, _iIdxOffset, ctIndices / 3);
-	D3D_CHECKERROR(hr);
+	if (GetDirectX12Backend().ShouldSubmitLegacy3DDraw(
+		native3DCaptured))
+	{
+		hr = pd3dDev->DrawIndexedPrimitive(
+			D3DPT_TRIANGLELIST,
+			0,
+			iVtxStart,
+			ctVtxUsed,
+			_iIdxOffset,
+			ctIndices / 3);
+		D3D_CHECKERROR(hr);
+	}
 	// move to next available lock position
 	_iIdxOffset += ctIndices;
 }                                                                             

@@ -12,6 +12,7 @@
 #include <Engine/Graphics/Raster.h>
 #include <Engine/Graphics/ImageInfo.h>
 #include <Engine/Graphics/Color.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/Texture.h>
 #include <Engine/Graphics/ViewPort.h>
 #include <Engine/Graphics/Font.h>
@@ -21,15 +22,206 @@
 #include <Engine/Templates/StaticArray.cpp>
 #include <Engine/Templates/StaticStackArray.cpp>
 
-//강동민 수정 시작 로그인 처리 작업	07.10
-// FIXME : Clip Near Plane 테스트를 위한...
+// Inicio de modificacion de Kang Dong-min: procesamiento de inicio de sesion (07.10).
+// FIXME: prueba del plano de recorte cercano.
 #include <d3dx9.h>
 // ###
-//강동민 수정 끝 로그인 처리 작업		07.10
+// Fin de modificacion de Kang Dong-min: procesamiento de inicio de sesion (07.10).
 
 extern INDEX gfx_bDecoratedText;
 extern INDEX ogl_iFinish;
 extern INDEX d3d_iFinish;
+extern BOOL GFX_abTexture[GFX_MAXTEXUNITS];
+extern ULONG64 *GFX_apulCurrentTexture[GFX_MAXTEXUNITS];
+
+static DirectX12BlendMode _nativeQueuedBlendMode = DX12_BLEND_ALPHA;
+
+static IDirect3DTexture9* AcquireCurrentD3D9Texture(void)
+{
+	if (_pGfx->gl_eCurrentAPI != GAT_D3D || !GFX_abTexture[0]
+		|| _pGfx->gl_pd3d9Device == NULL)
+		return NULL;
+	IDirect3DBaseTexture9* pBaseTexture = NULL;
+	HRESULT hr = _pGfx->gl_pd3d9Device->GetTexture(
+		0, &pBaseTexture);
+	if (FAILED(hr) || pBaseTexture == NULL)
+		return NULL;
+	IDirect3DTexture9* pTexture = NULL;
+	hr = pBaseTexture->QueryInterface(
+		__uuidof(IDirect3DTexture9),
+		reinterpret_cast<void**>(&pTexture));
+	pBaseTexture->Release();
+	if (FAILED(hr) || pTexture == NULL)
+		return NULL;
+	return pTexture;
+}
+
+static DirectX12SamplerMode GetCurrentNativeSamplerMode(void)
+{
+	const INDEX filter = _tpGlobal[0].tp_iFilter;
+	const bool linear = filter / 100 == 2
+		|| (filter / 10) % 10 == 2;
+	const bool repeat =
+		_tpGlobal[0].tp_eWrapU == GFX_REPEAT
+		&& _tpGlobal[0].tp_eWrapV == GFX_REPEAT;
+	if (linear)
+		return repeat
+			? DX12_SAMPLER_LINEAR_REPEAT
+			: DX12_SAMPLER_LINEAR_CLAMP;
+	return repeat
+		? DX12_SAMPLER_POINT_REPEAT
+		: DX12_SAMPLER_POINT_CLAMP;
+}
+
+static DirectX12BlendMode GetNativeBlendMode(ULONG blendType)
+{
+	switch (blendType)
+	{
+	case PBT_OPAQUE: return DX12_BLEND_OPAQUE;
+	case PBT_TRANSPARENT: return DX12_BLEND_ALPHA_TEST;
+	case PBT_SHADE: return DX12_BLEND_SHADE;
+	case PBT_ADD: return DX12_BLEND_ADD;
+	case PBT_ADDALPHA: return DX12_BLEND_ADD_ALPHA;
+	case PBT_MULTIPLY: return DX12_BLEND_MULTIPLY;
+	case PBT_INVMULTIPLY: return DX12_BLEND_INVERSE_MULTIPLY;
+	case PBT_BLEND:
+	default: return DX12_BLEND_ALPHA;
+	}
+}
+
+static bool QueueNativeTexturedQuad(
+	const DirectX12DrawPortTexturedVertex* pVertices,
+	FLOAT offsetX, FLOAT offsetY,
+	LONG scissorLeft, LONG scissorTop,
+	LONG scissorRight, LONG scissorBottom,
+	DirectX12BlendMode blendMode = DX12_BLEND_ALPHA)
+{
+	if (pVertices == NULL)
+		return false;
+	IDirect3DTexture9* pTexture = AcquireCurrentD3D9Texture();
+	if (GFX_abTexture[0] && pTexture == NULL)
+		return false;
+
+	DirectX12DrawPortTexturedVertex vertices[4];
+	for (UINT iVertex = 0; iVertex < 4; ++iVertex)
+	{
+		vertices[iVertex] = pVertices[iVertex];
+		vertices[iVertex].x += offsetX;
+		vertices[iVertex].y += offsetY;
+	}
+
+	CDirectX12Backend& backend = GetDirectX12Backend();
+	const DirectX12SamplerMode samplerMode =
+		GetCurrentNativeSamplerMode();
+	const bool firstCaptured = backend.QueueDrawPortTexturedTriangle(
+		pTexture, vertices[1], vertices[2], vertices[0],
+		scissorLeft, scissorTop, scissorRight, scissorBottom,
+		blendMode, samplerMode);
+	const bool secondCaptured = backend.QueueDrawPortTexturedTriangle(
+		pTexture, vertices[0], vertices[2], vertices[3],
+		scissorLeft, scissorTop, scissorRight, scissorBottom,
+		blendMode, samplerMode);
+	if (pTexture != NULL)
+		pTexture->Release();
+	return firstCaptured && secondCaptured;
+}
+
+static DirectX12DrawPortTexturedVertex MakeNativeTexturedVertex(
+	const GFXVertex& position,
+	const GFXTexCoord& texCoord,
+	const GFXColor& color)
+{
+	DirectX12DrawPortTexturedVertex vertex;
+	vertex.x = position.x;
+	vertex.y = position.y;
+	vertex.u = texCoord.s;
+	vertex.v = texCoord.t;
+	vertex.color = ByteSwap(color.abgr);
+	return vertex;
+}
+
+static bool QueueNativeTexturedQuads(
+	const GFXVertex* pPositions,
+	const GFXTexCoord* pTexCoords,
+	const GFXColor* pColors,
+	INDEX vertexCount, FLOAT offsetX, FLOAT offsetY,
+	LONG scissorLeft, LONG scissorTop,
+	LONG scissorRight, LONG scissorBottom,
+	DirectX12BlendMode blendMode)
+{
+	if (pPositions == NULL || pTexCoords == NULL
+		|| pColors == NULL || vertexCount < 4
+		|| vertexCount % 4 != 0)
+		return false;
+	bool captured = true;
+	for (INDEX iVertex = 0; iVertex + 3 < vertexCount; iVertex += 4)
+	{
+		DirectX12DrawPortTexturedVertex vertices[4];
+		for (INDEX iQuadVertex = 0; iQuadVertex < 4; ++iQuadVertex)
+		{
+			const INDEX source = iVertex + iQuadVertex;
+			vertices[iQuadVertex] = MakeNativeTexturedVertex(
+				pPositions[source], pTexCoords[source], pColors[source]);
+		}
+		captured = QueueNativeTexturedQuad(
+			vertices, offsetX, offsetY,
+			scissorLeft, scissorTop, scissorRight, scissorBottom,
+			blendMode) && captured;
+	}
+	return captured;
+}
+
+static bool QueueNativeTexturedElements(
+	const GFXVertex* pPositions,
+	const GFXTexCoord* pTexCoords,
+	const GFXColor* pColors,
+	INDEX vertexCount, const UWORD* pElements, INDEX elementCount,
+	FLOAT offsetX, FLOAT offsetY,
+	LONG scissorLeft, LONG scissorTop,
+	LONG scissorRight, LONG scissorBottom,
+	DirectX12BlendMode blendMode)
+{
+	if (pPositions == NULL || pTexCoords == NULL
+		|| pColors == NULL || pElements == NULL
+		|| vertexCount <= 0 || elementCount <= 0
+		|| elementCount % 3 != 0)
+		return false;
+	for (INDEX iElement = 0; iElement < elementCount; ++iElement)
+	{
+		if (pElements[iElement] >= vertexCount)
+			return false;
+	}
+	IDirect3DTexture9* pTexture = AcquireCurrentD3D9Texture();
+	if (GFX_abTexture[0] && pTexture == NULL)
+		return false;
+	bool captured = true;
+	for (INDEX iElement = 0; iElement + 2 < elementCount; iElement += 3)
+	{
+		const UWORD index0 = pElements[iElement];
+		const UWORD index1 = pElements[iElement + 1];
+		const UWORD index2 = pElements[iElement + 2];
+		DirectX12DrawPortTexturedVertex vertices[3] = {
+			MakeNativeTexturedVertex(
+				pPositions[index0], pTexCoords[index0], pColors[index0]),
+			MakeNativeTexturedVertex(
+				pPositions[index1], pTexCoords[index1], pColors[index1]),
+			MakeNativeTexturedVertex(
+				pPositions[index2], pTexCoords[index2], pColors[index2])
+		};
+		for (INDEX iVertex = 0; iVertex < 3; ++iVertex)
+		{
+			vertices[iVertex].x += offsetX;
+			vertices[iVertex].y += offsetY;
+		}
+		captured = GetDirectX12Backend().QueueDrawPortTexturedTriangle(
+			pTexture, vertices[0], vertices[1], vertices[2],
+			scissorLeft, scissorTop, scissorRight, scissorBottom,
+			blendMode, GetCurrentNativeSamplerMode()) && captured;
+	}
+	if (pTexture != NULL)
+		pTexture->Release();
+	return captured;
+}
 
 // currently locked drawport
 static CDrawPort *_pdpCurrent = NULL;
@@ -54,7 +246,7 @@ extern INDEX g_iCountry;
 #define GBK_LOW_BYTE_COUNT		(GBK_LOW_END - GBK_LOW_START + 1)
 #define GBK_PAGE_PER_CHARACTER	1764
 #define GBK_COUNT				42
-const int cBrzFontOffsetV 	=	2;		// 브라질 폰트 출력시 문자 높이 오프셋
+const int cBrzFontOffsetV 	=	2; // Desplazamiento vertical de los caracteres de la fuente brasilena.
 
 int FindVowel(const char* strText)
 {
@@ -536,11 +728,11 @@ void CDrawPort::SetProjection(CAnyProjection3D &apr)
 		adViewPlane[3] = -apr->pr_plMirrorView.Distance(); 
 		gfxClipPlane(adViewPlane); // NOTE: view clip plane is multiplied by inverse modelview matrix at time when specified
 	}
-//강동민 수정 시작 Water 구현		04.13  
+// Inicio de modificacion de Kang Dong-min: implementacion del agua (04.13).
 	else if(apr->pr_bNiceWater)	
 	{
 		// set custom clip plane 0 to mirror plane
-		// 반사 평면을 위한 클리핑 평면 0을 사용자 설정함.		
+		// Configura el plano de recorte 0 para el plano de reflexion.
 		gfxEnableClipPlane();
 		DOUBLE adViewPlane[4];
 		adViewPlane[0] = +apr->pr_plNiceWaterView(1); 
@@ -549,7 +741,7 @@ void CDrawPort::SetProjection(CAnyProjection3D &apr)
 		adViewPlane[3] = -apr->pr_plNiceWaterView.Distance(); 
 		gfxClipPlane(adViewPlane); 
 	}
-//강동민 수정 끝 Water 구현			04.13
+// Fin de modificacion de Kang Dong-min: implementacion del agua (04.13).
 
 	// if projection is not mirrored
 	else 
@@ -559,7 +751,7 @@ void CDrawPort::SetProjection(CAnyProjection3D &apr)
 	}
 
 	// if isometric projection
-	// BackGround에서 쓰임...
+	// Se usa en el fondo.
 	if( apr.IsIsometric()) 
 	{
 		CIsometricProjection3D &ipr = (CIsometricProjection3D&)*apr;
@@ -597,7 +789,7 @@ void CDrawPort::SetProjection(CAnyProjection3D &apr)
 		FLOAT fFar = ppr.pr_FarClipDistance;
 		if( fFar<0) fFar = 1E5f;  // max size 32768, 3D (sqrt(3)), rounded up
 
-		// D3DTS_PROJECTION 설정함.
+		// Configura D3DTS_PROJECTION.
 		gfxSetFrustum( fLeft, fRight, fTop, fBottom, fNear, fFar);
 	}
 	
@@ -630,7 +822,7 @@ void CDrawPort::SetProjection(CAnyProjection3D &apr)
 		hr			= _pGfx->gl_pd3d9Device->GetTransform( D3DTS_VIEW, &matView);
 		D3DXMatrixMultiply(&matClip, &matView, &matProj);
 		
-		// Normal값을 변환함.
+		// Transforma el valor normal.
 		D3DXMatrixInverse(&matClip, NULL, &matClip);
 		D3DXMatrixTranspose(&matClip, &matClip);
 
@@ -745,12 +937,26 @@ void CDrawPort::DrawPoint( PIX pixI, PIX pixJ, COLOR col, PIX pixRadius/*=1*/) c
 		const FLOAT fJ = pixJ+0.75f;
 		const ULONG d3dColor = rgba2argb(col);
 		CTVERTEX avtx = {fI,fJ,0, d3dColor, 0,0};
-		hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_POINTSIZE, *((DWORD*)&fR));
-		D3D_CHECKERROR(hr);
-		// set vertex shader and draw
-		d3dSetVertexShader(D3DFVF_CTVERTEX);
-		hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_POINTLIST, 1, &avtx, sizeof(CTVERTEX));
-		D3D_CHECKERROR(hr);
+		const bool nativeCaptured =
+			GetDirectX12Backend().QueueDrawPortPoint(
+				fI + dp_MinI,
+				fJ + dp_MinJ,
+				fR,
+				col,
+				dp_ScissorMinI,
+				dp_ScissorMinJ,
+				dp_ScissorMaxI,
+				dp_ScissorMaxJ);
+		if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+				nativeCaptured))
+		{
+			hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_POINTSIZE, *((DWORD*)&fR));
+			D3D_CHECKERROR(hr);
+			// set vertex shader and draw
+			d3dSetVertexShader(D3DFVF_CTVERTEX);
+			hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_POINTLIST, 1, &avtx, sizeof(CTVERTEX));
+			D3D_CHECKERROR(hr);
+		}
 	}
 }
 
@@ -846,10 +1052,28 @@ void CDrawPort::DrawLine( PIX pixI0, PIX pixJ0, PIX pixI1, PIX pixJ1, COLOR col,
 		CTVERTEX avtxLine[2] = {
 			{fI0,fJ0,0, d3dColor,  0,0},
 			{fI1,fJ1,0, d3dColor, fD,0} };
-		// set vertex shader and draw
-		d3dSetVertexShader(D3DFVF_CTVERTEX);
-		hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_LINELIST, 1, avtxLine, sizeof(CTVERTEX));
-		D3D_CHECKERROR(hr);
+		bool nativeCaptured = false;
+		if (typ == _FULL_)
+		{
+			nativeCaptured = GetDirectX12Backend().QueueDrawPortLine(
+				fI0 + dp_MinI,
+				fJ0 + dp_MinJ,
+				fI1 + dp_MinI,
+				fJ1 + dp_MinJ,
+				col,
+				dp_ScissorMinI,
+				dp_ScissorMinJ,
+				dp_ScissorMaxI,
+				dp_ScissorMaxJ);
+		}
+		if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+				nativeCaptured))
+		{
+			// set vertex shader and draw
+			d3dSetVertexShader(D3DFVF_CTVERTEX);
+			hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_LINELIST, 1, avtxLine, sizeof(CTVERTEX));
+			D3D_CHECKERROR(hr);
+		}
 	}
 	// revert to old filtering
 	if( typ!=_FULL_) gfxSetTextureFiltering( iTexFilter, iTexAnisotropy);
@@ -954,10 +1178,40 @@ void CDrawPort::DrawBorder( PIX pixI, PIX pixJ, PIX pixWidth, PIX pixHeight, COL
 			{fI1,fJ0,  0, d3dColor, 0,0}, {fI1,  fJ1,0, d3dColor, fD,0},   // right
 			{fI0,fJ1,  0, d3dColor, 0,0}, {fI1+1,fJ1,0, d3dColor, fD,0},   // down
 			{fI0,fJ0+1,0, d3dColor, 0,0}, {fI0,  fJ1,0, d3dColor, fD,0} }; // left
-		// set vertex shader and draw
-		d3dSetVertexShader(D3DFVF_CTVERTEX);
-		hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_LINELIST, 4, avtxLines, sizeof(CTVERTEX));
-		D3D_CHECKERROR(hr);
+		bool nativeCaptured = false;
+		if (typ == _FULL_)
+		{
+			CDirectX12Backend& backend = GetDirectX12Backend();
+			nativeCaptured = true;
+			nativeCaptured = backend.QueueDrawPortLine(
+				fI0 + dp_MinI, fJ0 + dp_MinJ,
+				fI1 + dp_MinI, fJ0 + dp_MinJ, col,
+				dp_ScissorMinI, dp_ScissorMinJ,
+				dp_ScissorMaxI, dp_ScissorMaxJ) && nativeCaptured;
+			nativeCaptured = backend.QueueDrawPortLine(
+				fI1 + dp_MinI, fJ0 + dp_MinJ,
+				fI1 + dp_MinI, fJ1 + dp_MinJ, col,
+				dp_ScissorMinI, dp_ScissorMinJ,
+				dp_ScissorMaxI, dp_ScissorMaxJ) && nativeCaptured;
+			nativeCaptured = backend.QueueDrawPortLine(
+				fI0 + dp_MinI, fJ1 + dp_MinJ,
+				fI1 + 1 + dp_MinI, fJ1 + dp_MinJ, col,
+				dp_ScissorMinI, dp_ScissorMinJ,
+				dp_ScissorMaxI, dp_ScissorMaxJ) && nativeCaptured;
+			nativeCaptured = backend.QueueDrawPortLine(
+				fI0 + dp_MinI, fJ0 + 1 + dp_MinJ,
+				fI0 + dp_MinI, fJ1 + dp_MinJ, col,
+				dp_ScissorMinI, dp_ScissorMinJ,
+				dp_ScissorMaxI, dp_ScissorMaxJ) && nativeCaptured;
+		}
+		if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+				nativeCaptured))
+		{
+			// set vertex shader and draw
+			d3dSetVertexShader(D3DFVF_CTVERTEX);
+			hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_LINELIST, 4, avtxLines, sizeof(CTVERTEX));
+			D3D_CHECKERROR(hr);
+		}
 	}
 	// revert to old filtering
 	if( typ!=_FULL_) gfxSetTextureFiltering( iTexFilter, iTexAnisotropy);
@@ -1006,15 +1260,33 @@ void CDrawPort::Fill( PIX pixI, PIX pixJ, PIX pixWidth, PIX pixHeight, COLOR col
 		pixJ += dp_MinJ;
 		const PIX pixRasterW = dp_Raster->ra_Width;
 		const PIX pixRasterH = dp_Raster->ra_Height;
+		const bool nativeCaptured =
+			GetDirectX12Backend().QueueDrawPortRectangle(
+				pixI,
+				pixJ,
+				pixI + pixWidth,
+				pixJ + pixHeight,
+				col,
+				col,
+				col,
+				col,
+				dp_ScissorMinI,
+				dp_ScissorMinJ,
+				dp_ScissorMaxI,
+				dp_ScissorMaxJ);
 		const ULONG d3dColor = rgba2argb(col);
-		// do fast filling
-		if( pixI==0 && pixJ==0 && pixWidth==pixRasterW && pixHeight==pixRasterH) {
-			hr = _pGfx->gl_pd3d9Device->Clear( 0, NULL, D3DCLEAR_TARGET, d3dColor,0,0);
-		} else {
-			D3DRECT d3dRect = { pixI, pixJ, pixI+pixWidth, pixJ+pixHeight };
-			hr = _pGfx->gl_pd3d9Device->Clear( 1, &d3dRect, D3DCLEAR_TARGET, d3dColor,0,0);
-		} // done
-		D3D_CHECKERROR(hr);
+		if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+				nativeCaptured))
+		{
+			// do fast filling
+			if( pixI==0 && pixJ==0 && pixWidth==pixRasterW && pixHeight==pixRasterH) {
+				hr = _pGfx->gl_pd3d9Device->Clear( 0, NULL, D3DCLEAR_TARGET, d3dColor,0,0);
+			} else {
+				D3DRECT d3dRect = { pixI, pixJ, pixI+pixWidth, pixJ+pixHeight };
+				hr = _pGfx->gl_pd3d9Device->Clear( 1, &d3dRect, D3DCLEAR_TARGET, d3dColor,0,0);
+			} // done
+			D3D_CHECKERROR(hr);
+		}
 	}
 }
 
@@ -1061,10 +1333,28 @@ void CDrawPort::Fill( PIX pixI, PIX pixJ, PIX pixWidth, PIX pixHeight,
 		CTVERTEX avtxTris[6] = {
 			{fI0,fJ0,0, d3dColUL, 0,0}, {fI0,fJ1,0, d3dColDL, 0,1}, {fI1,fJ1,0, d3dColDR, 1,1},
 			{fI0,fJ0,0, d3dColUL, 0,0}, {fI1,fJ1,0, d3dColDR, 1,1}, {fI1,fJ0,0, d3dColUR, 1,0} };
-		// set vertex shader and draw
-		d3dSetVertexShader(D3DFVF_CTVERTEX);
-		hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_TRIANGLELIST, 2, avtxTris, sizeof(CTVERTEX));
-		D3D_CHECKERROR(hr);
+		const bool nativeCaptured =
+			GetDirectX12Backend().QueueDrawPortRectangle(
+				fI0 + dp_MinI,
+				fJ0 + dp_MinJ,
+				fI1 + dp_MinI,
+				fJ1 + dp_MinJ,
+				colUL,
+				colUR,
+				colDL,
+				colDR,
+				dp_ScissorMinI,
+				dp_ScissorMinJ,
+				dp_ScissorMaxI,
+				dp_ScissorMaxJ);
+		if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+				nativeCaptured))
+		{
+			// set vertex shader and draw
+			d3dSetVertexShader(D3DFVF_CTVERTEX);
+			hr = _pGfx->gl_pd3d9Device->DrawPrimitiveUP( D3DPT_TRIANGLELIST, 2, avtxTris, sizeof(CTVERTEX));
+			D3D_CHECKERROR(hr);
+		}
 	}
 }
 
@@ -1141,6 +1431,8 @@ void CDrawPort::FillZBuffer( PIX pixI, PIX pixJ, PIX pixWidth, PIX pixHeight, FL
 		pixJ += dp_MinJ;
 		// clear just part of the drawport
 		D3DRECT d3dRect = { pixI, pixJ, pixI+pixWidth, pixJ+pixHeight };
+		GetDirectX12Backend().PrepareLegacy3DDepthClear(
+			_pGfx->gl_pd3d9Device);
 		HRESULT hr = _pGfx->gl_pd3d9Device->Clear( 1, &d3dRect, dwMask, 0,zval,0);
 		D3D_CHECKERROR(hr);
 	}
@@ -1175,6 +1467,8 @@ void CDrawPort::FillZBuffer( FLOAT zval) const
 		// must clear stencil buffer too in case it exist (we don't need it) for the performance sake
 		DWORD dwMask = D3DCLEAR_ZBUFFER;
 		if( _pGfx->gl_ulFlags & GLF_STENCILBUFFER) dwMask |= D3DCLEAR_STENCIL;
+		GetDirectX12Backend().PrepareLegacy3DDepthClear(
+			_pGfx->gl_pd3d9Device);
 		HRESULT hr = _pGfx->gl_pd3d9Device->Clear( 0, NULL, dwMask, 0,zval,0);
 		D3D_CHECKERROR(hr);
 	}
@@ -1271,9 +1565,9 @@ void CDrawPort::GrabScreen( class CImageInfo &iiGrabbedImage, INDEX iGrabZBuffer
 }
 
 
-//강동민 수정 시작 Water 구현		04.22
-//BOOL CDrawPort::IsPointVisible(PIX pixI, PIX pixJ, FLOAT fOoK, INDEX iID, INDEX iMirrorLevel/*=0*/) const		// 원본.
-//강동민 수정 끝 Water 구현			04.22
+// Inicio de modificacion de Kang Dong-min: implementacion del agua (04.22).
+//BOOL CDrawPort::IsPointVisible(PIX pixI, PIX pixJ, FLOAT fOoK, INDEX iID, INDEX iMirrorLevel/*=0*/) const // Version original.
+// Fin de modificacion de Kang Dong-min: implementacion del agua (04.22).
 BOOL CDrawPort::IsPointVisible(CAnyProjection3D &apr, PIX pixI, PIX pixJ, FLOAT fOoK, INDEX iID, INDEX iMirrorLevel/*=0*/) const
 {
 	// must have raster!
@@ -1286,19 +1580,19 @@ BOOL CDrawPort::IsPointVisible(CAnyProjection3D &apr, PIX pixI, PIX pixJ, FLOAT 
 	const GfxAPIType eAPI = _pGfx->gl_eCurrentAPI;
 	ASSERT( eAPI==GAT_OGL || eAPI==GAT_D3D || eAPI==GAT_NONE);
 
-//강동민 수정 시작 Water 구현		04.20	
+// Inicio de modificacion de Kang Dong-min: implementacion del agua (04.20).
 	if(!apr->pr_bNiceWater)
 	{
-//강동민 수정 끝 Water 구현			04.20
+// Fin de modificacion de Kang Dong-min: implementacion del agua (04.20).
 		// use delayed mechanism for checking
 		extern BOOL CheckDepthPoint( const CDrawPort *pdp, PIX pixI, PIX pixJ, FLOAT fOoK, INDEX iID, INDEX iMirrorLevel=0);
 		return CheckDepthPoint( this, pixI, pixJ, fOoK, iID, iMirrorLevel);
-//강동민 수정 시작 Water 구현		04.20
+// Inicio de modificacion de Kang Dong-min: implementacion del agua (04.20).
 	}
-//강동민 수정 끝 Water 구현			04.20
-//강동민 수정 시작 Water 구현		04.22
+// Fin de modificacion de Kang Dong-min: implementacion del agua (04.20).
+// Inicio de modificacion de Kang Dong-min: implementacion del agua (04.22).
 	return TRUE;
-//강동민 수정 끝 Water 구현			04.22
+// Fin de modificacion de Kang Dong-min: implementacion del agua (04.22).
 }
 
 
@@ -1349,8 +1643,15 @@ void CDrawPort::RenderLensFlare( CTextureObject *pto, FLOAT fI, FLOAT fJ,
 	pcol[2] = glcol;
 	pcol[3] = glcol;
 	// render it
-	_pGfx->gl_ctWorldElements += 6; 
-	gfxFlushQuads();
+	_pGfx->gl_ctWorldElements += 6;
+	const bool nativeCaptured = QueueNativeTexturedQuads(
+		pvtx, ptex, pcol, 4, dp_MinI, dp_MinJ,
+		dp_ScissorMinI, dp_ScissorMinJ,
+		dp_ScissorMaxI, dp_ScissorMaxJ,
+		DX12_BLEND_ADD);
+	if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+			nativeCaptured))
+		gfxFlushQuads();
 }
 
 
@@ -1603,6 +1904,7 @@ void CDrawPort::PutText( const CTString &strText, PIX pixX0, PIX pixY0, const CO
 	const enum PredefinedBlendType pbt = (const enum PredefinedBlendType)dp_ulTextBlendingType;
 	gfxDisableDepthTest();
 	gfxSetBlendType(pbt);
+	_nativeQueuedBlendMode = GetNativeBlendMode(pbt);
 
 	// calculate and apply correction factor
 	FLOAT fCorrectionU = 1.0f / td.GetPixWidth();
@@ -1711,7 +2013,7 @@ void CDrawPort::PutText( const CTString &strText, PIX pixX0, PIX pixY0, const CO
 			if( dp_FontData->IsCharDefined(chrUpper) && dp_FontData->fd_bSmallCaps) chrCurrent = chrUpper;
 		}
 
-		/*code = chrCurrent; // 한글
+		/*code = chrCurrent; // Coreano
 		if (code & 0x80)
 			code = (code<<8) | (unsigned char)strText[++iChar];
 
@@ -1804,7 +2106,20 @@ void CDrawPort::PutText( const CTString &strText, PIX pixX0, PIX pixY0, const CO
 	_avtxCommon.PopUntil( ctCharsPrinted*4-1);
 	_atexCommon[0].PopUntil( ctCharsPrinted*4-1);
 	_acolCommon.PopUntil( ctCharsPrinted*4-1);
-	gfxFlushQuads();
+	bool nativeCaptured = false;
+	if (ctCharsPrinted > 0)
+	{
+		nativeCaptured = QueueNativeTexturedQuads(
+			&_avtxCommon[0], &_atexCommon[0][0], &_acolCommon[0],
+			ctCharsPrinted * 4, dp_MinI, dp_MinJ,
+			dp_ScissorMinI, dp_ScissorMinJ,
+			dp_ScissorMaxI, dp_ScissorMaxJ,
+			GetNativeBlendMode(dp_ulTextBlendingType));
+	}
+	if (ctCharsPrinted <= 0
+		|| GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+			nativeCaptured))
+		gfxFlushQuads();
 }
 
 
@@ -2315,7 +2630,7 @@ void CDrawPort::PutTextExCht( const CTString &strText, PIX pixX0, PIX pixY0, con
 //------------------------------------------------------------------------------
 // CDrawPort::PutTextCharExChs
 // Explain:  
-// Date : 2005-03-03(오후 1:51:55) Lee Ki-hwan
+// Fecha: 2005-03-03 (1:51:55 p. m.), Lee Ki-hwan.
 //------------------------------------------------------------------------------
 void CDrawPort::PutTextCharExChs( const char *pText, int nLength, PIX pixX0, PIX pixY0, const COLOR colBlend,
 									FLOAT fZ, BOOL bShadow, const COLOR colShadow ) const
@@ -2517,7 +2832,7 @@ void CDrawPort::PutTextCharExChs( const char *pText, int nLength, PIX pixX0, PIX
 //------------------------------------------------------------------------------
 // CDrawPort::PutTextExChs
 // Explain:  
-// Date : 2005-03-03(오후 1:49:37) Lee Ki-hwan
+// Fecha: 2005-03-03 (1:49:37 p. m.), Lee Ki-hwan.
 //------------------------------------------------------------------------------
 void CDrawPort::PutTextExChs( const CTString &strText, PIX pixX0, PIX pixY0, const COLOR colBlend,
 								FLOAT fZ, BOOL bShadow, const COLOR colShadow ) const
@@ -2765,19 +3080,19 @@ void CDrawPort::PutTextExThai( const CTString &strText, PIX pixX0, PIX pixY0, co
 			if(cCurrent >= 0xa1 && cCurrent <= 0xfb){
 				pixFontAdvancer = _pUIFontTexMgr->GetFontWidthThai(cCurrent) +_pUIFontTexMgr->GetFontSpacing();
 				thai_Y0 = 2;
-				thai_fV1 = 4 ; //태국어 V길이를 3 더한다...( 높이가 더 길다...성조 첨가로)				
+				thai_fV1 = 4 ; // Agrega 3 a V para admitir la altura extra de los tonos tailandeses.
 				if(cCurrent == 0xd3){
 					if(iChar==0) continue;
 					pre_cCurrent = strText[iChar-1];
 					if((pre_cCurrent>=0xa1 && pre_cCurrent<=0xcf)||(pre_cCurrent>=0xe7 && pre_cCurrent <= 0xec)){ // pre_cCurrent 050924
-						pixX0-=4; // 4픽셀 앞으로
+						pixX0-=4; // Desplaza 4 pixeles hacia adelante.
 					} else continue; 
 					
 				}else if(cCurrent == 0xed ||cCurrent == 0xd1 || (cCurrent>=0xd4 && cCurrent<=0xda)){		// vowel display //wooss 050924 d3->d4
 					if(iChar==0) continue;
 					pre_cCurrent = strText[iChar-1];
 					if(pre_cCurrent>=0xa1 && pre_cCurrent <= 0xcf) {
-						pixX0-=7; // 겹치는 모음 출력시 7픽셀 앞으로
+						pixX0-=7; // Desplaza 7 pixeles hacia adelante para superponer la marca.
 						pixFontAdvancer = _pUIFontTexMgr->GetFontWidthThai(cCurrent);
 					} else continue;
 				} 
@@ -2797,7 +3112,7 @@ void CDrawPort::PutTextExThai( const CTString &strText, PIX pixX0, PIX pixY0, co
 								tv_height=(pixFontHeight/4);
 							//	pixY0-=tv_height;
 							}
-					pixX0-=7; // 7픽셀 당겨서 찍는다
+					pixX0-=7; // Desplaza 7 pixeles hacia adelante para superponer la marca.
 					pixFontAdvancer -= _pUIFontTexMgr->GetFontSpacing();
 					
 				}
@@ -2915,8 +3230,8 @@ void CDrawPort::PutTextExJap( const CTString &strText, PIX pixX0, PIX pixY0, con
 	_pUIFontTexMgr->GetInvUV( fInvU, fInvV );
 
 	// wooss 051102
-	// pageWords - 이전 페이지의 글자 누적수
-	// markStart - 현재 페이지의 시작 위치(코드페이지상)
+	// pageWords: cantidad acumulada de caracteres de las paginas anteriores.
+	// markStart: posicion inicial de la pagina actual en la pagina de codigos.
 //	int pageWords[9]	=	{189,652,803,930,0,0,1023,1117}; // 81 - alphabet_num 82 ~ 89 start pos 
 	int pageWords[8]	=	{0xbd,0x160,0x1e7,0x276,0x276,0x276,0x2d3,0x331}; // 81 - alphabet_num 82 ~ 89 start pos 
 	int markStart[9]	=	{0x40,0x4f,0x40,0x40,0,0,0x40,0x9f,0x40}; 
@@ -2943,8 +3258,8 @@ void CDrawPort::PutTextExJap( const CTString &strText, PIX pixX0, PIX pixY0, con
 
 		if(cCurrent >= 0xa1 && cCurrent <= 0xdf){
 			// Texture coordinate
-			nU = ( ( cCurrent - 0x1e - 0x21) % 42 ) * pixFontUVOffset; // 0x21 : 가타가나 중간의 31문자칸을 빼준다. wooss 051028
-			nV = ( ( cCurrent - 0x1e - 0x21) / 42 ) * pixFontUVOffset; // 0x1e : texture상에서 00~1D까지는 출력이 안되므로....
+			nU = ( ( cCurrent - 0x1e - 0x21) % 42 ) * pixFontUVOffset; // 0x21 omite las 31 celdas intermedias de katakana. wooss 051028
+			nV = ( ( cCurrent - 0x1e - 0x21) / 42 ) * pixFontUVOffset; // 0x1e omite 00-1D porque no se muestran en la textura.
 			fU0 = nU * fInvU;										   
 			fV0 = nV * fInvV;
 			fU1 = ( nU + pixFontWidth2Byte ) * fInvU;
@@ -3980,19 +4295,19 @@ void CDrawPort::PutTextCharExThai( const char *pText, int nLength, PIX pixX0, PI
 			if(cCurrent >= 0xa1 && cCurrent <= 0xfb){
 				pixFontAdvancer = _pUIFontTexMgr->GetFontWidthThai(cCurrent) +_pUIFontTexMgr->GetFontSpacing();
 				thai_Y0	 = 2;
-				thai_fV1 = 4 ; //태국어 V길이를 3 더한다...( 높이가 더 길다...성조 첨가로)
+				thai_fV1 = 4 ; // Agrega 3 a V para admitir la altura extra de los tonos tailandeses.
 				if(cCurrent == 0xd3){
 					if(iChar==0) continue;
 					pre_cCurrent = pText[iChar-1];
 					if((pre_cCurrent>=0xa1 && pre_cCurrent<=0xcf)||(pre_cCurrent>=0xe7 && pre_cCurrent <= 0xec)){ // pre_cCurrent 050924
-						pixX0-=4; // 4픽셀 앞으로
+						pixX0-=4; // Desplaza 4 pixeles hacia adelante.
 					} else continue; 
 					
 				}else if(cCurrent == 0xed || cCurrent == 0xd1 || (cCurrent>=0xd4 && cCurrent<=0xda)){		// vowel display //wooss 050924 d3->d4
 					if(iChar==0) continue;
 					pre_cCurrent = pText[iChar-1];
 					if(pre_cCurrent>=0xa0 && pre_cCurrent <= 0xcf){
-						pixX0-=7; // 겹치는 모음 출력시 7픽셀 앞으로
+						pixX0-=7; // Desplaza 7 pixeles hacia adelante para superponer la marca.
 						pixFontAdvancer = _pUIFontTexMgr->GetFontWidthThai(cCurrent);
 					} else continue;
 				} 
@@ -4011,7 +4326,7 @@ void CDrawPort::PutTextCharExThai( const char *pText, int nLength, PIX pixX0, PI
 								tv_height=(pixFontHeight/4);
 								//	pixY0-=tv_height;
 							}
-					pixX0-=7; // 7픽셀 당겨서 찍는다
+					pixX0-=7; // Desplaza 7 pixeles hacia adelante para superponer la marca.
 					pixFontAdvancer -= _pUIFontTexMgr->GetFontSpacing(); 
 				}
 				
@@ -4126,8 +4441,8 @@ void CDrawPort::PutTextCharExJap( const char *pText, int nLength, PIX pixX0, PIX
 	_pUIFontTexMgr->GetInvUV( fInvU, fInvV );
 
 		// wooss 051102 
-	// pageWords - 이전 페이지의 글자 누적수
-	// markStart - 현재 페이지의 시작 위치(코드페이지상)
+	// pageWords: cantidad acumulada de caracteres de las paginas anteriores.
+	// markStart: posicion inicial de la pagina actual en la pagina de codigos.
 //	int pageWords[9]	=	{189,652,803,930,0,0,1023,1117}; // 81 - alphabet_num 82 ~ 89 start pos 
 	int pageWords[8]	=	{0xbd,0x160,0x1e7,0x276,0x276,0x276,0x2d3,0x331}; // 81 - alphabet_num 82 ~ 89 start pos 
 	int markStart[9]	=	{0x40,0x4f,0x40,0x40,0,0,0x40,0x9f,0x40}; 
@@ -4154,8 +4469,8 @@ void CDrawPort::PutTextCharExJap( const char *pText, int nLength, PIX pixX0, PIX
 
 		if(cCurrent >= 0xa1 && cCurrent <= 0xdf){
 			// Texture coordinate
-			nU = ( ( cCurrent - 0x1e - 0x21) % 42 ) * pixFontUVOffset; // 0x21 : 가타가나 중간의 31문자칸을 빼준다. wooss 051028
-			nV = ( ( cCurrent - 0x1e - 0x21) / 42 ) * pixFontUVOffset; // 0x1e : texture상에서 00~1D까지는 출력이 안되므로....
+			nU = ( ( cCurrent - 0x1e - 0x21) % 42 ) * pixFontUVOffset; // 0x21 omite las 31 celdas intermedias de katakana. wooss 051028
+			nV = ( ( cCurrent - 0x1e - 0x21) / 42 ) * pixFontUVOffset; // 0x1e omite 00-1D porque no se muestran en la textura.
 			fU0 = nU * fInvU;										   
 			fV0 = nV * fInvV;
 			fU1 = ( nU + pixFontWidth2Byte ) * fInvU;
@@ -4559,7 +4874,19 @@ void CDrawPort::EndTextEx( BOOL bDepthTest )
 				_pUIFontTexMgr->InitTexture( iText, bDepthTest );
 			}
 
-			gfxFlushTextElements( ctElements, iText );			
+			const ULONG nativeBlendType = g_bDrawportRus
+				? PBT_BLEND : PBT_TRANSPARENT;
+			const bool nativeCaptured = QueueNativeTexturedElements(
+				&_avtxText[iText][0], &_atexText[iText][0],
+				&_acolText[iText][0], _avtxText[iText].Count(),
+				&_auwText[iText][0], ctElements,
+				dp_MinI, dp_MinJ,
+				dp_ScissorMinI, dp_ScissorMinJ,
+				dp_ScissorMaxI, dp_ScissorMaxJ,
+				GetNativeBlendMode(nativeBlendType));
+			if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+					nativeCaptured))
+				gfxFlushTextElements( ctElements, iText );			
 			_avtxText[iText].PopAll();
 			_atexText[iText].PopAll();
 			_acolText[iText].PopAll();
@@ -4621,7 +4948,17 @@ void CDrawPort::FlushBtnRenderingQueue( int nBtnType, const ULONG ulPBT )
 		if( ctElements > 0 )
 		{
 			_pUIBtnTexMgr->InitTexture( nBtnType, iBtn, ulPBT );
-			gfxFlushBtnElements( ctElements, iBtn );
+			const bool nativeCaptured = QueueNativeTexturedElements(
+				&_avtxBtn[iBtn][0], &_atexBtn[iBtn][0],
+				&_acolBtn[iBtn][0], _avtxBtn[iBtn].Count(),
+				&_auwBtn[iBtn][0], ctElements,
+				dp_MinI, dp_MinJ,
+				dp_ScissorMinI, dp_ScissorMinJ,
+				dp_ScissorMaxI, dp_ScissorMaxJ,
+				GetNativeBlendMode(ulPBT));
+			if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+					nativeCaptured))
+				gfxFlushBtnElements( ctElements, iBtn );
 
 			_avtxBtn[iBtn].PopAll();
 			_atexBtn[iBtn].PopAll();
@@ -4687,6 +5024,7 @@ void CDrawPort::PutTexture( class CTextureObject *pTO,
 	const enum PredefinedBlendType pbt = (const enum PredefinedBlendType)ulPBT;
 	gfxDisableDepthTest();
 	gfxSetBlendType(pbt);
+	_nativeQueuedBlendMode = GetNativeBlendMode(pbt);
 	gfxResetArrays();
 	GFXVertex   *pvtx = _avtxCommon.Push(4);
 	GFXTexCoord *ptex = _atexCommon[0].Push(4);
@@ -4731,7 +5069,14 @@ void CDrawPort::PutTexture( class CTextureObject *pTO,
 	pcol[1] = glcolDL;
 	pcol[2] = glcolDR;
 	pcol[3] = glcolUR;
-	gfxFlushQuads();
+	const bool nativeCaptured = QueueNativeTexturedQuads(
+		pvtx, ptex, pcol, 4, dp_MinI, dp_MinJ,
+		dp_ScissorMinI, dp_ScissorMinJ,
+		dp_ScissorMaxI, dp_ScissorMaxJ,
+		GetNativeBlendMode(ulPBT));
+	if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+			nativeCaptured))
+		gfxFlushQuads();
 }
 
 
@@ -4755,6 +5100,7 @@ void CDrawPort::InitTexture( class CTextureObject *pTO, const BOOL bClamp/*=FALS
 	// setup rendering mode and prepare arrays
 	const enum PredefinedBlendType pbt = (const enum PredefinedBlendType)ulPBT;
 	gfxSetBlendType(pbt);
+	_nativeQueuedBlendMode = GetNativeBlendMode(pbt);
 
 	if( bDepthTest )
 	{
@@ -4788,6 +5134,7 @@ void CDrawPort::InitTextureData( class CTextureData *pTD, const BOOL bClamp, con
 
 	const enum PredefinedBlendType	pbt = (const enum PredefinedBlendType)ulPBT;
 	gfxSetBlendType(pbt);
+	_nativeQueuedBlendMode = GetNativeBlendMode(pbt);
 
 	if( bDepthTest )
 	{
@@ -4976,9 +5323,25 @@ void CDrawPort::AddTexture( const FLOAT fI0, const FLOAT fJ0, const FLOAT fI1, c
 
 // renders all textures from rendering queue and flushed rendering arrays
 void CDrawPort::FlushRenderingQueue(void) const
-{ 
-	gfxFlushElements(); 
-	gfxResetArrays(); 
+{
+	const INDEX elementCount = _auwCommonElements.Count();
+	const INDEX vertexCount = _avtxCommon.Count();
+	bool nativeCaptured = false;
+	if (elementCount > 0 && vertexCount > 0)
+	{
+		nativeCaptured = QueueNativeTexturedElements(
+			&_avtxCommon[0], &_atexCommon[0][0], &_acolCommon[0],
+			vertexCount, &_auwCommonElements[0], elementCount,
+			dp_MinI, dp_MinJ,
+			dp_ScissorMinI, dp_ScissorMinJ,
+			dp_ScissorMaxI, dp_ScissorMaxJ,
+			_nativeQueuedBlendMode);
+	}
+	if (elementCount <= 0
+		|| GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+			nativeCaptured))
+		gfxFlushElements();
+	gfxResetArrays();
 }
 
 
@@ -5020,7 +5383,14 @@ void CDrawPort::BlendScreen(void)
 	pcol[1] = glcol;
 	pcol[2] = glcol;
 	pcol[3] = glcol;
-	gfxFlushQuads();
+	const bool nativeCaptured = QueueNativeTexturedQuads(
+		pvtx, ptex, pcol, 4, dp_MinI, dp_MinJ,
+		dp_ScissorMinI, dp_ScissorMinJ,
+		dp_ScissorMaxI, dp_ScissorMaxJ,
+		DX12_BLEND_ALPHA);
+	if (GetDirectX12Backend().ShouldSubmitLegacyDrawPort(
+			nativeCaptured))
+		gfxFlushQuads();
 	// reset accumulation color
 	dp_ulBlendingRA = 0;
 	dp_ulBlendingGA = 0;

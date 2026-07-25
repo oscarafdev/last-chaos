@@ -1,0 +1,16 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    The reproducible build writes into client/build and must not overwrite the
+    legacy runtime in client/Bin. Several converted VS2010 projects still have
+    unconditional copy steps with hard-coded Release paths; clear those steps
+    when the build script opts into preserving the runtime.
+  -->
+  <ItemDefinitionGroup Condition="'$(PreserveRuntimeBin)' == 'true'">
+    <CustomBuildStep>
+      <Command />
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+</Project>

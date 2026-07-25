@@ -288,6 +288,54 @@
     <ClCompile Include="Graphics\Font.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\DirectX12Backend.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12Buffer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12DescriptorHeap.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12DepthBuffer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12DrawPortCommandBatch.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12InteropTextureManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12Legacy3DCommandBatch.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12LegacyShaderFamily.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12NativeRenderer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12NativeShaderSource.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12PipelineCache.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12PresentationManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12RenderTargetManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12Texture.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12TextureFormat.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\DirectX12UploadManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="Graphics\Gfx_Direct3D.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
@@ -3957,6 +4005,57 @@
       <Filter>Header Files\Sound Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\Gfx_Direct3D_Functions.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12Backend.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12Buffer.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12DescriptorHeap.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12DepthBuffer.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12DrawPortCommandBatch.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12InteropTextureManager.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12Legacy3DCommandBatch.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12LegacyShaderFamily.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12NativeRenderer.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12NativeShaderSource.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12PipelineCache.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12PresentationManager.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12RenderTargetManager.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12RenderState.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12Texture.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12TextureFormat.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12UploadManager.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\Gfx_Direct3D.h">

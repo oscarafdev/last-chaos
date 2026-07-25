@@ -6,6 +6,7 @@
 #include <Engine/Base/Timer.h>
 #include <Engine/Base/Console.h>
 #include <Engine/Math/Functions.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/Graphics/ImageInfo.h>
 #include <Engine/Graphics/TextureEffects.h>
@@ -17,7 +18,7 @@
 
 #include <Engine/Base/Statistics_internal.h>
 
-//안태훈 수정 시작	//(Add CRenderTexture class for Render to Texture)(0.1)
+// Inicio de la incorporacion de CRenderTexture para renderizar a textura.
 #include <Engine/Base/MemoryTracking.h>
 // ###
 #include <d3d9.h>
@@ -41,7 +42,7 @@ CRenderTexture::~CRenderTexture()
 	if(m_pDepthStencil) m_pDepthStencil->Release();
 }
 
-// sehan D3DFORMAT fmt 추가 // sehan end
+// Se agrega el parametro de formato D3D.
 BOOL CRenderTexture::Init(INDEX width, INDEX height, ULONG flag, D3DFORMAT fmt)
 {
 	TRACKTEX_HEAP();
@@ -53,14 +54,14 @@ BOOL CRenderTexture::Init(INDEX width, INDEX height, ULONG flag, D3DFORMAT fmt)
 		return FALSE;
 	}
 
-	// sehan D3DFMT_A8R8G8B8 를 fmt 로 바꿈. // sehan end
+	// El formato fijo D3DFMT_A8R8G8B8 se reemplaza por el parametro fmt.
 	rt_tdTexture.td_ulInternalFormat = fmt;
 	
 	// determine mip index from mex size and alpha channel presence
 	rt_tdTexture.td_iFirstMipLevel = 0;
 	rt_tdTexture.td_ulFlags = flag;
 	rt_tdTexture.td_ulFlags |= TEX_ALPHACHANNEL;	//alhpa
-	rt_tdTexture.td_ulFlags |= TEX_TRANSPARENT;		//alpha가 있으면 항상.
+	rt_tdTexture.td_ulFlags |= TEX_TRANSPARENT;		// Siempre se habilita cuando existe canal alfa.
 	rt_tdTexture.td_ulFlags |= TEX_32BIT;
 	rt_tdTexture.td_ulFlags |= TEX_CONSTANT;
 	rt_tdTexture.td_ulFlags &= ~TEX_STATIC;
@@ -87,15 +88,15 @@ BOOL CRenderTexture::Init(INDEX width, INDEX height, ULONG flag, D3DFORMAT fmt)
 	} 
 	else if( sam_iGfxAPI==GAT_D3D)
 	{
-		//IDirect3DTexture8의 생성.
+		// Crea la textura Direct3D usada como render target.
 		IDirect3DTexture9 *pTexture = NULL;
-		// sehan D3DFMT_A8R8G8B8 를 fmt 로 바꿈. // sehan end
+		// El formato fijo D3DFMT_A8R8G8B8 se reemplaza por el parametro fmt.
 		HRESULT hr = _pGfx->gl_pd3d9Device->CreateTexture(width, height, 1, D3DUSAGE_RENDERTARGET, fmt, D3DPOOL_DEFAULT, &pTexture, NULL);
 		if(hr == NOERROR)
 		{
-			rt_tdTexture.td_ulObject = (ULONG64)pTexture;	//내가 작성했지만 싫다.  -_-;
+			rt_tdTexture.td_ulObject = (ULONG64)pTexture;	// Conserva la textura creada.
 			pTexture->GetSurfaceLevel(0, &rt_pSurface);
-			//일단 Depth Stencil Surface는 쓰지 않지만 설정해야 된다.
+			// Aunque no se use directamente, se debe configurar una superficie de profundidad.
 		    hr = _pGfx->gl_pd3d9Device->CreateDepthStencilSurface(width, height, D3DFMT_D16, D3DMULTISAMPLE_NONE, 0, FALSE, &m_pDepthStencil, NULL);
 			if(hr == NOERROR)
 			{
@@ -120,6 +121,9 @@ void CRenderTexture::Begin()	// SetRenderTarget current
 	} 
 	else if( sam_iGfxAPI==GAT_D3D)
 	{
+		GetDirectX12Backend().InsertDrawPortBarrier(
+			DX12_DRAWPORT_BARRIER_RENDER_TARGET_BEGIN);
+		GetDirectX12Backend().BeginOffscreenDrawPortScope();
 		IDirect3DDevice9* pDev = _pGfx->gl_pd3d9Device;
 		pDev->GetRenderTarget(0, &m_pOldRenderTarget);
 		pDev->GetDepthStencilSurface(&m_pOldDepthStencil);
@@ -154,6 +158,9 @@ void CRenderTexture::End()		// SetRenderTarget old
 		//pDev->SetRenderTarget(m_pOldRenderTarget, m_pOldDepthStencil);
 	    pDev->SetDepthStencilSurface(m_pOldDepthStencil);
 	    pDev->SetRenderTarget(0, m_pOldRenderTarget);
+		GetDirectX12Backend().EndOffscreenDrawPortScope();
+		GetDirectX12Backend().InsertDrawPortBarrier(
+			DX12_DRAWPORT_BARRIER_RENDER_TARGET_END);
 		if(m_pOldRenderTarget)
 		{
 			m_pOldRenderTarget->Release();
@@ -167,4 +174,4 @@ void CRenderTexture::End()		// SetRenderTarget old
 		}
 	}
 }
-//안태훈 수정 끝	//(Add CRenderTexture class for Render to Texture)(0.1)
+// Fin de la incorporacion de CRenderTexture para renderizar a textura.
