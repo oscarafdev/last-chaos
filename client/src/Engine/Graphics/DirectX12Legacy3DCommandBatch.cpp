@@ -47,6 +47,13 @@ namespace
 		NATIVE_3D_CAPTURE_CONTINUOUS
 	};
 
+	enum FixedFunctionCaptureMode
+	{
+		FIXED_FUNCTION_CAPTURE_OPAQUE,
+		FIXED_FUNCTION_CAPTURE_TRANSPARENT,
+		FIXED_FUNCTION_CAPTURE_ALL
+	};
+
 	struct Native3DCaptureBudget
 	{
 		UINT maxDraws;
@@ -308,6 +315,20 @@ namespace
 			static_cast<FLOAT>((color >> 24) & 0xFF) / 255.0f;
 	}
 
+	UINT CountActiveFixedTextureStages(const DWORD* pColorOperations)
+	{
+		if (pColorOperations == NULL)
+			return 0;
+		UINT activeStageCount = 0;
+		for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
+		{
+			if (pColorOperations[textureUnit] == D3DTOP_DISABLE)
+				break;
+			activeStageCount = textureUnit + 1;
+		}
+		return activeStageCount;
+	}
+
 	bool ReadFullReplacementMode()
 	{
 		char value[32] = "";
@@ -329,6 +350,93 @@ namespace
 			|| (gateLength < sizeof(gatePath)
 				&& GetFileAttributesA(gatePath)
 					!= INVALID_FILE_ATTRIBUTES);
+	}
+
+	FixedFunctionCaptureMode ReadFixedFunctionCaptureMode()
+	{
+		char value[32] = "";
+		const DWORD length = GetEnvironmentVariableA(
+			"LASTCHAOS_DX12_3D_FIXED_CAPTURE",
+			value,
+			sizeof(value));
+		if (length > 0 && length < sizeof(value))
+		{
+			if (_stricmp(value, "opaque") == 0)
+				return FIXED_FUNCTION_CAPTURE_OPAQUE;
+			if (_stricmp(value, "transparent") == 0)
+				return FIXED_FUNCTION_CAPTURE_TRANSPARENT;
+			if (_stricmp(value, "all") == 0)
+				return FIXED_FUNCTION_CAPTURE_ALL;
+		}
+		return FIXED_FUNCTION_CAPTURE_OPAQUE;
+	}
+
+	int ReadOptionalEnvironmentInteger(
+		const char* pVariableName,
+		int minimum,
+		int maximum)
+	{
+		if (pVariableName == NULL || minimum > maximum)
+			return -1;
+		char value[16] = "";
+		const DWORD length = GetEnvironmentVariableA(
+			pVariableName,
+			value,
+			sizeof(value));
+		if (length == 0 || length >= sizeof(value))
+			return -1;
+		char* pEnd = NULL;
+		const long parsedValue = strtol(value, &pEnd, 10);
+		return pEnd != value
+			&& *pEnd == '\0'
+			&& parsedValue >= minimum
+			&& parsedValue <= maximum
+				? static_cast<int>(parsedValue)
+				: -1;
+	}
+
+	int ReadFixedFunctionBlendFilter()
+	{
+		return ReadOptionalEnvironmentInteger(
+			"LASTCHAOS_DX12_3D_FIXED_BLEND_MODE",
+			0,
+			DX12_BLEND_COUNT - 1);
+	}
+
+	int ReadFixedFunctionTextureWidthFilter()
+	{
+		return ReadOptionalEnvironmentInteger(
+			"LASTCHAOS_DX12_3D_FIXED_TEXTURE_WIDTH",
+			1,
+			16384);
+	}
+
+	bool MatchesFixedFunctionTextureWidthFilter(
+		IDirect3DDevice9* pDevice9,
+		int expectedWidth)
+	{
+		if (expectedWidth < 0)
+			return true;
+		if (pDevice9 == NULL)
+			return false;
+		IDirect3DBaseTexture9* pBaseTexture = NULL;
+		IDirect3DTexture9* pTexture = NULL;
+		D3DSURFACE_DESC description;
+		ZeroMemory(&description, sizeof(description));
+		const bool matches =
+			SUCCEEDED(pDevice9->GetTexture(0, &pBaseTexture))
+			&& pBaseTexture != NULL
+			&& SUCCEEDED(pBaseTexture->QueryInterface(
+				__uuidof(IDirect3DTexture9),
+				reinterpret_cast<void**>(&pTexture)))
+			&& pTexture != NULL
+			&& SUCCEEDED(pTexture->GetLevelDesc(0, &description))
+			&& description.Width == static_cast<UINT>(expectedWidth);
+		if (pTexture != NULL)
+			pTexture->Release();
+		if (pBaseTexture != NULL)
+			pBaseTexture->Release();
+		return matches;
 	}
 
 	bool ReadReplacementShaderFamily(
@@ -535,6 +643,7 @@ struct DirectX12Legacy3DCommandBatchState
 	bool staticTexCoordSelected;
 	bool staticNormalSelected;
 	UINT fixedDiagnosticCount;
+	bool fixedBlendDiagnosticReported[DX12_BLEND_COUNT];
 	bool missingArrayDiagnosticReported;
 	UINT64 frameSerial;
 	UINT64 lastInventoryDumpFrame;
@@ -554,6 +663,9 @@ struct DirectX12Legacy3DCommandBatchState
 		, lastInventoryDumpFrame(0)
 	{
 		ZeroMemory(rejectedReasons, sizeof(rejectedReasons));
+		ZeroMemory(
+			fixedBlendDiagnosticReported,
+			sizeof(fixedBlendDiagnosticReported));
 	}
 };
 
@@ -1699,6 +1811,14 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			++m_pState->rejectedReasons[REJECT_STATE_QUERY];
 			return false;
 		}
+		// _iTexPass cuenta todos los arrays UV preparados desde el ultimo
+		// bloqueo de vertices. Fog, haze y otros pases tardios pueden heredar
+		// un valor mayor aunque el draw actual tenga una sola etapa activa.
+		// COLOROP es el contrato autoritativo de fixed-function en D3D9.
+		shaderFamily.textureCount =
+			CountActiveFixedTextureStages(fixedColorOperation);
+		shaderFamily.requiresSourceTexCoords =
+			shaderFamily.textureCount > 0;
 	}
 	if (shaderFamily.nativeRigidPipeline)
 	{
@@ -1765,18 +1885,50 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		++m_pState->rejectedReasons[REJECT_STATE_QUERY];
 		return false;
 	}
-	// Los pases fixed sin escritura de profundidad son capas transparentes
-	// o multipass. No se vuelven autoritativos hasta que el contrato de
-	// alpha/blend coincida visualmente con el heredado.
+	const bool fixedFunctionDraw = !usesVertexProgram && !usesPixelProgram;
+	const FixedFunctionCaptureMode fixedFunctionCaptureMode =
+		ReadFixedFunctionCaptureMode();
+	const bool fixedFunctionBlended =
+		blending != FALSE || alphaTest != FALSE;
+	const DirectX12BlendMode fixedFunctionBlendMode = ToBlendMode(
+		blending,
+		alphaTest,
+		sourceBlend,
+		destinationBlend);
+	const int fixedFunctionBlendFilter =
+		ReadFixedFunctionBlendFilter();
+	const int fixedFunctionTextureWidthFilter =
+		ReadFixedFunctionTextureWidthFilter();
+	// Los grupos fixed se validan de forma aislada. El modo estable conserva
+	// solo los opacos; el laboratorio puede ejercer las capas sin escritura de
+	// profundidad sin volver autoritativos los demás estados en el mismo frame.
 	if (ReadFullReplacementMode()
-		&& !usesVertexProgram
-		&& !usesPixelProgram
+		&& fixedFunctionDraw
+		&& fixedFunctionCaptureMode == FIXED_FUNCTION_CAPTURE_OPAQUE
 		&& zWrite == FALSE)
 	{
 		++m_pState->rejectedDrawCount;
 		++m_pState->rejectedReasons[REJECT_FIXED_TRANSPARENT_PASS];
 		return false;
 	}
+	if (ReadFullReplacementMode()
+		&& fixedFunctionDraw
+		&& fixedFunctionCaptureMode == FIXED_FUNCTION_CAPTURE_TRANSPARENT
+		&& (zWrite != FALSE || !fixedFunctionBlended))
+		return false;
+	if (ReadFullReplacementMode()
+		&& fixedFunctionDraw
+		&& fixedFunctionBlendFilter >= 0
+		&& fixedFunctionBlendMode
+			!= static_cast<DirectX12BlendMode>(
+				fixedFunctionBlendFilter))
+		return false;
+	if (ReadFullReplacementMode()
+		&& fixedFunctionDraw
+		&& !MatchesFixedFunctionTextureWidthFilter(
+			pDevice9,
+			fixedFunctionTextureWidthFilter))
+		return false;
 
 	D3DXMATRIX worldView;
 	D3DXMATRIX worldViewProjection;
@@ -2359,11 +2511,57 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	range.depthWriteEnabled = zWrite != FALSE;
 	range.depthFunction = ToDepthFunction(zFunction);
 	range.cullMode = ToCullMode(cullMode);
-	range.blendMode = ToBlendMode(
-		blending,
-		alphaTest,
-		sourceBlend,
-		destinationBlend);
+	range.blendMode = fixedFunctionDraw
+		? fixedFunctionBlendMode
+		: ToBlendMode(
+			blending,
+			alphaTest,
+			sourceBlend,
+			destinationBlend);
+	if (inventoryMode
+		&& fixedFunctionDraw
+		&& range.blendMode < DX12_BLEND_COUNT
+		&& !m_pState->fixedBlendDiagnosticReported[range.blendMode])
+	{
+		D3DSURFACE_DESC fixedTextureDescription;
+		ZeroMemory(
+			&fixedTextureDescription,
+			sizeof(fixedTextureDescription));
+		const bool fixedTextureDescriptionAvailable =
+			pTexture != NULL
+			&& SUCCEEDED(pTexture->GetLevelDesc(
+				0,
+				&fixedTextureDescription));
+		CPrintF(
+			"DX12 diagnostico fixed blend: modo=%u, "
+			"origen=%u, destino=%u, blend=%u, alphaTest=%u, "
+			"z=%u/%u, pases=%u, pasesUV=%u, vertices=%u, indices=%u, "
+			"formato=%d, tamano=%ux%u, etapa0=%u/%u/%u "
+			"alfa=%u/%u/%u.\n",
+			static_cast<UINT>(range.blendMode),
+			sourceBlend,
+			destinationBlend,
+			blending != FALSE ? 1U : 0U,
+			alphaTest != FALSE ? 1U : 0U,
+			zEnable != FALSE ? 1U : 0U,
+			zWrite != FALSE ? 1U : 0U,
+			shaderFamily.textureCount,
+			texturePassCount,
+			usedVertexCount,
+			indexCount,
+			fixedTextureDescriptionAvailable
+				? static_cast<int>(fixedTextureDescription.Format)
+				: 0,
+			fixedTextureDescription.Width,
+			fixedTextureDescription.Height,
+			fixedColorOperation[0],
+			fixedColorArgument1[0],
+			fixedColorArgument2[0],
+			fixedAlphaOperation[0],
+			fixedAlphaArgument1[0],
+			fixedAlphaArgument2[0]);
+		m_pState->fixedBlendDiagnosticReported[range.blendMode] = true;
+	}
 	range.opaque = blending == FALSE && alphaTest == FALSE;
 	range.rigidLit = rigidLit;
 	range.genericFamily = !shaderFamily.nativeRigidPipeline;

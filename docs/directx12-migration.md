@@ -1141,3 +1141,69 @@ escena actual y, por lo tanto, todavía no autorizadas:
 El siguiente frente de implementación es `VS=0/PS=0`. En la plaza actual sus
 draws se rechazan principalmente por transparencia fixed-function, índices y
 arrays no capturados, además de un caso que cruza el plano `W=0`.
+
+### Etapa 6q: transparencias fixed-function y subbuffers dinámicos
+
+La migración de `VS=0/PS=0` se separó por modo de captura y mezcla para evitar
+autorizar todas las transparencias como un único bloque. El laboratorio permite
+seleccionar capas opacas, transparentes o ambas, además de filtrar por modo de
+blend y ancho de textura. Esto permitió ejercer por separado:
+
+- alpha convencional (`SRC_ALPHA / INV_SRC_ALPHA`) para polvo y humo;
+- shade (`DEST_COLOR / SRC_COLOR`) para sombra e indicador de movimiento;
+- suma (`ONE / ONE`);
+- suma con alpha (`SRC_ALPHA / ONE`).
+
+Se corrigieron dos contratos distintos. Primero, `_iTexPass` cuenta los arrays
+UV preparados desde el último bloqueo de vértices y puede conservar un valor
+mayor que las etapas realmente activas. El traductor ahora deriva la cantidad
+de texturas de la secuencia `D3DTSS_COLOROP` hasta `D3DTOP_DISABLE`. Esto
+eliminó la pasada blanca que aparecía al acercar la cámara y mantuvo visible el
+humo con su alpha correcto.
+
+Segundo, el renderer de mundo escribe posiciones, UV y colores directamente
+mediante `gfxLockSubBuffer`. Esa ruta no notificaba al batch DX12, que podía
+reutilizar arrays de una geometría anterior. Se agregó una captura común antes
+de `Unlock` para posición, normal, tangente, pesos, UV y color. La sombra
+`256x256` y el indicador de movimiento `1x1` vuelven a usar su geometría y sus
+coordenadas reales; desapareció el rombo negro sin ocultar contenido válido.
+La captura se activa únicamente cuando el selector de familia es `fixed`.
+Aplicarla globalmente a todas las familias incrementó el volumen de trabajo de
+la ruta de producción y terminó en una excepción de acceso bajo carga.
+
+Durante el aislamiento se probó omitir el pase plano `1x1`, pero se retiró: el
+usuario confirmó que la cuña verde estable es el indicador de movimiento
+correcto. La solución final conserva ese draw y corrige únicamente los datos
+obsoletos.
+
+Validación:
+
+- `.itconfig/validation-20260725-013313.json`: shade `256x256`, 103 segundos,
+  cierre limpio y confirmación manual en movimiento;
+- `.itconfig/validation-20260725-013804.json`: shade `1x1` renderizado, sin
+  omisión especial;
+- `.itconfig/validation-20260725-013937.json`: todas las transparencias fixed
+  combinadas, cierre limpio, cero eventos de aplicación, pantalla o
+  dispositivo;
+- `.itconfig/validation-20260725-014434.json`: ensayo descartado con captura de
+  subbuffers global; falló bajo carga con evento NVIDIA 153 y excepción
+  `0xc0000005` en `Engine.dll`;
+- `.itconfig/validation-20260725-014756.json`: regresión de producción con la
+  captura limitada a `fixed`, 70 segundos, resultado satisfactorio y cero
+  eventos de aplicación, pantalla o dispositivo;
+- `.itconfig/validation-20260725-015002.json`: regresión visual aislada de
+  `fixed`; el render permaneció correcto durante el juego y el usuario lo
+  confirmó, aunque el cierre automático del harness produjo una excepción de
+  acceso. Por este motivo no se usa como autorización de promoción;
+- `.itconfig/dx12-shadow-uv-capture-fix-motion-20260725.png`;
+- `.itconfig/dx12-flat-shade-real-uv-20260725.png`;
+- `.itconfig/dx12-fixed-transparent-final-20260725.png`;
+- confirmación visual del usuario: polvo, sombra e indicador de movimiento
+  correctos;
+- `Engine.dll` SHA-256
+  `5593D88C3B90432D5E578B14DA848212F958FCE01E12D60D8734EF9AEEBED243`.
+
+Las capas transparentes fixed permanecen detrás de la compuerta de laboratorio
+hasta completar una regresión en más mapas. El siguiente paso es promover sus
+variantes ya verificadas de forma selectiva y continuar con los estados fixed
+que aún caen en fallback.

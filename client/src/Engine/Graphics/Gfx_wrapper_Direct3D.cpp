@@ -1580,6 +1580,70 @@ extern void UnlockWeightArray_D3D(void);
 extern void UnlockColorArray_D3D(void);
 extern void UnlockTexCoordArray_D3D(void);
 
+static void CaptureDynamicSubBufferForDirectX12(
+	const INDEX iType,
+	const void* pData,
+	const INDEX ctVertices)
+{
+	if (pData==NULL || ctVertices<=0)
+		return;
+	switch (iType) {
+	case GFX_VBA_POS:
+		GetDirectX12Backend().SetLegacy3DVertexArray(
+			(const FLOAT*)pData,
+			(UINT)ctVertices);
+		break;
+	case GFX_VBA_NOR:
+		GetDirectX12Backend().SetLegacy3DNormalArray(
+			(const FLOAT*)pData,
+			(UINT)ctVertices);
+		break;
+	case GFX_VBA_TAN:
+		GetDirectX12Backend().SetLegacy3DTangentArray(
+			(const FLOAT*)pData,
+			(UINT)ctVertices);
+		break;
+	case GFX_VBA_WGH:
+		GetDirectX12Backend().SetLegacy3DWeightArray(
+			(const BYTE*)pData,
+			(UINT)ctVertices);
+		break;
+	case GFX_VBA_TEX:
+		if (GFX_iActiveTexUnit>=0 && GFX_iActiveTexUnit<4) {
+			GetDirectX12Backend().SetLegacy3DTexCoordArray(
+				(UINT)GFX_iActiveTexUnit,
+				(const FLOAT*)pData,
+				(UINT)ctVertices);
+		}
+		break;
+	case GFX_VBA_COL:
+		// Los subbuffers dinámicos reciben colores ya convertidos a ARGB
+		// para D3D9; se normalizan al mismo formato interno que los estáticos.
+		GetDirectX12Backend().SetLegacy3DStaticD3DColorArray(
+			(const ULONG*)pData,
+			(UINT)ctVertices);
+		break;
+	}
+}
+
+static BOOL IsDirectX12FixedFunctionReplacementSelected(void)
+{
+	static BOOL bInitialized = FALSE;
+	static BOOL bSelected = FALSE;
+	if (bInitialized)
+		return bSelected;
+	char value[32] = "";
+	const DWORD length = GetEnvironmentVariableA(
+		"LASTCHAOS_DX12_3D_REPLACE_VERTEX_FAMILY",
+		value,
+		sizeof(value));
+	bSelected = length>0
+		&& length<sizeof(value)
+		&& _stricmp(value, "fixed")==0;
+	bInitialized = TRUE;
+	return bSelected;
+}
+
 
 
 // lock one vertex buffer for reading or writing (if iID<16, lock dynamic vertex buffer)
@@ -1650,7 +1714,7 @@ static void *d3d_LockSubBuffer( const INDEX iID, const INDEX i1stVertex, const I
 		}
 	}
 
-	if( iBind>0 && eLockType!=GFX_READ) {
+	if( eLockType!=GFX_READ) {
 		vb.vb_paDx12LockedArray[iType] = pRet;
 		vb.vb_iDx12FirstLockedVertex[iType] = i1stVertex;
 		vb.vb_ctDx12LockedVertices[iType] = ctVertices;
@@ -1683,6 +1747,18 @@ static void d3d_UnlockSubBuffer( const INDEX iID, const INDEX ctVertices/*=0*/)
 	// dynamic buffer?
 	if( iBind==0) {
 		if( ctVertices>0) GFX_ctVertices = ctVertices;  // eventually adjust number of locked vertices
+		const INDEX ctCapturedVertices = ctVertices>0
+			? ctVertices
+			: vb.vb_ctDx12LockedVertices[iType];
+		// El renderer de mundo escribe posiciones, UV y colores directamente
+		// en los subbuffers. Capturarlos antes de Unlock evita reutilizar los
+		// arrays de otra geometría al traducir el draw a DirectX 12.
+		if (IsDirectX12FixedFunctionReplacementSelected()) {
+			CaptureDynamicSubBufferForDirectX12(
+				iType,
+				vb.vb_paDx12LockedArray[iType],
+				ctCapturedVertices);
+		}
 		switch( iType) {
 		case GFX_VBA_POS:  UnlockVertexArray_D3D();   break;
 		case GFX_VBA_NOR:  UnlockNormalArray_D3D();   break;
@@ -1712,9 +1788,6 @@ static void d3d_UnlockSubBuffer( const INDEX iID, const INDEX ctVertices/*=0*/)
 				(ULONG*)((UBYTE*)vb.vb_paDx12Mirror[iType] + slOffset),
 				slSize/sizeof(ULONG));
 		}
-		vb.vb_paDx12LockedArray[iType] = NULL;
-		vb.vb_iDx12FirstLockedVertex[iType] = 0;
-		vb.vb_ctDx12LockedVertices[iType] = 0;
 		// if read/write array was locked for writing, we must copy read to write buffer (i.e. synchronize)
 		LPDIRECT3DVERTEXBUFFER9 pd3dVB = vb.vb_pavbWrite[iType];
 		if( vb.vb_ctLockedVertices[iType]>0) {
@@ -1735,6 +1808,9 @@ static void d3d_UnlockSubBuffer( const INDEX iID, const INDEX ctVertices/*=0*/)
 			D3D_CHECKERROR(hr);
 		}
 	}
+	vb.vb_paDx12LockedArray[iType] = NULL;
+	vb.vb_iDx12FirstLockedVertex[iType] = 0;
+	vb.vb_ctDx12LockedVertices[iType] = 0;
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 
