@@ -1088,3 +1088,56 @@ antes de promover sus dos pixel shaders.
 
 El siguiente frente es validar las diez parejas programables restantes y,
 finalmente, separar por estado los draws de función fija `VS=0/PS=0`.
+
+### Etapa 6p: veinte parejas programables estables
+
+La ampliación directa de 15 a 23 parejas produjo un error de dispositivo y,
+después del fallo de reproducción, un acceso nulo secundario desde
+`RSSetHazeCoordinates`. Se revirtió la promoción masiva y se probó cada pareja
+por separado con selector VS/PS exacto.
+
+Cinco parejas adicionales quedaron autorizadas:
+
+- `4B5B9BE51A8EFA7E / B5BD45A8BA08F65B`;
+- `3C15F8B8DEBF2EC8 / B019C7A089216D68`;
+- `F6F2AA8EA79D28BC / 000D90AFD69D7DA9`;
+- `77EC9C4A77F77E37 / 4BDD3F424E9CB4D1`;
+- `77EC9C4A77F77E37 / D9A8DB50746FD55D`.
+
+La familia `77EC9C4A77F77E37` se volvió a evaluar después de estabilizar el orden
+de composición. El defecto anterior de las sillas no se reprodujo y el
+usuario confirmó que ese mobiliario ya se visualiza correctamente.
+
+La regresión conjunta de las 20 parejas terminó aprobada, con cierre limpio,
+27 muestras responsivas de 34, cero rechazos y cero eventos de aplicación,
+pantalla o dispositivo. Procesó hasta 144 000 triángulos DX12 por cuadro y
+redujo el fallback observado al final del recorrido a 11 draws. Una segunda
+ejecución de 90 segundos volvió a aprobar 43 muestras; además, el usuario
+recorrió todos los ángulos de cámara relevantes y confirmó que el suelo ya no
+desaparece ni se vuelve negro.
+
+Evidencia:
+
+- `.itconfig/validation-20260725-002053.json`: 18 parejas;
+- `.itconfig/validation-20260725-002218.json`: familia `77EC` aislada;
+- `.itconfig/validation-20260725-002451.json`: 20 parejas combinadas;
+- `.itconfig/validation-20260725-002936.json`: regresión adicional del terreno;
+- `.itconfig/dx12-eighteen-pairs-20260725.jpg`;
+- `.itconfig/dx12-77ec-retest-20260725.jpg`;
+- `.itconfig/dx12-twenty-pairs-20260725.jpg`;
+- `.itconfig/dx12-terrain-low-angle-20260725.jpg`;
+- `Engine.dll` SHA-256
+  `80CBBC6F3CCD4C53B061F425A0B202990A0D5ED1A5E49AD64CAA6EA31A70DAFE`.
+
+Quedan cinco parejas programables implementadas pero no observadas en la
+escena actual y, por lo tanto, todavía no autorizadas:
+
+- `81B4D7CBDC31B625 / 93145689E4FC29A7`;
+- `E1AA07F9418DE37E / 3CA2992E872AB363`;
+- `3217ECE2D2C1D96A / F91A55624E94D8A1`;
+- `3217ECE2D2C1D96A / 5B3BD26F0B904B3D`;
+- `7873727C8ED9D187 / 77162620F6305229`.
+
+El siguiente frente de implementación es `VS=0/PS=0`. En la plaza actual sus
+draws se rechazan principalmente por transparencia fixed-function, índices y
+arrays no capturados, además de un caso que cruza el plano `W=0`.
