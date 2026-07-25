@@ -141,6 +141,24 @@ namespace
 		{ 0x7873727C8ED9D187ULL, 0x77162620F6305229ULL }
 	};
 
+	const ReplacementPairEntry VALIDATED_REPLACEMENT_PAIRS[] = {
+		{ 0x88CDE6E1231B48B2ULL, 0x4E91DDD261F074A2ULL },
+		{ 0xF1D814903AF5DCC7ULL, 0xC266DC4B1D39418FULL },
+		{ 0x6518E1E655486C62ULL, 0xF769B9454292AD44ULL },
+		{ 0x6518E1E655486C62ULL, 0xE76E3479530FF2CBULL },
+		{ 0xBFDAAD52F7C28AAFULL, 0x000D90AFD69D7DA9ULL },
+		{ 0xBFDAAD52F7C28AAFULL, 0x8BF0F79F73B2CD3CULL },
+		{ 0x03F0F9B6ED714154ULL, 0xC266DC4B1D39418FULL },
+		{ 0xCB70C2B162AECF3FULL, 0x10848222350BDA01ULL },
+		{ 0x20771BEF807EB60EULL, 0xB3762CA90A8E2CCEULL },
+		{ 0xCF210A6C5DC33E8CULL, 0x391B8FA0541C9735ULL },
+		{ 0xCF210A6C5DC33E8CULL, 0x7BD479383778B972ULL },
+		{ 0x0BDAEBAB2645C412ULL, 0xB5BD45A8BA08F65BULL },
+		{ 0x56FBA5FFC803EDB0ULL, 0x4BDD3F424E9CB4D1ULL },
+		{ 0x56FBA5FFC803EDB0ULL, 0xD9A8DB50746FD55DULL },
+		{ 0x58BF46CA623CB0F3ULL, 0x92778B02E5A59285ULL }
+	};
+
 	bool IsReplacementPairImplemented(
 		UINT64 vertexFingerprint,
 		UINT64 pixelFingerprint)
@@ -167,10 +185,18 @@ namespace
 		// superar la prueba visual combinada. Autorizar todas las familias
 		// inventariadas a la vez ocultaba terreno multipass y producía parches
 		// negros por diferencias de orden entre ambos command streams.
-		return (vertexFingerprint == 0x88CDE6E1231B48B2ULL
-				&& pixelFingerprint == 0x4E91DDD261F074A2ULL)
-			|| (vertexFingerprint == 0xF1D814903AF5DCC7ULL
-				&& pixelFingerprint == 0xC266DC4B1D39418FULL);
+		for (UINT iEntry = 0;
+			iEntry < sizeof(VALIDATED_REPLACEMENT_PAIRS)
+				/ sizeof(VALIDATED_REPLACEMENT_PAIRS[0]);
+			++iEntry)
+		{
+			if (VALIDATED_REPLACEMENT_PAIRS[iEntry].vertexFingerprint
+					== vertexFingerprint
+				&& VALIDATED_REPLACEMENT_PAIRS[iEntry].pixelFingerprint
+					== pixelFingerprint)
+				return true;
+		}
+		return false;
 	}
 }
 

@@ -127,6 +127,45 @@ namespace
 				>= minimumWorldTriangles;
 	}
 
+	bool HasSelectiveLegacy3DBatch(
+		const CDirectX12NativeRenderer* pRenderer)
+	{
+		const char* selectors[] = {
+			"LASTCHAOS_DX12_3D_REPLACE_VERTEX_FAMILY",
+			"LASTCHAOS_DX12_3D_REPLACE_PIXEL_FAMILY"
+		};
+		bool familySelected = false;
+		for (UINT iSelector = 0;
+			iSelector < sizeof(selectors) / sizeof(selectors[0]);
+			++iSelector)
+		{
+			char selectedFamily[32] = "";
+			const DWORD familyLength = GetEnvironmentVariableA(
+				selectors[iSelector],
+				selectedFamily,
+				sizeof(selectedFamily));
+			if (familyLength > 0
+				&& familyLength < sizeof(selectedFamily))
+			{
+				familySelected = true;
+				break;
+			}
+		}
+		// El selector se usa para validar una familia aislada. En ese modo no
+		// corresponde exigir el volumen completo del mundo: el filtro ya evita
+		// que otro shader o las pantallas previas asuman autoridad.
+		return familySelected
+			&& pRenderer != NULL
+			&& pRenderer->GetLegacy3DCapturedDrawCount() > 0;
+	}
+
+	bool HasAuthoritativeLegacy3DBatch(
+		const CDirectX12NativeRenderer* pRenderer)
+	{
+		return HasSelectiveLegacy3DBatch(pRenderer)
+			|| HasWorldSizedLegacy3DBatch(pRenderer);
+	}
+
 	void AppendLegacy3DValidationLog(
 		UINT capturedDrawCount,
 		UINT rejectedDrawCount,
@@ -673,7 +712,7 @@ bool CDirectX12Backend::EndFrame()
 	const bool keepLegacyUi = ReadKeepLegacyUiMode();
 	const bool submitLegacy3D =
 		!ReadFull3DReplacementMode()
-		|| HasWorldSizedLegacy3DBatch(m_pNativeRenderer);
+		|| HasAuthoritativeLegacy3DBatch(m_pNativeRenderer);
 	bool nativeDrawSucceeded = true;
 	if (hasRenderTarget && !keepLegacyUi)
 	{
@@ -1226,7 +1265,7 @@ bool CDirectX12Backend::BeginDrawPortScope(
 	if (scope == DX12_DRAWPORT_SCOPE_UI
 		&& m_uiScopeDepth == 0
 		&& ReadFull3DReplacementMode()
-		&& HasWorldSizedLegacy3DBatch(m_pNativeRenderer)
+		&& HasAuthoritativeLegacy3DBatch(m_pNativeRenderer)
 		&& m_legacy3DDepthReady)
 	{
 		const UINT currentSegment =
@@ -1296,7 +1335,7 @@ bool CDirectX12Backend::ShouldSubmitLegacy3DDraw(
 		return true;
 	const bool fullWorldReplacement =
 		ReadFull3DReplacementMode()
-		&& HasWorldSizedLegacy3DBatch(m_pNativeRenderer);
+		&& HasAuthoritativeLegacy3DBatch(m_pNativeRenderer);
 	if (!ReadRigidLitReplacementMode() && !fullWorldReplacement)
 		return true;
 	if (!nativeCaptured && fullWorldReplacement

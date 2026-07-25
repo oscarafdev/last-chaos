@@ -698,6 +698,11 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		blend.SrcBlend = D3D12_BLEND_ZERO;
 		blend.DestBlend = D3D12_BLEND_INV_SRC_COLOR;
 	}
+	else if (blendMode == DX12_BLEND_TERRAIN_LAYER)
+	{
+		blend.SrcBlend = D3D12_BLEND_ONE;
+		blend.DestBlend = D3D12_BLEND_SRC_ALPHA;
+	}
 	blend.BlendOp = D3D12_BLEND_OP_ADD;
 	blend.SrcBlendAlpha = D3D12_BLEND_ZERO;
 	blend.DestBlendAlpha = D3D12_BLEND_ONE;

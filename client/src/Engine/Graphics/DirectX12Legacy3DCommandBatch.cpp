@@ -259,6 +259,12 @@ namespace
 		if (sourceBlend == D3DBLEND_DESTCOLOR
 			&& destinationBlend == D3DBLEND_ZERO)
 			return DX12_BLEND_MULTIPLY;
+		if (sourceBlend == D3DBLEND_DESTCOLOR
+			&& destinationBlend == D3DBLEND_SRCCOLOR)
+			return DX12_BLEND_SHADE;
+		if (sourceBlend == D3DBLEND_ONE
+			&& destinationBlend == D3DBLEND_SRCALPHA)
+			return DX12_BLEND_TERRAIN_LAYER;
 		return DX12_BLEND_ALPHA;
 	}
 
@@ -325,14 +331,16 @@ namespace
 					!= INVALID_FILE_ATTRIBUTES);
 	}
 
-	bool ReadReplacementVertexFamily(UINT64* pFingerprint)
+	bool ReadReplacementShaderFamily(
+		const char* pEnvironmentVariable,
+		UINT64* pFingerprint)
 	{
-		if (pFingerprint == NULL)
+		if (pEnvironmentVariable == NULL || pFingerprint == NULL)
 			return false;
 		*pFingerprint = 0;
 		char value[32] = "";
 		const DWORD length = GetEnvironmentVariableA(
-			"LASTCHAOS_DX12_3D_REPLACE_VERTEX_FAMILY",
+			pEnvironmentVariable,
 			value,
 			sizeof(value));
 		if (length == 0 || length >= sizeof(value))
@@ -345,6 +353,32 @@ namespace
 			return false;
 		*pFingerprint = fingerprint;
 		return true;
+	}
+
+	bool ReadReplacementVertexFamily(UINT64* pFingerprint)
+	{
+		return ReadReplacementShaderFamily(
+			"LASTCHAOS_DX12_3D_REPLACE_VERTEX_FAMILY",
+			pFingerprint);
+	}
+
+	bool ReadReplacementPixelFamily(UINT64* pFingerprint)
+	{
+		return ReadReplacementShaderFamily(
+			"LASTCHAOS_DX12_3D_REPLACE_PIXEL_FAMILY",
+			pFingerprint);
+	}
+
+	int ReadTerrainDebugTexture()
+	{
+		char value[8] = "";
+		const DWORD length = GetEnvironmentVariableA(
+			"LASTCHAOS_DX12_3D_TERRAIN_DEBUG_TEXTURE",
+			value,
+			sizeof(value));
+		if (length != 1 || value[0] < '0' || value[0] > '5')
+			return -1;
+		return value[0] - '0';
 	}
 
 	bool ReadOverlayComparisonMode()
@@ -1349,17 +1383,26 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	UINT64 replacementVertexFamily = 0;
 	const bool replacementVertexFamilySelected =
 		ReadReplacementVertexFamily(&replacementVertexFamily);
+	UINT64 replacementPixelFamily = 0;
+	const bool replacementPixelFamilySelected =
+		ReadReplacementPixelFamily(&replacementPixelFamily);
+	const bool replacementFamilySelected =
+		replacementVertexFamilySelected || replacementPixelFamilySelected;
 	// El reemplazo total solo puede quitar el draw heredado cuando la pareja
 	// de shaders ya fue validada visualmente. Las familias genéricas continúan
 	// disponibles para inventario y comparación, pero no deben tapar el mundo
 	// con una traducción incompleta de sus constantes.
 	if (ReadFullReplacementMode()
-		&& !replacementVertexFamilySelected
+		&& !replacementFamilySelected
 		&& !shaderFamily.replacementValidated)
 		return false;
 	if (ReadFullReplacementMode()
 		&& replacementVertexFamilySelected
 		&& vertexShaderFingerprint != replacementVertexFamily)
+		return false;
+	if (ReadFullReplacementMode()
+		&& replacementPixelFamilySelected
+		&& pixelShaderFingerprint != replacementPixelFamily)
 		return false;
 	const bool rigidLitProbe = ReadRigidLitProbeMode();
 	if (captureProfile == NATIVE_3D_CAPTURE_PROBE
@@ -1674,8 +1717,13 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			shaderConstants,
 			legacyPixelConstants,
 			sizeof(shaderConstants));
-		pixelShaderConstants[0] =
-			static_cast<FLOAT>(shaderFamily.pixel);
+		const int terrainDebugTexture =
+			shaderFamily.pixel == DX12_LEGACY_PS_TERRAIN_FOUR_LAYER
+				? ReadTerrainDebugTexture()
+				: -1;
+		pixelShaderConstants[0] = terrainDebugTexture >= 0
+			? static_cast<FLOAT>(20 + terrainDebugTexture)
+			: static_cast<FLOAT>(shaderFamily.pixel);
 		pixelShaderConstants[1] =
 			static_cast<FLOAT>(shaderFamily.textureCount);
 		pixelShaderConstants[2] = alphaTest != FALSE ? 1.0f : 0.0f;

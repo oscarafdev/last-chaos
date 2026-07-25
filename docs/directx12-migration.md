@@ -1026,3 +1026,65 @@ Validación:
   `.itconfig/dx12-water-depth-fixed-walk-20260724.jpg`;
 - `Engine.dll` SHA-256
   `E782D845B6D2B7440D626265856DEA335319FFC70CF260CCD986F29BC0304352`.
+
+### Etapa 6o: promoción selectiva y terreno multipass estable
+
+La compuerta de laboratorio por huella de vertex shader ahora adquiere
+autoridad desde el primer draw capturado. El umbral de volumen de mundo se
+mantiene para el reemplazo normal sin selector, pero ya no deja una familia
+selectiva parcialmente duplicada entre D3D9On12 y DX12.
+
+El terreno de cuatro capas reveló una diferencia de estado, no de geometría:
+el renderer heredado usa `ONE / SRC_ALPHA`, mientras el traductor lo
+convertía al blend alfa convencional. Se agregó el modo
+`DX12_BLEND_TERRAIN_LAYER`, cuya PSO usa exactamente
+`D3D12_BLEND_ONE / D3D12_BLEND_SRC_ALPHA`. Con esto el suelo conserva todas
+sus capas al cambiar el ángulo de cámara.
+
+También se tradujo `DEST_COLOR / SRC_COLOR` al modo multiplicativo usado por
+las sombras proyectadas. Las siguientes parejas superaron pruebas selectivas
+y fueron incorporadas al conjunto autoritativo:
+
+- `6518E1E655486C62 / F769B9454292AD44`;
+- `6518E1E655486C62 / E76E3479530FF2CB`;
+- `BFDAAD52F7C28AAF / 000D90AFD69D7DA9`;
+- `BFDAAD52F7C28AAF / 8BF0F79F73B2CD3C`;
+- `03F0F9B6ED714154 / C266DC4B1D39418F`;
+- `CB70C2B162AECF3F / 10848222350BDA01`;
+- `20771BEF807EB60E / B3762CA90A8E2CCE`;
+- `CF210A6C5DC33E8C / 391B8FA0541C9735`;
+- `CF210A6C5DC33E8C / 7BD479383778B972`;
+- `0BDAEBAB2645C412 / B5BD45A8BA08F65B`;
+- `56FBA5FFC803EDB0 / 4BDD3F424E9CB4D1`;
+- `56FBA5FFC803EDB0 / D9A8DB50746FD55D`;
+- `58BF46CA623CB0F3 / 92778B02E5A59285`.
+
+Sumadas a las dos parejas iniciales, hay 15 parejas programables autorizadas.
+La regresión combinada procesó entre 223 y 285 draws DX12 por frame y llegó a
+162 269 triángulos durante el recorrido. No hubo rechazos, errores de
+dispositivo ni defectos de suelo, edificios, personaje o UI. El informe
+automatizado conserva `Passed=false` únicamente porque el recorrido manual
+continuó con el cliente abierto después de vencer su ventana de 100 segundos.
+
+El selector de laboratorio también acepta
+`LASTCHAOS_DX12_3D_REPLACE_PIXEL_FAMILY`. Puede combinarse con el selector VS
+para ejercer una pareja exacta y evitar que dos pixel shaders que comparten
+vertex shader se validen accidentalmente como un solo caso.
+
+Evidencia principal:
+
+- `.itconfig/validation-20260724-233314.json`: terreno multipass selectivo;
+- `.itconfig/validation-20260724-234254.json`: once parejas combinadas;
+- `.itconfig/validation-20260724-235249.json`: 15 parejas combinadas;
+- `.itconfig/validation-20260724-235600.json`: pareja VS/PS exacta;
+- `.itconfig/dx12-terrain-multipass-fixed-20260724.jpg`;
+- `.itconfig/dx12-eleven-pairs-combined-20260724.jpg`;
+- `.itconfig/dx12-fifteen-pairs-camera-angle-20260724.jpg`.
+
+La familia reflejada `77EC9C4A77F77E37` continúa implementada pero fuera del
+conjunto autoritativo. Una prueba amplia mostró siluetas negras en mobiliario
+y posibles huecos arquitectónicos; debe repetir una comparación dedicada
+antes de promover sus dos pixel shaders.
+
+El siguiente frente es validar las diez parejas programables restantes y,
+finalmente, separar por estado los draws de función fija `VS=0/PS=0`.
