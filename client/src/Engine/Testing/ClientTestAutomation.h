@@ -38,6 +38,7 @@ public:
 	void ConfigureWorldModelRendering(
 		INDEX alpha,
 		BOOL enableNormalMapSpecular);
+	void ConfigureBloomTest(BOOL forceEnabled);
 	void Tick();
 
 	BOOL IsEnabled() const;
@@ -89,6 +90,8 @@ private:
 	BOOL m_worldAnchorApplied;
 	BOOL m_worldModelSpawned;
 	BOOL m_worldModelNormalMapSpecular;
+	BOOL m_forceBloom;
+	BOOL m_bloomConfigured;
 	INDEX m_lastReportedStage;
 };
 

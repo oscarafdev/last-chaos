@@ -122,6 +122,8 @@ void CDirectX12NativeRenderer::ForgetTexture(IDirect3DTexture9* pTexture)
 {
 	if (m_pDrawPortCommands != NULL)
 		m_pDrawPortCommands->ForgetTexture(pTexture);
+	if (m_pLegacy3DCommands != NULL)
+		m_pLegacy3DCommands->ForgetTexture(pTexture);
 }
 
 void CDirectX12NativeRenderer::BeginFrame(UINT frameIndex)

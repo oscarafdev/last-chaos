@@ -3,6 +3,7 @@
 #include <Engine/Rendering/Render_internal.h>
 
 #include <Engine/Graphics/DrawPort.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/GlobalDefinition.h>
 #include <Engine/Graphics/Gfx_Direct3D_Functions.h>
@@ -13,33 +14,49 @@
 #define FILTER_BLOOM_TEX			D3DTEXF_POINT
 #define FILTER_BLOOM_TEX_TO_SCREEN	D3DTEXF_LINEAR
 
-// FIXME : NULL로 초기화하지 않고 사용하고 있음.
+// Los globales sin inicializador se inicializan a cero antes de usarse.
 CRenderTexture				*_prtFilterTarget[2];
+CRenderTexture				*_prtBloomSource = NULL;
 LPDIRECT3DVERTEXBUFFER9		_pFilterVertexBuffer = NULL;
-LPDIRECT3DVERTEXBUFFER9		_pBackVertexBuffer[MAX_BACKVERTEX_WIDTH][MAX_BACKVERTEX_HEIGHT]; // 1280 X 1024 까지만 지원되는걸로 가정한다.
+LPDIRECT3DVERTEXBUFFER9		_pBackVertexBuffer[MAX_BACKVERTEX_WIDTH][MAX_BACKVERTEX_HEIGHT]; // Se presupone soporte hasta 1280 x 1024.
+
+static void ReleaseBloomRenderTargets()
+{
+	for (int i = 0; i < 2; ++i)
+	{
+		delete _prtFilterTarget[i];
+		_prtFilterTarget[i] = NULL;
+	}
+	delete _prtBloomSource;
+	_prtBloomSource = NULL;
+}
+
+static HRESULT ReportBloomInitializationFailure(
+	const char* stage,
+	HRESULT error)
+{
+	CPrintF(
+		"Bloom: etapa '%s' fallo (HRESULT=0x%08X).\n",
+		stage,
+		static_cast<ULONG>(error));
+	return error;
+}
 
 extern INDEX d3d_bDeviceChanged	= TRUE;
 extern BOOL _bFirst				= TRUE;
 
 extern INDEX	g_iUseBloom;
-//강동민 수정 시작 버그 사냥 작업	09.09
+// Inicio de la correccion de errores de Kang Dong-min, 09.09.
 static LPDIRECT3DPIXELSHADER9	_dwAddFourPixelShader = NULL;
 
 extern IDirect3DVertexDeclaration9 *_dwTexCoord4OffsetVS_Declaration;
 extern IDirect3DVertexShader9 *_dwTexCoord4OffsetVS_Shader;
 
-//강동민 수정 끝 버그 사냥 작업		09.09
+// Fin de la correccion de errores de Kang Dong-min, 09.09.
 
 extern void ReleaseBloomTexture()
 {
-	for( int i = 0; i < 2; i++ )
-    {
-		if (_prtFilterTarget[i]) 
-		{
-			delete _prtFilterTarget[i];
-			_prtFilterTarget[i] = NULL;
-		}
-	}
+	ReleaseBloomRenderTargets();
 	SAFE_RELEASE( _pFilterVertexBuffer );			// sets pointers to null after delete
 	for (int height = 0; height < MAX_BACKVERTEX_HEIGHT; height++) 
 	{
@@ -52,9 +69,8 @@ extern void ReleaseBloomTexture()
 	HRESULT hr;	
 	if(_dwTexCoord4OffsetVS_Shader)
 	{
-		_dwTexCoord4OffsetVS_Shader->Release();
-		_dwTexCoord4OffsetVS_Shader = NULL;
-		_dwTexCoord4OffsetVS_Declaration = NULL;
+		SAFE_RELEASE(_dwTexCoord4OffsetVS_Shader);
+		SAFE_RELEASE(_dwTexCoord4OffsetVS_Declaration);
 	}
 	if(_dwAddFourPixelShader)
 	{
@@ -71,13 +87,15 @@ HRESULT CRenderer::InitBloom()
 	if (_bFirst) 
 	{
 		// Init Device
-		// 뷰, 투영등의 행렬값 계산하는 부분
-		CalcFullCoverageMatrix(); // Vertex Shader에 넘겨줄 인수를 만든다. 한번만 해주면 된다.
+		// Calcula las matrices de vista y proyeccion.
+		CalcFullCoverageMatrix(); // Prepara una sola vez los argumentos del vertex shader.
 
 		HRESULT hr = SetFlareLook();
-		if (FAILED(hr)) 
+		if (FAILED(hr))
 		{
-			return hr;
+			return ReportBloomInitializationFailure(
+				"configurar filtros",
+				hr);
 		}
 
 		SAFE_RELEASE( _pFilterVertexBuffer );			// sets pointers to null after delete
@@ -87,9 +105,11 @@ HRESULT CRenderer::InitBloom()
 		hr = _pGfx->gl_pd3d9Device->CreateVertexBuffer(4 * sizeof(QuadVertex), D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC,
 			0, D3DPOOL_DEFAULT, &_pFilterVertexBuffer, NULL);
 		//ASSERT_IF_FAILED(hr);
-		if (FAILED(hr)) 
+		if (FAILED(hr))
 		{
-			return hr;
+			return ReportBloomInitializationFailure(
+				"crear vertex buffer",
+				hr);
 		}
 
 		if (_pFilterVertexBuffer)
@@ -98,8 +118,9 @@ HRESULT CRenderer::InitBloom()
 			//ASSERT_IF_FAILED(hr);
 			if (FAILED(hr))
 			{
-				//FDebug("Couldn't lock buffer!");
-				return(hr);
+				return ReportBloomInitializationFailure(
+					"bloquear vertex buffer",
+					hr);
 			}
 
 			float uv_base;
@@ -128,16 +149,19 @@ HRESULT CRenderer::InitBloom()
 		Declaration.push_back(D3DVSD_REG( D3DVSDE_TEXCOORD0, D3DVSDT_FLOAT2));
 		Declaration.push_back(D3DVSD_END());
 
+		CPrintF("Bloom: preparando vertex shader legado.\n");
 		if( FAILED( hr = CreateVShTexCoord4Offset( _pGfx->gl_pd3d9Device,
 													 &Declaration[0] ) ) )
 		{
 			return hr;
 		}
 
+		CPrintF("Bloom: vertex shader legado creado.\n");
 		if( FAILED( hr = CreatePShAddFour( )))
 		{
 			return hr;
 		}
+		CPrintF("Bloom: pixel shader legado creado.\n");
 		//bFirst = FALSE;
 		_bFirst = FALSE;
 	}
@@ -321,7 +345,7 @@ HRESULT CRenderer::DoCreateFlareTexture_Separable()
 
 	_pGfx->gl_pd3d9Device->SetPixelShader(0);
 
-	// 큰 텍스춰를 작은 텍스춰에 다시 쓴다.
+	// Reduce la textura grande sobre el destino de bloom.
 	if (TRUE) {
 		IDirect3DSurface9       *pBackbufferColor; 
 		_pGfx->gl_pd3d9Device->GetRenderTarget( 0, &pBackbufferColor );
@@ -369,41 +393,52 @@ HRESULT CRenderer::DoCreateFlareTexture_Separable()
 		_pGfx->gl_pd3d9Device->SetVertexShader(_dwTexCoord4OffsetVS_Shader);
 		_pGfx->gl_pd3d9Device->SetVertexDeclaration(_dwTexCoord4OffsetVS_Declaration);
 
-		// Draw the simple quad set above
-		int s_width		= re_pdpDrawPort->GetWidth();
-		int s_height	= re_pdpDrawPort->GetHeight();
-		int width_num	= (s_width-1) / m_nTexRes + 1;
-		int height_num	= (s_height-1) / m_nTexRes + 1;
-		RECT rect;
-		POINT p1;
-		p1.x = 0;
-		p1.y = 0;
-		for (int height = 0; height < height_num; height++) 
+		// Captura una sola vez el backbuffer completo. DX12 realiza la copia
+		// en modo reemplazo; el modo de compatibilidad conserva StretchRect.
+		D3DSURFACE_DESC backDesc;
+		pBackbufferColor->GetDesc(&backDesc);
+		RECT sourceRect = {
+			0,
+			0,
+			static_cast<LONG>(backDesc.Width),
+			static_cast<LONG>(backDesc.Height)
+		};
+		CDirectX12Backend& dx12 = GetDirectX12Backend();
+		bool sourceReady = dx12.CopyLegacySurfaceRegion(
+			pBackbufferColor,
+			sourceRect,
+			_prtBloomSource->rt_pSurface,
+			0,
+			0);
+		if (!sourceReady && !dx12.IsFull3DReplacementEnabled())
 		{
-			for (int width = 0; width < width_num; width++) 
-			{
-				if (_pBackVertexBuffer[width][height]) 
-				{
-					_pGfx->gl_pd3d9Device->SetStreamSource(0, _pBackVertexBuffer[width][height], 0, sizeof(QuadVertex));
-					rect.top	= height * m_nTexRes;
-					rect.bottom	= (height * m_nTexRes) + m_nTexRes;
-					rect.left	= width * m_nTexRes;
-					rect.right	= (width * m_nTexRes) + m_nTexRes;
-					if (rect.bottom > s_height)
-						rect.bottom = s_height;
-					if (rect.right > s_width)
-						rect.right = s_width;
-					//_pGfx->gl_pd3dDevice->CopyRects(pBackbufferColor, &rect, 1, _prtFilterTarget[1]->rt_pSurface, &p1);
-					//_pGfx->gl_pd3dDevice->SetTexture( 0, (IDirect3DBaseTexture8 *) _prtFilterTarget[1]->rt_tdTexture.td_ulObject );
-					//hr = _pGfx->gl_pd3dDevice->DrawPrimitive(D3DPT_TRIANGLEFAN, 0, 2);
-					// Direct3D 9 version using StretchRect
-					RECT destRect = { p1.x, p1.y, p1.x + (rect.right - rect.left), p1.y + (rect.bottom - rect.top) };
-					_pGfx->gl_pd3d9Device->StretchRect(pBackbufferColor, &rect, _prtFilterTarget[1]->rt_pSurface, &destRect, D3DTEXF_NONE);
-
-					_pGfx->gl_pd3d9Device->SetTexture(0, (IDirect3DBaseTexture9*)_prtFilterTarget[1]->rt_tdTexture.td_ulObject);
-					HRESULT hr = _pGfx->gl_pd3d9Device->DrawPrimitive(D3DPT_TRIANGLEFAN, 0, 2);
-				}
-			}
+			sourceReady = SUCCEEDED(
+				_pGfx->gl_pd3d9Device->StretchRect(
+					pBackbufferColor,
+					&sourceRect,
+					_prtBloomSource->rt_pSurface,
+					&sourceRect,
+					D3DTEXF_NONE));
+		}
+		if (sourceReady)
+		{
+			_pGfx->gl_pd3d9Device->SetStreamSource(
+				0,
+				_pFilterVertexBuffer,
+				0,
+				sizeof(QuadVertex));
+			_pGfx->gl_pd3d9Device->SetTexture(
+				0,
+				reinterpret_cast<IDirect3DBaseTexture9*>(
+					_prtBloomSource->rt_tdTexture.td_ulObject));
+			hr = _pGfx->gl_pd3d9Device->DrawPrimitive(
+				D3DPT_TRIANGLEFAN,
+				0,
+				2);
+		}
+		else
+		{
+			hr = E_FAIL;
 		}
 
 		//_pGfx->gl_pd3dDevice->LightEnable(0, TRUE);
@@ -659,44 +694,62 @@ void CRenderer::Restore_SRS_Bloom()
 	_pGfx->gl_pd3d9Device->SetTextureStageState( 0, D3DTSS_ALPHAOP,		m_dwAlphaop );
 	_pGfx->gl_pd3d9Device->SetTextureStageState( 1, D3DTSS_COLOROP,		m_dwColorop1 );
 	
-//안태훈 수정 시작	//(Bug Fix)(0.1)
+// Inicio de la correccion de Ahn Tae-hoon. //(Bug Fix)(0.1)
 	d3dSetVertexShader(D3DFVF_CTVERTEX);
-//안태훈 수정 끝	//(Bug Fix)(0.1)
+// Fin de la correccion de Ahn Tae-hoon. //(Bug Fix)(0.1)
 }
 
 HRESULT CRenderer::CreateTextureRenderTargets( int width, int height )
 {
-	int i;
+	ReleaseBloomRenderTargets();
+	CreateUVOffsets(width, height);
 
-	for( i=0; i < 2; i++ )
+	IDirect3DSurface9* pBackbufferColor = NULL;
+	D3DSURFACE_DESC backDesc;
+	if (FAILED(_pGfx->gl_pd3d9Device->GetRenderTarget(
+			0,
+			&pBackbufferColor))
+		|| pBackbufferColor == NULL
+		|| FAILED(pBackbufferColor->GetDesc(&backDesc)))
 	{
-		if (_prtFilterTarget[i]) 
+		if (pBackbufferColor != NULL)
+			pBackbufferColor->Release();
+		return E_FAIL;
+	}
+	pBackbufferColor->Release();
+
+	// Los filtros comparten la misma configuracion de postproceso sin depth.
+	for (int i = 0; i < 2; ++i)
+	{
+		_prtFilterTarget[i] = new CRenderTexture();
+		if (_prtFilterTarget[i] == NULL
+			|| !_prtFilterTarget[i]->Init(
+				width,
+				height,
+				TEX_32BIT,
+				backDesc.Format,
+				RTP_POST_PROCESS))
 		{
-			delete _prtFilterTarget[i];
-			_prtFilterTarget[i] = NULL;
+			ReleaseBloomRenderTargets();
+			return E_FAIL;
 		}
 	}
 
-	CreateUVOffsets( width, height );
+	// La captura conserva el tamano del backbuffer y se reduce en un unico draw.
+	_prtBloomSource = new CRenderTexture();
+	if (_prtBloomSource == NULL
+		|| !_prtBloomSource->Init(
+			backDesc.Width,
+			backDesc.Height,
+			TEX_32BIT,
+			backDesc.Format,
+			RTP_POST_PROCESS))
+	{
+		ReleaseBloomRenderTargets();
+		return E_FAIL;
+	}
 
-    for( i = 0; i < 2; i++ )
-    {
-		IDirect3DSurface9       *pBackbufferColor;
-		D3DSURFACE_DESC backDesc;
-		_pGfx->gl_pd3d9Device->GetRenderTarget(0, &pBackbufferColor );
-		pBackbufferColor->GetDesc(&backDesc);
-
-		// 렌더 텍스쳐 생성 및 초기화
-		_prtFilterTarget[i] = new CRenderTexture();
-		if (!_prtFilterTarget[i] || !_prtFilterTarget[i]->Init(width, height, TEX_32BIT, backDesc.Format)) 
-		{ 
-			//D3DFMT_X8R8G8B8)) {
-            return E_FAIL;
-		}
-		pBackbufferColor->Release();
-    }
-
-    return S_OK;
+	return S_OK;
 }
 
 HRESULT	CRenderer::SetFlareLook()
@@ -721,17 +774,17 @@ HRESULT	CRenderer::SetFlareLook()
 	m_pGaussianProp[1].amp				= 0.11f;
 /*	
 	//m_nGaussianSize	 = 8;//44;		// size of the Gaussian blur diameter in texels
-	// Loop 2번 돈다.
+	// Ejecuta dos iteraciones.
 	//m_nGaussianSize[0]	 = 10;//44;		// size of the Gaussian blur diameter in texels
 	//m_fColorAtten[0]	= 0.46f;//0.20f;
-	// Loop 3번 돈다.
+	// Ejecuta tres iteraciones.
 	m_nGaussianSize[0]	= g_iUseBloom*2;//12;//44;		// size of the Gaussian blur diameter in texels
 	m_fColorAtten[0]	= 0.40f;//0.20f;
-	// Loop 4번 돈다.
+	// Ejecuta cuatro iteraciones.
 	m_nGaussianSize[1]	= 12;//15;//44;		// size of the Gaussian blur diameter in texels
 	m_fColorAtten[1]	= 0.35f;//0.20f;
 */
-	m_nGaussianSize[0]	= g_iUseBloom*2; // 옵션의 블럼 단계를 반영 // 신 주노맵의 Bloom 효과 단계 늘림
+	m_nGaussianSize[0]	= g_iUseBloom*2; // Refleja el nivel configurado y amplia el bloom del nuevo mapa Juno.
 	m_nGaussianSize[1]	= 12;
 
 	m_fColorAtten[0] = 0.40f;
@@ -966,67 +1019,67 @@ HRESULT CRenderer::CreatePShAddFour( )
                                               &_dwAddFourPixelShader );
 
 	pCode->Release();
-    return S_OK;
+    return hr;
 }
 
-HRESULT CRenderer::CreateVShTexCoord4Offset( LPDIRECT3DDEVICE9 pd3dDevice, 
-                                    DWORD* pdwVertexDecl)
+HRESULT CRenderer::CreateVShTexCoord4Offset(
+	LPDIRECT3DDEVICE9 pd3dDevice,
+	DWORD* pdwVertexDecl)
 {
-    LPD3DXBUFFER pCode;
-    //TCHAR        strPath[MAX_PATH];
-    HRESULT      hr;
+	(void)pdwVertexDecl;
+	LPD3DXBUFFER pCode = NULL;
+	const char* shaderCode =
+		"vs.2.0\n"
+		"dcl_position v0\n"
+		"dcl_texcoord v1\n"
+		"m4x4 oPos, v0, c0\n"
+		"add oT0, v1, c10\n"
+		"add oT1, v1, c11\n"
+		"add oT2, v1, c12\n"
+		"add oT3, v1, c13\n";
 
-	char *VshTexCoord4OffsetCode =
-		"vs.1.1\n"
-		"dp4 oPos.x , c0 , v0 \n"
-		"dp4 oPos.y , c1 , v0 \n"
-		"dp4 oPos.z , c2 , v0 \n"
-		"dp4 oPos.w , c3 , v0 \n"
-		"add oT0 , v7 , c10 \n"
-		"add oT1 , v7 , c11 \n"
-		"add oT2 , v7 , c12 \n"
-		"add oT3 , v7 , c13 ";
+	HRESULT hr = D3DXAssembleShader(
+		shaderCode,
+		strlen(shaderCode),
+		NULL,
+		NULL,
+		0,
+		&pCode,
+		NULL);
+	if (FAILED(hr))
+		return ReportBloomInitializationFailure(
+			"ensamblar vertex shader",
+			hr);
 
-    // Get the path to the vertex shader file
-    //DXUtil_FindMediaFile( strPath, strFilename );
-	//strcpy(strPath, "D:/project/New/Shaders/");
-	//strcat(strPath, strFilename);
-	//strcpy(strPath, strFilename);
-
-    // Assemble the vertex shader file
-    //if( FAILED( hr = D3DXAssembleShaderFromFile( strPath, 0, NULL, &pCode, NULL ) ) ) {
-
-	if (FAILED(hr = D3DXAssembleShader(VshTexCoord4OffsetCode, strlen(VshTexCoord4OffsetCode), nullptr, nullptr, D3DXSHADER_SKIPVALIDATION, &pCode, NULL))) // ###
-	{
-		if (hr == D3DERR_INVALIDCALL )
-		{
-			int aaa = 1;
-		} 
-		else if (hr == D3DXERR_INVALIDDATA ) 
-		{
-			int aaa = 2;
-		} 
-		else if (hr == E_OUTOFMEMORY ) 
-		{
-			int aaa = 3;
-		}
-        return hr;
-	}
-    
-	// Delete old pixel shader
-	if (_dwTexCoord4OffsetVS_Shader)
-	{
-		_dwTexCoord4OffsetVS_Shader->Release();
-		_dwTexCoord4OffsetVS_Shader = NULL;
-		_dwTexCoord4OffsetVS_Declaration = NULL;
-	}
-
-	// Create the vertex shader
-	hr = _pGfx->gl_pd3d9Device->CreateVertexShader((DWORD*)pCode->GetBufferPointer(),
+	SAFE_RELEASE(_dwTexCoord4OffsetVS_Shader);
+	SAFE_RELEASE(_dwTexCoord4OffsetVS_Declaration);
+	hr = pd3dDevice->CreateVertexShader(
+		reinterpret_cast<DWORD*>(pCode->GetBufferPointer()),
 		&_dwTexCoord4OffsetVS_Shader);
-	
 	pCode->Release();
-    return hr;
+	if (FAILED(hr))
+		return ReportBloomInitializationFailure(
+			"crear objeto vertex shader",
+			hr);
+
+	const D3DVERTEXELEMENT9 declaration[] = {
+		{ 0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT,
+			D3DDECLUSAGE_POSITION, 0 },
+		{ 0, 12, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+			D3DDECLUSAGE_TEXCOORD, 0 },
+		D3DDECL_END()
+	};
+	hr = pd3dDevice->CreateVertexDeclaration(
+		declaration,
+		&_dwTexCoord4OffsetVS_Declaration);
+	if (FAILED(hr))
+	{
+		SAFE_RELEASE(_dwTexCoord4OffsetVS_Shader);
+		return ReportBloomInitializationFailure(
+			"crear declaracion de vertices",
+			hr);
+	}
+	return S_OK;
 }
 
 // sehan end

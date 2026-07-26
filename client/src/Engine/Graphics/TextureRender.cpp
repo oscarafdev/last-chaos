@@ -125,6 +125,9 @@ BOOL CRenderTexture::Init(
 				}
 				return TRUE;
 			}
+			// El postproceso solo necesita color; no crea un depth auxiliar.
+			if (purpose == RTP_POST_PROCESS)
+				return TRUE;
 			// Los modos de comparación conservan el depth legado porque sus
 			// draws D3D9 siguen siendo visibles junto con la pasada DX12.
 		    hr = _pGfx->gl_pd3d9Device->CreateDepthStencilSurface(width, height, D3DFMT_D16, D3DMULTISAMPLE_NONE, 0, FALSE, &m_pDepthStencil, NULL);

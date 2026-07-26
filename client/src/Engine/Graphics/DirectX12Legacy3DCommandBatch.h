@@ -49,6 +49,7 @@ public:
 		CDirectX12PipelineCache* pPipelineCache);
 	void Shutdown();
 	void BeginFrame();
+	void ForgetTexture(IDirect3DTexture9* pTexture);
 
 	void SetVertexArray(const FLOAT* pPositions, UINT vertexCount);
 	void SetTexCoordArray(

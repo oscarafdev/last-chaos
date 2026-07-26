@@ -75,6 +75,12 @@ public:
 	bool BeginNativeOffscreenTexture(IDirect3DTexture9* pTexture9);
 	void ClearNativeOffscreenTexture(ULONG color);
 	void EndNativeOffscreenTexture();
+	bool CopyLegacySurfaceRegion(
+		IDirect3DSurface9* pSource9,
+		const RECT& sourceRect,
+		IDirect3DSurface9* pDestination9,
+		UINT destinationX,
+		UINT destinationY);
 	bool AcquireRenderTarget(
 		IDirect3DSurface9* pSurface9,
 		HWND hPresentationWindow = NULL);
@@ -178,6 +184,7 @@ public:
 	CDirectX12DescriptorHeap* GetSamplerDescriptorHeap() const;
 	bool IsFrameOpen() const;
 	bool ShouldBypassLegacyPresent() const;
+	bool IsFull3DReplacementEnabled() const;
 	bool RequiresLegacyOffscreenDepth() const;
 	UINT GetUiPrimitiveCount() const;
 	UINT GetUiSegmentCount() const;

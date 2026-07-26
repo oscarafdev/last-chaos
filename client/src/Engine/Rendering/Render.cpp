@@ -915,8 +915,16 @@ void CRenderer::DrawToScreen(void)
 		if (re_bRenderBloom && g_iUseBloom > 0) 
 		{
 			HRESULT hr = InitBloom();
-			if (FAILED(hr)) 
+			if (FAILED(hr))
 			{
+				static HRESULT lastBloomInitializationError = S_OK;
+				if (lastBloomInitializationError != hr)
+				{
+					CPrintF(
+						"Bloom: fallo de inicializacion (HRESULT=0x%08X).\n",
+						static_cast<ULONG>(hr));
+					lastBloomInitializationError = hr;
+				}
 				g_iUseBloom = 0;
 			}
 		}

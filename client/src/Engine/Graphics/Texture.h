@@ -204,7 +204,8 @@ enum ERenderTexturePurpose
 {
 	RTP_GENERIC,
 	RTP_SHADOW_MAP,
-	RTP_REFLECTION
+	RTP_REFLECTION,
+	RTP_POST_PROCESS
 };
 
 //(Add CRenderTexture class for Render to Texture)(0.1)

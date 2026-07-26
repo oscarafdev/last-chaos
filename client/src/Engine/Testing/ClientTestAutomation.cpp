@@ -107,6 +107,8 @@ CClientTestAutomation::CClientTestAutomation()
 	, m_worldAnchorApplied(FALSE)
 	, m_worldModelSpawned(FALSE)
 	, m_worldModelNormalMapSpecular(FALSE)
+	, m_forceBloom(FALSE)
+	, m_bloomConfigured(FALSE)
 	, m_lastReportedStage(-2)
 {
 }
@@ -194,10 +196,28 @@ void CClientTestAutomation::ConfigureWorldModelRendering(
 	m_worldModelNormalMapSpecular = enableNormalMapSpecular;
 }
 
+void CClientTestAutomation::ConfigureBloomTest(BOOL forceEnabled)
+{
+	m_forceBloom = forceEnabled;
+	m_bloomConfigured = FALSE;
+}
+
 void CClientTestAutomation::Tick()
 {
 	if (!m_enabled || STAGEMGR() == NULL)
 		return;
+
+	if (m_forceBloom)
+	{
+		extern INDEX g_iUseBloom;
+		if (g_iUseBloom <= 0)
+			g_iUseBloom = 1;
+		if (!m_bloomConfigured)
+		{
+			m_bloomConfigured = TRUE;
+			CPrintF("Prueba automatizada: bloom habilitado.\n");
+		}
+	}
 
 	const INDEX stage = STAGEMGR()->GetCurStage();
 	if (stage != m_lastReportedStage)

@@ -1290,6 +1290,32 @@ void CDirectX12Legacy3DCommandBatch::BeginFrame()
 	m_pState->staticNormalSelected = false;
 }
 
+void CDirectX12Legacy3DCommandBatch::ForgetTexture(
+	IDirect3DTexture9* pTexture)
+{
+	if (m_pState == NULL || pTexture == NULL)
+		return;
+
+	for (size_t iRange = 0;
+		iRange < m_pState->ranges.size();
+		++iRange)
+	{
+		IDirect3DTexture9** textures[] = {
+			&m_pState->ranges[iRange].pTexture,
+			&m_pState->ranges[iRange].pTexture1,
+			&m_pState->ranges[iRange].pTexture2,
+			&m_pState->ranges[iRange].pTexture3
+		};
+		for (UINT textureUnit = 0;
+			textureUnit < sizeof(textures) / sizeof(textures[0]);
+			++textureUnit)
+		{
+			if (*textures[textureUnit] == pTexture)
+				ReleaseTexture(*textures[textureUnit]);
+		}
+	}
+}
+
 void CDirectX12Legacy3DCommandBatch::SetVertexArray(
 	const FLOAT* pPositions,
 	UINT vertexCount)

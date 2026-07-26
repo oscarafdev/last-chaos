@@ -105,6 +105,7 @@ void ParseCommandLine(CTString strCmd)
   INDEX testWorldAnchorDelay = 5;
   INDEX testWorldModelAlpha = 255;
   BOOL testWorldModelNormalMapSpecular = FALSE;
+  BOOL testBloom = FALSE;
 
   FOREVER {
     CTString strWord = GetNextParam();
@@ -132,6 +133,7 @@ void ParseCommandLine(CTString strCmd)
         CClientTestAutomation::Instance().ConfigureWorldModelRendering(
           testWorldModelAlpha,
           testWorldModelNormalMapSpecular);
+        CClientTestAutomation::Instance().ConfigureBloomTest(testBloom);
         cmd_strOutput+="Test auto-login enabled.\n";
       }
       cmd_strOutput+="\n";
@@ -188,6 +190,8 @@ void ParseCommandLine(CTString strCmd)
       GetNextParam().ScanF("%d", &testWorldModelAlpha);
     } else if (strWord=="+testworldmodelnormalmapspecular") {
       testWorldModelNormalMapSpecular = TRUE;
+    } else if (strWord=="+testbloom") {
+      testBloom = TRUE;
     } else if (strWord=="+connect") {
       cmd_strServer = GetNextParam();
       const char *pcColon = strchr(cmd_strServer, ':');
