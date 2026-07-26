@@ -47,6 +47,7 @@ public:
 	bool IsAcquired() const;
 	bool HasAcquiredDepth() const;
 	bool IsNativeRenderTarget() const;
+	bool ShouldClearNativeDepth() const;
 	D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentView() const;
 	D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentDepthView() const;
 	ID3D12Resource* GetCurrentResource() const;
@@ -79,6 +80,7 @@ private:
 	bool m_isAcquired;
 	bool m_isDepthAcquired;
 	bool m_isNative;
+	bool m_clearNativeDepth;
 };
 
 #endif

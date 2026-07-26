@@ -594,7 +594,7 @@ bool CDirectX12NativeRenderer::RenderValidationPass(
 	if (submitLegacy3D)
 	{
 		legacy3DSucceeded = m_pLegacy3DCommands != NULL
-			&& m_pLegacy3DCommands->RenderShadowPass(
+			&& m_pLegacy3DCommands->RenderLegacy3DPass(
 			pCommandList,
 			pRenderTargets,
 			pUploadManager,

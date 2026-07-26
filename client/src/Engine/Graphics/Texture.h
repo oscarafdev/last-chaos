@@ -203,7 +203,8 @@ ENGINE_API extern void ProcessScript_t( const CTFileName &inFileName);
 enum ERenderTexturePurpose
 {
 	RTP_GENERIC,
-	RTP_SHADOW_MAP
+	RTP_SHADOW_MAP,
+	RTP_REFLECTION
 };
 
 //(Add CRenderTexture class for Render to Texture)(0.1)

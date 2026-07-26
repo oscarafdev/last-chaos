@@ -2310,7 +2310,12 @@ void CRenderer::Render(void)
 			re_prtReflection = new CRenderTexture();
 			
 			//re_prtReflection->Init(re_pdpDrawPort->GetWidth(), re_pdpDrawPort->GetHeight());
-			re_prtReflection->Init(256, 256);
+			re_prtReflection->Init(
+				256,
+				256,
+				TEX_32BIT,
+				D3DFMT_A8R8G8B8,
+				RTP_REFLECTION);
 			re_bInitReflectionTexture = TRUE;
 		}
 		

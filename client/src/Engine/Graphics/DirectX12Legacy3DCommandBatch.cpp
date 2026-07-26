@@ -2725,7 +2725,7 @@ bool CDirectX12Legacy3DCommandBatch::EnsureBuffers(
 	return true;
 }
 
-bool CDirectX12Legacy3DCommandBatch::RenderShadowPass(
+bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 	ID3D12GraphicsCommandList* pCommandList,
 	CDirectX12RenderTargetManager* pRenderTargets,
 	CDirectX12UploadManager* pUploadManager,
@@ -2799,7 +2799,9 @@ bool CDirectX12Legacy3DCommandBatch::RenderShadowPass(
 		&renderTarget,
 		FALSE,
 		&depthTarget);
-	if (!useInteropDepth)
+	if (!useInteropDepth
+		&& (!nativeOffscreen
+			|| pRenderTargets->ShouldClearNativeDepth()))
 	{
 		pCommandList->ClearDepthStencilView(
 			depthTarget,

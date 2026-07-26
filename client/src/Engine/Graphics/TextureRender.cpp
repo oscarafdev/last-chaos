@@ -103,7 +103,10 @@ BOOL CRenderTexture::Init(
 		{
 			rt_tdTexture.td_ulObject = (ULONG64)pTexture;	// Conserva la textura creada.
 			pTexture->GetSurfaceLevel(0, &rt_pSurface);
-			if (purpose == RTP_SHADOW_MAP
+			const BOOL bNativePurpose =
+				purpose == RTP_SHADOW_MAP
+				|| purpose == RTP_REFLECTION;
+			if (bNativePurpose
 				&& !GetDirectX12Backend().RequiresLegacyOffscreenDepth()
 				&& GetDirectX12Backend().RegisterNativeOffscreenTexture(
 					pTexture,

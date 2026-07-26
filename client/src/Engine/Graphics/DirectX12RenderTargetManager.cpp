@@ -23,6 +23,7 @@ CDirectX12RenderTargetManager::CDirectX12RenderTargetManager()
 	, m_isAcquired(false)
 	, m_isDepthAcquired(false)
 	, m_isNative(false)
+	, m_clearNativeDepth(false)
 {
 }
 
@@ -178,6 +179,7 @@ bool CDirectX12RenderTargetManager::Acquire(
 	m_currentSubmission = submissionIndex;
 	m_isAcquired = true;
 	m_isNative = false;
+	m_clearNativeDepth = false;
 
 	const D3D12_RESOURCE_DESC resourceDesc = m_pResource12->GetDesc();
 	if (resourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
@@ -296,6 +298,7 @@ bool CDirectX12RenderTargetManager::AcquireNative(
 	m_currentSubmission = submissionIndex;
 	m_isAcquired = true;
 	m_isNative = true;
+	m_clearNativeDepth = clearColor;
 
 	m_pDevice->CreateRenderTargetView(
 		m_pResource12,
@@ -398,6 +401,11 @@ bool CDirectX12RenderTargetManager::IsNativeRenderTarget() const
 	return m_isAcquired && m_isNative && m_pNativeTexture != NULL;
 }
 
+bool CDirectX12RenderTargetManager::ShouldClearNativeDepth() const
+{
+	return IsNativeRenderTarget() && m_clearNativeDepth;
+}
+
 D3D12_CPU_DESCRIPTOR_HANDLE CDirectX12RenderTargetManager::GetCurrentView() const
 {
 	D3D12_CPU_DESCRIPTOR_HANDLE handle =
@@ -460,6 +468,7 @@ void CDirectX12RenderTargetManager::ReleaseAcquiredReferences()
 	m_isDepthAcquired = false;
 	m_pNativeTexture = NULL;
 	m_isNative = false;
+	m_clearNativeDepth = false;
 }
 
 void CDirectX12RenderTargetManager::Transition(

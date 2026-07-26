@@ -81,7 +81,7 @@ public:
 		UINT texturePassCount,
 		DirectX12LegacyRenderTargetKind renderTargetKind);
 
-	bool RenderShadowPass(
+	bool RenderLegacy3DPass(
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12RenderTargetManager* pRenderTargets,
 		CDirectX12UploadManager* pUploadManager,
