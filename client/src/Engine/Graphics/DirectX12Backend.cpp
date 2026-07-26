@@ -1804,6 +1804,11 @@ bool CDirectX12Backend::ShouldBypassLegacyPresent() const
 		== DX12_DRAWPORT_VALIDATION_UI_REPLACE;
 }
 
+bool CDirectX12Backend::RequiresLegacyOffscreenDepth() const
+{
+	return !ReadFull3DReplacementMode();
+}
+
 UINT CDirectX12Backend::GetUiPrimitiveCount() const
 {
 	return m_pNativeRenderer != NULL

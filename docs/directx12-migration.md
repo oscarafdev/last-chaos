@@ -1373,3 +1373,35 @@ Validación:
 - cero eventos de aplicación, pantalla o dispositivo;
 - cierre controlado y captura completada;
 - `.itconfig/dx12-zero-depth-warmup-fallback.png`.
+
+### Etapa 6v: profundidad nativa para render targets auxiliares
+
+`CRenderTexture` creaba una superficie D16 de D3D9 para cada textura usada
+como render target, incluso cuando Shadow y NoShadow se sustituían por completo
+en DX12. Esas pasadas ya utilizan `CDirectX12DepthBuffer`, que crea un recurso
+de profundidad compatible con el tamaño del destino, lo limpia y lo enlaza a
+la command list nativa.
+
+El backend expone ahora una política única para el depth auxiliar. En modo
+replace, `CRenderTexture` omite `CreateDepthStencilSurface`, enlaza profundidad
+nula al dispositivo legado y limita el clear D3D9 al color interoperable. En
+los modos de comparación conserva la superficie D16, porque allí los draws
+D3D9 siguen siendo visibles junto con DX12.
+
+Validación:
+
+- `.itconfig/validation-20260726-020343.json`: Shadow exacto, 19.416 draws y
+  5.579.376 triángulos, sin fallbacks;
+- `.itconfig/dx12-shadow-native-offscreen-depth.png`;
+- `.itconfig/validation-20260726-020606.json`: NoShadow exacto, 20.574 draws,
+  sin fallbacks;
+- `.itconfig/dx12-noshadow-native-offscreen-depth.png`;
+- `.itconfig/validation-20260726-020746.json`: regresión completa, 83.349
+  draws y 89.743.412 triángulos;
+- cero rechazos, fallbacks y eventos de aplicación, pantalla o dispositivo;
+- `.itconfig/dx12-native-offscreen-depth-regression.png`.
+
+El color de `CRenderTexture` continúa siendo una textura interoperable creada
+por D3D9On12, ya que las pasadas posteriores todavía reciben su identidad
+`IDirect3DTexture9`. Migrar esa identidad y sus vistas SRV/RTV a recursos DX12
+nativos es el siguiente corte de arquitectura.

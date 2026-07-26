@@ -170,6 +170,7 @@ public:
 	CDirectX12DescriptorHeap* GetSamplerDescriptorHeap() const;
 	bool IsFrameOpen() const;
 	bool ShouldBypassLegacyPresent() const;
+	bool RequiresLegacyOffscreenDepth() const;
 	UINT GetUiPrimitiveCount() const;
 	UINT GetUiSegmentCount() const;
 	UINT GetUiBarrierCount() const;

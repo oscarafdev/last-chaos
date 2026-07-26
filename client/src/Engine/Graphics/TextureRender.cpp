@@ -96,7 +96,20 @@ BOOL CRenderTexture::Init(INDEX width, INDEX height, ULONG flag, D3DFORMAT fmt)
 		{
 			rt_tdTexture.td_ulObject = (ULONG64)pTexture;	// Conserva la textura creada.
 			pTexture->GetSurfaceLevel(0, &rt_pSurface);
-			// Aunque no se use directamente, se debe configurar una superficie de profundidad.
+			if (!GetDirectX12Backend().RequiresLegacyOffscreenDepth())
+			{
+				static BOOL bNativeDepthReported = FALSE;
+				if (!bNativeDepthReported)
+				{
+					CPrintF(
+						"DX12 offscreen: profundidad auxiliar "
+						"administrada por el backend nativo.\n");
+					bNativeDepthReported = TRUE;
+				}
+				return TRUE;
+			}
+			// Los modos de comparación conservan el depth legado porque sus
+			// draws D3D9 siguen siendo visibles junto con la pasada DX12.
 		    hr = _pGfx->gl_pd3d9Device->CreateDepthStencilSurface(width, height, D3DFMT_D16, D3DMULTISAMPLE_NONE, 0, FALSE, &m_pDepthStencil, NULL);
 			if(hr == NOERROR)
 			{
@@ -141,7 +154,11 @@ void CRenderTexture::Clear(COLOR colClear, FLOAT fZVal)
 	} 
 	else if( sam_iGfxAPI==GAT_D3D)
 	{
-		_pGfx->gl_pd3d9Device->Clear(0, NULL, D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER, colClear, fZVal, 0);
+		const DWORD clearFlags = m_pDepthStencil != NULL
+			? D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER
+			: D3DCLEAR_TARGET;
+		_pGfx->gl_pd3d9Device->Clear(
+			0, NULL, clearFlags, colClear, fZVal, 0);
 	}
 }
 
