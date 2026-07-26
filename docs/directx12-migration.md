@@ -1257,3 +1257,40 @@ Una prueba aislada del mismo ensamblador ya reprodujo exactamente
 `BFDAAD52F7C28AAF`, `3C15F8B8DEBF2EC8`, `F6F2AA8EA79D28BC` y
 `000D90AFD69D7DA9`, confirmando que esa correlación puede hacerse totalmente
 offline.
+
+### Etapa 6s: fingerprints exactos y correlación total
+
+El analizador offline ahora reproduce la ruta completa que genera la identidad
+runtime de cada shader. Lee los fragmentos de `ShaderCode.h`, materializa entre
+cero y cuatro pesos, ambas configuraciones de normalización, las unidades de
+niebla realmente declaradas por cada shader y el ensamblado tangent-space.
+Después replica la conversión `CompileVertexProgram_D3D`, ensambla mediante
+`D3DXAssembleShader`, agrega la estructura binaria producida por
+`GetShaderDeclaration_D3D9` y aplica FNV-1a 64 exactamente en el mismo orden que
+`DirectX12Legacy3DCommandBatch`.
+
+El uso de D3DX9 queda limitado a esta herramienta de desarrollo. No se crea un
+dispositivo gráfico y no se agrega ninguna dependencia D3D9 a la ejecución
+DX12 del cliente.
+
+También se agregaron extractores para las cinco familias internas
+`TRShader_*` y para los shaders creados directamente por
+`CTraceEffect`, `CShockWaveEffect` y `CSplineBillboardEffect`. Sin esas fuentes
+el cruce alcanzaba 20 de 25 parejas; al incluirlas quedó completo:
+
+- 457 variantes VS compiladas, 322 fingerprints VS únicos;
+- 84 variantes PS compiladas, 51 fingerprints PS únicos;
+- 805 parejas exactas candidatas después de compatibilizar niebla;
+- 19 de 19 fingerprints VS y 20 de 20 fingerprints PS del catálogo
+  reproducidos;
+- 25 de 25 parejas implementadas y 20 de 20 parejas validadas correlacionadas.
+
+D3DX9 rechazó tres combinaciones `FT_NON_OPAQUE` exportadas históricamente:
+dos de `Detail_Specular` y una de `MultiLayer`. Usan registros `t#` en
+instrucciones aritméticas de `ps_1_4`; ninguna pertenece al catálogo DX12
+actual. Se conservan en `assembly_errors` para no confundir código presente en
+la DLL con una variante ejecutable.
+
+Las pruebas automatizadas verifican, entre otros contratos, que el ensamblado
+offline vuelve a producir `BFDAAD52F7C28AAF` para el VS Base normalizado y
+`000D90AFD69D7DA9` para su PS.

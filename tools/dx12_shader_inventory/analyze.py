@@ -9,6 +9,8 @@ from datetime import datetime
 from pathlib import Path
 
 from shader_inventory.content_scan import scan_content
+from shader_inventory.internal_programs import load_internal_program_shaders
+from shader_inventory.legacy_fingerprints import build_exact_runtime_inventory
 from shader_inventory.manifests import load_manifests
 from shader_inventory.report import write_inventory
 from shader_inventory.runtime_catalog import load_runtime_catalog
@@ -37,20 +39,20 @@ def main() -> int:
     if ctypes.sizeof(ctypes.c_void_p) != 8:
         raise RuntimeError("El host de Shaders.dll requiere Python de 64 bits")
 
-    print("[1/5] Leyendo manifiestos .sha...", flush=True)
+    print("[1/6] Leyendo manifiestos .sha...", flush=True)
     manifests = load_manifests(client_root / "Shaders")
     packages = {Path(item.package.replace("\\", "/")).name.lower() for item in manifests}
     if packages != {"shaders.dll"}:
         raise RuntimeError(f"Paquetes de shader no soportados: {sorted(packages)}")
 
-    print("[2/5] Preparando host aislado de Shaders.dll...", flush=True)
+    print("[2/6] Preparando host aislado de Shaders.dll...", flush=True)
     host_dir = build_metadata_host(
         TOOL_ROOT / "host" / "EngineMetadataStub.vcxproj",
         arguments.cache_root.resolve() / "host",
         client_root / "Bin" / "Shaders.dll",
     )
 
-    print("[3/5] Extrayendo descriptores y variantes de programa...", flush=True)
+    print("[3/6] Extrayendo descriptores y variantes de programa...", flush=True)
     host = ShaderMetadataHost(host_dir)
     try:
         shaders = []
@@ -66,7 +68,7 @@ def main() -> int:
     finally:
         host.close()
 
-    print("[4/5] Escaneando cada byte del contenido instalado...", flush=True)
+    print("[4/6] Escaneando cada byte del contenido instalado...", flush=True)
     content = scan_content(
         content_roots,
         client_root,
@@ -76,7 +78,7 @@ def main() -> int:
         ),
     )
 
-    print("[5/5] Cruzando fuentes internas y cobertura DX12...", flush=True)
+    print("[5/6] Cruzando fuentes internas y cobertura DX12...", flush=True)
     source_inventory = scan_internal_shader_sources(client_root / "src")
     runtime_catalog = load_runtime_catalog(
         client_root
@@ -85,6 +87,20 @@ def main() -> int:
         / "Graphics"
         / "DirectX12LegacyShaderFamily.cpp"
     )
+    print("[6/6] Reconstruyendo fingerprints y parejas exactas...", flush=True)
+    internal_program_shaders = load_internal_program_shaders(
+        client_root / "src" / "Engine"
+    )
+    exact_runtime_inventory = build_exact_runtime_inventory(
+        shaders=shaders + internal_program_shaders,
+        shader_code_header=client_root
+        / "src"
+        / "Engine"
+        / "Graphics"
+        / "ShaderCode.h",
+        shader_source_root=client_root / "src" / "Shaders",
+        runtime_catalog=runtime_catalog,
+    )
     inventory = write_inventory(
         output_dir=output_dir,
         client_root=client_root,
@@ -92,6 +108,7 @@ def main() -> int:
         content=content,
         source_inventory=source_inventory,
         runtime_catalog=runtime_catalog,
+        exact_runtime_inventory=exact_runtime_inventory,
         repository_commit=_git_commit(REPOSITORY_ROOT),
     )
 

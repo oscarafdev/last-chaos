@@ -17,6 +17,9 @@ juego, no crea un dispositivo gráfico y no necesita conectarse al servidor.
    programas directamente.
 6. Cruza el resultado con las familias, parejas implementadas y parejas
    validadas del backend DirectX 12.
+7. Reproduce el ensamblado final del motor para cada cantidad de pesos,
+   normalización, niebla y tipo de normal map; agrega la declaración de
+   vértices y calcula el mismo FNV-1a 64 usado por el backend.
 
 ## Uso
 
@@ -33,9 +36,11 @@ python tools\dx12_shader_inventory\analyze.py `
   --output .itconfig\dx12-shader-inventory\latest
 ```
 
-El script requiere Python x64 y Visual Studio Build Tools con C++ x64. Los
-binarios temporales y los informes se guardan bajo `.itconfig`, por lo que no
-se agregan al repositorio.
+El script requiere Python x64, Visual Studio Build Tools con C++ x64 y
+`d3dx9_43.dll` para ensamblar el código histórico. D3DX9 se usa solamente como
+herramienta offline: el analizador no crea un dispositivo D3D9 ni agrega esa
+dependencia a la ruta DX12 del juego. Los binarios temporales y los informes se
+guardan bajo `.itconfig`, por lo que no se agregan al repositorio.
 
 ## Salidas
 
@@ -43,6 +48,14 @@ se agregan al repositorio.
 - `inventory.json`: inventario completo y versionado por `schema_version`.
 - `asset-shader-references.csv`: relación material/asset a manifiesto.
 - `sources/`: ensamblador legacy devuelto por cada export de `Shaders.dll`.
+
+Dentro de `inventory.json`, `exact_runtime_inventory` contiene:
+
+- todas las variantes VS/PS compilables y sus fingerprints;
+- el superset de parejas compatibles por manifiesto o shader interno;
+- la correlación exacta con las parejas implementadas y validadas de DX12;
+- variantes históricas que la propia D3DX9 rechaza, conservadas como errores
+  auditables.
 
 ## Alcance de la garantía
 
@@ -52,11 +65,12 @@ garantiza el inventario de referencias explícitas presentes en ese snapshot y
 permite comprobar que dos ejecuciones analizaron exactamente el mismo
 contenido.
 
-El superset de parejas se calcula por manifiesto. Todavía no equivale a las
-parejas finales del runtime, porque el motor agrega código según pesos por
-vértice, niebla, tipo de normal map y declaración de streams antes de
-ensamblarlas. Los shaders construidos directamente desde C++ se informan por
-separado para que tampoco queden invisibles.
+`potential_program_pairs` conserva el superset de fuentes por manifiesto.
+`exact_runtime_inventory` sí reconstruye las parejas finales: aplica las reglas
+de `Shader.cpp`, la conversión de `CompileVertexProgram_D3D`, la declaración de
+`GetShaderDeclaration_D3D9` y el hash de
+`DirectX12Legacy3DCommandBatch.cpp`. También incluye los shaders internos de
+terreno y los programas creados directamente por los efectos.
 
 Los manifiestos que apuntan a exports ausentes no se descartan: aparecen con
 `extraction_error`. Así se distingue contenido obsoleto de una familia

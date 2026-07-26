@@ -135,8 +135,16 @@ class ShaderMetadataHost:
             vertex_program_count=native.vertex_program_count,
             pixel_program_count=native.pixel_program_count,
             shader_info=_decode_pointer(native.shader_info.value),
-            vertex_version=_format_shader_version(native.vertex_version),
-            pixel_version=_format_shader_version(native.pixel_version),
+            vertex_version=_format_shader_version(
+                native.vertex_version,
+                "vs",
+            ),
+            pixel_version=_format_shader_version(
+                native.pixel_version,
+                "ps",
+            ),
+            vertex_version_value=native.vertex_version,
+            pixel_version_value=native.pixel_version,
         )
         result = ExtractedShader(manifest=manifest, descriptor=descriptor)
 
@@ -218,6 +226,8 @@ def failed_shader(
             shader_info="",
             vertex_version="",
             pixel_version="",
+            vertex_version_value=0,
+            pixel_version_value=0,
         ),
         extraction_error=f"{type(error).__name__}: {error}",
     )
@@ -243,9 +253,7 @@ def _read_uint32_array(array: StaticArray) -> list[int]:
     return [values[index] for index in range(array.count)]
 
 
-def _format_shader_version(value: int) -> str:
-    shader_type = (value >> 16) & 0xFFFF
-    prefix = "ps" if shader_type == 0xFFFF else "vs"
+def _format_shader_version(value: int, prefix: str) -> str:
     return f"{prefix}_{(value >> 8) & 0xFF}_{value & 0xFF}"
 
 

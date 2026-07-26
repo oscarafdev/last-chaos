@@ -37,6 +37,8 @@ class ShaderDescriptor:
     shader_info: str
     vertex_version: str
     pixel_version: str
+    vertex_version_value: int
+    pixel_version_value: int
 
 
 @dataclass

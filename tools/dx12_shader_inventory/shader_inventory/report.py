@@ -17,6 +17,7 @@ def write_inventory(
     content: ContentScan,
     source_inventory: dict[str, object],
     runtime_catalog: dict[str, object],
+    exact_runtime_inventory: dict[str, object],
     repository_commit: str | None,
 ) -> dict[str, object]:
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -82,8 +83,8 @@ def write_inventory(
                     "necesariamente la cadena .sha dentro de un asset."
                 ),
                 (
-                    "Las parejas listadas son el superset componible por manifiesto; "
-                    "la selección por material, pesos y estado se valida aparte."
+                    "potential_program_pairs conserva el superset por fuente. "
+                    "exact_runtime_inventory agrega pesos, estado y bytecode final."
                 ),
                 (
                     "Los shaders internos creados desde C++ se inventarían por sitio "
@@ -126,6 +127,24 @@ def write_inventory(
                     if variant.source
                 }
             ),
+            "exact_vertex_fingerprint_count": exact_runtime_inventory[
+                "summary"
+            ]["unique_vertex_fingerprint_count"],
+            "exact_pixel_fingerprint_count": exact_runtime_inventory[
+                "summary"
+            ]["unique_pixel_fingerprint_count"],
+            "exact_candidate_pair_count": exact_runtime_inventory[
+                "summary"
+            ]["candidate_pair_count"],
+            "implemented_pair_correlation_count": exact_runtime_inventory[
+                "summary"
+            ]["implemented_pair_correlation_count"],
+            "validated_pair_correlation_count": exact_runtime_inventory[
+                "summary"
+            ]["validated_pair_correlation_count"],
+            "exact_assembly_error_count": exact_runtime_inventory[
+                "summary"
+            ]["assembly_error_count"],
         },
         "content": {
             "roots": content.roots,
@@ -138,6 +157,7 @@ def write_inventory(
         "potential_program_pairs": potential_pairs,
         "internal_shader_sources": source_inventory,
         "dx12_runtime_catalog": runtime_catalog,
+        "exact_runtime_inventory": exact_runtime_inventory,
     }
 
     (output_dir / "inventory.json").write_text(
@@ -287,6 +307,23 @@ def _write_summary(path: Path, inventory: dict[str, object]) -> None:
             f"**{runtime['implemented_pair_count']} parejas implementadas** y "
             f"**{runtime['validated_pair_count']} validadas**."
         ),
+        (
+            f"- Fingerprints reconstruidos: "
+            f"**{summary['exact_vertex_fingerprint_count']} VS**, "
+            f"**{summary['exact_pixel_fingerprint_count']} PS** y "
+            f"**{summary['exact_candidate_pair_count']} parejas candidatas**."
+        ),
+        (
+            f"- Correlación con DX12: "
+            f"**{summary['implemented_pair_correlation_count']}/"
+            f"{runtime['implemented_pair_count']} implementadas** y "
+            f"**{summary['validated_pair_correlation_count']}/"
+            f"{runtime['validated_pair_count']} validadas**."
+        ),
+        (
+            f"- Variantes exportadas que D3DX9 rechazó: "
+            f"**{summary['exact_assembly_error_count']}**."
+        ),
         f"- Referencias a manifiestos desconocidos: **{unknown}**.",
         (
             f"- Manifiestos con exports ausentes o inválidos: "
@@ -335,12 +372,32 @@ def _write_summary(path: Path, inventory: dict[str, object]) -> None:
                 "DLL en un host aislado."
             ),
             "",
-            (
-                "Una pareja del superset no implica que un material concreto la use. "
-                "La próxima capa debe reconstruir pesos, niebla y ensamblado final para "
-                "convertir cada variante en los mismos fingerprints que usa el backend."
-            ),
+            _exact_interpretation(summary, runtime),
             "",
         ]
     )
     path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def _exact_interpretation(
+    summary: dict[str, object],
+    runtime: dict[str, object],
+) -> str:
+    if (
+        summary["implemented_pair_correlation_count"]
+        == runtime["implemented_pair_count"]
+        and summary["validated_pair_correlation_count"]
+        == runtime["validated_pair_count"]
+    ):
+        return (
+            "La reconstrucción exacta materializa pesos, normalización, niebla, "
+            "normal mapping, bytecode y declaración D3D9. El cruce reprodujo "
+            "todas las parejas implementadas y validadas del catálogo DX12, "
+            "incluidos los shaders internos de terreno y efectos."
+        )
+    return (
+        "Una pareja del superset no implica que un material concreto la use. "
+        "La reconstrucción exacta materializa pesos, normalización, niebla, "
+        "normal mapping, bytecode y declaración D3D9; las ausencias del cruce "
+        "permanecen señaladas en exact_runtime_inventory.catalog_correlation."
+    )
