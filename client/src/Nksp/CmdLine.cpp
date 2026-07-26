@@ -95,6 +95,16 @@ void ParseCommandLine(CTString strCmd)
   INDEX testServer = 0;
   INDEX testChannel = 0;
   INDEX testCharacter = 0;
+  INDEX testCharacterHold = 0;
+  CTString testWorldCommand = "";
+  INDEX testWorldCommandDelay = 5;
+  CTString testWorldModel = "";
+  INDEX testWorldModelDelay = 5;
+  INDEX testWorldModelLifetime = 30;
+  CTString testWorldAnchor = "";
+  INDEX testWorldAnchorDelay = 5;
+  INDEX testWorldModelAlpha = 255;
+  BOOL testWorldModelNormalMapSpecular = FALSE;
 
   FOREVER {
     CTString strWord = GetNextParam();
@@ -107,6 +117,21 @@ void ParseCommandLine(CTString strCmd)
           testServer,
           testChannel,
           testCharacter);
+        CClientTestAutomation::Instance().ConfigureCharacterHold(
+          testCharacterHold);
+        CClientTestAutomation::Instance().ConfigureWorldCommand(
+          testWorldCommand,
+          testWorldCommandDelay);
+        CClientTestAutomation::Instance().ConfigureWorldModel(
+          testWorldModel,
+          testWorldModelDelay,
+          testWorldModelLifetime);
+        CClientTestAutomation::Instance().ConfigureWorldAnchor(
+          testWorldAnchor,
+          testWorldAnchorDelay);
+        CClientTestAutomation::Instance().ConfigureWorldModelRendering(
+          testWorldModelAlpha,
+          testWorldModelNormalMapSpecular);
         cmd_strOutput+="Test auto-login enabled.\n";
       }
       cmd_strOutput+="\n";
@@ -143,6 +168,26 @@ void ParseCommandLine(CTString strCmd)
       GetNextParam().ScanF("%d", &testChannel);
     } else if (strWord=="+testcharacter") {
       GetNextParam().ScanF("%d", &testCharacter);
+    } else if (strWord=="+testcharacterhold") {
+      GetNextParam().ScanF("%d", &testCharacterHold);
+    } else if (strWord=="+testgmcommand") {
+      testWorldCommand = GetNextParam();
+    } else if (strWord=="+testgmcommanddelay") {
+      GetNextParam().ScanF("%d", &testWorldCommandDelay);
+    } else if (strWord=="+testworldmodel") {
+      testWorldModel = GetNextParam();
+    } else if (strWord=="+testworldmodeldelay") {
+      GetNextParam().ScanF("%d", &testWorldModelDelay);
+    } else if (strWord=="+testworldmodellifetime") {
+      GetNextParam().ScanF("%d", &testWorldModelLifetime);
+    } else if (strWord=="+testworldanchor") {
+      testWorldAnchor = GetNextParam();
+    } else if (strWord=="+testworldanchordelay") {
+      GetNextParam().ScanF("%d", &testWorldAnchorDelay);
+    } else if (strWord=="+testworldmodelalpha") {
+      GetNextParam().ScanF("%d", &testWorldModelAlpha);
+    } else if (strWord=="+testworldmodelnormalmapspecular") {
+      testWorldModelNormalMapSpecular = TRUE;
     } else if (strWord=="+connect") {
       cmd_strServer = GetNextParam();
       const char *pcColon = strchr(cmd_strServer, ':');

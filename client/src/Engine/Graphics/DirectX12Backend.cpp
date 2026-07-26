@@ -1051,6 +1051,31 @@ bool CDirectX12Backend::SubmitUiSegmentsThrough(
 	return succeeded;
 }
 
+bool CDirectX12Backend::SubmitPendingLegacy3DForCurrentTarget(
+	const char* pTransition)
+{
+	if (!m_frameOpen || m_pNativeRenderer == NULL
+		|| !ReadFull3DReplacementMode()
+		|| !m_pNativeRenderer->HasPendingLegacy3DDraws())
+		return true;
+
+	const bool authoritative =
+		m_offscreenDrawPortDepth > 0
+		|| HasAuthoritativeLegacy3DBatch(m_pNativeRenderer);
+	if (!authoritative)
+		return true;
+
+	const UINT currentSegment =
+		m_pNativeRenderer->GetCurrentSegment();
+	if (SubmitUiSegmentsThrough(currentSegment, true))
+		return true;
+
+	CPrintF(
+		"DX12 3D: fallo el envio antes de %s; se conserva D3D9.\n",
+		pTransition != NULL ? pTransition : "cambiar el destino");
+	return false;
+}
+
 bool CDirectX12Backend::HasUiReadyForInitialPresentation() const
 {
 	return m_pNativeRenderer != NULL
@@ -1331,30 +1356,29 @@ bool CDirectX12Backend::ShouldSubmitLegacy3DDraw(
 	// Los DrawPort de la interfaz también terminan usando primitivas D3D9.
 	// Nunca deben considerarse geometría del mundo ni ser suprimidos por el
 	// reemplazo 3D.
-	if (m_uiScopeDepth > 0 || m_offscreenDrawPortDepth > 0)
+	if (m_uiScopeDepth > 0)
 		return true;
+	const bool offscreenReplacement =
+		m_offscreenDrawPortDepth > 0
+		&& ReadFull3DReplacementMode();
 	const bool fullWorldReplacement =
 		ReadFull3DReplacementMode()
-		&& HasAuthoritativeLegacy3DBatch(m_pNativeRenderer);
+		&& (offscreenReplacement
+			|| HasAuthoritativeLegacy3DBatch(m_pNativeRenderer));
 	if (!ReadRigidLitReplacementMode() && !fullWorldReplacement)
 		return true;
 	if (!nativeCaptured && fullWorldReplacement
-		&& m_legacy3DDepthReady
 		&& m_pNativeRenderer != NULL
 		&& m_pNativeRenderer->HasPendingLegacy3DDraws())
 	{
 		// Conserva el orden original entre ambos command streams: todo lote
 		// DX12 anterior debe llegar al depth buffer antes de ejecutar este draw
 		// de fallback en D3D9On12.
-		const UINT currentSegment =
-			m_pNativeRenderer->GetCurrentSegment();
-		if (!SubmitUiSegmentsThrough(currentSegment, true))
-		{
-			CPrintF(
-				"DX12 3D: fallo el envio ordenado antes del fallback.\n");
-		}
+		SubmitPendingLegacy3DForCurrentTarget(
+			"un fallback D3D9");
 	}
-	if (nativeCaptured && m_legacy3DDepthReady)
+	if (nativeCaptured
+		&& (offscreenReplacement || m_legacy3DDepthReady))
 	{
 		++m_suppressedLegacy3DDrawCount;
 		return false;
@@ -1388,13 +1412,26 @@ bool CDirectX12Backend::InsertDrawPortBarrier(
 void CDirectX12Backend::BeginOffscreenDrawPortScope()
 {
 	if (m_frameOpen)
+	{
+		// CRenderTexture llama a este metodo antes de cambiar el destino D3D9.
+		// El vaciado conserva el orden entre el mundo principal y la pasada
+		// auxiliar sin mezclar rangos pertenecientes a recursos distintos.
+		SubmitPendingLegacy3DForCurrentTarget(
+			"entrar a un destino auxiliar");
 		++m_offscreenDrawPortDepth;
+	}
 }
 
 void CDirectX12Backend::EndOffscreenDrawPortScope()
 {
 	if (m_offscreenDrawPortDepth > 0)
+	{
+		// Debe ejecutarse mientras la textura auxiliar sigue enlazada. Al
+		// devolverla a D3D9On12, la fence garantiza que el consumidor espere.
+		SubmitPendingLegacy3DForCurrentTarget(
+			"salir de un destino auxiliar");
 		--m_offscreenDrawPortDepth;
+	}
 }
 
 void CDirectX12Backend::SetLegacy3DVertexArray(
@@ -1562,10 +1599,17 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 	bool projectiveMapping,
 	UINT texturePassCount)
 {
-	if (m_uiScopeDepth > 0 || m_offscreenDrawPortDepth > 0)
+	if (m_uiScopeDepth > 0)
+		return false;
+	const DirectX12LegacyRenderTargetKind renderTargetKind =
+		ClassifyLegacyRenderTarget(pDevice9);
+	if (renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN
+		&& m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
 		return false;
 	if ((ReadRigidLitReplacementMode() || ReadFull3DReplacementMode())
-		&& !m_legacy3DDepthReady)
+		&& !m_legacy3DDepthReady
+		&& renderTargetKind
+			== DX12_LEGACY_RENDER_TARGET_PRESENTATION)
 		return false;
 	return m_frameOpen && m_pNativeRenderer != NULL
 		&& m_pNativeRenderer->QueueLegacy3DIndexedDraw(
@@ -1578,7 +1622,7 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 			usesColorArray,
 			projectiveMapping,
 			texturePassCount,
-			ClassifyLegacyRenderTarget(pDevice9));
+			renderTargetKind);
 }
 
 bool CDirectX12Backend::QueueDrawPortLine(

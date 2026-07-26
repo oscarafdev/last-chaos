@@ -50,7 +50,7 @@ BOOL CRenderTexture::Init(INDEX width, INDEX height, ULONG flag, D3DFORMAT fmt)
 	// check maximum supported texture dimension
 	if( width>MAX_MEX || height>MAX_MEX)
 	{
-		ASSERTALWAYS("너무 큰 텍스쳐 사이즈임. BY ANT");
+		ASSERTALWAYS("El tamano de la textura supera el maximo permitido.");
 		return FALSE;
 	}
 
@@ -155,10 +155,12 @@ void CRenderTexture::End()		// SetRenderTarget old
 	else if( sam_iGfxAPI==GAT_D3D)
 	{
 		IDirect3DDevice9 *pDev = _pGfx->gl_pd3d9Device;
+		// El backend debe reproducir la geometria DX12 mientras la textura
+		// auxiliar y su profundidad siguen siendo el destino activo.
+		GetDirectX12Backend().EndOffscreenDrawPortScope();
 		//pDev->SetRenderTarget(m_pOldRenderTarget, m_pOldDepthStencil);
 	    pDev->SetDepthStencilSurface(m_pOldDepthStencil);
 	    pDev->SetRenderTarget(0, m_pOldRenderTarget);
-		GetDirectX12Backend().EndOffscreenDrawPortScope();
 		GetDirectX12Backend().InsertDrawPortBarrier(
 			DX12_DRAWPORT_BARRIER_RENDER_TARGET_END);
 		if(m_pOldRenderTarget)

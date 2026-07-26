@@ -1,9 +1,10 @@
-//안태훈이 새로 추가한 파일임.
-//안태훈 수정 시작	//(Add Tagent-space Normal Map)(0.1)
+// Archivo agregado originalmente por Ahn Tae-hoon.
+// Inicio de la modificaci처n: normal mapping en espacio tangente (0.1).
 
 #include "StdH.h"
 #include <Shaders/Common.h>
 #include <Engine/Math/AdditionalFunction.h>
+#include <Engine/Testing/ShaderValidationHooks.h>
 
 #define NORMAL_USE_SPECULAR			(1UL<<(BASE_FLAG_OFFSET+0)) // Use Object Space Normal for Normal Map Shader
 #define NORMAL_ALWAYS_OPAQUE		(1UL<<(BASE_FLAG_OFFSET+1)) // Always opaque mode
@@ -29,6 +30,37 @@ static const INDEX iNonSpecularVP	= 0;
 static const INDEX iUseSpecularVP	= 1;
 static const INDEX iNonSpecularPP	= 0;
 static const INDEX iUseSpecularPP	= 1;
+
+static BOOL IsNormalMapFogValidationRequested()
+{
+	const char* value = getenv(
+		"LASTCHAOS_DX12_3D_TEST_FORCE_NORMALMAP_FOG");
+	return value != NULL && strcmp(value, "1") == 0;
+}
+
+static BOOL IsNormalMapRigidValidationRequested()
+{
+	const char* value = getenv(
+		"LASTCHAOS_DX12_3D_TEST_FORCE_NORMALMAP_RIGID");
+	return value != NULL && strcmp(value, "1") == 0;
+}
+
+static void PrepareNormalMapFogValidation()
+{
+	if (!IsNormalMapFogValidationRequested()
+		|| (shaGetRenFlags() & SHA_RMF_FOG))
+		return;
+
+	PrepareNormalMapFogShaderValidation();
+}
+
+static void PrepareNormalMapRigidValidation()
+{
+	if (!IsNormalMapRigidValidationRequested())
+		return;
+
+	PrepareNormalMapRigidShaderValidation();
+}
 
 static void SetRenderingState(BOOL bOpaque)
 {
@@ -136,10 +168,10 @@ static void PixelShaderProcess(BOOL bFullBright, COLOR colModelColor, BOOL bUseS
 	// Set texture wrapping
 	shaSetTextureWrapping(GFX_REPEAT, GFX_REPEAT, 0);
 	shaSetTextureWrapping(GFX_REPEAT, GFX_REPEAT, 1);
-	//사용할 Texture지정
+	// Selecciona las texturas que se utilizar찼n.
 	shaSetTexture(iNormalMapTexture, 0);
 	shaSetTexture(iBaseTexture, 1);
-	//사용할 UV좌표셋
+	// Selecciona el conjunto de coordenadas UV.
 	shaSetUVMap(iBaseUVMap);
 	
 	//Ambient color setting
@@ -148,7 +180,7 @@ static void PixelShaderProcess(BOOL bFullBright, COLOR colModelColor, BOOL bUseS
 	else colAmbient = shaGetAmbientColor();
 	colAmbient.MultiplyRGBCopyA1( (GFXColor)colModelColor, colAmbient );
 	ShaderRegister srAmbientColor(colAmbient);
-	//Pixel Shader에 x2가 되기 때문에 /2한다.
+	// El pixel shader multiplica por dos, por eso aqu챠 se divide por dos.
 	//srAmbientColor.sr_fx *= 0.5f;
 	//srAmbientColor.sr_fy *= 0.5f;
 	//srAmbientColor.sr_fz *= 0.5f;
@@ -161,16 +193,16 @@ static void PixelShaderProcess(BOOL bFullBright, COLOR colModelColor, BOOL bUseS
 
 static void FogProcess(BOOL bOpaque)
 {
-//강동민 수정 시작
-	// 순서 변경.
+// Inicio de la modificaci처n de Kang Dong-min.
+	// Cambio de orden.
 
-	//fog가 있을때 사용할 텍스쳐 스테이지의 지정
+	// Selecciona la etapa de textura utilizada cuando hay niebla.
 	shaSetFogTextureUnit(2, bOpaque);
 	// Set texture wrapping
 	shaSetTextureWrapping(GFX_CLAMP, GFX_CLAMP, 2);
 	// prepare fog and haze
 	shaPrepareFogAndHaze(bOpaque);	
-//강동민 수정 끝
+// Fin de la modificaci처n de Kang Dong-min.
 }
 
 static void Render(BOOL bOpaque, BOOL bDoubleSided, BOOL bFlip)
@@ -204,10 +236,10 @@ static void Render(BOOL bOpaque, BOOL bDoubleSided, BOOL bFlip)
 SHADER_MAIN(NormalMap)
 {
 	const COLOR colModelColor = MulColors(shaGetModelColor(), shaGetColor(iDiffuseColor));
-	//완전 불투명이 아니면 반투명임, 혹은 불투명 플래그가 설정되어 있으면 불투명.
+	// Es transl첬cido si no es totalmente opaco, salvo que se fuerce opacidad.
 	const BOOL bOpaque = ((colModelColor&0xFF) == 0xFF)
 						|| ((shaGetFlags() & NORMAL_ALWAYS_OPAQUE)==NORMAL_ALWAYS_OPAQUE);
-	if((colModelColor&0xFF) == 0x00) return;	//완전 투명.
+	if((colModelColor&0xFF) == 0x00) return;	// Totalmente transparente.
 	const BOOL bDoubleSided = shaGetFlags() & BASE_DOUBLE_SIDED;
 	const BOOL bFullBright = shaGetFlags() & BASE_FULL_BRIGHT;
 	const BOOL bUseSpecular = shaGetFlags() & NORMAL_USE_SPECULAR;
@@ -220,13 +252,15 @@ SHADER_MAIN(NormalMap)
 
 	if(bHardwareShader)
 	{
+		PrepareNormalMapFogValidation();
+		PrepareNormalMapRigidValidation();
 		SetRenderingState(bOpaque);
 		FogProcess(bOpaque);
 		VertexShaderProcess(bBillboard, bCylBillboard, bFullBright, colModelColor, bUseSpecular);
 		PixelShaderProcess(bFullBright, colModelColor, bUseSpecular);
 		Render(bOpaque, bDoubleSided, bFlip);
 	}
-	//일단 SW모드에서는 Normal맵을 고려하지 않음.
+	// El modo por software no procesa el normal map.
 	else	//USE VS(SOFT or HARD), NON-PS
 	{
 		// Set texture wrapping
@@ -240,7 +274,7 @@ SHADER_MAIN(NormalMap)
 		shaEnableOverBrightning();
 		if(bUseSpecular)
 		{
-			//일단 SW모드에서 Specaular는 고려하지 않음.
+			// El modo por software no procesa el componente especular.
 			//shaSetTexture(iNormalMapTexture, 1);
 		}
 		else
@@ -317,7 +351,7 @@ SHADER_MAIN(NormalMap)
 	}
 }
 
-//안태훈 수정 시작	//(For Performance)(0.1)
+// Inicio de la modificaci처n de Ahn Tae-hoon: rendimiento (0.1).
 SHADER_DESC(NormalMap, ShaderDesc *&pshDesc)
 {
 	static bool bInit = false;
@@ -353,13 +387,13 @@ SHADER_DESC(NormalMap, ShaderDesc *&pshDesc)
 		shDescMe.sd_ulStreamFlags[1] = GFX_POSITION_STREAM|GFX_TEXCOORD0|GFX_NORMAL_STREAM|GFX_TANGENT_STREAM;
 	}
 	pshDesc = &shDescMe;
-//안태훈 수정 끝	//(For Performance)(0.1)
+// Fin de la modificaci처n de Ahn Tae-hoon: rendimiento (0.1).
 }
 
 SHADER_VCODE(NormalMap, CTString &strVPCode, INDEX iVertexProgram)
 {
-	//상수등록 c8 ~ c17 사용가능
-	//vertex blending 쪽에서 최고 66 command slot까지 사용될 수 있음.
+	// Se pueden registrar constantes entre c8 y c17.
+	// El vertex blending puede utilizar hasta 66 slots de instrucciones.
 	//--------------- Tagent Space Normal Map Vertex Shader --------------//
 	//--------------- Input ---------------------//
 	//--- v5     - tex coord                  ---//
@@ -382,44 +416,46 @@ SHADER_VCODE(NormalMap, CTString &strVPCode, INDEX iVertexProgram)
 	//--- oD0    - Model*Light rgb & model a  ---//
 	//--- oD1    - Light Dir. & Specular val. ---//
 
-	//viewer position 대신 viewer direction을 사용하면 command slot -2 가능(-3~4까지도 가능할수도 lit연산쪽)
-	//대신 질저하(vertex단위 사용자 시점이 물체 단위로 바뀌는 것임.) 큰 물체의 경우 티가 남.
+	// Usar la direcci처n en vez de la posici처n del visor ahorra al menos dos
+	// slots de instrucciones, y quiz찼 tres o cuatro en el c찼lculo de luz.
+	// Reduce la calidad porque la vista pasa de v챕rtice a objeto; se aprecia
+	// especialmente en objetos grandes.
 	if(iVertexProgram == iNonSpecularVP)
 	{
 		//--- Over Burning, None Specular ---//
-		strVPCode = "m4x4 oPos,    r0,      c0                  \n"	//스크린 좌표로 출력
-					"mov  oT0,     v5                           \n"	//텍스쳐 좌표를 출력, normal map
-					"mov  oT1,     v5                           \n"	//텍스쳐 좌표를 출력, normal map
+		strVPCode = "m4x4 oPos,    r0,      c0                  \n"	// Env챠a las coordenadas de pantalla.
+					"mov  oT0,     v5                           \n"	// Env챠a las coordenadas del normal map.
+					"mov  oT1,     v5                           \n"	// Env챠a las coordenadas del normal map.
 					"mov  oD0,     c5                           \n"	//diffuse color
-					//"mul  oD0,     r9,      c7.wwwy             \n"	//Pixel Shader에 x2가 되기 때문에 /2한다.
- 					"mad  oD1.xyz, r1.xyz,  c7.www,  c7.www     \n"	//빛의 방향을 specular컬러로 출력
+					//"mul  oD0,     r9,      c7.wwwy             \n"	// Compensa el factor x2 del pixel shader.
+					"mad  oD1.xyz, r1.xyz,  c7.www,  c7.www     \n"	// Env챠a la direcci처n de luz como color especular.
 					;
 	}
 	else if(iVertexProgram == iUseSpecularVP)
 	{
 		//--- Over Burning, Use Specular ---//
-		strVPCode = "m4x4 oPos,    r0,      c0                  \n"	//스크린 좌표로 출력
-					"mov  oT0,     v5                           \n"	//텍스쳐 좌표를 출력, normal map
-					"mov  oT1,     v5                           \n"	//텍스쳐 좌표를 출력, diffuse map
+		strVPCode = "m4x4 oPos,    r0,      c0                  \n"	// Env챠a las coordenadas de pantalla.
+					"mov  oT0,     v5                           \n"	// Env챠a las coordenadas del normal map.
+					"mov  oT1,     v5                           \n"	// Env챠a las coordenadas del diffuse map.
 					"mov  oD0,     c5                           \n"	//diffuse color
-//					"mul  oD0,     r9,      c7.wwwy             \n"	//Pixel Shader에 x2가 되기 때문에 /2한다.
- 					"mad  oD1.xyz, r1.xyz,  c7.www,  c7.www     \n"	//빛의 방향을 specular컬러로 출력
+//					"mul  oD0,     r9,      c7.wwwy             \n"	// Compensa el factor x2 del pixel shader.
+					"mad  oD1.xyz, r1.xyz,  c7.www,  c7.www     \n"	// Env챠a la direcci처n de luz como color especular.
 
-					//specular 처리 관련 부분 시작
+					// Inicio del c찼lculo especular.
 					"sub  r2.xyz,  c8.xyz,  r0.xyz              \n"	//make view direction, No need Normalize
 					"dp3  r2.w,    r2.xyz,  r2.xyz              \n"	//normalize view direction
 					"rsq  r2.w,    r2.w                         \n"
-//					"mul  r2.xyz,  r2.xyz,  r2.www              \n"	//normalize 마무리
-//					"add  r2.xyz,  r2.xyz,  c4.xyz              \n"	//half vector 만들기 //->mad로 최적화
+//					"mul  r2.xyz,  r2.xyz,  r2.www              \n"	// Finaliza la normalizaci처n.
+//					"add  r2.xyz,  r2.xyz,  c4.xyz              \n"	// Forma el vector medio; optimizado con mad.
 					"mad  r2.xyz,  r2.xyz,  r2.www, c4.xyz      \n"	//make half vector
 					"dp3  r2.w,    r2.xyz,  r2.xyz              \n"	//normalize half vector
 					"rsq  r2.w,    r2.w                         \n"
 					"mul  r2.xyz,  r2.xyz,  r2.www              \n"
 					"dp3  r3.xyz,  r8.xyz,  r2.xyz              \n"	//Normal dot HalfVector
 					"mov  r3.w,    c8.w                         \n"	//specular power for lit command
-					"lit  r3.z,    r3                           \n"	//lighting 연산
-					"mul  oD1.w,   r3.z,    c9.w                \n"	//oD1.w에 specular value 출력
-					//specular 처리 관련 부분 끝
+					"lit  r3.z,    r3                           \n"	// Calcula la iluminaci처n.
+					"mul  oD1.w,   r3.z,    c9.w                \n"	// Env챠a el valor especular en oD1.w.
+					// Fin del c찼lculo especular.
 					;
 	}
 	return;
@@ -427,17 +463,17 @@ SHADER_VCODE(NormalMap, CTString &strVPCode, INDEX iVertexProgram)
 
 SHADER_PCODE(NormalMap, CTString &strPPCode, INDEX iPixelProgram, FOGTYPE eFogType)
 {
-	//상수등록 c0만 가능(PS가 없는 카드와의 호환성을 고려할 경우)
+	// Solo se registra c0 para mantener compatibilidad con tarjetas sin PS.
 	//--------------- Tagent Space Normal Map Pixel Shader --------------//
 	//--------------- Input ---------------------//
 	//--- t0     - Normal map & Specular map  ---//
 	//--- t1     - Diffuse map                ---//
-	//--- t2     - Fog map                    ---// ->Fog가 있을때만 사용됨.
+	//--- t2     - Fog map                    ---// Solo se usa con niebla.
 	//--- v0     - diffuse color              ---//
 	//--- v1.rgb - light direction            ---//
-	//--- v1.a   - Specular Value             ---// ->bUseSpecular가 있을때만 사용됨.
+	//--- v1.a   - Specular Value             ---// Solo con bUseSpecular.
 	//--- c0     - Ambient Color              ---//
-	//--- c7     - Fog color                  ---// ->Fog가 있을때만 사용됨.
+	//--- c7     - Fog color                  ---// Solo se usa con niebla.
 	//-------------- Output ---------------------//
 	//--- r0     - Output Pixel COLOR & Alpha ---//
 
@@ -446,7 +482,7 @@ SHADER_PCODE(NormalMap, CTString &strPPCode, INDEX iPixelProgram, FOGTYPE eFogTy
 		if(iPixelProgram == iNonSpecularPP)
 		{
 			//--- Over Burning, None Specular ---//
-			//	Texture는 2장, Texture Stage는 3개까지 사용
+			// Usa dos texturas y hasta tres etapas de textura.
 /*			strPPCode = "tex         t0                                   \n"	//normal map & specular map
 						"tex         t1                                   \n"	//base(diffuse) map
 						"dp3_sat     r1.rgb,  t0_bx2,  v1_bx2             \n"	//r1.rgb - diffuse shade
@@ -465,7 +501,7 @@ SHADER_PCODE(NormalMap, CTString &strPPCode, INDEX iPixelProgram, FOGTYPE eFogTy
 		else if(iPixelProgram == iUseSpecularPP)
 		{
 			//--- Over Burning, Use Specular ---//
-			//	Texture는 2장, Texture Stage는 4개까지 사용
+			// Usa dos texturas y hasta cuatro etapas de textura.
 /*			strPPCode = "tex         t0                                   \n"	//normal map & specular map
 						"tex         t1                                   \n"	//base(diffuse) map
 						"dp3_sat     r1.rgb,  t0_bx2,  v1_bx2             \n"	//r1.rgb - diffuse shade
@@ -594,4 +630,4 @@ SHADER_PCODE(NormalMap, CTString &strPPCode, INDEX iPixelProgram, FOGTYPE eFogTy
 	}
 	return;
 }
-//안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
+// Fin de la modificaci처n de Ahn Tae-hoon: normal mapping tangente (0.1).

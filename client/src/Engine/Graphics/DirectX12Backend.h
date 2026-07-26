@@ -197,6 +197,8 @@ private:
 	bool SubmitUiSegmentsThrough(
 		UINT maximumSegment,
 		bool submitLegacy3D = false);
+	bool SubmitPendingLegacy3DForCurrentTarget(
+		const char* pTransition);
 	bool AdvanceOpenCommandList();
 	bool HasUiReadyForInitialPresentation() const;
 	DirectX12LegacyRenderTargetKind ClassifyLegacyRenderTarget(

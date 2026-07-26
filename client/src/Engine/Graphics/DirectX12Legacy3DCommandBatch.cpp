@@ -477,6 +477,49 @@ namespace
 			pFingerprint);
 	}
 
+	bool ApplyTestShaderFamilyAlias(
+		UINT64 actualVertexFingerprint,
+		UINT64 actualPixelFingerprint,
+		UINT64* pVertexFingerprint,
+		UINT64* pPixelFingerprint)
+	{
+		char value[32] = "";
+		const DWORD length = GetEnvironmentVariableA(
+			"LASTCHAOS_DX12_3D_TEST_FAMILY_ALIAS",
+			value,
+			sizeof(value));
+		if (length == 0 || length >= sizeof(value)
+			|| (_stricmp(value, "enabled") != 0
+				&& strcmp(value, "1") != 0)
+			|| pVertexFingerprint == NULL
+			|| pPixelFingerprint == NULL)
+			return false;
+
+		UINT64 targetVertexFingerprint = 0;
+		UINT64 targetPixelFingerprint = 0;
+		if (!ReadReplacementVertexFamily(&targetVertexFingerprint)
+			|| !ReadReplacementPixelFamily(&targetPixelFingerprint))
+			return false;
+
+		const bool rigidNormalMapAlias =
+			actualVertexFingerprint == 0x4B5B9BE51A8EFA7EULL
+			&& actualPixelFingerprint == 0xB5BD45A8BA08F65BULL
+			&& targetVertexFingerprint == 0x3217ECE2D2C1D96AULL
+			&& (targetPixelFingerprint == 0xF91A55624E94D8A1ULL
+				|| targetPixelFingerprint == 0x5B3BD26F0B904B3DULL);
+		const bool skinnedNormalMapAlias =
+			actualVertexFingerprint == 0x0BDAEBAB2645C412ULL
+			&& actualPixelFingerprint == 0xB5BD45A8BA08F65BULL
+			&& targetVertexFingerprint == 0x7873727C8ED9D187ULL
+			&& targetPixelFingerprint == 0x77162620F6305229ULL;
+		if (!rigidNormalMapAlias && !skinnedNormalMapAlias)
+			return false;
+
+		*pVertexFingerprint = targetVertexFingerprint;
+		*pPixelFingerprint = targetPixelFingerprint;
+		return true;
+	}
+
 	int ReadTerrainDebugTexture()
 	{
 		char value[8] = "";
@@ -645,6 +688,7 @@ struct DirectX12Legacy3DCommandBatchState
 	UINT fixedDiagnosticCount;
 	bool fixedBlendDiagnosticReported[DX12_BLEND_COUNT];
 	bool missingArrayDiagnosticReported;
+	bool testFamilyAliasDiagnosticReported;
 	UINT64 frameSerial;
 	UINT64 lastInventoryDumpFrame;
 
@@ -659,6 +703,7 @@ struct DirectX12Legacy3DCommandBatchState
 		, staticNormalSelected(false)
 		, fixedDiagnosticCount(0)
 		, missingArrayDiagnosticReported(false)
+		, testFamilyAliasDiagnosticReported(false)
 		, frameSerial(0)
 		, lastInventoryDumpFrame(0)
 	{
@@ -1459,14 +1504,39 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	const bool inventoryMode = ReadShaderInventoryMode();
 	if (captureProfile == NATIVE_3D_CAPTURE_OFF && !inventoryMode)
 		return false;
-	const UINT64 vertexShaderFingerprint = usesVertexProgram
+	UINT64 vertexShaderFingerprint = usesVertexProgram
 		? GetVertexShaderFingerprint(m_pState, pDevice9)
 		: 0;
-	const bool rigidLit =
-		vertexShaderFingerprint == RIGID_LIT_VERTEX_SHADER_FAMILY;
-	const UINT64 pixelShaderFingerprint = usesPixelProgram
+	UINT64 pixelShaderFingerprint = usesPixelProgram
 		? GetPixelShaderFingerprint(m_pState, pDevice9)
 		: 0;
+	const UINT64 actualVertexShaderFingerprint =
+		vertexShaderFingerprint;
+	const UINT64 actualPixelShaderFingerprint =
+		pixelShaderFingerprint;
+	const bool testFamilyAliasApplied = ApplyTestShaderFamilyAlias(
+		actualVertexShaderFingerprint,
+		actualPixelShaderFingerprint,
+		&vertexShaderFingerprint,
+		&pixelShaderFingerprint);
+	if (testFamilyAliasApplied
+		&& !m_pState->testFamilyAliasDiagnosticReported)
+	{
+		CPrintF(
+			"DX12 prueba: familia %016llX/%016llX sustituida por "
+			"%016llX/%016llX para el fixture seleccionado.\n",
+			static_cast<unsigned long long>(
+				actualVertexShaderFingerprint),
+			static_cast<unsigned long long>(
+				actualPixelShaderFingerprint),
+			static_cast<unsigned long long>(
+				vertexShaderFingerprint),
+			static_cast<unsigned long long>(
+				pixelShaderFingerprint));
+		m_pState->testFamilyAliasDiagnosticReported = true;
+	}
+	const bool rigidLit =
+		vertexShaderFingerprint == RIGID_LIT_VERTEX_SHADER_FAMILY;
 	const bool rigidLitPixel =
 		pixelShaderFingerprint == RIGID_LIT_PIXEL_SHADER_FAMILY;
 	DirectX12LegacyShaderFamily shaderFamily;
@@ -1486,12 +1556,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			indexCount);
 	if (captureProfile == NATIVE_3D_CAPTURE_OFF)
 		return false;
-	if (renderTargetKind != DX12_LEGACY_RENDER_TARGET_PRESENTATION)
-	{
-		++m_pState->rejectedDrawCount;
-		++m_pState->rejectedReasons[REJECT_OFFSCREEN_RENDER_TARGET];
-		return false;
-	}
 	UINT64 replacementVertexFamily = 0;
 	const bool replacementVertexFamilySelected =
 		ReadReplacementVertexFamily(&replacementVertexFamily);
@@ -1500,6 +1564,24 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		ReadReplacementPixelFamily(&replacementPixelFamily);
 	const bool replacementFamilySelected =
 		replacementVertexFamilySelected || replacementPixelFamilySelected;
+	const bool selectedFamilyMatches =
+		(!replacementVertexFamilySelected
+			|| vertexShaderFingerprint == replacementVertexFamily)
+		&& (!replacementPixelFamilySelected
+			|| pixelShaderFingerprint == replacementPixelFamily);
+	const bool offscreenReplacementAllowed =
+		renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN
+		&& ReadFullReplacementMode()
+		&& selectedFamilyMatches
+		&& (replacementFamilySelected
+			|| shaderFamily.replacementValidated);
+	if (renderTargetKind != DX12_LEGACY_RENDER_TARGET_PRESENTATION
+		&& !offscreenReplacementAllowed)
+	{
+		++m_pState->rejectedDrawCount;
+		++m_pState->rejectedReasons[REJECT_OFFSCREEN_RENDER_TARGET];
+		return false;
+	}
 	// El reemplazo total solo puede quitar el draw heredado cuando la pareja
 	// de shaders ya fue validada visualmente. Las familias genéricas continúan
 	// disponibles para inventario y comparación, pero no deben tapar el mundo
@@ -1510,11 +1592,11 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		return false;
 	if (ReadFullReplacementMode()
 		&& replacementVertexFamilySelected
-		&& vertexShaderFingerprint != replacementVertexFamily)
+		&& !selectedFamilyMatches)
 		return false;
 	if (ReadFullReplacementMode()
 		&& replacementPixelFamilySelected
-		&& pixelShaderFingerprint != replacementPixelFamily)
+		&& !selectedFamilyMatches)
 		return false;
 	const bool rigidLitProbe = ReadRigidLitProbeMode();
 	if (captureProfile == NATIVE_3D_CAPTURE_PROBE

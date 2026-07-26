@@ -3430,6 +3430,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClCompile Include="Graphics\DirectX12NativeRenderer.cpp" />
     <ClCompile Include="Graphics\DirectX12NativeShaderSource.cpp" />
     <ClCompile Include="Testing\ClientTestAutomation.cpp" />
+    <ClCompile Include="Testing\ShaderValidationHooks.cpp" />
     <ClCompile Include="Graphics\DirectX12PipelineCache.cpp" />
     <ClCompile Include="Graphics\DirectX12PresentationManager.cpp" />
     <ClCompile Include="Graphics\DirectX12RenderTargetManager.cpp" />
@@ -8190,6 +8191,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClInclude Include="Graphics\DirectX12NativeRenderer.h" />
     <ClInclude Include="Graphics\DirectX12NativeShaderSource.h" />
     <ClInclude Include="Testing\ClientTestAutomation.h" />
+    <ClInclude Include="Testing\ShaderValidationHooks.h" />
     <ClInclude Include="Graphics\DirectX12PipelineCache.h" />
     <ClInclude Include="Graphics\DirectX12PresentationManager.h" />
     <ClInclude Include="Graphics\DirectX12RenderTargetManager.h" />

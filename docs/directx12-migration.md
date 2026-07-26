@@ -1294,3 +1294,58 @@ la DLL con una variante ejecutable.
 Las pruebas automatizadas verifican, entre otros contratos, que el ensamblado
 offline vuelve a producir `BFDAAD52F7C28AAF` para el VS Base normalizado y
 `000D90AFD69D7DA9` para su PS.
+
+### Etapa 6t: validación determinista de las cinco parejas restantes
+
+Se promovieron las cinco parejas que permanecían implementadas pero no
+autorizadas:
+
+- `Shadow.sha`: `81B4D7CBDC31B625 / 93145689E4FC29A7`;
+- `NoShadow.sha`: `E1AA07F9418DE37E / 3CA2992E872AB363`;
+- NormalMap rígido con niebla opaca:
+  `3217ECE2D2C1D96A / F91A55624E94D8A1`;
+- NormalMap rígido con niebla no opaca:
+  `3217ECE2D2C1D96A / 5B3BD26F0B904B3D`;
+- NormalMap animado especular:
+  `7873727C8ED9D187 / 77162620F6305229`.
+
+Shadow y NoShadow se validaron sobre sus render targets auxiliares reales. La
+ruta de captura DX12 ahora vacía el batch 3D antes de cambiar de destino y
+acepta las pasadas auxiliares seleccionadas por la prueba, sin promoverlas de
+forma general.
+
+NormalMap necesitó dos hooks optativos porque `ModelHolder3` siempre entra por
+la ruta SKA con cuatro pesos y los mapas recorridos no garantizan niebla
+activa. Las variables
+`LASTCHAOS_DX12_3D_TEST_FORCE_NORMALMAP_FOG` y
+`LASTCHAOS_DX12_3D_TEST_FORCE_NORMALMAP_RIGID` preparan esos estados sólo
+durante una prueba explícita. No crean alias de fingerprints, no se activan en
+una ejecución normal y ejercitan los bytecodes D3D9 exactos que consume el
+reemplazo DX12.
+
+Durante la primera escena controlada de Dungeon1 el personaje quedó flotando.
+La causa no era el renderer: el arnés utilizaba el centro geométrico del sector
+con niebla como si fuera una superficie caminable. Un sector puede abarcar
+varios niveles y su centro vertical no coincide con el suelo. La corrección
+conserva el punto válido de entrada del personaje y relaciona únicamente el
+fixture de prueba con el sector de niebla. Los modelos grandes también se
+separan de la cámara; para evidencia visual se prefiere la gárgola pequeña.
+
+Evidencia:
+
+- `.itconfig/validation-20260725-235135.json`: Shadow, 46.128 envíos y
+  13.254.624 triángulos;
+- `.itconfig/validation-20260725-235532.json`: NoShadow, 21.194 envíos;
+- `.itconfig/validation-20260726-003647.json`: NormalMap animado especular;
+- `.itconfig/validation-20260726-014555.json`: NormalMap rígido y niebla
+  opaca exactos, 3.136 envíos y 1.081.920 triángulos;
+- `.itconfig/validation-20260726-014949.json`: NormalMap rígido y niebla no
+  opaca exactos, 1.382 envíos y 972.237 triángulos;
+- `.itconfig/dx12-normalmap-rigid-fog-nonopaque-exact.png`;
+- `.itconfig/validation-20260726-015229.json`: regresión sin hooks ni
+  selectores, 137.966 envíos DX12, 54.297.133 triángulos, cero rechazos en la
+  pasada principal y cero fallos de dispositivo;
+- `.itconfig/dx12-25-of-25-regression.png`.
+
+El catálogo queda en 25 de 25 parejas implementadas y 25 de 25 autorizadas
+para reemplazo estable.

@@ -4,12 +4,79 @@
 
 #include <Engine/Contents/Login/LoginNew.h>
 #include <Engine/Contents/Login/ServerSelect.h>
+#include <Engine/Brushes/Brush.h>
+#include <Engine/Entities/Entity.h>
 #include <Engine/GameDataManager/GameDataManager.h>
 #include <Engine/GameStageManager/StageMgr.h>
 #include <Engine/GameState.h>
+#include <Engine/Graphics/Fog.h>
 #include <Engine/Interface/UIManager.h>
 #include <Engine/Network/CNetwork.h>
 #include <Engine/Network/TcpIpConnection.h>
+#include <Engine/Entities/EntityClass.h>
+#include <Engine/Ska/Mesh.h>
+#include <Engine/Ska/ModelInstance.h>
+#include <Engine/World/World.h>
+
+namespace
+{
+	const ULONG NORMAL_MAP_SPECULAR_FLAG = 1UL << BASE_FLAG_OFFSET;
+
+	BOOL IsNormalMapShader(const CShader* pShader)
+	{
+		if (pShader == NULL)
+			return FALSE;
+
+		const char* shaderFile = pShader->ser_FileName;
+		return shaderFile != NULL
+			&& strstr(shaderFile, "NormalMap.sha") != NULL;
+	}
+
+	INDEX EnableNormalMapSpecular(CModelInstance* pModel)
+	{
+		if (pModel == NULL)
+			return 0;
+
+		INDEX configuredSurfaceCount = 0;
+		for (INDEX meshIndex = 0;
+			meshIndex < pModel->mi_aMeshInst.Count();
+			++meshIndex)
+		{
+			CMesh* pMesh = pModel->mi_aMeshInst[meshIndex].mi_pMesh;
+			if (pMesh == NULL)
+				continue;
+
+			for (INDEX lodIndex = 0;
+				lodIndex < pMesh->msh_aMeshLODs.Count();
+				++lodIndex)
+			{
+				MeshLOD& lod = pMesh->msh_aMeshLODs[lodIndex];
+				for (INDEX surfaceIndex = 0;
+					surfaceIndex < lod.mlod_aSurfaces.Count();
+					++surfaceIndex)
+				{
+					MeshSurface& surface =
+						lod.mlod_aSurfaces[surfaceIndex];
+					if (!IsNormalMapShader(surface.msrf_pShader))
+						continue;
+
+					surface.msrf_ShadingParams.sp_ulFlags |=
+						NORMAL_MAP_SPECULAR_FLAG;
+					++configuredSurfaceCount;
+				}
+			}
+		}
+
+		for (INDEX childIndex = 0;
+			childIndex < pModel->mi_cmiChildren.Count();
+			++childIndex)
+		{
+			configuredSurfaceCount += EnableNormalMapSpecular(
+				&pModel->mi_cmiChildren[childIndex]);
+		}
+		return configuredSurfaceCount;
+	}
+}
 
 CClientTestAutomation& CClientTestAutomation::Instance()
 {
@@ -18,13 +85,28 @@ CClientTestAutomation& CClientTestAutomation::Instance()
 }
 
 CClientTestAutomation::CClientTestAutomation()
-	: m_serverIndex(0)
+	: m_worldAnchorSector(NULL)
+	, m_serverIndex(0)
 	, m_channelIndex(0)
 	, m_characterIndex(0)
+	, m_characterHoldSeconds(0)
+	, m_worldCommandDelaySeconds(5)
+	, m_worldModelDelaySeconds(5)
+	, m_worldModelLifetimeSeconds(30)
+	, m_worldAnchorDelaySeconds(5)
+	, m_worldModelAlpha(255)
+	, m_characterStageEnteredAt(0)
+	, m_gameplayStageEnteredAt(0)
+	, m_worldModelSpawnedAt(0)
+	, m_worldModelFixture(NULL)
 	, m_enabled(FALSE)
 	, m_loginSubmitted(FALSE)
 	, m_serverSubmitted(FALSE)
 	, m_characterSubmitted(FALSE)
+	, m_worldCommandSubmitted(FALSE)
+	, m_worldAnchorApplied(FALSE)
+	, m_worldModelSpawned(FALSE)
+	, m_worldModelNormalMapSpecular(FALSE)
 	, m_lastReportedStage(-2)
 {
 }
@@ -40,6 +122,9 @@ void CClientTestAutomation::ConfigureLogin(
 	m_loginSubmitted = FALSE;
 	m_serverSubmitted = FALSE;
 	m_characterSubmitted = FALSE;
+	m_worldCommandSubmitted = FALSE;
+	m_worldAnchorApplied = FALSE;
+	m_worldModelSpawned = FALSE;
 }
 
 void CClientTestAutomation::ConfigureWorldSelection(
@@ -53,6 +138,62 @@ void CClientTestAutomation::ConfigureWorldSelection(
 		(std::max)(characterIndex, static_cast<INDEX>(0));
 }
 
+void CClientTestAutomation::ConfigureCharacterHold(INDEX holdSeconds)
+{
+	m_characterHoldSeconds = (std::max)(
+		static_cast<INDEX>(0),
+		(std::min)(holdSeconds, static_cast<INDEX>(300)));
+}
+
+void CClientTestAutomation::ConfigureWorldCommand(
+	const CTString& command,
+	INDEX delaySeconds)
+{
+	m_worldCommand = command;
+	m_worldCommandDelaySeconds = (std::max)(
+		static_cast<INDEX>(0),
+		(std::min)(delaySeconds, static_cast<INDEX>(300)));
+	m_worldCommandSubmitted = FALSE;
+}
+
+void CClientTestAutomation::ConfigureWorldModel(
+	const CTString& model,
+	INDEX delaySeconds,
+	INDEX lifetimeSeconds)
+{
+	m_worldModel = model;
+	m_worldModelDelaySeconds = (std::max)(
+		static_cast<INDEX>(0),
+		(std::min)(delaySeconds, static_cast<INDEX>(300)));
+	m_worldModelLifetimeSeconds = (std::max)(
+		static_cast<INDEX>(1),
+		(std::min)(lifetimeSeconds, static_cast<INDEX>(300)));
+	m_worldModelFixture = NULL;
+	m_worldModelSpawned = FALSE;
+}
+
+void CClientTestAutomation::ConfigureWorldAnchor(
+	const CTString& entityClass,
+	INDEX delaySeconds)
+{
+	m_worldAnchorClass = entityClass;
+	m_worldAnchorSector = NULL;
+	m_worldAnchorDelaySeconds = (std::max)(
+		static_cast<INDEX>(0),
+		(std::min)(delaySeconds, static_cast<INDEX>(300)));
+	m_worldAnchorApplied = FALSE;
+}
+
+void CClientTestAutomation::ConfigureWorldModelRendering(
+	INDEX alpha,
+	BOOL enableNormalMapSpecular)
+{
+	m_worldModelAlpha = (std::max)(
+		static_cast<INDEX>(0),
+		(std::min)(alpha, static_cast<INDEX>(255)));
+	m_worldModelNormalMapSpecular = enableNormalMapSpecular;
+}
+
 void CClientTestAutomation::Tick()
 {
 	if (!m_enabled || STAGEMGR() == NULL)
@@ -64,6 +205,30 @@ void CClientTestAutomation::Tick()
 		CPrintF(
 			"Prueba automatizada: etapa %d detectada.\n",
 			stage);
+		if (stage == eSTAGE_SELCHAR)
+		{
+			m_characterStageEnteredAt = GetTickCount();
+			if (m_characterHoldSeconds > 0)
+			{
+				CPrintF(
+					"Prueba automatizada: seleccion de personaje "
+					"retenida %d segundos.\n",
+					m_characterHoldSeconds);
+			}
+		}
+		else if (stage == eSTAGE_GAMEPLAY)
+		{
+			m_gameplayStageEnteredAt = GetTickCount();
+			m_worldModelFixture = NULL;
+			m_worldAnchorSector = NULL;
+			m_worldAnchorApplied = FALSE;
+			m_worldModelSpawned = FALSE;
+		}
+		else
+		{
+			// El mundo elimina sus entidades al cambiar de etapa.
+			m_worldModelFixture = NULL;
+		}
 		m_lastReportedStage = stage;
 	}
 	switch (stage)
@@ -79,6 +244,22 @@ void CClientTestAutomation::Tick()
 	case eSTAGE_SELCHAR:
 		if (!m_characterSubmitted)
 			m_characterSubmitted = TrySubmitCharacter();
+		break;
+	case eSTAGE_GAMEPLAY:
+		if (!m_worldCommandSubmitted && m_worldCommand.Length() > 0)
+			m_worldCommandSubmitted = TrySubmitWorldCommand();
+		if (!m_worldAnchorApplied && m_worldAnchorClass.Length() > 0)
+			m_worldAnchorApplied = TryApplyWorldAnchor();
+		else if (m_worldAnchorApplied)
+		{
+			CEntity* pPlayer = CEntity::GetPlayerEntity(0);
+			if (pPlayer != NULL)
+				pPlayer->SetPlacement(m_worldAnchorPlacement);
+		}
+		if (!m_worldModelSpawned && m_worldModel.Length() > 0)
+			m_worldModelSpawned = TrySpawnWorldModel();
+		else if (m_worldModelFixture != NULL)
+			TryRemoveWorldModel();
 		break;
 	default:
 		break;
@@ -145,6 +326,12 @@ BOOL CClientTestAutomation::TrySubmitServer()
 
 BOOL CClientTestAutomation::TrySubmitCharacter()
 {
+	const ULONG elapsed =
+		GetTickCount() - m_characterStageEnteredAt;
+	if (m_characterHoldSeconds > 0
+		&& elapsed
+			< static_cast<ULONG>(m_characterHoldSeconds) * 1000UL)
+		return FALSE;
 	if (_pNetwork == NULL || _pNetwork->m_bSendMessage
 		|| _pGameState == NULL
 		|| m_characterIndex < 0
@@ -158,6 +345,227 @@ BOOL CClientTestAutomation::TrySubmitCharacter()
 		"Prueba automatizada: personaje %d enviado.\n",
 		m_characterIndex);
 	return TRUE;
+}
+
+BOOL CClientTestAutomation::TrySubmitWorldCommand()
+{
+	const ULONG elapsed =
+		GetTickCount() - m_gameplayStageEnteredAt;
+	if (elapsed
+		< static_cast<ULONG>(m_worldCommandDelaySeconds) * 1000UL)
+		return FALSE;
+	if (_pNetwork == NULL || _pNetwork->m_bSendMessage)
+		return FALSE;
+
+	_pNetwork->SendGMCommand(m_worldCommand);
+	CPrintF("Prueba automatizada: comando de mundo enviado.\n");
+	return TRUE;
+}
+
+BOOL CClientTestAutomation::TryApplyWorldAnchor()
+{
+	const ULONG elapsed =
+		GetTickCount() - m_gameplayStageEnteredAt;
+	if (elapsed
+		< static_cast<ULONG>(m_worldAnchorDelaySeconds) * 1000UL)
+		return FALSE;
+	if (_pNetwork == NULL)
+		return FALSE;
+
+	CEntity* pPlayer = CEntity::GetPlayerEntity(0);
+	if (pPlayer == NULL)
+		return FALSE;
+
+	if (m_worldAnchorClass == "Fog Marker")
+	{
+		CBrushSector* pSector = pPlayer->GetFirstSector();
+		if (pSector != NULL
+			&& pSector->bsc_pbmBrushMip != NULL
+			&& pSector->bsc_pbmBrushMip->bm_pbrBrush != NULL)
+		{
+			CEntity* pWorldEntity =
+				pSector->bsc_pbmBrushMip->bm_pbrBrush->br_penEntity;
+			for (INDEX fogIndex = 0; fogIndex < 9; ++fogIndex)
+			{
+				CFogParameters fog;
+				if (pWorldEntity == NULL
+					|| !pWorldEntity->GetFog(fogIndex, fog))
+					continue;
+
+				pSector->SetFogType(fogIndex);
+				m_worldAnchorSector = pSector;
+				m_worldAnchorPlacement = pPlayer->GetPlacement();
+				CPrintF(
+					"Prueba automatizada: niebla %d aplicada al "
+					"sector actual.\n",
+					fogIndex);
+				return TRUE;
+			}
+		}
+	}
+
+	CDynamicContainer<CEntity>& entities =
+		_pNetwork->ga_World.wo_cenAllEntities;
+	if (m_worldAnchorClass == "Fog Marker")
+	{
+		for (INDEX entityIndex = 0;
+			entityIndex < entities.Count();
+			++entityIndex)
+		{
+			CEntity* pEntity = &entities[entityIndex];
+			if (pEntity->GetRenderType() != CEntity::RT_BRUSH
+				|| pEntity->GetBrush() == NULL
+				|| !(pEntity->GetFlags() & ENF_ZONING))
+				continue;
+
+			CBrushMip* pMip = pEntity->GetBrush()->GetFirstMip();
+			if (pMip == NULL)
+				continue;
+
+			for (INDEX sectorIndex = 0;
+				sectorIndex < pMip->bm_abscSectors.Count();
+				++sectorIndex)
+			{
+				CBrushSector& sector =
+					pMip->bm_abscSectors[sectorIndex];
+				const INDEX fogIndex = sector.GetFogType();
+				CFogParameters fog;
+				if (!pEntity->GetFog(fogIndex, fog))
+					continue;
+
+				m_worldAnchorPlacement = pPlayer->GetPlacement();
+				m_worldAnchorSector = &sector;
+				// El centro geométrico del sector no representa una superficie
+				// caminable y puede dejar al jugador flotando. Conservamos el
+				// punto válido de entrada y usamos la relación únicamente para
+				// aportar el contexto de niebla a la escena controlada.
+				pPlayer->en_rdSectors.Clear();
+				AddRelationPairTailTail(
+					sector.bsc_rsEntities,
+					pPlayer->en_rdSectors);
+				CPrintF(
+					"Prueba automatizada: sector con niebla %d "
+					"relacionado desde (%.2f, %.2f, %.2f).\n",
+					fogIndex,
+					m_worldAnchorPlacement.pl_PositionVector(1),
+					m_worldAnchorPlacement.pl_PositionVector(2),
+					m_worldAnchorPlacement.pl_PositionVector(3));
+				return TRUE;
+			}
+		}
+	}
+
+	for (INDEX entityIndex = 0;
+		entityIndex < entities.Count();
+		++entityIndex)
+	{
+		CEntity* pEntity = &entities[entityIndex];
+		if (!IsOfClass(pEntity, m_worldAnchorClass))
+			continue;
+
+		m_worldAnchorPlacement = pEntity->GetPlacement();
+		pPlayer->SetPlacement(m_worldAnchorPlacement);
+		CPrintF(
+			"Prueba automatizada: ancla %s aplicada en "
+			"(%.2f, %.2f, %.2f).\n",
+			(const char*)m_worldAnchorClass,
+			m_worldAnchorPlacement.pl_PositionVector(1),
+			m_worldAnchorPlacement.pl_PositionVector(2),
+			m_worldAnchorPlacement.pl_PositionVector(3));
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+BOOL CClientTestAutomation::TrySpawnWorldModel()
+{
+	const ULONG elapsed =
+		GetTickCount() - m_gameplayStageEnteredAt;
+	if (elapsed
+		< static_cast<ULONG>(m_worldModelDelaySeconds) * 1000UL)
+		return FALSE;
+	if (_pNetwork == NULL)
+		return FALSE;
+
+	CEntity* pPlayer = CEntity::GetPlayerEntity(0);
+	if (pPlayer == NULL)
+		return FALSE;
+	if (m_worldAnchorClass.Length() > 0 && !m_worldAnchorApplied)
+		return FALSE;
+	CPlacement3D placement = m_worldAnchorApplied
+		? m_worldAnchorPlacement
+		: pPlayer->GetPlacement();
+	// Separa el fixture del personaje para que la comparación visual permita
+	// distinguir ambas geometrías y sus materiales, incluso con un ancla.
+	placement.pl_PositionVector(1) += 2.0f;
+
+	CEntity* pFixture = NULL;
+	try
+	{
+		pFixture = _pNetwork->ga_World.CreateEntity_t(
+			placement,
+			CTFILENAME("Classes\\ModelHolder3.ecl"),
+			WLD_AUTO_ENTITY_ID,
+			FALSE);
+		pFixture->Initialize(_eeVoid, FALSE);
+		pFixture->SetSkaModel_t(m_worldModel);
+		if (m_worldAnchorClass == "Fog Marker"
+			&& m_worldAnchorSector != NULL)
+		{
+			// Un fixture grande puede tocar sectores vecinos y quedar
+			// encolado primero sin fog. La prueba lo relaciona únicamente
+			// con el sector controlado para reproducir la pareja exacta.
+			pFixture->en_rdSectors.Clear();
+			AddRelationPairTailTail(
+				m_worldAnchorSector->bsc_rsEntities,
+				pFixture->en_rdSectors);
+		}
+		pFixture->SetModelColor(
+			0xFFFFFF00UL | static_cast<UBYTE>(m_worldModelAlpha));
+		INDEX configuredSurfaceCount = 0;
+		if (m_worldModelNormalMapSpecular)
+		{
+			configuredSurfaceCount = EnableNormalMapSpecular(
+				pFixture->GetModelInstance());
+		}
+		CPrintF(
+			"Prueba automatizada: modelo configurado con alfa %d "
+			"y %d superficies NormalMap specular.\n",
+			m_worldModelAlpha,
+			configuredSurfaceCount);
+		m_worldModelFixture = pFixture;
+		m_worldModelSpawnedAt = GetTickCount();
+	}
+	catch (char* error)
+	{
+		if (pFixture != NULL)
+			pFixture->Destroy();
+		CPrintF(
+			"Prueba automatizada: no se pudo crear el modelo: %s\n",
+			error);
+		return TRUE;
+	}
+
+	CPrintF("Prueba automatizada: modelo de mundo creado.\n");
+	return TRUE;
+}
+
+void CClientTestAutomation::TryRemoveWorldModel()
+{
+	if (m_worldModelFixture == NULL || _pNetwork == NULL)
+		return;
+
+	const ULONG elapsed = GetTickCount() - m_worldModelSpawnedAt;
+	if (elapsed
+		< static_cast<ULONG>(m_worldModelLifetimeSeconds) * 1000UL)
+		return;
+
+	_pNetwork->ga_World.DestroyOneEntity(m_worldModelFixture);
+	m_worldModelFixture = NULL;
+	CPrintF(
+		"Prueba automatizada: modelo de mundo retirado tras %d segundos.\n",
+		m_worldModelLifetimeSeconds);
 }
 
 void CClientTestAutomation::ClearPassword()
