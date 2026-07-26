@@ -12,6 +12,7 @@
 
 struct IDirect3DTexture9;
 class CDirectX12Buffer;
+class CDirectX12BloomRenderer;
 class CDirectX12DrawPortCommandBatch;
 class CDirectX12InteropTextureManager;
 class CDirectX12Legacy3DCommandBatch;
@@ -155,6 +156,16 @@ public:
 		UINT minimumSegment,
 		UINT maximumSegment,
 		bool submitLegacy3D);
+	bool RenderBloom(
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12RenderTargetManager* pRenderTargets,
+		CDirectX12UploadManager* pUploadManager,
+		CDirectX12DescriptorHeap* pResourceDescriptors,
+		CDirectX12DescriptorHeap* pSamplerDescriptors,
+		CDirectX12InteropTextureManager* pInteropTextures,
+		IDirect3DTexture9* pSourceTexture,
+		IDirect3DTexture9* pFilterTexture0,
+		IDirect3DTexture9* pFilterTexture1);
 	UINT GetUiPrimitiveCount() const;
 	UINT GetUiSegmentCount() const;
 	UINT GetUiBarrierCount() const;
@@ -185,9 +196,9 @@ private:
 		CDirectX12UploadManager* pUploadManager,
 		CDirectX12DescriptorHeap* pResourceDescriptors,
 		CDirectX12DescriptorHeap* pSamplerDescriptors);
-
 	ID3D12Device* m_pDevice;
 	CDirectX12PipelineCache* m_pPipelineCache;
+	CDirectX12BloomRenderer* m_pBloomRenderer;
 	CDirectX12DrawPortCommandBatch* m_pDrawPortCommands;
 	CDirectX12Legacy3DCommandBatch* m_pLegacy3DCommands;
 	CDirectX12Buffer* m_pVertexBuffer;

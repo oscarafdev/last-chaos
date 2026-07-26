@@ -291,6 +291,9 @@
     <ClCompile Include="Graphics\DirectX12Backend.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\DirectX12BloomRenderer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="Graphics\DirectX12Buffer.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
@@ -4008,6 +4011,9 @@
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12Backend.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12BloomRenderer.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12Buffer.h">

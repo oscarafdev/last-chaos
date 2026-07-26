@@ -8,6 +8,7 @@
 const char* GetDirectX12NativeValidationShader();
 const char* GetDirectX12Textured2DShader();
 const char* GetDirectX12TexturedAlphaTest2DShader();
+const char* GetDirectX12BloomShader();
 const char* GetDirectX12Legacy3DShader();
 const char* GetDirectX12RigidLit3DShader();
 const char* GetDirectX12LegacyMaterial3DShader();

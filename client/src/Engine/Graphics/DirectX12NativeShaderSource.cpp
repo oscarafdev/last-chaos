@@ -86,6 +86,61 @@ const char* GetDirectX12TexturedAlphaTest2DShader()
 		"}\n";
 }
 
+const char* GetDirectX12BloomShader()
+{
+	return
+		"cbuffer BloomState : register(b1) {\n"
+		"  float2 texelSize;\n"
+		"  float2 direction;\n"
+		"  float intensity;\n"
+		"  float threshold;\n"
+		"  float padding;\n"
+		"};\n"
+		"struct VSInput {\n"
+		"  float3 position : POSITION;\n"
+		"  float2 texCoord : TEXCOORD0;\n"
+		"};\n"
+		"struct VSOutput {\n"
+		"  float4 position : SV_POSITION;\n"
+		"  float2 texCoord : TEXCOORD0;\n"
+		"};\n"
+		"VSOutput VSMain(VSInput input) {\n"
+		"  VSOutput output;\n"
+		"  output.position = float4(input.position, 1.0f);\n"
+		"  output.texCoord = input.texCoord;\n"
+		"  return output;\n"
+		"}\n"
+		"Texture2D<float4> sourceTexture : register(t0);\n"
+		"SamplerState sourceSampler : register(s0);\n"
+		"float4 PSDownsample(VSOutput input) : SV_TARGET {\n"
+		"  float3 color = sourceTexture.Sample(\n"
+		"    sourceSampler, input.texCoord).rgb;\n"
+		"  float brightness = max(color.r, max(color.g, color.b));\n"
+		"  float contribution = saturate(\n"
+		"    (brightness - threshold) / max(1.0f - threshold, 0.001f));\n"
+		"  return float4(color * contribution, 1.0f);\n"
+		"}\n"
+		"float4 PSBlur(VSOutput input) : SV_TARGET {\n"
+		"  float2 stepUv = texelSize * direction;\n"
+		"  float3 color = sourceTexture.Sample(\n"
+		"    sourceSampler, input.texCoord).rgb * 0.227027f;\n"
+		"  color += sourceTexture.Sample(sourceSampler,\n"
+		"    input.texCoord + stepUv * 1.384615f).rgb * 0.316216f;\n"
+		"  color += sourceTexture.Sample(sourceSampler,\n"
+		"    input.texCoord - stepUv * 1.384615f).rgb * 0.316216f;\n"
+		"  color += sourceTexture.Sample(sourceSampler,\n"
+		"    input.texCoord + stepUv * 3.230769f).rgb * 0.070270f;\n"
+		"  color += sourceTexture.Sample(sourceSampler,\n"
+		"    input.texCoord - stepUv * 3.230769f).rgb * 0.070270f;\n"
+		"  return float4(color, 1.0f);\n"
+		"}\n"
+		"float4 PSComposite(VSOutput input) : SV_TARGET {\n"
+		"  float3 bloom = sourceTexture.Sample(\n"
+		"    sourceSampler, input.texCoord).rgb;\n"
+		"  return float4(bloom * intensity, 0.0f);\n"
+		"}\n";
+}
+
 const char* GetDirectX12Legacy3DShader()
 {
 	return

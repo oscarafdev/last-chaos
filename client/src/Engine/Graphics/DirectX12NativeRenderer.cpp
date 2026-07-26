@@ -3,6 +3,7 @@
 #include <d3d12.h>
 
 #include <Engine/Base/Console.h>
+#include <Engine/Graphics/DirectX12BloomRenderer.h>
 #include <Engine/Graphics/DirectX12Buffer.h>
 #include <Engine/Graphics/DirectX12DrawPortCommandBatch.h>
 #include <Engine/Graphics/DirectX12InteropTextureManager.h>
@@ -28,6 +29,7 @@ namespace
 CDirectX12NativeRenderer::CDirectX12NativeRenderer()
 	: m_pDevice(NULL)
 	, m_pPipelineCache(NULL)
+	, m_pBloomRenderer(NULL)
 	, m_pDrawPortCommands(NULL)
 	, m_pLegacy3DCommands(NULL)
 	, m_pVertexBuffer(NULL)
@@ -55,6 +57,15 @@ bool CDirectX12NativeRenderer::Initialize(ID3D12Device* pDevice)
 	m_pPipelineCache = new CDirectX12PipelineCache;
 	if (m_pPipelineCache == NULL
 		|| !m_pPipelineCache->Initialize(m_pDevice))
+	{
+		Shutdown();
+		return false;
+	}
+	m_pBloomRenderer = new CDirectX12BloomRenderer;
+	if (m_pBloomRenderer == NULL
+		|| !m_pBloomRenderer->Initialize(
+			m_pDevice,
+			m_pPipelineCache))
 	{
 		Shutdown();
 		return false;
@@ -105,6 +116,8 @@ void CDirectX12NativeRenderer::Shutdown()
 	m_pDrawPortCommands = NULL;
 	delete m_pLegacy3DCommands;
 	m_pLegacy3DCommands = NULL;
+	delete m_pBloomRenderer;
+	m_pBloomRenderer = NULL;
 	delete m_pPipelineCache;
 	m_pPipelineCache = NULL;
 
@@ -619,6 +632,39 @@ bool CDirectX12NativeRenderer::RenderValidationPass(
 	if (!commandStreamSucceeded)
 		ReportNativeFailureOnce("reproduccion de comandos DrawPort");
 	return commandStreamSucceeded;
+}
+
+bool CDirectX12NativeRenderer::RenderBloom(
+	ID3D12GraphicsCommandList* pCommandList,
+	CDirectX12RenderTargetManager* pRenderTargets,
+	CDirectX12UploadManager* pUploadManager,
+	CDirectX12DescriptorHeap* pResourceDescriptors,
+	CDirectX12DescriptorHeap* pSamplerDescriptors,
+	CDirectX12InteropTextureManager* pInteropTextures,
+	IDirect3DTexture9* pSourceTexture,
+	IDirect3DTexture9* pFilterTexture0,
+	IDirect3DTexture9* pFilterTexture1)
+{
+	if (m_pBloomRenderer == NULL
+		|| !EnsureResources(
+			pCommandList,
+			pUploadManager,
+			pResourceDescriptors,
+			pSamplerDescriptors))
+		return false;
+	const bool succeeded = m_pBloomRenderer->Render(
+		pCommandList,
+		pRenderTargets,
+		pInteropTextures,
+		pSourceTexture,
+		pFilterTexture0,
+		pFilterTexture1,
+		m_pVertexBuffer,
+		m_pIndexBuffer,
+		m_samplers[DX12_SAMPLER_LINEAR_CLAMP]);
+	if (!succeeded)
+		ReportNativeFailureOnce("pasadas nativas de bloom");
+	return succeeded;
 }
 
 UINT CDirectX12NativeRenderer::GetUiPrimitiveCount() const

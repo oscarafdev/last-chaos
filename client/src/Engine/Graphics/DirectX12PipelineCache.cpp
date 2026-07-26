@@ -85,6 +85,10 @@ CDirectX12PipelineCache::CDirectX12PipelineCache()
 	, m_pTexturedVertexShader(NULL)
 	, m_pTexturedPixelShader(NULL)
 	, m_pAlphaTestPixelShader(NULL)
+	, m_pBloomVertexShader(NULL)
+	, m_pBloomDownsamplePixelShader(NULL)
+	, m_pBloomBlurPixelShader(NULL)
+	, m_pBloomCompositePixelShader(NULL)
 	, m_pLegacy3DVertexShader(NULL)
 	, m_pLegacy3DPixelShader(NULL)
 	, m_pRigidLit3DVertexShader(NULL)
@@ -145,6 +149,26 @@ void CDirectX12PipelineCache::Shutdown()
 	{
 		m_pAlphaTestPixelShader->Release();
 		m_pAlphaTestPixelShader = NULL;
+	}
+	if (m_pBloomCompositePixelShader != NULL)
+	{
+		m_pBloomCompositePixelShader->Release();
+		m_pBloomCompositePixelShader = NULL;
+	}
+	if (m_pBloomBlurPixelShader != NULL)
+	{
+		m_pBloomBlurPixelShader->Release();
+		m_pBloomBlurPixelShader = NULL;
+	}
+	if (m_pBloomDownsamplePixelShader != NULL)
+	{
+		m_pBloomDownsamplePixelShader->Release();
+		m_pBloomDownsamplePixelShader = NULL;
+	}
+	if (m_pBloomVertexShader != NULL)
+	{
+		m_pBloomVertexShader->Release();
+		m_pBloomVertexShader = NULL;
 	}
 	if (m_pLegacy3DPixelShader != NULL)
 	{
@@ -247,12 +271,43 @@ bool CDirectX12PipelineCache::CompileShaders()
 	const char* pAlphaTestShaderSource =
 		GetDirectX12TexturedAlphaTest2DShader();
 	if (!CompileShader(
-		pAlphaTestShaderSource,
+			pAlphaTestShaderSource,
 		"LastChaosTexturedAlphaTest2D",
 		"PSMain",
 		"ps_5_0",
 		compileFlags,
-		&m_pAlphaTestPixelShader))
+			&m_pAlphaTestPixelShader))
+		return false;
+
+	const char* pBloomShaderSource = GetDirectX12BloomShader();
+	if (!CompileShader(
+			pBloomShaderSource,
+			"LastChaosBloom",
+			"VSMain",
+			"vs_5_0",
+			compileFlags,
+			&m_pBloomVertexShader)
+		|| !CompileShader(
+			pBloomShaderSource,
+			"LastChaosBloom",
+			"PSDownsample",
+			"ps_5_0",
+			compileFlags,
+			&m_pBloomDownsamplePixelShader)
+		|| !CompileShader(
+			pBloomShaderSource,
+			"LastChaosBloom",
+			"PSBlur",
+			"ps_5_0",
+			compileFlags,
+			&m_pBloomBlurPixelShader)
+		|| !CompileShader(
+			pBloomShaderSource,
+			"LastChaosBloom",
+			"PSComposite",
+			"ps_5_0",
+			compileFlags,
+			&m_pBloomCompositePixelShader))
 		return false;
 
 	const char* pLegacy3DShaderSource =
@@ -621,6 +676,18 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		selectedInputCount =
 			sizeof(texturedInputElements) / sizeof(texturedInputElements[0]);
 	}
+	else if (kind == DX12_PIPELINE_BLOOM_DOWNSAMPLE
+		|| kind == DX12_PIPELINE_BLOOM_BLUR
+		|| kind == DX12_PIPELINE_BLOOM_COMPOSITE)
+	{
+		pSelectedVertexShader = m_pBloomVertexShader;
+		pSelectedPixelShader =
+			kind == DX12_PIPELINE_BLOOM_DOWNSAMPLE
+				? m_pBloomDownsamplePixelShader
+				: kind == DX12_PIPELINE_BLOOM_BLUR
+					? m_pBloomBlurPixelShader
+					: m_pBloomCompositePixelShader;
+	}
 	else if (kind == DX12_PIPELINE_TEXTURED_3D_SHADOW
 		|| kind == DX12_PIPELINE_TEXTURED_3D_OVERLAY)
 	{
@@ -790,6 +857,12 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		pName = L"LastChaos D3D12 Textured 2D PSO";
 	else if (kind == DX12_PIPELINE_TEXTURED_ALPHA_TEST_2D)
 		pName = L"LastChaos D3D12 Textured Alpha Test 2D PSO";
+	else if (kind == DX12_PIPELINE_BLOOM_DOWNSAMPLE)
+		pName = L"LastChaos D3D12 Bloom Downsample PSO";
+	else if (kind == DX12_PIPELINE_BLOOM_BLUR)
+		pName = L"LastChaos D3D12 Bloom Blur PSO";
+	else if (kind == DX12_PIPELINE_BLOOM_COMPOSITE)
+		pName = L"LastChaos D3D12 Bloom Composite PSO";
 	else if (kind == DX12_PIPELINE_TEXTURED_3D_SHADOW)
 		pName = L"LastChaos D3D12 Legacy 3D Shadow PSO";
 	else if (kind == DX12_PIPELINE_TEXTURED_3D_OVERLAY)

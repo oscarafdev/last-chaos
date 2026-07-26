@@ -3420,6 +3420,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClCompile Include="GameStageManager\StageSelChar.cpp" />
     <ClCompile Include="GameStageManager\StageSelServer.cpp" />
     <ClCompile Include="Graphics\DirectX12Backend.cpp" />
+    <ClCompile Include="Graphics\DirectX12BloomRenderer.cpp" />
     <ClCompile Include="Graphics\DirectX12Buffer.cpp" />
     <ClCompile Include="Graphics\DirectX12DescriptorHeap.cpp" />
     <ClCompile Include="Graphics\DirectX12DepthBuffer.cpp" />
@@ -8181,6 +8182,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClInclude Include="GameStageManager\StageSelChar.h" />
     <ClInclude Include="GameStageManager\StageSelServer.h" />
     <ClInclude Include="Graphics\DirectX12Backend.h" />
+    <ClInclude Include="Graphics\DirectX12BloomRenderer.h" />
     <ClInclude Include="Graphics\DirectX12Buffer.h" />
     <ClInclude Include="Graphics\DirectX12DescriptorHeap.h" />
     <ClInclude Include="Graphics\DirectX12DepthBuffer.h" />

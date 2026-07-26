@@ -1316,6 +1316,98 @@ void CDirectX12Backend::EndNativeOffscreenTexture()
 	m_nativeOffscreenClearPending = false;
 }
 
+bool CDirectX12Backend::RenderNativeBloom(
+	IDirect3DTexture9* pSourceTexture,
+	IDirect3DTexture9* pFilterTexture0,
+	IDirect3DTexture9* pFilterTexture1)
+{
+	if (!m_frameOpen || !ReadFull3DReplacementMode()
+		|| m_pDevice9 == NULL || m_pNativeRenderer == NULL
+		|| m_pRenderTargets == NULL || m_pInteropTextures == NULL
+		|| pSourceTexture == NULL || pFilterTexture0 == NULL
+		|| pFilterTexture1 == NULL
+		|| m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
+		return false;
+	if (!SubmitPendingLegacy3DForCurrentTarget("aplicar bloom nativo")
+		|| m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
+		return false;
+
+	IDirect3DSurface9* pRenderTarget9 = NULL;
+	HRESULT hr = m_pDevice9->GetRenderTarget(0, &pRenderTarget9);
+	if (FAILED(hr) || pRenderTarget9 == NULL)
+		return false;
+	hr = m_pDevice9->EndScene();
+	if (FAILED(hr))
+	{
+		pRenderTarget9->Release();
+		return false;
+	}
+
+	bool succeeded = AcquireRenderTarget(pRenderTarget9);
+	pRenderTarget9->Release();
+	if (succeeded)
+	{
+		succeeded = m_pNativeRenderer->RenderBloom(
+			m_pCommandList,
+			m_pRenderTargets,
+			m_pUploadManager,
+			m_pResourceDescriptors,
+			m_pSamplerDescriptors,
+			m_pInteropTextures,
+			pSourceTexture,
+			pFilterTexture0,
+			pFilterTexture1);
+	}
+	if (succeeded)
+		succeeded = m_pInteropTextures->PrepareForSubmission(m_pCommandList);
+	if (succeeded)
+		succeeded = m_pRenderTargets->PrepareForSubmission(m_pCommandList);
+	if (succeeded)
+		succeeded = SUCCEEDED(m_pCommandList->Close());
+
+	UINT64 fenceValue = 0;
+	if (succeeded)
+	{
+		ID3D12CommandList* commandLists[] = { m_pCommandList };
+		m_pGraphicsQueue->ExecuteCommandLists(1, commandLists);
+		fenceValue = m_nextFenceValue++;
+		succeeded = SUCCEEDED(
+			m_pGraphicsQueue->Signal(m_pFence, fenceValue));
+		if (succeeded)
+			m_aFrames[m_currentFrame].fenceValue = fenceValue;
+	}
+	if (succeeded)
+	{
+		succeeded = m_pInteropTextures->ReturnToD3D9(
+			m_pFence,
+			fenceValue,
+			false);
+		succeeded = m_pRenderTargets->ReturnToD3D9(
+			m_pFence,
+			fenceValue)
+			&& succeeded;
+	}
+	if (succeeded)
+		succeeded = AdvanceOpenCommandList();
+
+	const HRESULT beginSceneResult = m_pDevice9->BeginScene();
+	succeeded = SUCCEEDED(beginSceneResult) && succeeded;
+	if (succeeded)
+	{
+		static bool nativeBloomReported = false;
+		if (!nativeBloomReported)
+		{
+			CPrintF(
+				"DX12 postproceso: reduccion, blur y composicion "
+				"de bloom nativos activos.\n");
+			AppendValidationLogLine(
+				"DX12 postproceso: bloom completamente nativo activo.\n");
+			nativeBloomReported = true;
+		}
+	}
+	return succeeded;
+}
+
 bool CDirectX12Backend::CopyLegacySurfaceRegion(
 	IDirect3DSurface9* pSource9,
 	const RECT& sourceRect,

@@ -15,6 +15,9 @@ enum DirectX12PipelineKind
 	DX12_PIPELINE_TEXTURED_VALIDATION,
 	DX12_PIPELINE_TEXTURED_2D,
 	DX12_PIPELINE_TEXTURED_ALPHA_TEST_2D,
+	DX12_PIPELINE_BLOOM_DOWNSAMPLE,
+	DX12_PIPELINE_BLOOM_BLUR,
+	DX12_PIPELINE_BLOOM_COMPOSITE,
 	DX12_PIPELINE_TEXTURED_3D_SHADOW,
 	DX12_PIPELINE_TEXTURED_3D_OVERLAY,
 	DX12_PIPELINE_RIGID_LIT_3D_SHADOW,
@@ -70,6 +73,10 @@ private:
 	ID3DBlob* m_pTexturedVertexShader;
 	ID3DBlob* m_pTexturedPixelShader;
 	ID3DBlob* m_pAlphaTestPixelShader;
+	ID3DBlob* m_pBloomVertexShader;
+	ID3DBlob* m_pBloomDownsamplePixelShader;
+	ID3DBlob* m_pBloomBlurPixelShader;
+	ID3DBlob* m_pBloomCompositePixelShader;
 	ID3DBlob* m_pLegacy3DVertexShader;
 	ID3DBlob* m_pLegacy3DPixelShader;
 	ID3DBlob* m_pRigidLit3DVertexShader;

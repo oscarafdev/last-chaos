@@ -81,6 +81,10 @@ public:
 		IDirect3DSurface9* pDestination9,
 		UINT destinationX,
 		UINT destinationY);
+	bool RenderNativeBloom(
+		IDirect3DTexture9* pSourceTexture,
+		IDirect3DTexture9* pFilterTexture0,
+		IDirect3DTexture9* pFilterTexture1);
 	bool AcquireRenderTarget(
 		IDirect3DSurface9* pSurface9,
 		HWND hPresentationWindow = NULL);
