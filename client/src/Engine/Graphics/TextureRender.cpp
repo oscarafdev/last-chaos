@@ -34,6 +34,8 @@ CRenderTexture::CRenderTexture()
 {
 	rt_pSurface = NULL;
 	m_pDepthStencil = NULL;
+	m_bNativeColorTarget = FALSE;
+	m_bNativeColorActive = FALSE;
 }
 
 CRenderTexture::~CRenderTexture()
@@ -43,7 +45,12 @@ CRenderTexture::~CRenderTexture()
 }
 
 // Se agrega el parametro de formato D3D.
-BOOL CRenderTexture::Init(INDEX width, INDEX height, ULONG flag, D3DFORMAT fmt)
+BOOL CRenderTexture::Init(
+	INDEX width,
+	INDEX height,
+	ULONG flag,
+	D3DFORMAT fmt,
+	ERenderTexturePurpose purpose)
 {
 	TRACKTEX_HEAP();
 	
@@ -96,8 +103,15 @@ BOOL CRenderTexture::Init(INDEX width, INDEX height, ULONG flag, D3DFORMAT fmt)
 		{
 			rt_tdTexture.td_ulObject = (ULONG64)pTexture;	// Conserva la textura creada.
 			pTexture->GetSurfaceLevel(0, &rt_pSurface);
-			if (!GetDirectX12Backend().RequiresLegacyOffscreenDepth())
+			if (purpose == RTP_SHADOW_MAP
+				&& !GetDirectX12Backend().RequiresLegacyOffscreenDepth()
+				&& GetDirectX12Backend().RegisterNativeOffscreenTexture(
+					pTexture,
+					width,
+					height,
+					static_cast<INT>(fmt)))
 			{
+				m_bNativeColorTarget = TRUE;
 				static BOOL bNativeDepthReported = FALSE;
 				if (!bNativeDepthReported)
 				{
@@ -136,6 +150,11 @@ void CRenderTexture::Begin()	// SetRenderTarget current
 	{
 		GetDirectX12Backend().InsertDrawPortBarrier(
 			DX12_DRAWPORT_BARRIER_RENDER_TARGET_BEGIN);
+		IDirect3DTexture9* pTexture = reinterpret_cast<IDirect3DTexture9*>(
+			rt_tdTexture.td_ulObject);
+		m_bNativeColorActive = m_bNativeColorTarget
+			&& GetDirectX12Backend().BeginNativeOffscreenTexture(
+				pTexture);
 		GetDirectX12Backend().BeginOffscreenDrawPortScope();
 		IDirect3DDevice9* pDev = _pGfx->gl_pd3d9Device;
 		pDev->GetRenderTarget(0, &m_pOldRenderTarget);
@@ -154,6 +173,8 @@ void CRenderTexture::Clear(COLOR colClear, FLOAT fZVal)
 	} 
 	else if( sam_iGfxAPI==GAT_D3D)
 	{
+		if (m_bNativeColorActive)
+			GetDirectX12Backend().ClearNativeOffscreenTexture(colClear);
 		const DWORD clearFlags = m_pDepthStencil != NULL
 			? D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER
 			: D3DCLEAR_TARGET;
@@ -175,6 +196,11 @@ void CRenderTexture::End()		// SetRenderTarget old
 		// El backend debe reproducir la geometria DX12 mientras la textura
 		// auxiliar y su profundidad siguen siendo el destino activo.
 		GetDirectX12Backend().EndOffscreenDrawPortScope();
+		if (m_bNativeColorActive)
+		{
+			GetDirectX12Backend().EndNativeOffscreenTexture();
+			m_bNativeColorActive = FALSE;
+		}
 		//pDev->SetRenderTarget(m_pOldRenderTarget, m_pOldDepthStencil);
 	    pDev->SetDepthStencilSurface(m_pOldDepthStencil);
 	    pDev->SetRenderTarget(0, m_pOldRenderTarget);

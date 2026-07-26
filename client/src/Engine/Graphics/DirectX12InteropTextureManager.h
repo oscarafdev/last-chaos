@@ -5,11 +5,13 @@
 #endif
 
 #include <windows.h>
+#include <d3d9.h>
 #include <d3d12.h>
 
 struct IDirect3DDevice9;
 struct IDirect3DTexture9;
 class CDirectX12DescriptorHeap;
+class CDirectX12Texture;
 class CDirectX12UploadManager;
 struct DirectX12InteropTextureState;
 
@@ -31,6 +33,13 @@ public:
 	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
 	bool BeginFrame(UINT frameIndex);
 	void ForgetTexture(IDirect3DTexture9* pTexture9);
+	bool RegisterRenderTarget(
+		IDirect3DTexture9* pTexture9,
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat);
+	CDirectX12Texture* FindRenderTarget(
+		IDirect3DTexture9* pTexture9) const;
 
 	bool Acquire(
 		IDirect3DTexture9* pTexture9,
@@ -51,6 +60,7 @@ private:
 
 	void ReleaseFrame(UINT frameIndex);
 	void ReleaseManagedTextures();
+	void ReleaseRenderTargets();
 
 	ID3D12Device* m_pDevice;
 	ID3D12CommandQueue* m_pGraphicsQueue;

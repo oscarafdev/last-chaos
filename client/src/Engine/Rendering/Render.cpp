@@ -1308,7 +1308,12 @@ void CRenderer::RenderShadowToBrushPolygon(const CPlacement3D &plEye)
 			_prtShadow = NULL;
 		}
 		_prtShadow = new CRenderTexture();
-		_prtShadow->Init(SHADOWTEXTURESIZE, SHADOWTEXTURESIZE);
+		_prtShadow->Init(
+			SHADOWTEXTURESIZE,
+			SHADOWTEXTURESIZE,
+			TEX_32BIT,
+			D3DFMT_A8R8G8B8,
+			RTP_SHADOW_MAP);
 		_bInitShadowTexture = TRUE;
 	}
 	
@@ -1625,7 +1630,12 @@ void CRenderer::RenderSkaModelShadowToTerrain(CTerrain *ptrTerrain, const CPlace
 				_prtShadow = NULL;
 			}
 			_prtShadow = new CRenderTexture();
-			_prtShadow->Init(SHADOWTEXTURESIZE, SHADOWTEXTURESIZE);
+			_prtShadow->Init(
+			SHADOWTEXTURESIZE,
+			SHADOWTEXTURESIZE,
+			TEX_32BIT,
+			D3DFMT_A8R8G8B8,
+			RTP_SHADOW_MAP);
 			_bInitShadowTexture = TRUE;
 		}
 		

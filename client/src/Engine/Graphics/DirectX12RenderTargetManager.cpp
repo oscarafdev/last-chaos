@@ -3,6 +3,7 @@
 #include <d3d9on12.h>
 
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
+#include <Engine/Graphics/DirectX12Texture.h>
 
 CDirectX12RenderTargetManager::CDirectX12RenderTargetManager()
 	: m_pDevice(NULL)
@@ -14,12 +15,14 @@ CDirectX12RenderTargetManager::CDirectX12RenderTargetManager()
 	, m_pDepthSurface9(NULL)
 	, m_pResource12(NULL)
 	, m_pDepthResource12(NULL)
+	, m_pNativeTexture(NULL)
 	, m_rtvDescriptorSize(0)
 	, m_dsvDescriptorSize(0)
 	, m_currentFrame(0)
 	, m_currentSubmission(0)
 	, m_isAcquired(false)
 	, m_isDepthAcquired(false)
+	, m_isNative(false)
 {
 }
 
@@ -101,7 +104,7 @@ bool CDirectX12RenderTargetManager::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 
 void CDirectX12RenderTargetManager::Shutdown()
 {
-	if (m_isAcquired && m_pDevice9On12 != NULL)
+	if (m_isAcquired && !m_isNative && m_pDevice9On12 != NULL)
 	{
 		if (m_isDepthAcquired)
 			m_pDevice9On12->ReturnUnderlyingResource(
@@ -174,6 +177,7 @@ bool CDirectX12RenderTargetManager::Acquire(
 	m_currentFrame = frameIndex;
 	m_currentSubmission = submissionIndex;
 	m_isAcquired = true;
+	m_isNative = false;
 
 	const D3D12_RESOURCE_DESC resourceDesc = m_pResource12->GetDesc();
 	if (resourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
@@ -265,16 +269,69 @@ bool CDirectX12RenderTargetManager::Acquire(
 	return true;
 }
 
+bool CDirectX12RenderTargetManager::AcquireNative(
+	CDirectX12Texture* pTexture,
+	ID3D12GraphicsCommandList* pCommandList,
+	UINT frameIndex,
+	UINT submissionIndex,
+	bool clearColor,
+	const FLOAT clearValue[4])
+{
+	if (pTexture == NULL || pTexture->GetResource() == NULL
+		|| pCommandList == NULL || m_pDevice == NULL
+		|| m_isAcquired || frameIndex >= FRAME_COUNT
+		|| submissionIndex >= MAX_SUBMISSIONS_PER_FRAME)
+		return false;
+
+	ID3D12Resource* pResource = pTexture->GetResource();
+	const D3D12_RESOURCE_DESC resourceDesc = pResource->GetDesc();
+	if (resourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
+		|| !(resourceDesc.Flags & D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET))
+		return false;
+
+	pResource->AddRef();
+	m_pResource12 = pResource;
+	m_pNativeTexture = pTexture;
+	m_currentFrame = frameIndex;
+	m_currentSubmission = submissionIndex;
+	m_isAcquired = true;
+	m_isNative = true;
+
+	m_pDevice->CreateRenderTargetView(
+		m_pResource12,
+		NULL,
+		GetCurrentView());
+	m_pNativeTexture->Transition(
+		pCommandList,
+		D3D12_RESOURCE_STATE_RENDER_TARGET);
+	if (clearColor && clearValue != NULL)
+		pCommandList->ClearRenderTargetView(
+			GetCurrentView(),
+			clearValue,
+			0,
+			NULL);
+	return true;
+}
+
 bool CDirectX12RenderTargetManager::PrepareForSubmission(
 	ID3D12GraphicsCommandList* pCommandList)
 {
 	if (!m_isAcquired || pCommandList == NULL)
 		return false;
 
-	Transition(
-		pCommandList,
-		D3D12_RESOURCE_STATE_RENDER_TARGET,
-		D3D12_RESOURCE_STATE_COMMON);
+	if (m_isNative && m_pNativeTexture != NULL)
+	{
+		m_pNativeTexture->Transition(
+			pCommandList,
+			D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
+	}
+	else
+	{
+		Transition(
+			pCommandList,
+			D3D12_RESOURCE_STATE_RENDER_TARGET,
+			D3D12_RESOURCE_STATE_COMMON);
+	}
 	if (m_isDepthAcquired)
 	{
 		D3D12_RESOURCE_BARRIER depthBarrier;
@@ -298,6 +355,11 @@ bool CDirectX12RenderTargetManager::ReturnToD3D9(
 {
 	if (!m_isAcquired || pFence == NULL || fenceValue == 0)
 		return false;
+	if (m_isNative)
+	{
+		ReleaseAcquiredReferences();
+		return true;
+	}
 
 	ID3D12Fence* fences[] = { pFence };
 	UINT64 fenceValues[] = { fenceValue };
@@ -329,6 +391,11 @@ bool CDirectX12RenderTargetManager::IsAcquired() const
 bool CDirectX12RenderTargetManager::HasAcquiredDepth() const
 {
 	return m_isDepthAcquired;
+}
+
+bool CDirectX12RenderTargetManager::IsNativeRenderTarget() const
+{
+	return m_isAcquired && m_isNative && m_pNativeTexture != NULL;
 }
 
 D3D12_CPU_DESCRIPTOR_HANDLE CDirectX12RenderTargetManager::GetCurrentView() const
@@ -391,6 +458,8 @@ void CDirectX12RenderTargetManager::ReleaseAcquiredReferences()
 	}
 	m_isAcquired = false;
 	m_isDepthAcquired = false;
+	m_pNativeTexture = NULL;
+	m_isNative = false;
 }
 
 void CDirectX12RenderTargetManager::Transition(

@@ -28,6 +28,14 @@ public:
 		DXGI_FORMAT format,
 		UINT componentMapping =
 			D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING);
+	bool CreateRenderTarget2D(
+		ID3D12Device* pDevice,
+		CDirectX12DescriptorHeap* pDescriptorHeap,
+		UINT width,
+		UINT height,
+		DXGI_FORMAT format,
+		UINT componentMapping =
+			D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING);
 	void Shutdown();
 
 	bool Upload(
@@ -36,6 +44,9 @@ public:
 		UINT firstMip,
 		UINT mipCount,
 		const DirectX12SubresourceData* pSubresources);
+	void Transition(
+		ID3D12GraphicsCommandList* pCommandList,
+		D3D12_RESOURCE_STATES newState);
 
 	ID3D12Resource* GetResource() const;
 	D3D12_GPU_DESCRIPTOR_HANDLE GetShaderResourceView() const;
@@ -49,6 +60,18 @@ public:
 private:
 	CDirectX12Texture(const CDirectX12Texture&);
 	CDirectX12Texture& operator=(const CDirectX12Texture&);
+	bool Create2DResource(
+		ID3D12Device* pDevice,
+		CDirectX12DescriptorHeap* pDescriptorHeap,
+		UINT width,
+		UINT height,
+		UINT16 mipLevels,
+		DXGI_FORMAT format,
+		UINT componentMapping,
+		D3D12_RESOURCE_FLAGS flags,
+		D3D12_RESOURCE_STATES initialState,
+		const D3D12_CLEAR_VALUE* pClearValue,
+		const wchar_t* pDebugName);
 
 	ID3D12Resource* m_pResource;
 	CDirectX12DescriptorHeap* m_pDescriptorHeap;

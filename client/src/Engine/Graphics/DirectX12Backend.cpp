@@ -166,17 +166,10 @@ namespace
 			|| HasWorldSizedLegacy3DBatch(pRenderer);
 	}
 
-	void AppendLegacy3DValidationLog(
-		UINT capturedDrawCount,
-		UINT rejectedDrawCount,
-		UINT triangleCount,
-		const UINT* pReasons,
-		UINT reasonCount,
-		UINT64 topVertexShaderFingerprint,
-		UINT topVertexShaderDrawCount,
-		UINT topVertexShaderTriangleCount,
-		bool overlay)
+	void AppendValidationLogLine(const char* pMessage)
 	{
+		if (pMessage == NULL || pMessage[0] == '\0')
+			return;
 		char path[MAX_PATH] = "";
 		const DWORD pathLength = GetEnvironmentVariableA(
 			"LASTCHAOS_DX12_VALIDATION_LOG",
@@ -196,6 +189,27 @@ namespace
 		if (hFile == INVALID_HANDLE_VALUE)
 			return;
 
+		DWORD written = 0;
+		WriteFile(
+			hFile,
+			pMessage,
+			static_cast<DWORD>(strlen(pMessage)),
+			&written,
+			NULL);
+		CloseHandle(hFile);
+	}
+
+	void AppendLegacy3DValidationLog(
+		UINT capturedDrawCount,
+		UINT rejectedDrawCount,
+		UINT triangleCount,
+		const UINT* pReasons,
+		UINT reasonCount,
+		UINT64 topVertexShaderFingerprint,
+		UINT topVertexShaderDrawCount,
+		UINT topVertexShaderTriangleCount,
+		bool overlay)
+	{
 		char message[512];
 		const int messageLength = _snprintf_s(
 			message,
@@ -227,16 +241,7 @@ namespace
 			topVertexShaderDrawCount,
 			topVertexShaderTriangleCount);
 		if (messageLength > 0)
-		{
-			DWORD written = 0;
-			WriteFile(
-				hFile,
-				message,
-				static_cast<DWORD>(messageLength),
-				&written,
-				NULL);
-		}
-		CloseHandle(hFile);
+			AppendValidationLogLine(message);
 	}
 }
 
@@ -271,6 +276,8 @@ CDirectX12Backend::CDirectX12Backend()
 	, m_partialSubmissionCapacityReported(false)
 	, m_uiScopeDepth(0)
 	, m_offscreenDrawPortDepth(0)
+	, m_pNativeOffscreenTexture9(NULL)
+	, m_nativeOffscreenClearPending(false)
 	, m_suppressedLegacyDrawCount(0)
 	, m_fallbackLegacyDrawCount(0)
 	, m_lastReportedSuppressedLegacyDrawCount(static_cast<UINT>(-1))
@@ -290,6 +297,9 @@ CDirectX12Backend::CDirectX12Backend()
 	, m_lastReportedLegacy3DTopVertexShaderTriangleCount(
 		static_cast<UINT>(-1))
 {
+	ZeroMemory(
+		m_nativeOffscreenClearColor,
+		sizeof(m_nativeOffscreenClearColor));
 	for (UINT iReason = 0; iReason < 12; ++iReason)
 	{
 		m_lastReportedLegacy3DRejectionReasons[iReason] =
@@ -692,6 +702,8 @@ bool CDirectX12Backend::BeginFrame()
 	m_partialSubmissionCapacityReported = false;
 	m_uiScopeDepth = 0;
 	m_offscreenDrawPortDepth = 0;
+	m_pNativeOffscreenTexture9 = NULL;
+	m_nativeOffscreenClearPending = false;
 	m_suppressedLegacyDrawCount = 0;
 	m_fallbackLegacyDrawCount = 0;
 	m_legacy3DDepthAvailable = HasLegacy3DDepthSurface();
@@ -1243,10 +1255,91 @@ void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
 		m_pInteropTextures->ForgetTexture(pTexture9);
 }
 
+bool CDirectX12Backend::RegisterNativeOffscreenTexture(
+	IDirect3DTexture9* pTexture9,
+	UINT width,
+	UINT height,
+	INT legacyFormat)
+{
+	return ReadFull3DReplacementMode()
+		&& m_pInteropTextures != NULL
+		&& m_pInteropTextures->RegisterRenderTarget(
+			pTexture9,
+			width,
+			height,
+			static_cast<D3DFORMAT>(legacyFormat));
+}
+
+bool CDirectX12Backend::BeginNativeOffscreenTexture(
+	IDirect3DTexture9* pTexture9)
+{
+	if (!ReadFull3DReplacementMode()
+		|| m_pInteropTextures == NULL
+		|| m_pInteropTextures->FindRenderTarget(pTexture9) == NULL
+		|| m_pNativeOffscreenTexture9 != NULL)
+		return false;
+
+	m_pNativeOffscreenTexture9 = pTexture9;
+	m_nativeOffscreenClearPending = false;
+	static bool nativeColorReported = false;
+	if (!nativeColorReported)
+	{
+		CPrintF(
+			"DX12 offscreen: color auxiliar administrado por "
+			"un recurso RTV/SRV nativo.\n");
+		AppendValidationLogLine(
+			"DX12 offscreen: color auxiliar RTV/SRV nativo activo.\n");
+		nativeColorReported = true;
+	}
+	return true;
+}
+
+void CDirectX12Backend::ClearNativeOffscreenTexture(ULONG color)
+{
+	if (m_pNativeOffscreenTexture9 == NULL)
+		return;
+	const FLOAT colorScale = 1.0f / 255.0f;
+	m_nativeOffscreenClearColor[0] =
+		static_cast<FLOAT>((color >> 16) & 0xFF) * colorScale;
+	m_nativeOffscreenClearColor[1] =
+		static_cast<FLOAT>((color >> 8) & 0xFF) * colorScale;
+	m_nativeOffscreenClearColor[2] =
+		static_cast<FLOAT>(color & 0xFF) * colorScale;
+	m_nativeOffscreenClearColor[3] =
+		static_cast<FLOAT>((color >> 24) & 0xFF) * colorScale;
+	m_nativeOffscreenClearPending = true;
+}
+
+void CDirectX12Backend::EndNativeOffscreenTexture()
+{
+	m_pNativeOffscreenTexture9 = NULL;
+	m_nativeOffscreenClearPending = false;
+}
+
 bool CDirectX12Backend::AcquireRenderTarget(
 	IDirect3DSurface9* pSurface9,
 	HWND hPresentationWindow)
 {
+	if (m_pNativeOffscreenTexture9 != NULL
+		&& m_pInteropTextures != NULL
+		&& m_pRenderTargets != NULL)
+	{
+		CDirectX12Texture* pNativeTexture =
+			m_pInteropTextures->FindRenderTarget(
+				m_pNativeOffscreenTexture9);
+		const bool acquired = pNativeTexture != NULL
+			&& m_pRenderTargets->AcquireNative(
+				pNativeTexture,
+				m_pCommandList,
+				m_currentFrame,
+				m_currentSubmission,
+				m_nativeOffscreenClearPending,
+				m_nativeOffscreenClearColor);
+		if (acquired)
+			m_nativeOffscreenClearPending = false;
+		return acquired;
+	}
+
 	IDirect3DSurface9* pDepthSurface9 = NULL;
 	if (m_pDevice9 != NULL)
 		m_pDevice9->GetDepthStencilSurface(&pDepthSurface9);

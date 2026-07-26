@@ -197,8 +197,14 @@ ENGINE_API extern void ProcessScript_t( const CTFileName &inFileName);
 
 
 /*
- * Render-to-texture class
+ * Clase para renderizar a una textura.
  */
+
+enum ERenderTexturePurpose
+{
+	RTP_GENERIC,
+	RTP_SHADOW_MAP
+};
 
 //(Add CRenderTexture class for Render to Texture)(0.1)
 class ENGINE_API CRenderTexture
@@ -207,22 +213,28 @@ public:
 	CRenderTexture();
 	~CRenderTexture();
 
-	// sehan D3DFORMAT fmt = D3DFMT_A8R8G8B8 // sehan end
-	BOOL Init(INDEX width, INDEX height, ULONG flag = TEX_32BIT, D3DFORMAT fmt = D3DFMT_A8R8G8B8);
-	void Begin();	// SetRenderTarget current
-	// Must be call this func in begin-end block
+	BOOL Init(
+		INDEX width,
+		INDEX height,
+		ULONG flag = TEX_32BIT,
+		D3DFORMAT fmt = D3DFMT_A8R8G8B8,
+		ERenderTexturePurpose purpose = RTP_GENERIC);
+	void Begin();	// Establece el destino de renderizado actual.
+	// Debe llamarse dentro del bloque Begin-End.
 	void Clear(COLOR colClear=0xFFFFFFFF, FLOAT fZVal=ZBUF_BACK);
-	void End();		// SetRenderTarget old
+	void End();		// Restaura el destino de renderizado anterior.
 
 	//
-	IDirect3DSurface9 *rt_pSurface;	// IDirect3DSurface8* in IDirect3DTexture8
+	IDirect3DSurface9 *rt_pSurface;
 	CTextureData rt_tdTexture;
 
 protected:
-	//begin, end block
+	// Estado conservado durante el bloque Begin-End.
 	IDirect3DSurface9 *m_pOldRenderTarget;
 	IDirect3DSurface9 *m_pOldDepthStencil;
 	IDirect3DSurface9 *m_pDepthStencil;
+	BOOL m_bNativeColorTarget;
+	BOOL m_bNativeColorActive;
 	BOOL m_bOldZEnable;
 };
 //(Add CRenderTexture class for Render to Texture)(0.1)

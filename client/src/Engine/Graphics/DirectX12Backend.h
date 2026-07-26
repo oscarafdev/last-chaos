@@ -67,6 +67,14 @@ public:
 	bool WaitForGpu();
 	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
 	void ForgetLegacyTexture(IDirect3DTexture9* pTexture9);
+	bool RegisterNativeOffscreenTexture(
+		IDirect3DTexture9* pTexture9,
+		UINT width,
+		UINT height,
+		INT legacyFormat);
+	bool BeginNativeOffscreenTexture(IDirect3DTexture9* pTexture9);
+	void ClearNativeOffscreenTexture(ULONG color);
+	void EndNativeOffscreenTexture();
 	bool AcquireRenderTarget(
 		IDirect3DSurface9* pSurface9,
 		HWND hPresentationWindow = NULL);
@@ -237,6 +245,9 @@ private:
 	bool m_partialSubmissionCapacityReported;
 	UINT m_uiScopeDepth;
 	UINT m_offscreenDrawPortDepth;
+	IDirect3DTexture9* m_pNativeOffscreenTexture9;
+	bool m_nativeOffscreenClearPending;
+	FLOAT m_nativeOffscreenClearColor[4];
 	UINT m_suppressedLegacyDrawCount;
 	UINT m_fallbackLegacyDrawCount;
 	UINT m_lastReportedSuppressedLegacyDrawCount;

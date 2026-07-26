@@ -1539,6 +1539,11 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		vertexShaderFingerprint == RIGID_LIT_VERTEX_SHADER_FAMILY;
 	const bool rigidLitPixel =
 		pixelShaderFingerprint == RIGID_LIT_PIXEL_SHADER_FAMILY;
+	const bool fixedProjectiveDraw =
+		projectiveMapping && !usesVertexProgram && !usesPixelProgram;
+	// Las sombras proyectadas consumen el render target nativo mediante la
+	// ruta fixed-function. Esta pareja no tiene fingerprints de shader, pero
+	// su estado y su generacion de coordenadas se traducen explicitamente.
 	DirectX12LegacyShaderFamily shaderFamily;
 	const bool knownShaderFamily = GetDirectX12LegacyShaderFamily(
 		vertexShaderFingerprint,
@@ -1588,7 +1593,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	// con una traducción incompleta de sus constantes.
 	if (ReadFullReplacementMode()
 		&& !replacementFamilySelected
-		&& !shaderFamily.replacementValidated)
+		&& !shaderFamily.replacementValidated
+		&& !fixedProjectiveDraw)
 		return false;
 	if (ReadFullReplacementMode()
 		&& replacementVertexFamilySelected
@@ -1617,7 +1623,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		reason = REJECT_VERTEX_PROGRAM;
 	else if (usesPixelProgram && !knownShaderFamily)
 		reason = REJECT_PIXEL_PROGRAM;
-	else if (projectiveMapping) reason = REJECT_PROJECTIVE_MAPPING;
+	else if (projectiveMapping && !fixedProjectiveDraw)
+		reason = REJECT_PROJECTIVE_MAPPING;
 	else if (texturePassCount > 4) reason = REJECT_TEXTURE_PASS_COUNT;
 	else if (!dynamicBuffer
 		&& (!m_pState->staticPositionSelected
@@ -1987,7 +1994,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	if (ReadFullReplacementMode()
 		&& fixedFunctionDraw
 		&& fixedFunctionCaptureMode == FIXED_FUNCTION_CAPTURE_OPAQUE
-		&& zWrite == FALSE)
+		&& zWrite == FALSE
+		&& !fixedProjectiveDraw)
 	{
 		++m_pState->rejectedDrawCount;
 		++m_pState->rejectedReasons[REJECT_FIXED_TRANSPARENT_PASS];
@@ -2035,10 +2043,16 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				fixedTexCoordIndex[textureUnit] & 0xFFFF0000UL;
 			const UINT sourceTexCoord =
 				fixedTexCoordIndex[textureUnit] & 0x0000FFFFUL;
-			if (coordinateGeneration != D3DTSS_TCI_PASSTHRU
-				|| sourceTexCoord >= 4
-				|| m_pState->texCoords[sourceTexCoord].size()
-					!= static_cast<size_t>(vertexCount) * 2)
+			const bool passThrough =
+				coordinateGeneration == D3DTSS_TCI_PASSTHRU;
+			const bool cameraSpacePosition =
+				coordinateGeneration
+					== D3DTSS_TCI_CAMERASPACEPOSITION;
+			if ((!passThrough && !cameraSpacePosition)
+				|| (passThrough
+					&& (sourceTexCoord >= 4
+						|| m_pState->texCoords[sourceTexCoord].size()
+							!= static_cast<size_t>(vertexCount) * 2)))
 			{
 				++m_pState->rejectedDrawCount;
 				++m_pState->rejectedReasons[
@@ -2112,21 +2126,33 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 					break;
 				const UINT sourceTexCoord =
 					fixedTexCoordIndex[textureUnit] & 0x0000FFFFUL;
-				const std::vector<FLOAT>& sourceCoordinates =
-					m_pState->texCoords[sourceTexCoord];
-				FLOAT transformedU =
-					sourceCoordinates[sourceVertexIndex * 2 + 0];
-				FLOAT transformedV =
-					sourceCoordinates[sourceVertexIndex * 2 + 1];
+				const DWORD coordinateGeneration =
+					fixedTexCoordIndex[textureUnit] & 0xFFFF0000UL;
+				D3DXVECTOR4 inputCoordinate;
+				if (coordinateGeneration
+					== D3DTSS_TCI_CAMERASPACEPOSITION)
+				{
+					D3DXVec3Transform(
+						&inputCoordinate,
+						&source,
+						&worldView);
+				}
+				else
+				{
+					const std::vector<FLOAT>& sourceCoordinates =
+						m_pState->texCoords[sourceTexCoord];
+					inputCoordinate = D3DXVECTOR4(
+						sourceCoordinates[sourceVertexIndex * 2 + 0],
+						sourceCoordinates[sourceVertexIndex * 2 + 1],
+						0.0f,
+						1.0f);
+				}
+				FLOAT transformedU = inputCoordinate.x;
+				FLOAT transformedV = inputCoordinate.y;
 				const DWORD transformFlags =
 					fixedTextureTransformFlags[textureUnit];
 				if ((transformFlags & 0xFFUL) != D3DTTFF_DISABLE)
 				{
-					const D3DXVECTOR4 inputCoordinate(
-						transformedU,
-						transformedV,
-						0.0f,
-						1.0f);
 					D3DXVECTOR4 outputCoordinate;
 					D3DXVec4Transform(
 						&outputCoordinate,
@@ -2735,10 +2761,15 @@ bool CDirectX12Legacy3DCommandBatch::RenderShadowPass(
 	const D3D12_RESOURCE_DESC targetDesc =
 		pRenderTargets->GetCurrentResource()->GetDesc();
 	const bool overlay = ReadOverlayComparisonMode();
+	const bool nativeOffscreen =
+		pRenderTargets->IsNativeRenderTarget();
+	const bool writeColor = overlay || nativeOffscreen;
 	// El inventario debe limitarse a capturar y clasificar comandos. Aunque el
-	// PSO de sombra no escriba color, abrir una pasada DX12 sobre el recurso
-	// compartido puede reemplazar segmentos D3D9 todavía no compuestos.
-	if (!overlay)
+	// PSO de diagnostico no escriba color, abrir una pasada DX12 sobre el
+	// recurso compartido puede reemplazar segmentos D3D9 aun no compuestos.
+	// El mapa nativo, en cambio, reproduce Shadow y NoShadow para generar la
+	// silueta que posteriormente se proyecta sobre el mundo.
+	if (!writeColor)
 		return true;
 	const bool useInteropDepth =
 		overlay && pRenderTargets->HasAcquiredDepth();
@@ -2791,14 +2822,14 @@ bool CDirectX12Legacy3DCommandBatch::RenderShadowPass(
 		ID3D12PipelineState* pPipeline =
 			m_pPipelineCache->GetPipelineState(
 				range.genericFamily
-					? (overlay
+					? (writeColor
 						? DX12_PIPELINE_LEGACY_MATERIAL_3D_OVERLAY
 						: DX12_PIPELINE_LEGACY_MATERIAL_3D_SHADOW)
 					: range.rigidLit
-					? (overlay
+					? (writeColor
 						? DX12_PIPELINE_RIGID_LIT_3D_OVERLAY
 						: DX12_PIPELINE_RIGID_LIT_3D_SHADOW)
-					: (overlay
+					: (writeColor
 						? DX12_PIPELINE_TEXTURED_3D_OVERLAY
 						: DX12_PIPELINE_TEXTURED_3D_SHADOW),
 				targetDesc.Format,
@@ -2829,10 +2860,9 @@ bool CDirectX12Legacy3DCommandBatch::RenderShadowPass(
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView1 = fallbackTexture;
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView2 = fallbackTexture;
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView3 = fallbackTexture;
-		// El pase de sombra no escribe color y no necesita duplicar ni subir
-		// las texturas administradas del mundo. La textura real se adquiere
-		// solamente para la comparacion visual.
-		if (overlay && range.pTexture != NULL
+		// El diagnostico de profundidad no necesita texturas. La comparacion
+		// visual y el mapa nativo si reproducen el pixel shader completo.
+		if (writeColor && range.pTexture != NULL
 			&& !pTextures->Acquire(
 				range.pTexture,
 				pCommandList,
@@ -2841,7 +2871,7 @@ bool CDirectX12Legacy3DCommandBatch::RenderShadowPass(
 			return false;
 		pCommandList->SetGraphicsRootDescriptorTable(0, textureView);
 		if ((range.rigidLit || range.genericFamily)
-			&& overlay && range.pTexture1 != NULL
+			&& writeColor && range.pTexture1 != NULL
 			&& !pTextures->Acquire(
 				range.pTexture1,
 				pCommandList,
@@ -2857,14 +2887,14 @@ bool CDirectX12Legacy3DCommandBatch::RenderShadowPass(
 				range.pixelShaderConstants,
 				0);
 		}
-		if (range.genericFamily && overlay && range.pTexture2 != NULL
+		if (range.genericFamily && writeColor && range.pTexture2 != NULL
 			&& !pTextures->Acquire(
 				range.pTexture2,
 				pCommandList,
 				pUploadManager,
 				&textureView2))
 			return false;
-		if (range.genericFamily && overlay && range.pTexture3 != NULL
+		if (range.genericFamily && writeColor && range.pTexture3 != NULL
 			&& !pTextures->Acquire(
 				range.pTexture3,
 				pCommandList,

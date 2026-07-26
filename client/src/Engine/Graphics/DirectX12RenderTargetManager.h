@@ -10,6 +10,7 @@
 struct IDirect3DDevice9;
 struct IDirect3DDevice9On12;
 struct IDirect3DSurface9;
+class CDirectX12Texture;
 
 class CDirectX12RenderTargetManager
 {
@@ -33,11 +34,19 @@ public:
 		ID3D12GraphicsCommandList* pCommandList,
 		UINT frameIndex,
 		UINT submissionIndex);
+	bool AcquireNative(
+		CDirectX12Texture* pTexture,
+		ID3D12GraphicsCommandList* pCommandList,
+		UINT frameIndex,
+		UINT submissionIndex,
+		bool clearColor,
+		const FLOAT clearValue[4]);
 	bool PrepareForSubmission(ID3D12GraphicsCommandList* pCommandList);
 	bool ReturnToD3D9(ID3D12Fence* pFence, UINT64 fenceValue);
 
 	bool IsAcquired() const;
 	bool HasAcquiredDepth() const;
+	bool IsNativeRenderTarget() const;
 	D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentView() const;
 	D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentDepthView() const;
 	ID3D12Resource* GetCurrentResource() const;
@@ -62,12 +71,14 @@ private:
 	IDirect3DSurface9* m_pDepthSurface9;
 	ID3D12Resource* m_pResource12;
 	ID3D12Resource* m_pDepthResource12;
+	CDirectX12Texture* m_pNativeTexture;
 	UINT m_rtvDescriptorSize;
 	UINT m_dsvDescriptorSize;
 	UINT m_currentFrame;
 	UINT m_currentSubmission;
 	bool m_isAcquired;
 	bool m_isDepthAcquired;
+	bool m_isNative;
 };
 
 #endif

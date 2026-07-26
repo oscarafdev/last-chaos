@@ -27,6 +27,12 @@ namespace
 		CDirectX12Texture* pNativeTexture;
 	};
 
+	struct NativeRenderTextureEntry
+	{
+		IDirect3DTexture9* pTexture9;
+		CDirectX12Texture* pNativeTexture;
+	};
+
 	void Transition(
 		ID3D12GraphicsCommandList* pCommandList,
 		ID3D12Resource* pResource,
@@ -57,6 +63,7 @@ struct DirectX12InteropTextureState
 	std::vector<InteropTextureEntry> frames[
 		CDirectX12InteropTextureManager::FRAME_COUNT];
 	std::vector<ManagedTextureEntry> managedTextures;
+	std::vector<NativeRenderTextureEntry> renderTextures;
 };
 
 CDirectX12InteropTextureManager::CDirectX12InteropTextureManager()
@@ -107,6 +114,7 @@ void CDirectX12InteropTextureManager::Shutdown()
 	for (UINT iFrame = 0; iFrame < FRAME_COUNT; ++iFrame)
 		ReleaseFrame(iFrame);
 	ReleaseManagedTextures();
+	ReleaseRenderTargets();
 	delete m_pState;
 	m_pState = NULL;
 
@@ -138,6 +146,7 @@ bool CDirectX12InteropTextureManager::AttachD3D9Device(
 		return false;
 
 	ReleaseManagedTextures();
+	ReleaseRenderTargets();
 	if (m_pDevice9On12 != NULL)
 	{
 		m_pDevice9On12->Release();
@@ -183,6 +192,80 @@ void CDirectX12InteropTextureManager::ForgetTexture(
 		m_pState->managedTextures.erase(
 			m_pState->managedTextures.begin() + iEntry);
 	}
+	for (size_t iEntry = 0;
+		iEntry < m_pState->renderTextures.size();)
+	{
+		NativeRenderTextureEntry& entry =
+			m_pState->renderTextures[iEntry];
+		if (entry.pTexture9 != pTexture9)
+		{
+			++iEntry;
+			continue;
+		}
+		delete entry.pNativeTexture;
+		entry.pNativeTexture = NULL;
+		entry.pTexture9->Release();
+		entry.pTexture9 = NULL;
+		m_pState->renderTextures.erase(
+			m_pState->renderTextures.begin() + iEntry);
+	}
+}
+
+bool CDirectX12InteropTextureManager::RegisterRenderTarget(
+	IDirect3DTexture9* pTexture9,
+	UINT width,
+	UINT height,
+	D3DFORMAT legacyFormat)
+{
+	if (m_pState == NULL || pTexture9 == NULL || m_pDevice == NULL
+		|| m_pDescriptors == NULL)
+		return false;
+	if (FindRenderTarget(pTexture9) != NULL)
+		return true;
+
+	DirectX12TextureFormatInfo formatInfo;
+	if (!GetDirectX12TextureFormat(legacyFormat, &formatInfo)
+		|| formatInfo.conversion != DX12_TEXTURE_CONVERSION_NONE)
+		return false;
+
+	CDirectX12Texture* pNativeTexture = new CDirectX12Texture;
+	if (pNativeTexture == NULL
+		|| !pNativeTexture->CreateRenderTarget2D(
+			m_pDevice,
+			m_pDescriptors,
+			width,
+			height,
+			formatInfo.format,
+			formatInfo.componentMapping))
+	{
+		delete pNativeTexture;
+		return false;
+	}
+
+	NativeRenderTextureEntry entry;
+	pTexture9->AddRef();
+	entry.pTexture9 = pTexture9;
+	entry.pNativeTexture = pNativeTexture;
+	m_pState->renderTextures.push_back(entry);
+	return true;
+}
+
+CDirectX12Texture*
+CDirectX12InteropTextureManager::FindRenderTarget(
+	IDirect3DTexture9* pTexture9) const
+{
+	if (m_pState == NULL || pTexture9 == NULL)
+		return NULL;
+	for (size_t iEntry = 0;
+		iEntry < m_pState->renderTextures.size();
+		++iEntry)
+	{
+		const NativeRenderTextureEntry& entry =
+			m_pState->renderTextures[iEntry];
+		if (entry.pTexture9 == pTexture9)
+			return entry.pNativeTexture;
+	}
+	return NULL;
 }
 
 bool CDirectX12InteropTextureManager::Acquire(
@@ -195,6 +278,17 @@ bool CDirectX12InteropTextureManager::Acquire(
 		|| pUploadManager == NULL || pShaderResourceView == NULL
 		|| m_pDevice9On12 == NULL)
 		return false;
+
+	CDirectX12Texture* pRenderTexture = FindRenderTarget(pTexture9);
+	if (pRenderTexture != NULL)
+	{
+		pRenderTexture->Transition(
+			pCommandList,
+			D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
+		*pShaderResourceView =
+			pRenderTexture->GetShaderResourceView();
+		return true;
+	}
 
 	D3DSURFACE_DESC legacyDesc;
 	HRESULT hr = pTexture9->GetLevelDesc(0, &legacyDesc);
@@ -489,4 +583,19 @@ void CDirectX12InteropTextureManager::ReleaseManagedTextures()
 			m_pState->managedTextures[iEntry].pTexture9->Release();
 	}
 	m_pState->managedTextures.clear();
+}
+
+void CDirectX12InteropTextureManager::ReleaseRenderTargets()
+{
+	if (m_pState == NULL)
+		return;
+	for (size_t iEntry = 0;
+		iEntry < m_pState->renderTextures.size();
+		++iEntry)
+	{
+		delete m_pState->renderTextures[iEntry].pNativeTexture;
+		if (m_pState->renderTextures[iEntry].pTexture9 != NULL)
+			m_pState->renderTextures[iEntry].pTexture9->Release();
+	}
+	m_pState->renderTextures.clear();
 }

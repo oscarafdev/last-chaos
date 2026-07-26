@@ -30,6 +30,58 @@ bool CDirectX12Texture::Create2D(
 	DXGI_FORMAT format,
 	UINT componentMapping)
 {
+	return Create2DResource(
+		pDevice,
+		pDescriptorHeap,
+		width,
+		height,
+		mipLevels,
+		format,
+		componentMapping,
+		D3D12_RESOURCE_FLAG_NONE,
+		D3D12_RESOURCE_STATE_COPY_DEST,
+		NULL,
+		L"LastChaos D3D12 Texture 2D");
+}
+
+bool CDirectX12Texture::CreateRenderTarget2D(
+	ID3D12Device* pDevice,
+	CDirectX12DescriptorHeap* pDescriptorHeap,
+	UINT width,
+	UINT height,
+	DXGI_FORMAT format,
+	UINT componentMapping)
+{
+	D3D12_CLEAR_VALUE clearValue;
+	ZeroMemory(&clearValue, sizeof(clearValue));
+	clearValue.Format = format;
+	return Create2DResource(
+		pDevice,
+		pDescriptorHeap,
+		width,
+		height,
+		1,
+		format,
+		componentMapping,
+		D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET,
+		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
+		&clearValue,
+		L"LastChaos D3D12 Render Texture");
+}
+
+bool CDirectX12Texture::Create2DResource(
+	ID3D12Device* pDevice,
+	CDirectX12DescriptorHeap* pDescriptorHeap,
+	UINT width,
+	UINT height,
+	UINT16 mipLevels,
+	DXGI_FORMAT format,
+	UINT componentMapping,
+	D3D12_RESOURCE_FLAGS flags,
+	D3D12_RESOURCE_STATES initialState,
+	const D3D12_CLEAR_VALUE* pClearValue,
+	const wchar_t* pDebugName)
+{
 	if (pDevice == NULL || pDescriptorHeap == NULL
 		|| pDescriptorHeap->GetType()
 			!= D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV
@@ -56,13 +108,14 @@ bool CDirectX12Texture::Create2D(
 	resourceDesc.Format = format;
 	resourceDesc.SampleDesc.Count = 1;
 	resourceDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
+	resourceDesc.Flags = flags;
 
 	HRESULT hr = pDevice->CreateCommittedResource(
 		&heapProperties,
 		D3D12_HEAP_FLAG_NONE,
 		&resourceDesc,
-		D3D12_RESOURCE_STATE_COPY_DEST,
-		NULL,
+		initialState,
+		pClearValue,
 		__uuidof(ID3D12Resource),
 		reinterpret_cast<void**>(&m_pResource));
 	if (FAILED(hr))
@@ -90,8 +143,9 @@ bool CDirectX12Texture::Create2D(
 	m_height = height;
 	m_mipLevels = mipLevels;
 	m_format = format;
-	m_state = D3D12_RESOURCE_STATE_COPY_DEST;
-	m_pResource->SetName(L"LastChaos D3D12 Texture 2D");
+	m_state = initialState;
+	if (pDebugName != NULL)
+		m_pResource->SetName(pDebugName);
 	return true;
 }
 
@@ -143,6 +197,26 @@ bool CDirectX12Texture::Upload(
 
 	m_state = shaderResourceState;
 	return true;
+}
+
+void CDirectX12Texture::Transition(
+	ID3D12GraphicsCommandList* pCommandList,
+	D3D12_RESOURCE_STATES newState)
+{
+	if (pCommandList == NULL || m_pResource == NULL
+		|| m_state == newState)
+		return;
+
+	D3D12_RESOURCE_BARRIER barrier;
+	ZeroMemory(&barrier, sizeof(barrier));
+	barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+	barrier.Transition.pResource = m_pResource;
+	barrier.Transition.Subresource =
+		D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+	barrier.Transition.StateBefore = m_state;
+	barrier.Transition.StateAfter = newState;
+	pCommandList->ResourceBarrier(1, &barrier);
+	m_state = newState;
 }
 
 ID3D12Resource* CDirectX12Texture::GetResource() const
