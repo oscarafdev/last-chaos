@@ -1349,3 +1349,27 @@ Evidencia:
 
 El catálogo queda en 25 de 25 parejas implementadas y 25 de 25 autorizadas
 para reemplazo estable.
+
+### Etapa 6u: eliminación del fallback de profundidad del primer frame
+
+La primera regresión 25/25 todavía registraba 55 fallbacks bajo el contador
+combinado de captura/profundidad. No correspondían a familias desconocidas:
+durante el primer frame el backend aún no consideraba disponible la
+profundidad, aunque el dispositivo D3D9On12 ya había creado su depth surface.
+La disponibilidad se copiaba desde el resultado del frame anterior y obligaba
+a calentar el renderer con un frame de geometría D3D9.
+
+El backend ahora consulta una vez por frame la depth surface asociada al
+dispositivo. Esto permite capturar desde el primer draw y, al enviar el lote,
+usar la profundidad interoperable adquirida o el depth buffer privado DX12
+existente. La consulta conserva la referencia COM únicamente durante la
+comprobación y no altera el estado del dispositivo.
+
+Validación:
+
+- `.itconfig/validation-20260726-015810.json`: 128.029 envíos DX12 y
+  47.874.614 triángulos;
+- cero envíos rechazados y ninguna línea de fallback durante toda la prueba;
+- cero eventos de aplicación, pantalla o dispositivo;
+- cierre controlado y captura completada;
+- `.itconfig/dx12-zero-depth-warmup-fallback.png`.

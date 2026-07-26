@@ -203,6 +203,7 @@ private:
 	bool HasUiReadyForInitialPresentation() const;
 	DirectX12LegacyRenderTargetKind ClassifyLegacyRenderTarget(
 		IDirect3DDevice9* pDevice9) const;
+	bool HasLegacy3DDepthSurface() const;
 
 	HMODULE m_hD3D12Module;
 	ID3D12Device* m_pDevice;
@@ -239,8 +240,7 @@ private:
 	UINT m_fallbackLegacyDrawCount;
 	UINT m_lastReportedSuppressedLegacyDrawCount;
 	UINT m_lastReportedFallbackLegacyDrawCount;
-	bool m_legacy3DDepthReady;
-	bool m_legacy3DDepthReadyNextFrame;
+	bool m_legacy3DDepthAvailable;
 	UINT m_suppressedLegacy3DDrawCount;
 	UINT m_fallbackLegacy3DDrawCount;
 	UINT m_lastReportedSuppressedLegacy3DDrawCount;

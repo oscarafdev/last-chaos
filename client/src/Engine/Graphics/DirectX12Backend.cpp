@@ -275,8 +275,7 @@ CDirectX12Backend::CDirectX12Backend()
 	, m_fallbackLegacyDrawCount(0)
 	, m_lastReportedSuppressedLegacyDrawCount(static_cast<UINT>(-1))
 	, m_lastReportedFallbackLegacyDrawCount(static_cast<UINT>(-1))
-	, m_legacy3DDepthReady(false)
-	, m_legacy3DDepthReadyNextFrame(false)
+	, m_legacy3DDepthAvailable(false)
 	, m_suppressedLegacy3DDrawCount(0)
 	, m_fallbackLegacy3DDrawCount(0)
 	, m_lastReportedSuppressedLegacy3DDrawCount(static_cast<UINT>(-1))
@@ -695,7 +694,7 @@ bool CDirectX12Backend::BeginFrame()
 	m_offscreenDrawPortDepth = 0;
 	m_suppressedLegacyDrawCount = 0;
 	m_fallbackLegacyDrawCount = 0;
-	m_legacy3DDepthReady = m_legacy3DDepthReadyNextFrame;
+	m_legacy3DDepthAvailable = HasLegacy3DDepthSurface();
 	m_suppressedLegacy3DDrawCount = 0;
 	m_fallbackLegacy3DDrawCount = 0;
 	m_frameOpen = true;
@@ -1173,8 +1172,7 @@ bool CDirectX12Backend::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 		m_pDevice9->Release();
 	m_pDevice9 = pDevice9;
 	m_pDevice9->AddRef();
-	m_legacy3DDepthReady = false;
-	m_legacy3DDepthReadyNextFrame = false;
+	m_legacy3DDepthAvailable = HasLegacy3DDepthSurface();
 	return true;
 }
 
@@ -1220,6 +1218,21 @@ CDirectX12Backend::ClassifyLegacyRenderTarget(
 		: DX12_LEGACY_RENDER_TARGET_OFFSCREEN;
 }
 
+bool CDirectX12Backend::HasLegacy3DDepthSurface() const
+{
+	if (m_pDevice9 == NULL)
+		return false;
+
+	IDirect3DSurface9* pDepthSurface9 = NULL;
+	const HRESULT hr =
+		m_pDevice9->GetDepthStencilSurface(&pDepthSurface9);
+	const bool available =
+		SUCCEEDED(hr) && pDepthSurface9 != NULL;
+	if (pDepthSurface9 != NULL)
+		pDepthSurface9->Release();
+	return available;
+}
+
 void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
 {
 	if (pTexture9 == NULL)
@@ -1247,13 +1260,14 @@ bool CDirectX12Backend::AcquireRenderTarget(
 	{
 		if (pDepthSurface9 != NULL)
 			pDepthSurface9->Release();
-		m_legacy3DDepthReadyNextFrame = false;
+		m_legacy3DDepthAvailable = false;
 		return false;
 	}
 	if (pDepthSurface9 != NULL)
 		pDepthSurface9->Release();
-	m_legacy3DDepthReadyNextFrame =
-		m_pRenderTargets->HasAcquiredDepth();
+	m_legacy3DDepthAvailable =
+		m_pRenderTargets->HasAcquiredDepth()
+		|| HasLegacy3DDepthSurface();
 	m_hPresentationWindow = hPresentationWindow;
 	return true;
 }
@@ -1291,7 +1305,7 @@ bool CDirectX12Backend::BeginDrawPortScope(
 		&& m_uiScopeDepth == 0
 		&& ReadFull3DReplacementMode()
 		&& HasAuthoritativeLegacy3DBatch(m_pNativeRenderer)
-		&& m_legacy3DDepthReady)
+		&& m_legacy3DDepthAvailable)
 	{
 		const UINT currentSegment =
 			m_pNativeRenderer != NULL
@@ -1378,7 +1392,7 @@ bool CDirectX12Backend::ShouldSubmitLegacy3DDraw(
 			"un fallback D3D9");
 	}
 	if (nativeCaptured
-		&& (offscreenReplacement || m_legacy3DDepthReady))
+		&& (offscreenReplacement || m_legacy3DDepthAvailable))
 	{
 		++m_suppressedLegacy3DDrawCount;
 		return false;
@@ -1571,7 +1585,7 @@ void CDirectX12Backend::PrepareLegacy3DDepthClear(
 		|| m_offscreenDrawPortDepth > 0
 		|| m_pNativeRenderer == NULL
 		|| !ReadFull3DReplacementMode()
-		|| !m_legacy3DDepthReady
+		|| !m_legacy3DDepthAvailable
 		|| ClassifyLegacyRenderTarget(pDevice9)
 			!= DX12_LEGACY_RENDER_TARGET_PRESENTATION
 		|| !m_pNativeRenderer->HasPendingLegacy3DDraws())
@@ -1607,7 +1621,7 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 		&& m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
 		return false;
 	if ((ReadRigidLitReplacementMode() || ReadFull3DReplacementMode())
-		&& !m_legacy3DDepthReady
+		&& !m_legacy3DDepthAvailable
 		&& renderTargetKind
 			== DX12_LEGACY_RENDER_TARGET_PRESENTATION)
 		return false;
