@@ -1207,3 +1207,53 @@ Las capas transparentes fixed permanecen detrás de la compuerta de laboratorio
 hasta completar una regresión en más mapas. El siguiente paso es promover sus
 variantes ya verificadas de forma selectiva y continuar con los estados fixed
 que aún caen en fallback.
+
+### Etapa 6r: inventario offline del contenido y Shaders.dll
+
+Se agregó `tools/dx12_shader_inventory` para sustituir la exploración manual de
+mapas como mecanismo primario de descubrimiento. El analizador no abre el
+juego: procesa todos los manifiestos `.sha`, extrae descriptores y ensamblador
+desde la `Shaders.dll` instalada, busca referencias ASCII y UTF-16LE en cada
+byte de `client/Data`, inventaría shaders internos de C++ y cruza el resultado
+con el catálogo de familias DX12.
+
+La carga directa de `Engine.dll` fuera del cliente se bloqueaba durante la
+inicialización de objetos globales. Se resolvió con un host x64 mínimo que
+implementa solamente la ABI importada por `Shaders.dll`; las funciones de
+render quedan como stubs y `CTString` conserva la semántica necesaria para
+recibir el código. El host se compila en `.itconfig`, nunca reemplaza el motor
+del juego y no crea dispositivos D3D9 ni D3D12.
+
+Resultado del snapshot
+`6c66909a2ade21ce7adcc7dbac65c9e5b0fe0a75ecef64084648a8cd70552ffe`:
+
+- 48 694 archivos y 4 982 462 079 bytes leídos sin errores;
+- 13 679 modelos `.bm` con al menos una referencia y 13 931 relaciones
+  modelo/manifiesto;
+- cero referencias a manifiestos desconocidos;
+- 25 manifiestos catalogados, 13 referenciados explícitamente;
+- 18 vertex shaders y 48 pixel shaders únicos extraídos de la DLL;
+- 112 parejas de código componibles por manifiesto;
+- 26 definiciones de shader internas y 15 sitios de creación directa en C++;
+- catálogo DX12 actual: 19 familias VS, 20 familias PS, 25 parejas
+  implementadas y 20 validadas.
+
+Se detectaron seis manifiestos cuyos exports no existen en la DLL:
+`BaseDS`, `BaseTransparentDS`, `NiceWater`, `ReflectionDS+SpecularDS`,
+`ReflectionDS` y `SpecularDS`. Ninguno tiene referencias en el contenido
+instalado, por lo que se registran como residuos inactivos y no como familias
+pendientes.
+
+El informe reproducible queda en
+`.itconfig/dx12-shader-inventory/latest/summary.md`; el JSON completo, el CSV de
+referencias y el ensamblador extraído permanecen junto a él. La herramienta,
+sus pruebas y sus límites están documentados en
+`tools/dx12_shader_inventory/README.md`.
+
+El inventario actual garantiza el superset a nivel de código exportado. La
+siguiente extensión debe materializar pesos por vértice, normalización, niebla,
+tipo de normal map y declaración D3D9 para obtener los fingerprints finales.
+Una prueba aislada del mismo ensamblador ya reprodujo exactamente
+`BFDAAD52F7C28AAF`, `3C15F8B8DEBF2EC8`, `F6F2AA8EA79D28BC` y
+`000D90AFD69D7DA9`, confirmando que esa correlación puede hacerse totalmente
+offline.

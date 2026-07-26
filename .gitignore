@@ -36,6 +36,8 @@ client/Local/**/*.lod.original
 **/*.pch
 **/*.pdb
 **/*.tlog
+**/__pycache__/
+**/*.pyc
 server/src/**/*.o
 server/src/CalcHash/CalcHash
 server/src/Connector/Connector
