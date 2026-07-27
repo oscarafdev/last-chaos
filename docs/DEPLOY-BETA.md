@@ -87,3 +87,18 @@ aparezca una vez y que no haya reintentos:
 docker compose logs --since=5m server |
   grep -E "Billing server disabled|Can't connected to billing server"
 ```
+
+## Rechazos CSRF del formulario de registro
+
+Algunas extensiones de privacidad pueden eliminar la cookie CSRF o el encabezado
+`Origin` de un formulario legítimo. La validación acepta la solicitud cuando
+coinciden al menos dos de estas tres señales independientes:
+
+- token del formulario y cookie CSRF;
+- origen público exacto;
+- `Sec-Fetch-Site: same-origin`.
+
+Así se tolera la pérdida de una señal sin aceptar formularios externos. Los
+rechazos registran solamente qué señales coincidieron; nunca se escriben tokens
+ni contraseñas en los logs. Las respuestas del formulario incluyen
+`Cache-Control: no-store` para evitar tokens obsoletos.

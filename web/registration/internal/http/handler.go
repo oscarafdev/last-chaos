@@ -2,7 +2,6 @@ package web
 
 import (
 	"crypto/rand"
-	"crypto/subtle"
 	"embed"
 	"encoding/base64"
 	"errors"
@@ -96,11 +95,24 @@ func (handler *Handler) submit(
 	}
 
 	token, err := handler.ensureCSRFToken(writer, request)
-	if err != nil || !handler.validRequest(request, token) {
+	if err != nil {
+		log.Printf("csrf token initialization failed: %v", err)
 		http.Error(writer, "Solicitud inválida.", http.StatusForbidden)
 		return
 	}
+	signals := evaluateCSRFSignals(request, token, handler.publicOrigin)
+	if !signals.valid() {
+		log.Printf(
+			"registration request rejected: token_match=%t origin_match=%t same_origin_fetch=%t",
+			signals.tokenMatches,
+			signals.originMatches,
+			signals.sameOriginFetch,
+		)
+		http.Error(writer, "Solicitud inválida. Actualiza la página e inténtalo nuevamente.", http.StatusForbidden)
+		return
+	}
 	if request.FormValue("website") != "" {
+		log.Printf("registration request rejected: honeypot populated")
 		http.Error(writer, "Solicitud inválida.", http.StatusBadRequest)
 		return
 	}
@@ -147,28 +159,6 @@ func (handler *Handler) submit(
 	}
 }
 
-func (handler *Handler) validRequest(
-	request *http.Request,
-	cookieToken string,
-) bool {
-	formToken := request.FormValue("csrf_token")
-	if len(formToken) != len(cookieToken) ||
-		subtle.ConstantTimeCompare([]byte(formToken), []byte(cookieToken)) != 1 {
-		return false
-	}
-
-	origin := request.Header.Get("Origin")
-	if origin == "" {
-		return false
-	}
-	parsedOrigin, err := url.Parse(origin)
-	if err != nil {
-		return false
-	}
-	return strings.EqualFold(parsedOrigin.Scheme, handler.publicOrigin.Scheme) &&
-		strings.EqualFold(parsedOrigin.Host, handler.publicOrigin.Host)
-}
-
 func (handler *Handler) ensureCSRFToken(
 	writer http.ResponseWriter,
 	request *http.Request,
@@ -208,6 +198,7 @@ func (handler *Handler) render(writer http.ResponseWriter, data pageData) {
 
 func securityHeaders(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		writer.Header().Set("Cache-Control", "no-store")
 		writer.Header().Set("Content-Security-Policy", "default-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'")
 		writer.Header().Set("Referrer-Policy", "no-referrer")
 		writer.Header().Set("X-Content-Type-Options", "nosniff")
