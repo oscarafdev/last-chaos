@@ -38,6 +38,13 @@ public:
 	void ConfigureWorldModelRendering(
 		INDEX alpha,
 		BOOL enableNormalMapSpecular);
+	void ConfigureWorldView(
+		const CPlacement3D& playerPlacement,
+		const CPlacement3D& viewpointPlacement,
+		FLOAT networkCameraAngle,
+		INDEX delaySeconds,
+		INDEX holdSeconds,
+		const CTString& captureName);
 	void ConfigureBloomTest(BOOL forceEnabled);
 	void Tick();
 
@@ -59,6 +66,7 @@ private:
 	BOOL TrySubmitWorldCommand();
 	BOOL TryApplyWorldAnchor();
 	BOOL TrySpawnWorldModel();
+	BOOL TryApplyWorldView();
 	void TryRemoveWorldModel();
 	void ClearPassword();
 
@@ -68,6 +76,8 @@ private:
 	CTString m_worldModel;
 	CTString m_worldAnchorClass;
 	CPlacement3D m_worldAnchorPlacement;
+	CPlacement3D m_worldPlayerPlacement;
+	CPlacement3D m_worldViewpointPlacement;
 	CBrushSector* m_worldAnchorSector;
 	INDEX m_serverIndex;
 	INDEX m_channelIndex;
@@ -78,6 +88,10 @@ private:
 	INDEX m_worldModelLifetimeSeconds;
 	INDEX m_worldAnchorDelaySeconds;
 	INDEX m_worldModelAlpha;
+	INDEX m_worldViewDelaySeconds;
+	INDEX m_worldViewHoldSeconds;
+	FLOAT m_worldNetworkCameraAngle;
+	CTString m_worldCaptureName;
 	ULONG m_characterStageEnteredAt;
 	ULONG m_gameplayStageEnteredAt;
 	ULONG m_worldModelSpawnedAt;
@@ -89,6 +103,9 @@ private:
 	BOOL m_worldCommandSubmitted;
 	BOOL m_worldAnchorApplied;
 	BOOL m_worldModelSpawned;
+	BOOL m_worldViewConfigured;
+	BOOL m_worldViewApplied;
+	BOOL m_worldCaptureRequested;
 	BOOL m_worldModelNormalMapSpecular;
 	BOOL m_forceBloom;
 	BOOL m_bloomConfigured;

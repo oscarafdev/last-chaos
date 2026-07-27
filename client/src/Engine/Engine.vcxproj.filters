@@ -318,7 +318,7 @@
     <ClCompile Include="Graphics\DirectX12NativeRenderer.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\DirectX12NativeShaderSource.cpp">
+    <ClCompile Include="Graphics\DirectX12NativeShaderCatalog.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\DirectX12PipelineCache.cpp">
@@ -4040,7 +4040,7 @@
     <ClInclude Include="Graphics\DirectX12NativeRenderer.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\DirectX12NativeShaderSource.h">
+    <ClInclude Include="Graphics\DirectX12NativeShaderCatalog.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12PipelineCache.h">
@@ -4137,6 +4137,27 @@
     </None>
     <None Include="Base\Parser.y">
       <Filter>Grammar Files</Filter>
+    </None>
+    <None Include="Graphics\Shaders\DirectX12\Bloom.hlsl">
+      <Filter>Source Files\Graphics</Filter>
+    </None>
+    <None Include="Graphics\Shaders\DirectX12\Legacy3D.hlsl">
+      <Filter>Source Files\Graphics</Filter>
+    </None>
+    <None Include="Graphics\Shaders\DirectX12\LegacyMaterial3D.hlsl">
+      <Filter>Source Files\Graphics</Filter>
+    </None>
+    <None Include="Graphics\Shaders\DirectX12\NativeValidation.hlsl">
+      <Filter>Source Files\Graphics</Filter>
+    </None>
+    <None Include="Graphics\Shaders\DirectX12\RigidLit3D.hlsl">
+      <Filter>Source Files\Graphics</Filter>
+    </None>
+    <None Include="Graphics\Shaders\DirectX12\Textured2D.hlsl">
+      <Filter>Source Files\Graphics</Filter>
+    </None>
+    <None Include="Graphics\Shaders\DirectX12\TexturedAlphaTest2D.hlsl">
+      <Filter>Source Files\Graphics</Filter>
     </None>
   </ItemGroup>
 </Project>

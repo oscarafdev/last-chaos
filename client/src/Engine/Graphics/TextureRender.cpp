@@ -33,13 +33,23 @@ extern ENGINE_API INDEX sam_iGfxAPI;	// 0==OpenGL
 CRenderTexture::CRenderTexture()
 {
 	rt_pSurface = NULL;
+	m_pOldRenderTarget = NULL;
+	m_pOldDepthStencil = NULL;
 	m_pDepthStencil = NULL;
 	m_bNativeColorTarget = FALSE;
 	m_bNativeColorActive = FALSE;
+	m_bOldZEnable = FALSE;
+	m_nativeColorHandle = DX12_INVALID_RENDER_TEXTURE;
 }
 
 CRenderTexture::~CRenderTexture()
 {
+	if (m_nativeColorHandle != DX12_INVALID_RENDER_TEXTURE)
+	{
+		GetDirectX12Backend().DestroyNativeOffscreenTexture(
+			m_nativeColorHandle);
+		m_nativeColorHandle = DX12_INVALID_RENDER_TEXTURE;
+	}
 	if(rt_pSurface) rt_pSurface->Release();
 	if(m_pDepthStencil) m_pDepthStencil->Release();
 }
@@ -109,11 +119,12 @@ BOOL CRenderTexture::Init(
 				|| purpose == RTP_POST_PROCESS;
 			if (bNativePurpose
 				&& !GetDirectX12Backend().RequiresLegacyOffscreenDepth()
-				&& GetDirectX12Backend().RegisterNativeOffscreenTexture(
+				&& GetDirectX12Backend().CreateNativeOffscreenTexture(
 					pTexture,
 					width,
 					height,
-					static_cast<INT>(fmt)))
+					static_cast<INT>(fmt),
+					&m_nativeColorHandle))
 			{
 				m_bNativeColorTarget = TRUE;
 				static BOOL bNativeDepthReported = FALSE;
@@ -157,11 +168,9 @@ void CRenderTexture::Begin()	// SetRenderTarget current
 	{
 		GetDirectX12Backend().InsertDrawPortBarrier(
 			DX12_DRAWPORT_BARRIER_RENDER_TARGET_BEGIN);
-		IDirect3DTexture9* pTexture = reinterpret_cast<IDirect3DTexture9*>(
-			rt_tdTexture.td_ulObject);
 		m_bNativeColorActive = m_bNativeColorTarget
 			&& GetDirectX12Backend().BeginNativeOffscreenTexture(
-				pTexture);
+				m_nativeColorHandle);
 		GetDirectX12Backend().BeginOffscreenDrawPortScope();
 		IDirect3DDevice9* pDev = _pGfx->gl_pd3d9Device;
 		pDev->GetRenderTarget(0, &m_pOldRenderTarget);
@@ -225,5 +234,11 @@ void CRenderTexture::End()		// SetRenderTarget old
 			m_pOldDepthStencil = NULL;
 		}
 	}
+}
+
+DirectX12RenderTextureHandle
+CRenderTexture::GetNativeTextureHandle() const
+{
+	return m_nativeColorHandle;
 }
 // Fin de la incorporacion de CRenderTexture para renderizar a textura.

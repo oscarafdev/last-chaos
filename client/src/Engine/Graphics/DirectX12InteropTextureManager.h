@@ -8,6 +8,8 @@
 #include <d3d9.h>
 #include <d3d12.h>
 
+#include <Engine/Graphics/DirectX12RenderState.h>
+
 struct IDirect3DDevice9;
 struct IDirect3DTexture9;
 class CDirectX12DescriptorHeap;
@@ -28,16 +30,21 @@ public:
 	bool Initialize(
 		ID3D12Device* pDevice,
 		ID3D12CommandQueue* pGraphicsQueue,
-		CDirectX12DescriptorHeap* pDescriptors);
+		CDirectX12DescriptorHeap* pResourceDescriptors,
+		CDirectX12DescriptorHeap* pRenderTargetDescriptors);
 	void Shutdown();
 	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
 	bool BeginFrame(UINT frameIndex);
 	void ForgetTexture(IDirect3DTexture9* pTexture9);
-	bool RegisterRenderTarget(
+	bool CreateRenderTarget(
 		IDirect3DTexture9* pTexture9,
 		UINT width,
 		UINT height,
-		D3DFORMAT legacyFormat);
+		D3DFORMAT legacyFormat,
+		DirectX12RenderTextureHandle* pHandle);
+	void DestroyRenderTarget(DirectX12RenderTextureHandle handle);
+	CDirectX12Texture* FindRenderTarget(
+		DirectX12RenderTextureHandle handle) const;
 	CDirectX12Texture* FindRenderTarget(
 		IDirect3DTexture9* pTexture9) const;
 	bool ReferencesResource(
@@ -68,7 +75,8 @@ private:
 	ID3D12Device* m_pDevice;
 	ID3D12CommandQueue* m_pGraphicsQueue;
 	struct IDirect3DDevice9On12* m_pDevice9On12;
-	CDirectX12DescriptorHeap* m_pDescriptors;
+	CDirectX12DescriptorHeap* m_pResourceDescriptors;
+	CDirectX12DescriptorHeap* m_pRenderTargetDescriptors;
 	DirectX12InteropTextureState* m_pState;
 	UINT m_currentFrame;
 	bool m_frameActive;

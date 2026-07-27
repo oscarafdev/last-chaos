@@ -63,9 +63,7 @@ bool CDirectX12NativeRenderer::Initialize(ID3D12Device* pDevice)
 	}
 	m_pBloomRenderer = new CDirectX12BloomRenderer;
 	if (m_pBloomRenderer == NULL
-		|| !m_pBloomRenderer->Initialize(
-			m_pDevice,
-			m_pPipelineCache))
+		|| !m_pBloomRenderer->Initialize(m_pPipelineCache))
 	{
 		Shutdown();
 		return false;
@@ -652,10 +650,9 @@ bool CDirectX12NativeRenderer::RenderBloom(
 	CDirectX12UploadManager* pUploadManager,
 	CDirectX12DescriptorHeap* pResourceDescriptors,
 	CDirectX12DescriptorHeap* pSamplerDescriptors,
-	CDirectX12InteropTextureManager* pInteropTextures,
-	IDirect3DTexture9* pSourceTexture,
-	IDirect3DTexture9* pFilterTexture0,
-	IDirect3DTexture9* pFilterTexture1)
+	CDirectX12Texture* pSourceTexture,
+	CDirectX12Texture* pFilterTexture0,
+	CDirectX12Texture* pFilterTexture1)
 {
 	if (m_pBloomRenderer == NULL
 		|| !EnsureResources(
@@ -667,7 +664,6 @@ bool CDirectX12NativeRenderer::RenderBloom(
 	const bool succeeded = m_pBloomRenderer->Render(
 		pCommandList,
 		pRenderTargets,
-		pInteropTextures,
 		pSourceTexture,
 		pFilterTexture0,
 		pFilterTexture1,

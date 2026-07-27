@@ -7,6 +7,7 @@
 #include <Engine/Base/Lists.h>
 #include <Engine/Base/Anim.h>
 #include <Engine/Graphics/GfxLibrary.h>
+#include <Engine/Graphics/DirectX12RenderState.h>
 
 #define BYTES_PER_TEXEL 4   // all textures in engine are 4 bytes per pixel
 
@@ -225,6 +226,7 @@ public:
 	// Debe llamarse dentro del bloque Begin-End.
 	void Clear(COLOR colClear=0xFFFFFFFF, FLOAT fZVal=ZBUF_BACK);
 	void End();		// Restaura el destino de renderizado anterior.
+	DirectX12RenderTextureHandle GetNativeTextureHandle() const;
 
 	//
 	IDirect3DSurface9 *rt_pSurface;
@@ -238,6 +240,7 @@ protected:
 	BOOL m_bNativeColorTarget;
 	BOOL m_bNativeColorActive;
 	BOOL m_bOldZEnable;
+	DirectX12RenderTextureHandle m_nativeColorHandle;
 };
 //(Add CRenderTexture class for Render to Texture)(0.1)
 

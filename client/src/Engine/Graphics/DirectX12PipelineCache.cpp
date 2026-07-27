@@ -2,13 +2,11 @@
 
 #include <vector>
 #include <d3d12.h>
-#include <d3dcompiler.h>
 
 #include <Engine/Base/Console.h>
-#include <Engine/Graphics/DirectX12NativeShaderSource.h>
+#include <Engine/Graphics/DirectX12NativeShaderCatalog.h>
 #include <Engine/Graphics/DirectX12PipelineCache.h>
 
-#pragma comment(lib, "d3dcompiler.lib")
 #pragma comment(lib, "d3d12.lib")
 
 namespace
@@ -28,49 +26,6 @@ namespace
 		ID3D12PipelineState* pPipelineState;
 	};
 
-	bool CompileShader(
-		const char* pSource,
-		const char* pSourceName,
-		const char* pEntryPoint,
-		const char* pTarget,
-		UINT compileFlags,
-		ID3DBlob** ppShader)
-	{
-		if (pSource == NULL || pSourceName == NULL
-			|| pEntryPoint == NULL || pTarget == NULL
-			|| ppShader == NULL)
-			return false;
-
-		ID3DBlob* pErrors = NULL;
-		const HRESULT hr = D3DCompile(
-			pSource,
-			strlen(pSource),
-			pSourceName,
-			NULL,
-			NULL,
-			pEntryPoint,
-			pTarget,
-			compileFlags,
-			0,
-			ppShader,
-			&pErrors);
-		if (FAILED(hr))
-		{
-			const char* pDetails = pErrors != NULL
-				? static_cast<const char*>(pErrors->GetBufferPointer())
-				: "sin detalles del compilador";
-			CPrintF(
-				"DX12 error: No se pudo compilar %s/%s (%s, 0x%08X): %s\n",
-				pSourceName,
-				pEntryPoint,
-				pTarget,
-				static_cast<unsigned int>(hr),
-				pDetails);
-		}
-		if (pErrors != NULL)
-			pErrors->Release();
-		return SUCCEEDED(hr);
-	}
 }
 
 struct DirectX12PipelineCacheState
@@ -81,21 +36,6 @@ struct DirectX12PipelineCacheState
 CDirectX12PipelineCache::CDirectX12PipelineCache()
 	: m_pDevice(NULL)
 	, m_pRootSignature(NULL)
-	, m_pVertexShader(NULL)
-	, m_pPixelShader(NULL)
-	, m_pTexturedVertexShader(NULL)
-	, m_pTexturedPixelShader(NULL)
-	, m_pAlphaTestPixelShader(NULL)
-	, m_pBloomVertexShader(NULL)
-	, m_pBloomDownsamplePixelShader(NULL)
-	, m_pBloomBlurPixelShader(NULL)
-	, m_pBloomCompositePixelShader(NULL)
-	, m_pLegacy3DVertexShader(NULL)
-	, m_pLegacy3DPixelShader(NULL)
-	, m_pRigidLit3DVertexShader(NULL)
-	, m_pRigidLit3DPixelShader(NULL)
-	, m_pLegacyMaterial3DVertexShader(NULL)
-	, m_pLegacyMaterial3DPixelShader(NULL)
 	, m_pState(NULL)
 {
 }
@@ -114,7 +54,7 @@ bool CDirectX12PipelineCache::Initialize(ID3D12Device* pDevice)
 	m_pDevice = pDevice;
 	m_pDevice->AddRef();
 	m_pState = new DirectX12PipelineCacheState;
-	if (m_pState == NULL || !CompileShaders() || !CreateRootSignature())
+	if (m_pState == NULL || !CreateRootSignature())
 	{
 		Shutdown();
 		return false;
@@ -136,81 +76,6 @@ void CDirectX12PipelineCache::Shutdown()
 		m_pState = NULL;
 	}
 
-	if (m_pPixelShader != NULL)
-	{
-		m_pPixelShader->Release();
-		m_pPixelShader = NULL;
-	}
-	if (m_pTexturedPixelShader != NULL)
-	{
-		m_pTexturedPixelShader->Release();
-		m_pTexturedPixelShader = NULL;
-	}
-	if (m_pAlphaTestPixelShader != NULL)
-	{
-		m_pAlphaTestPixelShader->Release();
-		m_pAlphaTestPixelShader = NULL;
-	}
-	if (m_pBloomCompositePixelShader != NULL)
-	{
-		m_pBloomCompositePixelShader->Release();
-		m_pBloomCompositePixelShader = NULL;
-	}
-	if (m_pBloomBlurPixelShader != NULL)
-	{
-		m_pBloomBlurPixelShader->Release();
-		m_pBloomBlurPixelShader = NULL;
-	}
-	if (m_pBloomDownsamplePixelShader != NULL)
-	{
-		m_pBloomDownsamplePixelShader->Release();
-		m_pBloomDownsamplePixelShader = NULL;
-	}
-	if (m_pBloomVertexShader != NULL)
-	{
-		m_pBloomVertexShader->Release();
-		m_pBloomVertexShader = NULL;
-	}
-	if (m_pLegacy3DPixelShader != NULL)
-	{
-		m_pLegacy3DPixelShader->Release();
-		m_pLegacy3DPixelShader = NULL;
-	}
-	if (m_pRigidLit3DPixelShader != NULL)
-	{
-		m_pRigidLit3DPixelShader->Release();
-		m_pRigidLit3DPixelShader = NULL;
-	}
-	if (m_pLegacyMaterial3DPixelShader != NULL)
-	{
-		m_pLegacyMaterial3DPixelShader->Release();
-		m_pLegacyMaterial3DPixelShader = NULL;
-	}
-	if (m_pLegacyMaterial3DVertexShader != NULL)
-	{
-		m_pLegacyMaterial3DVertexShader->Release();
-		m_pLegacyMaterial3DVertexShader = NULL;
-	}
-	if (m_pRigidLit3DVertexShader != NULL)
-	{
-		m_pRigidLit3DVertexShader->Release();
-		m_pRigidLit3DVertexShader = NULL;
-	}
-	if (m_pLegacy3DVertexShader != NULL)
-	{
-		m_pLegacy3DVertexShader->Release();
-		m_pLegacy3DVertexShader = NULL;
-	}
-	if (m_pTexturedVertexShader != NULL)
-	{
-		m_pTexturedVertexShader->Release();
-		m_pTexturedVertexShader = NULL;
-	}
-	if (m_pVertexShader != NULL)
-	{
-		m_pVertexShader->Release();
-		m_pVertexShader = NULL;
-	}
 	if (m_pRootSignature != NULL)
 	{
 		m_pRootSignature->Release();
@@ -221,148 +86,6 @@ void CDirectX12PipelineCache::Shutdown()
 		m_pDevice->Release();
 		m_pDevice = NULL;
 	}
-}
-
-bool CDirectX12PipelineCache::CompileShaders()
-{
-	UINT compileFlags = D3DCOMPILE_ENABLE_STRICTNESS;
-#ifndef NDEBUG
-	compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
-#else
-	compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
-#endif
-
-	const char* pShaderSource =
-		GetDirectX12NativeValidationShader();
-	if (!CompileShader(
-			pShaderSource,
-			"LastChaosNativeValidation",
-			"VSMain",
-			"vs_5_0",
-			compileFlags,
-			&m_pVertexShader))
-		return false;
-	if (!CompileShader(
-		pShaderSource,
-		"LastChaosNativeValidation",
-		"PSMain",
-		"ps_5_0",
-		compileFlags,
-		&m_pPixelShader))
-		return false;
-
-	const char* pTexturedShaderSource = GetDirectX12Textured2DShader();
-	if (!CompileShader(
-		pTexturedShaderSource,
-		"LastChaosTextured2D",
-		"VSMain",
-		"vs_5_0",
-		compileFlags,
-		&m_pTexturedVertexShader))
-		return false;
-	if (!CompileShader(
-		pTexturedShaderSource,
-		"LastChaosTextured2D",
-		"PSMain",
-		"ps_5_0",
-		compileFlags,
-		&m_pTexturedPixelShader))
-		return false;
-
-	const char* pAlphaTestShaderSource =
-		GetDirectX12TexturedAlphaTest2DShader();
-	if (!CompileShader(
-			pAlphaTestShaderSource,
-		"LastChaosTexturedAlphaTest2D",
-		"PSMain",
-		"ps_5_0",
-		compileFlags,
-			&m_pAlphaTestPixelShader))
-		return false;
-
-	const char* pBloomShaderSource = GetDirectX12BloomShader();
-	if (!CompileShader(
-			pBloomShaderSource,
-			"LastChaosBloom",
-			"VSMain",
-			"vs_5_0",
-			compileFlags,
-			&m_pBloomVertexShader)
-		|| !CompileShader(
-			pBloomShaderSource,
-			"LastChaosBloom",
-			"PSDownsample",
-			"ps_5_0",
-			compileFlags,
-			&m_pBloomDownsamplePixelShader)
-		|| !CompileShader(
-			pBloomShaderSource,
-			"LastChaosBloom",
-			"PSBlur",
-			"ps_5_0",
-			compileFlags,
-			&m_pBloomBlurPixelShader)
-		|| !CompileShader(
-			pBloomShaderSource,
-			"LastChaosBloom",
-			"PSComposite",
-			"ps_5_0",
-			compileFlags,
-			&m_pBloomCompositePixelShader))
-		return false;
-
-	const char* pLegacy3DShaderSource =
-		GetDirectX12Legacy3DShader();
-	if (!CompileShader(
-		pLegacy3DShaderSource,
-		"LastChaosLegacy3D",
-		"VSMain",
-		"vs_5_0",
-		compileFlags,
-		&m_pLegacy3DVertexShader))
-		return false;
-	if (!CompileShader(
-		pLegacy3DShaderSource,
-		"LastChaosLegacy3D",
-		"PSMain",
-		"ps_5_0",
-		compileFlags,
-		&m_pLegacy3DPixelShader))
-		return false;
-	const char* pRigidLitShaderSource = GetDirectX12RigidLit3DShader();
-	if (!CompileShader(
-		pRigidLitShaderSource,
-		"LastChaosRigidLit3D",
-		"VSMain",
-		"vs_5_0",
-		compileFlags,
-		&m_pRigidLit3DVertexShader))
-		return false;
-	if (!CompileShader(
-		pRigidLitShaderSource,
-		"LastChaosRigidLit3D",
-		"PSMain",
-		"ps_5_0",
-		compileFlags,
-		&m_pRigidLit3DPixelShader))
-		return false;
-	const char* pMaterialShaderSource =
-		GetDirectX12LegacyMaterial3DShader();
-	if (!CompileShader(
-		pMaterialShaderSource,
-		"LastChaosLegacyMaterial3D",
-		"VSMain",
-		"vs_5_0",
-		compileFlags,
-		&m_pLegacyMaterial3DVertexShader))
-		return false;
-	return CompileShader(
-		pMaterialShaderSource,
-		"LastChaosLegacyMaterial3D",
-		"PSMain",
-		"ps_5_0",
-		compileFlags,
-		&m_pLegacyMaterial3DPixelShader);
 }
 
 bool CDirectX12PipelineCache::CreateRootSignature()
@@ -666,23 +389,25 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		}
 	};
 
-	ID3DBlob* pSelectedVertexShader = m_pVertexShader;
-	ID3DBlob* pSelectedPixelShader = m_pPixelShader;
+	DirectX12NativeShaderId selectedVertexShader =
+		DX12_SHADER_NATIVE_VALIDATION_VS;
+	DirectX12NativeShaderId selectedPixelShader =
+		DX12_SHADER_NATIVE_VALIDATION_PS;
 	const D3D12_INPUT_ELEMENT_DESC* pSelectedInput = inputElements;
 	UINT selectedInputCount =
 		sizeof(inputElements) / sizeof(inputElements[0]);
 	if (kind == DX12_PIPELINE_TEXTURED_2D)
 	{
-		pSelectedVertexShader = m_pTexturedVertexShader;
-		pSelectedPixelShader = m_pTexturedPixelShader;
+		selectedVertexShader = DX12_SHADER_TEXTURED_2D_VS;
+		selectedPixelShader = DX12_SHADER_TEXTURED_2D_PS;
 		pSelectedInput = texturedInputElements;
 		selectedInputCount =
 			sizeof(texturedInputElements) / sizeof(texturedInputElements[0]);
 	}
 	else if (kind == DX12_PIPELINE_TEXTURED_ALPHA_TEST_2D)
 	{
-		pSelectedVertexShader = m_pTexturedVertexShader;
-		pSelectedPixelShader = m_pAlphaTestPixelShader;
+		selectedVertexShader = DX12_SHADER_TEXTURED_2D_VS;
+		selectedPixelShader = DX12_SHADER_TEXTURED_ALPHA_TEST_2D_PS;
 		pSelectedInput = texturedInputElements;
 		selectedInputCount =
 			sizeof(texturedInputElements) / sizeof(texturedInputElements[0]);
@@ -691,19 +416,19 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		|| kind == DX12_PIPELINE_BLOOM_BLUR
 		|| kind == DX12_PIPELINE_BLOOM_COMPOSITE)
 	{
-		pSelectedVertexShader = m_pBloomVertexShader;
-		pSelectedPixelShader =
+		selectedVertexShader = DX12_SHADER_BLOOM_VS;
+		selectedPixelShader =
 			kind == DX12_PIPELINE_BLOOM_DOWNSAMPLE
-				? m_pBloomDownsamplePixelShader
+				? DX12_SHADER_BLOOM_DOWNSAMPLE_PS
 				: kind == DX12_PIPELINE_BLOOM_BLUR
-					? m_pBloomBlurPixelShader
-					: m_pBloomCompositePixelShader;
+					? DX12_SHADER_BLOOM_BLUR_PS
+					: DX12_SHADER_BLOOM_COMPOSITE_PS;
 	}
 	else if (kind == DX12_PIPELINE_TEXTURED_3D_SHADOW
 		|| kind == DX12_PIPELINE_TEXTURED_3D_OVERLAY)
 	{
-		pSelectedVertexShader = m_pLegacy3DVertexShader;
-		pSelectedPixelShader = m_pLegacy3DPixelShader;
+		selectedVertexShader = DX12_SHADER_LEGACY_3D_VS;
+		selectedPixelShader = DX12_SHADER_LEGACY_3D_PS;
 		pSelectedInput = legacy3DInputElements;
 		selectedInputCount =
 			sizeof(legacy3DInputElements)
@@ -712,8 +437,8 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 	else if (kind == DX12_PIPELINE_RIGID_LIT_3D_SHADOW
 		|| kind == DX12_PIPELINE_RIGID_LIT_3D_OVERLAY)
 	{
-		pSelectedVertexShader = m_pRigidLit3DVertexShader;
-		pSelectedPixelShader = m_pRigidLit3DPixelShader;
+		selectedVertexShader = DX12_SHADER_RIGID_LIT_3D_VS;
+		selectedPixelShader = DX12_SHADER_RIGID_LIT_3D_PS;
 		pSelectedInput = legacy3DInputElements;
 		selectedInputCount =
 			sizeof(legacy3DInputElements)
@@ -722,25 +447,31 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 	else if (kind == DX12_PIPELINE_LEGACY_MATERIAL_3D_SHADOW
 		|| kind == DX12_PIPELINE_LEGACY_MATERIAL_3D_OVERLAY)
 	{
-		pSelectedVertexShader = m_pLegacyMaterial3DVertexShader;
-		pSelectedPixelShader = m_pLegacyMaterial3DPixelShader;
+		selectedVertexShader = DX12_SHADER_LEGACY_MATERIAL_3D_VS;
+		selectedPixelShader = DX12_SHADER_LEGACY_MATERIAL_3D_PS;
 		pSelectedInput = legacy3DInputElements;
 		selectedInputCount =
 			sizeof(legacy3DInputElements)
 			/ sizeof(legacy3DInputElements[0]);
 	}
 
+	D3D12_SHADER_BYTECODE vertexBytecode;
+	D3D12_SHADER_BYTECODE pixelBytecode;
+	ZeroMemory(&vertexBytecode, sizeof(vertexBytecode));
+	ZeroMemory(&pixelBytecode, sizeof(pixelBytecode));
+	if (!GetDirectX12NativeShaderBytecode(
+			selectedVertexShader,
+			&vertexBytecode)
+		|| !GetDirectX12NativeShaderBytecode(
+			selectedPixelShader,
+			&pixelBytecode))
+		return NULL;
+
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc;
 	ZeroMemory(&psoDesc, sizeof(psoDesc));
 	psoDesc.pRootSignature = m_pRootSignature;
-	psoDesc.VS.pShaderBytecode =
-		pSelectedVertexShader->GetBufferPointer();
-	psoDesc.VS.BytecodeLength =
-		pSelectedVertexShader->GetBufferSize();
-	psoDesc.PS.pShaderBytecode =
-		pSelectedPixelShader->GetBufferPointer();
-	psoDesc.PS.BytecodeLength =
-		pSelectedPixelShader->GetBufferSize();
+	psoDesc.VS = vertexBytecode;
+	psoDesc.PS = pixelBytecode;
 	psoDesc.BlendState.AlphaToCoverageEnable = FALSE;
 	psoDesc.BlendState.IndependentBlendEnable = FALSE;
 	D3D12_RENDER_TARGET_BLEND_DESC& blend =

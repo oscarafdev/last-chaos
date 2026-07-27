@@ -29,6 +29,7 @@ namespace
 
 	struct NativeRenderTextureEntry
 	{
+		DirectX12RenderTextureHandle handle;
 		IDirect3DTexture9* pTexture9;
 		CDirectX12Texture* pNativeTexture;
 	};
@@ -201,17 +202,24 @@ namespace
 
 struct DirectX12InteropTextureState
 {
+	DirectX12InteropTextureState()
+		: nextRenderTextureHandle(1)
+	{
+	}
+
 	std::vector<InteropTextureEntry> frames[
 		CDirectX12InteropTextureManager::FRAME_COUNT];
 	std::vector<ManagedTextureEntry> managedTextures;
 	std::vector<NativeRenderTextureEntry> renderTextures;
+	DirectX12RenderTextureHandle nextRenderTextureHandle;
 };
 
 CDirectX12InteropTextureManager::CDirectX12InteropTextureManager()
 	: m_pDevice(NULL)
 	, m_pGraphicsQueue(NULL)
 	, m_pDevice9On12(NULL)
-	, m_pDescriptors(NULL)
+	, m_pResourceDescriptors(NULL)
+	, m_pRenderTargetDescriptors(NULL)
 	, m_pState(NULL)
 	, m_currentFrame(0)
 	, m_frameActive(false)
@@ -227,12 +235,18 @@ CDirectX12InteropTextureManager::~CDirectX12InteropTextureManager()
 bool CDirectX12InteropTextureManager::Initialize(
 	ID3D12Device* pDevice,
 	ID3D12CommandQueue* pGraphicsQueue,
-	CDirectX12DescriptorHeap* pDescriptors)
+	CDirectX12DescriptorHeap* pResourceDescriptors,
+	CDirectX12DescriptorHeap* pRenderTargetDescriptors)
 {
-	if (pDevice == NULL || pGraphicsQueue == NULL || pDescriptors == NULL
-		|| pDescriptors->GetType()
+	if (pDevice == NULL || pGraphicsQueue == NULL
+		|| pResourceDescriptors == NULL
+		|| pResourceDescriptors->GetType()
 			!= D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV
-		|| !pDescriptors->IsShaderVisible())
+		|| !pResourceDescriptors->IsShaderVisible()
+		|| pRenderTargetDescriptors == NULL
+		|| pRenderTargetDescriptors->GetType()
+			!= D3D12_DESCRIPTOR_HEAP_TYPE_RTV
+		|| pRenderTargetDescriptors->IsShaderVisible())
 		return false;
 
 	Shutdown();
@@ -240,7 +254,8 @@ bool CDirectX12InteropTextureManager::Initialize(
 	m_pDevice->AddRef();
 	m_pGraphicsQueue = pGraphicsQueue;
 	m_pGraphicsQueue->AddRef();
-	m_pDescriptors = pDescriptors;
+	m_pResourceDescriptors = pResourceDescriptors;
+	m_pRenderTargetDescriptors = pRenderTargetDescriptors;
 	m_pState = new DirectX12InteropTextureState;
 	if (m_pState == NULL)
 	{
@@ -274,7 +289,8 @@ void CDirectX12InteropTextureManager::Shutdown()
 		m_pDevice->Release();
 		m_pDevice = NULL;
 	}
-	m_pDescriptors = NULL;
+	m_pResourceDescriptors = NULL;
+	m_pRenderTargetDescriptors = NULL;
 	m_currentFrame = 0;
 	m_frameActive = false;
 	m_resourcesReturned = true;
@@ -352,17 +368,30 @@ void CDirectX12InteropTextureManager::ForgetTexture(
 	}
 }
 
-bool CDirectX12InteropTextureManager::RegisterRenderTarget(
+bool CDirectX12InteropTextureManager::CreateRenderTarget(
 	IDirect3DTexture9* pTexture9,
 	UINT width,
 	UINT height,
-	D3DFORMAT legacyFormat)
+	D3DFORMAT legacyFormat,
+	DirectX12RenderTextureHandle* pHandle)
 {
 	if (m_pState == NULL || pTexture9 == NULL || m_pDevice == NULL
-		|| m_pDescriptors == NULL)
+		|| m_pResourceDescriptors == NULL
+		|| m_pRenderTargetDescriptors == NULL || pHandle == NULL)
 		return false;
-	if (FindRenderTarget(pTexture9) != NULL)
-		return true;
+	*pHandle = DX12_INVALID_RENDER_TEXTURE;
+	for (size_t iEntry = 0;
+		iEntry < m_pState->renderTextures.size();
+		++iEntry)
+	{
+		const NativeRenderTextureEntry& existing =
+			m_pState->renderTextures[iEntry];
+		if (existing.pTexture9 == pTexture9)
+		{
+			*pHandle = existing.handle;
+			return true;
+		}
+	}
 
 	DirectX12TextureFormatInfo formatInfo;
 	if (!GetDirectX12TextureFormat(legacyFormat, &formatInfo)
@@ -373,7 +402,8 @@ bool CDirectX12InteropTextureManager::RegisterRenderTarget(
 	if (pNativeTexture == NULL
 		|| !pNativeTexture->CreateRenderTarget2D(
 			m_pDevice,
-			m_pDescriptors,
+			m_pResourceDescriptors,
+			m_pRenderTargetDescriptors,
 			width,
 			height,
 			formatInfo.format,
@@ -384,11 +414,59 @@ bool CDirectX12InteropTextureManager::RegisterRenderTarget(
 	}
 
 	NativeRenderTextureEntry entry;
+	entry.handle = m_pState->nextRenderTextureHandle++;
+	if (entry.handle == DX12_INVALID_RENDER_TEXTURE)
+		entry.handle = m_pState->nextRenderTextureHandle++;
 	pTexture9->AddRef();
 	entry.pTexture9 = pTexture9;
 	entry.pNativeTexture = pNativeTexture;
 	m_pState->renderTextures.push_back(entry);
+	*pHandle = entry.handle;
 	return true;
+}
+
+void CDirectX12InteropTextureManager::DestroyRenderTarget(
+	DirectX12RenderTextureHandle handle)
+{
+	if (m_pState == NULL || handle == DX12_INVALID_RENDER_TEXTURE)
+		return;
+	for (size_t iEntry = 0;
+		iEntry < m_pState->renderTextures.size();
+		++iEntry)
+	{
+		NativeRenderTextureEntry& entry =
+			m_pState->renderTextures[iEntry];
+		if (entry.handle != handle)
+			continue;
+		delete entry.pNativeTexture;
+		entry.pNativeTexture = NULL;
+		if (entry.pTexture9 != NULL)
+		{
+			entry.pTexture9->Release();
+			entry.pTexture9 = NULL;
+		}
+		m_pState->renderTextures.erase(
+			m_pState->renderTextures.begin() + iEntry);
+		return;
+	}
+}
+
+CDirectX12Texture*
+CDirectX12InteropTextureManager::FindRenderTarget(
+	DirectX12RenderTextureHandle handle) const
+{
+	if (m_pState == NULL || handle == DX12_INVALID_RENDER_TEXTURE)
+		return NULL;
+	for (size_t iEntry = 0;
+		iEntry < m_pState->renderTextures.size();
+		++iEntry)
+	{
+		const NativeRenderTextureEntry& entry =
+			m_pState->renderTextures[iEntry];
+		if (entry.handle == handle)
+			return entry.pNativeTexture;
+	}
+	return NULL;
 }
 
 CDirectX12Texture*
@@ -477,7 +555,7 @@ bool CDirectX12InteropTextureManager::Acquire(
 		if (pNativeTexture == NULL
 			|| !pNativeTexture->Create2D(
 				m_pDevice,
-				m_pDescriptors,
+				m_pResourceDescriptors,
 				legacyDesc.Width,
 				legacyDesc.Height,
 				static_cast<UINT16>(mipCount),
@@ -612,7 +690,7 @@ bool CDirectX12InteropTextureManager::Acquire(
 	const D3D12_RESOURCE_DESC resourceDesc = entry.pResource12->GetDesc();
 	if (resourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
 		|| resourceDesc.SampleDesc.Count != 1
-		|| !m_pDescriptors->Allocate(&entry.descriptor))
+		|| !m_pResourceDescriptors->Allocate(&entry.descriptor))
 	{
 		CPrintF(
 			"DX12 error: textura incompatible o sin descriptor "
@@ -725,8 +803,9 @@ void CDirectX12InteropTextureManager::ReleaseFrame(UINT frameIndex)
 	for (size_t iEntry = 0; iEntry < entries.size(); ++iEntry)
 	{
 		if (entries[iEntry].descriptor.IsValid()
-			&& m_pDescriptors != NULL)
-			m_pDescriptors->Release(entries[iEntry].descriptor.index);
+			&& m_pResourceDescriptors != NULL)
+			m_pResourceDescriptors->Release(
+				entries[iEntry].descriptor.index);
 		if (entries[iEntry].pResource12 != NULL)
 			entries[iEntry].pResource12->Release();
 		if (entries[iEntry].pTexture9 != NULL)

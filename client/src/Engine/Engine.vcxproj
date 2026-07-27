@@ -3429,7 +3429,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClCompile Include="Graphics\DirectX12Legacy3DCommandBatch.cpp" />
     <ClCompile Include="Graphics\DirectX12LegacyShaderFamily.cpp" />
     <ClCompile Include="Graphics\DirectX12NativeRenderer.cpp" />
-    <ClCompile Include="Graphics\DirectX12NativeShaderSource.cpp" />
+    <ClCompile Include="Graphics\DirectX12NativeShaderCatalog.cpp" />
     <ClCompile Include="Testing\CameraTestCapture.cpp" />
     <ClCompile Include="Testing\ClientTestAutomation.cpp" />
     <ClCompile Include="Testing\ShaderValidationHooks.cpp" />
@@ -8192,7 +8192,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClInclude Include="Graphics\DirectX12Legacy3DCommandBatch.h" />
     <ClInclude Include="Graphics\DirectX12LegacyShaderFamily.h" />
     <ClInclude Include="Graphics\DirectX12NativeRenderer.h" />
-    <ClInclude Include="Graphics\DirectX12NativeShaderSource.h" />
+    <ClInclude Include="Graphics\DirectX12NativeShaderCatalog.h" />
     <ClInclude Include="Testing\CameraTestCapture.h" />
     <ClInclude Include="Testing\ClientTestAutomation.h" />
     <ClInclude Include="Testing\ShaderValidationHooks.h" />
@@ -9471,7 +9471,40 @@ del %(RootDir)%(Directory)smcPars.c /q</Command>
       <FileType>Document</FileType>
     </None>
     <None Include="Ska\smcFlex.skl" />
+    <None Include="Graphics\Shaders\DirectX12\Bloom.hlsl" />
+    <None Include="Graphics\Shaders\DirectX12\Legacy3D.hlsl" />
+    <None Include="Graphics\Shaders\DirectX12\LegacyMaterial3D.hlsl" />
+    <None Include="Graphics\Shaders\DirectX12\NativeValidation.hlsl" />
+    <None Include="Graphics\Shaders\DirectX12\RigidLit3D.hlsl" />
+    <None Include="Graphics\Shaders\DirectX12\Textured2D.hlsl" />
+    <None Include="Graphics\Shaders\DirectX12\TexturedAlphaTest2D.hlsl" />
   </ItemGroup>
+  <PropertyGroup>
+    <DirectX12ShaderGeneratedDir>$(ProjectDir)$(IntDir)Generated\</DirectX12ShaderGeneratedDir>
+    <DirectX12ShaderGeneratedHeader>$(DirectX12ShaderGeneratedDir)DirectX12NativeShaderBlobs.h</DirectX12ShaderGeneratedHeader>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(DirectX12ShaderGeneratedDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <DirectX12ShaderSource Include="Graphics\Shaders\DirectX12\Bloom.hlsl" />
+    <DirectX12ShaderSource Include="Graphics\Shaders\DirectX12\Legacy3D.hlsl" />
+    <DirectX12ShaderSource Include="Graphics\Shaders\DirectX12\LegacyMaterial3D.hlsl" />
+    <DirectX12ShaderSource Include="Graphics\Shaders\DirectX12\NativeValidation.hlsl" />
+    <DirectX12ShaderSource Include="Graphics\Shaders\DirectX12\RigidLit3D.hlsl" />
+    <DirectX12ShaderSource Include="Graphics\Shaders\DirectX12\Textured2D.hlsl" />
+    <DirectX12ShaderSource Include="Graphics\Shaders\DirectX12\TexturedAlphaTest2D.hlsl" />
+  </ItemGroup>
+  <Target
+    Name="CompileDirectX12Shaders"
+    BeforeTargets="ClCompile"
+    Inputs="@(DirectX12ShaderSource);$(ProjectDir)..\..\..\scripts\compile-dx12-shaders.ps1"
+    Outputs="$(DirectX12ShaderGeneratedHeader)">
+    <MakeDir Directories="$(DirectX12ShaderGeneratedDir)" />
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)..\..\..\scripts\compile-dx12-shaders.ps1&quot; -SourceDirectory &quot;$(ProjectDir)Graphics\Shaders\DirectX12&quot; -OutputHeader &quot;$(DirectX12ShaderGeneratedHeader)&quot; -WindowsSdkVersion &quot;$(WindowsTargetPlatformVersion)&quot;" />
+  </Target>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

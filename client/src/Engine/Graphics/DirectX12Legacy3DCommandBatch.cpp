@@ -396,6 +396,32 @@ namespace
 					!= INVALID_FILE_ATTRIBUTES);
 	}
 
+	bool ReadNativeTerrainMode()
+	{
+		char value[32] = "";
+		const DWORD length = GetEnvironmentVariableA(
+			"LASTCHAOS_DX12_3D_NATIVE_TERRAIN",
+			value,
+			sizeof(value));
+		return length > 0 && length < sizeof(value)
+			&& (_stricmp(value, "enabled") == 0
+				|| strcmp(value, "1") == 0);
+	}
+
+	bool ReadTerrainRasterDebugMode(const char* pVariableName)
+	{
+		if (pVariableName == NULL)
+			return false;
+		char value[32] = "";
+		const DWORD length = GetEnvironmentVariableA(
+			pVariableName,
+			value,
+			sizeof(value));
+		return length > 0 && length < sizeof(value)
+			&& (_stricmp(value, "enabled") == 0
+				|| strcmp(value, "1") == 0);
+	}
+
 	FixedFunctionCaptureMode ReadFixedFunctionCaptureMode()
 	{
 		char value[32] = "";
@@ -651,6 +677,11 @@ namespace
 
 	Native3DCaptureProfile ReadNative3DCaptureProfile()
 	{
+		// El reemplazo integral necesita capturar continuamente; exigir una
+		// segunda variable dejaba REPLACE_ALL activo pero sin comandos nativos.
+		if (ReadFullReplacementMode())
+			return NATIVE_3D_CAPTURE_CONTINUOUS;
+
 		char value[32] = "";
 		const DWORD length = GetEnvironmentVariableA(
 			"LASTCHAOS_DX12_3D_CAPTURE",
@@ -754,6 +785,9 @@ struct DirectX12Legacy3DCommandBatchState
 	UINT terrainDepthMaskVertexCount;
 	bool terrainDepthMaskFallbackReported;
 	bool terrainOpaqueInitializationReported;
+	bool terrainCompatibilityFallbackReported;
+	bool fixedGeneralFallbackReported;
+	ID3D12Resource* pNativeDepthTarget;
 	UINT64 frameSerial;
 	UINT64 lastInventoryDumpFrame;
 
@@ -773,6 +807,9 @@ struct DirectX12Legacy3DCommandBatchState
 		, terrainDepthMaskVertexCount(0)
 		, terrainDepthMaskFallbackReported(false)
 		, terrainOpaqueInitializationReported(false)
+		, terrainCompatibilityFallbackReported(false)
+		, fixedGeneralFallbackReported(false)
+		, pNativeDepthTarget(NULL)
 		, frameSerial(0)
 		, lastInventoryDumpFrame(0)
 	{
@@ -1041,6 +1078,10 @@ namespace
 
 		FLOAT minimumDepth = FLT_MAX;
 		FLOAT maximumDepth = -FLT_MAX;
+		FLOAT minimumNdcX = FLT_MAX;
+		FLOAT maximumNdcX = -FLT_MAX;
+		FLOAT minimumNdcY = FLT_MAX;
+		FLOAT maximumNdcY = -FLT_MAX;
 		UINT beyondFarPlane = 0;
 		UINT behindCamera = 0;
 		UINT64 positionFingerprint = 14695981039346656037ULL;
@@ -1080,6 +1121,14 @@ namespace
 			}
 			const FLOAT normalizedDepth =
 				vertex.position[2] / vertex.clipW;
+			const FLOAT normalizedX =
+				vertex.position[0] / vertex.clipW;
+			const FLOAT normalizedY =
+				vertex.position[1] / vertex.clipW;
+			minimumNdcX = (std::min)(minimumNdcX, normalizedX);
+			maximumNdcX = (std::max)(maximumNdcX, normalizedX);
+			minimumNdcY = (std::min)(minimumNdcY, normalizedY);
+			maximumNdcY = (std::max)(maximumNdcY, normalizedY);
 			minimumDepth = (std::min)(minimumDepth, normalizedDepth);
 			maximumDepth = (std::max)(maximumDepth, normalizedDepth);
 			if (normalizedDepth > 1.0f)
@@ -1119,6 +1168,7 @@ namespace
 			"tex=%p/%ux%u/f%d/p%d, "
 			"tex1=%p/%ux%u/f%d, tex2=%p/%ux%u/f%d, "
 			"tex3=%p/%ux%u/f%d, "
+			"ndc=(%.6f..%.6f,%.6f..%.6f), "
 			"z/w=%.8f..%.8f, fueraLejano=%u/%u, "
 			"corregidosLejano=%u, detrasCamara=%u.\n",
 			static_cast<unsigned long long>(vertexFingerprint),
@@ -1166,6 +1216,10 @@ namespace
 			extraTextureDescriptions[2].Width,
 			extraTextureDescriptions[2].Height,
 			static_cast<int>(extraTextureDescriptions[2].Format),
+			minimumNdcX,
+			maximumNdcX,
+			minimumNdcY,
+			maximumNdcY,
 			minimumDepth,
 			maximumDepth,
 			beyondFarPlane,
@@ -1581,6 +1635,24 @@ namespace
 			|| family == DX12_LEGACY_VS_PROJECTED_FOUR;
 	}
 
+	void CaptureProjectedTerrainCamera(IDirect3DDevice9* pDevice9)
+	{
+		if (pDevice9 == NULL)
+			return;
+		const UINT TERRAIN_VERTEX_CONSTANT_COUNT = 96;
+		FLOAT vertexConstants[TERRAIN_VERTEX_CONSTANT_COUNT * 4];
+		if (SUCCEEDED(pDevice9->GetVertexShaderConstantF(
+				0,
+				vertexConstants,
+				TERRAIN_VERTEX_CONSTANT_COUNT)))
+		{
+			CCameraTestCapture::CaptureTerrainView(
+				pDevice9,
+				vertexConstants,
+				TERRAIN_VERTEX_CONSTANT_COUNT);
+		}
+	}
+
 	bool ClampProjectedTerrainFarDepth(Legacy3DVertex* pVertex)
 	{
 		if (pVertex == NULL
@@ -1843,6 +1915,7 @@ void CDirectX12Legacy3DCommandBatch::BeginFrame(UINT frameIndex)
 	m_pState->staticNormalSelected = false;
 	m_pState->terrainColorPendingAfterDepthMask = false;
 	m_pState->terrainDepthMaskVertexCount = 0;
+	m_pState->pNativeDepthTarget = NULL;
 }
 
 void CDirectX12Legacy3DCommandBatch::ForgetTexture(
@@ -2144,8 +2217,10 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		vertexShaderFingerprint == RIGID_LIT_VERTEX_SHADER_FAMILY;
 	const bool rigidLitPixel =
 		pixelShaderFingerprint == RIGID_LIT_PIXEL_SHADER_FAMILY;
+	const bool fixedFunctionDraw =
+		!usesVertexProgram && !usesPixelProgram;
 	const bool fixedProjectiveDraw =
-		projectiveMapping && !usesVertexProgram && !usesPixelProgram;
+		projectiveMapping && fixedFunctionDraw;
 	// Las sombras proyectadas consumen el render target nativo mediante la
 	// ruta fixed-function. Esta pareja no tiene fingerprints de shader, pero
 	// su estado y su generacion de coordenadas se traducen explicitamente.
@@ -2166,6 +2241,27 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			indexCount);
 	if (captureProfile == NATIVE_3D_CAPTURE_OFF)
 		return false;
+	// El terreno usa una pasada de mascara de profundidad seguida por varias
+	// capas ONE/SRC_ALPHA sobre la misma geometria. La traduccion nativa aun
+	// no conserva el contrato completo entre esas pasadas y deja visible el
+	// cielo a traves del piso. Mantener juntas las tres familias proyectadas
+	// en D3D9On12 evita mezclar dos implementaciones de depth/blend mientras
+	// se prepara un compositor de terreno nativo que pueda sustituirlas como
+	// una unidad.
+	if (knownShaderFamily
+		&& IsProjectedTerrainVertexFamily(shaderFamily.vertex)
+		&& !ReadNativeTerrainMode())
+	{
+		CaptureProjectedTerrainCamera(pDevice9);
+		if (!m_pState->terrainCompatibilityFallbackReported)
+		{
+			CPrintF(
+				"DX12 terreno: familias multipass conservadas en "
+				"D3D9On12 para preservar profundidad y capas.\n");
+			m_pState->terrainCompatibilityFallbackReported = true;
+		}
+		return false;
+	}
 	UINT64 replacementVertexFamily = 0;
 	const bool replacementVertexFamilySelected =
 		ReadReplacementVertexFamily(&replacementVertexFamily);
@@ -2203,15 +2299,23 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		++m_pState->rejectedReasons[REJECT_OFFSCREEN_RENDER_TARGET];
 		return false;
 	}
-	// El reemplazo total solo puede quitar el draw heredado cuando la pareja
-	// de shaders ya fue validada visualmente. Las familias genéricas continúan
-	// disponibles para inventario y comparación, pero no deben tapar el mundo
-	// con una traducción incompleta de sus constantes.
+	// Las parejas programables deben estar validadas. Fixed-function general
+	// sigue en fallback: mezcla espacios de vertices y pasadas auxiliares que
+	// pueden producir paneles gigantes. Solo la proyeccion controlada dispone
+	// de un contrato nativo validado.
 	if (ReadFullReplacementMode()
 		&& !replacementFamilySelected
 		&& !shaderFamily.replacementValidated
 		&& !fixedProjectiveDraw)
 	{
+		if (fixedFunctionDraw
+			&& !m_pState->fixedGeneralFallbackReported)
+		{
+			CPrintF(
+				"DX12 3D guardia: fixed-function general permanece "
+				"en fallback para evitar paneles o triangulos gigantes.\n");
+			m_pState->fixedGeneralFallbackReported = true;
+		}
 		TrackTerrainDepthMaskFallback(m_pState, pDevice9);
 		return false;
 	}
@@ -2677,7 +2781,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		++m_pState->rejectedReasons[REJECT_STATE_QUERY];
 		return false;
 	}
-	const bool fixedFunctionDraw = !usesVertexProgram && !usesPixelProgram;
 	const FixedFunctionCaptureMode fixedFunctionCaptureMode =
 		ReadFixedFunctionCaptureMode();
 	const bool fixedFunctionBlended =
@@ -3427,6 +3530,19 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		range.depthFunction = D3D12_COMPARISON_FUNC_LESS_EQUAL;
 	}
 	range.cullMode = ToCullMode(cullMode);
+	if (projectedTerrain
+		&& ReadTerrainRasterDebugMode(
+			"LASTCHAOS_DX12_3D_TERRAIN_DISABLE_DEPTH"))
+	{
+		range.depthEnabled = false;
+		range.depthWriteEnabled = false;
+	}
+	if (projectedTerrain
+		&& ReadTerrainRasterDebugMode(
+			"LASTCHAOS_DX12_3D_TERRAIN_DISABLE_CULL"))
+	{
+		range.cullMode = D3D12_CULL_MODE_NONE;
+	}
 	range.blendMode = fixedFunctionDraw
 		? fixedFunctionBlendMode
 		: ToBlendMode(
@@ -3670,9 +3786,14 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		&renderTarget,
 		FALSE,
 		&depthTarget);
-	if (!useInteropDepth
-		&& (!nativeOffscreen
-			|| pRenderTargets->ShouldClearNativeDepth()))
+	ID3D12Resource* pCurrentDepthTarget =
+		pRenderTargets->GetCurrentResource();
+	const bool startsNewPrivateDepth =
+		!useInteropDepth
+		&& (m_pState->pNativeDepthTarget != pCurrentDepthTarget
+			|| (nativeOffscreen
+				&& pRenderTargets->ShouldClearNativeDepth()));
+	if (startsNewPrivateDepth)
 	{
 		pCommandList->ClearDepthStencilView(
 			depthTarget,
@@ -3681,6 +3802,7 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			0,
 			0,
 			NULL);
+		m_pState->pNativeDepthTarget = pCurrentDepthTarget;
 	}
 	pCommandList->IASetPrimitiveTopology(
 		D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

@@ -6,6 +6,7 @@
 
 #include <windows.h>
 #include <d3d12.h>
+#include <Engine/Graphics/DirectX12RenderState.h>
 
 struct IDirect3DDevice9;
 struct IDirect3DDevice9On12;
@@ -17,8 +18,8 @@ class CDirectX12RenderTargetManager
 public:
 	enum
 	{
-		FRAME_COUNT = 3,
-		MAX_SUBMISSIONS_PER_FRAME = 16
+		FRAME_COUNT = DX12_FRAME_COUNT,
+		MAX_SUBMISSIONS_PER_FRAME = DX12_MAX_SUBMISSIONS_PER_FRAME
 	};
 
 	CDirectX12RenderTargetManager();
@@ -41,6 +42,9 @@ public:
 		UINT submissionIndex,
 		bool clearColor,
 		const FLOAT clearValue[4]);
+	bool CopyCurrentColorTo(
+		CDirectX12Texture* pDestination,
+		ID3D12GraphicsCommandList* pCommandList);
 	bool PrepareForSubmission(ID3D12GraphicsCommandList* pCommandList);
 	bool ReturnToD3D9(ID3D12Fence* pFence, UINT64 fenceValue);
 

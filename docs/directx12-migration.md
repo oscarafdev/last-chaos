@@ -1401,10 +1401,67 @@ Validación:
 - cero rechazos, fallbacks y eventos de aplicación, pantalla o dispositivo;
 - `.itconfig/dx12-native-offscreen-depth-regression.png`.
 
-El color de `CRenderTexture` continúa siendo una textura interoperable creada
-por D3D9On12, ya que las pasadas posteriores todavía reciben su identidad
-`IDirect3DTexture9`. Migrar esa identidad y sus vistas SRV/RTV a recursos DX12
-nativos es el siguiente corte de arquitectura.
+### Etapa 6w: identidad nativa para render textures y bloom
+
+`CRenderTexture` conserva una textura D3D9 únicamente como adaptador para los
+consumidores que todavía no fueron migrados. Su identidad nativa es ahora un
+`DirectX12RenderTextureHandle` estable, administrado por el backend sin exponer
+un puntero `IDirect3DTexture9` a las pasadas DX12.
+
+`CDirectX12Texture` es dueño conjunto del recurso de GPU, su SRV y su RTV. Los
+RTV persistentes se asignan desde un heap compartido y reemplazan los heaps
+privados y las vistas recreadas por bloom. El registro de interoperabilidad
+mantiene la asociación con D3D9 sólo en el borde para que sombras y reflejos
+pendientes puedan seguir resolviendo la misma textura durante la transición.
+
+Bloom recibe directamente las tres `CDirectX12Texture`. La captura de escena
+usa `CDirectX12RenderTargetManager::CopyCurrentColorTo`, que transiciona y copia
+el render target sincronizado hacia el recurso fuente nativo; ya no necesita
+una superficie D3D9 de destino ni localizar los filtros por puntero legado.
+
+Validación:
+
+- build `LCRelease|x64` de Engine completado;
+- cámara verificada:
+  `.itconfig/dx12-camera-captures/camera-repro-20260727-172321.json`;
+- captura:
+  `.itconfig/dx12-camera-replays/native-render-texture-bloom.png`;
+- terreno opaco, verde y con caminos; sin blanqueo ni geometría de fondo
+  visible a través del piso.
+
+El terreno continúa explícitamente en su fallback D3D9On12 y no forma parte de
+este corte.
+
+### Etapa 6x: shaders DXIL precompilados con DXC
+
+Los shaders nativos dejaron de vivir como strings C++ y ya no se compilan
+durante `CDirectX12PipelineCache::Initialize`. Las siete fuentes están ahora en
+`Graphics/Shaders/DirectX12` y conservan el mismo contrato de entradas,
+constantes, texturas y samplers.
+
+El target `CompileDirectX12Shaders` de Engine ejecuta
+`scripts/compile-dx12-shaders.ps1` antes de `ClCompile`. El generador localiza
+DXC en el Windows SDK seleccionado, compila 15 entradas `vs_6_0`/`ps_6_0`,
+elimina debug y reflection de los contenedores DXIL y produce un header
+mecánico dentro de `$(IntDir)Generated`. MSBuild declara fuentes, script y
+header como `Inputs`/`Outputs`, por lo que una compilación incremental no
+invoca DXC cuando nada cambió.
+
+`DirectX12NativeShaderCatalog` es la única frontera con el header generado.
+`DirectX12PipelineCache` selecciona IDs tipados y recibe
+`D3D12_SHADER_BYTECODE`; ya no conserva `ID3DBlob`, incluye
+`d3dcompiler.h`, enlaza `d3dcompiler.lib` ni llama `D3DCompile`.
+
+Validación estática:
+
+- 15 blobs DXIL generados con el SDK `10.0.26100.0`;
+- build `LCRelease|x64` de Engine completado;
+- segundo build incremental sin regeneración DXC;
+- `Engine.dll` sin imports de `D3DCompile` ni `d3dcompiler`;
+- reproducción visual con
+  `.itconfig/dx12-camera-captures/camera-repro-20260727-174021.json`;
+- captura `.itconfig/dx12-camera-replays/dxc-offline-native-shaders.png`:
+  terreno verde y opaco, caminos, geometría, UI y bloom sin regresiones.
 
 ### Corrección del cielo visible a través del terreno (2026-07-26)
 
@@ -1440,6 +1497,26 @@ siguiente draw de terreno y escribe
 zona, área, capa, posición del personaje, orientación relativa de cámara,
 matrices D3D9, viewport y las 96 constantes `float4` del vertex shader que
 generaron el terreno. La captura es completamente local y no requiere nivel GM.
+
+Para repetir automáticamente una vista ya registrada se usa:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File `
+  .\scripts\run-dx12-camera-repro.ps1 `
+  -FixturePath .itconfig\dx12-camera-captures\camera-piso-fallo.json
+```
+
+El lanzador toma las credenciales de `.itconfig/lastchaos-test.settings.psd1`,
+instala la última compilación local, inicia sesión, selecciona servidor, canal
+y personaje, y restaura la posición y la cámara al entrar al mundo. Espera un
+draw real de terreno antes de guardar el PNG en
+`.itconfig/dx12-camera-replays`. Las credenciales no se imprimen ni se guardan
+en el repositorio.
+
+Los mismos datos pueden pasarse directamente a `Jugar-Espanol.cmd` mediante
+`+testplayerplacement`, `+testviewpoint`, `+testcameraangle`,
+`+testworldviewdelay`, `+testworldviewhold` y `+testcapture`. Los lanzadores
+intermedios reenvían todos los argumentos a `Nksp`.
 
 ### Arranque negro desde el lanzador en español (2026-07-26)
 

@@ -280,6 +280,7 @@ bool CDirectX12RenderTargetManager::AcquireNative(
 	const FLOAT clearValue[4])
 {
 	if (pTexture == NULL || pTexture->GetResource() == NULL
+		|| pTexture->GetRenderTargetView().ptr == 0
 		|| pCommandList == NULL || m_pDevice == NULL
 		|| m_isAcquired || frameIndex >= FRAME_COUNT
 		|| submissionIndex >= MAX_SUBMISSIONS_PER_FRAME)
@@ -300,10 +301,6 @@ bool CDirectX12RenderTargetManager::AcquireNative(
 	m_isNative = true;
 	m_clearNativeDepth = clearColor;
 
-	m_pDevice->CreateRenderTargetView(
-		m_pResource12,
-		NULL,
-		GetCurrentView());
 	m_pNativeTexture->Transition(
 		pCommandList,
 		D3D12_RESOURCE_STATE_RENDER_TARGET);
@@ -313,6 +310,66 @@ bool CDirectX12RenderTargetManager::AcquireNative(
 			clearValue,
 			0,
 			NULL);
+	return true;
+}
+
+bool CDirectX12RenderTargetManager::CopyCurrentColorTo(
+	CDirectX12Texture* pDestination,
+	ID3D12GraphicsCommandList* pCommandList)
+{
+	if (!m_isAcquired || m_pResource12 == NULL
+		|| pDestination == NULL || pDestination->GetResource() == NULL
+		|| pDestination->GetResource() == m_pResource12
+		|| pCommandList == NULL)
+		return false;
+
+	const D3D12_RESOURCE_DESC sourceDesc = m_pResource12->GetDesc();
+	const D3D12_RESOURCE_DESC destinationDesc =
+		pDestination->GetResource()->GetDesc();
+	if (sourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
+		|| destinationDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
+		|| sourceDesc.Width != destinationDesc.Width
+		|| sourceDesc.Height != destinationDesc.Height
+		|| sourceDesc.Format != destinationDesc.Format
+		|| sourceDesc.SampleDesc.Count != 1
+		|| destinationDesc.SampleDesc.Count != 1)
+		return false;
+
+	if (m_isNative && m_pNativeTexture != NULL)
+	{
+		m_pNativeTexture->Transition(
+			pCommandList,
+			D3D12_RESOURCE_STATE_COPY_SOURCE);
+	}
+	else
+	{
+		Transition(
+			pCommandList,
+			D3D12_RESOURCE_STATE_RENDER_TARGET,
+			D3D12_RESOURCE_STATE_COPY_SOURCE);
+	}
+	pDestination->Transition(
+		pCommandList,
+		D3D12_RESOURCE_STATE_COPY_DEST);
+	pCommandList->CopyResource(
+		pDestination->GetResource(),
+		m_pResource12);
+	pDestination->Transition(
+		pCommandList,
+		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
+	if (m_isNative && m_pNativeTexture != NULL)
+	{
+		m_pNativeTexture->Transition(
+			pCommandList,
+			D3D12_RESOURCE_STATE_RENDER_TARGET);
+	}
+	else
+	{
+		Transition(
+			pCommandList,
+			D3D12_RESOURCE_STATE_COPY_SOURCE,
+			D3D12_RESOURCE_STATE_RENDER_TARGET);
+	}
 	return true;
 }
 
@@ -408,6 +465,9 @@ bool CDirectX12RenderTargetManager::ShouldClearNativeDepth() const
 
 D3D12_CPU_DESCRIPTOR_HANDLE CDirectX12RenderTargetManager::GetCurrentView() const
 {
+	if (m_isNative && m_pNativeTexture != NULL)
+		return m_pNativeTexture->GetRenderTargetView();
+
 	D3D12_CPU_DESCRIPTOR_HANDLE handle =
 		m_pRtvHeap->GetCPUDescriptorHandleForHeapStart();
 	const UINT descriptorIndex =

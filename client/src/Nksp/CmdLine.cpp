@@ -106,6 +106,13 @@ void ParseCommandLine(CTString strCmd)
   INDEX testWorldModelAlpha = 255;
   BOOL testWorldModelNormalMapSpecular = FALSE;
   BOOL testBloom = FALSE;
+  BOOL testWorldView = FALSE;
+  CPlacement3D testPlayerPlacement;
+  CPlacement3D testViewpointPlacement;
+  FLOAT testNetworkCameraAngle = 0.0f;
+  INDEX testWorldViewDelay = 5;
+  INDEX testWorldViewHold = 2;
+  CTString testCaptureName = "";
 
   FOREVER {
     CTString strWord = GetNextParam();
@@ -134,6 +141,15 @@ void ParseCommandLine(CTString strCmd)
           testWorldModelAlpha,
           testWorldModelNormalMapSpecular);
         CClientTestAutomation::Instance().ConfigureBloomTest(testBloom);
+        if (testWorldView) {
+          CClientTestAutomation::Instance().ConfigureWorldView(
+            testPlayerPlacement,
+            testViewpointPlacement,
+            testNetworkCameraAngle,
+            testWorldViewDelay,
+            testWorldViewHold,
+            testCaptureName);
+        }
         cmd_strOutput+="Test auto-login enabled.\n";
       }
       cmd_strOutput+="\n";
@@ -192,6 +208,31 @@ void ParseCommandLine(CTString strCmd)
       testWorldModelNormalMapSpecular = TRUE;
     } else if (strWord=="+testbloom") {
       testBloom = TRUE;
+    } else if (strWord=="+testplayerplacement") {
+      GetNextParam().ScanF("%g", &testPlayerPlacement.pl_PositionVector(1));
+      GetNextParam().ScanF("%g", &testPlayerPlacement.pl_PositionVector(2));
+      GetNextParam().ScanF("%g", &testPlayerPlacement.pl_PositionVector(3));
+      GetNextParam().ScanF("%g", &testPlayerPlacement.pl_OrientationAngle(1));
+      GetNextParam().ScanF("%g", &testPlayerPlacement.pl_OrientationAngle(2));
+      GetNextParam().ScanF("%g", &testPlayerPlacement.pl_OrientationAngle(3));
+      testWorldView = TRUE;
+    } else if (strWord=="+testviewpoint") {
+      GetNextParam().ScanF("%g", &testViewpointPlacement.pl_PositionVector(1));
+      GetNextParam().ScanF("%g", &testViewpointPlacement.pl_PositionVector(2));
+      GetNextParam().ScanF("%g", &testViewpointPlacement.pl_PositionVector(3));
+      GetNextParam().ScanF("%g", &testViewpointPlacement.pl_OrientationAngle(1));
+      GetNextParam().ScanF("%g", &testViewpointPlacement.pl_OrientationAngle(2));
+      GetNextParam().ScanF("%g", &testViewpointPlacement.pl_OrientationAngle(3));
+      testWorldView = TRUE;
+    } else if (strWord=="+testcameraangle") {
+      GetNextParam().ScanF("%g", &testNetworkCameraAngle);
+      testWorldView = TRUE;
+    } else if (strWord=="+testworldviewdelay") {
+      GetNextParam().ScanF("%d", &testWorldViewDelay);
+    } else if (strWord=="+testworldviewhold") {
+      GetNextParam().ScanF("%d", &testWorldViewHold);
+    } else if (strWord=="+testcapture") {
+      testCaptureName = GetNextParam();
     } else if (strWord=="+connect") {
       cmd_strServer = GetNextParam();
       const char *pcColon = strchr(cmd_strServer, ':');

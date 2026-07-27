@@ -13,6 +13,7 @@ struct IDirect3DDevice9;
 class ENGINE_API CCameraTestCapture
 {
 public:
+	static void Request(const CTString& requestedName);
 	static void PollRequest();
 	static void CaptureTerrainView(
 		IDirect3DDevice9* device,

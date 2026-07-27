@@ -54,7 +54,6 @@ private:
 	CDirectX12PipelineCache(const CDirectX12PipelineCache&);
 	CDirectX12PipelineCache& operator=(const CDirectX12PipelineCache&);
 
-	bool CompileShaders();
 	bool CreateRootSignature();
 	ID3D12PipelineState* CreatePipelineState(
 		DirectX12PipelineKind kind,
@@ -70,21 +69,6 @@ private:
 
 	ID3D12Device* m_pDevice;
 	ID3D12RootSignature* m_pRootSignature;
-	ID3DBlob* m_pVertexShader;
-	ID3DBlob* m_pPixelShader;
-	ID3DBlob* m_pTexturedVertexShader;
-	ID3DBlob* m_pTexturedPixelShader;
-	ID3DBlob* m_pAlphaTestPixelShader;
-	ID3DBlob* m_pBloomVertexShader;
-	ID3DBlob* m_pBloomDownsamplePixelShader;
-	ID3DBlob* m_pBloomBlurPixelShader;
-	ID3DBlob* m_pBloomCompositePixelShader;
-	ID3DBlob* m_pLegacy3DVertexShader;
-	ID3DBlob* m_pLegacy3DPixelShader;
-	ID3DBlob* m_pRigidLit3DVertexShader;
-	ID3DBlob* m_pRigidLit3DPixelShader;
-	ID3DBlob* m_pLegacyMaterial3DVertexShader;
-	ID3DBlob* m_pLegacyMaterial3DPixelShader;
 	DirectX12PipelineCacheState* m_pState;
 };
 

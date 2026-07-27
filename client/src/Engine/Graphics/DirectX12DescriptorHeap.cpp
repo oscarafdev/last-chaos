@@ -92,10 +92,15 @@ bool CDirectX12DescriptorHeap::Initialize(
 	m_descriptorSize = pDevice->GetDescriptorHandleIncrementSize(type);
 	m_shaderVisible = shaderVisible;
 	m_pState->allocated.resize(capacity, false);
-	m_pHeap->SetName(
-		type == D3D12_DESCRIPTOR_HEAP_TYPE_SAMPLER
-			? L"LastChaos D3D12 Sampler Descriptor Heap"
-			: L"LastChaos D3D12 Resource Descriptor Heap");
+	const wchar_t* pHeapName =
+		L"LastChaos D3D12 Resource Descriptor Heap";
+	if (type == D3D12_DESCRIPTOR_HEAP_TYPE_SAMPLER)
+		pHeapName = L"LastChaos D3D12 Sampler Descriptor Heap";
+	else if (type == D3D12_DESCRIPTOR_HEAP_TYPE_RTV)
+		pHeapName = L"LastChaos D3D12 Render Target Descriptor Heap";
+	else if (type == D3D12_DESCRIPTOR_HEAP_TYPE_DSV)
+		pHeapName = L"LastChaos D3D12 Depth Descriptor Heap";
+	m_pHeap->SetName(pHeapName);
 	return true;
 }
 

@@ -166,10 +166,9 @@ public:
 		CDirectX12UploadManager* pUploadManager,
 		CDirectX12DescriptorHeap* pResourceDescriptors,
 		CDirectX12DescriptorHeap* pSamplerDescriptors,
-		CDirectX12InteropTextureManager* pInteropTextures,
-		IDirect3DTexture9* pSourceTexture,
-		IDirect3DTexture9* pFilterTexture0,
-		IDirect3DTexture9* pFilterTexture1);
+		CDirectX12Texture* pSourceTexture,
+		CDirectX12Texture* pFilterTexture0,
+		CDirectX12Texture* pFilterTexture1);
 	UINT GetUiPrimitiveCount() const;
 	UINT GetUiSegmentCount() const;
 	UINT GetUiBarrierCount() const;

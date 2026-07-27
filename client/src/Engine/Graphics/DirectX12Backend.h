@@ -67,12 +67,16 @@ public:
 	bool WaitForGpu();
 	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
 	void ForgetLegacyTexture(IDirect3DTexture9* pTexture9);
-	bool RegisterNativeOffscreenTexture(
+	bool CreateNativeOffscreenTexture(
 		IDirect3DTexture9* pTexture9,
 		UINT width,
 		UINT height,
-		INT legacyFormat);
-	bool BeginNativeOffscreenTexture(IDirect3DTexture9* pTexture9);
+		INT legacyFormat,
+		DirectX12RenderTextureHandle* pHandle);
+	void DestroyNativeOffscreenTexture(
+		DirectX12RenderTextureHandle handle);
+	bool BeginNativeOffscreenTexture(
+		DirectX12RenderTextureHandle handle);
 	void ClearNativeOffscreenTexture(ULONG color);
 	void EndNativeOffscreenTexture();
 	bool CopyLegacySurfaceRegion(
@@ -82,9 +86,9 @@ public:
 		UINT destinationX,
 		UINT destinationY);
 	bool RenderNativeBloom(
-		IDirect3DTexture9* pSourceTexture,
-		IDirect3DTexture9* pFilterTexture0,
-		IDirect3DTexture9* pFilterTexture1);
+		DirectX12RenderTextureHandle sourceTexture,
+		DirectX12RenderTextureHandle filterTexture0,
+		DirectX12RenderTextureHandle filterTexture1);
 	bool AcquireRenderTarget(
 		IDirect3DSurface9* pSurface9,
 		HWND hPresentationWindow = NULL);
@@ -201,8 +205,8 @@ public:
 private:
 	enum
 	{
-		FRAME_COUNT = 3,
-		MAX_SUBMISSIONS_PER_FRAME = 16
+		FRAME_COUNT = DX12_FRAME_COUNT,
+		MAX_SUBMISSIONS_PER_FRAME = DX12_MAX_SUBMISSIONS_PER_FRAME
 	};
 
 	struct FrameContext
@@ -238,6 +242,7 @@ private:
 	CDirectX12RenderTargetManager* m_pRenderTargets;
 	CDirectX12UploadManager* m_pUploadManager;
 	CDirectX12DescriptorHeap* m_pResourceDescriptors;
+	CDirectX12DescriptorHeap* m_pRenderTargetDescriptors;
 	CDirectX12DescriptorHeap* m_pSamplerDescriptors;
 	CDirectX12NativeRenderer* m_pNativeRenderer;
 	CDirectX12InteropTextureManager* m_pInteropTextures;
@@ -260,7 +265,7 @@ private:
 	bool m_partialSubmissionCapacityReported;
 	UINT m_uiScopeDepth;
 	UINT m_offscreenDrawPortDepth;
-	IDirect3DTexture9* m_pNativeOffscreenTexture9;
+	DirectX12RenderTextureHandle m_nativeOffscreenTexture;
 	bool m_nativeOffscreenClearPending;
 	FLOAT m_nativeOffscreenClearColor[4];
 	UINT m_suppressedLegacyDrawCount;

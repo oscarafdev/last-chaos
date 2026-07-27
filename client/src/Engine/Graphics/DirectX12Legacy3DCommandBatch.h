@@ -141,8 +141,8 @@ private:
 	// fence correspondiente. La cantidad coincide con DirectX12Backend.
 	enum
 	{
-		BUFFER_FRAME_COUNT = 3,
-		BUFFER_SUBMISSION_COUNT = 16
+		BUFFER_FRAME_COUNT = DX12_FRAME_COUNT,
+		BUFFER_SUBMISSION_COUNT = DX12_MAX_SUBMISSIONS_PER_FRAME
 	};
 	CDirectX12Buffer* m_pVertexBuffers
 		[BUFFER_FRAME_COUNT][BUFFER_SUBMISSION_COUNT];

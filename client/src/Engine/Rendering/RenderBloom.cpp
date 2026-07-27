@@ -257,16 +257,13 @@ HRESULT CRenderer::RenderBloom()
 	CDirectX12Backend& dx12 = GetDirectX12Backend();
 	if (dx12.IsFull3DReplacementEnabled())
 	{
-		IDirect3DTexture9* pSource =
-			reinterpret_cast<IDirect3DTexture9*>(
-				_prtBloomSource->rt_tdTexture.td_ulObject);
-		IDirect3DTexture9* pFilter0 =
-			reinterpret_cast<IDirect3DTexture9*>(
-				_prtFilterTarget[0]->rt_tdTexture.td_ulObject);
-		IDirect3DTexture9* pFilter1 =
-			reinterpret_cast<IDirect3DTexture9*>(
-				_prtFilterTarget[1]->rt_tdTexture.td_ulObject);
-		return dx12.RenderNativeBloom(pSource, pFilter0, pFilter1)
+		if (_prtBloomSource == NULL || _prtFilterTarget[0] == NULL
+			|| _prtFilterTarget[1] == NULL)
+			return E_FAIL;
+		return dx12.RenderNativeBloom(
+			_prtBloomSource->GetNativeTextureHandle(),
+			_prtFilterTarget[0]->GetNativeTextureHandle(),
+			_prtFilterTarget[1]->GetNativeTextureHandle())
 			? S_OK
 			: E_FAIL;
 	}

@@ -30,7 +30,8 @@ public:
 			D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING);
 	bool CreateRenderTarget2D(
 		ID3D12Device* pDevice,
-		CDirectX12DescriptorHeap* pDescriptorHeap,
+		CDirectX12DescriptorHeap* pResourceDescriptorHeap,
+		CDirectX12DescriptorHeap* pRenderTargetDescriptorHeap,
 		UINT width,
 		UINT height,
 		DXGI_FORMAT format,
@@ -50,6 +51,7 @@ public:
 
 	ID3D12Resource* GetResource() const;
 	D3D12_GPU_DESCRIPTOR_HANDLE GetShaderResourceView() const;
+	D3D12_CPU_DESCRIPTOR_HANDLE GetRenderTargetView() const;
 	UINT GetDescriptorIndex() const;
 	UINT GetWidth() const;
 	UINT GetHeight() const;
@@ -75,7 +77,9 @@ private:
 
 	ID3D12Resource* m_pResource;
 	CDirectX12DescriptorHeap* m_pDescriptorHeap;
+	CDirectX12DescriptorHeap* m_pRenderTargetDescriptorHeap;
 	DirectX12DescriptorHandle m_descriptor;
+	DirectX12DescriptorHandle m_renderTargetDescriptor;
 	UINT m_width;
 	UINT m_height;
 	UINT16 m_mipLevels;

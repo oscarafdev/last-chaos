@@ -117,6 +117,15 @@ namespace
 	}
 }
 
+void CCameraTestCapture::Request(const CTString& requestedName)
+{
+	pendingCaptureName = SanitizeCaptureName(requestedName);
+	pendingRequestPath = "";
+	CPrintF(
+		"DX12 captura de cámara solicitada: se guardará en el "
+		"próximo draw de terreno.\n");
+}
+
 void CCameraTestCapture::PollRequest()
 {
 	static ULONG lastPoll = 0;
@@ -180,7 +189,8 @@ void CCameraTestCapture::CaptureTerrainView(
 			outputPath,
 			errorMessage))
 	{
-		DeleteFileA(pendingRequestPath);
+		if (pendingRequestPath.Length() > 0)
+			DeleteFileA(pendingRequestPath);
 		pendingCaptureName = "";
 		pendingRequestPath = "";
 		CPrintF(

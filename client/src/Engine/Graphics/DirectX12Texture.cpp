@@ -8,6 +8,7 @@
 CDirectX12Texture::CDirectX12Texture()
 	: m_pResource(NULL)
 	, m_pDescriptorHeap(NULL)
+	, m_pRenderTargetDescriptorHeap(NULL)
 	, m_width(0)
 	, m_height(0)
 	, m_mipLevels(0)
@@ -46,7 +47,8 @@ bool CDirectX12Texture::Create2D(
 
 bool CDirectX12Texture::CreateRenderTarget2D(
 	ID3D12Device* pDevice,
-	CDirectX12DescriptorHeap* pDescriptorHeap,
+	CDirectX12DescriptorHeap* pResourceDescriptorHeap,
+	CDirectX12DescriptorHeap* pRenderTargetDescriptorHeap,
 	UINT width,
 	UINT height,
 	DXGI_FORMAT format,
@@ -55,9 +57,15 @@ bool CDirectX12Texture::CreateRenderTarget2D(
 	D3D12_CLEAR_VALUE clearValue;
 	ZeroMemory(&clearValue, sizeof(clearValue));
 	clearValue.Format = format;
-	return Create2DResource(
+	if (pRenderTargetDescriptorHeap == NULL
+		|| pRenderTargetDescriptorHeap->GetType()
+			!= D3D12_DESCRIPTOR_HEAP_TYPE_RTV
+		|| pRenderTargetDescriptorHeap->IsShaderVisible())
+		return false;
+
+	if (!Create2DResource(
 		pDevice,
-		pDescriptorHeap,
+		pResourceDescriptorHeap,
 		width,
 		height,
 		1,
@@ -66,7 +74,21 @@ bool CDirectX12Texture::CreateRenderTarget2D(
 		D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET,
 		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
 		&clearValue,
-		L"LastChaos D3D12 Render Texture");
+		L"LastChaos D3D12 Render Texture"))
+		return false;
+
+	if (!pRenderTargetDescriptorHeap->Allocate(
+			&m_renderTargetDescriptor))
+	{
+		Shutdown();
+		return false;
+	}
+	pDevice->CreateRenderTargetView(
+		m_pResource,
+		NULL,
+		m_renderTargetDescriptor.cpu);
+	m_pRenderTargetDescriptorHeap = pRenderTargetDescriptorHeap;
+	return true;
 }
 
 bool CDirectX12Texture::Create2DResource(
@@ -151,6 +173,15 @@ bool CDirectX12Texture::Create2DResource(
 
 void CDirectX12Texture::Shutdown()
 {
+	if (m_pRenderTargetDescriptorHeap != NULL
+		&& m_renderTargetDescriptor.IsValid())
+	{
+		m_pRenderTargetDescriptorHeap->Release(
+			m_renderTargetDescriptor.index);
+	}
+	m_renderTargetDescriptor = DirectX12DescriptorHandle();
+	m_pRenderTargetDescriptorHeap = NULL;
+
 	if (m_pDescriptorHeap != NULL && m_descriptor.IsValid())
 		m_pDescriptorHeap->Release(m_descriptor.index);
 	m_descriptor = DirectX12DescriptorHandle();
@@ -228,6 +259,12 @@ D3D12_GPU_DESCRIPTOR_HANDLE
 CDirectX12Texture::GetShaderResourceView() const
 {
 	return m_descriptor.gpu;
+}
+
+D3D12_CPU_DESCRIPTOR_HANDLE
+CDirectX12Texture::GetRenderTargetView() const
+{
+	return m_renderTargetDescriptor.cpu;
 }
 
 UINT CDirectX12Texture::GetDescriptorIndex() const

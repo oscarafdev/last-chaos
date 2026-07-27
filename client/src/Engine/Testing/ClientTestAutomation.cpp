@@ -7,6 +7,7 @@
 #include <Engine/Contents/Login/ServerSelect.h>
 #include <Engine/Brushes/Brush.h>
 #include <Engine/Entities/Entity.h>
+#include <Engine/Entities/InternalClasses.h>
 #include <Engine/GameDataManager/GameDataManager.h>
 #include <Engine/GameStageManager/StageMgr.h>
 #include <Engine/GameState.h>
@@ -96,6 +97,9 @@ CClientTestAutomation::CClientTestAutomation()
 	, m_worldModelLifetimeSeconds(30)
 	, m_worldAnchorDelaySeconds(5)
 	, m_worldModelAlpha(255)
+	, m_worldViewDelaySeconds(5)
+	, m_worldViewHoldSeconds(2)
+	, m_worldNetworkCameraAngle(0.0f)
 	, m_characterStageEnteredAt(0)
 	, m_gameplayStageEnteredAt(0)
 	, m_worldModelSpawnedAt(0)
@@ -107,6 +111,9 @@ CClientTestAutomation::CClientTestAutomation()
 	, m_worldCommandSubmitted(FALSE)
 	, m_worldAnchorApplied(FALSE)
 	, m_worldModelSpawned(FALSE)
+	, m_worldViewConfigured(FALSE)
+	, m_worldViewApplied(FALSE)
+	, m_worldCaptureRequested(FALSE)
 	, m_worldModelNormalMapSpecular(FALSE)
 	, m_forceBloom(FALSE)
 	, m_bloomConfigured(FALSE)
@@ -197,6 +204,29 @@ void CClientTestAutomation::ConfigureWorldModelRendering(
 	m_worldModelNormalMapSpecular = enableNormalMapSpecular;
 }
 
+void CClientTestAutomation::ConfigureWorldView(
+	const CPlacement3D& playerPlacement,
+	const CPlacement3D& viewpointPlacement,
+	FLOAT networkCameraAngle,
+	INDEX delaySeconds,
+	INDEX holdSeconds,
+	const CTString& captureName)
+{
+	m_worldPlayerPlacement = playerPlacement;
+	m_worldViewpointPlacement = viewpointPlacement;
+	m_worldNetworkCameraAngle = networkCameraAngle;
+	m_worldViewDelaySeconds = (std::max)(
+		static_cast<INDEX>(0),
+		(std::min)(delaySeconds, static_cast<INDEX>(300)));
+	m_worldViewHoldSeconds = (std::max)(
+		static_cast<INDEX>(1),
+		(std::min)(holdSeconds, static_cast<INDEX>(30)));
+	m_worldCaptureName = captureName;
+	m_worldViewConfigured = TRUE;
+	m_worldViewApplied = FALSE;
+	m_worldCaptureRequested = FALSE;
+}
+
 void CClientTestAutomation::ConfigureBloomTest(BOOL forceEnabled)
 {
 	m_forceBloom = forceEnabled;
@@ -258,6 +288,8 @@ void CClientTestAutomation::Tick()
 			m_worldAnchorSector = NULL;
 			m_worldAnchorApplied = FALSE;
 			m_worldModelSpawned = FALSE;
+			m_worldViewApplied = FALSE;
+			m_worldCaptureRequested = FALSE;
 		}
 		else
 		{
@@ -281,6 +313,8 @@ void CClientTestAutomation::Tick()
 			m_characterSubmitted = TrySubmitCharacter();
 		break;
 	case eSTAGE_GAMEPLAY:
+		if (m_worldViewConfigured)
+			m_worldViewApplied = TryApplyWorldView();
 		if (!m_worldCommandSubmitted && m_worldCommand.Length() > 0)
 			m_worldCommandSubmitted = TrySubmitWorldCommand();
 		if (!m_worldAnchorApplied && m_worldAnchorClass.Length() > 0)
@@ -299,6 +333,51 @@ void CClientTestAutomation::Tick()
 	default:
 		break;
 	}
+}
+
+BOOL CClientTestAutomation::TryApplyWorldView()
+{
+	const ULONG elapsed = GetTickCount() - m_gameplayStageEnteredAt;
+	const ULONG delay =
+		static_cast<ULONG>(m_worldViewDelaySeconds) * 1000UL;
+	if (elapsed < delay || _pNetwork == NULL)
+		return FALSE;
+
+	CPlayerEntity* player =
+		static_cast<CPlayerEntity*>(CEntity::GetPlayerEntity(0));
+	if (player == NULL)
+		return FALSE;
+
+	const ULONG hold =
+		static_cast<ULONG>(m_worldViewHoldSeconds) * 1000UL;
+	if (!m_worldViewApplied || elapsed < delay + hold)
+	{
+		player->SetPlacement(m_worldPlayerPlacement);
+		player->en_plViewpoint = m_worldViewpointPlacement;
+		player->en_plLastViewpoint = m_worldViewpointPlacement;
+		_pNetwork->SetMyPosition(
+			m_worldPlayerPlacement,
+			m_worldNetworkCameraAngle);
+	}
+
+	if (!m_worldViewApplied)
+	{
+		CPrintF(
+			"Prueba automatizada: posición y cámara restauradas en "
+			"(%.3f, %.3f, %.3f).\n",
+			m_worldPlayerPlacement.pl_PositionVector(1),
+			m_worldPlayerPlacement.pl_PositionVector(2),
+			m_worldPlayerPlacement.pl_PositionVector(3));
+	}
+
+	if (!m_worldCaptureRequested
+		&& elapsed >= delay + hold
+		&& m_worldCaptureName.Length() > 0)
+	{
+		CCameraTestCapture::Request(m_worldCaptureName);
+		m_worldCaptureRequested = TRUE;
+	}
+	return TRUE;
 }
 
 BOOL CClientTestAutomation::TrySubmitLogin()

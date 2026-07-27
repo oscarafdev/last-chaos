@@ -111,61 +111,6 @@ namespace
 					!= INVALID_FILE_ATTRIBUTES);
 	}
 
-	bool HasWorldSizedLegacy3DBatch(
-		const CDirectX12NativeRenderer* pRenderer)
-	{
-		// Las pantallas de carga y acceso también emiten unos pocos lotes 3D.
-		// Sólo un frame con volumen de escena puede asumir autoridad mundial.
-		const UINT minimumWorldDraws = 32;
-		// El mundo de prueba más liviano ronda 8.500 triángulos en la familia
-		// rígida validada; las pantallas previas no superan los 2.800.
-		const UINT minimumWorldTriangles = 5000;
-		return pRenderer != NULL
-			&& pRenderer->GetLegacy3DCapturedDrawCount()
-				>= minimumWorldDraws
-			&& pRenderer->GetLegacy3DCapturedTriangleCount()
-				>= minimumWorldTriangles;
-	}
-
-	bool HasSelectiveLegacy3DBatch(
-		const CDirectX12NativeRenderer* pRenderer)
-	{
-		const char* selectors[] = {
-			"LASTCHAOS_DX12_3D_REPLACE_VERTEX_FAMILY",
-			"LASTCHAOS_DX12_3D_REPLACE_PIXEL_FAMILY"
-		};
-		bool familySelected = false;
-		for (UINT iSelector = 0;
-			iSelector < sizeof(selectors) / sizeof(selectors[0]);
-			++iSelector)
-		{
-			char selectedFamily[32] = "";
-			const DWORD familyLength = GetEnvironmentVariableA(
-				selectors[iSelector],
-				selectedFamily,
-				sizeof(selectedFamily));
-			if (familyLength > 0
-				&& familyLength < sizeof(selectedFamily))
-			{
-				familySelected = true;
-				break;
-			}
-		}
-		// El selector se usa para validar una familia aislada. En ese modo no
-		// corresponde exigir el volumen completo del mundo: el filtro ya evita
-		// que otro shader o las pantallas previas asuman autoridad.
-		return familySelected
-			&& pRenderer != NULL
-			&& pRenderer->GetLegacy3DCapturedDrawCount() > 0;
-	}
-
-	bool HasAuthoritativeLegacy3DBatch(
-		const CDirectX12NativeRenderer* pRenderer)
-	{
-		return HasSelectiveLegacy3DBatch(pRenderer)
-			|| HasWorldSizedLegacy3DBatch(pRenderer);
-	}
-
 	void AppendValidationLogLine(const char* pMessage)
 	{
 		if (pMessage == NULL || pMessage[0] == '\0')
@@ -256,6 +201,7 @@ CDirectX12Backend::CDirectX12Backend()
 	, m_pRenderTargets(NULL)
 	, m_pUploadManager(NULL)
 	, m_pResourceDescriptors(NULL)
+	, m_pRenderTargetDescriptors(NULL)
 	, m_pSamplerDescriptors(NULL)
 	, m_pNativeRenderer(NULL)
 	, m_pInteropTextures(NULL)
@@ -278,7 +224,7 @@ CDirectX12Backend::CDirectX12Backend()
 	, m_partialSubmissionCapacityReported(false)
 	, m_uiScopeDepth(0)
 	, m_offscreenDrawPortDepth(0)
-	, m_pNativeOffscreenTexture9(NULL)
+	, m_nativeOffscreenTexture(DX12_INVALID_RENDER_TEXTURE)
 	, m_nativeOffscreenClearPending(false)
 	, m_suppressedLegacyDrawCount(0)
 	, m_fallbackLegacyDrawCount(0)
@@ -423,6 +369,18 @@ bool CDirectX12Backend::Initialize(HMODULE hD3D9Module, IDirect3D9** ppD3D9)
 		return false;
 	}
 
+	m_pRenderTargetDescriptors = new CDirectX12DescriptorHeap;
+	if (m_pRenderTargetDescriptors == NULL
+		|| !m_pRenderTargetDescriptors->Initialize(
+			m_pDevice,
+			D3D12_DESCRIPTOR_HEAP_TYPE_RTV,
+			1024,
+			false))
+	{
+		Shutdown();
+		return false;
+	}
+
 	m_pNativeRenderer = new CDirectX12NativeRenderer;
 	if (m_pNativeRenderer == NULL
 		|| !m_pNativeRenderer->Initialize(m_pDevice))
@@ -436,7 +394,8 @@ bool CDirectX12Backend::Initialize(HMODULE hD3D9Module, IDirect3D9** ppD3D9)
 		|| !m_pInteropTextures->Initialize(
 			m_pDevice,
 			m_pGraphicsQueue,
-			m_pResourceDescriptors))
+			m_pResourceDescriptors,
+			m_pRenderTargetDescriptors))
 	{
 		Shutdown();
 		return false;
@@ -522,6 +481,13 @@ void CDirectX12Backend::Shutdown()
 		m_pSamplerDescriptors->Shutdown();
 		delete m_pSamplerDescriptors;
 		m_pSamplerDescriptors = NULL;
+	}
+
+	if (m_pRenderTargetDescriptors != NULL)
+	{
+		m_pRenderTargetDescriptors->Shutdown();
+		delete m_pRenderTargetDescriptors;
+		m_pRenderTargetDescriptors = NULL;
 	}
 
 	if (m_pResourceDescriptors != NULL)
@@ -704,7 +670,7 @@ bool CDirectX12Backend::BeginFrame()
 	m_partialSubmissionCapacityReported = false;
 	m_uiScopeDepth = 0;
 	m_offscreenDrawPortDepth = 0;
-	m_pNativeOffscreenTexture9 = NULL;
+	m_nativeOffscreenTexture = DX12_INVALID_RENDER_TEXTURE;
 	m_nativeOffscreenClearPending = false;
 	m_suppressedLegacyDrawCount = 0;
 	m_fallbackLegacyDrawCount = 0;
@@ -725,7 +691,8 @@ bool CDirectX12Backend::EndFrame()
 	const bool keepLegacyUi = ReadKeepLegacyUiMode();
 	const bool submitLegacy3D =
 		!ReadFull3DReplacementMode()
-		|| HasAuthoritativeLegacy3DBatch(m_pNativeRenderer);
+		|| (m_pNativeRenderer != NULL
+			&& m_pNativeRenderer->HasPendingLegacy3DDraws());
 	bool nativeDrawSucceeded = true;
 	if (hasRenderTarget && !keepLegacyUi)
 	{
@@ -1072,12 +1039,6 @@ bool CDirectX12Backend::SubmitPendingLegacy3DForCurrentTarget(
 		|| !m_pNativeRenderer->HasPendingLegacy3DDraws())
 		return true;
 
-	const bool authoritative =
-		m_offscreenDrawPortDepth > 0
-		|| HasAuthoritativeLegacy3DBatch(m_pNativeRenderer);
-	if (!authoritative)
-		return true;
-
 	const UINT currentSegment =
 		m_pNativeRenderer->GetCurrentSegment();
 	if (SubmitUiSegmentsThrough(currentSegment, true))
@@ -1257,31 +1218,44 @@ void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
 		m_pInteropTextures->ForgetTexture(pTexture9);
 }
 
-bool CDirectX12Backend::RegisterNativeOffscreenTexture(
+bool CDirectX12Backend::CreateNativeOffscreenTexture(
 	IDirect3DTexture9* pTexture9,
 	UINT width,
 	UINT height,
-	INT legacyFormat)
+	INT legacyFormat,
+	DirectX12RenderTextureHandle* pHandle)
 {
 	return ReadFull3DReplacementMode()
 		&& m_pInteropTextures != NULL
-		&& m_pInteropTextures->RegisterRenderTarget(
+		&& m_pInteropTextures->CreateRenderTarget(
 			pTexture9,
 			width,
 			height,
-			static_cast<D3DFORMAT>(legacyFormat));
+			static_cast<D3DFORMAT>(legacyFormat),
+			pHandle);
+}
+
+void CDirectX12Backend::DestroyNativeOffscreenTexture(
+	DirectX12RenderTextureHandle handle)
+{
+	if (handle == DX12_INVALID_RENDER_TEXTURE
+		|| m_pInteropTextures == NULL)
+		return;
+	if (m_nativeOffscreenTexture == handle)
+		EndNativeOffscreenTexture();
+	m_pInteropTextures->DestroyRenderTarget(handle);
 }
 
 bool CDirectX12Backend::BeginNativeOffscreenTexture(
-	IDirect3DTexture9* pTexture9)
+	DirectX12RenderTextureHandle handle)
 {
 	if (!ReadFull3DReplacementMode()
 		|| m_pInteropTextures == NULL
-		|| m_pInteropTextures->FindRenderTarget(pTexture9) == NULL
-		|| m_pNativeOffscreenTexture9 != NULL)
+		|| m_pInteropTextures->FindRenderTarget(handle) == NULL
+		|| m_nativeOffscreenTexture != DX12_INVALID_RENDER_TEXTURE)
 		return false;
 
-	m_pNativeOffscreenTexture9 = pTexture9;
+	m_nativeOffscreenTexture = handle;
 	m_nativeOffscreenClearPending = false;
 	static bool nativeColorReported = false;
 	if (!nativeColorReported)
@@ -1298,7 +1272,7 @@ bool CDirectX12Backend::BeginNativeOffscreenTexture(
 
 void CDirectX12Backend::ClearNativeOffscreenTexture(ULONG color)
 {
-	if (m_pNativeOffscreenTexture9 == NULL)
+	if (m_nativeOffscreenTexture == DX12_INVALID_RENDER_TEXTURE)
 		return;
 	const FLOAT colorScale = 1.0f / 255.0f;
 	m_nativeOffscreenClearColor[0] =
@@ -1314,21 +1288,31 @@ void CDirectX12Backend::ClearNativeOffscreenTexture(ULONG color)
 
 void CDirectX12Backend::EndNativeOffscreenTexture()
 {
-	m_pNativeOffscreenTexture9 = NULL;
+	m_nativeOffscreenTexture = DX12_INVALID_RENDER_TEXTURE;
 	m_nativeOffscreenClearPending = false;
 }
 
 bool CDirectX12Backend::RenderNativeBloom(
-	IDirect3DTexture9* pSourceTexture,
-	IDirect3DTexture9* pFilterTexture0,
-	IDirect3DTexture9* pFilterTexture1)
+	DirectX12RenderTextureHandle sourceTexture,
+	DirectX12RenderTextureHandle filterTexture0,
+	DirectX12RenderTextureHandle filterTexture1)
 {
 	if (!m_frameOpen || !ReadFull3DReplacementMode()
 		|| m_pDevice9 == NULL || m_pNativeRenderer == NULL
 		|| m_pRenderTargets == NULL || m_pInteropTextures == NULL
-		|| pSourceTexture == NULL || pFilterTexture0 == NULL
-		|| pFilterTexture1 == NULL
+		|| sourceTexture == DX12_INVALID_RENDER_TEXTURE
+		|| filterTexture0 == DX12_INVALID_RENDER_TEXTURE
+		|| filterTexture1 == DX12_INVALID_RENDER_TEXTURE
 		|| m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
+		return false;
+	CDirectX12Texture* pSourceTexture =
+		m_pInteropTextures->FindRenderTarget(sourceTexture);
+	CDirectX12Texture* pFilterTexture0 =
+		m_pInteropTextures->FindRenderTarget(filterTexture0);
+	CDirectX12Texture* pFilterTexture1 =
+		m_pInteropTextures->FindRenderTarget(filterTexture1);
+	if (pSourceTexture == NULL || pFilterTexture0 == NULL
+		|| pFilterTexture1 == NULL)
 		return false;
 	if (!SubmitPendingLegacy3DForCurrentTarget("aplicar bloom nativo")
 		|| m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
@@ -1355,7 +1339,6 @@ bool CDirectX12Backend::RenderNativeBloom(
 			m_pUploadManager,
 			m_pResourceDescriptors,
 			m_pSamplerDescriptors,
-			m_pInteropTextures,
 			pSourceTexture,
 			pFilterTexture0,
 			pFilterTexture1);
@@ -1615,13 +1598,13 @@ bool CDirectX12Backend::AcquireRenderTarget(
 	IDirect3DSurface9* pSurface9,
 	HWND hPresentationWindow)
 {
-	if (m_pNativeOffscreenTexture9 != NULL
+	if (m_nativeOffscreenTexture != DX12_INVALID_RENDER_TEXTURE
 		&& m_pInteropTextures != NULL
 		&& m_pRenderTargets != NULL)
 	{
 		CDirectX12Texture* pNativeTexture =
 			m_pInteropTextures->FindRenderTarget(
-				m_pNativeOffscreenTexture9);
+				m_nativeOffscreenTexture);
 		const bool acquired = pNativeTexture != NULL
 			&& m_pRenderTargets->AcquireNative(
 				pNativeTexture,
@@ -1692,8 +1675,8 @@ bool CDirectX12Backend::BeginDrawPortScope(
 	if (scope == DX12_DRAWPORT_SCOPE_UI
 		&& m_uiScopeDepth == 0
 		&& ReadFull3DReplacementMode()
-		&& HasAuthoritativeLegacy3DBatch(m_pNativeRenderer)
-		&& m_legacy3DDepthAvailable)
+		&& m_pNativeRenderer != NULL
+		&& m_pNativeRenderer->HasPendingLegacy3DDraws())
 	{
 		const UINT currentSegment =
 			m_pNativeRenderer != NULL
@@ -1763,10 +1746,7 @@ bool CDirectX12Backend::ShouldSubmitLegacy3DDraw(
 	const bool offscreenReplacement =
 		m_offscreenDrawPortDepth > 0
 		&& ReadFull3DReplacementMode();
-	const bool fullWorldReplacement =
-		ReadFull3DReplacementMode()
-		&& (offscreenReplacement
-			|| HasAuthoritativeLegacy3DBatch(m_pNativeRenderer));
+	const bool fullWorldReplacement = ReadFull3DReplacementMode();
 	if (!ReadRigidLitReplacementMode() && !fullWorldReplacement)
 		return true;
 	if (!nativeCaptured && fullWorldReplacement
@@ -1780,7 +1760,9 @@ bool CDirectX12Backend::ShouldSubmitLegacy3DDraw(
 			"un fallback D3D9");
 	}
 	if (nativeCaptured
-		&& (offscreenReplacement || m_legacy3DDepthAvailable))
+		&& (fullWorldReplacement
+			|| offscreenReplacement
+			|| m_legacy3DDepthAvailable))
 	{
 		++m_suppressedLegacy3DDrawCount;
 		return false;
@@ -2020,7 +2002,8 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 	if (renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN
 		&& m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
 		return false;
-	if ((ReadRigidLitReplacementMode() || ReadFull3DReplacementMode())
+	if (ReadRigidLitReplacementMode()
+		&& !ReadFull3DReplacementMode()
 		&& !m_legacy3DDepthAvailable
 		&& renderTargetKind
 			== DX12_LEGACY_RENDER_TARGET_PRESENTATION)
