@@ -1463,6 +1463,41 @@ Validación estática:
 - captura `.itconfig/dx12-camera-replays/dxc-offline-native-shaders.png`:
   terreno verde y opaco, caminos, geometría, UI y bloom sin regresiones.
 
+### Etapa 6y: caché nativo de texturas muestreadas
+
+Las texturas administradas que consumen los draw calls DX12 dejaron de formar
+parte del estado interno de `DirectX12InteropTextureManager`.
+`DirectX12SampledTextureCache` es ahora responsable de crear el recurso
+`ID3D12Resource`, conservar su SRV y entregar directamente el descriptor GPU.
+El gestor de interoperabilidad queda limitado a recursos `D3DPOOL_DEFAULT`,
+render targets y el retorno explícito a D3D9On12.
+
+Mientras el cargador de assets continúe creando su pareja D3D9, esa interfaz se
+usa solamente como identidad y fuente transitoria de los mipmaps. Los uploads
+legados notifican al backend para precalentar inmediatamente la versión DX12
+dentro del command list abierto. `Acquire` mantiene una creación bajo demanda
+para texturas cargadas antes del primer frame.
+
+Al refrescar o destruir una textura, el recurso nativo anterior no se libera
+inmediatamente: se retira en el slot del frame actual y se destruye cuando el
+backend vuelve a ese slot después de esperar su fence. Esto permite actualizar
+assets dinámicos sin liberar memoria que todavía pueda estar en uso por la GPU.
+
+Este corte no cambia la selección del terreno ni elimina aún la creación
+D3D9 de los assets. Prepara una frontera estable para que el cargador escriba
+los subrecursos DX12 directamente en la siguiente etapa.
+
+Validación:
+
+- build `LCRelease|x64` completo de `Nksp` y sus dependencias;
+- log `client/Nksp.log` con activación del caché nativo y sin errores DX12;
+- cámara verificada
+  `.itconfig/dx12-camera-captures/camera-repro-20260727-181413.json`;
+- captura
+  `.itconfig/dx12-camera-replays/native-sampled-texture-cache-final.png`:
+  terreno, caminos, edificios, personaje, UI y efectos con sus texturas
+  correctas, sin recursos blancos, transparentes ni desactualizados.
+
 ### Corrección del cielo visible a través del terreno (2026-07-26)
 
 El defecto que parecía agua era el color del cielo conservado por la primera

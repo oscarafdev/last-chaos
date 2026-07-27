@@ -1218,6 +1218,26 @@ void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
 		m_pInteropTextures->ForgetTexture(pTexture9);
 }
 
+void CDirectX12Backend::RefreshLegacyTexture(
+	IDirect3DTexture9* pTexture9)
+{
+	if (!m_frameOpen || pTexture9 == NULL
+		|| m_pInteropTextures == NULL || m_pCommandList == NULL
+		|| m_pUploadManager == NULL)
+		return;
+	m_pInteropTextures->RefreshSampledTexture(
+		pTexture9,
+		m_pCommandList,
+		m_pUploadManager);
+}
+
+void CDirectX12Backend::RetireLegacyTextureBinding(
+	IDirect3DTexture9* pTexture9)
+{
+	if (pTexture9 != NULL && m_pInteropTextures != NULL)
+		m_pInteropTextures->RetireLegacyTextureBinding(pTexture9);
+}
+
 bool CDirectX12Backend::CreateNativeOffscreenTexture(
 	IDirect3DTexture9* pTexture9,
 	UINT width,

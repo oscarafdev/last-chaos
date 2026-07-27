@@ -67,6 +67,8 @@ public:
 	bool WaitForGpu();
 	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
 	void ForgetLegacyTexture(IDirect3DTexture9* pTexture9);
+	void RetireLegacyTextureBinding(IDirect3DTexture9* pTexture9);
+	void RefreshLegacyTexture(IDirect3DTexture9* pTexture9);
 	bool CreateNativeOffscreenTexture(
 		IDirect3DTexture9* pTexture9,
 		UINT width,

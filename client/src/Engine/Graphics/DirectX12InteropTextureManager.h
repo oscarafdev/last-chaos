@@ -13,6 +13,7 @@
 struct IDirect3DDevice9;
 struct IDirect3DTexture9;
 class CDirectX12DescriptorHeap;
+class CDirectX12SampledTextureCache;
 class CDirectX12Texture;
 class CDirectX12UploadManager;
 struct DirectX12InteropTextureState;
@@ -36,6 +37,7 @@ public:
 	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
 	bool BeginFrame(UINT frameIndex);
 	void ForgetTexture(IDirect3DTexture9* pTexture9);
+	void RetireLegacyTextureBinding(IDirect3DTexture9* pTexture9);
 	bool CreateRenderTarget(
 		IDirect3DTexture9* pTexture9,
 		UINT width,
@@ -56,6 +58,10 @@ public:
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12UploadManager* pUploadManager,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
+	bool RefreshSampledTexture(
+		IDirect3DTexture9* pTexture9,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager);
 	bool PrepareForSubmission(ID3D12GraphicsCommandList* pCommandList);
 	bool ReturnToD3D9(
 		ID3D12Fence* pFence,
@@ -69,7 +75,6 @@ private:
 		const CDirectX12InteropTextureManager&);
 
 	void ReleaseFrame(UINT frameIndex);
-	void ReleaseManagedTextures();
 	void ReleaseRenderTargets();
 
 	ID3D12Device* m_pDevice;
@@ -77,6 +82,7 @@ private:
 	struct IDirect3DDevice9On12* m_pDevice9On12;
 	CDirectX12DescriptorHeap* m_pResourceDescriptors;
 	CDirectX12DescriptorHeap* m_pRenderTargetDescriptors;
+	CDirectX12SampledTextureCache* m_pSampledTextureCache;
 	DirectX12InteropTextureState* m_pState;
 	UINT m_currentFrame;
 	bool m_frameActive;

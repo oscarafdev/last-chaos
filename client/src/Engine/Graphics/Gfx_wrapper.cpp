@@ -3,6 +3,7 @@
 #include <Engine/Base/Console.h>
 #include <Engine/Base/MemoryTracking.h>
 #include <Engine/Math/Vector.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/Graphics/ViewPort.h>
 
@@ -448,10 +449,14 @@ extern void gfxUploadTexture( ULONG *pulTexture, PIX pixWidth, PIX pixHeight, UL
 		UploadTexture_D3D( ppd3dCurrentTexture, pulTexture, pixWidth, pixHeight, (D3DFORMAT)ulFormat, !bNoDiscard);
 		// in case that texture has been changed, must re-set it as current
 		if( pd3dLastTexture != *ppd3dCurrentTexture) {
+			GetDirectX12Backend().RetireLegacyTextureBinding(
+				pd3dLastTexture);
 			HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, *ppd3dCurrentTexture);
 			D3D_CHECKERROR(hr);
 		}
-	} 
+		GetDirectX12Backend().RefreshLegacyTexture(
+			*ppd3dCurrentTexture);
+	}
 	// done
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -479,9 +484,14 @@ extern BOOL gfxUploadCompressedTexture( UBYTE *pubMipmaps, PIX pixWidth, PIX pix
 		bUploaded = UploadCompressedTexture_D3D( ppd3dCurrentTexture, pubMipmaps, pixWidth, pixHeight, slSize, (D3DFORMAT)ulFormat);
 		// in case that texture has been changed, must re-set it as current
 		if( pd3dLastTexture != *ppd3dCurrentTexture) {
+			GetDirectX12Backend().RetireLegacyTextureBinding(
+				pd3dLastTexture);
 			HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, *ppd3dCurrentTexture);
 			D3D_CHECKERROR(hr);
 		}
+		if (bUploaded)
+			GetDirectX12Backend().RefreshLegacyTexture(
+				*ppd3dCurrentTexture);
 	}
 	// done
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
