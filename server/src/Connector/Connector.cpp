@@ -17,6 +17,15 @@
 
 void process_after_signal(int signo);
 
+static bool IsBillingServerEnabled()
+{
+	const char* value = getenv("ENABLE_CASH_SERVER");
+	return value == NULL
+		|| strcmp(value, "1") == 0
+		|| strcmp(value, "true") == 0
+		|| strcmp(value, "TRUE") == 0;
+}
+
 int main(int argc, char* argv[], char* envp[])
 {
 	if (!gserver.LoadSettingFile())
@@ -25,7 +34,7 @@ int main(int argc, char* argv[], char* envp[])
 		exit(0);
 	}
 
-	// 로그 초기화
+	// Inicializa el registro
 	std::string tstr = boost::str(boost::format("Connector_%1%") % gserver.m_config.Find("Server", "Number"));
 	LogSystem::setSubstitutedValue("logfile", tstr.c_str());
 	LogSystem::configureXml("../log.xml");
@@ -48,7 +57,7 @@ int main(int argc, char* argv[], char* envp[])
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	// GameServer용 listen
+	// Escucha las conexiones de GameServer
 	std::string bind_host = gserver.m_config.Find("Server", "IP");
 	if (bind_host == "ALL")
 		bind_host = "0.0.0.0";
@@ -59,14 +68,21 @@ int main(int argc, char* argv[], char* envp[])
 		return 1;
 	}
 
-	// 빌링 서버에 연결
-	gserver.m_billing.connect();
+	// Conecta con facturacion solo cuando CashServer esta habilitado.
+	if (IsBillingServerEnabled())
+	{
+		gserver.m_billing.connect();
+		bnf::instance()->CreateMSecTimer(
+			2 * 60 * 1000,
+			(void *)ServerAliveTimer::instance());
+	}
+	else
+	{
+		LOG_INFO("Billing server disabled; free mode enabled.");
+	}
 
-	// HeartBeat timer
+	// Temporizador de latido.
 	bnf::instance()->CreateMSecTimer(1 * 1000, (void *)HeartBeatTimer::instance());
-
-	// alive timer to billing
-	bnf::instance()->CreateMSecTimer(2 * 60 * 1000, (void *)ServerAliveTimer::instance());
 
 #ifdef SERVER_AUTHENTICATION
 	if (ServerAuthentication::instance()->isValidCompileTime() == false)

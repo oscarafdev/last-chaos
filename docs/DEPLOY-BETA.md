@@ -71,3 +71,19 @@ También se prueba explícitamente `UINT32_MAX`, que representa el antiguo caso
 Los builds release usan `-O2`, `-DNDEBUG`, símbolos mínimos y
 `-Werror=return-type`. El test de límites de paquetes se ejecuta antes de
 compilar la imagen completa.
+
+## Modo sin servidor de cobros
+
+`ENABLE_CASH_SERVER=false` desactiva en Connector tanto la conexión al servidor
+de cobros como su temporizador de actividad. El proceso conserva su heartbeat y
+registra una sola vez `Billing server disabled; free mode enabled.`. Si la
+variable no existe se mantiene el comportamiento histórico, con el servidor de
+cobros habilitado.
+
+Después de iniciar el entorno gratuito, verificar que el mensaje anterior
+aparezca una vez y que no haya reintentos:
+
+```bash
+docker compose logs --since=5m server |
+  grep -E "Billing server disabled|Can't connected to billing server"
+```
