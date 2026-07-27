@@ -38,6 +38,7 @@ public:
 		REJECT_OFFSCREEN_RENDER_TARGET,
 		REJECT_FIXED_TRANSPARENT_PASS,
 		REJECT_FIXED_CLIP_VOLUME,
+		REJECT_INVALID_CLIP_COORDINATE,
 		REJECT_REASON_COUNT
 	};
 
@@ -48,11 +49,15 @@ public:
 		ID3D12Device* pDevice,
 		CDirectX12PipelineCache* pPipelineCache);
 	void Shutdown();
-	void BeginFrame();
+	void BeginFrame(UINT frameIndex);
 	void ForgetTexture(IDirect3DTexture9* pTexture);
 
 	void SetVertexArray(const FLOAT* pPositions, UINT vertexCount);
 	void SetTexCoordArray(
+		UINT textureUnit,
+		const FLOAT* pTexCoords,
+		UINT vertexCount);
+	void SetProjectiveTexCoordArray(
 		UINT textureUnit,
 		const FLOAT* pTexCoords,
 		UINT vertexCount);
@@ -131,8 +136,20 @@ private:
 
 	ID3D12Device* m_pDevice;
 	CDirectX12PipelineCache* m_pPipelineCache;
-	CDirectX12Buffer* m_pVertexBuffer;
-	CDirectX12Buffer* m_pIndexBuffer;
+	// Cada envio parcial puede permanecer en vuelo hasta que finalice el
+	// frame. Sus buffers no deben reutilizarse ni redimensionarse antes de la
+	// fence correspondiente. La cantidad coincide con DirectX12Backend.
+	enum
+	{
+		BUFFER_FRAME_COUNT = 3,
+		BUFFER_SUBMISSION_COUNT = 16
+	};
+	CDirectX12Buffer* m_pVertexBuffers
+		[BUFFER_FRAME_COUNT][BUFFER_SUBMISSION_COUNT];
+	CDirectX12Buffer* m_pIndexBuffers
+		[BUFFER_FRAME_COUNT][BUFFER_SUBMISSION_COUNT];
+	UINT m_currentFrame;
+	UINT m_currentSubmissionBuffer;
 	CDirectX12DepthBuffer* m_pDepthBuffer;
 	DirectX12Legacy3DCommandBatchState* m_pState;
 };

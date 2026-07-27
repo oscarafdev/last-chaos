@@ -1,6 +1,7 @@
 #include "StdH.h"
 
 #include <Engine/Testing/ClientTestAutomation.h>
+#include <Engine/Testing/CameraTestCapture.h>
 
 #include <Engine/Contents/Login/LoginNew.h>
 #include <Engine/Contents/Login/ServerSelect.h>
@@ -204,7 +205,21 @@ void CClientTestAutomation::ConfigureBloomTest(BOOL forceEnabled)
 
 void CClientTestAutomation::Tick()
 {
-	if (!m_enabled || STAGEMGR() == NULL)
+	CCameraTestCapture::PollRequest();
+	if (STAGEMGR() == NULL)
+		return;
+
+	const INDEX stage = STAGEMGR()->GetCurStage();
+	if (stage != m_lastReportedStage)
+	{
+		CPrintF(
+			"Diagnostico de arranque: etapa %d detectada%s.\n",
+			stage,
+			m_enabled ? " con automatizacion" : "");
+		m_lastReportedStage = stage;
+	}
+
+	if (!m_enabled)
 		return;
 
 	if (m_forceBloom)
@@ -219,8 +234,8 @@ void CClientTestAutomation::Tick()
 		}
 	}
 
-	const INDEX stage = STAGEMGR()->GetCurStage();
-	if (stage != m_lastReportedStage)
+	static INDEX configuredStage = -2;
+	if (stage != configuredStage)
 	{
 		CPrintF(
 			"Prueba automatizada: etapa %d detectada.\n",
@@ -249,7 +264,7 @@ void CClientTestAutomation::Tick()
 			// El mundo elimina sus entidades al cambiar de etapa.
 			m_worldModelFixture = NULL;
 		}
-		m_lastReportedStage = stage;
+		configuredStage = stage;
 	}
 	switch (stage)
 	{

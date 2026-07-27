@@ -56,6 +56,147 @@ namespace
 			|| format == D3DFMT_DXT3
 			|| format == D3DFMT_DXT5;
 	}
+
+	void ReportA8L8TextureOnce(
+		IDirect3DTexture9* pTexture,
+		const D3DSURFACE_DESC& description,
+		const D3DLOCKED_RECT& lockedRect,
+		const DirectX12TextureFormatInfo& formatInfo)
+	{
+		static UINT reportedCount = 0;
+		if (reportedCount >= 16 || description.Format != D3DFMT_A8L8
+			|| lockedRect.pBits == NULL || description.Width == 0
+			|| description.Height == 0)
+			return;
+		++reportedCount;
+
+		const unsigned char* pBits =
+			static_cast<const unsigned char*>(lockedRect.pBits);
+		const UINT last = description.Width - 1;
+		const UINT sampleIndices[5] = {
+			0,
+			last / 4,
+			last / 2,
+			(last * 3) / 4,
+			last
+		};
+		UINT minimumAlpha = 255;
+		UINT maximumAlpha = 0;
+		UINT nonZeroAlpha = 0;
+		UINT fullAlpha = 0;
+		UINT64 hash = 14695981039346656037ULL;
+		for (UINT y = 0; y < description.Height; ++y)
+		{
+			const unsigned char* pRow =
+				pBits + static_cast<size_t>(lockedRect.Pitch) * y;
+			for (UINT x = 0; x < description.Width; ++x)
+			{
+				const UINT alpha = pRow[x * 2 + 1];
+				minimumAlpha = (std::min)(minimumAlpha, alpha);
+				maximumAlpha = (std::max)(maximumAlpha, alpha);
+				if (alpha != 0)
+					++nonZeroAlpha;
+				if (alpha == 255)
+					++fullAlpha;
+				hash ^= pRow[x * 2 + 0];
+				hash *= 1099511628211ULL;
+				hash ^= pRow[x * 2 + 1];
+				hash *= 1099511628211ULL;
+			}
+		}
+		const unsigned char* pFirstRow = pBits;
+		CPrintF(
+			"DX12 diagnostico A8L8: tex=%p, %ux%u, pitch=%d, "
+			"dxgi=%d, mapping=0x%08X, "
+			"alpha=%u..%u/noCero=%u/lleno=%u, hash=%016llX, "
+			"muestras L/A=[%u/%u,%u/%u,%u/%u,%u/%u,%u/%u].\n",
+			pTexture,
+			description.Width,
+			description.Height,
+			lockedRect.Pitch,
+			static_cast<int>(formatInfo.format),
+			formatInfo.componentMapping,
+			minimumAlpha,
+			maximumAlpha,
+			nonZeroAlpha,
+			fullAlpha,
+			static_cast<unsigned long long>(hash),
+			pFirstRow[sampleIndices[0] * 2 + 0],
+			pFirstRow[sampleIndices[0] * 2 + 1],
+			pFirstRow[sampleIndices[1] * 2 + 0],
+			pFirstRow[sampleIndices[1] * 2 + 1],
+			pFirstRow[sampleIndices[2] * 2 + 0],
+			pFirstRow[sampleIndices[2] * 2 + 1],
+			pFirstRow[sampleIndices[3] * 2 + 0],
+			pFirstRow[sampleIndices[3] * 2 + 1],
+			pFirstRow[sampleIndices[4] * 2 + 0],
+			pFirstRow[sampleIndices[4] * 2 + 1]);
+	}
+
+	void ReportDxt3AlphaOnce(
+		IDirect3DTexture9* pTexture,
+		const D3DSURFACE_DESC& description,
+		const D3DLOCKED_RECT& lockedRect)
+	{
+		static UINT reportedCount = 0;
+		if (reportedCount >= 24 || description.Format != D3DFMT_DXT3
+			|| lockedRect.pBits == NULL || description.Width != 256
+			|| description.Height != 256)
+			return;
+		++reportedCount;
+
+		UINT minimumAlpha = 255;
+		UINT maximumAlpha = 0;
+		UINT nonZeroAlpha = 0;
+		UINT fullAlpha = 0;
+		UINT regionNonZero = 0;
+		UINT regionFull = 0;
+		const unsigned char* pBits =
+			static_cast<const unsigned char*>(lockedRect.pBits);
+		for (UINT y = 0; y < description.Height; ++y)
+		{
+			const UINT blockY = y / 4;
+			const UINT rowInBlock = y & 3;
+			const unsigned char* pBlockRow =
+				pBits + static_cast<size_t>(lockedRect.Pitch) * blockY;
+			for (UINT x = 0; x < description.Width; ++x)
+			{
+				const UINT blockX = x / 4;
+				const UINT pixelInBlock = rowInBlock * 4 + (x & 3);
+				const unsigned char* pAlpha =
+					pBlockRow + blockX * 16;
+				const UINT packedByte = pAlpha[pixelInBlock / 2];
+				const UINT alpha4 = (pixelInBlock & 1) != 0
+					? packedByte >> 4
+					: packedByte & 0x0F;
+				const UINT alpha = alpha4 * 17;
+				minimumAlpha = (std::min)(minimumAlpha, alpha);
+				maximumAlpha = (std::max)(maximumAlpha, alpha);
+				if (alpha != 0)
+					++nonZeroAlpha;
+				if (alpha == 255)
+					++fullAlpha;
+				if (x >= 32 && x < 64 && y >= 64 && y < 96)
+				{
+					if (alpha != 0)
+						++regionNonZero;
+					if (alpha == 255)
+						++regionFull;
+				}
+			}
+		}
+		CPrintF(
+			"DX12 diagnostico DXT3 alpha: tex=%p, alpha=%u..%u, "
+			"noCero=%u/65536, lleno=%u/65536, "
+			"region[32..64,64..96]=%u/1024, lleno=%u/1024.\n",
+			pTexture,
+			minimumAlpha,
+			maximumAlpha,
+			nonZeroAlpha,
+			fullAlpha,
+			regionNonZero,
+			regionFull);
+	}
 }
 
 struct DirectX12InteropTextureState
@@ -268,6 +409,15 @@ CDirectX12InteropTextureManager::FindRenderTarget(
 	return NULL;
 }
 
+bool CDirectX12InteropTextureManager::ReferencesResource(
+	IDirect3DTexture9* pTexture9,
+	ID3D12Resource* pResource12) const
+{
+	CDirectX12Texture* pRenderTexture = FindRenderTarget(pTexture9);
+	return pRenderTexture != NULL
+		&& pRenderTexture->GetResource() == pResource12;
+}
+
 bool CDirectX12InteropTextureManager::Acquire(
 	IDirect3DTexture9* pTexture9,
 	ID3D12GraphicsCommandList* pCommandList,
@@ -357,6 +507,18 @@ bool CDirectX12InteropTextureManager::Acquire(
 				break;
 			}
 			++lockedMipCount;
+			if (iMip == 0)
+			{
+				ReportA8L8TextureOnce(
+					pTexture9,
+					mipDesc,
+					lockedRects[iMip],
+					formatInfo);
+				ReportDxt3AlphaOnce(
+					pTexture9,
+					mipDesc,
+					lockedRects[iMip]);
+			}
 			if (formatInfo.conversion != DX12_TEXTURE_CONVERSION_NONE)
 			{
 				const LONG convertedRowPitch =
@@ -470,8 +632,11 @@ bool CDirectX12InteropTextureManager::Acquire(
 	ZeroMemory(&viewDesc, sizeof(viewDesc));
 	viewDesc.Format = resourceDesc.Format;
 	viewDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+	DirectX12TextureFormatInfo formatInfo;
 	viewDesc.Shader4ComponentMapping =
-		D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+		GetDirectX12TextureFormat(legacyDesc.Format, &formatInfo)
+			? formatInfo.componentMapping
+			: D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 	viewDesc.Texture2D.MostDetailedMip = 0;
 	viewDesc.Texture2D.MipLevels = resourceDesc.MipLevels;
 	viewDesc.Texture2D.ResourceMinLODClamp = 0.0f;

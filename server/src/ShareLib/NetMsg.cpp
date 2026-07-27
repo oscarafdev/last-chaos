@@ -16,7 +16,7 @@ struct tag_pool {};
 typedef boost::singleton_pool<tag_pool, (MAX_MESSAGE_SIZE + sizeof(int))> g_netmsgpool;
 
 //////////////////////////////////////////////////////////////////////
-// SEED 암호화를 위한 초기화
+// Inicializacion para el cifrado SEED
 static uint32_t pdwRoundKey[48];
 static BYTE pbUserKey[32] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
 							 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f
@@ -180,7 +180,7 @@ void CNetMsg::WriteRaw(void* buf, long size)
 
 CNetMsg& CNetMsg::operator >> (CLCString& str)
 {
-	// 현재 포인트에서 NULL을 찾는다
+	// Busca el terminador NULL desde la posicion actual
 	int i;
 	for (i = m_ptr; i < m_size; i++)
 	{
@@ -188,30 +188,30 @@ CNetMsg& CNetMsg::operator >> (CLCString& str)
 			break;
 	}
 
-	// NULL을 찾으면
+	// Si encuentra NULL
 	if (i < m_size)
 	{
-		// 길이(NULL 포함)을 구하고
+		// Calcula la longitud, incluido NULL
 		int len = i - m_ptr + 1;
-		// 실제 읽을 길이를 구함
+		// Calcula la longitud que se leera
 		int realRead = len;
-		// 길이가 출력 버퍼(str)보다 크면 출력 버퍼 크기에 맞춘다
+		// Limita la longitud al tamano del buffer de salida
 		if (realRead > str.BufferSize())
 			realRead = str.BufferSize();
-		// 데이터를 읽음
+		// Lee los datos
 		char* tmp = new char[realRead];
 		memcpy(tmp, m_buf + m_ptr, realRead - 1);
 		tmp[realRead - 1] = '\0';
 		str = tmp;
 		delete [] tmp;
-		// 실제 읽은 데이터와 관계없이 NULL 다음으로 m_ptr 이동
+		// Avanza m_ptr despues de NULL aunque se haya truncado la lectura
 		m_ptr += len;
 	}
-	// 못찾으면
+	// Si no lo encuentra
 	else
 	{
-		// 읽은 데이터는 없고
-		// 다음 읽기 포인터도 없도록 하여 데이터 읽기가 완료된다
+		// No hay datos para leer
+		// Invalida la siguiente posicion de lectura y completa la operacion
 		str = "";
 		m_ptr = m_size;
 	}
@@ -224,7 +224,7 @@ CNetMsg& CNetMsg::operator << (const char* str)
 	if (str == NULL)
 		return *this;
 
-	// NULL을 포함해서 넣을 수 있으면 넣고 아니면 NULL만 넣는다, NULL도 못 넣으면 그냥 스킵
+	// Escribe la cadena con NULL si cabe; si no, solo NULL; si tampoco cabe, se detiene
 	if (CanWrite(strlen(str) + 1))
 	{
 		Write((void*)((const char*)str), strlen(str) + 1);
@@ -312,15 +312,15 @@ void CNetMsg::makeHeader()
 	h->reliable = (1 << 0) | (1 << 7) | (1 << 8);
 	HTONS(h->reliable);
 
-	// seq는 rnsocketioserviceTCP에서 만듦
+	// rnsocketioserviceTCP genera seq
 	h->id = 0;
-	h->size = m_size;
+	h->size = static_cast<uint32_t>(m_size);
 	HTONL(h->size);
 
 	make_header_flag_ = true;
 }
 
-// m_buf + pos에서 length 만큼 패킷의 길이를 줄인다.
+// Reduce el paquete en length bytes desde m_buf + pos.
 void CNetMsg::Reduce( int pos, int length )
 {
 	::memmove(m_buf + pos, m_buf + pos + length, m_size - length);

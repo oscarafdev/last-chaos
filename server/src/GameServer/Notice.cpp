@@ -64,6 +64,8 @@ NoticeStr* Notice::_find(int index)
 			return (*it);
 		}
 	}
+
+	return NULL;
 }
 
 bool Notice::SendNoticeList( int charIndex, CNetMsg::SP& msg)
@@ -123,6 +125,7 @@ bool Notice::SendNoticeList( int charIndex, CNetMsg::SP& msg)
 
 	rmsg->setSize( sizeof(ResponseClient::NoticeList) + (sizeof(NoticeData) * packet->count));
 	SEND_Q(rmsg, pc->m_desc);
+	return true;
 }
 
 void Notice::load()
@@ -227,7 +230,7 @@ void PopupNotice::_delete( int html_num )
 			delete *it;
 			_vec.erase(it);
 			
-			//DB에서 해당 데이터 삭제
+			//Elimina los datos correspondientes de la base de datos
 			{
 				std::string query = boost::str(boost::format("delete from t_popup_notice where a_html_index = %d and a_server = %d and a_subserver = %d") % html_num % gserver->m_serverno % gserver->m_subno);
 				DBManager::instance()->pushQueryForDataDB(0, query);
@@ -252,7 +255,7 @@ void PopupNotice::SendDataForLoop()
 			&& ((*it)->start_time / 60) == (gserver->getNowSecond() /60)
 			&& (*it)->isSend == false)
 		{
-			//전체 유저에게 전송
+			//Envia a todos los usuarios
 			CNetMsg::SP rmsg(new CNetMsg);
 			CheckPopupNoticeMsg(rmsg, (*it)->html_num);
 			PCManager::instance()->sendToAll(rmsg);
@@ -288,7 +291,7 @@ void PopupNotice::SendDataForUser(CPC* pc)
 
 		if(expire_time > gserver->getNowSecond())
 		{
-			//전송
+			//Envia
 			CNetMsg::SP rmsg(new CNetMsg);
 			CheckPopupNoticeMsg(rmsg, (*it)->html_num);
 			SEND_Q(rmsg, pc->m_desc);

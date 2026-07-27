@@ -1,9 +1,16 @@
 .SUFFIXES : .cpp .o
 .PHONY: clean dep new cleanall local debug clear test
 
-CFLAGS = -O0 -m64
-CC = gcc -O0 -m64
-CXX = g++ -g -O0 -m64 -Wno-deprecated-declarations -Wno-return-type -Wno-enum-constexpr-conversion
+CC = gcc
+CXX = g++
+
+ifneq (,$(findstring -g,$(OPT_DEBUG)))
+BUILD_FLAGS = -O0 -g3
+else
+BUILD_FLAGS = -O2 -g1 -DNDEBUG
+endif
+
+CFLAGS = $(BUILD_FLAGS) -m64 -Wall -Wextra -Wformat=2 -Werror=return-type
 
 LIB_DIR=/usr/lib64
 
@@ -53,10 +60,12 @@ OPT_LDOBJ = -L../ShareLib \
 			
 OPT_VER=-DLC_VER=\"$(LC_VER)\"
 
-CXXFLAGS =  -D_THREAD_SAFE -finline-functions \
-			-funroll-loops \
-			-fdefer-pop \
-			-fstrength-reduce \
+CXXFLAGS =  -D_THREAD_SAFE \
+			-Wall \
+			-Wextra \
+			-Wformat=2 \
+			-Werror=return-type \
+			-Wno-deprecated-declarations \
 			-Wno-write-strings \
 			-Wno-char-subscripts \
 			$(OPT_BIGENDIAN) \

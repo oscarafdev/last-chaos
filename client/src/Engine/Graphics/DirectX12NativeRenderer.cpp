@@ -144,7 +144,7 @@ void CDirectX12NativeRenderer::BeginFrame(UINT frameIndex)
 	if (m_pDrawPortCommands != NULL)
 		m_pDrawPortCommands->BeginFrame(frameIndex);
 	if (m_pLegacy3DCommands != NULL)
-		m_pLegacy3DCommands->BeginFrame();
+		m_pLegacy3DCommands->BeginFrame(frameIndex);
 }
 
 void CDirectX12NativeRenderer::SetLegacy3DVertexArray(
@@ -162,6 +162,18 @@ void CDirectX12NativeRenderer::SetLegacy3DTexCoordArray(
 {
 	if (m_pLegacy3DCommands != NULL)
 		m_pLegacy3DCommands->SetTexCoordArray(
+			textureUnit,
+			pTexCoords,
+			vertexCount);
+}
+
+void CDirectX12NativeRenderer::SetLegacy3DProjectiveTexCoordArray(
+	UINT textureUnit,
+	const FLOAT* pTexCoords,
+	UINT vertexCount)
+{
+	if (m_pLegacy3DCommands != NULL)
+		m_pLegacy3DCommands->SetProjectiveTexCoordArray(
 			textureUnit,
 			pTexCoords,
 			vertexCount);

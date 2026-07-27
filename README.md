@@ -1,11 +1,11 @@
-# Last Chaos 2018 — base limpia
+# Last Chaos 2018 — DirectX 12 y servidor reproducible
 
 Esta carpeta consolida la codebase 2018 descargada en una única variante
 mantenible. El material original fuera de `Games/` no fue modificado.
 
 ## Qué contiene
 
-- `client/src`: cliente DirectX 9 de 64 bits, variante VS2019 `Z.15`.
+- `client/src`: cliente de 64 bits modernizado con backend DirectX 12.
 - `client/{Bin,Data,...}`: runtime, assets y toolchain requeridos por los
   paths relativos de la solución.
 - `server/src`: servidor Linux 2018 compilable desde fuente.
@@ -54,12 +54,13 @@ imagen final. El locale predeterminado es `usa`; puede cambiarse con
 
 ```powershell
 Copy-Item .env.example .env
-# Editar LC_DB_PASSWORD antes de exponer el servicio.
+# Definir un secreto diferente para cada servicio antes de iniciar.
 .\scripts\up.ps1
 ```
 
 La primera inicialización de MariaDB importa unos 50 MB de SQL y puede tardar.
-Los datos y logs viven en volúmenes Docker.
+Los datos y logs viven en volúmenes Docker. MariaDB no publica el puerto 3306 y
+cada proceso utiliza una cuenta con permisos limitados.
 
 Comandos de diagnóstico:
 
@@ -129,6 +130,9 @@ en `LC_SERVER_PUBLIC_IP`.
 La guía detallada para seleccionar español, operar eventos y administrar
 permisos GM está en
 [`docs/IDIOMAS-EVENTOS-ADMIN.md`](docs/IDIOMAS-EVENTOS-ADMIN.md).
+
+El despliegue endurecido, el portal de registro y el paquete para testers se
+documentan en [`docs/DEPLOY-BETA.md`](docs/DEPLOY-BETA.md).
 
 La integración experimental de Chromium Embedded Framework y el comando
 `/testcef` se documentan en [`docs/CEF-UI.md`](docs/CEF-UI.md).

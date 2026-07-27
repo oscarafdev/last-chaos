@@ -5,6 +5,7 @@
 #include "rnsocketioserviceTcp.h"
 #include "logsystem.h"
 #include "rnpacket.h"
+#include "PacketSizeValidation.h"
 
 namespace
 {
@@ -437,7 +438,7 @@ void rnSocketIOServiceTcp::HandleAsyncConnect( const boost::system::error_code& 
 {
 	if( !error )
 	{
-		// 성공
+		// Correcto
 		_getIp();
 		LOG_INFO( "bnf connected - ip : %s : unique id : %010d", ip().c_str(), getUniqueId());
 
@@ -447,7 +448,7 @@ void rnSocketIOServiceTcp::HandleAsyncConnect( const boost::system::error_code& 
 	}
 	else if( endpoint_iterator != boost::asio::ip::tcp::resolver::iterator() )
 	{
-		// 다른 ip가 있다면 다른 ip로 접속 시도
+		// Si hay otra IP, intenta conectarse a ella
 		boost::system::error_code error;
 		socket_.close( error );
 
@@ -457,7 +458,7 @@ void rnSocketIOServiceTcp::HandleAsyncConnect( const boost::system::error_code& 
 	}
 	else
 	{
-		// 실패
+		// Fallo
 		LOG_ERROR( "bnf connect failed - ip : %s : unique id : %010d : reason : %s",
 				   ip().c_str(), getUniqueId(), error.message().c_str());
 
@@ -499,12 +500,13 @@ void rnSocketIOServiceTcp::HandleReadHeader(const boost::system::error_code& err
 		++this->seq_;
 	}
 
-	// 클라가 패킷을 잘못 보냈을 경우
-	if( packet_header_.size > (MAX_MESSAGE_SIZE - sizeof(MsgHeader) - sizeof(int)))
+	// Rechaza el tamano antes de convertirlo al size_t que usa Boost.Asio.
+	if (!PacketSizeValidation::IsValidCNetMsgPayload(
+			packet_header_.size,
+			sizeof(int)))
 	{
-		LOG_ERROR( "bnf HandleReadHeader error - ip : %s : unique id : %010d : reason : packet size[%d] is too big",
-				   ip().c_str(), getUniqueId(), packet_header_.size);
-
+		LOG_ERROR( "bnf HandleReadHeader error - ip : %s : unique id : %010d : reason : invalid packet size[%u]",
+				ip().c_str(), getUniqueId(), packet_header_.size);
 		__close();
 		return;
 	}
@@ -513,7 +515,7 @@ void rnSocketIOServiceTcp::HandleReadHeader(const boost::system::error_code& err
 
 	//////////////////////////////////////////////////////////////////////////
 	now_packet_ = new CNetMsg;
-	now_packet_->m_size = packet_header_.size;
+	now_packet_->m_size = static_cast<int>(packet_header_.size);
 	//////////////////////////////////////////////////////////////////////////
 
 	{
@@ -521,7 +523,10 @@ void rnSocketIOServiceTcp::HandleReadHeader(const boost::system::error_code& err
 			return;
 
 		boost::asio::async_read(socket_,
-								boost::asio::buffer(now_packet_->m_buf, packet_header_.size + sizeof(int)),
+								boost::asio::buffer(
+                                    now_packet_->m_buf,
+                                    static_cast<size_t>(packet_header_.size)
+                                        + sizeof(int)),
 								boost_strand_.wrap(boost::bind(&rnSocketIOServiceTcp::HandleReadBody, this, boost::asio::placeholders::error)));
 	}
 }
@@ -552,7 +557,7 @@ void rnSocketIOServiceTcp::HandleReadBody(const boost::system::error_code& error
 	memcpy((void *)now_packet_->m_buf_all, (void *)&packet_header_, sizeof(packet_header_));
 	if (now_packet_->checkCRC32() == false)
 	{
-		// 암호를 강제로 풀어준뒤 type값을 얻어내어 로그를 출력함
+		// Fuerza el descifrado, obtiene el tipo y lo registra
 		if (this->crypt_flag_)
 		{
 			now_packet_->decrypt();
@@ -574,9 +579,9 @@ void rnSocketIOServiceTcp::HandleReadBody(const boost::system::error_code& error
 	}
 
 	now_packet_->m_mtype = (int)now_packet_->m_buf[0];
-// 	now_packet_->crc32_flag_ = true; // 클라이언트(?)로 부터 들어온 모든 패킷은 기본적으로 CRC32값을 가지고 있음
+// 	now_packet_->crc32_flag_ = true; // Todos los paquetes recibidos del cliente incluyen CRC32 de forma predeterminada
 
-	now_packet_->m_ptr = 1;	// 패킷 바디중 첫번째 바이트값은 m_type으로 가져갔으므로 그 다음을 가르키게 한다.
+	now_packet_->m_ptr = 1;	// El primer byte del cuerpo ya se leyo como m_type; apunta al siguiente.
 	//////////////////////////////////////////////////////////////////////////
 
 	read_queue_.push(now_packet_);
@@ -734,7 +739,7 @@ void rnSocketIOServiceTcp::HandleReadHeaderForBilling( const boost::system::erro
 	NTOHL(packet_header_for_billing_.sn);
 	NTOHS(packet_header_for_billing_.size);
 
-	// 클라가 패킷을 잘못 보냈을 경우
+	// El cliente envio un paquete incorrecto
 	if( packet_header_for_billing_.size > (MAX_PACKET_SIZE - sizeof(BPacketHeader)))
 	{
 		LOG_ERROR( "bnf HandleReadHeader error - ip : %s : unique id : %010d : reason : packet size[%d] is too big",
@@ -877,12 +882,13 @@ void rnSocketIOServiceTcp::HandleReadHeaderForTLDBilling(const boost::system::er
 	HTONL(packet_header_.seq);
 	HTONL(packet_header_.size);
 
-	// 클라가 패킷을 잘못 보냈을 경우
-	if( packet_header_.size > (MAX_MESSAGE_SIZE - sizeof(MsgHeader)))
+	// La variante de billing usa el mismo encabezado y la misma validacion.
+	if (!PacketSizeValidation::IsValidCNetMsgPayload(
+			packet_header_.size,
+			0))
 	{
-		LOG_ERROR( "bnf HandleReadHeader error - ip : %s : unique id : %010d : reason : packet size[%d] is too big",
+		LOG_ERROR( "bnf HandleReadHeader error - ip : %s : unique id : %010d : reason : invalid packet size[%u]",
 			ip().c_str(), getUniqueId(), packet_header_.size);
-
 		__close();
 		return;
 	}
@@ -891,7 +897,7 @@ void rnSocketIOServiceTcp::HandleReadHeaderForTLDBilling(const boost::system::er
 
 	//////////////////////////////////////////////////////////////////////////
 	now_packet_ = new CNetMsg;
-	now_packet_->m_size = packet_header_.size;
+	now_packet_->m_size = static_cast<int>(packet_header_.size);
 	//////////////////////////////////////////////////////////////////////////
 
 	{
@@ -899,7 +905,9 @@ void rnSocketIOServiceTcp::HandleReadHeaderForTLDBilling(const boost::system::er
 			return;
 
 		boost::asio::async_read(socket_,
-								boost::asio::buffer(now_packet_->m_buf, packet_header_.size),
+								boost::asio::buffer(
+                                    now_packet_->m_buf,
+                                    static_cast<size_t>(packet_header_.size)),
 								boost_strand_.wrap(boost::bind(&rnSocketIOServiceTcp::HandleReadBodyForTLDForBilling, this, boost::asio::placeholders::error)));
 	}
 }
@@ -929,9 +937,9 @@ void rnSocketIOServiceTcp::HandleReadBodyForTLDForBilling(const boost::system::e
 	//////////////////////////////////////////////////////////////////////////
 	memcpy((void *)now_packet_->m_buf_all, (void *)&packet_header_, sizeof(packet_header_));
 	now_packet_->m_mtype = (int)now_packet_->m_buf[0];
-	// 	now_packet_->crc32_flag_ = true; // 클라이언트(?)로 부터 들어온 모든 패킷은 기본적으로 CRC32값을 가지고 있음
+	// 	now_packet_->crc32_flag_ = true; // Todos los paquetes recibidos del cliente incluyen CRC32 de forma predeterminada
 
-	now_packet_->m_ptr = 1;	// 패킷 바디중 첫번째 바이트값은 m_type으로 가져갔으므로 그 다음을 가르키게 한다.
+	now_packet_->m_ptr = 1;	// El primer byte del cuerpo ya se leyo como m_type; apunta al siguiente.
 	//////////////////////////////////////////////////////////////////////////
 
 	read_queue_.push(now_packet_);

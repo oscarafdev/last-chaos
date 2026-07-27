@@ -48,8 +48,8 @@ CStaticStackArray<GFXVertex> _avtxScene;
 // vertex coordinates and elements used by one pass of polygons
 static CStaticStackArray<UWORD> _auwElements;
 
-// 월드 에디터에서 속성맵을 보여주기 위한 임시용..
-// 프로젝트를 따로 추가할 예정..
+// Implementacion temporal para mostrar el mapa de atributos en el editor.
+// Se preve agregarlo como un proyecto independiente.
 //#define	WORLD_EDITOR
 
 // group flags (single-texturing)
@@ -133,6 +133,56 @@ static CTextureData *_ptdLastTex[GFX_USETEXUNITS];
 static CDrawPort *_pDP;
 static CPerspectiveProjection3D *_ppr = NULL;
 
+// Valida una vez el rango completo del grupo. Todos los generadores de
+// atributos comparten estos offsets, por lo que continuar con un grupo
+// incoherente corromperia cualquiera de los subbuffers dinamicos.
+static BOOL RSValidateGroupSpans(
+	ScenePolygon *pspoGroup,
+	const INDEX ctExpectedVertices)
+{
+	if (pspoGroup==NULL || ctExpectedVertices<=0 || ctExpectedVertices>=65536)
+		return FALSE;
+
+	const INDEX ctSceneVertices = _avtxScene.Count();
+	INDEX ctPassVertices = 0;
+	for (ScenePolygon *pspo=pspoGroup;
+		pspo!=NULL;
+		pspo=pspo->spo_pspoSucc)
+	{
+		const INDEX ctVertices = pspo->spo_ctVtx;
+		const INDEX iSceneVertex = pspo->spo_iVtx0;
+		if (ctVertices<=0
+			|| iSceneVertex<0
+			|| iSceneVertex>ctSceneVertices
+			|| ctVertices>ctSceneVertices-iSceneVertex
+			|| ctPassVertices>ctExpectedVertices
+			|| ctVertices>ctExpectedVertices-ctPassVertices)
+		{
+			CPrintF(
+				"RenderScene: grupo descartado por rango invalido "
+				"(escena=%d, inicio=%d, vertices=%d, pasada=%d, "
+				"esperados=%d).\n",
+				ctSceneVertices,
+				iSceneVertex,
+				ctVertices,
+				ctPassVertices,
+				ctExpectedVertices);
+			return FALSE;
+		}
+		ctPassVertices += ctVertices;
+	}
+	if (ctPassVertices!=ctExpectedVertices)
+	{
+		CPrintF(
+			"RenderScene: grupo descartado por total inconsistente "
+			"(calculados=%d, esperados=%d).\n",
+			ctPassVertices,
+			ctExpectedVertices);
+		return FALSE;
+	}
+	return TRUE;
+}
+
 
 // draw batched elements
 static void FlushElements(void) 
@@ -141,13 +191,13 @@ static void FlushElements(void)
 	const INDEX ctElements = _auwElements.Count();
 	if( ctElements<3) return;
 
-//강동민 수정 시작 테스트 클라이언트 작업	06.29
+// Inicio de modificacion de Kang Dong-min: trabajo del cliente de prueba (06.29).
 	extern INDEX gfx_bRenderReflection;
 	if(gfx_bRenderReflection)
 	{
 		_sfStats.IncrementCounter( CStatForm::SCI_REFLECTION_TRI, ctElements);
 	}
-//강동민 수정 끝 테스트 클라이언트 작업		06.29
+// Fin de modificacion de Kang Dong-min: trabajo del cliente de prueba (06.29).
 	// draw
 	_sfStats.IncrementCounter( CStatForm::SCI_SCENE_TRIANGLEPASSES, ctElements);
 	_pGfx->gl_ctWorldElements += ctElements; 
@@ -696,7 +746,7 @@ static void RSSetTextureParameters( ULONG ulFlags)
 			gfxEnableBlend();
 			gfxBlendFunc( GFX_ONE, GFX_ONE); 
 			break;
-//안태훈 수정 시작	//(Modify Worldbase Overbright to NonOver)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: eliminar sobrebrillo del mundo (0.1).
 		case STXF_BLEND_SHADE: // screen*texture*2
 			gfxEnableBlend();
 			gfxBlendFunc( GFX_DST_COLOR, GFX_SRC_COLOR); 
@@ -708,8 +758,8 @@ static void RSSetTextureParameters( ULONG ulFlags)
 			//gfxBlendFunc( GFX_ZERO, GFX_SRC_COLOR); 
 			break;
 		default:
-			ASSERTALWAYS("블렌드모드가 이상함 이쪽 루틴을 타면 안됨");
-//안태훈 수정 끝	//(Modify Worldbase Overbright to NonOver)(0.1)
+			ASSERTALWAYS("Modo de mezcla invalido: esta rutina no debe ejecutarse");
+// Fin de modificacion de Ahn Tae-hoon: eliminar sobrebrillo del mundo (0.1).
 			break;
 		}
 		// remember new flags
@@ -733,10 +783,10 @@ static void RSSetInitialTextureParametersMT(void)
 	gfxDisableBlend();
 	for( i=1; i<_ctUsableTexUnits; i++) {
 		gfxSetTextureUnit(i);
-//안태훈 수정 시작	//(Modify Worldbase Overbright to NonOver)(0.1)
+// Inicio de modificacion de Ahn Tae-hoon: eliminar sobrebrillo del mundo (0.1).
 		gfxSetTextureModulation(2);
 		//gfxSetTextureModulation(1);
-//안태훈 수정 끝	//(Modify Worldbase Overbright to NonOver)(0.1)
+// Fin de modificacion de Ahn Tae-hoon: eliminar sobrebrillo del mundo (0.1).
 	}
 	gfxSetTextureUnit(0);
 	gfxSetTextureModulation(1);
@@ -764,10 +814,18 @@ static void RSSetTextureParametersMT( ULONG ulFlags)
 
 
 // make vertex coordinates for all polygons in the group
-static void RSMakeVertexCoordinates( ScenePolygon *pspoGroup)
+static BOOL RSMakeVertexCoordinates( ScenePolygon *pspoGroup)
 {
 	ASSERT( _ctGroupVtx>0);
 	GFXVertex *pvtxPass = (GFXVertex*)gfxLockSubBuffer( GFX_VBA_POS, 0, _ctGroupVtx, GFX_WRITE);
+	if (pvtxPass==NULL)
+	{
+		CPrintF(
+			"RenderScene: no se pudo bloquear el buffer dinamico "
+			"de posiciones (%d vertices).\n",
+			_ctGroupVtx);
+		return FALSE;
+	}
 
 	// for all scene polygons in list
 	INDEX ctLastVtx = 0;
@@ -782,8 +840,9 @@ static void RSMakeVertexCoordinates( ScenePolygon *pspoGroup)
 		ctLastVtx += ctVtx; // add polygon vertices to total
 	}
 	// check and unlock
-	ASSERT( _ctGroupVtx == ctLastVtx); 
+	ASSERT( _ctGroupVtx == ctLastVtx);
 	gfxUnlockSubBuffer(GFX_VBA_POS, 0);
+	return TRUE;
 }
 
 
@@ -865,6 +924,14 @@ static void RSSetTextureCoords( ScenePolygon *pspoGroup, INDEX iLayer, INDEX iUn
 	// lock the texture coordinates array
 	ASSERT( _ctGroupVtx>0);
 	GFXTexCoord *ptexPass = (GFXTexCoord*)gfxLockSubBuffer( GFX_VBA_TEX, 0, _ctGroupVtx, GFX_WRITE);
+	if (ptexPass==NULL)
+	{
+		CPrintF(
+			"RenderScene: no se pudo bloquear el buffer dinamico "
+			"de coordenadas de textura (%d vertices).\n",
+			_ctGroupVtx);
+		return;
+	}
 
 	// generate tex coord for all scene polygons in list
 	const FLOATmatrix3D &mViewer = _ppr->pr_ViewerRotationMatrix;
@@ -964,6 +1031,14 @@ static void RSSetFogCoordinates( ScenePolygon *pspoGroup)
 	// lock the texture coordinates array
 	ASSERT( _ctGroupVtx>0);
 	GFXTexCoord *ptexPass = (GFXTexCoord*)gfxLockSubBuffer( GFX_VBA_TEX, 0, _ctGroupVtx, GFX_WRITE);
+	if (ptexPass==NULL)
+	{
+		CPrintF(
+			"RenderScene: no se pudo bloquear el buffer dinamico "
+			"de niebla (%d vertices).\n",
+			_ctGroupVtx);
+		return;
+	}
 
 	// for all scene polygons in list
 	for( ScenePolygon *pspo=pspoGroup; pspo!=NULL; pspo=pspo->spo_pspoSucc)
@@ -993,6 +1068,14 @@ static void RSSetHazeCoordinates( ScenePolygon *pspoGroup)
 	// lock the texture coordinates array
 	ASSERT( _ctGroupVtx>0);
 	GFXTexCoord *ptexPass = (GFXTexCoord*)gfxLockSubBuffer( GFX_VBA_TEX, 0, _ctGroupVtx, GFX_WRITE);
+	if (ptexPass==NULL)
+	{
+		CPrintF(
+			"RenderScene: no se pudo bloquear el buffer dinamico "
+			"de bruma (%d vertices).\n",
+			_ctGroupVtx);
+		return;
+	}
 
 	// for all scene polygons in list
 	for( ScenePolygon *pspo=pspoGroup; pspo!=NULL; pspo=pspo->spo_pspoSucc)
@@ -1370,9 +1453,13 @@ static void RSStartupHaze(void)
 // group rendering routine
 static void RSRenderGroup_internal( ScenePolygon *pspoGroup, ULONG ulGroupFlags, const INDEX ctGroupVertices)
 {
+	if (!RSValidateGroupSpans(pspoGroup, ctGroupVertices))
+		return;
+
 	// make vertex coordinates for all polygons in the group
 	_ctGroupVtx = ctGroupVertices;    // RSMake... routines will use it
-	RSMakeVertexCoordinates(pspoGroup);
+	if (!RSMakeVertexCoordinates(pspoGroup))
+		return;
 	if(CVA_bWorld) gfxLockArrays();
 
 	// set alpha keying if required
@@ -1930,9 +2017,18 @@ void RenderSceneZOnly( CDrawPort *pDP, ScenePolygon *pspoFirst, CAnyProjection3D
 	// count total number of vertices
 	_ctGroupVtx = 0;
 	for( ScenePolygon *pspo=pspoFirst; pspo!=NULL; pspo=pspo->spo_pspoSucc) _ctGroupVtx += pspo->spo_ctVtx;
+	if (!RSValidateGroupSpans(pspoFirst, _ctGroupVtx))
+	{
+		RSEnd();
+		return;
+	}
 
 	// make vertex coordinates for all polygons in the group and render the polygons
-	RSMakeVertexCoordinates(pspoFirst);
+	if (!RSMakeVertexCoordinates(pspoFirst))
+	{
+		RSEnd();
+		return;
+	}
 	DrawAllElements(pspoFirst);
 
 	// restore color masking

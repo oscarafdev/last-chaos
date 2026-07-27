@@ -5,6 +5,7 @@
 #ifndef __NET_MSG_H__
 #define __NET_MSG_H__
 
+#include <stdint.h>
 #include <boost/shared_ptr.hpp>
 #include "Conf.h"
 #include "MemoryPoolBase.h"
@@ -65,7 +66,7 @@ struct MsgHeader
 	unsigned short	reliable;
 	unsigned int	seq;
 	unsigned short	id;
-	int				size;
+	uint32_t		size;
 };
 #pragma pack(pop)
 

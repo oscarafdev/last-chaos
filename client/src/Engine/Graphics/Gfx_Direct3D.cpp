@@ -2061,12 +2061,12 @@ extern inline void *LockVertexArray_D3D( const INDEX ctVertices)
 	D3D_CHECKERROR(hr);
 
 	// fetch and return D3D buffer
-	void *pLockedBuffer;
+	void *pLockedBuffer = NULL;
 	hr = _pGfx->gl_pd3dVtx->Lock( _iVtxPos*GFX_POSSIZE, GFX_ctVertices*GFX_POSSIZE, (void**)&pLockedBuffer, _dwVtxLockFlag);
 	D3D_CHECKERROR(hr);
 
 	// done
-	_pd3dLockedVtx = _pGfx->gl_pd3dVtx;
+	_pd3dLockedVtx = SUCCEEDED(hr) ? _pGfx->gl_pd3dVtx : NULL;
 	return pLockedBuffer;
 }
 
@@ -2278,12 +2278,12 @@ extern inline void *LockTexCoordArray_D3D( const BOOL bProjectiveMapping/*=FALSE
 	D3D_CHECKERROR(hr);
 
 	// fetch and return D3D buffer
-	void *pLockedBuffer;
+	void *pLockedBuffer = NULL;
 	hr = pd3dVB->Lock( iLockOffset, ctLockSize, (void**)&pLockedBuffer, dwLockFlag);
 	D3D_CHECKERROR(hr);
 
 	// done
-	_pd3dLockedTex = pd3dVB;
+	_pd3dLockedTex = SUCCEEDED(hr) ? pd3dVB : NULL;
 	return pLockedBuffer;
 }
 

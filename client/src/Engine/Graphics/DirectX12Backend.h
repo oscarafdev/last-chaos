@@ -103,6 +103,10 @@ public:
 		UINT textureUnit,
 		const FLOAT* pTexCoords,
 		UINT vertexCount);
+	void SetLegacy3DProjectiveTexCoordArray(
+		UINT textureUnit,
+		const FLOAT* pTexCoords,
+		UINT vertexCount);
 	void SetLegacy3DNormalArray(
 		const FLOAT* pNormals,
 		UINT vertexCount);
@@ -271,7 +275,7 @@ private:
 	UINT m_lastReportedLegacy3DCapturedDrawCount;
 	UINT m_lastReportedLegacy3DRejectedDrawCount;
 	UINT m_lastReportedLegacy3DTriangleCount;
-	UINT m_lastReportedLegacy3DRejectionReasons[12];
+	UINT m_lastReportedLegacy3DRejectionReasons[13];
 	UINT64 m_lastReportedLegacy3DTopVertexShaderFingerprint;
 	UINT m_lastReportedLegacy3DTopVertexShaderDrawCount;
 	UINT m_lastReportedLegacy3DTopVertexShaderTriangleCount;

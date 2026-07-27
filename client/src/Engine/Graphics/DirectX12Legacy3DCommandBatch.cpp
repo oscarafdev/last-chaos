@@ -1,11 +1,13 @@
 #include "stdh.h"
 
 #include <algorithm>
+#include <float.h>
 #include <vector>
 #include <d3d9.h>
 #include <d3dx9math.h>
 
 #include <Engine/Base/Console.h>
+#include <Engine/Testing/CameraTestCapture.h>
 #include <Engine/Graphics/Color.h>
 #include <Engine/Graphics/DirectX12Buffer.h>
 #include <Engine/Graphics/DirectX12DepthBuffer.h>
@@ -73,6 +75,7 @@ namespace
 		FLOAT blendWeights[4];
 		FLOAT secondaryColor[4];
 		FLOAT clipW;
+		FLOAT texCoordQ[4];
 	};
 
 	struct Legacy3DDrawRange
@@ -87,6 +90,8 @@ namespace
 		IDirect3DTexture9* pTexture3;
 		bool depthEnabled;
 		bool depthWriteEnabled;
+		bool colorWriteEnabled;
+		bool depthClipEnabled;
 		D3D12_COMPARISON_FUNC depthFunction;
 		D3D12_CULL_MODE cullMode;
 		DirectX12BlendMode blendMode;
@@ -114,6 +119,42 @@ namespace
 		bool projectiveMapping;
 		UINT drawCount;
 		UINT triangleCount;
+	};
+
+	struct Legacy3DClipDiagnosticKey
+	{
+		UINT64 vertexFingerprint;
+		UINT64 pixelFingerprint;
+		bool clippingEnabled;
+	};
+
+	struct Legacy3DFixedFunctionInventory
+	{
+		UINT64 textureIdentity;
+		UINT textureWidth;
+		UINT textureHeight;
+		INT textureFormat;
+		UINT texturePassCount;
+		UINT blendMode;
+		UINT depthEnabled;
+		UINT depthWriteEnabled;
+		UINT depthFunction;
+		UINT cullMode;
+		UINT texCoordIndex;
+		UINT textureTransformFlags;
+		UINT colorOperation;
+		UINT alphaOperation;
+		bool dynamicBuffer;
+		UINT drawCount;
+		UINT triangleCount;
+		FLOAT minimumX;
+		FLOAT maximumX;
+		FLOAT minimumY;
+		FLOAT maximumY;
+		FLOAT minimumZ;
+		FLOAT maximumZ;
+		FLOAT minimumW;
+		FLOAT maximumW;
 	};
 
 	struct Legacy3DVertexShaderCacheEntry
@@ -272,6 +313,9 @@ namespace
 		if (sourceBlend == D3DBLEND_ONE
 			&& destinationBlend == D3DBLEND_SRCALPHA)
 			return DX12_BLEND_TERRAIN_LAYER;
+		if (sourceBlend == D3DBLEND_ZERO
+			&& destinationBlend == D3DBLEND_INVSRCALPHA)
+			return DX12_BLEND_DESTINATION_INVERSE_SOURCE_ALPHA;
 		return DX12_BLEND_ALPHA;
 	}
 
@@ -477,6 +521,20 @@ namespace
 			pFingerprint);
 	}
 
+	bool ReadExcludedPixelFamily(UINT64* pFingerprint)
+	{
+		return ReadReplacementShaderFamily(
+			"LASTCHAOS_DX12_3D_EXCLUDE_PIXEL_FAMILY",
+			pFingerprint);
+	}
+
+	bool ReadExcludedVertexFamily(UINT64* pFingerprint)
+	{
+		return ReadReplacementShaderFamily(
+			"LASTCHAOS_DX12_3D_EXCLUDE_VERTEX_FAMILY",
+			pFingerprint);
+	}
+
 	bool ApplyTestShaderFamilyAlias(
 		UINT64 actualVertexFingerprint,
 		UINT64 actualPixelFingerprint,
@@ -664,6 +722,7 @@ struct DirectX12Legacy3DCommandBatchState
 {
 	std::vector<FLOAT> positions;
 	std::vector<FLOAT> texCoords[4];
+	std::vector<FLOAT> projectiveTexCoordQ[4];
 	std::vector<FLOAT> normals;
 	std::vector<BYTE> weights;
 	std::vector<FLOAT> tangents;
@@ -673,6 +732,8 @@ struct DirectX12Legacy3DCommandBatchState
 	std::vector<Legacy3DDrawRange> ranges;
 	std::vector<Legacy3DVertexShaderFamily> vertexShaderFamilies;
 	std::vector<Legacy3DShaderPairInventory> shaderPairInventory;
+	std::vector<Legacy3DClipDiagnosticKey> clipDiagnostics;
+	std::vector<Legacy3DFixedFunctionInventory> fixedFunctionInventory;
 	std::vector<Legacy3DVertexShaderCacheEntry> vertexShaderCache;
 	std::vector<Legacy3DPixelShaderCacheEntry> pixelShaderCache;
 	size_t submittedRangeCount;
@@ -689,6 +750,10 @@ struct DirectX12Legacy3DCommandBatchState
 	bool fixedBlendDiagnosticReported[DX12_BLEND_COUNT];
 	bool missingArrayDiagnosticReported;
 	bool testFamilyAliasDiagnosticReported;
+	bool terrainColorPendingAfterDepthMask;
+	UINT terrainDepthMaskVertexCount;
+	bool terrainDepthMaskFallbackReported;
+	bool terrainOpaqueInitializationReported;
 	UINT64 frameSerial;
 	UINT64 lastInventoryDumpFrame;
 
@@ -704,6 +769,10 @@ struct DirectX12Legacy3DCommandBatchState
 		, fixedDiagnosticCount(0)
 		, missingArrayDiagnosticReported(false)
 		, testFamilyAliasDiagnosticReported(false)
+		, terrainColorPendingAfterDepthMask(false)
+		, terrainDepthMaskVertexCount(0)
+		, terrainDepthMaskFallbackReported(false)
+		, terrainOpaqueInitializationReported(false)
 		, frameSerial(0)
 		, lastInventoryDumpFrame(0)
 	{
@@ -716,6 +785,43 @@ struct DirectX12Legacy3DCommandBatchState
 
 namespace
 {
+	void TrackTerrainDepthMaskFallback(
+		DirectX12Legacy3DCommandBatchState* pState,
+		IDirect3DDevice9* pDevice9)
+	{
+		if (pState == NULL || pDevice9 == NULL)
+			return;
+		DWORD colorWriteMask = 0;
+		DWORD depthWrite = FALSE;
+		DWORD alphaTest = FALSE;
+		if (FAILED(pDevice9->GetRenderState(
+				D3DRS_COLORWRITEENABLE,
+				&colorWriteMask))
+			|| FAILED(pDevice9->GetRenderState(
+				D3DRS_ZWRITEENABLE,
+				&depthWrite))
+			|| FAILED(pDevice9->GetRenderState(
+				D3DRS_ALPHATESTENABLE,
+				&alphaTest))
+			|| colorWriteMask != 0
+			|| depthWrite == FALSE
+			|| alphaTest == FALSE)
+			return;
+
+		pState->terrainColorPendingAfterDepthMask = true;
+		pState->terrainDepthMaskVertexCount =
+			static_cast<UINT>(pState->positions.size() / 3);
+		if (!pState->terrainDepthMaskFallbackReported)
+		{
+			CPrintF(
+				"DX12 diagnostico terreno: mascara de profundidad "
+				"heredada detectada, vertices=%u; la siguiente capa "
+				"compatible inicializara el color.\n",
+				pState->terrainDepthMaskVertexCount);
+			pState->terrainDepthMaskFallbackReported = true;
+		}
+	}
+
 	UINT64 GetVertexShaderFingerprint(
 		DirectX12Legacy3DCommandBatchState* pState,
 		IDirect3DDevice9* pDevice9)
@@ -892,6 +998,283 @@ namespace
 		pState->shaderPairInventory.push_back(pair);
 	}
 
+	void ReportTerrainClipStateOnce(
+		DirectX12Legacy3DCommandBatchState* pState,
+		UINT64 vertexFingerprint,
+		UINT64 pixelFingerprint,
+		bool legacyClippingEnabled,
+		bool depthClipEnabled,
+		bool depthEnabled,
+		bool depthWriteEnabled,
+		bool colorWriteEnabled,
+		D3D12_COMPARISON_FUNC depthFunction,
+		bool alphaTestEnabled,
+		FLOAT alphaReference,
+		DWORD blending,
+		DWORD sourceBlend,
+		DWORD destinationBlend,
+		DWORD samplerAddressU,
+		DWORD samplerAddressV,
+		DWORD samplerMinification,
+		DWORD samplerMagnification,
+		const FLOAT* pPixelConstants,
+		IDirect3DTexture9* pTexture,
+		IDirect3DTexture9* pTexture1,
+		IDirect3DTexture9* pTexture2,
+		IDirect3DTexture9* pTexture3,
+		const std::vector<Legacy3DVertex>& vertices,
+		UINT baseVertex,
+		UINT vertexCount,
+		UINT clampedFarDepthCount)
+	{
+		if (pState == NULL || vertexCount == 0)
+			return;
+		for (size_t iKey = 0; iKey < pState->clipDiagnostics.size(); ++iKey)
+		{
+			const Legacy3DClipDiagnosticKey& key =
+				pState->clipDiagnostics[iKey];
+			if (key.vertexFingerprint == vertexFingerprint
+				&& key.pixelFingerprint == pixelFingerprint
+				&& key.clippingEnabled == depthClipEnabled)
+				return;
+		}
+
+		FLOAT minimumDepth = FLT_MAX;
+		FLOAT maximumDepth = -FLT_MAX;
+		UINT beyondFarPlane = 0;
+		UINT behindCamera = 0;
+		UINT64 positionFingerprint = 14695981039346656037ULL;
+		FLOAT minimumU[4] = { FLT_MAX, FLT_MAX, FLT_MAX, FLT_MAX };
+		FLOAT maximumU[4] = { -FLT_MAX, -FLT_MAX, -FLT_MAX, -FLT_MAX };
+		FLOAT minimumV[4] = { FLT_MAX, FLT_MAX, FLT_MAX, FLT_MAX };
+		FLOAT maximumV[4] = { -FLT_MAX, -FLT_MAX, -FLT_MAX, -FLT_MAX };
+		for (UINT iVertex = 0; iVertex < vertexCount; ++iVertex)
+		{
+			const Legacy3DVertex& vertex = vertices[baseVertex + iVertex];
+			for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
+			{
+				const FLOAT* pTexCoord = textureUnit == 0
+					? vertex.texCoord
+					: vertex.texCoordExtra[textureUnit - 1];
+				minimumU[textureUnit] =
+					(std::min)(minimumU[textureUnit], pTexCoord[0]);
+				maximumU[textureUnit] =
+					(std::max)(maximumU[textureUnit], pTexCoord[0]);
+				minimumV[textureUnit] =
+					(std::min)(minimumV[textureUnit], pTexCoord[1]);
+				maximumV[textureUnit] =
+					(std::max)(maximumV[textureUnit], pTexCoord[1]);
+			}
+			positionFingerprint = HashBytes(
+				positionFingerprint,
+				vertex.position,
+				sizeof(vertex.position));
+			positionFingerprint = HashBytes(
+				positionFingerprint,
+				&vertex.clipW,
+				sizeof(vertex.clipW));
+			if (vertex.clipW <= 0.0f)
+			{
+				++behindCamera;
+				continue;
+			}
+			const FLOAT normalizedDepth =
+				vertex.position[2] / vertex.clipW;
+			minimumDepth = (std::min)(minimumDepth, normalizedDepth);
+			maximumDepth = (std::max)(maximumDepth, normalizedDepth);
+			if (normalizedDepth > 1.0f)
+				++beyondFarPlane;
+		}
+		D3DSURFACE_DESC textureDescription;
+		ZeroMemory(&textureDescription, sizeof(textureDescription));
+		const bool hasTextureDescription =
+			pTexture != NULL
+			&& SUCCEEDED(pTexture->GetLevelDesc(0, &textureDescription));
+		D3DSURFACE_DESC extraTextureDescriptions[3];
+		ZeroMemory(
+			extraTextureDescriptions,
+			sizeof(extraTextureDescriptions));
+		IDirect3DTexture9* extraTextures[3] = {
+			pTexture1, pTexture2, pTexture3
+		};
+		for (UINT iTexture = 0; iTexture < 3; ++iTexture)
+		{
+			if (extraTextures[iTexture] != NULL)
+				extraTextures[iTexture]->GetLevelDesc(
+					0,
+					&extraTextureDescriptions[iTexture]);
+		}
+
+		CPrintF(
+			"DX12 diagnostico terreno: pareja=%016llX/%016llX, "
+			"D3DRS_CLIPPING=%u, DepthClipEnable=%u, "
+			"z=%u/%u/%u, color=%u, posiciones=%016llX, "
+			"alphaTest=%u/ref=%.6f, blend=%u/%u/%u, "
+			"sampler=%u/%u/%u/%u, "
+			"c7=(%.6f,%.6f,%.6f,%.6f), "
+			"uv0=(%.6f..%.6f,%.6f..%.6f), "
+			"uv1=(%.6f..%.6f,%.6f..%.6f), "
+			"uv2=(%.6f..%.6f,%.6f..%.6f), "
+			"uv3=(%.6f..%.6f,%.6f..%.6f), "
+			"tex=%p/%ux%u/f%d/p%d, "
+			"tex1=%p/%ux%u/f%d, tex2=%p/%ux%u/f%d, "
+			"tex3=%p/%ux%u/f%d, "
+			"z/w=%.8f..%.8f, fueraLejano=%u/%u, "
+			"corregidosLejano=%u, detrasCamara=%u.\n",
+			static_cast<unsigned long long>(vertexFingerprint),
+			static_cast<unsigned long long>(pixelFingerprint),
+			legacyClippingEnabled ? 1U : 0U,
+			depthClipEnabled ? 1U : 0U,
+			depthEnabled ? 1U : 0U,
+			depthWriteEnabled ? 1U : 0U,
+			static_cast<UINT>(depthFunction),
+			colorWriteEnabled ? 1U : 0U,
+			static_cast<unsigned long long>(positionFingerprint),
+			alphaTestEnabled ? 1U : 0U,
+			alphaReference,
+			blending,
+			sourceBlend,
+			destinationBlend,
+			samplerAddressU,
+			samplerAddressV,
+			samplerMinification,
+			samplerMagnification,
+			pPixelConstants[7 * 4 + 0],
+			pPixelConstants[7 * 4 + 1],
+			pPixelConstants[7 * 4 + 2],
+			pPixelConstants[7 * 4 + 3],
+			minimumU[0], maximumU[0], minimumV[0], maximumV[0],
+			minimumU[1], maximumU[1], minimumV[1], maximumV[1],
+			minimumU[2], maximumU[2], minimumV[2], maximumV[2],
+			minimumU[3], maximumU[3], minimumV[3], maximumV[3],
+			pTexture,
+			hasTextureDescription ? textureDescription.Width : 0,
+			hasTextureDescription ? textureDescription.Height : 0,
+			hasTextureDescription
+				? static_cast<int>(textureDescription.Format) : 0,
+			hasTextureDescription
+				? static_cast<int>(textureDescription.Pool) : 0,
+			pTexture1,
+			extraTextureDescriptions[0].Width,
+			extraTextureDescriptions[0].Height,
+			static_cast<int>(extraTextureDescriptions[0].Format),
+			pTexture2,
+			extraTextureDescriptions[1].Width,
+			extraTextureDescriptions[1].Height,
+			static_cast<int>(extraTextureDescriptions[1].Format),
+			pTexture3,
+			extraTextureDescriptions[2].Width,
+			extraTextureDescriptions[2].Height,
+			static_cast<int>(extraTextureDescriptions[2].Format),
+			minimumDepth,
+			maximumDepth,
+			beyondFarPlane,
+			vertexCount,
+			clampedFarDepthCount,
+			behindCamera);
+
+		Legacy3DClipDiagnosticKey key;
+		key.vertexFingerprint = vertexFingerprint;
+		key.pixelFingerprint = pixelFingerprint;
+		key.clippingEnabled = depthClipEnabled;
+		pState->clipDiagnostics.push_back(key);
+	}
+
+	void RecordFixedFunctionDraw(
+		DirectX12Legacy3DCommandBatchState* pState,
+		IDirect3DTexture9* pTexture,
+		const D3DSURFACE_DESC* pTextureDescription,
+		UINT texturePassCount,
+		DirectX12BlendMode blendMode,
+		DWORD zEnable,
+		DWORD zWrite,
+		DWORD zFunction,
+		DWORD cullMode,
+		DWORD texCoordIndex,
+		DWORD textureTransformFlags,
+		DWORD colorOperation,
+		DWORD alphaOperation,
+		bool dynamicBuffer,
+		UINT indexCount,
+		const std::vector<Legacy3DVertex>& vertices,
+		UINT baseVertex,
+		UINT vertexCount)
+	{
+		if (pState == NULL || vertexCount == 0)
+			return;
+		const UINT64 textureIdentity =
+			static_cast<UINT64>(reinterpret_cast<ULONG_PTR>(pTexture));
+		const UINT textureWidth =
+			pTextureDescription != NULL ? pTextureDescription->Width : 0;
+		const UINT textureHeight =
+			pTextureDescription != NULL ? pTextureDescription->Height : 0;
+		const INT textureFormat = pTextureDescription != NULL
+			? static_cast<INT>(pTextureDescription->Format)
+			: 0;
+		for (size_t iEntry = 0;
+			iEntry < pState->fixedFunctionInventory.size();
+			++iEntry)
+		{
+			Legacy3DFixedFunctionInventory& entry =
+				pState->fixedFunctionInventory[iEntry];
+			if (entry.textureIdentity == textureIdentity
+				&& entry.texturePassCount == texturePassCount
+				&& entry.blendMode == static_cast<UINT>(blendMode)
+				&& entry.depthEnabled == (zEnable != FALSE ? 1U : 0U)
+				&& entry.depthWriteEnabled
+					== (zWrite != FALSE ? 1U : 0U)
+				&& entry.depthFunction == zFunction
+				&& entry.cullMode == cullMode
+				&& entry.texCoordIndex == texCoordIndex
+				&& entry.textureTransformFlags == textureTransformFlags
+				&& entry.colorOperation == colorOperation
+				&& entry.alphaOperation == alphaOperation
+				&& entry.dynamicBuffer == dynamicBuffer)
+			{
+				++entry.drawCount;
+				entry.triangleCount += indexCount / 3;
+				return;
+			}
+		}
+
+		const Legacy3DVertex& firstVertex = vertices[baseVertex];
+		Legacy3DFixedFunctionInventory entry;
+		entry.textureIdentity = textureIdentity;
+		entry.textureWidth = textureWidth;
+		entry.textureHeight = textureHeight;
+		entry.textureFormat = textureFormat;
+		entry.texturePassCount = texturePassCount;
+		entry.blendMode = static_cast<UINT>(blendMode);
+		entry.depthEnabled = zEnable != FALSE ? 1U : 0U;
+		entry.depthWriteEnabled = zWrite != FALSE ? 1U : 0U;
+		entry.depthFunction = zFunction;
+		entry.cullMode = cullMode;
+		entry.texCoordIndex = texCoordIndex;
+		entry.textureTransformFlags = textureTransformFlags;
+		entry.colorOperation = colorOperation;
+		entry.alphaOperation = alphaOperation;
+		entry.dynamicBuffer = dynamicBuffer;
+		entry.drawCount = 1;
+		entry.triangleCount = indexCount / 3;
+		entry.minimumX = entry.maximumX = firstVertex.position[0];
+		entry.minimumY = entry.maximumY = firstVertex.position[1];
+		entry.minimumZ = entry.maximumZ = firstVertex.position[2];
+		entry.minimumW = entry.maximumW = firstVertex.clipW;
+		for (UINT iVertex = 1; iVertex < vertexCount; ++iVertex)
+		{
+			const Legacy3DVertex& vertex = vertices[baseVertex + iVertex];
+			entry.minimumX = (std::min)(entry.minimumX, vertex.position[0]);
+			entry.maximumX = (std::max)(entry.maximumX, vertex.position[0]);
+			entry.minimumY = (std::min)(entry.minimumY, vertex.position[1]);
+			entry.maximumY = (std::max)(entry.maximumY, vertex.position[1]);
+			entry.minimumZ = (std::min)(entry.minimumZ, vertex.position[2]);
+			entry.maximumZ = (std::max)(entry.maximumZ, vertex.position[2]);
+			entry.minimumW = (std::min)(entry.minimumW, vertex.clipW);
+			entry.maximumW = (std::max)(entry.maximumW, vertex.clipW);
+		}
+		pState->fixedFunctionInventory.push_back(entry);
+	}
+
 	void DumpShaderPairInventory(
 		DirectX12Legacy3DCommandBatchState* pState)
 	{
@@ -962,6 +1345,85 @@ namespace
 				NULL);
 		}
 		CloseHandle(hFile);
+
+		char fixedInventoryPath[MAX_PATH] = "";
+		_snprintf_s(
+			fixedInventoryPath,
+			sizeof(fixedInventoryPath),
+			_TRUNCATE,
+			"%s\\fixed-function.csv",
+			directory);
+		hFile = CreateFileA(
+			fixedInventoryPath,
+			GENERIC_WRITE,
+			FILE_SHARE_READ,
+			NULL,
+			CREATE_ALWAYS,
+			FILE_ATTRIBUTE_NORMAL,
+			NULL);
+		if (hFile != INVALID_HANDLE_VALUE)
+		{
+			const char* pFixedHeader =
+				"texture,width,height,format,texture_passes,blend,"
+				"depth_enabled,depth_write,depth_function,cull,"
+				"texcoord_index,texture_transform,color_operation,"
+				"alpha_operation,dynamic,draws,triangles,"
+				"min_x,max_x,min_y,max_y,min_z,max_z,min_w,max_w\r\n";
+			WriteFile(
+				hFile,
+				pFixedHeader,
+				static_cast<DWORD>(strlen(pFixedHeader)),
+				&written,
+				NULL);
+			for (size_t iEntry = 0;
+				iEntry < pState->fixedFunctionInventory.size();
+				++iEntry)
+			{
+				const Legacy3DFixedFunctionInventory& entry =
+					pState->fixedFunctionInventory[iEntry];
+				char line[512] = "";
+				_snprintf_s(
+					line,
+					sizeof(line),
+					_TRUNCATE,
+					"%016llX,%u,%u,%d,%u,%u,%u,%u,%u,%u,"
+					"%08X,%08X,%u,%u,%u,%u,%u,"
+					"%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f\r\n",
+					static_cast<unsigned long long>(
+						entry.textureIdentity),
+					entry.textureWidth,
+					entry.textureHeight,
+					entry.textureFormat,
+					entry.texturePassCount,
+					entry.blendMode,
+					entry.depthEnabled,
+					entry.depthWriteEnabled,
+					entry.depthFunction,
+					entry.cullMode,
+					entry.texCoordIndex,
+					entry.textureTransformFlags,
+					entry.colorOperation,
+					entry.alphaOperation,
+					entry.dynamicBuffer ? 1U : 0U,
+					entry.drawCount,
+					entry.triangleCount,
+					entry.minimumX,
+					entry.maximumX,
+					entry.minimumY,
+					entry.maximumY,
+					entry.minimumZ,
+					entry.maximumZ,
+					entry.minimumW,
+					entry.maximumW);
+				WriteFile(
+					hFile,
+					line,
+					static_cast<DWORD>(strlen(line)),
+					&written,
+					NULL);
+			}
+			CloseHandle(hFile);
+		}
 		pState->lastInventoryDumpFrame = pState->frameSerial;
 	}
 
@@ -1102,14 +1564,36 @@ namespace
 			+ pConstants[11];
 		const FLOAT w = Dot3(position, pConstants + 12)
 			+ pConstants[15];
-		const FLOAT inverseW = w != 0.0f ? 1.0f / w : 1.0f;
-		// Si W es cero conservamos XYZ en espacio clip. Convertir ese
-		// vértice al origen genera los triángulos radiales que cruzaban
-		// toda la pantalla antes de que el rasterizador pudiera recortarlo.
-		pVertex->position[0] = x * inverseW;
-		pVertex->position[1] = y * inverseW;
-		pVertex->position[2] = z * inverseW;
+		// Conservamos XYZ en espacio clip. Dividir por W en CPU pierde
+		// precisión cerca del plano de cámara y puede generar coordenadas no
+		// finitas antes de que el rasterizador recorte la geometría.
+		pVertex->position[0] = x;
+		pVertex->position[1] = y;
+		pVertex->position[2] = z;
 		pVertex->clipW = w;
+	}
+
+	bool IsProjectedTerrainVertexFamily(
+		DirectX12LegacyVertexFamily family)
+	{
+		return family == DX12_LEGACY_VS_PROJECTED_ONE
+			|| family == DX12_LEGACY_VS_PROJECTED_TWO
+			|| family == DX12_LEGACY_VS_PROJECTED_FOUR;
+	}
+
+	bool ClampProjectedTerrainFarDepth(Legacy3DVertex* pVertex)
+	{
+		if (pVertex == NULL
+			|| pVertex->clipW <= 0.0f
+			|| pVertex->position[2] <= pVertex->clipW)
+			return false;
+		// El vertex shader D3D9 original deja algunos vértices del terreno
+		// unas diezmilésimas más allá del plano lejano. En DX12 esos
+		// fragmentos fallan LESS_EQUAL aunque DepthClipEnable esté
+		// desactivado. Llevar sólo esos vértices a z=w conserva la superficie
+		// sin alterar X/Y ni la cámara.
+		pVertex->position[2] = pVertex->clipW;
+		return true;
 	}
 
 	void WriteLighting(
@@ -1155,6 +1639,33 @@ namespace
 		pDestination[1] *= pConstants[(firstConstant + 2) * 4 + 3];
 	}
 
+	void WriteHomogeneousProjectedTexCoord(
+		const D3DXVECTOR3& position,
+		const FLOAT* pConstants,
+		UINT firstConstant,
+		UINT destinationUnit,
+		Legacy3DVertex* pVertex)
+	{
+		FLOAT projected[4];
+		for (UINT component = 0; component < 4; ++component)
+		{
+			const FLOAT* pRow =
+				pConstants + (firstConstant + component) * 4;
+			projected[component] =
+				Dot3(position, pRow) + pRow[3];
+		}
+		const FLOAT inverseQ = fabsf(projected[3]) > 0.000001f
+			? 1.0f / projected[3]
+			: 1.0f;
+		FLOAT* pDestination = destinationUnit == 0
+			? pVertex->texCoord
+			: pVertex->texCoordExtra[destinationUnit - 1];
+		const FLOAT u = projected[0] * inverseQ;
+		const FLOAT v = projected[1] * inverseQ;
+		pDestination[0] = _finite(u) ? u : 0.5f;
+		pDestination[1] = _finite(v) ? v : 0.5f;
+	}
+
 	void WritePlanarTexCoord(
 		const D3DXVECTOR3& position,
 		const FLOAT* pConstants,
@@ -1180,16 +1691,43 @@ namespace
 				+ planar[2] * pRow[2] + planar[3] * pRow[3];
 		}
 	}
+
+	void WriteTerrainMapTexCoord(
+		const D3DXVECTOR3& position,
+		const FLOAT* pConstants,
+		Legacy3DVertex* pVertex)
+	{
+		const FLOAT projectedU =
+			Dot3(position, pConstants + 18 * 4)
+			+ pConstants[20 * 4 + 0];
+		const FLOAT projectedV =
+			Dot3(position, pConstants + 19 * 4)
+			+ pConstants[20 * 4 + 1];
+		pVertex->texCoord[0] =
+			projectedU * pConstants[20 * 4 + 2];
+		pVertex->texCoord[1] =
+			projectedV * pConstants[20 * 4 + 3];
+	}
 }
 
 CDirectX12Legacy3DCommandBatch::CDirectX12Legacy3DCommandBatch()
 	: m_pDevice(NULL)
 	, m_pPipelineCache(NULL)
-	, m_pVertexBuffer(NULL)
-	, m_pIndexBuffer(NULL)
+	, m_currentFrame(0)
+	, m_currentSubmissionBuffer(0)
 	, m_pDepthBuffer(NULL)
 	, m_pState(NULL)
 {
+	for (UINT iFrame = 0; iFrame < BUFFER_FRAME_COUNT; ++iFrame)
+	{
+		for (UINT iSubmission = 0;
+			iSubmission < BUFFER_SUBMISSION_COUNT;
+			++iSubmission)
+		{
+			m_pVertexBuffers[iFrame][iSubmission] = NULL;
+			m_pIndexBuffers[iFrame][iSubmission] = NULL;
+		}
+	}
 }
 
 CDirectX12Legacy3DCommandBatch::~CDirectX12Legacy3DCommandBatch()
@@ -1235,12 +1773,22 @@ void CDirectX12Legacy3DCommandBatch::Shutdown()
 		delete m_pState;
 		m_pState = NULL;
 	}
-	delete m_pIndexBuffer;
-	m_pIndexBuffer = NULL;
+	for (UINT iFrame = 0; iFrame < BUFFER_FRAME_COUNT; ++iFrame)
+	{
+		for (UINT iSubmission = 0;
+			iSubmission < BUFFER_SUBMISSION_COUNT;
+			++iSubmission)
+		{
+			delete m_pIndexBuffers[iFrame][iSubmission];
+			m_pIndexBuffers[iFrame][iSubmission] = NULL;
+			delete m_pVertexBuffers[iFrame][iSubmission];
+			m_pVertexBuffers[iFrame][iSubmission] = NULL;
+		}
+	}
 	delete m_pDepthBuffer;
 	m_pDepthBuffer = NULL;
-	delete m_pVertexBuffer;
-	m_pVertexBuffer = NULL;
+	m_currentFrame = 0;
+	m_currentSubmissionBuffer = 0;
 	m_pPipelineCache = NULL;
 	if (m_pDevice != NULL)
 	{
@@ -1249,13 +1797,15 @@ void CDirectX12Legacy3DCommandBatch::Shutdown()
 	}
 }
 
-void CDirectX12Legacy3DCommandBatch::BeginFrame()
+void CDirectX12Legacy3DCommandBatch::BeginFrame(UINT frameIndex)
 {
-	if (m_pState == NULL)
+	if (m_pState == NULL || frameIndex >= BUFFER_FRAME_COUNT)
 		return;
+	m_currentFrame = frameIndex;
+	m_currentSubmissionBuffer = 0;
 	++m_pState->frameSerial;
 	if (m_pState->frameSerial - m_pState->lastInventoryDumpFrame
-		>= PROBE_INTERVAL_FRAMES)
+		>= (ReadShaderInventoryMode() ? 20U : PROBE_INTERVAL_FRAMES))
 		DumpShaderPairInventory(m_pState);
 	for (size_t iRange = 0;
 		iRange < m_pState->ranges.size();
@@ -1268,7 +1818,10 @@ void CDirectX12Legacy3DCommandBatch::BeginFrame()
 	}
 	m_pState->positions.clear();
 	for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
+	{
 		m_pState->texCoords[textureUnit].clear();
+		m_pState->projectiveTexCoordQ[textureUnit].clear();
+	}
 	m_pState->normals.clear();
 	m_pState->weights.clear();
 	m_pState->tangents.clear();
@@ -1288,6 +1841,8 @@ void CDirectX12Legacy3DCommandBatch::BeginFrame()
 	m_pState->staticPositionSelected = false;
 	m_pState->staticTexCoordSelected = false;
 	m_pState->staticNormalSelected = false;
+	m_pState->terrainColorPendingAfterDepthMask = false;
+	m_pState->terrainDepthMaskVertexCount = 0;
 }
 
 void CDirectX12Legacy3DCommandBatch::ForgetTexture(
@@ -1389,6 +1944,29 @@ void CDirectX12Legacy3DCommandBatch::SetTexCoordArray(
 		false);
 }
 
+void CDirectX12Legacy3DCommandBatch::SetProjectiveTexCoordArray(
+	UINT textureUnit,
+	const FLOAT* pTexCoords,
+	UINT vertexCount)
+{
+	if (m_pState == NULL || textureUnit >= 4
+		|| pTexCoords == NULL || vertexCount == 0)
+		return;
+	std::vector<FLOAT>& texCoords = m_pState->texCoords[textureUnit];
+	std::vector<FLOAT>& texCoordQ =
+		m_pState->projectiveTexCoordQ[textureUnit];
+	texCoords.resize(static_cast<size_t>(vertexCount) * 2);
+	texCoordQ.resize(vertexCount);
+	for (UINT vertex = 0; vertex < vertexCount; ++vertex)
+	{
+		texCoords[vertex * 2 + 0] = pTexCoords[vertex * 4 + 0];
+		texCoords[vertex * 2 + 1] = pTexCoords[vertex * 4 + 1];
+		texCoordQ[vertex] = pTexCoords[vertex * 4 + 3];
+	}
+	if (textureUnit == 0)
+		m_pState->staticTexCoordSelected = false;
+}
+
 void CDirectX12Legacy3DCommandBatch::SetStaticTexCoordArray(
 	UINT textureUnit,
 	const FLOAT* pTexCoords,
@@ -1413,6 +1991,7 @@ void CDirectX12Legacy3DCommandBatch::SetTexCoordArrayInternal(
 	m_pState->texCoords[textureUnit].assign(
 		pTexCoords,
 		pTexCoords + static_cast<size_t>(vertexCount) * 2);
+	m_pState->projectiveTexCoordQ[textureUnit].clear();
 	if (textureUnit == 0)
 		m_pState->staticTexCoordSelected = staticSource;
 }
@@ -1600,10 +2179,21 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			|| vertexShaderFingerprint == replacementVertexFamily)
 		&& (!replacementPixelFamilySelected
 			|| pixelShaderFingerprint == replacementPixelFamily);
+	UINT64 excludedPixelFamily = 0;
+	if (ReadExcludedPixelFamily(&excludedPixelFamily)
+		&& pixelShaderFingerprint == excludedPixelFamily)
+		return false;
+	UINT64 excludedVertexFamily = 0;
+	if (ReadExcludedVertexFamily(&excludedVertexFamily)
+		&& vertexShaderFingerprint == excludedVertexFamily)
+		return false;
 	const bool offscreenReplacementAllowed =
 		renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN
 		&& ReadFullReplacementMode()
 		&& selectedFamilyMatches
+		// El agua consume la reflexion y no puede formar parte de la pasada
+		// que produce esa misma textura: seria una realimentacion RTV/SRV.
+		&& shaderFamily.pixel != DX12_LEGACY_PS_WATER
 		&& (replacementFamilySelected
 			|| shaderFamily.replacementValidated);
 	if (renderTargetKind != DX12_LEGACY_RENDER_TARGET_PRESENTATION
@@ -1621,7 +2211,10 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		&& !replacementFamilySelected
 		&& !shaderFamily.replacementValidated
 		&& !fixedProjectiveDraw)
+	{
+		TrackTerrainDepthMaskFallback(m_pState, pDevice9);
 		return false;
+	}
 	if (ReadFullReplacementMode()
 		&& replacementVertexFamilySelected
 		&& !selectedFamilyMatches)
@@ -1759,16 +2352,23 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	DWORD zEnable = FALSE;
 	DWORD zWrite = FALSE;
 	DWORD zFunction = D3DCMP_LESSEQUAL;
+	DWORD clipping = TRUE;
 	DWORD cullMode = D3DCULL_NONE;
 	DWORD blending = FALSE;
 	DWORD alphaTest = FALSE;
 	DWORD sourceBlend = D3DBLEND_SRCALPHA;
 	DWORD destinationBlend = D3DBLEND_INVSRCALPHA;
 	DWORD alphaReference = 128;
+	DWORD colorWriteMask =
+		D3DCOLORWRITEENABLE_RED
+		| D3DCOLORWRITEENABLE_GREEN
+		| D3DCOLORWRITEENABLE_BLUE
+		| D3DCOLORWRITEENABLE_ALPHA;
 	DWORD samplerAddressU = D3DTADDRESS_WRAP;
 	DWORD samplerAddressV = D3DTADDRESS_WRAP;
 	DWORD samplerMinification = D3DTEXF_LINEAR;
 	DWORD samplerMagnification = D3DTEXF_LINEAR;
+	DWORD bumpEnvironmentState[4] = { 0, 0, 0, 0 };
 	DWORD textureFactor = 0xFFFFFFFFUL;
 	DWORD fixedColorOperation[4] = {
 		D3DTOP_DISABLE, D3DTOP_DISABLE,
@@ -1815,6 +2415,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	ZeroMemory(shaderConstants, sizeof(shaderConstants));
 	ZeroMemory(legacyPixelConstants, sizeof(legacyPixelConstants));
 	ZeroMemory(pixelShaderConstants, sizeof(pixelShaderConstants));
+	bool initializeTerrainColor = false;
 	if (FAILED(pDevice9->GetTransform(D3DTS_WORLD, &world))
 		|| FAILED(pDevice9->GetTransform(D3DTS_VIEW, &view))
 		|| FAILED(pDevice9->GetTransform(D3DTS_PROJECTION, &projection))
@@ -1822,6 +2423,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		|| FAILED(pDevice9->GetRenderState(D3DRS_ZENABLE, &zEnable))
 		|| FAILED(pDevice9->GetRenderState(D3DRS_ZWRITEENABLE, &zWrite))
 		|| FAILED(pDevice9->GetRenderState(D3DRS_ZFUNC, &zFunction))
+		|| FAILED(pDevice9->GetRenderState(D3DRS_CLIPPING, &clipping))
 		|| FAILED(pDevice9->GetRenderState(D3DRS_CULLMODE, &cullMode))
 		|| FAILED(pDevice9->GetRenderState(
 			D3DRS_ALPHABLENDENABLE,
@@ -1838,6 +2440,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		|| FAILED(pDevice9->GetRenderState(
 			D3DRS_ALPHAREF,
 			&alphaReference))
+		|| FAILED(pDevice9->GetRenderState(
+			D3DRS_COLORWRITEENABLE,
+			&colorWriteMask))
 		|| (usesVertexProgram && FAILED(
 			pDevice9->GetVertexShaderConstantF(
 			0,
@@ -1861,6 +2466,20 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			0, D3DSAMP_MINFILTER, &samplerMinification))
 		|| FAILED(pDevice9->GetSamplerState(
 			0, D3DSAMP_MAGFILTER, &samplerMagnification)))
+	{
+		++m_pState->rejectedDrawCount;
+		++m_pState->rejectedReasons[REJECT_STATE_QUERY];
+		return false;
+	}
+	if (shaderFamily.pixel == DX12_LEGACY_PS_WATER
+		&& (FAILED(pDevice9->GetTextureStageState(
+				1, D3DTSS_BUMPENVMAT00, &bumpEnvironmentState[0]))
+			|| FAILED(pDevice9->GetTextureStageState(
+				1, D3DTSS_BUMPENVMAT01, &bumpEnvironmentState[1]))
+			|| FAILED(pDevice9->GetTextureStageState(
+				1, D3DTSS_BUMPENVMAT10, &bumpEnvironmentState[2]))
+			|| FAILED(pDevice9->GetTextureStageState(
+				1, D3DTSS_BUMPENVMAT11, &bumpEnvironmentState[3]))))
 	{
 		++m_pState->rejectedDrawCount;
 		++m_pState->rejectedReasons[REJECT_STATE_QUERY];
@@ -1952,6 +2571,37 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			shaderConstants,
 			legacyPixelConstants,
 			sizeof(shaderConstants));
+		if (shaderFamily.pixel == DX12_LEGACY_PS_WATER)
+		{
+			for (UINT component = 0; component < 4; ++component)
+			{
+				FLOAT bumpValue = 0.0f;
+				CopyMemory(
+					&bumpValue,
+					&bumpEnvironmentState[component],
+					sizeof(FLOAT));
+				if (!_finite(bumpValue) || fabsf(bumpValue) > 1.0f)
+					bumpValue = 0.0f;
+				shaderConstants[4 * 4 + component] = bumpValue;
+			}
+			FLOAT& waterAlpha = shaderConstants[3 * 4 + 3];
+			if (!_finite(waterAlpha))
+				waterAlpha = 1.0f;
+			waterAlpha = (std::max)(0.0f, (std::min)(1.0f, waterAlpha));
+			static bool waterStateReported = false;
+			if (!waterStateReported)
+			{
+				CPrintF(
+					"DX12 agua: alpha=%.4f, EMBM=(%.6f,%.6f,"
+					"%.6f,%.6f).\n",
+					waterAlpha,
+					shaderConstants[4 * 4 + 0],
+					shaderConstants[4 * 4 + 1],
+					shaderConstants[4 * 4 + 2],
+					shaderConstants[4 * 4 + 3]);
+				waterStateReported = true;
+			}
+		}
 		const int terrainDebugTexture =
 			shaderFamily.pixel == DX12_LEGACY_PS_TERRAIN_FOUR_LAYER
 				? ReadTerrainDebugTexture()
@@ -1964,6 +2614,33 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		pixelShaderConstants[2] = alphaTest != FALSE ? 1.0f : 0.0f;
 		pixelShaderConstants[3] =
 			static_cast<FLOAT>(alphaReference) / 255.0f;
+		const bool terrainLayerPass =
+			shaderFamily.pixel == DX12_LEGACY_PS_TERRAIN_FOUR_LAYER
+			|| shaderFamily.pixel == DX12_LEGACY_PS_ALPHA_MASK;
+		const UINT currentTerrainVertexCount =
+			static_cast<UINT>(m_pState->positions.size() / 3);
+		const bool matchingDepthMask =
+			m_pState->terrainColorPendingAfterDepthMask
+			&& m_pState->terrainDepthMaskVertexCount
+				== currentTerrainVertexCount;
+		initializeTerrainColor =
+			terrainLayerPass
+			&& (zWrite != FALSE
+				|| matchingDepthMask);
+		if (initializeTerrainColor)
+			pixelShaderConstants[3] = -1.0f;
+		if (terrainLayerPass)
+		{
+			m_pState->terrainColorPendingAfterDepthMask = false;
+			m_pState->terrainDepthMaskVertexCount = 0;
+		}
+		else if (colorWriteMask == 0 && zWrite != FALSE
+			&& alphaTest != FALSE)
+		{
+			m_pState->terrainColorPendingAfterDepthMask = true;
+			m_pState->terrainDepthMaskVertexCount =
+				currentTerrainVertexCount;
+		}
 		if (!usesVertexProgram && !usesPixelProgram)
 		{
 			ZeroMemory(shaderConstants, sizeof(shaderConstants));
@@ -2090,7 +2767,10 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 
 	const UINT baseVertex =
 		static_cast<UINT>(m_pState->vertices.size());
-	bool fixedCrossesClipPlane = false;
+	bool invalidClipCoordinate = false;
+	const bool projectedTerrain =
+		IsProjectedTerrainVertexFamily(shaderFamily.vertex);
+	UINT clampedFarDepthCount = 0;
 	// Las matrices CPU pueden describir el búfer completo. Compactamos los
 	// índices a los vértices únicos de este draw para no multiplicar cientos
 	// de veces el tráfico PCIe ni conservar huecos de otros submeshes.
@@ -2103,6 +2783,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			m_pState->positions[sourceVertexIndex * 3 + 2]);
 		Legacy3DVertex vertex;
 		ZeroMemory(&vertex, sizeof(vertex));
+		for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
+			vertex.texCoordQ[textureUnit] = 1.0f;
 		D3DXVECTOR3 sourceNormal(0.0f, 0.0f, 1.0f);
 		if (m_pState->normals.size()
 			== static_cast<size_t>(vertexCount) * 3)
@@ -2141,6 +2823,14 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				texCoords.size() == static_cast<size_t>(vertexCount) * 2
 					? texCoords[sourceVertexIndex * 2 + 1]
 					: vertex.texCoord[1];
+		}
+		for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
+		{
+			const std::vector<FLOAT>& texCoordQ =
+				m_pState->projectiveTexCoordQ[textureUnit];
+			if (texCoordQ.size() == vertexCount)
+				vertex.texCoordQ[textureUnit] =
+					texCoordQ[sourceVertexIndex];
 		}
 		if (!usesVertexProgram && !usesPixelProgram)
 		{
@@ -2284,6 +2974,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				transformedPosition,
 				vertexShaderConstants,
 				&vertex);
+			if (projectedTerrain
+				&& ClampProjectedTerrainFarDepth(&vertex))
+				++clampedFarDepthCount;
 			if (shaderFamily.vertex == DX12_LEGACY_VS_RIGID_LIT
 				|| shaderFamily.vertex
 					== DX12_LEGACY_VS_RIGID_LIT_PROJECTED)
@@ -2335,11 +3028,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			else if (shaderFamily.vertex
 				== DX12_LEGACY_VS_PROJECTED_ONE)
 			{
-				WriteProjectedTexCoord(
+				WriteTerrainMapTexCoord(
 					transformedPosition,
 					vertexShaderConstants,
-					18,
-					0,
 					&vertex);
 			}
 			else if (shaderFamily.vertex
@@ -2383,6 +3074,19 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 					transformedPosition,
 					vertexShaderConstants,
 					18,
+					1,
+					&vertex);
+			}
+			else if (shaderFamily.vertex == DX12_LEGACY_VS_WATER)
+			{
+				vertex.texCoord[0] +=
+					vertexShaderConstants[17 * 4 + 1];
+				vertex.texCoord[1] +=
+					vertexShaderConstants[17 * 4 + 2];
+				WriteHomogeneousProjectedTexCoord(
+					transformedPosition,
+					vertexShaderConstants,
+					21,
 					1,
 					&vertex);
 			}
@@ -2455,34 +3159,60 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		{
 			D3DXVECTOR4 clip;
 			D3DXVec3Transform(&clip, &source, &worldViewProjection);
-			const FLOAT inverseW =
-				clip.w != 0.0f ? 1.0f / clip.w : 1.0f;
-			vertex.position[0] = clip.x * inverseW;
-			vertex.position[1] = clip.y * inverseW;
-			vertex.position[2] = clip.z * inverseW;
+			vertex.position[0] = clip.x;
+			vertex.position[1] = clip.y;
+			vertex.position[2] = clip.z;
 			vertex.clipW = clip.w;
 			vertex.normal[2] = 1.0f;
 		}
-		if (!usesVertexProgram
-			&& !usesPixelProgram
-			&& vertex.clipW <= 0.0f)
-			fixedCrossesClipPlane = true;
+		if (!_finite(vertex.position[0])
+			|| !_finite(vertex.position[1])
+			|| !_finite(vertex.position[2])
+			|| !_finite(vertex.clipW))
+		{
+			invalidClipCoordinate = true;
+			break;
+		}
 		m_pState->vertices.push_back(vertex);
 	}
-	if (fixedCrossesClipPlane)
+	if (invalidClipCoordinate)
 	{
 		m_pState->vertices.resize(baseVertex);
 		++m_pState->rejectedDrawCount;
-		++m_pState->rejectedReasons[REJECT_FIXED_CLIP_VOLUME];
+		++m_pState->rejectedReasons[REJECT_INVALID_CLIP_COORDINATE];
 		return false;
 	}
 
 	const UINT firstIndex =
 		static_cast<UINT>(m_pState->indices.size());
-	for (UINT iIndex = 0; iIndex < indexCount; ++iIndex)
+	UINT capturedIndexCount = 0;
+	for (UINT iIndex = 0; iIndex + 2 < indexCount; iIndex += 3)
 	{
-		m_pState->indices.push_back(
-			baseVertex + remappedIndices[iIndex]);
+		const UINT localIndex0 = remappedIndices[iIndex + 0];
+		const UINT localIndex1 = remappedIndices[iIndex + 1];
+		const UINT localIndex2 = remappedIndices[iIndex + 2];
+		if (!usesVertexProgram
+			&& !usesPixelProgram
+			&& (m_pState->vertices[baseVertex + localIndex0].clipW
+					<= 0.000001f
+				|| m_pState->vertices[baseVertex + localIndex1].clipW
+					<= 0.000001f
+				|| m_pState->vertices[baseVertex + localIndex2].clipW
+					<= 0.000001f))
+		{
+			continue;
+		}
+		m_pState->indices.push_back(baseVertex + localIndex0);
+		m_pState->indices.push_back(baseVertex + localIndex1);
+		m_pState->indices.push_back(baseVertex + localIndex2);
+		capturedIndexCount += 3;
+	}
+	if (capturedIndexCount == 0)
+	{
+		m_pState->vertices.resize(baseVertex);
+		++m_pState->rejectedDrawCount;
+		++m_pState->rejectedReasons[REJECT_FIXED_CLIP_VOLUME];
+		return false;
 	}
 
 	IDirect3DBaseTexture9* pBaseTexture = NULL;
@@ -2512,6 +3242,37 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			pBaseTexture->Release();
 		}
 	}
+	D3DSURFACE_DESC fixedTextureDescription;
+	ZeroMemory(&fixedTextureDescription, sizeof(fixedTextureDescription));
+	const bool hasFixedTextureDescription =
+		pTexture != NULL
+		&& SUCCEEDED(pTexture->GetLevelDesc(
+			0,
+			&fixedTextureDescription));
+	if (inventoryMode && fixedFunctionDraw)
+	{
+		RecordFixedFunctionDraw(
+			m_pState,
+			pTexture,
+			hasFixedTextureDescription
+				? &fixedTextureDescription
+				: NULL,
+			shaderFamily.textureCount,
+			fixedFunctionBlendMode,
+			zEnable,
+			zWrite,
+			zFunction,
+			cullMode,
+			fixedTexCoordIndex[0],
+			fixedTextureTransformFlags[0],
+			fixedColorOperation[0],
+			fixedAlphaOperation[0],
+			dynamicBuffer,
+			capturedIndexCount,
+			m_pState->vertices,
+			baseVertex,
+			usedVertexCount);
+	}
 	if (inventoryMode
 		&& !usesVertexProgram && !usesPixelProgram
 		&& m_pState->fixedDiagnosticCount < 20)
@@ -2534,11 +3295,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			0, D3DTSS_ALPHAARG1, &alphaArgument1);
 		pDevice9->GetTextureStageState(
 			0, D3DTSS_ALPHAARG2, &alphaArgument2);
-		D3DSURFACE_DESC textureDesc;
-		ZeroMemory(&textureDesc, sizeof(textureDesc));
-		const bool hasTextureDescription =
-			pTexture != NULL
-			&& SUCCEEDED(pTexture->GetLevelDesc(0, &textureDesc));
 		const Legacy3DVertex& firstVertex =
 			m_pState->vertices[baseVertex];
 		FLOAT minimumX = firstVertex.position[0];
@@ -2576,11 +3332,11 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			"uv=(%.4f,%.4f), rgba=(%.3f,%.3f,%.3f,%.3f).\n",
 			shaderFamily.textureCount,
 			pTexture,
-			hasTextureDescription ? 1U : 0U,
-			static_cast<int>(textureDesc.Format),
-			static_cast<int>(textureDesc.Pool),
-			textureDesc.Width,
-			textureDesc.Height,
+			hasFixedTextureDescription ? 1U : 0U,
+			static_cast<int>(fixedTextureDescription.Format),
+			static_cast<int>(fixedTextureDescription.Pool),
+			fixedTextureDescription.Width,
+			fixedTextureDescription.Height,
 			m_pState->constantColor,
 			zEnable != FALSE ? 1U : 0U,
 			zWrite != FALSE ? 1U : 0U,
@@ -2624,7 +3380,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 
 	Legacy3DDrawRange range;
 	range.firstIndex = firstIndex;
-	range.indexCount = indexCount;
+	range.indexCount = capturedIndexCount;
 	range.viewport.TopLeftX = static_cast<FLOAT>(viewport9.X);
 	range.viewport.TopLeftY = static_cast<FLOAT>(viewport9.Y);
 	range.viewport.Width = static_cast<FLOAT>(viewport9.Width);
@@ -2643,7 +3399,33 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	range.pTexture3 = pTexture3;
 	range.depthEnabled = zEnable != FALSE;
 	range.depthWriteEnabled = zWrite != FALSE;
+	range.colorWriteEnabled = colorWriteMask != 0;
+	// D3D9 permite desactivar el recorte del volumen de vista. DX12 separa
+	// esa compatibilidad en DepthClipEnable del PSO; conservarla evita que
+	// los bloques periféricos del terreno desaparezcan en el plano lejano.
+	range.depthClipEnabled = clipping != FALSE;
+	// Estas familias reproducen el vertex shader D3D9 en CPU. La diferencia
+	// de precisión deja parte de cada bloque apenas fuera del plano lejano
+	// (medido hasta z/w=1.000096) aunque D3D9 conserva la superficie. Sólo
+	// para esta geometría desactivamos el recorte de profundidad del PSO;
+	// X/Y siguen siendo recortados normalmente por el rasterizador DX12.
+	if (projectedTerrain
+		|| shaderFamily.pixel == DX12_LEGACY_PS_WATER)
+		range.depthClipEnabled = false;
 	range.depthFunction = ToDepthFunction(zFunction);
+	// Las capas del terreno vuelven a rasterizar la misma malla con shaders
+	// distintos. D3D9 toleraba pequeñas diferencias de profundidad entre
+	// esas pasadas; EQUAL exacto en DX12 dejaba capas completas sin componer.
+	// LESS_EQUAL conserva la oclusión frente a objetos y admite la misma
+	// superficie cuando la conversión CPU varía en el último bit.
+	if ((shaderFamily.vertex == DX12_LEGACY_VS_PROJECTED_ONE
+			|| shaderFamily.vertex == DX12_LEGACY_VS_PROJECTED_TWO
+			|| shaderFamily.vertex == DX12_LEGACY_VS_PROJECTED_FOUR)
+		&& range.depthFunction == D3D12_COMPARISON_FUNC_EQUAL
+		&& !range.depthWriteEnabled)
+	{
+		range.depthFunction = D3D12_COMPARISON_FUNC_LESS_EQUAL;
+	}
 	range.cullMode = ToCullMode(cullMode);
 	range.blendMode = fixedFunctionDraw
 		? fixedFunctionBlendMode
@@ -2652,6 +3434,22 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			alphaTest,
 			sourceBlend,
 			destinationBlend);
+	// La primera capa ya produce color premultiplicado. Escribirla sin mezcla
+	// inicializa el destino de forma determinista; depender de alfa=0 con
+	// ONE/SRC_ALPHA conservaba partes del cielo en algunos controladores.
+	// Las capas posteriores mantienen el blending multipass original.
+	if (initializeTerrainColor)
+	{
+		range.blendMode = DX12_BLEND_OPAQUE;
+		if (!m_pState->terrainOpaqueInitializationReported)
+		{
+			CPrintF(
+				"DX12 terreno: primera capa configurada como "
+				"inicializacion opaca; las capas siguientes conservan "
+				"ONE/SRC_ALPHA.\n");
+			m_pState->terrainOpaqueInitializationReported = true;
+		}
+	}
 	if (inventoryMode
 		&& fixedFunctionDraw
 		&& range.blendMode < DX12_BLEND_COUNT
@@ -2682,7 +3480,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			shaderFamily.textureCount,
 			texturePassCount,
 			usedVertexCount,
-			indexCount,
+			capturedIndexCount,
 			fixedTextureDescriptionAvailable
 				? static_cast<int>(fixedTextureDescription.Format)
 				: 0,
@@ -2712,9 +3510,44 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		range.pixelShaderConstants,
 		pixelShaderConstants,
 		sizeof(range.pixelShaderConstants));
+	if (projectedTerrain)
+	{
+		CCameraTestCapture::CaptureTerrainView(
+			pDevice9,
+			vertexShaderConstants,
+			96);
+		ReportTerrainClipStateOnce(
+			m_pState,
+			vertexShaderFingerprint,
+			pixelShaderFingerprint,
+			clipping != FALSE,
+			range.depthClipEnabled,
+			range.depthEnabled,
+			range.depthWriteEnabled,
+			range.colorWriteEnabled,
+			range.depthFunction,
+			alphaTest != FALSE,
+			static_cast<FLOAT>(alphaReference) / 255.0f,
+			blending,
+			sourceBlend,
+			destinationBlend,
+			samplerAddressU,
+			samplerAddressV,
+			samplerMinification,
+			samplerMagnification,
+			legacyPixelConstants,
+			pTexture,
+			pTexture1,
+			pTexture2,
+			pTexture3,
+			m_pState->vertices,
+			baseVertex,
+			usedVertexCount,
+			clampedFarDepthCount);
+	}
 	m_pState->ranges.push_back(range);
 	++m_pState->capturedDrawCount;
-	m_pState->capturedTriangleCount += indexCount / 3;
+	m_pState->capturedTriangleCount += capturedIndexCount / 3;
 	return true;
 }
 
@@ -2724,25 +3557,31 @@ bool CDirectX12Legacy3DCommandBatch::EnsureBuffers(
 {
 	if (m_pDevice == NULL || vertexBytes == 0 || indexBytes == 0)
 		return false;
-	if (m_pVertexBuffer == NULL
-		|| m_pVertexBuffer->GetSize() < vertexBytes)
+	if (m_currentSubmissionBuffer >= BUFFER_SUBMISSION_COUNT)
+		return false;
+	CDirectX12Buffer*& pVertexBuffer =
+		m_pVertexBuffers[m_currentFrame][m_currentSubmissionBuffer];
+	CDirectX12Buffer*& pIndexBuffer =
+		m_pIndexBuffers[m_currentFrame][m_currentSubmissionBuffer];
+	if (pVertexBuffer == NULL
+		|| pVertexBuffer->GetSize() < vertexBytes)
 	{
-		delete m_pVertexBuffer;
-		m_pVertexBuffer = new CDirectX12Buffer;
-		if (m_pVertexBuffer == NULL
-			|| !m_pVertexBuffer->CreateVertexBuffer(
+		delete pVertexBuffer;
+		pVertexBuffer = new CDirectX12Buffer;
+		if (pVertexBuffer == NULL
+			|| !pVertexBuffer->CreateVertexBuffer(
 				m_pDevice,
 				vertexBytes,
 				sizeof(Legacy3DVertex)))
 			return false;
 	}
-	if (m_pIndexBuffer == NULL
-		|| m_pIndexBuffer->GetSize() < indexBytes)
+	if (pIndexBuffer == NULL
+		|| pIndexBuffer->GetSize() < indexBytes)
 	{
-		delete m_pIndexBuffer;
-		m_pIndexBuffer = new CDirectX12Buffer;
-		if (m_pIndexBuffer == NULL
-			|| !m_pIndexBuffer->CreateIndexBuffer(
+		delete pIndexBuffer;
+		pIndexBuffer = new CDirectX12Buffer;
+		if (pIndexBuffer == NULL
+			|| !pIndexBuffer->CreateIndexBuffer(
 				m_pDevice,
 				indexBytes,
 				DXGI_FORMAT_R32_UINT))
@@ -2771,13 +3610,19 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		m_pState->vertices.size() * sizeof(Legacy3DVertex));
 	const UINT indexBytes = static_cast<UINT>(
 		m_pState->indices.size() * sizeof(UINT));
-	if (!EnsureBuffers(vertexBytes, indexBytes)
-		|| !m_pVertexBuffer->Upload(
+	if (!EnsureBuffers(vertexBytes, indexBytes))
+		return false;
+	CDirectX12Buffer* pVertexBuffer =
+		m_pVertexBuffers[m_currentFrame][m_currentSubmissionBuffer];
+	CDirectX12Buffer* pIndexBuffer =
+		m_pIndexBuffers[m_currentFrame][m_currentSubmissionBuffer];
+	if (pVertexBuffer == NULL || pIndexBuffer == NULL
+		|| !pVertexBuffer->Upload(
 			pUploadManager,
 			pCommandList,
 			&m_pState->vertices[0],
 			vertexBytes)
-		|| !m_pIndexBuffer->Upload(
+		|| !pIndexBuffer->Upload(
 			pUploadManager,
 			pCommandList,
 			&m_pState->indices[0],
@@ -2815,9 +3660,9 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			pRenderTargets->GetCurrentDepthResource()->GetDesc().Format)
 		: DXGI_FORMAT_D32_FLOAT;
 	const D3D12_VERTEX_BUFFER_VIEW vertexView =
-		m_pVertexBuffer->GetVertexView();
+		pVertexBuffer->GetVertexView();
 	const D3D12_INDEX_BUFFER_VIEW indexView =
-		m_pIndexBuffer->GetIndexView();
+		pIndexBuffer->GetIndexView();
 	pCommandList->SetGraphicsRootSignature(
 		m_pPipelineCache->GetRootSignature());
 	pCommandList->OMSetRenderTargets(
@@ -2847,17 +3692,32 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		++iRange)
 	{
 		const Legacy3DDrawRange& range = m_pState->ranges[iRange];
+		const bool rangeWritesColor =
+			writeColor && range.colorWriteEnabled;
+		ID3D12Resource* pCurrentTarget =
+			pRenderTargets->GetCurrentResource();
+		// Una textura no puede estar enlazada simultaneamente como destino y
+		// como entrada. Omitir este draw dentro de la propia reflexion evita
+		// la realimentacion RTV/SRV sin introducir una ruta D3D9 alternativa.
+		if (pTextures->ReferencesResource(range.pTexture, pCurrentTarget)
+			|| pTextures->ReferencesResource(
+				range.pTexture1, pCurrentTarget)
+			|| pTextures->ReferencesResource(
+				range.pTexture2, pCurrentTarget)
+			|| pTextures->ReferencesResource(
+				range.pTexture3, pCurrentTarget))
+			continue;
 		ID3D12PipelineState* pPipeline =
 			m_pPipelineCache->GetPipelineState(
 				range.genericFamily
-					? (writeColor
+					? (rangeWritesColor
 						? DX12_PIPELINE_LEGACY_MATERIAL_3D_OVERLAY
 						: DX12_PIPELINE_LEGACY_MATERIAL_3D_SHADOW)
 					: range.rigidLit
-					? (writeColor
+					? (rangeWritesColor
 						? DX12_PIPELINE_RIGID_LIT_3D_OVERLAY
 						: DX12_PIPELINE_RIGID_LIT_3D_SHADOW)
-					: (writeColor
+					: (rangeWritesColor
 						? DX12_PIPELINE_TEXTURED_3D_OVERLAY
 						: DX12_PIPELINE_TEXTURED_3D_SHADOW),
 				targetDesc.Format,
@@ -2867,7 +3727,8 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 				range.depthWriteEnabled,
 				range.depthFunction,
 				range.cullMode,
-				depthStencilFormat);
+				depthStencilFormat,
+				range.depthClipEnabled);
 		if (pPipeline == NULL)
 			return false;
 		pCommandList->SetPipelineState(pPipeline);
@@ -2888,9 +3749,16 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView1 = fallbackTexture;
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView2 = fallbackTexture;
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView3 = fallbackTexture;
-		// El diagnostico de profundidad no necesita texturas. La comparacion
-		// visual y el mapa nativo si reproducen el pixel shader completo.
-		if (writeColor && range.pTexture != NULL
+		// Las pasadas de borde del terreno no escriben color, pero su
+		// alpha-test decide qué fragmentos pueden escribir profundidad. Deben
+		// conservar la máscara real; usar la textura blanca de respaldo crea
+		// un oclusor invisible sobre toda la baldosa.
+		const bool samplesTextureForDepth =
+			!rangeWritesColor
+			&& range.pixelShaderConstants[2] > 0.5f;
+		const bool needsTextureSampling =
+			rangeWritesColor || samplesTextureForDepth;
+		if (needsTextureSampling && range.pTexture != NULL
 			&& !pTextures->Acquire(
 				range.pTexture,
 				pCommandList,
@@ -2899,7 +3767,7 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			return false;
 		pCommandList->SetGraphicsRootDescriptorTable(0, textureView);
 		if ((range.rigidLit || range.genericFamily)
-			&& writeColor && range.pTexture1 != NULL
+			&& rangeWritesColor && range.pTexture1 != NULL
 			&& !pTextures->Acquire(
 				range.pTexture1,
 				pCommandList,
@@ -2915,14 +3783,16 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 				range.pixelShaderConstants,
 				0);
 		}
-		if (range.genericFamily && writeColor && range.pTexture2 != NULL
+		if (range.genericFamily && rangeWritesColor
+			&& range.pTexture2 != NULL
 			&& !pTextures->Acquire(
 				range.pTexture2,
 				pCommandList,
 				pUploadManager,
 				&textureView2))
 			return false;
-		if (range.genericFamily && writeColor && range.pTexture3 != NULL
+		if (range.genericFamily && rangeWritesColor
+			&& range.pTexture3 != NULL
 			&& !pTextures->Acquire(
 				range.pTexture3,
 				pCommandList,
@@ -2941,6 +3811,7 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			0);
 	}
 	m_pState->submittedRangeCount = m_pState->ranges.size();
+	++m_currentSubmissionBuffer;
 	return true;
 }
 

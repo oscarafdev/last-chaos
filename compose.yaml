@@ -5,10 +5,16 @@ services:
     image: mariadb:10.11
     restart: unless-stopped
     environment:
-      MARIADB_ROOT_PASSWORD: ${LC_DB_PASSWORD:-lastchaos}
-      MARIADB_ROOT_HOST: "%"
-    ports:
-      - "${LC_DB_PORT:-3306}:3306"
+      MARIADB_ROOT_PASSWORD: ${LC_DB_ROOT_PASSWORD:?Define LC_DB_ROOT_PASSWORD}
+      LC_DB_LOGIN_PASSWORD: ${LC_DB_LOGIN_PASSWORD:?Define LC_DB_LOGIN_PASSWORD}
+      LC_DB_CONNECTOR_PASSWORD: ${LC_DB_CONNECTOR_PASSWORD:?Define LC_DB_CONNECTOR_PASSWORD}
+      LC_DB_GAME_PASSWORD: ${LC_DB_GAME_PASSWORD:?Define LC_DB_GAME_PASSWORD}
+      LC_DB_HELPER_PASSWORD: ${LC_DB_HELPER_PASSWORD:?Define LC_DB_HELPER_PASSWORD}
+      LC_DB_SUBHELPER_PASSWORD: ${LC_DB_SUBHELPER_PASSWORD:?Define LC_DB_SUBHELPER_PASSWORD}
+      LC_DB_CASH_PASSWORD: ${LC_DB_CASH_PASSWORD:?Define LC_DB_CASH_PASSWORD}
+      LC_DB_REGISTRATION_PASSWORD: ${LC_DB_REGISTRATION_PASSWORD:?Define LC_DB_REGISTRATION_PASSWORD}
+    expose:
+      - "3306"
     volumes:
       - database-data:/var/lib/mysql
       - ./database/init:/docker-entrypoint-initdb.d:ro
@@ -22,6 +28,8 @@ services:
       timeout: 5s
       retries: 20
       start_period: 30s
+    networks:
+      - backend
 
   server:
     build:
@@ -35,21 +43,55 @@ services:
         condition: service_healthy
     environment:
       DB_HOST: database
-      DB_PASSWORD: ${LC_DB_PASSWORD:-lastchaos}
+      LC_DB_LOGIN_PASSWORD: ${LC_DB_LOGIN_PASSWORD:?Define LC_DB_LOGIN_PASSWORD}
+      LC_DB_CONNECTOR_PASSWORD: ${LC_DB_CONNECTOR_PASSWORD:?Define LC_DB_CONNECTOR_PASSWORD}
+      LC_DB_GAME_PASSWORD: ${LC_DB_GAME_PASSWORD:?Define LC_DB_GAME_PASSWORD}
+      LC_DB_HELPER_PASSWORD: ${LC_DB_HELPER_PASSWORD:?Define LC_DB_HELPER_PASSWORD}
+      LC_DB_SUBHELPER_PASSWORD: ${LC_DB_SUBHELPER_PASSWORD:?Define LC_DB_SUBHELPER_PASSWORD}
+      LC_DB_CASH_PASSWORD: ${LC_DB_CASH_PASSWORD:?Define LC_DB_CASH_PASSWORD}
       SERVER_BIND_IP: ${LC_SERVER_BIND_IP:-0.0.0.0}
-      SERVER_PUBLIC_IP: ${LC_SERVER_PUBLIC_IP:-127.0.0.1}
-      ENABLE_CASH_SERVER: ${LC_ENABLE_CASH_SERVER:-true}
+      SERVER_PUBLIC_IP: ${LC_SERVER_PUBLIC_IP:?Define LC_SERVER_PUBLIC_IP}
+      ENABLE_CASH_SERVER: ${LC_ENABLE_CASH_SERVER:-false}
     ports:
-      - "3000:3000"
-      - "4001:4001"
-      - "4006:4006"
-      - "4101:4101"
-      - "4102:4102"
-      - "4112:4112"
-      - "50401:50401"
+      - "${LC_PUBLIC_BIND_IP:?Define LC_PUBLIC_BIND_IP}:4001:4001"
+      - "${LC_PUBLIC_BIND_IP:?Define LC_PUBLIC_BIND_IP}:4006:4006"
+      - "${LC_PUBLIC_BIND_IP:?Define LC_PUBLIC_BIND_IP}:4101:4101"
+    expose:
+      - "3000"
+      - "4102"
+      - "4112"
+      - "50401"
     volumes:
       - server-logs:/opt/lastchaos/LogFiles
+    networks:
+      - backend
+      - public
+
+  registration:
+    build:
+      context: ./web/registration
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      LISTEN_ADDRESS: 0.0.0.0:8080
+      DB_DSN: lc_registration:${LC_DB_REGISTRATION_PASSWORD:?Define LC_DB_REGISTRATION_PASSWORD}@tcp(database:3306)/2018_nov_db_auth?charset=utf8mb4&parseTime=true
+      PASSWORD_SALT: ${LC_PASSWORD_SALT:?Define LC_PASSWORD_SALT}
+      PUBLIC_ORIGIN: ${LC_REGISTRATION_ORIGIN:?Define LC_REGISTRATION_ORIGIN}
+      SECURE_COOKIES: "true"
+    ports:
+      - "${LC_REGISTRATION_BIND_IP:-127.0.0.1}:${LC_REGISTRATION_PORT:-8080}:8080"
+    networks:
+      - backend
+      - public
 
 volumes:
   database-data:
   server-logs:
+
+networks:
+  backend:
+    internal: true
+  public:

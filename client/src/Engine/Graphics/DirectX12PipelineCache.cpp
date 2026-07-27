@@ -24,6 +24,7 @@ namespace
 		D3D12_COMPARISON_FUNC depthFunction;
 		D3D12_CULL_MODE cullMode;
 		DXGI_FORMAT depthStencilFormat;
+		bool depthClipEnabled;
 		ID3D12PipelineState* pPipelineState;
 	};
 
@@ -488,7 +489,8 @@ ID3D12PipelineState* CDirectX12PipelineCache::GetPipelineState(
 	bool depthWriteEnabled,
 	D3D12_COMPARISON_FUNC depthFunction,
 	D3D12_CULL_MODE cullMode,
-	DXGI_FORMAT depthStencilFormat)
+	DXGI_FORMAT depthStencilFormat,
+	bool depthClipEnabled)
 {
 	if (m_pState == NULL || renderTargetFormat == DXGI_FORMAT_UNKNOWN
 		|| sampleDesc.Count == 0)
@@ -511,7 +513,9 @@ ID3D12PipelineState* CDirectX12PipelineCache::GetPipelineState(
 			&& m_pState->entries[iEntry].depthFunction == depthFunction
 			&& m_pState->entries[iEntry].cullMode == cullMode
 			&& m_pState->entries[iEntry].depthStencilFormat
-				== depthStencilFormat)
+				== depthStencilFormat
+			&& m_pState->entries[iEntry].depthClipEnabled
+				== depthClipEnabled)
 			return m_pState->entries[iEntry].pPipelineState;
 	}
 
@@ -525,7 +529,8 @@ ID3D12PipelineState* CDirectX12PipelineCache::GetPipelineState(
 			depthWriteEnabled,
 			depthFunction,
 			cullMode,
-			depthStencilFormat);
+			depthStencilFormat,
+			depthClipEnabled);
 	if (pPipelineState == NULL)
 		return NULL;
 
@@ -539,6 +544,7 @@ ID3D12PipelineState* CDirectX12PipelineCache::GetPipelineState(
 	entry.depthFunction = depthFunction;
 	entry.cullMode = cullMode;
 	entry.depthStencilFormat = depthStencilFormat;
+	entry.depthClipEnabled = depthClipEnabled;
 	entry.pPipelineState = pPipelineState;
 	m_pState->entries.push_back(entry);
 	return pPipelineState;
@@ -553,7 +559,8 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 	bool depthWriteEnabled,
 	D3D12_COMPARISON_FUNC depthFunction,
 	D3D12_CULL_MODE cullMode,
-	DXGI_FORMAT depthStencilFormat)
+	DXGI_FORMAT depthStencilFormat,
+	bool depthClipEnabled)
 {
 	D3D12_INPUT_ELEMENT_DESC inputElements[] = {
 		{
@@ -652,6 +659,10 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		{
 			"TEXCOORD", 13, DXGI_FORMAT_R32_FLOAT,
 			0, 136, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0
+		},
+		{
+			"TEXCOORD", 14, DXGI_FORMAT_R32G32B32A32_FLOAT,
+			0, 140, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0
 		}
 	};
 
@@ -770,6 +781,12 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		blend.SrcBlend = D3D12_BLEND_ONE;
 		blend.DestBlend = D3D12_BLEND_SRC_ALPHA;
 	}
+	else if (blendMode
+		== DX12_BLEND_DESTINATION_INVERSE_SOURCE_ALPHA)
+	{
+		blend.SrcBlend = D3D12_BLEND_ZERO;
+		blend.DestBlend = D3D12_BLEND_INV_SRC_ALPHA;
+	}
 	blend.BlendOp = D3D12_BLEND_OP_ADD;
 	blend.SrcBlendAlpha = D3D12_BLEND_ZERO;
 	blend.DestBlendAlpha = D3D12_BLEND_ONE;
@@ -791,7 +808,18 @@ ID3D12PipelineState* CDirectX12PipelineCache::CreatePipelineState(
 		D3D12_DEFAULT_DEPTH_BIAS_CLAMP;
 	psoDesc.RasterizerState.SlopeScaledDepthBias =
 		D3D12_DEFAULT_SLOPE_SCALED_DEPTH_BIAS;
-	psoDesc.RasterizerState.DepthClipEnable = TRUE;
+	psoDesc.RasterizerState.DepthClipEnable =
+		depthClipEnabled ? TRUE : FALSE;
+	if (!depthClipEnabled)
+	{
+		CPrintF(
+			"DX12 diagnostico PSO: tipo=%d, depth=%u/%u, "
+			"funcion=%d, DepthClipEnable=0.\n",
+			static_cast<int>(kind),
+			depthEnabled ? 1U : 0U,
+			depthWriteEnabled ? 1U : 0U,
+			static_cast<int>(depthFunction));
+	}
 	psoDesc.RasterizerState.MultisampleEnable =
 		sampleDesc.Count > 1;
 	psoDesc.DepthStencilState.DepthEnable = depthEnabled;

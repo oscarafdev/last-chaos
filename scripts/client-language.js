@@ -5,6 +5,8 @@ const path = require("path");
 
 const SEED = Buffer.from(';!k.az"MAEjhgasbube18340-fZ,;asAOJM.joqwAsefFsFjd', "ascii");
 const COUNTRY_PATTERN = /persistent extern INDEX g_iCountry=\(INDEX\)(\d+);/;
+const SAVE_ID_PATTERN = /persistent extern INDEX g_iSaveID=\(INDEX\)\d+;/;
+const SAVED_USERNAME_PATTERN = /persistent extern user CTString g_strSaveID="[^"]*";/;
 
 const languages = Object.freeze({
   de: { country: 10, name: "Alemán" },
@@ -82,13 +84,51 @@ function setCountry(filePath, country) {
   fs.writeFileSync(filePath, encodeFile(updated));
 }
 
+function sanitizeSavedAccount(filePath) {
+  const decoded = decodeFile(fs.readFileSync(filePath));
+  const text = decoded.toString("latin1");
+  if (!SAVE_ID_PATTERN.test(text) || !SAVED_USERNAME_PATTERN.test(text)) {
+    throw new Error("No se encontraron los campos de cuenta guardada en ps.dat.");
+  }
+
+  const updated = Buffer.from(
+    text
+      .replace(SAVE_ID_PATTERN, "persistent extern INDEX g_iSaveID=(INDEX)0;")
+      .replace(SAVED_USERNAME_PATTERN, 'persistent extern user CTString g_strSaveID="";'),
+    "latin1",
+  );
+  fs.writeFileSync(filePath, encodeFile(updated));
+}
+
+function readSavedAccount(filePath) {
+  const text = decodeFile(fs.readFileSync(filePath)).toString("latin1");
+  const saveID = text.match(SAVE_ID_PATTERN)?.[0].match(/\d+/)?.[0];
+  const username = text.match(SAVED_USERNAME_PATTERN)?.[0].match(/"([^"]*)"/)?.[1];
+  if (saveID === undefined || username === undefined) {
+    throw new Error("No se encontraron los campos de cuenta guardada en ps.dat.");
+  }
+  return { saveID: Number(saveID), username };
+}
+
 function main(argv) {
   const [command, fileArg, languageCode] = argv;
-  if (!command || !fileArg || !["get", "set"].includes(command)) {
-    throw new Error("Uso: node client-language.js <get|set> <ps.dat> [idioma]");
+  if (!command || !fileArg || !["get", "set", "sanitize", "account"].includes(command)) {
+    throw new Error("Uso: node client-language.js <get|set|sanitize|account> <ps.dat> [idioma]");
   }
 
   const filePath = path.resolve(fileArg);
+  if (command === "account") {
+    const account = readSavedAccount(filePath);
+    process.stdout.write(JSON.stringify(account));
+    return;
+  }
+
+  if (command === "sanitize") {
+    sanitizeSavedAccount(filePath);
+    process.stdout.write("Cuenta guardada eliminada");
+    return;
+  }
+
   if (command === "get") {
     const country = readCountry(filePath);
     const language = Object.entries(languages).find(([, value]) => value.country === country);

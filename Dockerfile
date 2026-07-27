@@ -24,8 +24,13 @@ RUN apt-get update \
 
 WORKDIR /build
 COPY server/src/ ./
+COPY server/tests/ ./tests/
 
-RUN make OPT_DEF=-DSETTING_IF_INNER_IP_NEW "${LC_LOCALE}"
+RUN g++ -std=gnu++11 -I./ShareLib \
+        ./tests/PacketSizeValidationTest.cpp \
+        -o /tmp/packet-size-validation-test \
+    && /tmp/packet-size-validation-test \
+    && make OPT_DEF=-DSETTING_IF_INNER_IP_NEW "${LC_LOCALE}"
 
 FROM debian:12-slim AS server
 
@@ -60,7 +65,7 @@ RUN tar -xJf /tmp/server.tar.xz --strip-components=1 \
 
 COPY --from=server-builder /build/CalcHash/CalcHash ./CalcHash/CalcHash
 COPY --from=server-builder /build/Connector/Connector ./Connector/Connector
-COPY --from=server-builder /build/GameServer/GameServer_d ./GameServer/GameServer_d
+COPY --from=server-builder /build/GameServer/GameServer ./GameServer/GameServer
 COPY --from=server-builder /build/Helper/Helper ./Helper/Helper
 COPY --from=server-builder /build/LoginServer/LoginServer ./LoginServer/LoginServer
 COPY --from=server-builder /build/Messenger/Messenger ./Messenger/Messenger
@@ -73,7 +78,7 @@ RUN chmod +x \
         /usr/local/bin/lastchaos-healthcheck \
         ./CalcHash/CalcHash \
         ./Connector/Connector \
-        ./GameServer/GameServer_d \
+        ./GameServer/GameServer \
         ./Helper/Helper \
         ./LoginServer/LoginServer \
         ./Messenger/Messenger \

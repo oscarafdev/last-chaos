@@ -219,7 +219,8 @@ namespace
 			"%u rechazados, %u triangulos; "
 			"motivos streams=%u, VS=%u, PS=%u, proyecto=%u, "
 			"pasadas=%u, arrays=%u, limite=%u, indice=%u, estado=%u, "
-			"destinoAuxiliar=%u, fixedTransparente=%u, fixedClip=%u; "
+			"destinoAuxiliar=%u, fixedTransparente=%u, fixedClip=%u, "
+			"clipInvalido=%u; "
 			"familiaVS=%016llX, enviosVS=%u, triangulosVS=%u.\r\n",
 			overlay ? "overlay" : "sombra",
 			capturedDrawCount,
@@ -237,6 +238,7 @@ namespace
 			reasonCount > 9 ? pReasons[9] : 0,
 			reasonCount > 10 ? pReasons[10] : 0,
 			reasonCount > 11 ? pReasons[11] : 0,
+			reasonCount > 12 ? pReasons[12] : 0,
 			static_cast<unsigned long long>(topVertexShaderFingerprint),
 			topVertexShaderDrawCount,
 			topVertexShaderTriangleCount);
@@ -300,7 +302,7 @@ CDirectX12Backend::CDirectX12Backend()
 	ZeroMemory(
 		m_nativeOffscreenClearColor,
 		sizeof(m_nativeOffscreenClearColor));
-	for (UINT iReason = 0; iReason < 12; ++iReason)
+	for (UINT iReason = 0; iReason < 13; ++iReason)
 	{
 		m_lastReportedLegacy3DRejectionReasons[iReason] =
 			static_cast<UINT>(-1);
@@ -798,7 +800,7 @@ bool CDirectX12Backend::EndFrame()
 	}
 	if (m_pNativeRenderer != NULL)
 	{
-		enum { LEGACY_3D_REJECTION_REASON_COUNT = 12 };
+		enum { LEGACY_3D_REJECTION_REASON_COUNT = 13 };
 		const UINT capturedDrawCount =
 			m_pNativeRenderer->GetLegacy3DCapturedDrawCount();
 		const UINT rejectedDrawCount =
@@ -1851,6 +1853,18 @@ void CDirectX12Backend::SetLegacy3DTexCoordArray(
 {
 	if (m_frameOpen && m_pNativeRenderer != NULL)
 		m_pNativeRenderer->SetLegacy3DTexCoordArray(
+			textureUnit,
+			pTexCoords,
+			vertexCount);
+}
+
+void CDirectX12Backend::SetLegacy3DProjectiveTexCoordArray(
+	UINT textureUnit,
+	const FLOAT* pTexCoords,
+	UINT vertexCount)
+{
+	if (m_frameOpen && m_pNativeRenderer != NULL)
+		m_pNativeRenderer->SetLegacy3DProjectiveTexCoordArray(
 			textureUnit,
 			pTexCoords,
 			vertexCount);

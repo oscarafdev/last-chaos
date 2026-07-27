@@ -20,6 +20,7 @@ client/Bin/vk_swiftshader_icd.json
 client/Bin/vulkan-1.dll
 client/Data/etc/ps.dat.bak
 client/Local/**/*.lod.original
+client/src/Bin/
 .vs/
 **/.vs/
 **/Debug/

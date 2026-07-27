@@ -43,6 +43,10 @@ public:
 		UINT textureUnit,
 		const FLOAT* pTexCoords,
 		UINT vertexCount);
+	void SetLegacy3DProjectiveTexCoordArray(
+		UINT textureUnit,
+		const FLOAT* pTexCoords,
+		UINT vertexCount);
 	void SetLegacy3DNormalArray(
 		const FLOAT* pNormals,
 		UINT vertexCount);

@@ -15,6 +15,9 @@ enum DirectX12BlendMode
 	DX12_BLEND_MULTIPLY,
 	DX12_BLEND_INVERSE_MULTIPLY,
 	DX12_BLEND_TERRAIN_LAYER,
+	// Sombras proyectadas: conserva solamente el destino atenuado por el
+	// alfa calculado en la pasada, sin escribir el color de la textura.
+	DX12_BLEND_DESTINATION_INVERSE_SOURCE_ALPHA,
 	DX12_BLEND_COUNT
 };
 

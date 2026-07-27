@@ -40,6 +40,9 @@ public:
 		D3DFORMAT legacyFormat);
 	CDirectX12Texture* FindRenderTarget(
 		IDirect3DTexture9* pTexture9) const;
+	bool ReferencesResource(
+		IDirect3DTexture9* pTexture9,
+		ID3D12Resource* pResource12) const;
 
 	bool Acquire(
 		IDirect3DTexture9* pTexture9,

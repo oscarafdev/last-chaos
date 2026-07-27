@@ -47,7 +47,8 @@ public:
 		D3D12_COMPARISON_FUNC depthFunction =
 			D3D12_COMPARISON_FUNC_LESS_EQUAL,
 		D3D12_CULL_MODE cullMode = D3D12_CULL_MODE_NONE,
-		DXGI_FORMAT depthStencilFormat = DXGI_FORMAT_D32_FLOAT);
+		DXGI_FORMAT depthStencilFormat = DXGI_FORMAT_D32_FLOAT,
+		bool depthClipEnabled = true);
 
 private:
 	CDirectX12PipelineCache(const CDirectX12PipelineCache&);
@@ -64,7 +65,8 @@ private:
 		bool depthWriteEnabled,
 		D3D12_COMPARISON_FUNC depthFunction,
 		D3D12_CULL_MODE cullMode,
-		DXGI_FORMAT depthStencilFormat);
+		DXGI_FORMAT depthStencilFormat,
+		bool depthClipEnabled);
 
 	ID3D12Device* m_pDevice;
 	ID3D12RootSignature* m_pRootSignature;

@@ -1405,3 +1405,52 @@ El color de `CRenderTexture` continúa siendo una textura interoperable creada
 por D3D9On12, ya que las pasadas posteriores todavía reciben su identidad
 `IDirect3DTexture9`. Migrar esa identidad y sus vistas SRV/RTV a recursos DX12
 nativos es el siguiente corte de arquitectura.
+
+### Corrección del cielo visible a través del terreno (2026-07-26)
+
+El defecto que parecía agua era el color del cielo conservado por la primera
+pasada del terreno. La geometría sí se rasterizaba: el shader multipass entrega
+color premultiplicado y usa `ONE/SRC_ALPHA`, pero la primera capa no puede
+depender del contenido previo del render target.
+
+La solución configura únicamente la primera capa de cada bloque como escritura
+opaca. Las capas restantes conservan `ONE/SRC_ALPHA`, por lo que la composición
+de máscaras sigue siendo la original. También se limita `z` a `w` para los
+vértices proyectados que D3D9 dejaba unas diezmilésimas fuera del plano lejano.
+El log informa `corregidosLejano` y confirma que `fueraLejano` queda en cero.
+
+La captura de ventanas usa ahora `PrintWindow(PW_RENDERFULLCONTENT)` para no
+confundir una ventana superpuesta con el resultado del juego. La regresión
+`.itconfig/validation-20260726-163636.json` aprobó 47 muestras, 40 responsivas,
+309 draws DX12 máximos y cero eventos de aplicación o pantalla. La referencia
+visual es `.itconfig/terrain-opaque-pso-regression.png`.
+
+### Captura reproducible de posición y cámara
+
+Una cuenta normal puede registrar una vista defectuosa sin comandos GM ni
+tráfico hacia el servidor. Con el juego abierto en el ángulo exacto se ejecuta:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\capture-dx12-view.ps1 -Name piso-fallo
+```
+
+El script crea una solicitud en `.itconfig`. El cliente la consume durante el
+siguiente draw de terreno y escribe
+`.itconfig/dx12-camera-captures/camera-piso-fallo.json`. El archivo contiene
+zona, área, capa, posición del personaje, orientación relativa de cámara,
+matrices D3D9, viewport y las 96 constantes `float4` del vertex shader que
+generaron el terreno. La captura es completamente local y no requiere nivel GM.
+
+### Arranque negro desde el lanzador en español (2026-07-26)
+
+`Jugar-Espanol.cmd` configuraba correctamente los recursos en español, pero
+delegaba en `Jugar.cmd` sin seleccionar el perfil autoritativo de presentación.
+El motor avanzaba desde introducción hasta login y podía incluso conectarse,
+mientras la ventana conservaba el backbuffer negro del modo de comparación.
+
+`Jugar.cmd` configura ahora `LASTCHAOS_DX12_UI_COMPARE=replace` y
+`LASTCHAOS_DX12_3D_REPLACE_ALL=enabled` antes de iniciar `Nksp`. La prueba desde
+el mismo lanzador alcanzó `eSTAGE_GAMEPLAY`, mantuvo el proceso responsivo y
+presentó la UI nativa sin fallbacks. La traza
+`Diagnostico de arranque: etapa N detectada` permite distinguir en futuros
+incidentes un bloqueo de etapa de un fallo de presentación.

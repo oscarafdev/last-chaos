@@ -1,0 +1,127 @@
+{{define "register.html"}}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear cuenta · Last Chaos</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --gold: #d6a64b;
+      --gold-soft: #f1d394;
+      --ink: #090b0d;
+      --panel: rgba(18, 22, 25, .94);
+      --line: rgba(214, 166, 75, .35);
+      --muted: #a9adb1;
+      --danger: #ffb1aa;
+      --success: #b9e5bb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 20% 10%, #283026 0, transparent 35%),
+        radial-gradient(circle at 85% 90%, #2b2018 0, transparent 38%),
+        linear-gradient(135deg, #080a0c, #121518 55%, #08090a);
+      color: #f5f2eb;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    main {
+      width: min(100%, 460px);
+      padding: 40px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font: 700 12px/1.2 system-ui, sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 10px; color: var(--gold-soft); font-size: 34px; }
+    .intro { margin: 0 0 28px; color: var(--muted); line-height: 1.55; }
+    label {
+      display: block;
+      margin: 16px 0 7px;
+      color: #e9e4d9;
+      font: 600 14px/1.2 system-ui, sans-serif;
+    }
+    input {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #454a4d;
+      border-radius: 6px;
+      outline: none;
+      background: #0b0e10;
+      color: white;
+      font: 16px/1.2 system-ui, sans-serif;
+    }
+    input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(214, 166, 75, .12); }
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 13px 18px;
+      border: 1px solid #edc775;
+      border-radius: 6px;
+      background: linear-gradient(#c9983e, #8c6322);
+      color: #130e06;
+      font: 800 15px/1 system-ui, sans-serif;
+      cursor: pointer;
+    }
+    button:hover { filter: brightness(1.1); }
+    .message {
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border-radius: 6px;
+      font: 14px/1.45 system-ui, sans-serif;
+    }
+    .error { border: 1px solid #8d3d37; background: #351816; color: var(--danger); }
+    .success { border: 1px solid #3b7140; background: #142a17; color: var(--success); }
+    .hint { margin: 8px 0 0; color: #858b90; font: 12px/1.45 system-ui, sans-serif; }
+    .website { position: absolute; left: -10000px; }
+    @media (max-width: 520px) { main { padding: 28px 22px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Servidor beta</p>
+    <h1>Crear una cuenta</h1>
+    <p class="intro">Regístrate para entrar al mundo de Last Chaos.</p>
+
+    {{if .Success}}
+      <p class="message success">La cuenta fue creada. Ya puedes iniciar sesión desde el cliente.</p>
+    {{else}}
+      {{if .Error}}<p class="message error">{{.Error}}</p>{{end}}
+      <form method="post" action="/" autocomplete="off">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <div class="website" aria-hidden="true">
+          <label for="website">Sitio web</label>
+          <input id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label for="username">Usuario</label>
+        <input id="username" name="username" value="{{.Username}}" minlength="4" maxlength="20" pattern="[a-z0-9]+" required autocomplete="username">
+        <p class="hint">Entre 4 y 20 letras minúsculas o números.</p>
+
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" name="password" minlength="8" maxlength="32" required autocomplete="new-password">
+        <p class="hint">Entre 8 y 32 caracteres, sin espacios.</p>
+
+        <label for="password_confirmation">Repetir contraseña</label>
+        <input id="password_confirmation" type="password" name="password_confirmation" minlength="8" maxlength="32" required autocomplete="new-password">
+
+        <button type="submit">Crear cuenta</button>
+      </form>
+    {{end}}
+  </main>
+</body>
+</html>
+{{end}}

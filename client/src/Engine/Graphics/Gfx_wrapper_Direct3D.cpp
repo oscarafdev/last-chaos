@@ -1659,7 +1659,7 @@ static void *d3d_LockSubBuffer( const INDEX iID, const INDEX i1stVertex, const I
 	ASSERT( ctBuffers>0 && iBind<ctBuffers && iType<GFX_MAX_VBA);
 	VertexBuffer &vb = _avbVertexBuffers[iBind];
 	ASSERT( (vb.vb_ulLockMask&ulTypeMask)==0 && (vb.vb_ulArrayMask&ulTypeMask));
-	void *pRet;
+	void *pRet = NULL;
 
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
@@ -1714,7 +1714,7 @@ static void *d3d_LockSubBuffer( const INDEX iID, const INDEX i1stVertex, const I
 		}
 	}
 
-	if( eLockType!=GFX_READ) {
+	if( eLockType!=GFX_READ && pRet!=NULL) {
 		vb.vb_paDx12LockedArray[iType] = pRet;
 		vb.vb_iDx12FirstLockedVertex[iType] = i1stVertex;
 		vb.vb_ctDx12LockedVertices[iType] = ctVertices;
@@ -1723,7 +1723,7 @@ static void *d3d_LockSubBuffer( const INDEX iID, const INDEX i1stVertex, const I
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 
 	// mark that buffer has been locked
-	vb.vb_ulLockMask |= ulTypeMask;
+	if( pRet!=NULL) vb.vb_ulLockMask |= ulTypeMask;
 	return pRet;
 }
 
@@ -2044,7 +2044,6 @@ static void d3d_SetTexCoordArray( GFXTexCoord *ptex, BOOL bProjectiveMapping/*=F
 {
 	ASSERT( _pGfx->gl_eCurrentAPI==GAT_D3D);
 	ASSERT( ptex!=NULL);
-	ASSERTMSG(bProjectiveMapping==FALSE, "Projective mapping isn't supported any more");
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
 	// lock dynamic texture coords array
@@ -2054,12 +2053,18 @@ static void d3d_SetTexCoordArray( GFXTexCoord *ptex, BOOL bProjectiveMapping/*=F
 	CopyLongs( (ULONG*)ptex, (ULONG*)pTA, GFX_ctVertices*slSize/sizeof(FLOAT));
 	UnlockTexCoordArray_D3D();
 	if( GFX_iActiveTexUnit>=0
-		&& GFX_iActiveTexUnit<4
-		&& !bProjectiveMapping) {
-		GetDirectX12Backend().SetLegacy3DTexCoordArray(
-			(UINT)GFX_iActiveTexUnit,
-			(const FLOAT*)ptex,
-			(UINT)GFX_ctVertices);
+		&& GFX_iActiveTexUnit<4) {
+		if (bProjectiveMapping) {
+			GetDirectX12Backend().SetLegacy3DProjectiveTexCoordArray(
+				(UINT)GFX_iActiveTexUnit,
+				(const FLOAT*)ptex,
+				(UINT)GFX_ctVertices);
+		} else {
+			GetDirectX12Backend().SetLegacy3DTexCoordArray(
+				(UINT)GFX_iActiveTexUnit,
+				(const FLOAT*)ptex,
+				(UINT)GFX_ctVertices);
+		}
 	}
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);

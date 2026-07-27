@@ -3,30 +3,95 @@ set -Eeuo pipefail
 
 readonly SERVER_ROOT="/opt/lastchaos"
 readonly DB_HOST="${DB_HOST:-database}"
-readonly DB_PASSWORD="${DB_PASSWORD:-lastchaos}"
 readonly SERVER_BIND_IP="${SERVER_BIND_IP:-${SERVER_IP:-0.0.0.0}}"
-readonly SERVER_PUBLIC_IP="${SERVER_PUBLIC_IP:-127.0.0.1}"
-readonly ENABLE_CASH_SERVER="${ENABLE_CASH_SERVER:-true}"
+readonly SERVER_PUBLIC_IP="${SERVER_PUBLIC_IP:?SERVER_PUBLIC_IP is required}"
+readonly ENABLE_CASH_SERVER="${ENABLE_CASH_SERVER:-false}"
 
-escape_sed_replacement() {
-  printf '%s' "$1" | sed 's/[&|\]/\\&/g'
+require_secret() {
+  local variable_name="$1"
+  if [[ -z "${!variable_name:-}" ]]; then
+    echo "Missing required secret: ${variable_name}" >&2
+    exit 1
+  fi
+}
+
+configure_file() {
+  local config="$1"
+  local database_user="$2"
+  local database_password="$3"
+  local temporary
+  temporary="$(mktemp)"
+
+  awk \
+    -v bind_ip="${SERVER_BIND_IP}" \
+    -v db_host="${DB_HOST}" \
+    -v db_user="${database_user}" \
+    -v db_password="${database_password}" \
+    -v public_ip="${SERVER_PUBLIC_IP}" '
+      /^\[/ {
+        section = $0
+      }
+      /^IP=/ {
+        if (section == "[Server]") {
+          print "IP=" bind_ip
+        } else if (section ~ / DB\]$/) {
+          print "IP=" db_host
+        } else {
+          print "IP=127.0.0.1"
+        }
+        next
+      }
+      /^EX_IP_[123]=/ {
+        sub(/=.*/, "=" public_ip)
+        print
+        next
+      }
+      /^User=/ {
+        print "User=" db_user
+        next
+      }
+      /^Password=/ {
+        print "Password=" db_password
+        next
+      }
+      {
+        print
+      }
+    ' "${config}" > "${temporary}"
+
+  cat "${temporary}" > "${config}"
+  rm -f "${temporary}"
 }
 
 configure_server() {
-  local escaped_host escaped_password escaped_bind_ip escaped_public_ip
-  escaped_host="$(escape_sed_replacement "${DB_HOST}")"
-  escaped_password="$(escape_sed_replacement "${DB_PASSWORD}")"
-  escaped_bind_ip="$(escape_sed_replacement "${SERVER_BIND_IP}")"
-  escaped_public_ip="$(escape_sed_replacement "${SERVER_PUBLIC_IP}")"
+  require_secret LC_DB_LOGIN_PASSWORD
+  require_secret LC_DB_CONNECTOR_PASSWORD
+  require_secret LC_DB_GAME_PASSWORD
+  require_secret LC_DB_HELPER_PASSWORD
+  require_secret LC_DB_SUBHELPER_PASSWORD
+  require_secret LC_DB_CASH_PASSWORD
 
-  while IFS= read -r -d '' config; do
-    sed -i \
-      -e "s|IP=127\.0\.0\.1|IP=${escaped_host}|g" \
-      -e "s|Password=Password|Password=${escaped_password}|g" \
-      -e "s|^IP=192\.168\.0\.108$|IP=${escaped_bind_ip}|g" \
-      -e "s|^EX_IP_1=192\.168\.0\.108$|EX_IP_1=${escaped_public_ip}|g" \
-      "${config}"
-  done < <(find "${SERVER_ROOT}" -name newStobm.bin -print0)
+  configure_file \
+    "${SERVER_ROOT}/LoginServer/newStobm.bin" \
+    lc_login "${LC_DB_LOGIN_PASSWORD}"
+  configure_file \
+    "${SERVER_ROOT}/Connector/newStobm.bin" \
+    lc_connector "${LC_DB_CONNECTOR_PASSWORD}"
+  configure_file \
+    "${SERVER_ROOT}/GameServer/data/newStobm.bin" \
+    lc_game "${LC_DB_GAME_PASSWORD}"
+  configure_file \
+    "${SERVER_ROOT}/Helper/newStobm.bin" \
+    lc_helper "${LC_DB_HELPER_PASSWORD}"
+  configure_file \
+    "${SERVER_ROOT}/SubHelper/newStobm.bin" \
+    lc_subhelper "${LC_DB_SUBHELPER_PASSWORD}"
+  configure_file \
+    "${SERVER_ROOT}/Messenger/newStobm.bin" \
+    lc_subhelper "${LC_DB_SUBHELPER_PASSWORD}"
+  configure_file \
+    "${SERVER_ROOT}/CashServer/newStobm.bin" \
+    lc_cash "${LC_DB_CASH_PASSWORD}"
 }
 
 wait_for_database() {
@@ -74,7 +139,7 @@ fi
 
 start_component Connector Connector
 start_component LoginServer LoginServer
-start_component GameServer GameServer_d
+start_component GameServer GameServer
 
 echo "Last Chaos 2018 services started."
 wait -n "${pids[@]}"

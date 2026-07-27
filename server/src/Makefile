@@ -2,6 +2,7 @@ all:
 	echo "make <kor | kortest | jpn / jpnep | mal | tld | twn | usa | brz | hbk | ger | eur | rus | mex | espusa | frausa | brzep | mexep | uk>"
 	echo "kor     : connector/helper/messenger/loginserver(release) and gameserver(debug)"
 	echo "kortest : connector/helper/messenger/loginserver(test) and gameserver(test debug)"
+	echo "usa     : all server components in release mode"
 	echo "other   : connector/helper/messenger/loginserver(release) and gameserver(debug)"
 
 kor:
@@ -78,7 +79,7 @@ tlddep:
 usa:
 	make -j4 -C ./CalcHash && \
 	make -j4 -C ./ShareLib usa && \
-	make -j4 -C ./GameServer usadebug && \
+	make -j4 -C ./GameServer usa && \
 	make -j4 -C ./Connector usa && \
 	make -j4 -C ./Helper usa && \
 	make -j4 -C ./SubHelper usa && \

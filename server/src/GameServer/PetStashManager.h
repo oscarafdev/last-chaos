@@ -7,13 +7,13 @@ public:
 	explicit CPetStashManager(CPC* pc);
 	~CPetStashManager(void);
 
-	bool	Insert(std::vector<CItem*> &vec);						//펫 창고 데이터 로딩
-	void	AddPetToStash(CItem* petItem);							//펫 창고에 추가
-	void	DelPetToStash(CItem* petItem);							//펫 창고에서 제거
-	void	SendPetStashList();									//펫 리스트
-	void	SelProxyPet(CItem* petItem);							//대리육성 펫 설정
-	void	CancelProxyPet(CItem* petItem);							//대리육성 펫 취소
-	void	ExpireTime();							//대리육성 펫 취소	(타이머에 의한 작동)
+	bool	Insert(std::vector<CItem*> &vec);						//Carga los datos del deposito de mascotas
+	void	AddPetToStash(CItem* petItem);							//Agrega la mascota al deposito
+	void	DelPetToStash(CItem* petItem);							//Quita la mascota del deposito
+	void	SendPetStashList();									//Lista de mascotas
+	void	SelProxyPet(CItem* petItem);							//Configura la mascota delegada
+	void	CancelProxyPet(CItem* petItem);							//Cancela la mascota delegada
+	void	ExpireTime();							//Cancela la mascota delegada (accion del temporizador)
 	void	DelPetItem(CItem* petItem);
 	void	GetDataToQuery( std::vector<std::string>& vec );
 	CItem*	GetPetItemByVIndex(int index);
@@ -39,7 +39,7 @@ public:
 	{
 		return proxyPetItemVIndex;
 	}
-	int setProxyPetItemvIndex( int index )
+	void setProxyPetItemvIndex( int index )
 	{
 		proxyPetItemVIndex = index;
 	}
@@ -47,7 +47,7 @@ public:
 	{
 		return proxyPetItemPlus;
 	}
-	int setProxyPetItemPlus( int plus )
+	void setProxyPetItemPlus( int plus )
 	{
 		proxyPetItemPlus = plus;
 	}
