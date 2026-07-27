@@ -469,6 +469,56 @@ bool CDirectX12InteropTextureManager::RefreshSampledTexture(
 		pUploadManager);
 }
 
+bool CDirectX12InteropTextureManager::
+RefreshSampledTextureFromRgbaMipChain(
+	IDirect3DTexture9* pTexture9,
+	const void* pPixels,
+	UINT width,
+	UINT height,
+	D3DFORMAT legacyFormat,
+	UINT maximumMipCount,
+	ID3D12GraphicsCommandList* pCommandList,
+	CDirectX12UploadManager* pUploadManager)
+{
+	if (!m_frameActive || m_pSampledTextureCache == NULL)
+		return false;
+	return m_pSampledTextureCache->RefreshFromRgbaMipChain(
+		pTexture9,
+		pPixels,
+		width,
+		height,
+		legacyFormat,
+		maximumMipCount,
+		pCommandList,
+		pUploadManager);
+}
+
+bool CDirectX12InteropTextureManager::
+RefreshSampledTextureFromCompressedBlob(
+	IDirect3DTexture9* pTexture9,
+	const void* pBlob,
+	size_t blobSize,
+	UINT width,
+	UINT height,
+	D3DFORMAT legacyFormat,
+	UINT maximumMipCount,
+	ID3D12GraphicsCommandList* pCommandList,
+	CDirectX12UploadManager* pUploadManager)
+{
+	if (!m_frameActive || m_pSampledTextureCache == NULL)
+		return false;
+	return m_pSampledTextureCache->RefreshFromCompressedBlob(
+		pTexture9,
+		pBlob,
+		blobSize,
+		width,
+		height,
+		legacyFormat,
+		maximumMipCount,
+		pCommandList,
+		pUploadManager);
+}
+
 bool CDirectX12InteropTextureManager::PrepareForSubmission(
 	ID3D12GraphicsCommandList* pCommandList)
 {

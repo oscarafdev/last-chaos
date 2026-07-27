@@ -3431,6 +3431,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClCompile Include="Graphics\DirectX12NativeRenderer.cpp" />
     <ClCompile Include="Graphics\DirectX12NativeShaderCatalog.cpp" />
     <ClCompile Include="Graphics\DirectX12SampledTextureCache.cpp" />
+    <ClCompile Include="Graphics\DirectX12TextureUploadSource.cpp" />
     <ClCompile Include="Testing\CameraTestCapture.cpp" />
     <ClCompile Include="Testing\ClientTestAutomation.cpp" />
     <ClCompile Include="Testing\ShaderValidationHooks.cpp" />
@@ -8195,6 +8196,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClInclude Include="Graphics\DirectX12NativeRenderer.h" />
     <ClInclude Include="Graphics\DirectX12NativeShaderCatalog.h" />
     <ClInclude Include="Graphics\DirectX12SampledTextureCache.h" />
+    <ClInclude Include="Graphics\DirectX12TextureUploadSource.h" />
     <ClInclude Include="Testing\CameraTestCapture.h" />
     <ClInclude Include="Testing\ClientTestAutomation.h" />
     <ClInclude Include="Testing\ShaderValidationHooks.h" />

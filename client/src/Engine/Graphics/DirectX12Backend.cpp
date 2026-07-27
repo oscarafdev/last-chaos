@@ -1231,6 +1231,54 @@ void CDirectX12Backend::RefreshLegacyTexture(
 		m_pUploadManager);
 }
 
+bool CDirectX12Backend::RefreshLegacyTextureFromRgbaMipChain(
+	IDirect3DTexture9* pTexture9,
+	const void* pPixels,
+	UINT width,
+	UINT height,
+	INT legacyFormat,
+	UINT maximumMipCount)
+{
+	if (!m_frameOpen || pTexture9 == NULL || pPixels == NULL
+		|| m_pInteropTextures == NULL || m_pCommandList == NULL
+		|| m_pUploadManager == NULL)
+		return false;
+	return m_pInteropTextures->RefreshSampledTextureFromRgbaMipChain(
+		pTexture9,
+		pPixels,
+		width,
+		height,
+		static_cast<D3DFORMAT>(legacyFormat),
+		maximumMipCount,
+		m_pCommandList,
+		m_pUploadManager);
+}
+
+bool CDirectX12Backend::RefreshLegacyTextureFromCompressedBlob(
+	IDirect3DTexture9* pTexture9,
+	const void* pBlob,
+	size_t blobSize,
+	UINT width,
+	UINT height,
+	INT legacyFormat,
+	UINT maximumMipCount)
+{
+	if (!m_frameOpen || pTexture9 == NULL || pBlob == NULL
+		|| blobSize == 0 || m_pInteropTextures == NULL
+		|| m_pCommandList == NULL || m_pUploadManager == NULL)
+		return false;
+	return m_pInteropTextures->RefreshSampledTextureFromCompressedBlob(
+		pTexture9,
+		pBlob,
+		blobSize,
+		width,
+		height,
+		static_cast<D3DFORMAT>(legacyFormat),
+		maximumMipCount,
+		m_pCommandList,
+		m_pUploadManager);
+}
+
 void CDirectX12Backend::RetireLegacyTextureBinding(
 	IDirect3DTexture9* pTexture9)
 {

@@ -1485,7 +1485,7 @@ assets dinámicos sin liberar memoria que todavía pueda estar en uso por la GPU
 
 Este corte no cambia la selección del terreno ni elimina aún la creación
 D3D9 de los assets. Prepara una frontera estable para que el cargador escriba
-los subrecursos DX12 directamente en la siguiente etapa.
+los subrecursos DX12 directamente.
 
 Validación:
 
@@ -1497,6 +1497,44 @@ Validación:
   `.itconfig/dx12-camera-replays/native-sampled-texture-cache-final.png`:
   terreno, caminos, edificios, personaje, UI y efectos con sus texturas
   correctas, sin recursos blancos, transparentes ni desactualizados.
+
+### Etapa 6z: uploads de assets directamente a subrecursos DX12
+
+Las cargas normales de texturas ya no reconstruyen su recurso nativo leyendo
+la copia D3D9 con `LockRect`. `DirectX12TextureUploadSource` prepara
+subrecursos propiedad del backend directamente desde:
+
+- la cadena RGBA de mipmaps generada por `CTextureData`;
+- el blob de mipmaps DXT1, DXT3 o DXT5 almacenado en el asset.
+
+El preparador conserva el formato y el component mapping correspondientes:
+BGRA8, B5G6R5, B5G5R5A1, luminancia, luminancia-alpha y BC1/BC2/BC3. Los
+formatos A4R4G4B4/X4R4G4B4, que DXGI no expone como textura muestreable,
+se expanden a BGRA8 durante la preparación.
+
+`Gfx_wrapper` entrega los datos CPU al backend inmediatamente después de
+actualizar la pareja D3D9. El caché crea el `ID3D12Resource`, copia todos los
+subrecursos mediante `DirectX12UploadManager` y publica su SRV sin releer la
+textura legada. `Acquire` conserva temporalmente la ruta `LockRect` para assets
+precargados antes de abrir el primer frame o para formatos todavía no
+enrutados.
+
+La pareja D3D9 aún se mantiene como identidad y respaldo porque el terreno y
+otros draws no promovidos continúan ejecutándose por D3D9On12. El siguiente
+corte puede separar handles nativos de identidades D3D9 por familia una vez que
+esos consumidores hayan sido promovidos.
+
+Validación:
+
+- build completo `LCRelease|x64` de `Nksp`;
+- log con activación independiente de uploads CPU RGBA y DXT directos, sin
+  errores DX12;
+- cámara verificada
+  `.itconfig/dx12-camera-captures/camera-repro-20260727-183207.json`;
+- captura
+  `.itconfig/dx12-camera-replays/native-direct-texture-uploads-final.png`:
+  terreno verde y opaco, caminos, edificios, personaje, UI y efectos
+  correctamente texturados.
 
 ### Corrección del cielo visible a través del terreno (2026-07-26)
 

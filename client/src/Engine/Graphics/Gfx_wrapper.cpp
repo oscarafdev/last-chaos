@@ -454,8 +454,23 @@ extern void gfxUploadTexture( ULONG *pulTexture, PIX pixWidth, PIX pixHeight, UL
 			HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, *ppd3dCurrentTexture);
 			D3D_CHECKERROR(hr);
 		}
-		GetDirectX12Backend().RefreshLegacyTexture(
-			*ppd3dCurrentTexture);
+		LPDIRECT3DTEXTURE9 pd3dUploadedTexture =
+			*ppd3dCurrentTexture;
+		const UINT maximumMipCount = pd3dUploadedTexture != NULL
+			? pd3dUploadedTexture->GetLevelCount()
+			: 0;
+		if (!GetDirectX12Backend().
+			RefreshLegacyTextureFromRgbaMipChain(
+				pd3dUploadedTexture,
+				pulTexture,
+				static_cast<UINT>(pixWidth),
+				static_cast<UINT>(pixHeight),
+				static_cast<INT>(ulFormat),
+				maximumMipCount))
+		{
+			GetDirectX12Backend().RefreshLegacyTexture(
+				pd3dUploadedTexture);
+		}
 	}
 	// done
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
@@ -490,8 +505,27 @@ extern BOOL gfxUploadCompressedTexture( UBYTE *pubMipmaps, PIX pixWidth, PIX pix
 			D3D_CHECKERROR(hr);
 		}
 		if (bUploaded)
-			GetDirectX12Backend().RefreshLegacyTexture(
-				*ppd3dCurrentTexture);
+		{
+			LPDIRECT3DTEXTURE9 pd3dUploadedTexture =
+				*ppd3dCurrentTexture;
+			const UINT maximumMipCount =
+				pd3dUploadedTexture != NULL
+					? pd3dUploadedTexture->GetLevelCount()
+					: 0;
+			if (!GetDirectX12Backend().
+				RefreshLegacyTextureFromCompressedBlob(
+					pd3dUploadedTexture,
+					pubMipmaps,
+					static_cast<size_t>(slSize),
+					static_cast<UINT>(pixWidth),
+					static_cast<UINT>(pixHeight),
+					static_cast<INT>(ulFormat),
+					maximumMipCount))
+			{
+				GetDirectX12Backend().RefreshLegacyTexture(
+					pd3dUploadedTexture);
+			}
+		}
 	}
 	// done
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);

@@ -5,6 +5,7 @@
 #endif
 
 #include <windows.h>
+#include <stddef.h>
 #include <d3d9.h>
 #include <d3d12.h>
 
@@ -60,6 +61,25 @@ public:
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
 	bool RefreshSampledTexture(
 		IDirect3DTexture9* pTexture9,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager);
+	bool RefreshSampledTextureFromRgbaMipChain(
+		IDirect3DTexture9* pTexture9,
+		const void* pPixels,
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat,
+		UINT maximumMipCount,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager);
+	bool RefreshSampledTextureFromCompressedBlob(
+		IDirect3DTexture9* pTexture9,
+		const void* pBlob,
+		size_t blobSize,
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat,
+		UINT maximumMipCount,
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12UploadManager* pUploadManager);
 	bool PrepareForSubmission(ID3D12GraphicsCommandList* pCommandList);

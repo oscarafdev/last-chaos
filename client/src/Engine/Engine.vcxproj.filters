@@ -324,6 +324,9 @@
     <ClCompile Include="Graphics\DirectX12SampledTextureCache.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\DirectX12TextureUploadSource.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="Graphics\DirectX12PipelineCache.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
@@ -4047,6 +4050,9 @@
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12SampledTextureCache.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12TextureUploadSource.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12PipelineCache.h">

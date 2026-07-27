@@ -5,6 +5,7 @@
 #endif
 
 #include <windows.h>
+#include <stddef.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
 struct IDirect3D9;
@@ -69,6 +70,21 @@ public:
 	void ForgetLegacyTexture(IDirect3DTexture9* pTexture9);
 	void RetireLegacyTextureBinding(IDirect3DTexture9* pTexture9);
 	void RefreshLegacyTexture(IDirect3DTexture9* pTexture9);
+	bool RefreshLegacyTextureFromRgbaMipChain(
+		IDirect3DTexture9* pTexture9,
+		const void* pPixels,
+		UINT width,
+		UINT height,
+		INT legacyFormat,
+		UINT maximumMipCount);
+	bool RefreshLegacyTextureFromCompressedBlob(
+		IDirect3DTexture9* pTexture9,
+		const void* pBlob,
+		size_t blobSize,
+		UINT width,
+		UINT height,
+		INT legacyFormat,
+		UINT maximumMipCount);
 	bool CreateNativeOffscreenTexture(
 		IDirect3DTexture9* pTexture9,
 		UINT width,
