@@ -179,10 +179,11 @@ El nivel GM se almacena por personaje, no por cuenta:
 `2018_nov_db.t_characters.a_admin`. GameServer lo carga al entrar con el
 personaje. Los niveles son acumulativos de 0 (jugador) a 10 (control total).
 
-Estado encontrado en esta base: todos los personajes existentes tienen nivel
-10 y la columna usa `DEFAULT 10`. Eso convierte también a cada personaje nuevo
-en administrador total. El propio `PatchManual.txt` del servidor indica que el
-valor por defecto debe ser 0.
+El dump legado tenía todos los personajes en nivel 10 y la columna usaba
+`DEFAULT 10`, convirtiendo también a cada personaje nuevo en administrador
+total. El esquema versionado usa ahora `DEFAULT 0`, como indica
+`PatchManual.txt`. Las bases creadas antes de esta corrección deben aplicar el
+`ALTER TABLE` siguiente una vez.
 
 Configuración segura desde el cliente de MariaDB de Docker:
 
@@ -260,7 +261,7 @@ detener el entorno y deben evitarse en producción.
 
 ### 3.3 Flujo recomendado
 
-1. Corregir `DEFAULT 10` a `DEFAULT 0`.
+1. Verificar que `a_admin` use `DEFAULT 0`.
 2. Mantener una cuenta/personaje GM separado de los personajes de juego.
 3. Conceder el menor nivel posible y volver a iniciar sesión.
 4. Probar eventos en una copia de la base y revisar logs.

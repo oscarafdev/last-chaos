@@ -628,7 +628,7 @@ CREATE TABLE `t_characters` (
   `a_lcdatestamp` int(11) NOT NULL DEFAULT '0',
   `a_createdate` datetime NOT NULL,
   `a_deletedelay` int(11) NOT NULL DEFAULT '0',
-  `a_admin` tinyint(4) NOT NULL DEFAULT '10',
+  `a_admin` tinyint(4) NOT NULL DEFAULT '0',
   `a_flag` int(11) NOT NULL DEFAULT '0',
   `a_job` tinyint(4) NOT NULL DEFAULT '0',
   `a_hair_style` tinyint(4) NOT NULL DEFAULT '1',
