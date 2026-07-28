@@ -79,7 +79,6 @@ public:
 		const CDirectX12LegacyDrawState& drawState,
 		const USHORT* pIndices,
 		UINT indexCount,
-		bool dynamicBuffer,
 		bool usesVertexProgram,
 		bool usesPixelProgram,
 		bool usesColorArray,

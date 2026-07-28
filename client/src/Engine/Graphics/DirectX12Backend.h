@@ -109,8 +109,8 @@ public:
 	bool AcquireRenderTarget(
 		IDirect3DSurface9* pSurface9,
 		HWND hPresentationWindow = NULL);
-	void SetLegacyPresentationRenderTarget(IDirect3DSurface9* pSurface9);
-	bool HasLegacyPresentationRenderTarget() const;
+	void TrackLegacy3DRenderTarget(
+		DirectX12LegacyRenderTargetKind renderTargetKind);
 	bool BeginDrawPortScope(DirectX12DrawPortScope scope);
 	bool EndDrawPortScope(DirectX12DrawPortScope scope);
 	bool ClosePendingUiScope();
@@ -185,12 +185,10 @@ public:
 		const FLOAT* pConstants,
 		UINT registerCount);
 	void TrackLegacy3DTexture(UINT stage, IDirect3DTexture9* pTexture);
-	void PrepareLegacy3DDepthClear(IDirect3DDevice9* pDevice9);
+	void PrepareLegacy3DDepthClear();
 	bool QueueLegacy3DIndexedDraw(
-		IDirect3DDevice9* pDevice9,
 		const USHORT* pIndices,
 		UINT indexCount,
-		bool dynamicBuffer,
 		bool usesVertexProgram,
 		bool usesPixelProgram,
 		bool usesColorArray,
@@ -271,8 +269,6 @@ private:
 		const char* pTransition);
 	bool AdvanceOpenCommandList();
 	bool HasUiReadyForInitialPresentation() const;
-	DirectX12LegacyRenderTargetKind ClassifyLegacyRenderTarget(
-		IDirect3DDevice9* pDevice9) const;
 	bool HasLegacy3DDepthSurface() const;
 
 	HMODULE m_hD3D12Module;
@@ -291,7 +287,7 @@ private:
 	CDirectX12PresentationManager* m_pPresentation;
 	IDirect3DDevice9* m_pDevice9;
 	CDirectX12LegacyDrawState m_legacyDrawState;
-	IUnknown* m_pLegacyPresentationTargetIdentity;
+	DirectX12LegacyRenderTargetKind m_legacyRenderTargetKind;
 	HWND m_hPresentationWindow;
 	HANDLE m_hFenceEvent;
 	UINT64 m_nextFenceValue;

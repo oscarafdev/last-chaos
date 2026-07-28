@@ -90,6 +90,7 @@ void CDirectX12LegacyDrawState::Reset()
 	ZeroMemory(pixelShaderConstants, sizeof(pixelShaderConstants));
 	ZeroMemory(vertexDeclaration, sizeof(vertexDeclaration));
 	vertexDeclarationByteCount = 0;
+	dynamicGeometry = false;
 	for (UINT textureUnit = 0;
 		textureUnit < DX12_LEGACY_TEXTURE_STAGE_COUNT;
 		++textureUnit)
@@ -308,4 +309,9 @@ void CDirectX12LegacyDrawState::SetTexture(
 	if (textures[stage] != NULL)
 		textures[stage]->Release();
 	textures[stage] = pTexture;
+}
+
+void CDirectX12LegacyDrawState::SetDynamicGeometry(bool dynamic)
+{
+	dynamicGeometry = dynamic;
 }

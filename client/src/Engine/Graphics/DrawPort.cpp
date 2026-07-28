@@ -1434,8 +1434,7 @@ void CDrawPort::FillZBuffer( PIX pixI, PIX pixJ, PIX pixWidth, PIX pixHeight, FL
 		pixJ += dp_MinJ;
 		// clear just part of the drawport
 		D3DRECT d3dRect = { pixI, pixJ, pixI+pixWidth, pixJ+pixHeight };
-		GetDirectX12Backend().PrepareLegacy3DDepthClear(
-			_pGfx->gl_pd3d9Device);
+		GetDirectX12Backend().PrepareLegacy3DDepthClear();
 		HRESULT hr = _pGfx->gl_pd3d9Device->Clear( 1, &d3dRect, dwMask, 0,zval,0);
 		D3D_CHECKERROR(hr);
 	}
@@ -1470,8 +1469,7 @@ void CDrawPort::FillZBuffer( FLOAT zval) const
 		// must clear stencil buffer too in case it exist (we don't need it) for the performance sake
 		DWORD dwMask = D3DCLEAR_ZBUFFER;
 		if( _pGfx->gl_ulFlags & GLF_STENCILBUFFER) dwMask |= D3DCLEAR_STENCIL;
-		GetDirectX12Backend().PrepareLegacy3DDepthClear(
-			_pGfx->gl_pd3d9Device);
+		GetDirectX12Backend().PrepareLegacy3DDepthClear();
 		HRESULT hr = _pGfx->gl_pd3d9Device->Clear( 0, NULL, dwMask, 0,zval,0);
 		D3D_CHECKERROR(hr);
 	}

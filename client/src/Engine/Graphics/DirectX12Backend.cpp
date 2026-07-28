@@ -209,7 +209,7 @@ CDirectX12Backend::CDirectX12Backend()
 	, m_pInteropTextures(NULL)
 	, m_pPresentation(NULL)
 	, m_pDevice9(NULL)
-	, m_pLegacyPresentationTargetIdentity(NULL)
+	, m_legacyRenderTargetKind(DX12_LEGACY_RENDER_TARGET_UNKNOWN)
 	, m_hPresentationWindow(NULL)
 	, m_hFenceEvent(NULL)
 	, m_nextFenceValue(1)
@@ -444,12 +444,6 @@ void CDirectX12Backend::Shutdown()
 			EndFrame();
 		WaitForGpu();
 	}
-	if (m_pLegacyPresentationTargetIdentity != NULL)
-	{
-		m_pLegacyPresentationTargetIdentity->Release();
-		m_pLegacyPresentationTargetIdentity = NULL;
-	}
-
 	if (m_pNativeRenderer != NULL)
 	{
 		m_pNativeRenderer->Shutdown();
@@ -532,6 +526,7 @@ void CDirectX12Backend::Shutdown()
 	}
 	m_hasPresentedNativeUiFrame = false;
 	m_initialPresentationDeferralReported = false;
+	m_legacyRenderTargetKind = DX12_LEGACY_RENDER_TARGET_UNKNOWN;
 }
 
 bool CDirectX12Backend::CreateFrameResources()
@@ -680,6 +675,7 @@ bool CDirectX12Backend::BeginFrame()
 	m_partialSubmissionCapacityReported = false;
 	m_uiScopeDepth = 0;
 	m_offscreenDrawPortDepth = 0;
+	m_legacyRenderTargetKind = DX12_LEGACY_RENDER_TARGET_PRESENTATION;
 	m_nativeOffscreenTexture = DX12_INVALID_RENDER_TEXTURE;
 	m_nativeOffscreenClearPending = false;
 	m_suppressedLegacyDrawCount = 0;
@@ -1147,50 +1143,26 @@ bool CDirectX12Backend::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 	m_pDevice9 = pDevice9;
 	m_pDevice9->AddRef();
 	m_legacyDrawState.Reset();
+	m_legacyRenderTargetKind = DX12_LEGACY_RENDER_TARGET_PRESENTATION;
 	m_legacy3DDepthAvailable = HasLegacy3DDepthSurface();
 	return true;
 }
 
-void CDirectX12Backend::SetLegacyPresentationRenderTarget(
-	IDirect3DSurface9* pSurface9)
+void CDirectX12Backend::TrackLegacy3DRenderTarget(
+	DirectX12LegacyRenderTargetKind renderTargetKind)
 {
-	IUnknown* pIdentity = NULL;
-	if (pSurface9 != NULL)
-		pSurface9->QueryInterface(IID_IUnknown, (void**)&pIdentity);
-	if (m_pLegacyPresentationTargetIdentity != NULL)
-		m_pLegacyPresentationTargetIdentity->Release();
-	m_pLegacyPresentationTargetIdentity = pIdentity;
-}
-
-bool CDirectX12Backend::HasLegacyPresentationRenderTarget() const
-{
-	return m_pLegacyPresentationTargetIdentity != NULL;
-}
-
-DirectX12LegacyRenderTargetKind
-CDirectX12Backend::ClassifyLegacyRenderTarget(
-	IDirect3DDevice9* pDevice9) const
-{
-	if (pDevice9 == NULL || m_pLegacyPresentationTargetIdentity == NULL)
-		return DX12_LEGACY_RENDER_TARGET_UNKNOWN;
-
-	IDirect3DSurface9* pSurface9 = NULL;
-	if (FAILED(pDevice9->GetRenderTarget(0, &pSurface9))
-		|| pSurface9 == NULL)
-		return DX12_LEGACY_RENDER_TARGET_UNKNOWN;
-
-	IUnknown* pIdentity = NULL;
-	pSurface9->QueryInterface(IID_IUnknown, (void**)&pIdentity);
-	pSurface9->Release();
-	if (pIdentity == NULL)
-		return DX12_LEGACY_RENDER_TARGET_UNKNOWN;
-
-	const bool presentation =
-		pIdentity == m_pLegacyPresentationTargetIdentity;
-	pIdentity->Release();
-	return presentation
-		? DX12_LEGACY_RENDER_TARGET_PRESENTATION
-		: DX12_LEGACY_RENDER_TARGET_OFFSCREEN;
+	if (renderTargetKind == DX12_LEGACY_RENDER_TARGET_PRESENTATION
+		&& m_offscreenDrawPortDepth > 0)
+	{
+		m_legacyRenderTargetKind =
+			DX12_LEGACY_RENDER_TARGET_OFFSCREEN;
+		return;
+	}
+	if (renderTargetKind == DX12_LEGACY_RENDER_TARGET_PRESENTATION
+		|| renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN)
+	{
+		m_legacyRenderTargetKind = renderTargetKind;
+	}
 }
 
 bool CDirectX12Backend::HasLegacy3DDepthSurface() const
@@ -1720,6 +1692,7 @@ void CDirectX12Backend::SetLegacy3DVertexArray(
 	const FLOAT* pPositions,
 	UINT vertexCount)
 {
+	m_legacyDrawState.SetDynamicGeometry(true);
 	if (m_frameOpen && m_pNativeRenderer != NULL)
 		m_pNativeRenderer->SetLegacy3DVertexArray(
 			pPositions,
@@ -1800,6 +1773,7 @@ void CDirectX12Backend::SetLegacy3DStaticVertexArray(
 	const FLOAT* pPositions,
 	UINT vertexCount)
 {
+	m_legacyDrawState.SetDynamicGeometry(false);
 	if (m_frameOpen && m_pNativeRenderer != NULL)
 		m_pNativeRenderer->SetLegacy3DStaticVertexArray(
 			pPositions,
@@ -1953,15 +1927,14 @@ void CDirectX12Backend::TrackLegacy3DTexture(
 	PrepareNativeTextureBinding(pTexture);
 }
 
-void CDirectX12Backend::PrepareLegacy3DDepthClear(
-	IDirect3DDevice9* pDevice9)
+void CDirectX12Backend::PrepareLegacy3DDepthClear()
 {
 	if (!m_frameOpen || m_uiScopeDepth > 0
 		|| m_offscreenDrawPortDepth > 0
 		|| m_pNativeRenderer == NULL
 		|| !ReadFull3DReplacementMode()
 		|| !m_legacy3DDepthAvailable
-		|| ClassifyLegacyRenderTarget(pDevice9)
+		|| m_legacyRenderTargetKind
 			!= DX12_LEGACY_RENDER_TARGET_PRESENTATION
 		|| !m_pNativeRenderer->HasPendingLegacy3DDraws())
 		return;
@@ -1978,10 +1951,8 @@ void CDirectX12Backend::PrepareLegacy3DDepthClear(
 }
 
 bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
-	IDirect3DDevice9* pDevice9,
 	const USHORT* pIndices,
 	UINT indexCount,
-	bool dynamicBuffer,
 	bool usesVertexProgram,
 	bool usesPixelProgram,
 	bool usesColorArray,
@@ -2013,7 +1984,7 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 		PrepareNativeTextureBinding(drawState.textures[textureUnit]);
 	}
 	const DirectX12LegacyRenderTargetKind renderTargetKind =
-		ClassifyLegacyRenderTarget(pDevice9);
+		m_legacyRenderTargetKind;
 	if (renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN
 		&& m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
 		return false;
@@ -2028,7 +1999,6 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 			drawState,
 			pIndices,
 			indexCount,
-			dynamicBuffer,
 			usesVertexProgram,
 			usesPixelProgram,
 			usesColorArray,

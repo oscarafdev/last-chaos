@@ -1754,3 +1754,50 @@ Validación:
   `.itconfig/dx12-camera-replays/dx12-setter-fed-state-verified.png` y
   `.itconfig/dx12-camera-replays/dx12-setter-fed-state-verified-repeat.png`,
   con terreno, personaje, edificios, efectos y HUD correctos.
+
+### Destino y buffers 3D autoritativos por estado nativo
+
+La clasificación del destino dejó de comparar identidades COM obtenidas con
+`GetRenderTarget` en cada draw. `DirectX12Backend` conserva ahora un
+`DirectX12LegacyRenderTargetKind` explícito, actualizado por los puntos reales
+que enlazan el backbuffer de presentación o una render texture auxiliar. Se
+eliminaron `ClassifyLegacyRenderTarget`, la identidad retenida del backbuffer y
+el parámetro `IDirect3DDevice9` de `QueueLegacy3DIndexedDraw` y
+`PrepareLegacy3DDepthClear`.
+
+La procedencia dinámica o estática de la geometría también forma parte de
+`CDirectX12LegacyDrawState`. Los setters de posición la actualizan junto con
+las copias CPU, por lo que el draw ya no recibe un indicador externo de binding.
+En el envío DX12, los vertex e index buffers agregados se resuelven desde sus
+handles generacionales `DirectX12VertexBufferHandle` y
+`DirectX12IndexBufferHandle` antes del upload y de `IASetVertexBuffers` /
+`IASetIndexBuffer`; los punteros quedan limitados a la propiedad interna.
+
+Durante la validación apareció de forma reproducible una carrera previa en
+`CDirectX12SampledTextureCache::Remove`: el inicio de frame, los reemplazos y
+los retiros podían modificar simultáneamente las colecciones del caché. El
+estado del caché usa ahora una sección crítica con guarda RAII, incluyendo las
+rutas anidadas de `Replace`/`Remove`. El primer arranque de un build nuevo y el
+arranque consecutivo terminaron sin la violación de acceso anterior.
+
+Validación:
+
+- `Engine.vcxproj` compilado como `LCRelease|x64`;
+- ausencia de `ClassifyLegacyRenderTarget`, de la identidad COM del backbuffer
+  y de parámetros de dispositivo en la captura 3D;
+- telemetría
+  `vertex/index buffers resueltos por handles generacionales`;
+- hash SHA-256 idéntico para `Engine.dll` compilado, staging e instalación;
+- dos reproducciones locales con `ClientClosed=True`;
+- cámaras verificadas
+  `.itconfig/dx12-camera-captures/camera-repro-20260728-175326.json` y
+  `.itconfig/dx12-camera-captures/camera-repro-20260728-175417.json`, más la
+  comprobación final del build
+  `.itconfig/dx12-camera-captures/camera-repro-20260728-175622.json`;
+- capturas
+  `.itconfig/dx12-camera-replays/dx12-native-target-buffer-bindings-verified.png`
+  y
+  `.itconfig/dx12-camera-replays/dx12-native-target-buffer-bindings-repeat.png`,
+  más
+  `.itconfig/dx12-camera-replays/dx12-native-target-buffer-bindings-final.png`,
+  con terreno, personaje, edificios, efectos y HUD correctos.

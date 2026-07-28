@@ -3,6 +3,7 @@
 #include <Engine/Graphics/ViewPort.h>
 
 #include <Engine/Graphics/GfxLibrary.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Base/Statistics_internal.h>
 #include <Engine/Interface/UIIME.h>
 extern INDEX ogl_bExclusive;
@@ -68,6 +69,8 @@ static void SetAsRenderTarget_D3D(CViewPort *pvp)
 		D3D_CHECKERROR(hr);
 		hr = _pGfx->gl_pd3d9Device->SetRenderTarget(0, pColorSurface);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DRenderTarget(
+			DX12_LEGACY_RENDER_TARGET_PRESENTATION);
 		// ### DX9 end
 		D3DRELEASE(pColorSurface, TRUE);
 	}

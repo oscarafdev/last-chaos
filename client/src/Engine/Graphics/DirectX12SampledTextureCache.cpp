@@ -13,6 +13,27 @@
 
 namespace
 {
+	class SampledTextureCacheLock
+	{
+	public:
+		explicit SampledTextureCacheLock(CRITICAL_SECTION* pSection)
+			: m_pSection(pSection)
+		{
+			EnterCriticalSection(m_pSection);
+		}
+
+		~SampledTextureCacheLock()
+		{
+			LeaveCriticalSection(m_pSection);
+		}
+
+	private:
+		SampledTextureCacheLock(const SampledTextureCacheLock&);
+		SampledTextureCacheLock& operator=(
+			const SampledTextureCacheLock&);
+		CRITICAL_SECTION* m_pSection;
+	};
+
 	struct NativeSampledTextureEntry
 	{
 		DirectX12TextureHandle handle;
@@ -26,6 +47,7 @@ struct DirectX12SampledTextureCacheState
 	std::vector<NativeSampledTextureEntry> textures;
 	std::vector<CDirectX12Texture*> retired[DX12_FRAME_COUNT];
 	std::vector<IDirect3DTexture9*> retiredLegacyBindings;
+	CRITICAL_SECTION criticalSection;
 	bool activationReported;
 	bool directRgbaUploadReported;
 	bool directCompressedUploadReported;
@@ -35,6 +57,12 @@ struct DirectX12SampledTextureCacheState
 		, directRgbaUploadReported(false)
 		, directCompressedUploadReported(false)
 	{
+		InitializeCriticalSection(&criticalSection);
+	}
+
+	~DirectX12SampledTextureCacheState()
+	{
+		DeleteCriticalSection(&criticalSection);
 	}
 };
 
@@ -99,6 +127,7 @@ void CDirectX12SampledTextureCache::Clear()
 {
 	if (m_pState == NULL)
 		return;
+	SampledTextureCacheLock lock(&m_pState->criticalSection);
 	for (size_t iTexture = 0;
 		iTexture < m_pState->textures.size();
 		++iTexture)
@@ -125,6 +154,7 @@ void CDirectX12SampledTextureCache::BeginFrame(UINT frameIndex)
 {
 	if (m_pState == NULL || frameIndex >= DX12_FRAME_COUNT)
 		return;
+	SampledTextureCacheLock lock(&m_pState->criticalSection);
 	// Una recreación D3D9 puede suceder después de capturar un draw. La
 	// identidad anterior permanece disponible hasta terminar ese frame y se
 	// desacopla aquí; el recurso DX12 se libera al reciclar su fence.
@@ -144,6 +174,9 @@ void CDirectX12SampledTextureCache::BeginFrame(UINT frameIndex)
 void CDirectX12SampledTextureCache::Forget(
 	IDirect3DTexture9* pTexture9)
 {
+	if (m_pState == NULL)
+		return;
+	SampledTextureCacheLock lock(&m_pState->criticalSection);
 	Remove(pTexture9);
 	if (m_pState != NULL)
 	{
@@ -161,6 +194,7 @@ void CDirectX12SampledTextureCache::RetireLegacyBinding(
 {
 	if (m_pState == NULL || pTexture9 == NULL)
 		return;
+	SampledTextureCacheLock lock(&m_pState->criticalSection);
 	if (std::find(
 		m_pState->retiredLegacyBindings.begin(),
 		m_pState->retiredLegacyBindings.end(),
@@ -260,6 +294,7 @@ bool CDirectX12SampledTextureCache::Acquire(
 		|| pCommandList == NULL || pUploadManager == NULL
 		|| pShaderResourceView == NULL)
 		return false;
+	SampledTextureCacheLock lock(&m_pState->criticalSection);
 
 	for (size_t iTexture = 0;
 		iTexture < m_pState->textures.size();
@@ -317,6 +352,7 @@ bool CDirectX12SampledTextureCache::Replace(
 		|| source.GetFormat() == DXGI_FORMAT_UNKNOWN
 		|| source.GetSubresources() == NULL)
 		return false;
+	SampledTextureCacheLock lock(&m_pState->criticalSection);
 
 	CDirectX12Texture* pNativeTexture = new CDirectX12Texture;
 	if (pNativeTexture == NULL
@@ -388,6 +424,7 @@ bool CDirectX12SampledTextureCache::Remove(
 {
 	if (m_pState == NULL || pTexture9 == NULL)
 		return false;
+	SampledTextureCacheLock lock(&m_pState->criticalSection);
 	for (size_t iTexture = 0;
 		iTexture < m_pState->textures.size();
 		++iTexture)

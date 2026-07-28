@@ -796,6 +796,8 @@ BOOL CGfxLibrary::SetCurrentViewport_D3D(CViewPort *pvp)
 	hr = gl_pd3d9Device->SetRenderTarget(0,  pColorSurface/*, pvp->vp9_pSurfDepth*/);
 	D3DRELEASE( pColorSurface, TRUE);
 	if( hr!=D3D_OK) return FALSE;
+	GetDirectX12Backend().TrackLegacy3DRenderTarget(
+		DX12_LEGACY_RENDER_TARGET_PRESENTATION);
 
 	// remember as current window
 	gl_pvpActive = pvp;
@@ -2272,44 +2274,12 @@ elemEnd:
 // Inicio de modificacion de Ahn Tae-hoon: rendimiento (0.2).
 	_sfStats.IncrementCounter(CStatForm::SCI_DPCOUNT);
 // Fin de modificacion de Ahn Tae-hoon: rendimiento (0.2).
-	// Conserva la identidad COM del backbuffer visible para separar los
-	// render targets auxiliares antes de capturar geometria nativa.
-	if (!GetDirectX12Backend().HasLegacyPresentationRenderTarget()
-		&& _pGfx->gl_pvpActive != NULL)
-	{
-		IDirect3DSurface9* pPresentationSurface9 = NULL;
-		HRESULT hrPresentation = E_FAIL;
-		if (_pGfx->gl_pvpActive->vp9_pSwapChain != NULL)
-		{
-			hrPresentation =
-				_pGfx->gl_pvpActive->vp9_pSwapChain->GetBackBuffer(
-					0,
-					D3DBACKBUFFER_TYPE_MONO,
-					&pPresentationSurface9);
-		}
-		else
-		{
-			hrPresentation = pd3dDev->GetBackBuffer(
-				0,
-				0,
-				D3DBACKBUFFER_TYPE_MONO,
-				&pPresentationSurface9);
-		}
-		if (SUCCEEDED(hrPresentation))
-		{
-			GetDirectX12Backend().SetLegacyPresentationRenderTarget(
-				pPresentationSurface9);
-			pPresentationSurface9->Release();
-		}
-	}
 	// Captura la ruta compatible para reproducirla en DirectX 12. El modo
 	// de reemplazo omite solamente el envio D3D9 que fue capturado.
 	const bool native3DCaptured =
 		GetDirectX12Backend().QueueLegacy3DIndexedDraw(
-		pd3dDev,
 		(const USHORT*)puwIndices,
 		(UINT)ctIndices,
-		_bUsingDynamicBuffer!=FALSE,
 		GFX_bUseVertexProgram!=FALSE,
 		GFX_bUsePixelProgram!=FALSE,
 		GFX_bColorArray!=FALSE,

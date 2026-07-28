@@ -2145,7 +2145,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	const CDirectX12LegacyDrawState& drawState,
 	const USHORT* pIndices,
 	UINT indexCount,
-	bool dynamicBuffer,
 	bool usesVertexProgram,
 	bool usesPixelProgram,
 	bool usesColorArray,
@@ -2156,6 +2155,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	if (m_pState == NULL || pIndices == NULL
 		|| indexCount < 3 || indexCount % 3 != 0)
 		return false;
+	const bool dynamicBuffer = drawState.dynamicGeometry;
 	// La repetición 3D todavía es diagnóstica y no reemplaza el draw heredado.
 	// El perfil probe toma una sola muestra cada 120 frames y ambos perfiles
 	// tienen presupuestos duros para impedir una carga nativa ilimitada.
@@ -3677,11 +3677,27 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		m_pState->indices.size() * sizeof(UINT));
 	if (!EnsureBuffers(vertexBytes, indexBytes))
 		return false;
-	CDirectX12Buffer* pVertexBuffer =
+	CDirectX12Buffer* pVertexBufferOwner =
 		m_pVertexBuffers[m_currentFrame][m_currentSubmissionBuffer];
-	CDirectX12Buffer* pIndexBuffer =
+	CDirectX12Buffer* pIndexBufferOwner =
 		m_pIndexBuffers[m_currentFrame][m_currentSubmissionBuffer];
+	const DirectX12VertexBufferHandle vertexBufferHandle =
+		pVertexBufferOwner != NULL
+			? pVertexBufferOwner->GetVertexHandle()
+			: DX12_INVALID_VERTEX_BUFFER;
+	const DirectX12IndexBufferHandle indexBufferHandle =
+		pIndexBufferOwner != NULL
+			? pIndexBufferOwner->GetIndexHandle()
+			: DX12_INVALID_INDEX_BUFFER;
+	CDirectX12Buffer* pVertexBuffer =
+		static_cast<CDirectX12Buffer*>(
+			GetDirectX12ResourceRegistry().Resolve(vertexBufferHandle));
+	CDirectX12Buffer* pIndexBuffer =
+		static_cast<CDirectX12Buffer*>(
+			GetDirectX12ResourceRegistry().Resolve(indexBufferHandle));
 	if (pVertexBuffer == NULL || pIndexBuffer == NULL
+		|| pVertexBuffer != pVertexBufferOwner
+		|| pIndexBuffer != pIndexBufferOwner
 		|| !pVertexBuffer->Upload(
 			pUploadManager,
 			pCommandList,
@@ -3693,6 +3709,14 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			&m_pState->indices[0],
 			indexBytes))
 		return false;
+	static bool nativeBufferHandlesReported = false;
+	if (!nativeBufferHandlesReported)
+	{
+		CPrintF(
+			"DX12 3D: vertex/index buffers resueltos por handles "
+			"generacionales antes de upload y binding.\n");
+		nativeBufferHandlesReported = true;
+	}
 
 	const D3D12_RESOURCE_DESC targetDesc =
 		pRenderTargets->GetCurrentResource()->GetDesc();

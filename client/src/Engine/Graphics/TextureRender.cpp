@@ -175,6 +175,8 @@ void CRenderTexture::Begin()	// SetRenderTarget current
 		pDev->GetDepthStencilSurface(&m_pOldDepthStencil);
 		pDev->SetDepthStencilSurface(m_pDepthStencil);
 		pDev->SetRenderTarget(0, rt_pSurface);
+		GetDirectX12Backend().TrackLegacy3DRenderTarget(
+			DX12_LEGACY_RENDER_TARGET_OFFSCREEN);
 	}
 }
 
@@ -218,6 +220,8 @@ void CRenderTexture::End()		// SetRenderTarget old
 		//pDev->SetRenderTarget(m_pOldRenderTarget, m_pOldDepthStencil);
 	    pDev->SetDepthStencilSurface(m_pOldDepthStencil);
 	    pDev->SetRenderTarget(0, m_pOldRenderTarget);
+		GetDirectX12Backend().TrackLegacy3DRenderTarget(
+			DX12_LEGACY_RENDER_TARGET_PRESENTATION);
 		GetDirectX12Backend().InsertDrawPortBarrier(
 			DX12_DRAWPORT_BARRIER_RENDER_TARGET_END);
 		if(m_pOldRenderTarget)

@@ -64,6 +64,7 @@ public:
 		const FLOAT* pConstants,
 		UINT registerCount);
 	void SetTexture(UINT stage, IDirect3DTexture9* pTexture);
+	void SetDynamicGeometry(bool dynamic);
 
 	FLOAT world[16];
 	FLOAT view[16];
@@ -108,6 +109,7 @@ public:
 	IDirect3DTexture9* textures[DX12_LEGACY_TEXTURE_STAGE_COUNT];
 	IDirect3DVertexShader9* pVertexShader;
 	IDirect3DPixelShader9* pPixelShader;
+	bool dynamicGeometry;
 
 private:
 	CDirectX12LegacyDrawState(const CDirectX12LegacyDrawState&);
