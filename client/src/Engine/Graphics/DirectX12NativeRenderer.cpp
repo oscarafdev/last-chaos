@@ -8,6 +8,7 @@
 #include <Engine/Graphics/DirectX12DrawPortCommandBatch.h>
 #include <Engine/Graphics/DirectX12InteropTextureManager.h>
 #include <Engine/Graphics/DirectX12Legacy3DCommandBatch.h>
+#include <Engine/Graphics/DirectX12LegacyDrawState.h>
 #include <Engine/Graphics/DirectX12NativeRenderer.h>
 #include <Engine/Graphics/DirectX12PipelineCache.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
@@ -278,7 +279,7 @@ void CDirectX12NativeRenderer::SetLegacy3DStaticD3DColorArray(
 }
 
 bool CDirectX12NativeRenderer::QueueLegacy3DIndexedDraw(
-	IDirect3DDevice9* pDevice9,
+	const CDirectX12LegacyDrawState& drawState,
 	const USHORT* pIndices,
 	UINT indexCount,
 	bool dynamicBuffer,
@@ -291,7 +292,7 @@ bool CDirectX12NativeRenderer::QueueLegacy3DIndexedDraw(
 {
 	return m_pLegacy3DCommands != NULL
 		&& m_pLegacy3DCommands->QueueIndexedDraw(
-			pDevice9,
+			drawState,
 			pIndices,
 			indexCount,
 			dynamicBuffer,

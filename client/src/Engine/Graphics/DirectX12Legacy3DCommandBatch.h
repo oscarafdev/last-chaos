@@ -8,7 +8,6 @@
 #include <d3d12.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
-struct IDirect3DDevice9;
 struct IDirect3DTexture9;
 class CDirectX12Buffer;
 class CDirectX12DepthBuffer;
@@ -17,6 +16,7 @@ class CDirectX12PipelineCache;
 class CDirectX12RenderTargetManager;
 class CDirectX12UploadManager;
 struct DirectX12DescriptorHandle;
+class CDirectX12LegacyDrawState;
 struct DirectX12Legacy3DCommandBatchState;
 
 // Captura la primera familia acotada de geometria 3D dinamica del renderer
@@ -76,7 +76,7 @@ public:
 	void SetStaticD3DColorArray(const ULONG* pColors, UINT vertexCount);
 	void SetConstantColor(ULONG color);
 	bool QueueIndexedDraw(
-		IDirect3DDevice9* pDevice9,
+		const CDirectX12LegacyDrawState& drawState,
 		const USHORT* pIndices,
 		UINT indexCount,
 		bool dynamicBuffer,

@@ -1674,3 +1674,43 @@ Validación:
   `.itconfig/dx12-camera-replays/dx12-native-command-handles-verified.png`,
   con terreno, personaje, edificios, efectos y HUD correctos;
 - cierre automático del cliente confirmado.
+
+### Frontera de estado 3D sin dispositivo D3D9
+
+La ruta promovida de geometría ya no entrega `IDirect3DDevice9` a
+`DirectX12NativeRenderer` ni a `DirectX12Legacy3DCommandBatch`. El adaptador de
+compatibilidad produce una única `CDirectX12LegacyDrawState` inmutable que
+agrupa:
+
+- matrices de mundo, vista, proyección y transformaciones de textura;
+- viewport, profundidad, rasterización, mezcla y alpha test;
+- sampler, combinadores fixed-function y constantes de shaders;
+- identidades temporales y declaración necesarias para resolver la familia de
+  shader, además de hasta cuatro bindings de textura.
+
+Los aliases COM del snapshot tienen vida acotada a la llamada de captura. Los
+command streams continúan reteniendo únicamente handles generacionales cuando
+el recurso ya fue materializado en DX12. Los vértices, normales, tangentes,
+pesos, coordenadas UV, colores e índices no se consultan al dispositivo: se
+mantienen en las copias CPU que alimentan directamente los buffers DX12.
+
+La captura determinista de cámara también consume las matrices y el viewport
+del snapshot, eliminando sus consultas tardías al dispositivo desde el command
+batch. Esto deja todas las lecturas D3D9 de un draw concentradas en el adaptador
+de `DirectX12Backend`, listo para sustituirse por setters nativos sin modificar
+el renderer ni sus command streams.
+
+Validación:
+
+- `Engine.vcxproj` compilado como `LCRelease|x64`;
+- hash SHA-256 idéntico entre el artefacto compilado, el staging moderno y el
+  `Engine.dll` instalado;
+- telemetría `estados, constantes y bindings cruzan como snapshot`;
+- ausencia estática de `IDirect3DDevice9` y de consultas `Get*` en
+  `DirectX12NativeRenderer` y `DirectX12Legacy3DCommandBatch`;
+- cámara verificada
+  `.itconfig/dx12-camera-captures/camera-repro-20260728-160324.json`;
+- captura
+  `.itconfig/dx12-camera-replays/dx12-native-state-snapshot-verified.png`,
+  con terreno, personaje, edificios, efectos y HUD correctos;
+- cierre automático del cliente confirmado.

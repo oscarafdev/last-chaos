@@ -172,7 +172,14 @@ void CCameraTestCapture::PollRequest()
 }
 
 void CCameraTestCapture::CaptureTerrainView(
-	IDirect3DDevice9* device,
+	const FLOAT* viewMatrix,
+	const FLOAT* projectionMatrix,
+	DWORD viewportX,
+	DWORD viewportY,
+	DWORD viewportWidth,
+	DWORD viewportHeight,
+	FLOAT viewportMinimumDepth,
+	FLOAT viewportMaximumDepth,
 	const FLOAT* vertexShaderConstants,
 	UINT constantCount)
 {
@@ -183,7 +190,14 @@ void CCameraTestCapture::CaptureTerrainView(
 	CTString errorMessage;
 	if (Save(
 			pendingCaptureName,
-			device,
+			viewMatrix,
+			projectionMatrix,
+			viewportX,
+			viewportY,
+			viewportWidth,
+			viewportHeight,
+			viewportMinimumDepth,
+			viewportMaximumDepth,
 			vertexShaderConstants,
 			constantCount,
 			outputPath,
@@ -207,7 +221,14 @@ void CCameraTestCapture::CaptureTerrainView(
 
 BOOL CCameraTestCapture::Save(
 	const CTString& requestedName,
-	IDirect3DDevice9* device,
+	const FLOAT* viewMatrix,
+	const FLOAT* projectionMatrix,
+	DWORD viewportX,
+	DWORD viewportY,
+	DWORD viewportWidth,
+	DWORD viewportHeight,
+	FLOAT viewportMinimumDepth,
+	FLOAT viewportMaximumDepth,
 	const FLOAT* vertexShaderConstants,
 	UINT constantCount,
 	CTString& outputPath,
@@ -265,17 +286,20 @@ BOOL CCameraTestCapture::Save(
 	ZeroMemory(&view, sizeof(view));
 	ZeroMemory(&projection, sizeof(projection));
 	ZeroMemory(&viewport, sizeof(viewport));
-	const bool graphicsAvailable = device != NULL;
-	const bool viewAvailable = graphicsAvailable
-		&& SUCCEEDED(device->GetTransform(
-			D3DTS_VIEW,
-			&view));
-	const bool projectionAvailable = graphicsAvailable
-		&& SUCCEEDED(device->GetTransform(
-			D3DTS_PROJECTION,
-			&projection));
-	const bool viewportAvailable = graphicsAvailable
-		&& SUCCEEDED(device->GetViewport(&viewport));
+	const bool viewAvailable = viewMatrix != NULL;
+	const bool projectionAvailable = projectionMatrix != NULL;
+	const bool viewportAvailable =
+		viewportWidth > 0 && viewportHeight > 0;
+	if (viewAvailable)
+		CopyMemory(&view, viewMatrix, sizeof(view));
+	if (projectionAvailable)
+		CopyMemory(&projection, projectionMatrix, sizeof(projection));
+	viewport.X = viewportX;
+	viewport.Y = viewportY;
+	viewport.Width = viewportWidth;
+	viewport.Height = viewportHeight;
+	viewport.MinZ = viewportMinimumDepth;
+	viewport.MaxZ = viewportMaximumDepth;
 
 	fprintf(file, "{\n");
 	fprintf(file, "  \"format\": 1,\n");

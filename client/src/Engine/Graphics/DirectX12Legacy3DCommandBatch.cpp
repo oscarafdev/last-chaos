@@ -14,6 +14,7 @@
 #include <Engine/Graphics/DirectX12DescriptorHeap.h>
 #include <Engine/Graphics/DirectX12InteropTextureManager.h>
 #include <Engine/Graphics/DirectX12Legacy3DCommandBatch.h>
+#include <Engine/Graphics/DirectX12LegacyDrawState.h>
 #include <Engine/Graphics/DirectX12LegacyShaderFamily.h>
 #include <Engine/Graphics/DirectX12PipelineCache.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
@@ -442,30 +443,18 @@ namespace
 	}
 
 	bool MatchesFixedFunctionTextureWidthFilter(
-		IDirect3DDevice9* pDevice9,
+		IDirect3DTexture9* pTexture,
 		int expectedWidth)
 	{
 		if (expectedWidth < 0)
 			return true;
-		if (pDevice9 == NULL)
+		if (pTexture == NULL)
 			return false;
-		IDirect3DBaseTexture9* pBaseTexture = NULL;
-		IDirect3DTexture9* pTexture = NULL;
 		D3DSURFACE_DESC description;
 		ZeroMemory(&description, sizeof(description));
 		const bool matches =
-			SUCCEEDED(pDevice9->GetTexture(0, &pBaseTexture))
-			&& pBaseTexture != NULL
-			&& SUCCEEDED(pBaseTexture->QueryInterface(
-				__uuidof(IDirect3DTexture9),
-				reinterpret_cast<void**>(&pTexture)))
-			&& pTexture != NULL
-			&& SUCCEEDED(pTexture->GetLevelDesc(0, &description))
+			SUCCEEDED(pTexture->GetLevelDesc(0, &description))
 			&& description.Width == static_cast<UINT>(expectedWidth);
-		if (pTexture != NULL)
-			pTexture->Release();
-		if (pBaseTexture != NULL)
-			pBaseTexture->Release();
 		return matches;
 	}
 
@@ -854,25 +843,13 @@ namespace
 {
 	bool DetectTerrainDepthMask(
 		DirectX12Legacy3DCommandBatchState* pState,
-		IDirect3DDevice9* pDevice9)
+		const CDirectX12LegacyDrawState& drawState)
 	{
-		if (pState == NULL || pDevice9 == NULL)
+		if (pState == NULL)
 			return false;
-		DWORD colorWriteMask = 0;
-		DWORD depthWrite = FALSE;
-		DWORD alphaTest = FALSE;
-		if (FAILED(pDevice9->GetRenderState(
-				D3DRS_COLORWRITEENABLE,
-				&colorWriteMask))
-			|| FAILED(pDevice9->GetRenderState(
-				D3DRS_ZWRITEENABLE,
-				&depthWrite))
-			|| FAILED(pDevice9->GetRenderState(
-				D3DRS_ALPHATESTENABLE,
-				&alphaTest))
-			|| colorWriteMask != 0
-			|| depthWrite == FALSE
-			|| alphaTest == FALSE)
+		if (drawState.colorWriteMask != 0
+			|| drawState.zWrite == FALSE
+			|| drawState.alphaTest == FALSE)
 			return false;
 
 		pState->terrainColorPendingAfterDepthMask = true;
@@ -892,12 +869,10 @@ namespace
 
 	UINT64 GetVertexShaderFingerprint(
 		DirectX12Legacy3DCommandBatchState* pState,
-		IDirect3DDevice9* pDevice9)
+		const CDirectX12LegacyDrawState& drawState)
 	{
-		IDirect3DVertexShader9* pShader = NULL;
-		if (pState == NULL || pDevice9 == NULL
-			|| FAILED(pDevice9->GetVertexShader(&pShader))
-			|| pShader == NULL)
+		IDirect3DVertexShader9* pShader = drawState.pVertexShader;
+		if (pState == NULL || pShader == NULL)
 			return 0;
 
 		for (size_t iEntry = 0;
@@ -908,7 +883,6 @@ namespace
 			{
 				const UINT64 fingerprint =
 					pState->vertexShaderCache[iEntry].fingerprint;
-				pShader->Release();
 				return fingerprint;
 			}
 		}
@@ -931,28 +905,12 @@ namespace
 			}
 		}
 
-		IDirect3DVertexDeclaration9* pDeclaration = NULL;
-		if (SUCCEEDED(pDevice9->GetVertexDeclaration(&pDeclaration))
-			&& pDeclaration != NULL)
+		if (drawState.vertexDeclarationByteCount > 0)
 		{
-			UINT elementCount = 0;
-			if (SUCCEEDED(pDeclaration->GetDeclaration(
-				NULL,
-				&elementCount))
-				&& elementCount > 0)
-			{
-				std::vector<D3DVERTEXELEMENT9> elements(elementCount);
-				if (SUCCEEDED(pDeclaration->GetDeclaration(
-					&elements[0],
-					&elementCount)))
-				{
-					fingerprint = HashBytes(
-						fingerprint,
-						&elements[0],
-						elementCount * sizeof(D3DVERTEXELEMENT9));
-				}
-			}
-			pDeclaration->Release();
+			fingerprint = HashBytes(
+				fingerprint,
+				drawState.vertexDeclaration,
+				drawState.vertexDeclarationByteCount);
 		}
 		if (!bytecode.empty())
 			DumpVertexShader(
@@ -965,18 +923,15 @@ namespace
 		cacheEntry.pShader = pShader;
 		cacheEntry.fingerprint = fingerprint;
 		pState->vertexShaderCache.push_back(cacheEntry);
-		pShader->Release();
 		return fingerprint;
 	}
 
 	UINT64 GetPixelShaderFingerprint(
 		DirectX12Legacy3DCommandBatchState* pState,
-		IDirect3DDevice9* pDevice9)
+		const CDirectX12LegacyDrawState& drawState)
 	{
-		IDirect3DPixelShader9* pShader = NULL;
-		if (pState == NULL || pDevice9 == NULL
-			|| FAILED(pDevice9->GetPixelShader(&pShader))
-			|| pShader == NULL)
+		IDirect3DPixelShader9* pShader = drawState.pPixelShader;
+		if (pState == NULL || pShader == NULL)
 			return 0;
 		for (size_t iEntry = 0;
 			iEntry < pState->pixelShaderCache.size();
@@ -986,7 +941,6 @@ namespace
 			{
 				const UINT64 fingerprint =
 					pState->pixelShaderCache[iEntry].fingerprint;
-				pShader->Release();
 				return fingerprint;
 			}
 		}
@@ -1013,7 +967,6 @@ namespace
 		cacheEntry.pShader = pShader;
 		cacheEntry.fingerprint = fingerprint;
 		pState->pixelShaderCache.push_back(cacheEntry);
-		pShader->Release();
 		return fingerprint;
 	}
 
@@ -1514,11 +1467,11 @@ namespace
 
 	void RecordVertexShaderFamily(
 		DirectX12Legacy3DCommandBatchState* pState,
-		IDirect3DDevice9* pDevice9,
+		const CDirectX12LegacyDrawState& drawState,
 		UINT indexCount)
 	{
 		const UINT64 fingerprint =
-			GetVertexShaderFingerprint(pState, pDevice9);
+			GetVertexShaderFingerprint(pState, drawState);
 		if (fingerprint == 0)
 			return;
 		for (size_t iFamily = 0;
@@ -1666,22 +1619,20 @@ namespace
 			|| family == DX12_LEGACY_VS_PROJECTED_FOUR;
 	}
 
-	void CaptureProjectedTerrainCamera(IDirect3DDevice9* pDevice9)
+	void CaptureProjectedTerrainCamera(
+		const CDirectX12LegacyDrawState& drawState)
 	{
-		if (pDevice9 == NULL)
-			return;
-		const UINT TERRAIN_VERTEX_CONSTANT_COUNT = 96;
-		FLOAT vertexConstants[TERRAIN_VERTEX_CONSTANT_COUNT * 4];
-		if (SUCCEEDED(pDevice9->GetVertexShaderConstantF(
-				0,
-				vertexConstants,
-				TERRAIN_VERTEX_CONSTANT_COUNT)))
-		{
-			CCameraTestCapture::CaptureTerrainView(
-				pDevice9,
-				vertexConstants,
-				TERRAIN_VERTEX_CONSTANT_COUNT);
-		}
+		CCameraTestCapture::CaptureTerrainView(
+			drawState.view,
+			drawState.projection,
+			drawState.viewport.x,
+			drawState.viewport.y,
+			drawState.viewport.width,
+			drawState.viewport.height,
+			drawState.viewport.minimumDepth,
+			drawState.viewport.maximumDepth,
+			drawState.vertexShaderConstants,
+			DX12_LEGACY_VERTEX_CONSTANT_COUNT);
 	}
 
 	bool ClampProjectedTerrainFarDepth(Legacy3DVertex* pVertex)
@@ -2191,7 +2142,7 @@ void CDirectX12Legacy3DCommandBatch::SetConstantColor(ULONG color)
 }
 
 bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
-	IDirect3DDevice9* pDevice9,
+	const CDirectX12LegacyDrawState& drawState,
 	const USHORT* pIndices,
 	UINT indexCount,
 	bool dynamicBuffer,
@@ -2202,7 +2153,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	UINT texturePassCount,
 	DirectX12LegacyRenderTargetKind renderTargetKind)
 {
-	if (m_pState == NULL || pDevice9 == NULL || pIndices == NULL
+	if (m_pState == NULL || pIndices == NULL
 		|| indexCount < 3 || indexCount % 3 != 0)
 		return false;
 	// La repetición 3D todavía es diagnóstica y no reemplaza el draw heredado.
@@ -2214,10 +2165,10 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	if (captureProfile == NATIVE_3D_CAPTURE_OFF && !inventoryMode)
 		return false;
 	UINT64 vertexShaderFingerprint = usesVertexProgram
-		? GetVertexShaderFingerprint(m_pState, pDevice9)
+		? GetVertexShaderFingerprint(m_pState, drawState)
 		: 0;
 	UINT64 pixelShaderFingerprint = usesPixelProgram
-		? GetPixelShaderFingerprint(m_pState, pDevice9)
+		? GetPixelShaderFingerprint(m_pState, drawState)
 		: 0;
 	const UINT64 actualVertexShaderFingerprint =
 		vertexShaderFingerprint;
@@ -2254,7 +2205,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		projectiveMapping && fixedFunctionDraw;
 	const bool terrainDepthMaskDraw =
 		fixedFunctionDraw
-		&& DetectTerrainDepthMask(m_pState, pDevice9);
+		&& DetectTerrainDepthMask(m_pState, drawState);
 	// Las sombras proyectadas consumen el render target nativo mediante la
 	// ruta fixed-function. Esta pareja no tiene fingerprints de shader, pero
 	// su estado y su generacion de coordenadas se traducen explicitamente.
@@ -2282,7 +2233,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		&& IsProjectedTerrainVertexFamily(shaderFamily.vertex)
 		&& !ReadFullReplacementMode())
 	{
-		CaptureProjectedTerrainCamera(pDevice9);
+		CaptureProjectedTerrainCamera(drawState);
 		if (!m_pState->terrainCompatibilityFallbackReported)
 		{
 			CPrintF(
@@ -2365,7 +2316,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	const Native3DCaptureBudget captureBudget =
 		GetCaptureBudget(captureProfile);
 	if (usesVertexProgram)
-		RecordVertexShaderFamily(m_pState, pDevice9, indexCount);
+		RecordVertexShaderFamily(m_pState, drawState, indexCount);
 	if (rigidLitProbe && !rigidLit)
 		return false;
 
@@ -2550,134 +2501,71 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	ZeroMemory(legacyPixelConstants, sizeof(legacyPixelConstants));
 	ZeroMemory(pixelShaderConstants, sizeof(pixelShaderConstants));
 	bool initializeTerrainColor = false;
-	if (FAILED(pDevice9->GetTransform(D3DTS_WORLD, &world))
-		|| FAILED(pDevice9->GetTransform(D3DTS_VIEW, &view))
-		|| FAILED(pDevice9->GetTransform(D3DTS_PROJECTION, &projection))
-		|| FAILED(pDevice9->GetViewport(&viewport9))
-		|| FAILED(pDevice9->GetRenderState(D3DRS_ZENABLE, &zEnable))
-		|| FAILED(pDevice9->GetRenderState(D3DRS_ZWRITEENABLE, &zWrite))
-		|| FAILED(pDevice9->GetRenderState(D3DRS_ZFUNC, &zFunction))
-		|| FAILED(pDevice9->GetRenderState(D3DRS_CLIPPING, &clipping))
-		|| FAILED(pDevice9->GetRenderState(D3DRS_CULLMODE, &cullMode))
-		|| FAILED(pDevice9->GetRenderState(
-			D3DRS_ALPHABLENDENABLE,
-			&blending))
-		|| FAILED(pDevice9->GetRenderState(
-			D3DRS_ALPHATESTENABLE,
-			&alphaTest))
-		|| FAILED(pDevice9->GetRenderState(
-			D3DRS_SRCBLEND,
-			&sourceBlend))
-		|| FAILED(pDevice9->GetRenderState(
-			D3DRS_DESTBLEND,
-			&destinationBlend))
-		|| FAILED(pDevice9->GetRenderState(
-			D3DRS_ALPHAREF,
-			&alphaReference))
-		|| FAILED(pDevice9->GetRenderState(
-			D3DRS_COLORWRITEENABLE,
-			&colorWriteMask))
-		|| (usesVertexProgram && FAILED(
-			pDevice9->GetVertexShaderConstantF(
-			0,
-			vertexShaderConstants,
-			96)))
-		|| (usesPixelProgram && FAILED(
-			pDevice9->GetPixelShaderConstantF(
-			0,
-			legacyPixelConstants,
-			13))))
-	{
-		++m_pState->rejectedDrawCount;
-		++m_pState->rejectedReasons[REJECT_STATE_QUERY];
-		return false;
-	}
-	if (FAILED(pDevice9->GetSamplerState(
-			0, D3DSAMP_ADDRESSU, &samplerAddressU))
-		|| FAILED(pDevice9->GetSamplerState(
-			0, D3DSAMP_ADDRESSV, &samplerAddressV))
-		|| FAILED(pDevice9->GetSamplerState(
-			0, D3DSAMP_MINFILTER, &samplerMinification))
-		|| FAILED(pDevice9->GetSamplerState(
-			0, D3DSAMP_MAGFILTER, &samplerMagnification)))
-	{
-		++m_pState->rejectedDrawCount;
-		++m_pState->rejectedReasons[REJECT_STATE_QUERY];
-		return false;
-	}
-	if (shaderFamily.pixel == DX12_LEGACY_PS_WATER
-		&& (FAILED(pDevice9->GetTextureStageState(
-				1, D3DTSS_BUMPENVMAT00, &bumpEnvironmentState[0]))
-			|| FAILED(pDevice9->GetTextureStageState(
-				1, D3DTSS_BUMPENVMAT01, &bumpEnvironmentState[1]))
-			|| FAILED(pDevice9->GetTextureStageState(
-				1, D3DTSS_BUMPENVMAT10, &bumpEnvironmentState[2]))
-			|| FAILED(pDevice9->GetTextureStageState(
-				1, D3DTSS_BUMPENVMAT11, &bumpEnvironmentState[3]))))
-	{
-		++m_pState->rejectedDrawCount;
-		++m_pState->rejectedReasons[REJECT_STATE_QUERY];
-		return false;
-	}
+	CopyMemory(&world, drawState.world, sizeof(world));
+	CopyMemory(&view, drawState.view, sizeof(view));
+	CopyMemory(&projection, drawState.projection, sizeof(projection));
+	viewport9.X = drawState.viewport.x;
+	viewport9.Y = drawState.viewport.y;
+	viewport9.Width = drawState.viewport.width;
+	viewport9.Height = drawState.viewport.height;
+	viewport9.MinZ = drawState.viewport.minimumDepth;
+	viewport9.MaxZ = drawState.viewport.maximumDepth;
+	zEnable = drawState.zEnable;
+	zWrite = drawState.zWrite;
+	zFunction = drawState.zFunction;
+	clipping = drawState.clipping;
+	cullMode = drawState.cullMode;
+	blending = drawState.blending;
+	alphaTest = drawState.alphaTest;
+	sourceBlend = drawState.sourceBlend;
+	destinationBlend = drawState.destinationBlend;
+	alphaReference = drawState.alphaReference;
+	colorWriteMask = drawState.colorWriteMask;
+	samplerAddressU = drawState.samplerAddressU;
+	samplerAddressV = drawState.samplerAddressV;
+	samplerMinification = drawState.samplerMinification;
+	samplerMagnification = drawState.samplerMagnification;
+	textureFactor = drawState.textureFactor;
+	CopyMemory(
+		vertexShaderConstants,
+		drawState.vertexShaderConstants,
+		sizeof(vertexShaderConstants));
+	CopyMemory(
+		legacyPixelConstants,
+		drawState.pixelShaderConstants,
+		sizeof(legacyPixelConstants));
+	CopyMemory(
+		bumpEnvironmentState,
+		drawState.bumpEnvironmentState,
+		sizeof(bumpEnvironmentState));
 	if (!usesVertexProgram && !usesPixelProgram)
 	{
-		bool fixedStateAvailable = SUCCEEDED(
-			pDevice9->GetRenderState(D3DRS_TEXTUREFACTOR, &textureFactor));
-		for (UINT textureUnit = 0;
-			textureUnit < 4 && fixedStateAvailable;
-			++textureUnit)
+		for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
 		{
-			fixedStateAvailable =
-				SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_COLOROP,
-					&fixedColorOperation[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_COLORARG1,
-					&fixedColorArgument1[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_COLORARG2,
-					&fixedColorArgument2[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_ALPHAOP,
-					&fixedAlphaOperation[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_ALPHAARG1,
-					&fixedAlphaArgument1[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_ALPHAARG2,
-					&fixedAlphaArgument2[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_RESULTARG,
-					&fixedResultArgument[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_CONSTANT,
-					&fixedStageConstant[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_TEXCOORDINDEX,
-					&fixedTexCoordIndex[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTextureStageState(
-					textureUnit,
-					D3DTSS_TEXTURETRANSFORMFLAGS,
-					&fixedTextureTransformFlags[textureUnit]))
-				&& SUCCEEDED(pDevice9->GetTransform(
-					static_cast<D3DTRANSFORMSTATETYPE>(
-						D3DTS_TEXTURE0 + textureUnit),
-					&fixedTextureTransform[textureUnit]));
-		}
-		if (!fixedStateAvailable)
-		{
-			++m_pState->rejectedDrawCount;
-			++m_pState->rejectedReasons[REJECT_STATE_QUERY];
-			return false;
+			fixedColorOperation[textureUnit] =
+				drawState.fixedColorOperation[textureUnit];
+			fixedColorArgument1[textureUnit] =
+				drawState.fixedColorArgument1[textureUnit];
+			fixedColorArgument2[textureUnit] =
+				drawState.fixedColorArgument2[textureUnit];
+			fixedAlphaOperation[textureUnit] =
+				drawState.fixedAlphaOperation[textureUnit];
+			fixedAlphaArgument1[textureUnit] =
+				drawState.fixedAlphaArgument1[textureUnit];
+			fixedAlphaArgument2[textureUnit] =
+				drawState.fixedAlphaArgument2[textureUnit];
+			fixedResultArgument[textureUnit] =
+				drawState.fixedResultArgument[textureUnit];
+			fixedStageConstant[textureUnit] =
+				drawState.fixedStageConstant[textureUnit];
+			fixedTexCoordIndex[textureUnit] =
+				drawState.fixedTexCoordIndex[textureUnit];
+			fixedTextureTransformFlags[textureUnit] =
+				drawState.fixedTextureTransformFlags[textureUnit];
+			CopyMemory(
+				&fixedTextureTransform[textureUnit],
+				drawState.textureTransform[textureUnit],
+				sizeof(fixedTextureTransform[textureUnit]));
 		}
 		// _iTexPass cuenta todos los arrays UV preparados desde el ultimo
 		// bloqueo de vertices. Fog, haze y otros pases tardios pueden heredar
@@ -2852,7 +2740,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	if (ReadFullReplacementMode()
 		&& fixedFunctionDraw
 		&& !MatchesFixedFunctionTextureWidthFilter(
-			pDevice9,
+			drawState.textures[0],
 			fixedFunctionTextureWidthFilter))
 		return false;
 
@@ -3362,33 +3250,21 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		return false;
 	}
 
-	IDirect3DBaseTexture9* pBaseTexture = NULL;
-	IDirect3DTexture9* pTexture = NULL;
-	IDirect3DTexture9* pTexture1 = NULL;
-	IDirect3DTexture9* pTexture2 = NULL;
-	IDirect3DTexture9* pTexture3 = NULL;
-	IDirect3DTexture9** ppTextures[4] = {
-		&pTexture,
-		&pTexture1,
-		&pTexture2,
-		&pTexture3
+	IDirect3DTexture9* pTextures[4] = {
+		NULL, NULL, NULL, NULL
 	};
 	for (UINT textureUnit = 0;
 		textureUnit < shaderFamily.textureCount;
 		++textureUnit)
 	{
-		pBaseTexture = NULL;
-		if (SUCCEEDED(pDevice9->GetTexture(
-			textureUnit,
-			&pBaseTexture))
-			&& pBaseTexture != NULL)
-		{
-			pBaseTexture->QueryInterface(
-				__uuidof(IDirect3DTexture9),
-				reinterpret_cast<void**>(ppTextures[textureUnit]));
-			pBaseTexture->Release();
-		}
+		pTextures[textureUnit] = drawState.textures[textureUnit];
+		if (pTextures[textureUnit] != NULL)
+			pTextures[textureUnit]->AddRef();
 	}
+	IDirect3DTexture9* pTexture = pTextures[0];
+	IDirect3DTexture9* pTexture1 = pTextures[1];
+	IDirect3DTexture9* pTexture2 = pTextures[2];
+	IDirect3DTexture9* pTexture3 = pTextures[3];
 	D3DSURFACE_DESC fixedTextureDescription;
 	ZeroMemory(&fixedTextureDescription, sizeof(fixedTextureDescription));
 	const bool hasFixedTextureDescription =
@@ -3424,24 +3300,12 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		&& !usesVertexProgram && !usesPixelProgram
 		&& m_pState->fixedDiagnosticCount < 20)
 	{
-		DWORD colorOperation = 0;
-		DWORD colorArgument1 = 0;
-		DWORD colorArgument2 = 0;
-		DWORD alphaOperation = 0;
-		DWORD alphaArgument1 = 0;
-		DWORD alphaArgument2 = 0;
-		pDevice9->GetTextureStageState(
-			0, D3DTSS_COLOROP, &colorOperation);
-		pDevice9->GetTextureStageState(
-			0, D3DTSS_COLORARG1, &colorArgument1);
-		pDevice9->GetTextureStageState(
-			0, D3DTSS_COLORARG2, &colorArgument2);
-		pDevice9->GetTextureStageState(
-			0, D3DTSS_ALPHAOP, &alphaOperation);
-		pDevice9->GetTextureStageState(
-			0, D3DTSS_ALPHAARG1, &alphaArgument1);
-		pDevice9->GetTextureStageState(
-			0, D3DTSS_ALPHAARG2, &alphaArgument2);
+		const DWORD colorOperation = fixedColorOperation[0];
+		const DWORD colorArgument1 = fixedColorArgument1[0];
+		const DWORD colorArgument2 = fixedColorArgument2[0];
+		const DWORD alphaOperation = fixedAlphaOperation[0];
+		const DWORD alphaArgument1 = fixedAlphaArgument1[0];
+		const DWORD alphaArgument2 = fixedAlphaArgument2[0];
 		const Legacy3DVertex& firstVertex =
 			m_pState->vertices[baseVertex];
 		FLOAT minimumX = firstVertex.position[0];
@@ -3707,9 +3571,16 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	if (projectedTerrain)
 	{
 		CCameraTestCapture::CaptureTerrainView(
-			pDevice9,
+			drawState.view,
+			drawState.projection,
+			drawState.viewport.x,
+			drawState.viewport.y,
+			drawState.viewport.width,
+			drawState.viewport.height,
+			drawState.viewport.minimumDepth,
+			drawState.viewport.maximumDepth,
 			vertexShaderConstants,
-			96);
+			DX12_LEGACY_VERTEX_CONSTANT_COUNT);
 		ReportTerrainClipStateOnce(
 			m_pState,
 			vertexShaderFingerprint,

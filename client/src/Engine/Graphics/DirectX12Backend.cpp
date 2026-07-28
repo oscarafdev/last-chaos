@@ -8,6 +8,7 @@
 #include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/DirectX12DescriptorHeap.h>
 #include <Engine/Graphics/DirectX12InteropTextureManager.h>
+#include <Engine/Graphics/DirectX12LegacyDrawState.h>
 #include <Engine/Graphics/DirectX12NativeRenderer.h>
 #include <Engine/Graphics/DirectX12PresentationManager.h>
 #include <Engine/Graphics/DirectX12ResourceHandle.h>
@@ -1892,6 +1893,20 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 {
 	if (m_uiScopeDepth > 0)
 		return false;
+	CDirectX12LegacyDrawState drawState;
+	if (!drawState.Capture(
+			pDevice9,
+			usesVertexProgram,
+			usesPixelProgram))
+		return false;
+	static bool nativeDrawStateReported = false;
+	if (!nativeDrawStateReported)
+	{
+		CPrintF(
+			"DX12 3D: estados, constantes y bindings cruzan como "
+			"snapshot; el renderer nativo ya no recibe IDirect3DDevice9.\n");
+		nativeDrawStateReported = true;
+	}
 	// Materializa los aliases nativos en el borde de captura. Algunos assets
 	// quedaron enlazados en D3D9 antes de abrir el frame y no vuelven a pasar
 	// por gfxSetTexture aunque continúen activos.
@@ -1899,24 +1914,7 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 		textureUnit < texturePassCount && textureUnit < 4;
 		++textureUnit)
 	{
-		IDirect3DBaseTexture9* pBaseTexture = NULL;
-		IDirect3DTexture9* pTexture = NULL;
-		if (pDevice9 != NULL
-			&& SUCCEEDED(pDevice9->GetTexture(
-				textureUnit,
-				&pBaseTexture))
-			&& pBaseTexture != NULL
-			&& SUCCEEDED(pBaseTexture->QueryInterface(
-				__uuidof(IDirect3DTexture9),
-				reinterpret_cast<void**>(&pTexture)))
-			&& pTexture != NULL)
-		{
-			PrepareNativeTextureBinding(pTexture);
-		}
-		if (pTexture != NULL)
-			pTexture->Release();
-		if (pBaseTexture != NULL)
-			pBaseTexture->Release();
+		PrepareNativeTextureBinding(drawState.textures[textureUnit]);
 	}
 	const DirectX12LegacyRenderTargetKind renderTargetKind =
 		ClassifyLegacyRenderTarget(pDevice9);
@@ -1931,7 +1929,7 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 		return false;
 	return m_frameOpen && m_pNativeRenderer != NULL
 		&& m_pNativeRenderer->QueueLegacy3DIndexedDraw(
-			pDevice9,
+			drawState,
 			pIndices,
 			indexCount,
 			dynamicBuffer,

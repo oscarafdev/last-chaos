@@ -16,6 +16,7 @@ class CDirectX12BloomRenderer;
 class CDirectX12DrawPortCommandBatch;
 class CDirectX12InteropTextureManager;
 class CDirectX12Legacy3DCommandBatch;
+class CDirectX12LegacyDrawState;
 class CDirectX12PipelineCache;
 class CDirectX12RenderTargetManager;
 class CDirectX12Texture;
@@ -80,7 +81,7 @@ public:
 		const ULONG* pColors,
 		UINT vertexCount);
 	bool QueueLegacy3DIndexedDraw(
-		struct IDirect3DDevice9* pDevice9,
+		const CDirectX12LegacyDrawState& drawState,
 		const USHORT* pIndices,
 		UINT indexCount,
 		bool dynamicBuffer,

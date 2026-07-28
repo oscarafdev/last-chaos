@@ -312,6 +312,9 @@
     <ClCompile Include="Graphics\DirectX12Legacy3DCommandBatch.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\DirectX12LegacyDrawState.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="Graphics\DirectX12LegacyShaderFamily.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
@@ -4050,6 +4053,9 @@
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12Legacy3DCommandBatch.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\DirectX12LegacyDrawState.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12LegacyShaderFamily.h">
