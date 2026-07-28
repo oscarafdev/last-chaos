@@ -3427,6 +3427,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClCompile Include="Graphics\DirectX12DrawPortCommandBatch.cpp" />
     <ClCompile Include="Graphics\DirectX12InteropTextureManager.cpp" />
     <ClCompile Include="Graphics\DirectX12Legacy3DCommandBatch.cpp" />
+    <ClCompile Include="Graphics\DirectX12LegacyRenderTargetBridge.cpp" />
     <ClCompile Include="Graphics\DirectX12LegacyShaderFamily.cpp" />
     <ClCompile Include="Graphics\LegacyD3D9ShaderBytecode.cpp" />
     <ClCompile Include="Graphics\DirectX12NativeRenderer.cpp" />
@@ -8197,6 +8198,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClInclude Include="Graphics\DirectX12LegacyShaderFamily.h" />
     <ClInclude Include="Graphics\LegacyD3D9ShaderBytecode.h" />
     <ClInclude Include="Graphics\Generated\LegacyD3D9ShaderBytecode.h" />
+    <ClInclude Include="Graphics\DirectX12LegacyRenderTargetBridge.h" />
     <ClInclude Include="Graphics\DirectX12NativeRenderer.h" />
     <ClInclude Include="Graphics\DirectX12NativeShaderCatalog.h" />
     <ClInclude Include="Graphics\DirectX12SampledTextureCache.h" />

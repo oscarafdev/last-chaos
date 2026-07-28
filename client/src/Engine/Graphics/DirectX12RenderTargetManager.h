@@ -9,8 +9,8 @@
 #include <Engine/Graphics/DirectX12RenderState.h>
 
 struct IDirect3DDevice9;
-struct IDirect3DDevice9On12;
 struct IDirect3DSurface9;
+class CDirectX12LegacyRenderTargetBridge;
 class CDirectX12Texture;
 
 class CDirectX12RenderTargetManager
@@ -68,12 +68,9 @@ private:
 		D3D12_RESOURCE_STATES after);
 
 	ID3D12Device* m_pDevice;
-	ID3D12CommandQueue* m_pGraphicsQueue;
-	IDirect3DDevice9On12* m_pDevice9On12;
+	CDirectX12LegacyRenderTargetBridge* m_pLegacyBridge;
 	ID3D12DescriptorHeap* m_pRtvHeap;
 	ID3D12DescriptorHeap* m_pDsvHeap;
-	IDirect3DSurface9* m_pSurface9;
-	IDirect3DSurface9* m_pDepthSurface9;
 	ID3D12Resource* m_pResource12;
 	ID3D12Resource* m_pDepthResource12;
 	CDirectX12Texture* m_pNativeTexture;

@@ -1,18 +1,14 @@
 #include "stdh.h"
 
-#include <d3d9on12.h>
-
+#include <Engine/Graphics/DirectX12LegacyRenderTargetBridge.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
 #include <Engine/Graphics/DirectX12Texture.h>
 
 CDirectX12RenderTargetManager::CDirectX12RenderTargetManager()
 	: m_pDevice(NULL)
-	, m_pGraphicsQueue(NULL)
-	, m_pDevice9On12(NULL)
+	, m_pLegacyBridge(new CDirectX12LegacyRenderTargetBridge)
 	, m_pRtvHeap(NULL)
 	, m_pDsvHeap(NULL)
-	, m_pSurface9(NULL)
-	, m_pDepthSurface9(NULL)
 	, m_pResource12(NULL)
 	, m_pDepthResource12(NULL)
 	, m_pNativeTexture(NULL)
@@ -30,6 +26,8 @@ CDirectX12RenderTargetManager::CDirectX12RenderTargetManager()
 CDirectX12RenderTargetManager::~CDirectX12RenderTargetManager()
 {
 	Shutdown();
+	delete m_pLegacyBridge;
+	m_pLegacyBridge = NULL;
 }
 
 bool CDirectX12RenderTargetManager::Initialize(
@@ -42,8 +40,12 @@ bool CDirectX12RenderTargetManager::Initialize(
 	Shutdown();
 	m_pDevice = pDevice;
 	m_pDevice->AddRef();
-	m_pGraphicsQueue = pGraphicsQueue;
-	m_pGraphicsQueue->AddRef();
+	if (m_pLegacyBridge == NULL
+		|| !m_pLegacyBridge->Initialize(pGraphicsQueue))
+	{
+		Shutdown();
+		return false;
+	}
 
 	D3D12_DESCRIPTOR_HEAP_DESC heapDesc;
 	ZeroMemory(&heapDesc, sizeof(heapDesc));
@@ -88,37 +90,17 @@ bool CDirectX12RenderTargetManager::Initialize(
 
 bool CDirectX12RenderTargetManager::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 {
-	if (pDevice9 == NULL || m_pRtvHeap == NULL || m_isAcquired)
+	if (pDevice9 == NULL || m_pRtvHeap == NULL || m_isAcquired
+		|| m_pLegacyBridge == NULL)
 		return false;
 
-	if (m_pDevice9On12 != NULL)
-	{
-		m_pDevice9On12->Release();
-		m_pDevice9On12 = NULL;
-	}
-
-	HRESULT hr = pDevice9->QueryInterface(
-		__uuidof(IDirect3DDevice9On12),
-		reinterpret_cast<void**>(&m_pDevice9On12));
-	return SUCCEEDED(hr);
+	return m_pLegacyBridge->AttachD3D9Device(pDevice9);
 }
 
 void CDirectX12RenderTargetManager::Shutdown()
 {
-	if (m_isAcquired && !m_isNative && m_pDevice9On12 != NULL)
-	{
-		if (m_isDepthAcquired)
-			m_pDevice9On12->ReturnUnderlyingResource(
-				reinterpret_cast<IDirect3DResource9*>(m_pDepthSurface9),
-				0,
-				NULL,
-				NULL);
-		m_pDevice9On12->ReturnUnderlyingResource(
-			reinterpret_cast<IDirect3DResource9*>(m_pSurface9),
-			0,
-			NULL,
-			NULL);
-	}
+	if (m_pLegacyBridge != NULL)
+		m_pLegacyBridge->Shutdown();
 	ReleaseAcquiredReferences();
 
 	if (m_pRtvHeap != NULL)
@@ -130,16 +112,6 @@ void CDirectX12RenderTargetManager::Shutdown()
 	{
 		m_pDsvHeap->Release();
 		m_pDsvHeap = NULL;
-	}
-	if (m_pDevice9On12 != NULL)
-	{
-		m_pDevice9On12->Release();
-		m_pDevice9On12 = NULL;
-	}
-	if (m_pGraphicsQueue != NULL)
-	{
-		m_pGraphicsQueue->Release();
-		m_pGraphicsQueue = NULL;
 	}
 	if (m_pDevice != NULL)
 	{
@@ -160,39 +132,21 @@ bool CDirectX12RenderTargetManager::Acquire(
 	UINT frameIndex,
 	UINT submissionIndex)
 {
-	if (pSurface9 == NULL || pCommandList == NULL || m_pDevice9On12 == NULL
+	if (pSurface9 == NULL || pCommandList == NULL || m_pLegacyBridge == NULL
 		|| m_isAcquired || frameIndex >= FRAME_COUNT
 		|| submissionIndex >= MAX_SUBMISSIONS_PER_FRAME)
 		return false;
 
-	HRESULT hr = m_pDevice9On12->UnwrapUnderlyingResource(
-		reinterpret_cast<IDirect3DResource9*>(pSurface9),
-		m_pGraphicsQueue,
-		__uuidof(ID3D12Resource),
-		reinterpret_cast<void**>(&m_pResource12));
-	if (FAILED(hr))
+	if (!m_pLegacyBridge->Acquire(pSurface9, pDepthSurface9))
 		return false;
 
-	pSurface9->AddRef();
-	m_pSurface9 = pSurface9;
+	m_pResource12 = m_pLegacyBridge->GetColorResource();
+	m_pDepthResource12 = m_pLegacyBridge->GetDepthResource();
 	m_currentFrame = frameIndex;
 	m_currentSubmission = submissionIndex;
 	m_isAcquired = true;
 	m_isNative = false;
 	m_clearNativeDepth = false;
-
-	const D3D12_RESOURCE_DESC resourceDesc = m_pResource12->GetDesc();
-	if (resourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
-		|| !(resourceDesc.Flags & D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET))
-	{
-		m_pDevice9On12->ReturnUnderlyingResource(
-			reinterpret_cast<IDirect3DResource9*>(m_pSurface9),
-			0,
-			NULL,
-			NULL);
-		ReleaseAcquiredReferences();
-		return false;
-	}
 
 	m_pDevice->CreateRenderTargetView(
 		m_pResource12,
@@ -203,70 +157,42 @@ bool CDirectX12RenderTargetManager::Acquire(
 		D3D12_RESOURCE_STATE_COMMON,
 		D3D12_RESOURCE_STATE_RENDER_TARGET);
 
-	if (pDepthSurface9 != NULL)
+	if (m_pDepthResource12 != NULL)
 	{
-		hr = m_pDevice9On12->UnwrapUnderlyingResource(
-			reinterpret_cast<IDirect3DResource9*>(pDepthSurface9),
-			m_pGraphicsQueue,
-			__uuidof(ID3D12Resource),
-			reinterpret_cast<void**>(&m_pDepthResource12));
-		if (SUCCEEDED(hr))
-		{
-			const D3D12_RESOURCE_DESC depthDesc =
-				m_pDepthResource12->GetDesc();
-			DXGI_FORMAT dsvFormat = depthDesc.Format;
-			if (dsvFormat == DXGI_FORMAT_R24G8_TYPELESS)
-				dsvFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
-			else if (dsvFormat == DXGI_FORMAT_R32_TYPELESS)
-				dsvFormat = DXGI_FORMAT_D32_FLOAT;
-			else if (dsvFormat == DXGI_FORMAT_R16_TYPELESS)
-				dsvFormat = DXGI_FORMAT_D16_UNORM;
+		const D3D12_RESOURCE_DESC depthDesc =
+			m_pDepthResource12->GetDesc();
+		DXGI_FORMAT dsvFormat = depthDesc.Format;
+		if (dsvFormat == DXGI_FORMAT_R24G8_TYPELESS)
+			dsvFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
+		else if (dsvFormat == DXGI_FORMAT_R32_TYPELESS)
+			dsvFormat = DXGI_FORMAT_D32_FLOAT;
+		else if (dsvFormat == DXGI_FORMAT_R16_TYPELESS)
+			dsvFormat = DXGI_FORMAT_D16_UNORM;
 
-			if (depthDesc.Dimension == D3D12_RESOURCE_DIMENSION_TEXTURE2D
-				&& (depthDesc.Flags
-					& D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL))
-			{
-				pDepthSurface9->AddRef();
-				m_pDepthSurface9 = pDepthSurface9;
-				m_isDepthAcquired = true;
-
-				D3D12_DEPTH_STENCIL_VIEW_DESC dsvDesc;
-				ZeroMemory(&dsvDesc, sizeof(dsvDesc));
-				dsvDesc.Format = dsvFormat;
-				dsvDesc.ViewDimension =
-					depthDesc.SampleDesc.Count > 1
-						? D3D12_DSV_DIMENSION_TEXTURE2DMS
-						: D3D12_DSV_DIMENSION_TEXTURE2D;
-				m_pDevice->CreateDepthStencilView(
-					m_pDepthResource12,
-					&dsvDesc,
-					GetCurrentDepthView());
-				D3D12_RESOURCE_BARRIER depthBarrier;
-				ZeroMemory(&depthBarrier, sizeof(depthBarrier));
-				depthBarrier.Type =
-					D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
-				depthBarrier.Transition.pResource =
-					m_pDepthResource12;
-				depthBarrier.Transition.Subresource =
-					D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
-				depthBarrier.Transition.StateBefore =
-					D3D12_RESOURCE_STATE_COMMON;
-				depthBarrier.Transition.StateAfter =
-					D3D12_RESOURCE_STATE_DEPTH_WRITE;
-				pCommandList->ResourceBarrier(1, &depthBarrier);
-			}
-			else
-			{
-				m_pDevice9On12->ReturnUnderlyingResource(
-					reinterpret_cast<IDirect3DResource9*>(
-						pDepthSurface9),
-					0,
-					NULL,
-					NULL);
-				m_pDepthResource12->Release();
-				m_pDepthResource12 = NULL;
-			}
-		}
+		m_isDepthAcquired = true;
+		D3D12_DEPTH_STENCIL_VIEW_DESC dsvDesc;
+		ZeroMemory(&dsvDesc, sizeof(dsvDesc));
+		dsvDesc.Format = dsvFormat;
+		dsvDesc.ViewDimension =
+			depthDesc.SampleDesc.Count > 1
+				? D3D12_DSV_DIMENSION_TEXTURE2DMS
+				: D3D12_DSV_DIMENSION_TEXTURE2D;
+		m_pDevice->CreateDepthStencilView(
+			m_pDepthResource12,
+			&dsvDesc,
+			GetCurrentDepthView());
+		D3D12_RESOURCE_BARRIER depthBarrier;
+		ZeroMemory(&depthBarrier, sizeof(depthBarrier));
+		depthBarrier.Type =
+			D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+		depthBarrier.Transition.pResource = m_pDepthResource12;
+		depthBarrier.Transition.Subresource =
+			D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+		depthBarrier.Transition.StateBefore =
+			D3D12_RESOURCE_STATE_COMMON;
+		depthBarrier.Transition.StateAfter =
+			D3D12_RESOURCE_STATE_DEPTH_WRITE;
+		pCommandList->ResourceBarrier(1, &depthBarrier);
 	}
 	return true;
 }
@@ -421,26 +347,11 @@ bool CDirectX12RenderTargetManager::ReturnToD3D9(
 		return true;
 	}
 
-	ID3D12Fence* fences[] = { pFence };
-	UINT64 fenceValues[] = { fenceValue };
-	bool depthSucceeded = true;
-	if (m_isDepthAcquired)
-	{
-		depthSucceeded = SUCCEEDED(
-			m_pDevice9On12->ReturnUnderlyingResource(
-				reinterpret_cast<IDirect3DResource9*>(
-					m_pDepthSurface9),
-				1,
-				fenceValues,
-				fences));
-	}
-	HRESULT hr = m_pDevice9On12->ReturnUnderlyingResource(
-		reinterpret_cast<IDirect3DResource9*>(m_pSurface9),
-		1,
-		fenceValues,
-		fences);
+	const bool succeeded =
+		m_pLegacyBridge != NULL
+		&& m_pLegacyBridge->ReturnToD3D9(pFence, fenceValue);
 	ReleaseAcquiredReferences();
-	return SUCCEEDED(hr) && depthSucceeded;
+	return succeeded;
 }
 
 bool CDirectX12RenderTargetManager::IsAcquired() const
@@ -504,26 +415,12 @@ CDirectX12RenderTargetManager::GetCurrentDepthResource() const
 
 void CDirectX12RenderTargetManager::ReleaseAcquiredReferences()
 {
-	if (m_pDepthResource12 != NULL)
-	{
-		m_pDepthResource12->Release();
-		m_pDepthResource12 = NULL;
-	}
-	if (m_pDepthSurface9 != NULL)
-	{
-		m_pDepthSurface9->Release();
-		m_pDepthSurface9 = NULL;
-	}
-	if (m_pResource12 != NULL)
+	m_pDepthResource12 = NULL;
+	if (m_isNative && m_pResource12 != NULL)
 	{
 		m_pResource12->Release();
-		m_pResource12 = NULL;
 	}
-	if (m_pSurface9 != NULL)
-	{
-		m_pSurface9->Release();
-		m_pSurface9 = NULL;
-	}
+	m_pResource12 = NULL;
 	m_isAcquired = false;
 	m_isDepthAcquired = false;
 	m_pNativeTexture = NULL;

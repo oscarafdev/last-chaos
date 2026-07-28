@@ -97,12 +97,6 @@ public:
 		DirectX12RenderTextureHandle handle);
 	void ClearNativeOffscreenTexture(ULONG color);
 	void EndNativeOffscreenTexture();
-	bool CopyLegacySurfaceRegion(
-		IDirect3DSurface9* pSource9,
-		const RECT& sourceRect,
-		IDirect3DSurface9* pDestination9,
-		UINT destinationX,
-		UINT destinationY);
 	bool RenderNativeBloom(
 		DirectX12RenderTextureHandle sourceTexture,
 		DirectX12RenderTextureHandle filterTexture0,
