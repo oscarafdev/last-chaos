@@ -848,6 +848,9 @@ void CDrawPort::SetProjection(CAnyProjection3D &apr)
 		// Create a new custom clip projection matrix
 		GfxMatrix projClipMatrix = matProj * matClipProj;
 		hr = _pGfx->gl_pd3d9Device->SetTransform( D3DTS_PROJECTION, &projClipMatrix);
+		GetDirectX12Backend().TrackLegacy3DTransform(
+			D3DTS_PROJECTION,
+			reinterpret_cast<const FLOAT*>(&projClipMatrix));
 	}
 	//----------Custom Clip Plane---------------------
 	gfxDisableTruform();

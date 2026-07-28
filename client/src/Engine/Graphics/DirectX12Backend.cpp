@@ -514,6 +514,7 @@ void CDirectX12Backend::Shutdown()
 
 	if (m_pDevice9 != NULL)
 	{
+		m_legacyDrawState.Reset();
 		m_pDevice9->Release();
 		m_pDevice9 = NULL;
 	}
@@ -1145,6 +1146,7 @@ bool CDirectX12Backend::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 		m_pDevice9->Release();
 	m_pDevice9 = pDevice9;
 	m_pDevice9->AddRef();
+	m_legacyDrawState.Reset();
 	m_legacy3DDepthAvailable = HasLegacy3DDepthSurface();
 	return true;
 }
@@ -1856,6 +1858,101 @@ void CDirectX12Backend::SetLegacy3DStaticD3DColorArray(
 			vertexCount);
 }
 
+void CDirectX12Backend::ResetLegacy3DState()
+{
+	m_legacyDrawState.Reset();
+}
+
+void CDirectX12Backend::TrackLegacy3DTransform(
+	INT state,
+	const FLOAT* pMatrix)
+{
+	m_legacyDrawState.SetTransform(state, pMatrix);
+}
+
+void CDirectX12Backend::TrackLegacy3DViewport(
+	DWORD x,
+	DWORD y,
+	DWORD width,
+	DWORD height,
+	FLOAT minimumDepth,
+	FLOAT maximumDepth)
+{
+	m_legacyDrawState.SetViewport(
+		x,
+		y,
+		width,
+		height,
+		minimumDepth,
+		maximumDepth);
+}
+
+void CDirectX12Backend::TrackLegacy3DRenderState(
+	INT state,
+	DWORD value)
+{
+	m_legacyDrawState.SetRenderState(state, value);
+}
+
+void CDirectX12Backend::TrackLegacy3DSamplerState(
+	UINT sampler,
+	INT state,
+	DWORD value)
+{
+	m_legacyDrawState.SetSamplerState(sampler, state, value);
+}
+
+void CDirectX12Backend::TrackLegacy3DTextureStageState(
+	UINT stage,
+	INT state,
+	DWORD value)
+{
+	m_legacyDrawState.SetTextureStageState(stage, state, value);
+}
+
+void CDirectX12Backend::TrackLegacy3DVertexShader(
+	IDirect3DVertexShader9* pShader,
+	IDirect3DVertexDeclaration9* pDeclaration)
+{
+	m_legacyDrawState.SetVertexShader(pShader, pDeclaration);
+}
+
+void CDirectX12Backend::TrackLegacy3DPixelShader(
+	IDirect3DPixelShader9* pShader)
+{
+	m_legacyDrawState.SetPixelShader(pShader);
+}
+
+void CDirectX12Backend::TrackLegacy3DVertexShaderConstants(
+	UINT startRegister,
+	const FLOAT* pConstants,
+	UINT registerCount)
+{
+	m_legacyDrawState.SetVertexShaderConstants(
+		startRegister,
+		pConstants,
+		registerCount);
+}
+
+void CDirectX12Backend::TrackLegacy3DPixelShaderConstants(
+	UINT startRegister,
+	const FLOAT* pConstants,
+	UINT registerCount)
+{
+	m_legacyDrawState.SetPixelShaderConstants(
+		startRegister,
+		pConstants,
+		registerCount);
+}
+
+void CDirectX12Backend::TrackLegacy3DTexture(
+	UINT stage,
+	IDirect3DTexture9* pTexture)
+{
+	m_legacyDrawState.SetTexture(stage, pTexture);
+	PrepareNativeTextureBinding(pTexture);
+}
+
 void CDirectX12Backend::PrepareLegacy3DDepthClear(
 	IDirect3DDevice9* pDevice9)
 {
@@ -1893,18 +1990,17 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 {
 	if (m_uiScopeDepth > 0)
 		return false;
-	CDirectX12LegacyDrawState drawState;
-	if (!drawState.Capture(
-			pDevice9,
+	if (!m_legacyDrawState.IsValidForDraw(
 			usesVertexProgram,
 			usesPixelProgram))
 		return false;
+	const CDirectX12LegacyDrawState& drawState = m_legacyDrawState;
 	static bool nativeDrawStateReported = false;
 	if (!nativeDrawStateReported)
 	{
 		CPrintF(
 			"DX12 3D: estados, constantes y bindings cruzan como "
-			"snapshot; el renderer nativo ya no recibe IDirect3DDevice9.\n");
+			"tracker nativo; QueueLegacy3DIndexedDraw no consulta D3D9.\n");
 		nativeDrawStateReported = true;
 	}
 	// Materializa los aliases nativos en el borde de captura. Algunos assets

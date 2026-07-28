@@ -366,6 +366,7 @@ extern DWORD SetupShader_D3D( ULONG ulStreamsMask)
 		// first set default vertex shader
 		hr = _pGfx->gl_pd3d9Device->SetVertexShader(nullptr);
 		hr = _pGfx->gl_pd3d9Device->SetFVF(D3DFVF_CTVERTEX);
+		GetDirectX12Backend().TrackLegacy3DVertexShader(NULL, NULL);
 		D3D_CHECKERROR(hr);
 		gfxSetPixelProgram(NONE);
 
@@ -821,6 +822,7 @@ void CGfxLibrary::InitContext_D3D()
 	// -->
 
 	HRESULT hr;
+	GetDirectX12Backend().ResetLegacy3DState();
 
 	// reset engine's internal Direct3D state variables
 	GFX_bTruform = FALSE;
@@ -877,6 +879,13 @@ void CGfxLibrary::InitContext_D3D()
 	D3DVIEWPORT9 d3dViewPort = { 0,0, 8,8, 0,1 };
 	hr = gl_pd3d9Device->SetViewport(&d3dViewPort);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DViewport(
+		d3dViewPort.X,
+		d3dViewPort.Y,
+		d3dViewPort.Width,
+		d3dViewPort.Height,
+		d3dViewPort.MinZ,
+		d3dViewPort.MaxZ);
 #ifndef NDEBUG
 	hr = gl_pd3d9Device->GetViewport(&d3dViewPort);
 	D3D_CHECKERROR(hr);
@@ -2242,6 +2251,9 @@ elemEnd:
 			hr = _pGfx->gl_pd3d9Device->SetVertexShader( _currentVS_Shader );
 			hr = _pGfx->gl_pd3d9Device->SetVertexDeclaration(_currentVS_Declaration);
 			D3D_CHECKERROR(hr);
+			GetDirectX12Backend().TrackLegacy3DVertexShader(
+				_currentVS_Shader,
+				_currentVS_Declaration);
 		 _pGfx->gl_dwVertexShader = _dwCurrentVS;
 		}
 

@@ -1714,3 +1714,43 @@ Validación:
   `.itconfig/dx12-camera-replays/dx12-native-state-snapshot-verified.png`,
   con terreno, personaje, edificios, efectos y HUD correctos;
 - cierre automático del cliente confirmado.
+
+### Estado 3D persistente alimentado por setters
+
+`CDirectX12LegacyDrawState` dejó de ser una instantánea reconstruida al entrar
+en `QueueLegacy3DIndexedDraw`. Ahora pertenece al backend durante toda la vida
+del contexto y se actualiza en el mismo punto donde el motor escribe cada
+matriz, viewport, render state, sampler, combinador fixed-function, shader,
+constante y textura.
+
+La ruta de draw consume este estado persistente por referencia. Por lo tanto,
+el adaptador ya no ejecuta `GetTransform`, `GetViewport`, `GetRenderState`,
+`GetSamplerState`, `GetTextureStageState`, `GetVertexShader`,
+`GetPixelShader`, `GetVertexShaderConstantF`, `GetPixelShaderConstantF`,
+`GetVertexDeclaration` ni `GetTexture` para capturar un draw. Los command
+streams y el renderer nativo mantienen la frontera de handles DX12 introducida
+en la etapa anterior.
+
+También se conectaron las escrituras directas que no atravesaban los wrappers
+principales: matriz de proyección del plano de recorte, matriz de vista de
+billboards, estados de bump mapping, pases de haze/fog, recreación de texturas
+y liberación del vertex shader activo. El tracker se reinicia junto con el
+contexto y conserva los mismos valores iniciales que `InitContext_D3D`.
+
+Validación:
+
+- `Engine.vcxproj` compilado como `LCRelease|x64`;
+- ausencia estática de las consultas D3D9 anteriores en
+  `DirectX12Backend.cpp` y `DirectX12LegacyDrawState.cpp`;
+- hash SHA-256 idéntico para `Engine.dll` compilado, staging e instalación;
+- telemetría
+  `QueueLegacy3DIndexedDraw no consulta D3D9`;
+- dos reproducciones consecutivas contra `127.0.0.1`, ambas con captura de
+  terreno y `ClientClosed=True`;
+- cámaras verificadas
+  `.itconfig/dx12-camera-captures/camera-repro-20260728-173108.json` y
+  `.itconfig/dx12-camera-captures/camera-repro-20260728-173155.json`;
+- capturas
+  `.itconfig/dx12-camera-replays/dx12-setter-fed-state-verified.png` y
+  `.itconfig/dx12-camera-replays/dx12-setter-fed-state-verified-repeat.png`,
+  con terreno, personaje, edificios, efectos y HUD correctos.

@@ -22,6 +22,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Base/Console.h>
 
 #include <Engine/Graphics/GfxLibrary.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/ViewPort.h>
 
 #include <Engine/Templates/StaticStackArray.cpp>
@@ -76,7 +77,10 @@ HRESULT STDMETHODCALLTYPE /*Direct3DDevice8::*/ dxDeleteVertexShader(DWORD Handl
 	//VertexShaderHandles.erase(Handle);
 
 	if (_dwCurrentVS == Handle)
+	{
 		_pGfx->gl_pd3d9Device->SetVertexShader(nullptr);
+		GetDirectX12Backend().TrackLegacy3DVertexShader(NULL, NULL);
+	}
 #if defined(PLATFORM_32BT)
 	const DWORD HandleMagic = Handle << 1;
 	VertexShaderInfo *const ShaderInfo = reinterpret_cast<VertexShaderInfo *>(HandleMagic);

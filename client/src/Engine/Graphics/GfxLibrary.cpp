@@ -1742,6 +1742,13 @@ BOOL CGfxLibrary::LockDrawPort( CDrawPort *pdpToLock)
 		}
 		HRESULT hr = gl_pd3d9Device->SetViewport( &d3dViewPort);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DViewport(
+			d3dViewPort.X,
+			d3dViewPort.Y,
+			d3dViewPort.Width,
+			d3dViewPort.Height,
+			d3dViewPort.MinZ,
+			d3dViewPort.MaxZ);
 		// update for wrapper
 		extern FLOAT GFX_fMinDepthRange;
 		extern FLOAT GFX_fMaxDepthRange;

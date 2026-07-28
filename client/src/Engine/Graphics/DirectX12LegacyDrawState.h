@@ -6,10 +6,10 @@
 
 #include <windows.h>
 
-struct IDirect3DDevice9;
 struct IDirect3DTexture9;
 struct IDirect3DVertexShader9;
 struct IDirect3DPixelShader9;
+struct IDirect3DVertexDeclaration9;
 
 enum
 {
@@ -28,19 +28,42 @@ struct DirectX12LegacyViewportState
 	FLOAT maximumDepth;
 };
 
-// Instantanea autocontenida de un draw D3D9. Esta es la unica estructura que
-// cruza desde el adaptador de compatibilidad hacia el renderer DX12 nativo.
-// Los objetos COM son aliases temporales y se liberan al destruir el snapshot.
+// Estado persistente alimentado por los setters del motor. QueueLegacy3DIndexedDraw
+// lo consume sin volver a consultar el dispositivo D3D9 en cada draw.
 class CDirectX12LegacyDrawState
 {
 public:
 	CDirectX12LegacyDrawState();
 	~CDirectX12LegacyDrawState();
 
-	bool Capture(
-		IDirect3DDevice9* pDevice9,
+	void Reset();
+	bool IsValidForDraw(
 		bool usesVertexProgram,
-		bool usesPixelProgram);
+		bool usesPixelProgram) const;
+	void SetTransform(INT transformState, const FLOAT* pMatrix);
+	void SetViewport(
+		DWORD x,
+		DWORD y,
+		DWORD width,
+		DWORD height,
+		FLOAT minimumDepth,
+		FLOAT maximumDepth);
+	void SetRenderState(INT state, DWORD value);
+	void SetSamplerState(UINT sampler, INT state, DWORD value);
+	void SetTextureStageState(UINT stage, INT state, DWORD value);
+	void SetVertexShader(
+		IDirect3DVertexShader9* pShader,
+		IDirect3DVertexDeclaration9* pDeclaration);
+	void SetPixelShader(IDirect3DPixelShader9* pShader);
+	void SetVertexShaderConstants(
+		UINT startRegister,
+		const FLOAT* pConstants,
+		UINT registerCount);
+	void SetPixelShaderConstants(
+		UINT startRegister,
+		const FLOAT* pConstants,
+		UINT registerCount);
+	void SetTexture(UINT stage, IDirect3DTexture9* pTexture);
 
 	FLOAT world[16];
 	FLOAT view[16];

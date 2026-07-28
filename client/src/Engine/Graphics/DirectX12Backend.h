@@ -6,12 +6,16 @@
 
 #include <windows.h>
 #include <stddef.h>
+#include <Engine/Graphics/DirectX12LegacyDrawState.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
 struct IDirect3D9;
 struct IDirect3DDevice9;
 struct IDirect3DSurface9;
 struct IDirect3DTexture9;
+struct IDirect3DVertexShader9;
+struct IDirect3DPixelShader9;
+struct IDirect3DVertexDeclaration9;
 struct ID3D12Device;
 struct ID3D12CommandQueue;
 struct ID3D12CommandAllocator;
@@ -156,6 +160,31 @@ public:
 	void SetLegacy3DStaticD3DColorArray(
 		const ULONG* pColors,
 		UINT vertexCount);
+	void ResetLegacy3DState();
+	void TrackLegacy3DTransform(INT state, const FLOAT* pMatrix);
+	void TrackLegacy3DViewport(
+		DWORD x,
+		DWORD y,
+		DWORD width,
+		DWORD height,
+		FLOAT minimumDepth,
+		FLOAT maximumDepth);
+	void TrackLegacy3DRenderState(INT state, DWORD value);
+	void TrackLegacy3DSamplerState(UINT sampler, INT state, DWORD value);
+	void TrackLegacy3DTextureStageState(UINT stage, INT state, DWORD value);
+	void TrackLegacy3DVertexShader(
+		IDirect3DVertexShader9* pShader,
+		IDirect3DVertexDeclaration9* pDeclaration);
+	void TrackLegacy3DPixelShader(IDirect3DPixelShader9* pShader);
+	void TrackLegacy3DVertexShaderConstants(
+		UINT startRegister,
+		const FLOAT* pConstants,
+		UINT registerCount);
+	void TrackLegacy3DPixelShaderConstants(
+		UINT startRegister,
+		const FLOAT* pConstants,
+		UINT registerCount);
+	void TrackLegacy3DTexture(UINT stage, IDirect3DTexture9* pTexture);
 	void PrepareLegacy3DDepthClear(IDirect3DDevice9* pDevice9);
 	bool QueueLegacy3DIndexedDraw(
 		IDirect3DDevice9* pDevice9,
@@ -261,6 +290,7 @@ private:
 	CDirectX12InteropTextureManager* m_pInteropTextures;
 	CDirectX12PresentationManager* m_pPresentation;
 	IDirect3DDevice9* m_pDevice9;
+	CDirectX12LegacyDrawState m_legacyDrawState;
 	IUnknown* m_pLegacyPresentationTargetIdentity;
 	HWND m_hPresentationWindow;
 	HANDLE m_hFenceEvent;

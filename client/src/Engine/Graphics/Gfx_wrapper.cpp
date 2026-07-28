@@ -239,6 +239,14 @@ extern void gfxSetTextureSelectArg(INDEX iStage, GFX_TEXTURE_ARG argColor, GFX_T
 	hr = _pGfx->gl_pd3d9Device->SetTextureStageState( iStage, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
 	hr = _pGfx->gl_pd3d9Device->SetTextureStageState( iStage, D3DTSS_ALPHAARG1, argAlpha);
 	hr = _pGfx->gl_pd3d9Device->SetTextureStageState( iStage, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+	GetDirectX12Backend().TrackLegacy3DTextureStageState(
+		iStage, D3DTSS_COLORARG1, argColor);
+	GetDirectX12Backend().TrackLegacy3DTextureStageState(
+		iStage, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+	GetDirectX12Backend().TrackLegacy3DTextureStageState(
+		iStage, D3DTSS_ALPHAARG1, argAlpha);
+	GetDirectX12Backend().TrackLegacy3DTextureStageState(
+		iStage, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
 	GFX_abTexture[GFX_iActiveTexUnit] = D3DTOP_SELECTARG1;
 }
 //	//(Remake Effect)(0.1)
@@ -334,6 +342,10 @@ extern void gfxSetTextureFiltering( INDEX &iFilterType, INDEX &iAnisotropyDegree
 		hr = pd3dDev->SetSamplerState(iUnit, D3DSAMP_MAGFILTER, eMagFilter);  D3D_CHECKERROR(hr);
 		hr = pd3dDev->SetSamplerState(iUnit, D3DSAMP_MINFILTER, eMinFilter);  D3D_CHECKERROR(hr);
 		hr = pd3dDev->SetSamplerState(iUnit, D3DSAMP_MIPFILTER, eMipFilter);  D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DSamplerState(
+			iUnit, D3DSAMP_MAGFILTER, eMagFilter);
+		GetDirectX12Backend().TrackLegacy3DSamplerState(
+			iUnit, D3DSAMP_MINFILTER, eMinFilter);
 	}
 	// done
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
@@ -421,6 +433,9 @@ extern void gfxSetTexture( ULONG64 &ulTexObject, CTexParams &tpLocal)
 		//HRESULT hr = _pGfx->gl_pd3dDevice->SetTexture( GFX_iActiveTexUnit, _d3d_Texture /*(LPDIRECT3DTEXTURE8)ulTexObject*/);
         HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, (LPDIRECT3DTEXTURE9)ulTexObject);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DTexture(
+			GFX_iActiveTexUnit,
+			reinterpret_cast<LPDIRECT3DTEXTURE9>(ulTexObject));
 		MimicTexParams_D3D(tpLocal);
 	}
 	// done
@@ -453,6 +468,9 @@ extern void gfxUploadTexture( ULONG *pulTexture, PIX pixWidth, PIX pixHeight, UL
 				pd3dLastTexture);
 			HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, *ppd3dCurrentTexture);
 			D3D_CHECKERROR(hr);
+			GetDirectX12Backend().TrackLegacy3DTexture(
+				GFX_iActiveTexUnit,
+				*ppd3dCurrentTexture);
 		}
 		LPDIRECT3DTEXTURE9 pd3dUploadedTexture =
 			*ppd3dCurrentTexture;
@@ -503,6 +521,9 @@ extern BOOL gfxUploadCompressedTexture( UBYTE *pubMipmaps, PIX pixWidth, PIX pix
 				pd3dLastTexture);
 			HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, *ppd3dCurrentTexture);
 			D3D_CHECKERROR(hr);
+			GetDirectX12Backend().TrackLegacy3DTexture(
+				GFX_iActiveTexUnit,
+				*ppd3dCurrentTexture);
 		}
 		if (bUploaded)
 		{

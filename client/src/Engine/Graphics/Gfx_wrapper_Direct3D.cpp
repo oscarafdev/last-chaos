@@ -74,6 +74,8 @@ static void d3d_EnableTexture(void)
 	D3DTEXTUREOP d3dTexOp = (GFX_iTexModulation[GFX_iActiveTexUnit]==2) ? D3DTOP_MODULATE2X : D3DTOP_MODULATE;
 	hr = _pGfx->gl_pd3d9Device->SetTextureStageState( GFX_iActiveTexUnit, D3DTSS_COLOROP, d3dTexOp);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DTextureStageState(
+		GFX_iActiveTexUnit, D3DTSS_COLOROP, d3dTexOp);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -101,6 +103,8 @@ static void d3d_DisableTexture(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetTextureStageState( GFX_iActiveTexUnit, D3DTSS_COLOROP, D3DTOP_DISABLE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DTextureStageState(
+		GFX_iActiveTexUnit, D3DTSS_COLOROP, D3DTOP_DISABLE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -126,6 +130,8 @@ static void d3d_EnableDepthTest(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ZENABLE, D3DZB_TRUE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -152,6 +158,8 @@ static void d3d_DisableDepthTest(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ZENABLE, D3DZB_FALSE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ZENABLE, D3DZB_FALSE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -210,6 +218,8 @@ static void d3d_EnableDepthWrite(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ZWRITEENABLE, TRUE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ZWRITEENABLE, TRUE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -236,6 +246,8 @@ static void d3d_DisableDepthWrite(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ZWRITEENABLE, FALSE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ZWRITEENABLE, FALSE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -314,6 +326,8 @@ static void d3d_EnableAlphaTest(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ALPHATESTENABLE, TRUE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ALPHATESTENABLE, TRUE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -340,6 +354,8 @@ static void d3d_DisableAlphaTest(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ALPHATESTENABLE, FALSE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ALPHATESTENABLE, FALSE);
  
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -365,6 +381,8 @@ static void d3d_EnableBlend(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ALPHABLENDENABLE, TRUE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 
@@ -395,6 +413,8 @@ static void d3d_DisableBlend(void)
 
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ALPHABLENDENABLE, FALSE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 
@@ -432,6 +452,9 @@ static void d3d_SetVertexProgram(const ULONG ulHandle)
 		D3D_CHECKERROR(hr);
 		hr = _pGfx->gl_pd3d9Device->SetVertexDeclaration(_avsVertexShaderProgram[iVS].Declaration); // ###
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DVertexShader(
+			_avsVertexShaderProgram[iVS].Shader,
+			_avsVertexShaderProgram[iVS].Declaration);
 		_pGfx->gl_dwVertexShader = ulHandle;
 
 		_currentVS_Shader		= _avsVertexShaderProgram[iVS].Shader;
@@ -451,6 +474,7 @@ static void d3d_SetPixelProgram(LPDIRECT3DPIXELSHADER9 ulHandle)
 	if(_pGfx->gl_dwPixelShader!=ulHandle) {
 		HRESULT hr = _pGfx->gl_pd3d9Device->SetPixelShader(ulHandle);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DPixelShader(ulHandle);
 		_pGfx->gl_dwPixelShader = ulHandle;
 		_dwCurrentPS = ulHandle;
 	}
@@ -476,6 +500,7 @@ static void d3d_DeletePixelProgram(LPDIRECT3DPIXELSHADER9 ulHandle)
 	ASSERT(ulHandle!=NONE);
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetPixelShader(NONE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DPixelShader(NULL);
 	//hr = _pGfx->gl_pd3dDevice->DeletePixelShader(ulHandle);
 	ulHandle->Release();
 	ulHandle = NULL;
@@ -565,7 +590,11 @@ static void d3d_SetVertexProgramConst(INDEX iRegister, const void *pData, INDEX 
 	ASSERT(GFX_bUseVertexProgram==TRUE);
 	ASSERT(_pGfx->gl_dwVertexShader!=NONE);
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetVertexShaderConstantF(iRegister, static_cast<const float *>(pData), ctRegisters);
-	D3D_CHECKERROR(hr); 
+	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DVertexShaderConstants(
+		iRegister,
+		static_cast<const FLOAT*>(pData),
+		ctRegisters);
 
 #if _DEBUG
 	FLOAT faData[96*4];
@@ -590,7 +619,11 @@ static void d3d_SetPixelProgramConst(INDEX iRegister, const void *pData, INDEX c
 //	ASSERT(_pGfx->gl_dwPixelShader!=NONE);
 //	//(Add Tagent-space Normal Map)(0.1)
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetPixelShaderConstantF(iRegister, static_cast<const float *>(pData), ctRegisters);
-	D3D_CHECKERROR(hr); 
+	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DPixelShaderConstants(
+		iRegister,
+		static_cast<const FLOAT*>(pData),
+		ctRegisters);
 }
 
 
@@ -664,6 +697,8 @@ static void d3d_EnableClipping(void)
 	_bWantsClipping = TRUE; // need to signal for custom clip plane
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_CLIPPING, TRUE);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_CLIPPING, TRUE);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -698,6 +733,8 @@ static void d3d_DisableClipping(void)
 	} else {
 		hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_CLIPPING, FALSE);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DRenderState(
+			D3DRS_CLIPPING, FALSE);
 	}
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -733,6 +770,8 @@ static void d3d_EnableClipPlane(void)
 	if( !GFX_bClipping) {
 		hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_CLIPPING, TRUE);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DRenderState(
+			D3DRS_CLIPPING, TRUE);
 		GFX_bClipping  = TRUE;
 	 _bWantsClipping = FALSE;
 	}
@@ -768,6 +807,8 @@ static void d3d_DisableClipPlane(void)
 		GFX_bClipping = FALSE;
 		hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_CLIPPING, FALSE);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DRenderState(
+			D3DRS_CLIPPING, FALSE);
 	}
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -946,12 +987,16 @@ static void d3d_BlendFunc( GfxBlend eSrc, GfxBlend eDst)
 	 _D3DBLEND d3dSrc = BlendToD3D(eSrc);
 		hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_SRCBLEND, d3dSrc);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DRenderState(
+			D3DRS_SRCBLEND, d3dSrc);
 		GFX_eBlendSrc = eSrc;
 	}
 	if( eDst!=GFX_eBlendDst) {
 	 _D3DBLEND d3dDst = BlendToD3D(eDst);
 		hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_DESTBLEND, d3dDst);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DRenderState(
+			D3DRS_DESTBLEND, d3dDst);
 		GFX_eBlendDst = eDst;
 	}
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
@@ -986,6 +1031,8 @@ static void d3d_SetColorMask( ULONG ulColorMask)
 	if( (ulColorMask&CT_AMASK) == CT_AMASK) ulBitMask |= D3DCOLORWRITEENABLE_ALPHA;
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_COLORWRITEENABLE, ulBitMask);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_COLORWRITEENABLE, ulBitMask);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1045,6 +1092,8 @@ static void d3d_DepthFunc( GfxComp eFunc)
 	d3dcFunc = CompToD3D(eFunc);
 	hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_ZFUNC, d3dcFunc);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_ZFUNC, d3dcFunc);
 	GFX_eDepthFunc = eFunc;
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
@@ -1085,6 +1134,13 @@ static void d3d_DepthRange( FLOAT fMin, FLOAT fMax)
 	d3dViewport.MaxZ = fMax;
 	hr = _pGfx->gl_pd3d9Device->SetViewport( &d3dViewport);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DViewport(
+		d3dViewport.X,
+		d3dViewport.Y,
+		d3dViewport.Width,
+		d3dViewport.Height,
+		d3dViewport.MinZ,
+		d3dViewport.MaxZ);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1114,10 +1170,16 @@ static void d3d_CullFace( GfxFace eFace)
 
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
-			 if( eFace==GFX_FRONT) hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);   
-	else if( eFace==GFX_BACK)  hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_CULLMODE, D3DCULL_CW);
-	else                       hr = _pGfx->gl_pd3d9Device->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE); 
+	DWORD d3dCullMode = D3DCULL_NONE;
+	if( eFace==GFX_FRONT) d3dCullMode = D3DCULL_CCW;
+	else if( eFace==GFX_BACK) d3dCullMode = D3DCULL_CW;
+	hr = _pGfx->gl_pd3d9Device->SetRenderState(
+		D3DRS_CULLMODE,
+		d3dCullMode);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DRenderState(
+		D3DRS_CULLMODE,
+		d3dCullMode);
 	GFX_eCullFace = eFace;
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
@@ -1182,6 +1244,10 @@ static void d3d_SetTextureMatrix( const FLOAT *pfMatrix/*=NULL*/)
 			// Enable texture transform
 			hr = _pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_COUNT2);
 			D3D_CHECKERROR(hr);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit,
+				D3DTSS_TEXTURETRANSFORMFLAGS,
+				D3DTTFF_COUNT2);
 		}
 
 		// Since texture is 2d @!#$ d3d uses translation in 3th row (3x3 matrix)!!!
@@ -1202,6 +1268,9 @@ static void d3d_SetTextureMatrix( const FLOAT *pfMatrix/*=NULL*/)
 		D3DTRANSFORMSTATETYPE tsMatrixNo = (D3DTRANSFORMSTATETYPE)(D3DTS_TEXTURE0 + GFX_iActiveTexUnit);
 		hr = _pGfx->gl_pd3d9Device->SetTransform( tsMatrixNo, (_D3DMATRIX*)&afMatrix16);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DTransform(
+			tsMatrixNo,
+			afMatrix16);
 
 		// Mark texture matrix active for current texture unit
 		_ulUsedTexMatrices|=ulMatrixMask;
@@ -1212,6 +1281,10 @@ static void d3d_SetTextureMatrix( const FLOAT *pfMatrix/*=NULL*/)
 			// disable texture transform
 			hr = _pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
 			D3D_CHECKERROR(hr);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit,
+				D3DTSS_TEXTURETRANSFORMFLAGS,
+				D3DTTFF_DISABLE);
 			// Mark texture matrix inactive fur current texture unit
 			_ulUsedTexMatrices&=~ulMatrixMask;
 		}
@@ -1234,16 +1307,20 @@ static void d3d_SetViewMatrix( const FLOAT *pfMatrix/*=NULL*/)
 
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
+	extern const D3DMATRIX GFX_d3dIdentityMatrix;
 	if( pfMatrix!=NULL) {
 		// need to keep it for clip plane
 		CopyLongs( (ULONG*)pfMatrix, (ULONG*)D3D_afViewMatrix, 16);
 		hr = _pGfx->gl_pd3d9Device->SetTransform( D3DTS_VIEW, (_D3DMATRIX*)D3D_afViewMatrix);
 	} else {
 		// load identity matrix
-		extern const D3DMATRIX GFX_d3dIdentityMatrix;
 		hr = _pGfx->gl_pd3d9Device->SetTransform( D3DTS_VIEW, &GFX_d3dIdentityMatrix);
 	} // check
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DTransform(
+		D3DTS_VIEW,
+		pfMatrix != NULL ? D3D_afViewMatrix
+			: reinterpret_cast<const FLOAT*>(&GFX_d3dIdentityMatrix));
 	// update clip plane if enabled
 	if( GFX_bClipPlane) UpdateClipPlane_D3D();
 
@@ -1277,6 +1354,9 @@ static void d3d_SetOrtho( FLOAT fLeft, FLOAT fRight, FLOAT fTop, FLOAT fBottom, 
 								-fRpL/fRmL,		-fTpB/fTmB,		-fNear/fFmN,		1 };
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetTransform( D3DTS_PROJECTION, (_D3DMATRIX*)afMatrix);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DTransform(
+		D3DTS_PROJECTION,
+		afMatrix);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1307,6 +1387,9 @@ static void d3d_SetFrustum( FLOAT fLeft, FLOAT fRight, FLOAT fTop, FLOAT fBottom
 	}; // set it
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetTransform( D3DTS_PROJECTION, (const _D3DMATRIX*)&afMatrix);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DTransform(
+		D3DTS_PROJECTION,
+		&afMatrix[0][0]);
 
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -1472,12 +1555,16 @@ static void d3d_SetTextureWrapping( enum GfxWrap eWrapU, enum GfxWrap eWrapV)
 		D3DTEXTUREADDRESS d3dta = (eWrapU==GFX_REPEAT) ? D3DTADDRESS_WRAP : D3DTADDRESS_CLAMP;
 		hr = _pGfx->gl_pd3d9Device->SetSamplerState(GFX_iActiveTexUnit, D3DSAMP_ADDRESSU, d3dta);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DSamplerState(
+			GFX_iActiveTexUnit, D3DSAMP_ADDRESSU, d3dta);
 	 _tpGlobal[GFX_iActiveTexUnit].tp_eWrapU = eWrapU;
 	}
 	if( _tpGlobal[GFX_iActiveTexUnit].tp_eWrapV!=eWrapV) {
 		D3DTEXTUREADDRESS d3dta = (eWrapV==GFX_REPEAT) ? D3DTADDRESS_WRAP : D3DTADDRESS_CLAMP;
 		hr = _pGfx->gl_pd3d9Device->SetSamplerState(GFX_iActiveTexUnit, D3DSAMP_ADDRESSV, d3dta);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DSamplerState(
+			GFX_iActiveTexUnit, D3DSAMP_ADDRESSV, d3dta);
 	 _tpGlobal[GFX_iActiveTexUnit].tp_eWrapV = eWrapV;
 	}
 
@@ -1514,6 +1601,8 @@ static void d3d_SetTextureModulation( INDEX iScale)
 		D3DTEXTUREOP d3dTexOp = (iScale==2) ? D3DTOP_MODULATE2X : D3DTOP_MODULATE;
 		hr = _pGfx->gl_pd3d9Device->SetTextureStageState( GFX_iActiveTexUnit, D3DTSS_COLOROP, d3dTexOp);
 		D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DTextureStageState(
+			GFX_iActiveTexUnit, D3DTSS_COLOROP, d3dTexOp);
 	}
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -2168,6 +2257,7 @@ extern void d3dSetVertexShader( DWORD dwHandle)
 	if( _pGfx->gl_dwVertexShader==dwHandle) return;
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetFVF(dwHandle);
 	D3D_CHECKERROR(hr);
+	GetDirectX12Backend().TrackLegacy3DVertexShader(NULL, NULL);
 	_pGfx->gl_dwVertexShader = dwHandle;
 	gfxSetPixelProgram(NONE);
 }

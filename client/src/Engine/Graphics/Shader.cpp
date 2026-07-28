@@ -4,6 +4,7 @@
 #include <Engine/Math/Matrix12.h>
 #include <Engine/Ska/Render.h>
 #include <Engine/Graphics/Shader.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/Texture.h>
 #include <Engine/Graphics/Fog_internal.h>
 #include <Engine/Base/Statistics_internal.h>
@@ -533,6 +534,14 @@ extern void shaSetEMBM()
 		hr = _pGfx->gl_pd3d9Device->SetTextureStageState( 1, D3DTSS_BUMPENVMAT01,   F2DW(matBumpMat._12));	D3D_CHECKERROR(hr);
 		hr = _pGfx->gl_pd3d9Device->SetTextureStageState( 1, D3DTSS_BUMPENVMAT10,   F2DW(matBumpMat._21));	D3D_CHECKERROR(hr);
 		hr = _pGfx->gl_pd3d9Device->SetTextureStageState( 1, D3DTSS_BUMPENVMAT11,   F2DW(matBumpMat._22));	D3D_CHECKERROR(hr);
+		GetDirectX12Backend().TrackLegacy3DTextureStageState(
+			1, D3DTSS_BUMPENVMAT00, F2DW(matBumpMat._11));
+		GetDirectX12Backend().TrackLegacy3DTextureStageState(
+			1, D3DTSS_BUMPENVMAT01, F2DW(matBumpMat._12));
+		GetDirectX12Backend().TrackLegacy3DTextureStageState(
+			1, D3DTSS_BUMPENVMAT10, F2DW(matBumpMat._21));
+		GetDirectX12Backend().TrackLegacy3DTextureStageState(
+			1, D3DTSS_BUMPENVMAT11, F2DW(matBumpMat._22));
 	//}
 }
 //강동민 수정 끝 Water 구현			04.20
@@ -705,6 +714,9 @@ extern void shaPrepareForBillboard(BOOL bCylinderType/* = FALSE*/, BOOL bNeedCal
 
 	//최종적으로 SetTransform한다.
 	_pGfx->gl_pd3d9Device->SetTransform(D3DTS_VIEW, &matNewView);
+	GetDirectX12Backend().TrackLegacy3DTransform(
+		D3DTS_VIEW,
+		reinterpret_cast<const FLOAT*>(&matNewView));
 }
 //안태훈 수정 끝	//(Add Tagent-space Normal Map)(0.1)
 
@@ -1147,6 +1159,10 @@ extern void shaDoFogAndHazePass(void)
 			_pGfx->gl_pd3d9Device->GetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLORARG1, &arg1);
 			_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
 			_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLORARG1, D3DTA_CURRENT);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit, D3DTSS_COLORARG1, D3DTA_CURRENT);
 		}
 		// render haze pass
 		gfxDrawElements( _ctIndices, _puwIndices);
@@ -1159,6 +1175,10 @@ extern void shaDoFogAndHazePass(void)
 			} else if (sam_iGfxAPI == GAT_D3D){
 				_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLOROP, op);
 				_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLORARG1, arg1);
+				GetDirectX12Backend().TrackLegacy3DTextureStageState(
+					GFX_iActiveTexUnit, D3DTSS_COLOROP, op);
+				GetDirectX12Backend().TrackLegacy3DTextureStageState(
+					GFX_iActiveTexUnit, D3DTSS_COLORARG1, arg1);
 			}
 		}
 	}
@@ -1185,6 +1205,10 @@ extern void shaDoFogAndHazePass(void)
 			_pGfx->gl_pd3d9Device->GetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLORARG1, &arg1);
 			_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
 			_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLORARG1, D3DTA_CURRENT);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit, D3DTSS_COLORARG1, D3DTA_CURRENT);
 		}
 		
 		// render fog pass
@@ -1196,6 +1220,10 @@ extern void shaDoFogAndHazePass(void)
 		} else if (sam_iGfxAPI == GAT_D3D){
 			_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLOROP, op);
 			_pGfx->gl_pd3d9Device->SetTextureStageState(GFX_iActiveTexUnit, D3DTSS_COLORARG1, arg1);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit, D3DTSS_COLOROP, op);
+			GetDirectX12Backend().TrackLegacy3DTextureStageState(
+				GFX_iActiveTexUnit, D3DTSS_COLORARG1, arg1);
 		}
 	}
 }

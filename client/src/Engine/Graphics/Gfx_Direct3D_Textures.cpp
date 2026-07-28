@@ -1,6 +1,7 @@
 #include "stdh.h"
 
 #include <Engine/Graphics/GfxLibrary.h>
+#include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Base/MemoryTracking.h>
 
 #include <Engine/Base/Statistics_internal.h>
@@ -132,6 +133,10 @@ extern void MimicTexParams_D3D( CTexParams &tpLocal)
       hr = pd3dDev->SetSamplerState(iTU, D3DSAMP_MAXANISOTROPY, tpLocal.tp_iAnisotropy);  D3D_CHECKERROR(hr);
       hr = pd3dDev->SetSamplerState(iTU, D3DSAMP_MAGFILTER, D3DTEXF_ANISOTROPIC);         D3D_CHECKERROR(hr);
       hr = pd3dDev->SetSamplerState(iTU, D3DSAMP_MINFILTER, D3DTEXF_ANISOTROPIC);         D3D_CHECKERROR(hr);
+      GetDirectX12Backend().TrackLegacy3DSamplerState(
+        iTU, D3DSAMP_MAGFILTER, D3DTEXF_ANISOTROPIC);
+      GetDirectX12Backend().TrackLegacy3DSamplerState(
+        iTU, D3DSAMP_MINFILTER, D3DTEXF_ANISOTROPIC);
     } else {
       INDEX iMagFilter = _tpGlobal[0].tp_iFilter /100;     ASSERT( iMagFilter>=0 && iMagFilter<=2);
       INDEX iMinFilter = _tpGlobal[0].tp_iFilter /10 %10;  ASSERT( iMinFilter>=1 && iMinFilter<=2);
@@ -141,6 +146,10 @@ extern void MimicTexParams_D3D( CTexParams &tpLocal)
       hr = pd3dDev->SetSamplerState(iTU, D3DSAMP_MAXANISOTROPY, 1);       D3D_CHECKERROR(hr);
       hr = pd3dDev->SetSamplerState(iTU, D3DSAMP_MAGFILTER, iMagFilter);  D3D_CHECKERROR(hr);
       hr = pd3dDev->SetSamplerState(iTU, D3DSAMP_MINFILTER, iMinFilter);  D3D_CHECKERROR(hr);
+      GetDirectX12Backend().TrackLegacy3DSamplerState(
+        iTU, D3DSAMP_MAGFILTER, iMagFilter);
+      GetDirectX12Backend().TrackLegacy3DSamplerState(
+        iTU, D3DSAMP_MINFILTER, iMinFilter);
 
     }
   }
