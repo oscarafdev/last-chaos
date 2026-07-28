@@ -5,7 +5,7 @@
 #include <vector>
 #include <d3d9.h>
 #include <d3dcompiler.h>
-#include <d3dx9math.h>
+#include <Engine/Math/GfxMath.h>
 
 #include <Engine/Base/Console.h>
 #include <Engine/Testing/CameraTestCapture.h>
@@ -1531,56 +1531,56 @@ namespace
 		return pTop;
 	}
 
-	FLOAT Dot3(const D3DXVECTOR3& vector, const FLOAT* pConstant)
+	FLOAT Dot3(const GfxVector3& vector, const FLOAT* pConstant)
 	{
 		return vector.x * pConstant[0]
 			+ vector.y * pConstant[1]
 			+ vector.z * pConstant[2];
 	}
 
-	D3DXVECTOR3 TransformPosition3x4(
-		const D3DXVECTOR3& position,
+	GfxVector3 TransformPosition3x4(
+		const GfxVector3& position,
 		const FLOAT* pConstants)
 	{
-		return D3DXVECTOR3(
+		return GfxVector3(
 			Dot3(position, pConstants + 0) + pConstants[3],
 			Dot3(position, pConstants + 4) + pConstants[7],
 			Dot3(position, pConstants + 8) + pConstants[11]);
 	}
 
-	D3DXVECTOR3 TransformDirection3x3(
-		const D3DXVECTOR3& direction,
+	GfxVector3 TransformDirection3x3(
+		const GfxVector3& direction,
 		const FLOAT* pConstants)
 	{
-		return D3DXVECTOR3(
+		return GfxVector3(
 			Dot3(direction, pConstants + 0),
 			Dot3(direction, pConstants + 4),
 			Dot3(direction, pConstants + 8));
 	}
 
-	D3DXVECTOR3 NormalizeSafe(const D3DXVECTOR3& vector)
+	GfxVector3 NormalizeSafe(const GfxVector3& vector)
 	{
 		const FLOAT lengthSquared =
 			vector.x * vector.x + vector.y * vector.y + vector.z * vector.z;
 		if (lengthSquared <= 0.0000001f)
-			return D3DXVECTOR3(0.0f, 0.0f, 1.0f);
+			return GfxVector3(0.0f, 0.0f, 1.0f);
 		const FLOAT inverseLength = 1.0f / sqrtf(lengthSquared);
 		return vector * inverseLength;
 	}
 
 	void SkinVertex(
-		const D3DXVECTOR3& sourcePosition,
-		const D3DXVECTOR3& sourceNormal,
-		const D3DXVECTOR3& sourceTangent,
+		const GfxVector3& sourcePosition,
+		const GfxVector3& sourceNormal,
+		const GfxVector3& sourceTangent,
 		const BYTE* pSkinData,
 		const FLOAT* pConstants,
-		D3DXVECTOR3* pPosition,
-		D3DXVECTOR3* pNormal,
-		D3DXVECTOR3* pTangent)
+		GfxVector3* pPosition,
+		GfxVector3* pNormal,
+		GfxVector3* pTangent)
 	{
-		*pPosition = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-		*pNormal = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-		*pTangent = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		*pPosition = GfxVector3(0.0f, 0.0f, 0.0f);
+		*pNormal = GfxVector3(0.0f, 0.0f, 0.0f);
+		*pTangent = GfxVector3(0.0f, 0.0f, 0.0f);
 		FLOAT weights[4] = {
 			pSkinData[6] / 255.0f,
 			pSkinData[5] / 255.0f,
@@ -1610,7 +1610,7 @@ namespace
 	}
 
 	void WriteClipPosition(
-		const D3DXVECTOR3& position,
+		const GfxVector3& position,
 		const FLOAT* pConstants,
 		Legacy3DVertex* pVertex)
 	{
@@ -1673,12 +1673,12 @@ namespace
 	}
 
 	void WriteLighting(
-		const D3DXVECTOR3& normal,
+		const GfxVector3& normal,
 		const FLOAT* pConstants,
 		bool useDiffuseAlpha,
 		Legacy3DVertex* pVertex)
 	{
-		const D3DXVECTOR3 normalized = NormalizeSafe(normal);
+		const GfxVector3 normalized = NormalizeSafe(normal);
 		const FLOAT lighting = max(
 			pConstants[7 * 4 + 0],
 			min(pConstants[7 * 4 + 1],
@@ -1696,7 +1696,7 @@ namespace
 	}
 
 	void WriteProjectedTexCoord(
-		const D3DXVECTOR3& position,
+		const GfxVector3& position,
 		const FLOAT* pConstants,
 		UINT firstConstant,
 		UINT destinationUnit,
@@ -1716,7 +1716,7 @@ namespace
 	}
 
 	void WriteHomogeneousProjectedTexCoord(
-		const D3DXVECTOR3& position,
+		const GfxVector3& position,
 		const FLOAT* pConstants,
 		UINT firstConstant,
 		UINT destinationUnit,
@@ -1743,7 +1743,7 @@ namespace
 	}
 
 	void WritePlanarTexCoord(
-		const D3DXVECTOR3& position,
+		const GfxVector3& position,
 		const FLOAT* pConstants,
 		UINT firstConstant,
 		UINT destinationUnit,
@@ -1769,7 +1769,7 @@ namespace
 	}
 
 	void WriteTerrainMapTexCoord(
-		const D3DXVECTOR3& position,
+		const GfxVector3& position,
 		const FLOAT* pConstants,
 		Legacy3DVertex* pVertex)
 	{
@@ -2511,8 +2511,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	};
 	D3DMATRIX fixedTextureTransform[4];
 	for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
-		D3DXMatrixIdentity(
-			reinterpret_cast<D3DXMATRIX*>(
+		GfxMatrixIdentity(
+			reinterpret_cast<GfxMatrix*>(
 				&fixedTextureTransform[textureUnit]));
 	const UINT LEGACY_VERTEX_CONSTANT_COUNT = 96 * 4;
 	FLOAT vertexShaderConstants[LEGACY_VERTEX_CONSTANT_COUNT];
@@ -2830,16 +2830,16 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			fixedFunctionTextureWidthFilter))
 		return false;
 
-	D3DXMATRIX worldView;
-	D3DXMATRIX worldViewProjection;
-	D3DXMatrixMultiply(
+	GfxMatrix worldView;
+	GfxMatrix worldViewProjection;
+	GfxMatrixMultiply(
 		&worldView,
-		reinterpret_cast<const D3DXMATRIX*>(&world),
-		reinterpret_cast<const D3DXMATRIX*>(&view));
-	D3DXMatrixMultiply(
+		reinterpret_cast<const GfxMatrix*>(&world),
+		reinterpret_cast<const GfxMatrix*>(&view));
+	GfxMatrixMultiply(
 		&worldViewProjection,
 		&worldView,
-		reinterpret_cast<const D3DXMATRIX*>(&projection));
+		reinterpret_cast<const GfxMatrix*>(&projection));
 
 	if (!usesVertexProgram && !usesPixelProgram)
 	{
@@ -2884,7 +2884,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	for (UINT iVertex = 0; iVertex < usedVertexCount; ++iVertex)
 	{
 		const UINT sourceVertexIndex = sourceVertexIndices[iVertex];
-		D3DXVECTOR3 source(
+		GfxVector3 source(
 			m_pState->positions[sourceVertexIndex * 3 + 0],
 			m_pState->positions[sourceVertexIndex * 3 + 1],
 			m_pState->positions[sourceVertexIndex * 3 + 2]);
@@ -2892,21 +2892,21 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		ZeroMemory(&vertex, sizeof(vertex));
 		for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
 			vertex.texCoordQ[textureUnit] = 1.0f;
-		D3DXVECTOR3 sourceNormal(0.0f, 0.0f, 1.0f);
+		GfxVector3 sourceNormal(0.0f, 0.0f, 1.0f);
 		if (m_pState->normals.size()
 			== static_cast<size_t>(vertexCount) * 3)
 		{
-			sourceNormal = D3DXVECTOR3(
+			sourceNormal = GfxVector3(
 				m_pState->normals[sourceVertexIndex * 3 + 0],
 				m_pState->normals[sourceVertexIndex * 3 + 1],
 				m_pState->normals[sourceVertexIndex * 3 + 2]);
 		}
-		D3DXVECTOR3 sourceTangent(1.0f, 0.0f, 0.0f);
+		GfxVector3 sourceTangent(1.0f, 0.0f, 0.0f);
 		FLOAT tangentSign = 1.0f;
 		if (m_pState->tangents.size()
 			== static_cast<size_t>(vertexCount) * 4)
 		{
-			sourceTangent = D3DXVECTOR3(
+			sourceTangent = GfxVector3(
 				m_pState->tangents[sourceVertexIndex * 4 + 0],
 				m_pState->tangents[sourceVertexIndex * 4 + 1],
 				m_pState->tangents[sourceVertexIndex * 4 + 2]);
@@ -2951,11 +2951,11 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 					fixedTexCoordIndex[textureUnit] & 0x0000FFFFUL;
 				const DWORD coordinateGeneration =
 					fixedTexCoordIndex[textureUnit] & 0xFFFF0000UL;
-				D3DXVECTOR4 inputCoordinate;
+				GfxVector4 inputCoordinate;
 				if (coordinateGeneration
 					== D3DTSS_TCI_CAMERASPACEPOSITION)
 				{
-					D3DXVec3Transform(
+					GfxVec3Transform(
 						&inputCoordinate,
 						&source,
 						&worldView);
@@ -2964,7 +2964,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				{
 					const std::vector<FLOAT>& sourceCoordinates =
 						m_pState->texCoords[sourceTexCoord];
-					inputCoordinate = D3DXVECTOR4(
+					inputCoordinate = GfxVector4(
 						sourceCoordinates[sourceVertexIndex * 2 + 0],
 						sourceCoordinates[sourceVertexIndex * 2 + 1],
 						0.0f,
@@ -2976,11 +2976,11 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 					fixedTextureTransformFlags[textureUnit];
 				if ((transformFlags & 0xFFUL) != D3DTTFF_DISABLE)
 				{
-					D3DXVECTOR4 outputCoordinate;
-					D3DXVec4Transform(
+					GfxVector4 outputCoordinate;
+					GfxVec4Transform(
 						&outputCoordinate,
 						&inputCoordinate,
-						reinterpret_cast<const D3DXMATRIX*>(
+						reinterpret_cast<const GfxMatrix*>(
 							&fixedTextureTransform[textureUnit]));
 					transformedU = outputCoordinate.x;
 					transformedV = outputCoordinate.y;
@@ -3062,9 +3062,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		}
 		else if (usesVertexProgram)
 		{
-			D3DXVECTOR3 transformedPosition = source;
-			D3DXVECTOR3 transformedNormal = sourceNormal;
-			D3DXVECTOR3 transformedTangent = sourceTangent;
+			GfxVector3 transformedPosition = source;
+			GfxVector3 transformedNormal = sourceNormal;
+			GfxVector3 transformedTangent = sourceTangent;
 			if (shaderFamily.requiresWeights)
 			{
 				SkinVertex(
@@ -3206,14 +3206,14 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				|| shaderFamily.vertex
 					== DX12_LEGACY_VS_RIGID_TANGENT_PROJECTED)
 			{
-				const D3DXVECTOR3 normal =
+				const GfxVector3 normal =
 					NormalizeSafe(transformedNormal);
-				const D3DXVECTOR3 tangent =
+				const GfxVector3 tangent =
 					NormalizeSafe(transformedTangent);
-				D3DXVECTOR3 bitangent;
-				D3DXVec3Cross(&bitangent, &tangent, &normal);
+				GfxVector3 bitangent;
+				GfxVec3Cross(&bitangent, &tangent, &normal);
 				bitangent = NormalizeSafe(bitangent) * tangentSign;
-				const D3DXVECTOR3 light(
+				const GfxVector3 light(
 					vertexShaderConstants[4 * 4 + 0],
 					vertexShaderConstants[4 * 4 + 1],
 					vertexShaderConstants[4 * 4 + 2]);
@@ -3223,16 +3223,16 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				vertex.color[2] = vertexShaderConstants[5 * 4 + 2];
 				vertex.color[3] = vertexShaderConstants[5 * 4 + 3];
 				vertex.secondaryColor[0] =
-					D3DXVec3Dot(&light, &bitangent) * scale + scale;
+					GfxVec3Dot(&light, &bitangent) * scale + scale;
 				vertex.secondaryColor[1] =
-					D3DXVec3Dot(&light, &tangent) * scale + scale;
+					GfxVec3Dot(&light, &tangent) * scale + scale;
 				vertex.secondaryColor[2] =
-					D3DXVec3Dot(&light, &normal) * scale + scale;
+					GfxVec3Dot(&light, &normal) * scale + scale;
 				vertex.secondaryColor[3] = 1.0f;
 				if (shaderFamily.vertex
 					== DX12_LEGACY_VS_SKINNED_TANGENT_SPECULAR)
 				{
-					D3DXVECTOR3 viewDirection(
+					GfxVector3 viewDirection(
 						vertexShaderConstants[8 * 4 + 0]
 							- transformedPosition.x,
 						vertexShaderConstants[8 * 4 + 1]
@@ -3240,11 +3240,11 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 						vertexShaderConstants[8 * 4 + 2]
 							- transformedPosition.z);
 					viewDirection = NormalizeSafe(viewDirection);
-					const D3DXVECTOR3 halfVector =
+					const GfxVector3 halfVector =
 						NormalizeSafe(viewDirection + light);
 					const FLOAT normalHalf = max(
 						0.0f,
-						D3DXVec3Dot(&normal, &halfVector));
+						GfxVec3Dot(&normal, &halfVector));
 					vertex.secondaryColor[3] = powf(
 						normalHalf,
 						vertexShaderConstants[8 * 4 + 3])
@@ -3264,8 +3264,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		}
 		else
 		{
-			D3DXVECTOR4 clip;
-			D3DXVec3Transform(&clip, &source, &worldViewProjection);
+			GfxVector4 clip;
+			GfxVec3Transform(&clip, &source, &worldViewProjection);
 			vertex.position[0] = clip.x;
 			vertex.position[1] = clip.y;
 			vertex.position[2] = clip.z;
