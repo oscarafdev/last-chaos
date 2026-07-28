@@ -61,6 +61,34 @@ namespace
 			&& left.bottom == right.bottom;
 	}
 
+	bool HasTextureBinding(
+		IDirect3DTexture9* pLegacyTexture,
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle)
+	{
+		return pLegacyTexture != NULL
+			|| textureHandle.IsValid()
+			|| renderTextureHandle.IsValid();
+	}
+
+	IDirect3DTexture9* SelectLegacyTextureIdentity(
+		IDirect3DTexture9* pLegacyTexture,
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle)
+	{
+		if (!textureHandle.IsValid() && !renderTextureHandle.IsValid())
+			return pLegacyTexture;
+		static bool reported = false;
+		if (!reported)
+		{
+			CPrintF(
+				"DX12 UI: command stream usa handles nativos sin "
+				"retener identidades COM D3D9.\n");
+			reported = true;
+		}
+		return NULL;
+	}
+
 	TextureCpuVertex MakeVertex(
 		FLOAT x,
 		FLOAT y,
@@ -399,9 +427,13 @@ bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 	const DirectX12RenderTextureHandle renderTextureHandle =
 		GetDirectX12ResourceRegistry().
 			ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture);
+	IDirect3DTexture9* pLegacyIdentity = SelectLegacyTextureIdentity(
+		pTexture,
+		textureHandle,
+		renderTextureHandle);
 
 	if (!m_pState->ranges.empty()
-		&& m_pState->ranges.back().pTexture == pTexture
+		&& m_pState->ranges.back().pTexture == pLegacyIdentity
 		&& m_pState->ranges.back().textureHandle == textureHandle
 		&& m_pState->ranges.back().renderTextureHandle
 			== renderTextureHandle
@@ -418,7 +450,7 @@ bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 		TextureBatchRange range;
 		range.firstVertex = firstVertex;
 		range.vertexCount = 3;
-		range.pTexture = pTexture;
+		range.pTexture = pLegacyIdentity;
 		range.textureHandle = textureHandle;
 		range.renderTextureHandle = renderTextureHandle;
 		if (range.pTexture != NULL)
@@ -610,7 +642,10 @@ bool CDirectX12DrawPortCommandBatch::Render(
 		{
 			++visibleRangesByBlend[effectiveBlendMode];
 			visibleVerticesByBlend[effectiveBlendMode] += range.vertexCount;
-			if (range.pTexture != NULL)
+			if (HasTextureBinding(
+					range.pTexture,
+					range.textureHandle,
+					range.renderTextureHandle))
 				++visibleTexturedRangeCount;
 		}
 		const DirectX12PipelineKind pipelineKind =
@@ -635,7 +670,10 @@ bool CDirectX12DrawPortCommandBatch::Render(
 			pSamplers[range.samplerMode].gpu);
 
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView;
-		if (range.pTexture != NULL)
+		if (HasTextureBinding(
+				range.pTexture,
+				range.textureHandle,
+				range.renderTextureHandle))
 		{
 			const bool acquired =
 				range.renderTextureHandle.IsValid()

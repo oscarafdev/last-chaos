@@ -708,6 +708,35 @@ namespace
 		}
 	}
 
+	bool HasTextureBinding(
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
+		IDirect3DTexture9* pLegacyTexture)
+	{
+		return textureHandle.IsValid()
+			|| renderTextureHandle.IsValid()
+			|| pLegacyTexture != NULL;
+	}
+
+	void ReleaseLegacyTextureForNativeBinding(
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
+		IDirect3DTexture9*& pLegacyTexture)
+	{
+		if (textureHandle.IsValid() || renderTextureHandle.IsValid())
+		{
+			ReleaseTexture(pLegacyTexture);
+			static bool reported = false;
+			if (!reported)
+			{
+				CPrintF(
+					"DX12 3D: command stream usa handles nativos sin "
+					"retener identidades COM D3D9.\n");
+				reported = true;
+			}
+		}
+	}
+
 	bool AcquireTexture(
 		CDirectX12InteropTextureManager* pTextures,
 		DirectX12TextureHandle textureHandle,
@@ -3531,6 +3560,24 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture2);
 	range.renderTextureHandle3 = GetDirectX12ResourceRegistry().
 		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture3);
+	// Los rangos nativos conservan handles generacionales. El alias COM sólo
+	// se retiene cuando el recurso todavía no tiene identidad DX12.
+	ReleaseLegacyTextureForNativeBinding(
+		range.textureHandle,
+		range.renderTextureHandle,
+		range.pTexture);
+	ReleaseLegacyTextureForNativeBinding(
+		range.textureHandle1,
+		range.renderTextureHandle1,
+		range.pTexture1);
+	ReleaseLegacyTextureForNativeBinding(
+		range.textureHandle2,
+		range.renderTextureHandle2,
+		range.pTexture2);
+	ReleaseLegacyTextureForNativeBinding(
+		range.textureHandle3,
+		range.renderTextureHandle3,
+		range.pTexture3);
 	range.depthEnabled = zEnable != FALSE;
 	range.depthWriteEnabled = zWrite != FALSE;
 	range.colorWriteEnabled = colorWriteMask != 0;
@@ -3924,7 +3971,11 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			&& range.pixelShaderConstants[2] > 0.5f;
 		const bool needsTextureSampling =
 			rangeWritesColor || samplesTextureForDepth;
-		if (needsTextureSampling && range.pTexture != NULL
+		if (needsTextureSampling
+			&& HasTextureBinding(
+				range.textureHandle,
+				range.renderTextureHandle,
+				range.pTexture)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle,
@@ -3936,7 +3987,11 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			return false;
 		pCommandList->SetGraphicsRootDescriptorTable(0, textureView);
 		if ((range.rigidLit || range.genericFamily)
-			&& rangeWritesColor && range.pTexture1 != NULL
+			&& rangeWritesColor
+			&& HasTextureBinding(
+				range.textureHandle1,
+				range.renderTextureHandle1,
+				range.pTexture1)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle1,
@@ -3956,7 +4011,10 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 				0);
 		}
 		if (range.genericFamily && rangeWritesColor
-			&& range.pTexture2 != NULL
+			&& HasTextureBinding(
+				range.textureHandle2,
+				range.renderTextureHandle2,
+				range.pTexture2)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle2,
@@ -3967,7 +4025,10 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 				&textureView2))
 			return false;
 		if (range.genericFamily && rangeWritesColor
-			&& range.pTexture3 != NULL
+			&& HasTextureBinding(
+				range.textureHandle3,
+				range.renderTextureHandle3,
+				range.pTexture3)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle3,

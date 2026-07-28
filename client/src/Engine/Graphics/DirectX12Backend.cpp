@@ -1215,6 +1215,43 @@ void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
 		m_pInteropTextures->ForgetTexture(pTexture9);
 }
 
+void CDirectX12Backend::PrepareNativeTextureBinding(
+	IDirect3DTexture9* pTexture9)
+{
+	if (!m_frameOpen || pTexture9 == NULL
+		|| m_pInteropTextures == NULL || m_pCommandList == NULL
+		|| m_pUploadManager == NULL)
+		return;
+	if (m_pInteropTextures->ResolveSampledTextureHandle(
+			pTexture9).IsValid()
+		|| m_pInteropTextures->ResolveRenderTextureHandle(
+			pTexture9).IsValid())
+		return;
+	D3D12_GPU_DESCRIPTOR_HANDLE ignored;
+	ignored.ptr = 0;
+	const bool acquired = m_pInteropTextures->Acquire(
+		pTexture9,
+		m_pCommandList,
+		m_pUploadManager,
+		&ignored);
+	static bool preparedReported = false;
+	static bool failureReported = false;
+	if (acquired && !preparedReported)
+	{
+		CPrintF(
+			"DX12 texturas: handle nativo preparado antes de capturar "
+			"el draw.\n");
+		preparedReported = true;
+	}
+	else if (!acquired && !failureReported)
+	{
+		CPrintF(
+			"DX12 texturas: no se pudo preparar un handle antes del draw; "
+			"se conserva el alias D3D9.\n");
+		failureReported = true;
+	}
+}
+
 void CDirectX12Backend::RefreshLegacyTexture(
 	IDirect3DTexture9* pTexture9)
 {
@@ -1855,6 +1892,32 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 {
 	if (m_uiScopeDepth > 0)
 		return false;
+	// Materializa los aliases nativos en el borde de captura. Algunos assets
+	// quedaron enlazados en D3D9 antes de abrir el frame y no vuelven a pasar
+	// por gfxSetTexture aunque continúen activos.
+	for (UINT textureUnit = 0;
+		textureUnit < texturePassCount && textureUnit < 4;
+		++textureUnit)
+	{
+		IDirect3DBaseTexture9* pBaseTexture = NULL;
+		IDirect3DTexture9* pTexture = NULL;
+		if (pDevice9 != NULL
+			&& SUCCEEDED(pDevice9->GetTexture(
+				textureUnit,
+				&pBaseTexture))
+			&& pBaseTexture != NULL
+			&& SUCCEEDED(pBaseTexture->QueryInterface(
+				__uuidof(IDirect3DTexture9),
+				reinterpret_cast<void**>(&pTexture)))
+			&& pTexture != NULL)
+		{
+			PrepareNativeTextureBinding(pTexture);
+		}
+		if (pTexture != NULL)
+			pTexture->Release();
+		if (pBaseTexture != NULL)
+			pBaseTexture->Release();
+	}
 	const DirectX12LegacyRenderTargetKind renderTargetKind =
 		ClassifyLegacyRenderTarget(pDevice9);
 	if (renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN
@@ -1981,6 +2044,7 @@ bool CDirectX12Backend::QueueDrawPortTexturedTriangle(
 	DirectX12BlendMode blendMode,
 	DirectX12SamplerMode samplerMode)
 {
+	PrepareNativeTextureBinding(pTexture);
 	return m_frameOpen && m_offscreenDrawPortDepth == 0
 		&& m_pNativeRenderer != NULL
 		&& m_pNativeRenderer->QueueDrawPortTexturedTriangle(

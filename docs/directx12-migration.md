@@ -1641,3 +1641,36 @@ El recorrido integral reveló además la variante
 de textura fixed-function. Se promueve mediante la familia `PS_FIXED` existente,
 sin duplicar shaders. Su prueba selectiva procesó 102 draws y 2 896 triángulos
 nativos, sin eventos de dispositivo, aplicación o pantalla.
+
+### Handles nativos en los command streams promovidos
+
+Los rangos capturados de UI y 3D usan ahora el handle generacional DX12 como
+identidad canónica de cada textura. Cuando el caché muestreado o el registro de
+render textures ya expone un handle válido, el rango deja de retener el
+`IDirect3DTexture9` y no incrementa su referencia COM.
+
+El puntero D3D9 se conserva únicamente para recursos que todavía no han sido
+materializados en DX12 y necesitan la ruta de adquisición diferida. La
+selección de SRV, la detección de realimentación RTV/SRV y la agrupación de
+rangos funcionan directamente con `DirectX12TextureHandle` o
+`DirectX12RenderTextureHandle`. De esta forma un refresh puede sustituir la
+identidad D3D9 sin invalidar comandos nativos ya grabados; el handle anterior
+permanece vivo hasta reciclar la fence del frame.
+
+El borde de captura de UI y 3D prepara la identidad nativa justo antes de
+grabar el draw. Esto cubre assets precargados antes de inicializar DX12 y
+bindings conservados por D3D9 desde un frame anterior: la adquisición diferida
+ocurre antes de crear el rango y el command stream nace con el handle.
+
+Validación:
+
+- build completo `LCRelease|x64`;
+- telemetría `handle nativo preparado antes de capturar el draw`;
+- telemetría independiente de UI y 3D confirmando que no retienen identidades
+  COM D3D9;
+- cámara verificada
+  `.itconfig/dx12-camera-captures/camera-repro-20260728-153829.json`;
+- captura
+  `.itconfig/dx12-camera-replays/dx12-native-command-handles-verified.png`,
+  con terreno, personaje, edificios, efectos y HUD correctos;
+- cierre automático del cliente confirmado.

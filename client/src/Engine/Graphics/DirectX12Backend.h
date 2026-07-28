@@ -69,6 +69,7 @@ public:
 	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
 	void ForgetLegacyTexture(IDirect3DTexture9* pTexture9);
 	void RetireLegacyTextureBinding(IDirect3DTexture9* pTexture9);
+	void PrepareNativeTextureBinding(IDirect3DTexture9* pTexture9);
 	void RefreshLegacyTexture(IDirect3DTexture9* pTexture9);
 	bool RefreshLegacyTextureFromRgbaMipChain(
 		IDirect3DTexture9* pTexture9,
