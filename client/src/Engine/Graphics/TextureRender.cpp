@@ -2,34 +2,14 @@
 
 #include <Engine/Graphics/Texture.h>
 
-#include <Engine/Base/Stream.h>
-#include <Engine/Base/Timer.h>
 #include <Engine/Base/Console.h>
-#include <Engine/Math/Functions.h>
+#include <Engine/Base/MemoryTracking.h>
 #include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/GfxLibrary.h>
-#include <Engine/Graphics/ViewPort.h>
-#include <Engine/Graphics/ImageInfo.h>
-#include <Engine/Graphics/TextureEffects.h>
 
-#include <Engine/Templates/DynamicArray.h>
-#include <Engine/Templates/DynamicArray.cpp>
-#include <Engine/Templates/Stock_CtextureData.h>
-#include <Engine/Templates/StaticArray.cpp>
-
-#include <Engine/Base/Statistics_internal.h>
-
-// Inicio de la incorporacion de CRenderTexture para renderizar a textura.
-#include <Engine/Base/MemoryTracking.h>
-// ###
-#include <d3d9.h>
-
-// track texture memory allocated in main heap
 #define TRACKTEX_HEAP() TRACKMEM(mem, "Textures (heap)")
-// track texture memory allocated in hardware
-#define TRACKTEX_HW() TRACKMEM(mem, "Textures (hardware)")
 
-extern ENGINE_API INDEX sam_iGfxAPI;	// 0==OpenGL
+extern ENGINE_API INDEX sam_iGfxAPI;
 
 CRenderTexture::CRenderTexture()
 {
@@ -50,12 +30,10 @@ CRenderTexture::~CRenderTexture()
 		GetDirectX12Backend().DestroyNativeOffscreenTexture(
 			m_nativeColorHandle);
 		m_nativeColorHandle = DX12_INVALID_RENDER_TEXTURE;
+		rt_tdTexture.td_ulObject = NONE;
 	}
-	if(rt_pSurface) rt_pSurface->Release();
-	if(m_pDepthStencil) m_pDepthStencil->Release();
 }
 
-// Se agrega el parametro de formato D3D.
 BOOL CRenderTexture::Init(
 	INDEX width,
 	INDEX height,
@@ -64,199 +42,90 @@ BOOL CRenderTexture::Init(
 	ERenderTexturePurpose purpose)
 {
 	TRACKTEX_HEAP();
-	
-	// check maximum supported texture dimension
-	if( width>MAX_MEX || height>MAX_MEX)
+	if (width > MAX_MEX || height > MAX_MEX)
 	{
 		ASSERTALWAYS("El tamano de la textura supera el maximo permitido.");
 		return FALSE;
 	}
 
-	// El formato fijo D3DFMT_A8R8G8B8 se reemplaza por el parametro fmt.
 	rt_tdTexture.td_ulInternalFormat = fmt;
-	
-	// determine mip index from mex size and alpha channel presence
 	rt_tdTexture.td_iFirstMipLevel = 0;
 	rt_tdTexture.td_ulFlags = flag;
-	rt_tdTexture.td_ulFlags |= TEX_ALPHACHANNEL;	//alhpa
-	rt_tdTexture.td_ulFlags |= TEX_TRANSPARENT;		// Siempre se habilita cuando existe canal alfa.
+	rt_tdTexture.td_ulFlags |= TEX_ALPHACHANNEL;
+	rt_tdTexture.td_ulFlags |= TEX_TRANSPARENT;
 	rt_tdTexture.td_ulFlags |= TEX_32BIT;
 	rt_tdTexture.td_ulFlags |= TEX_CONSTANT;
 	rt_tdTexture.td_ulFlags &= ~TEX_STATIC;
-	rt_tdTexture.td_ulFlags &= ~(TEX_COMPRESS|TEX_COMPRESSALPHA);	//not allowed compress in shadow
-
-	// initialize general TextureData members
-	rt_tdTexture.td_ctFrames  = 0;
-	rt_tdTexture.td_mexWidth  = width << rt_tdTexture.td_iFirstMipLevel;
-	rt_tdTexture.td_mexHeight = height << rt_tdTexture.td_iFirstMipLevel;
-	
-	// create all mip levels (either bilinear or downsampled)
-	rt_tdTexture.td_ctFineMipLevels = 1;
-	// get frame size (includes only one mip-map)
-	rt_tdTexture.td_slFrameSize = 0;
-	
-	// allocate small ammount of memory just for Realloc sake
-	rt_tdTexture.td_pulFrames = NULL;
+	rt_tdTexture.td_ulFlags &= ~(TEX_COMPRESS | TEX_COMPRESSALPHA);
 	rt_tdTexture.td_ctFrames = 1;
+	rt_tdTexture.td_mexWidth = width;
+	rt_tdTexture.td_mexHeight = height;
+	rt_tdTexture.td_ctFineMipLevels = 1;
+	rt_tdTexture.td_slFrameSize = 0;
+	rt_tdTexture.td_pulFrames = NULL;
 
-	if( sam_iGfxAPI==GAT_OGL)
+	if (sam_iGfxAPI == GAT_OGL)
+		return FALSE;
+	if (sam_iGfxAPI != GAT_D3D)
+		return FALSE;
+
+	if (!GetDirectX12Backend().CreateNativeOffscreenTexture(
+		width,
+		height,
+		static_cast<INT>(fmt),
+		&m_nativeColorHandle))
 	{
-		// ### TODO:
-		// OpenGL
-	} 
-	else if( sam_iGfxAPI==GAT_D3D)
-	{
-		// Crea la textura Direct3D usada como render target.
-		IDirect3DTexture9 *pTexture = NULL;
-		// El formato fijo D3DFMT_A8R8G8B8 se reemplaza por el parametro fmt.
-		HRESULT hr = _pGfx->gl_pd3d9Device->CreateTexture(width, height, 1, D3DUSAGE_RENDERTARGET, fmt, D3DPOOL_DEFAULT, &pTexture, NULL);
-		if(hr == NOERROR)
-		{
-			rt_tdTexture.td_ulObject = (ULONG64)pTexture;	// Conserva la textura creada.
-			pTexture->GetSurfaceLevel(0, &rt_pSurface);
-			if (!GetDirectX12Backend().RequiresLegacyOffscreenDepth()
-				&& GetDirectX12Backend().CreateNativeOffscreenTexture(
-					pTexture,
-					width,
-					height,
-					static_cast<INT>(fmt),
-					&m_nativeColorHandle))
-			{
-				m_bNativeColorTarget = TRUE;
-				static BOOL bNativeDepthReported = FALSE;
-				if (!bNativeDepthReported)
-				{
-					CPrintF(
-						"DX12 offscreen: profundidad auxiliar "
-						"administrada por el backend nativo.\n");
-					bNativeDepthReported = TRUE;
-				}
-				return TRUE;
-			}
-			// El postproceso solo necesita color; no crea un depth auxiliar.
-			if (purpose == RTP_POST_PROCESS)
-				return TRUE;
-			// Los modos de comparación conservan el depth legado porque sus
-			// draws D3D9 siguen siendo visibles junto con la pasada DX12.
-		    hr = _pGfx->gl_pd3d9Device->CreateDepthStencilSurface(width, height, D3DFMT_D16, D3DMULTISAMPLE_NONE, 0, FALSE, &m_pDepthStencil, NULL);
-			if(hr == NOERROR)
-			{
-				return TRUE;
-			}
-		}
-		else
-		{
-			rt_tdTexture.td_ulObject = NULL;
-			return FALSE;
-		}
+		rt_tdTexture.td_ulObject = NONE;
+		return FALSE;
 	}
-	return FALSE;
+
+	rt_tdTexture.td_ulObject = m_nativeColorHandle.GetValue();
+	m_bNativeColorTarget = TRUE;
+	static BOOL bNativeTargetReported = FALSE;
+	if (!bNativeTargetReported)
+	{
+		CPrintF(
+			"DX12 offscreen: render texture creada directamente "
+			"sin identidad D3D9.\n");
+		bNativeTargetReported = TRUE;
+	}
+	return TRUE;
 }
 
-void CRenderTexture::Begin()	// SetRenderTarget current
+void CRenderTexture::Begin()
 {
-	if( sam_iGfxAPI==GAT_OGL)
-	{
-		// ### TODO:
-		// OpenGL
-	} 
-	else if( sam_iGfxAPI==GAT_D3D)
-	{
-		GetDirectX12Backend().InsertDrawPortBarrier(
-			DX12_DRAWPORT_BARRIER_RENDER_TARGET_BEGIN);
-		// Vacía primero los draws del destino actual. Activar la identidad
-		// nativa auxiliar antes de esta barrera hacía que el terreno pendiente
-		// del backbuffer se reprodujera dentro de la nueva render texture.
-		GetDirectX12Backend().BeginOffscreenDrawPortScope();
-		m_bNativeColorActive = m_bNativeColorTarget
-			&& GetDirectX12Backend().BeginNativeOffscreenTexture(
-				m_nativeColorHandle);
-		IDirect3DDevice9* pDev = _pGfx->gl_pd3d9Device;
-		CViewPort* pActiveViewPort = _pGfx->gl_pvpActive;
-		if (pActiveViewPort != NULL)
-		{
-			if (pActiveViewPort->vp9_pSwapChain != NULL)
-			{
-				pActiveViewPort->vp9_pSwapChain->GetBackBuffer(
-					0,
-					D3DBACKBUFFER_TYPE_MONO,
-					&m_pOldRenderTarget);
-			}
-			else
-			{
-				pDev->GetBackBuffer(
-					0,
-					0,
-					D3DBACKBUFFER_TYPE_MONO,
-					&m_pOldRenderTarget);
-			}
-			m_pOldDepthStencil = pActiveViewPort->vp9_pSurfDepth;
-			if (m_pOldDepthStencil != NULL)
-				m_pOldDepthStencil->AddRef();
-		}
-		pDev->SetDepthStencilSurface(m_pDepthStencil);
-		pDev->SetRenderTarget(0, rt_pSurface);
-		GetDirectX12Backend().TrackLegacy3DRenderTarget(
-			DX12_LEGACY_RENDER_TARGET_OFFSCREEN);
-	}
+	if (sam_iGfxAPI != GAT_D3D)
+		return;
+	GetDirectX12Backend().InsertDrawPortBarrier(
+		DX12_DRAWPORT_BARRIER_RENDER_TARGET_BEGIN);
+	GetDirectX12Backend().BeginOffscreenDrawPortScope();
+	m_bNativeColorActive = m_bNativeColorTarget
+		&& GetDirectX12Backend().BeginNativeOffscreenTexture(
+			m_nativeColorHandle);
+	GetDirectX12Backend().TrackLegacy3DRenderTarget(
+		DX12_LEGACY_RENDER_TARGET_OFFSCREEN);
 }
 
 void CRenderTexture::Clear(COLOR colClear, FLOAT fZVal)
 {
-	if( sam_iGfxAPI==GAT_OGL)
-	{
-		// ### TODO:
-		// OpenGL
-	} 
-	else if( sam_iGfxAPI==GAT_D3D)
-	{
-		if (m_bNativeColorActive)
-			GetDirectX12Backend().ClearNativeOffscreenTexture(colClear);
-		const DWORD clearFlags = m_pDepthStencil != NULL
-			? D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER
-			: D3DCLEAR_TARGET;
-		_pGfx->gl_pd3d9Device->Clear(
-			0, NULL, clearFlags, colClear, fZVal, 0);
-	}
+	if (sam_iGfxAPI == GAT_D3D && m_bNativeColorActive)
+		GetDirectX12Backend().ClearNativeOffscreenTexture(colClear);
 }
 
-void CRenderTexture::End()		// SetRenderTarget old
+void CRenderTexture::End()
 {
-	if( sam_iGfxAPI==GAT_OGL)
+	if (sam_iGfxAPI != GAT_D3D)
+		return;
+	GetDirectX12Backend().EndOffscreenDrawPortScope();
+	if (m_bNativeColorActive)
 	{
-		// ### TODO:
-		// OpenGL
-	} 
-	else if( sam_iGfxAPI==GAT_D3D)
-	{
-		IDirect3DDevice9 *pDev = _pGfx->gl_pd3d9Device;
-		// El backend debe reproducir la geometria DX12 mientras la textura
-		// auxiliar y su profundidad siguen siendo el destino activo.
-		GetDirectX12Backend().EndOffscreenDrawPortScope();
-		if (m_bNativeColorActive)
-		{
-			GetDirectX12Backend().EndNativeOffscreenTexture();
-			m_bNativeColorActive = FALSE;
-		}
-		//pDev->SetRenderTarget(m_pOldRenderTarget, m_pOldDepthStencil);
-	    pDev->SetDepthStencilSurface(m_pOldDepthStencil);
-	    pDev->SetRenderTarget(0, m_pOldRenderTarget);
-		GetDirectX12Backend().TrackLegacy3DRenderTarget(
-			DX12_LEGACY_RENDER_TARGET_PRESENTATION);
-		GetDirectX12Backend().InsertDrawPortBarrier(
-			DX12_DRAWPORT_BARRIER_RENDER_TARGET_END);
-		if(m_pOldRenderTarget)
-		{
-			m_pOldRenderTarget->Release();
-			m_pOldRenderTarget = NULL;
-		}
-
-		if(m_pOldDepthStencil)
-		{
-			m_pOldDepthStencil->Release();
-			m_pOldDepthStencil = NULL;
-		}
+		GetDirectX12Backend().EndNativeOffscreenTexture();
+		m_bNativeColorActive = FALSE;
 	}
+	GetDirectX12Backend().TrackLegacy3DRenderTarget(
+		DX12_LEGACY_RENDER_TARGET_PRESENTATION);
+	GetDirectX12Backend().InsertDrawPortBarrier(
+		DX12_DRAWPORT_BARRIER_RENDER_TARGET_END);
 }
 
 DirectX12RenderTextureHandle
@@ -264,4 +133,3 @@ CRenderTexture::GetNativeTextureHandle() const
 {
 	return m_nativeColorHandle;
 }
-// Fin de la incorporacion de CRenderTexture para renderizar a textura.

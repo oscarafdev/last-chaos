@@ -90,8 +90,37 @@ public:
 		UINT height,
 		INT legacyFormat,
 		UINT maximumMipCount);
+	bool CreateNativeSampledTexture(DirectX12TextureHandle* pHandle);
+	void DestroyNativeSampledTexture(DirectX12TextureHandle handle);
+	bool UploadNativeTextureFromRgbaMipChain(
+		DirectX12TextureHandle handle,
+		const void* pPixels,
+		UINT width,
+		UINT height,
+		INT legacyFormat,
+		UINT maximumMipCount,
+		DirectX12TextureHandle* pNewHandle);
+	bool UploadNativeTextureFromCompressedBlob(
+		DirectX12TextureHandle handle,
+		const void* pBlob,
+		size_t blobSize,
+		UINT width,
+		UINT height,
+		INT legacyFormat,
+		UINT maximumMipCount,
+		DirectX12TextureHandle* pNewHandle);
+	bool GetNativeTextureDescription(
+		DirectX12TextureHandle handle,
+		UINT* pWidth,
+		UINT* pHeight,
+		INT* pFormat) const;
 	bool CreateNativeOffscreenTexture(
 		IDirect3DTexture9* pTexture9,
+		UINT width,
+		UINT height,
+		INT legacyFormat,
+		DirectX12RenderTextureHandle* pHandle);
+	bool CreateNativeOffscreenTexture(
 		UINT width,
 		UINT height,
 		INT legacyFormat,
@@ -184,6 +213,12 @@ public:
 		const FLOAT* pConstants,
 		UINT registerCount);
 	void TrackLegacy3DTexture(UINT stage, IDirect3DTexture9* pTexture);
+	void TrackNative3DTexture(
+		UINT stage,
+		DirectX12TextureHandle texture);
+	void TrackNative3DTexture(
+		UINT stage,
+		DirectX12RenderTextureHandle texture);
 	void PrepareLegacy3DDepthClear();
 	bool QueueLegacy3DIndexedDraw(
 		const USHORT* pIndices,
@@ -222,6 +257,19 @@ public:
 		const DirectX12DrawPortTexturedVertex& vertex2,
 		LONG scissorLeft, LONG scissorTop,
 		LONG scissorRight, LONG scissorBottom,
+		DirectX12BlendMode blendMode = DX12_BLEND_ALPHA,
+		DirectX12SamplerMode samplerMode =
+			DX12_SAMPLER_POINT_CLAMP);
+	bool QueueDrawPortTexturedTriangle(
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
+		const DirectX12DrawPortTexturedVertex& vertex0,
+		const DirectX12DrawPortTexturedVertex& vertex1,
+		const DirectX12DrawPortTexturedVertex& vertex2,
+		LONG scissorLeft,
+		LONG scissorTop,
+		LONG scissorRight,
+		LONG scissorBottom,
 		DirectX12BlendMode blendMode = DX12_BLEND_ALPHA,
 		DirectX12SamplerMode samplerMode =
 			DX12_SAMPLER_POINT_CLAMP);

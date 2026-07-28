@@ -29,6 +29,15 @@ public:
 		DXGI_FORMAT format,
 		UINT componentMapping =
 			D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING);
+	bool Recreate2D(
+		ID3D12Device* pDevice,
+		CDirectX12DescriptorHeap* pDescriptorHeap,
+		UINT width,
+		UINT height,
+		UINT16 mipLevels,
+		DXGI_FORMAT format,
+		UINT componentMapping =
+			D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING);
 	bool CreateRenderTarget2D(
 		ID3D12Device* pDevice,
 		CDirectX12DescriptorHeap* pResourceDescriptorHeap,
@@ -77,7 +86,9 @@ private:
 		D3D12_RESOURCE_STATES initialState,
 		const D3D12_CLEAR_VALUE* pClearValue,
 		const wchar_t* pDebugName,
-		DirectX12ResourceKind resourceKind);
+		DirectX12ResourceKind resourceKind,
+		bool preserveIdentity);
+	void ReleaseStorage();
 
 	ID3D12Resource* m_pResource;
 	CDirectX12DescriptorHeap* m_pDescriptorHeap;

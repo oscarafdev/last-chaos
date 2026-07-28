@@ -44,6 +44,34 @@ public:
 		UINT height,
 		D3DFORMAT legacyFormat,
 		DirectX12RenderTextureHandle* pHandle);
+	bool CreateRenderTarget(
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat,
+		DirectX12RenderTextureHandle* pHandle);
+	bool CreateSampledTexture(DirectX12TextureHandle* pHandle);
+	void DestroySampledTexture(DirectX12TextureHandle handle);
+	bool RefreshSampledTextureFromRgbaMipChain(
+		DirectX12TextureHandle handle,
+		const void* pPixels,
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat,
+		UINT maximumMipCount,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
+		DirectX12TextureHandle* pNewHandle);
+	bool RefreshSampledTextureFromCompressedBlob(
+		DirectX12TextureHandle handle,
+		const void* pBlob,
+		size_t blobSize,
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat,
+		UINT maximumMipCount,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
+		DirectX12TextureHandle* pNewHandle);
 	void DestroyRenderTarget(DirectX12RenderTextureHandle handle);
 	CDirectX12Texture* FindRenderTarget(
 		DirectX12RenderTextureHandle handle) const;
@@ -68,6 +96,7 @@ public:
 	bool Acquire(
 		DirectX12TextureHandle handle,
 		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
 	bool Acquire(
 		DirectX12RenderTextureHandle handle,

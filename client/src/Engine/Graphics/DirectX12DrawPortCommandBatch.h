@@ -72,6 +72,15 @@ public:
 		const D3D12_RECT& scissor,
 		DirectX12BlendMode blendMode,
 		DirectX12SamplerMode samplerMode);
+	bool QueueTriangle(
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
+		FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
+		FLOAT x1, FLOAT y1, FLOAT u1, FLOAT v1, ULONG color1,
+		FLOAT x2, FLOAT y2, FLOAT u2, FLOAT v2, ULONG color2,
+		const D3D12_RECT& scissor,
+		DirectX12BlendMode blendMode,
+		DirectX12SamplerMode samplerMode);
 
 	bool Render(
 		ID3D12GraphicsCommandList* pCommandList,

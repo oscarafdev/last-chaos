@@ -18,6 +18,20 @@
 #define B  byte ptr
 
 static CTexParams *_tpCurrent;
+
+extern UINT GetTextureMipCount_D3D(PIX width, PIX height)
+{
+	if (_tpCurrent != NULL && _tpCurrent->tp_bSingleMipmap)
+		return 1;
+	UINT mipCount = 0;
+	while (width > 0 && height > 0)
+	{
+		++mipCount;
+		width >>= 1;
+		height >>= 1;
+	}
+	return mipCount;
+}
 static _D3DTEXTUREFILTERTYPE _eLastMipFilter;
 static BOOL _abAnisotropySet[GFX_MAXTEXUNITS] = {1234};  // last state of anisotropy
 
@@ -184,8 +198,9 @@ extern void UploadTexture_D3D(LPDIRECT3DTEXTURE9 *ppd3dTexture, ULONG *pulTextur
 			D3DRELEASE((*ppd3dTexture), TRUE);
 		}
 		const INDEX iSetupMipmaps = bNoMipmaps ? 1 : 0;
-		hr = _pGfx->gl_pd3d9Device->CreateTexture(pixSizeU, pixSizeV, iSetupMipmaps, 0, eInternalFormat, D3DPOOL_MANAGED, ppd3dTexture, NULL);
-		D3D_CHECKERROR(hr);
+		ASSERTALWAYS(
+			"UploadTexture_D3D fue retirado; use el upload DX12 nativo.");
+		return;
 	}
 	// D3D texture must be valid now
 	LPDIRECT3DTEXTURE9 pd3dTex = (*ppd3dTexture);
@@ -310,8 +325,9 @@ extern BOOL UploadCompressedTexture_D3D( LPDIRECT3DTEXTURE9 *ppd3dTexture, UBYTE
     D3DRELEASE( (*ppd3dTexture), TRUE);
   }
   const INDEX iSetupMipmaps = bNoMipmaps ? 1 : 0;
-  hr = _pGfx->gl_pd3d9Device->CreateTexture(pixSizeU, pixSizeV, iSetupMipmaps, 0, eInternalFormat, D3DPOOL_MANAGED, ppd3dTexture, NULL);
-  D3D_CHECKERROR(hr);
+  ASSERTALWAYS(
+	  "UploadCompressedTexture_D3D fue retirado; use DX12 nativo.");
+  return FALSE;
   // D3D texture must be valid now
   LPDIRECT3DTEXTURE9 pd3dTex = (*ppd3dTexture);
   ASSERT( pd3dTex!=NULL);
@@ -327,7 +343,7 @@ extern BOOL UploadCompressedTexture_D3D( LPDIRECT3DTEXTURE9 *ppd3dTexture, UBYTE
     pubTexture += 4;
     // fetch texture
     hr = pd3dTex->GetLevelDesc( iMip, &d3dSurfDesc);         D3D_CHECKERROR(hr);
-    hr = pd3dTex->LockRect( iMip, &rectLocked, NULL, NONE);  D3D_CHECKERROR(hr);
+    return FALSE;
     //ASSERT( d3dSurfDesc.Size==slMipSize);
     //if( d3dSurfDesc.Size!=slMipSize) { // saved mip size and texture mip size must match!
     //  _sfStats.StopTimer( CStatForm::STI_BINDTEXTURE);

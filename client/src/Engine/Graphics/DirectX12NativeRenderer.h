@@ -148,6 +148,18 @@ public:
 		LONG scissorBottom,
 		DirectX12BlendMode blendMode,
 		DirectX12SamplerMode samplerMode);
+	bool QueueDrawPortTexturedTriangle(
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
+		FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
+		FLOAT x1, FLOAT y1, FLOAT u1, FLOAT v1, ULONG color1,
+		FLOAT x2, FLOAT y2, FLOAT u2, FLOAT v2, ULONG color2,
+		LONG scissorLeft,
+		LONG scissorTop,
+		LONG scissorRight,
+		LONG scissorBottom,
+		DirectX12BlendMode blendMode,
+		DirectX12SamplerMode samplerMode);
 
 	bool RenderValidationPass(
 		ID3D12GraphicsCommandList* pCommandList,

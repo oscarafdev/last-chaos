@@ -5,6 +5,7 @@
 #endif
 
 #include <windows.h>
+#include <Engine/Graphics/DirectX12ResourceHandle.h>
 
 struct IDirect3DTexture9;
 struct IDirect3DVertexShader9;
@@ -64,6 +65,10 @@ public:
 		const FLOAT* pConstants,
 		UINT registerCount);
 	void SetTexture(UINT stage, IDirect3DTexture9* pTexture);
+	void SetTexture(UINT stage, DirectX12TextureHandle texture);
+	void SetTexture(UINT stage, DirectX12RenderTextureHandle texture);
+	void ForgetTexture(DirectX12TextureHandle texture);
+	void ForgetTexture(DirectX12RenderTextureHandle texture);
 	void SetDynamicGeometry(bool dynamic);
 
 	FLOAT world[16];
@@ -107,6 +112,10 @@ public:
 	BYTE vertexDeclaration[256];
 	UINT vertexDeclarationByteCount;
 	IDirect3DTexture9* textures[DX12_LEGACY_TEXTURE_STAGE_COUNT];
+	DirectX12TextureHandle
+		textureHandles[DX12_LEGACY_TEXTURE_STAGE_COUNT];
+	DirectX12RenderTextureHandle
+		renderTextureHandles[DX12_LEGACY_TEXTURE_STAGE_COUNT];
 	IDirect3DVertexShader9* pVertexShader;
 	IDirect3DPixelShader9* pPixelShader;
 	bool dynamicGeometry;

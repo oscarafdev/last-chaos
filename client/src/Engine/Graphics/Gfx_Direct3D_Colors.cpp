@@ -126,10 +126,9 @@ static void ConvertAny( ULONG *pulSrc, LPDIRECT3DTEXTURE9 ptexDst, PIX pixWidth,
   }
 
   D3DLOCKED_RECT locked;
-  hr = ptexDst->LockRect(iMip, &locked, NULL, NONE);
-  D3D_CHECKERROR(hr);
-  if (FAILED(hr))
-    return;
+  ASSERTALWAYS(
+    "La conversion D3D9 con LockRect fue retirada; use DX12 nativo.");
+  return;
   converter(
     pulSrc,
     locked.pBits,
@@ -1167,8 +1166,9 @@ extern void UploadMipmap_D3D( ULONG *pulSrc, LPDIRECT3DTEXTURE9 ptexDst, PIX pix
   // yeah! - optimized case :)
   HRESULT hr;
   D3DLOCKED_RECT rectLocked;
-  hr = ptexDst->LockRect( iMip, &rectLocked, NULL, NONE);
-  D3D_CHECKERROR(hr);
+  ASSERTALWAYS(
+    "UploadMipmap_D3D fue retirado; use DX12 nativo.");
+  return;
   
   // (only if size is sufficient for swizzling)
   if( !bSwizzle || pixWidth<4 || pixHeight<2) {
@@ -1264,8 +1264,9 @@ extern void UploadMipmap_D3D(ULONG *pulSrc, LPDIRECT3DTEXTURE9 ptexDst, PIX pixW
 	// yeah! - optimized case :)
 	HRESULT hr;
 	D3DLOCKED_RECT rectLocked;
-	hr = ptexDst->LockRect(iMip, &rectLocked, NULL, NONE);
-	D3D_CHECKERROR(hr);
+	ASSERTALWAYS(
+		"UploadMipmap_D3D fue retirado; use DX12 nativo.");
+	return;
 	pConvertMipmap(pulSrc, rectLocked.pBits, pixWidth, pixHeight, rectLocked.Pitch);
 	hr = ptexDst->UnlockRect(iMip);
 	D3D_CHECKERROR(hr);

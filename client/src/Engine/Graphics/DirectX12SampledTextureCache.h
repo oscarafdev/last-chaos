@@ -36,6 +36,29 @@ public:
 	void Forget(IDirect3DTexture9* pTexture9);
 	void RetireLegacyBinding(IDirect3DTexture9* pTexture9);
 	DirectX12TextureHandle FindHandle(IDirect3DTexture9* pTexture9) const;
+	bool CreateNative(DirectX12TextureHandle* pHandle);
+	void DestroyNative(DirectX12TextureHandle handle);
+	bool RefreshNativeFromRgbaMipChain(
+		DirectX12TextureHandle handle,
+		const void* pPixels,
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat,
+		UINT maximumMipCount,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
+		DirectX12TextureHandle* pNewHandle);
+	bool RefreshNativeFromCompressedBlob(
+		DirectX12TextureHandle handle,
+		const void* pBlob,
+		size_t blobSize,
+		UINT width,
+		UINT height,
+		D3DFORMAT legacyFormat,
+		UINT maximumMipCount,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
+		DirectX12TextureHandle* pNewHandle);
 
 	// Reemplaza anticipadamente la copia nativa después de un upload legado.
 	// Si no puede hacerlo, Acquire conserva una ruta de creación bajo demanda.
@@ -69,7 +92,9 @@ public:
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
 	bool Acquire(
 		DirectX12TextureHandle handle,
-		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView) const;
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
+		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
 
 private:
 	enum CpuUploadKind
@@ -92,6 +117,14 @@ private:
 		CpuUploadKind cpuUploadKind,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
 	bool Remove(IDirect3DTexture9* pTexture9);
+	bool Remove(DirectX12TextureHandle handle);
+	bool ReplaceNative(
+		DirectX12TextureHandle handle,
+		const CDirectX12TextureUploadSource& source,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
+		CpuUploadKind cpuUploadKind,
+		DirectX12TextureHandle* pNewHandle);
 	void Retire(class CDirectX12Texture* pTexture);
 	void ReleaseRetired(UINT frameIndex);
 

@@ -140,9 +140,6 @@ void CDirectX12InteropTextureManager::ForgetTexture(
 			++iEntry;
 			continue;
 		}
-		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
-			entry.pTexture9,
-			entry.handle);
 		delete entry.pNativeTexture;
 		entry.pNativeTexture = NULL;
 		entry.pTexture9->Release();
@@ -222,6 +219,110 @@ bool CDirectX12InteropTextureManager::CreateRenderTarget(
 	return true;
 }
 
+bool CDirectX12InteropTextureManager::CreateRenderTarget(
+	UINT width,
+	UINT height,
+	D3DFORMAT legacyFormat,
+	DirectX12RenderTextureHandle* pHandle)
+{
+	if (m_pState == NULL || m_pDevice == NULL
+		|| m_pResourceDescriptors == NULL
+		|| m_pRenderTargetDescriptors == NULL || pHandle == NULL)
+		return false;
+	*pHandle = DirectX12RenderTextureHandle();
+	DirectX12TextureFormatInfo formatInfo;
+	if (!GetDirectX12TextureFormat(legacyFormat, &formatInfo)
+		|| formatInfo.conversion != DX12_TEXTURE_CONVERSION_NONE)
+		return false;
+	CDirectX12Texture* pNativeTexture = new CDirectX12Texture;
+	if (pNativeTexture == NULL
+		|| !pNativeTexture->CreateRenderTarget2D(
+			m_pDevice,
+			m_pResourceDescriptors,
+			m_pRenderTargetDescriptors,
+			width,
+			height,
+			formatInfo.format,
+			formatInfo.componentMapping))
+	{
+		delete pNativeTexture;
+		return false;
+	}
+	NativeRenderTextureEntry entry;
+	entry.handle = pNativeTexture->GetRenderTextureHandle();
+	entry.pTexture9 = NULL;
+	entry.pNativeTexture = pNativeTexture;
+	m_pState->renderTextures.push_back(entry);
+	*pHandle = entry.handle;
+	return entry.handle.IsValid();
+}
+
+bool CDirectX12InteropTextureManager::CreateSampledTexture(
+	DirectX12TextureHandle* pHandle)
+{
+	return m_pSampledTextureCache != NULL
+		&& m_pSampledTextureCache->CreateNative(pHandle);
+}
+
+void CDirectX12InteropTextureManager::DestroySampledTexture(
+	DirectX12TextureHandle handle)
+{
+	if (m_pSampledTextureCache != NULL)
+		m_pSampledTextureCache->DestroyNative(handle);
+}
+
+bool CDirectX12InteropTextureManager::
+RefreshSampledTextureFromRgbaMipChain(
+	DirectX12TextureHandle handle,
+	const void* pPixels,
+	UINT width,
+	UINT height,
+	D3DFORMAT legacyFormat,
+	UINT maximumMipCount,
+	ID3D12GraphicsCommandList* pCommandList,
+	CDirectX12UploadManager* pUploadManager,
+	DirectX12TextureHandle* pNewHandle)
+{
+	return m_pSampledTextureCache != NULL
+		&& m_pSampledTextureCache->RefreshNativeFromRgbaMipChain(
+			handle,
+			pPixels,
+			width,
+			height,
+			legacyFormat,
+			maximumMipCount,
+			pCommandList,
+			pUploadManager,
+			pNewHandle);
+}
+
+bool CDirectX12InteropTextureManager::
+RefreshSampledTextureFromCompressedBlob(
+	DirectX12TextureHandle handle,
+	const void* pBlob,
+	size_t blobSize,
+	UINT width,
+	UINT height,
+	D3DFORMAT legacyFormat,
+	UINT maximumMipCount,
+	ID3D12GraphicsCommandList* pCommandList,
+	CDirectX12UploadManager* pUploadManager,
+	DirectX12TextureHandle* pNewHandle)
+{
+	return m_pSampledTextureCache != NULL
+		&& m_pSampledTextureCache->RefreshNativeFromCompressedBlob(
+			handle,
+			pBlob,
+			blobSize,
+			width,
+			height,
+			legacyFormat,
+			maximumMipCount,
+			pCommandList,
+			pUploadManager,
+			pNewHandle);
+}
+
 void CDirectX12InteropTextureManager::DestroyRenderTarget(
 	DirectX12RenderTextureHandle handle)
 {
@@ -242,6 +343,9 @@ void CDirectX12InteropTextureManager::DestroyRenderTarget(
 		entry.pNativeTexture = NULL;
 		if (entry.pTexture9 != NULL)
 		{
+			GetDirectX12ResourceRegistry().UnbindLegacyAlias(
+				entry.pTexture9,
+				entry.handle);
 			entry.pTexture9->Release();
 			entry.pTexture9 = NULL;
 		}
@@ -362,13 +466,16 @@ bool CDirectX12InteropTextureManager::Acquire(
 bool CDirectX12InteropTextureManager::Acquire(
 	DirectX12TextureHandle handle,
 	ID3D12GraphicsCommandList* pCommandList,
+	CDirectX12UploadManager* pUploadManager,
 	D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView)
 {
-	if (!m_frameActive || pCommandList == NULL
+	if (!m_frameActive || pCommandList == NULL || pUploadManager == NULL
 		|| pShaderResourceView == NULL || m_pSampledTextureCache == NULL)
 		return false;
 	return m_pSampledTextureCache->Acquire(
 		handle,
+		pCommandList,
+		pUploadManager,
 		pShaderResourceView);
 }
 

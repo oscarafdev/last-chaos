@@ -468,6 +468,66 @@ bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 	return true;
 }
 
+bool CDirectX12DrawPortCommandBatch::QueueTriangle(
+	DirectX12TextureHandle textureHandle,
+	DirectX12RenderTextureHandle renderTextureHandle,
+	FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
+	FLOAT x1, FLOAT y1, FLOAT u1, FLOAT v1, ULONG color1,
+	FLOAT x2, FLOAT y2, FLOAT u2, FLOAT v2, ULONG color2,
+	const D3D12_RECT& scissor,
+	DirectX12BlendMode blendMode,
+	DirectX12SamplerMode samplerMode)
+{
+	if (!m_frameActive || m_pState->scopes.empty()
+		|| samplerMode < 0 || samplerMode >= DX12_SAMPLER_COUNT)
+		return false;
+	const DirectX12DrawPortScope scope = m_pState->scopes.back();
+	const UINT firstVertex =
+		static_cast<UINT>(m_pState->vertices.size());
+	const TextureCpuVertex vertices[] = {
+		MakeVertex(x0, y0, u0, v0, color0),
+		MakeVertex(x1, y1, u1, v1, color1),
+		MakeVertex(x2, y2, u2, v2, color2)
+	};
+	m_pState->vertices.insert(
+		m_pState->vertices.end(),
+		vertices,
+		vertices + 3);
+	if (!m_pState->ranges.empty()
+		&& m_pState->ranges.back().pTexture == NULL
+		&& m_pState->ranges.back().textureHandle == textureHandle
+		&& m_pState->ranges.back().renderTextureHandle
+			== renderTextureHandle
+		&& SameScissor(m_pState->ranges.back().scissor, scissor)
+		&& m_pState->ranges.back().blendMode == blendMode
+		&& m_pState->ranges.back().samplerMode == samplerMode
+		&& m_pState->ranges.back().scope == scope
+		&& m_pState->ranges.back().segment
+			== m_pState->currentSegment)
+	{
+		m_pState->ranges.back().vertexCount += 3;
+	}
+	else
+	{
+		TextureBatchRange range;
+		range.firstVertex = firstVertex;
+		range.vertexCount = 3;
+		range.pTexture = NULL;
+		range.textureHandle = textureHandle;
+		range.renderTextureHandle = renderTextureHandle;
+		range.scissor = scissor;
+		range.blendMode = blendMode;
+		range.samplerMode = samplerMode;
+		range.scope = scope;
+		range.segment = m_pState->currentSegment;
+		m_pState->ranges.push_back(range);
+	}
+	++m_pState->primitiveCount;
+	if (scope == DX12_DRAWPORT_SCOPE_UI)
+		++m_pState->uiPrimitiveCount;
+	return true;
+}
+
 bool CDirectX12DrawPortCommandBatch::Render(
 	ID3D12GraphicsCommandList* pCommandList,
 	CDirectX12RenderTargetManager* pRenderTargets,
@@ -685,6 +745,7 @@ bool CDirectX12DrawPortCommandBatch::Render(
 					? pTextures->Acquire(
 						range.textureHandle,
 						pCommandList,
+						pUploadManager,
 						&textureView)
 					: pTextures->Acquire(
 						range.pTexture,

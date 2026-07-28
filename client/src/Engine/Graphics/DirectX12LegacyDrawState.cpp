@@ -41,6 +41,9 @@ void CDirectX12LegacyDrawState::ReleaseBindings()
 			textures[textureUnit]->Release();
 			textures[textureUnit] = NULL;
 		}
+		textureHandles[textureUnit] = DirectX12TextureHandle();
+		renderTextureHandles[textureUnit] =
+			DirectX12RenderTextureHandle();
 	}
 	if (pVertexShader != NULL)
 	{
@@ -309,6 +312,63 @@ void CDirectX12LegacyDrawState::SetTexture(
 	if (textures[stage] != NULL)
 		textures[stage]->Release();
 	textures[stage] = pTexture;
+	textureHandles[stage] = DirectX12TextureHandle();
+	renderTextureHandles[stage] = DirectX12RenderTextureHandle();
+}
+
+void CDirectX12LegacyDrawState::SetTexture(
+	UINT stage,
+	DirectX12TextureHandle texture)
+{
+	if (stage >= DX12_LEGACY_TEXTURE_STAGE_COUNT)
+		return;
+	if (textures[stage] != NULL)
+		textures[stage]->Release();
+	textures[stage] = NULL;
+	textureHandles[stage] = texture;
+	renderTextureHandles[stage] = DirectX12RenderTextureHandle();
+}
+
+void CDirectX12LegacyDrawState::SetTexture(
+	UINT stage,
+	DirectX12RenderTextureHandle texture)
+{
+	if (stage >= DX12_LEGACY_TEXTURE_STAGE_COUNT)
+		return;
+	if (textures[stage] != NULL)
+		textures[stage]->Release();
+	textures[stage] = NULL;
+	textureHandles[stage] = DirectX12TextureHandle();
+	renderTextureHandles[stage] = texture;
+}
+
+void CDirectX12LegacyDrawState::ForgetTexture(
+	DirectX12TextureHandle texture)
+{
+	if (!texture.IsValid())
+		return;
+	for (UINT stage = 0;
+		stage < DX12_LEGACY_TEXTURE_STAGE_COUNT;
+		++stage)
+	{
+		if (textureHandles[stage] == texture)
+			textureHandles[stage] = DirectX12TextureHandle();
+	}
+}
+
+void CDirectX12LegacyDrawState::ForgetTexture(
+	DirectX12RenderTextureHandle texture)
+{
+	if (!texture.IsValid())
+		return;
+	for (UINT stage = 0;
+		stage < DX12_LEGACY_TEXTURE_STAGE_COUNT;
+		++stage)
+	{
+		if (renderTextureHandles[stage] == texture)
+			renderTextureHandles[stage] =
+				DirectX12RenderTextureHandle();
+	}
 }
 
 void CDirectX12LegacyDrawState::SetDynamicGeometry(bool dynamic)

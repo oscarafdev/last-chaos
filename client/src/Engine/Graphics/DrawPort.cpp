@@ -36,24 +36,21 @@ extern ULONG64 *GFX_apulCurrentTexture[GFX_MAXTEXUNITS];
 
 static DirectX12BlendMode _nativeQueuedBlendMode = DX12_BLEND_ALPHA;
 
-static IDirect3DTexture9* AcquireCurrentD3D9Texture(void)
+static bool GetCurrentNativeTexture(
+	DirectX12TextureHandle* pTexture,
+	DirectX12RenderTextureHandle* pRenderTexture)
 {
+	if (pTexture == NULL || pRenderTexture == NULL)
+		return false;
+	*pTexture = DirectX12TextureHandle();
+	*pRenderTexture = DirectX12RenderTextureHandle();
 	if (_pGfx->gl_eCurrentAPI != GAT_D3D || !GFX_abTexture[0]
-		|| _pGfx->gl_pd3d9Device == NULL)
-		return NULL;
-	IDirect3DBaseTexture9* pBaseTexture = NULL;
-	HRESULT hr = _pGfx->gl_pd3d9Device->GetTexture(
-		0, &pBaseTexture);
-	if (FAILED(hr) || pBaseTexture == NULL)
-		return NULL;
-	IDirect3DTexture9* pTexture = NULL;
-	hr = pBaseTexture->QueryInterface(
-		__uuidof(IDirect3DTexture9),
-		reinterpret_cast<void**>(&pTexture));
-	pBaseTexture->Release();
-	if (FAILED(hr) || pTexture == NULL)
-		return NULL;
-	return pTexture;
+		|| GFX_apulCurrentTexture[0] == NULL)
+		return false;
+	const ULONG64 value = *GFX_apulCurrentTexture[0];
+	*pTexture = DirectX12TextureHandle::FromValue(value);
+	*pRenderTexture = DirectX12RenderTextureHandle::FromValue(value);
+	return pTexture->IsValid() || pRenderTexture->IsValid();
 }
 
 static DirectX12SamplerMode GetCurrentNativeSamplerMode(void)
@@ -98,8 +95,10 @@ static bool QueueNativeTexturedQuad(
 {
 	if (pVertices == NULL)
 		return false;
-	IDirect3DTexture9* pTexture = AcquireCurrentD3D9Texture();
-	if (GFX_abTexture[0] && pTexture == NULL)
+	DirectX12TextureHandle texture;
+	DirectX12RenderTextureHandle renderTexture;
+	if (GFX_abTexture[0]
+		&& !GetCurrentNativeTexture(&texture, &renderTexture))
 		return false;
 
 	DirectX12DrawPortTexturedVertex vertices[4];
@@ -114,15 +113,13 @@ static bool QueueNativeTexturedQuad(
 	const DirectX12SamplerMode samplerMode =
 		GetCurrentNativeSamplerMode();
 	const bool firstCaptured = backend.QueueDrawPortTexturedTriangle(
-		pTexture, vertices[1], vertices[2], vertices[0],
+		texture, renderTexture, vertices[1], vertices[2], vertices[0],
 		scissorLeft, scissorTop, scissorRight, scissorBottom,
 		blendMode, samplerMode);
 	const bool secondCaptured = backend.QueueDrawPortTexturedTriangle(
-		pTexture, vertices[0], vertices[2], vertices[3],
+		texture, renderTexture, vertices[0], vertices[2], vertices[3],
 		scissorLeft, scissorTop, scissorRight, scissorBottom,
 		blendMode, samplerMode);
-	if (pTexture != NULL)
-		pTexture->Release();
 	return firstCaptured && secondCaptured;
 }
 
@@ -191,8 +188,10 @@ static bool QueueNativeTexturedElements(
 		if (pElements[iElement] >= vertexCount)
 			return false;
 	}
-	IDirect3DTexture9* pTexture = AcquireCurrentD3D9Texture();
-	if (GFX_abTexture[0] && pTexture == NULL)
+	DirectX12TextureHandle texture;
+	DirectX12RenderTextureHandle renderTexture;
+	if (GFX_abTexture[0]
+		&& !GetCurrentNativeTexture(&texture, &renderTexture))
 		return false;
 	bool captured = true;
 	for (INDEX iElement = 0; iElement + 2 < elementCount; iElement += 3)
@@ -214,12 +213,11 @@ static bool QueueNativeTexturedElements(
 			vertices[iVertex].y += offsetY;
 		}
 		captured = GetDirectX12Backend().QueueDrawPortTexturedTriangle(
-			pTexture, vertices[0], vertices[1], vertices[2],
+			texture, renderTexture,
+			vertices[0], vertices[1], vertices[2],
 			scissorLeft, scissorTop, scissorRight, scissorBottom,
 			blendMode, GetCurrentNativeSamplerMode()) && captured;
 	}
-	if (pTexture != NULL)
-		pTexture->Release();
 	return captured;
 }
 

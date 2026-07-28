@@ -1615,9 +1615,14 @@ static void d3d_GenerateTexture( ULONG64 &ulTexObject)
 	_sfStats.StartTimer(CStatForm::STI_BINDTEXTURE);
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
-	// generate one dummy texture that'll be entirely replaced upon 1st upload
-	HRESULT hr = _pGfx->gl_pd3d9Device->CreateTexture(1, 1, 0, 0, (D3DFORMAT)TS.ts_tfRGBA8, D3DPOOL_MANAGED, (LPDIRECT3DTEXTURE9*)&ulTexObject, NULL);
-	D3D_CHECKERROR(hr);
+	DirectX12TextureHandle handle;
+	if (!GetDirectX12Backend().CreateNativeSampledTexture(&handle))
+	{
+		ASSERTALWAYS("No se pudo crear la textura DX12 nativa.");
+		ulTexObject = NONE;
+		return;
+	}
+	ulTexObject = handle.GetValue();
 	MEMTRACK_ALLOC( (void*)(ulTexObject^0x80000000), 4096, 4);
 			
 	_sfStats.StopTimer(CStatForm::STI_BINDTEXTURE);
@@ -1635,10 +1640,17 @@ static void d3d_DeleteTexture( ULONG64 &ulTexObject)
 	_sfStats.StartTimer(CStatForm::STI_BINDTEXTURE);
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
+	extern void gfxForgetTextureObject(ULONG64* pTextureObject);
+	gfxForgetTextureObject(&ulTexObject);
 	MEMTRACK_FREE( (void*)(ulTexObject^0x80000000));
-	GetDirectX12Backend().ForgetLegacyTexture(
-		(LPDIRECT3DTEXTURE9)ulTexObject);
-	D3DRELEASE( (LPDIRECT3DTEXTURE9&)ulTexObject, TRUE);
+	const DirectX12TextureHandle sampled =
+		DirectX12TextureHandle::FromValue(ulTexObject);
+	const DirectX12RenderTextureHandle rendered =
+		DirectX12RenderTextureHandle::FromValue(ulTexObject);
+	if (sampled.IsValid())
+		GetDirectX12Backend().DestroyNativeSampledTexture(sampled);
+	else if (rendered.IsValid())
+		GetDirectX12Backend().DestroyNativeOffscreenTexture(rendered);
 	ulTexObject = NONE;
 
 	_sfStats.StopTimer(CStatForm::STI_BINDTEXTURE);
@@ -1782,13 +1794,10 @@ static void *d3d_LockSubBuffer( const INDEX iID, const INDEX i1stVertex, const I
 				vb.vb_ctLockedVertices[iType] = ctVertices;
 				pRet = (UBYTE*)vb.vb_paReadArray[iType] + slTypeSize*i1stVertex;
 			} else {
-				// for write-only access, we'll lock the write buffer right away (and mark it for unlock)
-				vb.vb_i1stLockedVertex[iType] = -1;
-				vb.vb_ctLockedVertices[iType] = -1;
-				LPDIRECT3DVERTEXBUFFER9 pd3dVB = vb.vb_pavbWrite[iType];
-				const DWORD dwLockFlag = (vb.vb_eType==GFX_DYNAMIC) ? D3DLOCK_DISCARD : NONE;
-				HRESULT hr = pd3dVB->Lock(i1stVertex * slTypeSize, ctVertices * slTypeSize, (void**)&pRet, dwLockFlag);
-				D3D_CHECKERROR(hr);
+				vb.vb_i1stLockedVertex[iType] = 0;
+				vb.vb_ctLockedVertices[iType] = 0;
+				pRet = (UBYTE*)vb.vb_paDx12Mirror[iType]
+					+ slTypeSize*i1stVertex;
 			}
 		}
 		// read access
@@ -1875,24 +1884,9 @@ static void d3d_UnlockSubBuffer( const INDEX iID, const INDEX ctVertices/*=0*/)
 				(ULONG*)((UBYTE*)vb.vb_paDx12Mirror[iType] + slOffset),
 				slSize/sizeof(ULONG));
 		}
-		// if read/write array was locked for writing, we must copy read to write buffer (i.e. synchronize)
-		LPDIRECT3DVERTEXBUFFER9 pd3dVB = vb.vb_pavbWrite[iType];
-		if( vb.vb_ctLockedVertices[iType]>0) {
-			const SLONG slTypeSize = GetVBTypeSize(iType);
-			const SLONG slOffset = vb.vb_i1stLockedVertex[iType] * slTypeSize;
-			const SLONG slSize   = vb.vb_ctLockedVertices[iType] * slTypeSize;
-			UBYTE *pubSrc = (UBYTE*)vb.vb_paReadArray[iType] + slOffset;
-			void* pubDst;
-			HRESULT hr = pd3dVB->Lock( slOffset, slSize, &pubDst, NONE);
-			D3D_CHECKERROR(hr);
-			CopyLongs( (ULONG*)pubSrc, (ULONG*)pubDst, slSize/sizeof(FLOAT));
-		}
-		// if write-only array was locked, just unlock it
 		if( vb.vb_ctLockedVertices[iType]!=0) {
 			vb.vb_i1stLockedVertex[iType] = 0;
 			vb.vb_ctLockedVertices[iType] = 0;
-			HRESULT hr = pd3dVB->Unlock();
-			D3D_CHECKERROR(hr);
 		}
 	}
 	vb.vb_paDx12LockedArray[iType] = NULL;
@@ -1937,18 +1931,8 @@ static void d3d_SetVertexSubBuffer( const INDEX iID, const INDEX i1stVertex/*=0*
 
 	ASSERT( iType==GFX_VBA_POS && iBind<_avbVertexBuffers.Count());
 	VertexBuffer &vb = _avbVertexBuffers[iBind];
-	HRESULT hr;
-
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
-	if(iID!=0) {
-		// assign stream 
-		LPDIRECT3DVERTEXBUFFER9 pd3dVB = vb.vb_pavbWrite[iType];
-		hr = _pGfx->gl_pd3d9Device->SetStreamSource(iStream, pd3dVB, (i1stVertex * GetVBTypeSize(iType)), GetVBTypeSize(iType));
-	}
-
-	// check and mark
-	D3D_CHECKERROR(hr);
 	_bUsingDynamicBuffer = FALSE;
 
 	// set vertex count and offset
@@ -1959,9 +1943,6 @@ static void d3d_SetVertexSubBuffer( const INDEX iID, const INDEX i1stVertex/*=0*
 				+ i1stVertex*GetVBTypeSize(iType)),
 			(UINT)GFX_ctVertices);
 	}
-	hr = _pGfx->gl_pd3d9Device->SetIndices( _pGfx->gl_pd3dIdx/*, i1stVertex*/);
-	D3D_CHECKERROR(hr);
-
 	// update streams mask
 	extern ULONG _ulStreamsMask;
 	_ulStreamsMask = NONE;
@@ -1988,19 +1969,10 @@ static void d3d_SetSubBuffer(const INDEX iID, const INDEX iUnit/*=-1*/, const IN
 	}
 
 	ASSERT( iType>GFX_VBA_POS && iType<GFX_MAX_VBA && iBind<_avbVertexBuffers.Count());
-	HRESULT hr;
 	VertexBuffer& vb = _avbVertexBuffers[iBind];
 
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
 
-	if(iID!=0) {
-		// assign stream 
-
-		LPDIRECT3DVERTEXBUFFER9 pd3dVB = vb.vb_pavbWrite[iType];
-		hr = _pGfx->gl_pd3d9Device->SetStreamSource(iStream, pd3dVB, tedt * GetVBTypeSize(iType), GetVBTypeSize(iType));
-	}
-	// check and mark
-	D3D_CHECKERROR(hr);
 	_bUsingDynamicBuffer = FALSE;
 	GFX_ctVertices = (tedt2 > 0) ? tedt2 : vb.vb_ctVertices;
 	if( iBind>0 && vb.vb_paDx12Mirror[iType]!=NULL) {
@@ -2032,9 +2004,6 @@ static void d3d_SetSubBuffer(const INDEX iID, const INDEX iUnit/*=-1*/, const IN
 				(UINT)GFX_ctVertices);
 		}
 	}
-	hr = _pGfx->gl_pd3d9Device->SetIndices(_pGfx->gl_pd3dIdx);
-	D3D_CHECKERROR(hr);
-
 	// update streams mask
 	extern ULONG _ulStreamsMask;
 	_ulStreamsMask |= 1<<iStream;

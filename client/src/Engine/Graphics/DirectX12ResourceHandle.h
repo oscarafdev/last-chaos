@@ -34,6 +34,14 @@ public:
 		return m_value;
 	}
 
+	static DirectX12TypedResourceHandle FromValue(UINT64 value)
+	{
+		const UINT64 encodedKind = value >> 56;
+		return encodedKind == static_cast<UINT64>(Kind)
+			? DirectX12TypedResourceHandle(value)
+			: DirectX12TypedResourceHandle();
+	}
+
 	bool operator==(const DirectX12TypedResourceHandle& other) const
 	{
 		return m_value == other.m_value;

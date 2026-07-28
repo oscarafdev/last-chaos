@@ -735,21 +735,34 @@ namespace
 		CDirectX12UploadManager* pUploadManager,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pView)
 	{
+		bool acquired = false;
 		if (renderTextureHandle.IsValid())
-			return pTextures->Acquire(
+			acquired = pTextures->Acquire(
 				renderTextureHandle,
 				pCommandList,
 				pView);
-		if (textureHandle.IsValid())
-			return pTextures->Acquire(
+		else if (textureHandle.IsValid())
+			acquired = pTextures->Acquire(
 				textureHandle,
 				pCommandList,
+				pUploadManager,
 				pView);
-		return pTextures->Acquire(
-			pLegacyTexture,
-			pCommandList,
-			pUploadManager,
-			pView);
+		else
+			acquired = pTextures->Acquire(
+				pLegacyTexture,
+				pCommandList,
+				pUploadManager,
+				pView);
+		if (!acquired)
+		{
+			CPrintF(
+				"DX12 3D textura no adquirida: sampled=%I64u, "
+				"render=%I64u, legacy=%p.\n",
+				textureHandle.GetValue(),
+				renderTextureHandle.GetValue(),
+				pLegacyTexture);
+		}
+		return acquired;
 	}
 
 	bool ReferencesRenderTarget(
@@ -3408,22 +3421,41 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	range.pTexture1 = pTexture1;
 	range.pTexture2 = pTexture2;
 	range.pTexture3 = pTexture3;
-	range.textureHandle = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture);
-	range.textureHandle1 = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture1);
-	range.textureHandle2 = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture2);
-	range.textureHandle3 = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture3);
-	range.renderTextureHandle = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture);
-	range.renderTextureHandle1 = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture1);
-	range.renderTextureHandle2 = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture2);
-	range.renderTextureHandle3 = GetDirectX12ResourceRegistry().
-		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture3);
+	DirectX12TextureHandle* sampledHandles[] = {
+		&range.textureHandle,
+		&range.textureHandle1,
+		&range.textureHandle2,
+		&range.textureHandle3
+	};
+	DirectX12RenderTextureHandle* renderHandles[] = {
+		&range.renderTextureHandle,
+		&range.renderTextureHandle1,
+		&range.renderTextureHandle2,
+		&range.renderTextureHandle3
+	};
+	for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
+	{
+		*sampledHandles[textureUnit] =
+			drawState.textureHandles[textureUnit];
+		if (!sampledHandles[textureUnit]->IsValid())
+		{
+			*sampledHandles[textureUnit] =
+				GetDirectX12ResourceRegistry().
+					ResolveLegacyAlias<
+						DX12_RESOURCE_SAMPLED_TEXTURE>(
+							pTextures[textureUnit]);
+		}
+		*renderHandles[textureUnit] =
+			drawState.renderTextureHandles[textureUnit];
+		if (!renderHandles[textureUnit]->IsValid())
+		{
+			*renderHandles[textureUnit] =
+				GetDirectX12ResourceRegistry().
+					ResolveLegacyAlias<
+						DX12_RESOURCE_RENDER_TEXTURE>(
+							pTextures[textureUnit]);
+		}
+	}
 	// Los rangos nativos conservan handles generacionales. El alias COM sólo
 	// se retiene cuando el recurso todavía no tiene identidad DX12.
 	ReleaseLegacyTextureForNativeBinding(

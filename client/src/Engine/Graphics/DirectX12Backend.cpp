@@ -13,6 +13,7 @@
 #include <Engine/Graphics/DirectX12PresentationManager.h>
 #include <Engine/Graphics/DirectX12ResourceHandle.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
+#include <Engine/Graphics/DirectX12Texture.h>
 #include <Engine/Graphics/DirectX12UploadManager.h>
 #include <Engine/Testing/ClientTestAutomation.h>
 
@@ -1258,6 +1259,85 @@ bool CDirectX12Backend::RefreshLegacyTextureFromCompressedBlob(
 		m_pUploadManager);
 }
 
+bool CDirectX12Backend::CreateNativeSampledTexture(
+	DirectX12TextureHandle* pHandle)
+{
+	return m_pInteropTextures != NULL
+		&& m_pInteropTextures->CreateSampledTexture(pHandle);
+}
+
+void CDirectX12Backend::DestroyNativeSampledTexture(
+	DirectX12TextureHandle handle)
+{
+	m_legacyDrawState.ForgetTexture(handle);
+	if (m_pInteropTextures != NULL)
+		m_pInteropTextures->DestroySampledTexture(handle);
+}
+
+bool CDirectX12Backend::UploadNativeTextureFromRgbaMipChain(
+	DirectX12TextureHandle handle,
+	const void* pPixels,
+	UINT width,
+	UINT height,
+	INT legacyFormat,
+	UINT maximumMipCount,
+	DirectX12TextureHandle* pNewHandle)
+{
+	return m_pInteropTextures != NULL
+		&& m_pInteropTextures->RefreshSampledTextureFromRgbaMipChain(
+			handle,
+			pPixels,
+			width,
+			height,
+			static_cast<D3DFORMAT>(legacyFormat),
+			maximumMipCount,
+			NULL,
+			NULL,
+			pNewHandle);
+}
+
+bool CDirectX12Backend::UploadNativeTextureFromCompressedBlob(
+	DirectX12TextureHandle handle,
+	const void* pBlob,
+	size_t blobSize,
+	UINT width,
+	UINT height,
+	INT legacyFormat,
+	UINT maximumMipCount,
+	DirectX12TextureHandle* pNewHandle)
+{
+	return m_pInteropTextures != NULL
+		&& m_pInteropTextures->RefreshSampledTextureFromCompressedBlob(
+			handle,
+			pBlob,
+			blobSize,
+			width,
+			height,
+			static_cast<D3DFORMAT>(legacyFormat),
+			maximumMipCount,
+			NULL,
+			NULL,
+			pNewHandle);
+}
+
+bool CDirectX12Backend::GetNativeTextureDescription(
+	DirectX12TextureHandle handle,
+	UINT* pWidth,
+	UINT* pHeight,
+	INT* pFormat) const
+{
+	CDirectX12Texture* pTexture =
+		static_cast<CDirectX12Texture*>(
+			GetDirectX12ResourceRegistry().Resolve(handle));
+	if (pTexture == NULL || pWidth == NULL || pHeight == NULL
+		|| pFormat == NULL)
+		return false;
+	*pWidth = pTexture->GetWidth();
+	*pHeight = pTexture->GetHeight();
+	*pFormat = static_cast<INT>(pTexture->GetFormat());
+	return true;
+}
+
 void CDirectX12Backend::RetireLegacyTextureBinding(
 	IDirect3DTexture9* pTexture9)
 {
@@ -1282,12 +1362,28 @@ bool CDirectX12Backend::CreateNativeOffscreenTexture(
 			pHandle);
 }
 
+bool CDirectX12Backend::CreateNativeOffscreenTexture(
+	UINT width,
+	UINT height,
+	INT legacyFormat,
+	DirectX12RenderTextureHandle* pHandle)
+{
+	return ReadFull3DReplacementMode()
+		&& m_pInteropTextures != NULL
+		&& m_pInteropTextures->CreateRenderTarget(
+			width,
+			height,
+			static_cast<D3DFORMAT>(legacyFormat),
+			pHandle);
+}
+
 void CDirectX12Backend::DestroyNativeOffscreenTexture(
 	DirectX12RenderTextureHandle handle)
 {
 	if (handle == DX12_INVALID_RENDER_TEXTURE
 		|| m_pInteropTextures == NULL)
 		return;
+	m_legacyDrawState.ForgetTexture(handle);
 	if (m_nativeOffscreenTexture == handle)
 		EndNativeOffscreenTexture();
 	m_pInteropTextures->DestroyRenderTarget(handle);
@@ -1897,6 +1993,20 @@ void CDirectX12Backend::TrackLegacy3DTexture(
 	PrepareNativeTextureBinding(pTexture);
 }
 
+void CDirectX12Backend::TrackNative3DTexture(
+	UINT stage,
+	DirectX12TextureHandle texture)
+{
+	m_legacyDrawState.SetTexture(stage, texture);
+}
+
+void CDirectX12Backend::TrackNative3DTexture(
+	UINT stage,
+	DirectX12RenderTextureHandle texture)
+{
+	m_legacyDrawState.SetTexture(stage, texture);
+}
+
 void CDirectX12Backend::PrepareLegacy3DDepthClear()
 {
 	if (!m_frameOpen || m_uiScopeDepth > 0
@@ -2083,6 +2193,35 @@ bool CDirectX12Backend::QueueDrawPortTexturedTriangle(
 		&& m_pNativeRenderer != NULL
 		&& m_pNativeRenderer->QueueDrawPortTexturedTriangle(
 			pTexture,
+			vertex0.x, vertex0.y, vertex0.u, vertex0.v, vertex0.color,
+			vertex1.x, vertex1.y, vertex1.u, vertex1.v, vertex1.color,
+			vertex2.x, vertex2.y, vertex2.u, vertex2.v, vertex2.color,
+			scissorLeft,
+			scissorTop,
+			scissorRight,
+			scissorBottom,
+			blendMode,
+			samplerMode);
+}
+
+bool CDirectX12Backend::QueueDrawPortTexturedTriangle(
+	DirectX12TextureHandle textureHandle,
+	DirectX12RenderTextureHandle renderTextureHandle,
+	const DirectX12DrawPortTexturedVertex& vertex0,
+	const DirectX12DrawPortTexturedVertex& vertex1,
+	const DirectX12DrawPortTexturedVertex& vertex2,
+	LONG scissorLeft,
+	LONG scissorTop,
+	LONG scissorRight,
+	LONG scissorBottom,
+	DirectX12BlendMode blendMode,
+	DirectX12SamplerMode samplerMode)
+{
+	return m_pNativeRenderer != NULL
+		&& ReadFull3DReplacementMode()
+		&& m_pNativeRenderer->QueueDrawPortTexturedTriangle(
+			textureHandle,
+			renderTextureHandle,
 			vertex0.x, vertex0.y, vertex0.u, vertex0.v, vertex0.color,
 			vertex1.x, vertex1.y, vertex1.u, vertex1.v, vertex1.color,
 			vertex2.x, vertex2.y, vertex2.u, vertex2.v, vertex2.color,

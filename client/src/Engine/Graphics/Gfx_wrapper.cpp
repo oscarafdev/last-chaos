@@ -4,8 +4,12 @@
 #include <Engine/Base/MemoryTracking.h>
 #include <Engine/Math/Vector.h>
 #include <Engine/Graphics/DirectX12Backend.h>
+#include <Engine/Graphics/DirectX12Buffer.h>
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/Graphics/ViewPort.h>
+#include <dxgiformat.h>
+#include <map>
+#include <vector>
 
 #include <Engine/Base/Statistics_internal.h>
 
@@ -63,11 +67,71 @@ extern INDEX GFX_ctVertices = 0;
 
 // vertex buffers control
 static CStaticStackArray<VertexBuffer> _avbVertexBuffers;
+struct DirectX12VertexBufferFamily
+{
+	std::vector<CDirectX12Buffer*> buffers;
+	std::vector<std::vector<UBYTE> > mirrors;
+};
+static std::map<INDEX, DirectX12VertexBufferFamily>
+	_dx12StaticVertexBuffers;
 extern BOOL _bUsingDynamicBuffer = TRUE;
 			 
 // current texture object/bind number and color mask (for Get... function)
 extern ULONG64 *GFX_apulCurrentTexture[GFX_MAXTEXUNITS] = {0};
 extern ULONG GFX_ulCurrentColorMask = (CT_RMASK|CT_GMASK|CT_BMASK|CT_AMASK);
+static ULONG64 _aulCurrentTextureObjects[GFX_MAXTEXUNITS] = {0};
+static ULONG64* _apulCurrentTextureOwners[GFX_MAXTEXUNITS] = {0};
+
+extern void gfxForgetTextureObject(ULONG64* pTextureObject)
+{
+	if (pTextureObject == NULL)
+		return;
+	for (INDEX iTextureUnit = 0;
+		iTextureUnit < GFX_MAXTEXUNITS;
+		++iTextureUnit)
+	{
+		if (_apulCurrentTextureOwners[iTextureUnit] == pTextureObject
+			|| _aulCurrentTextureObjects[iTextureUnit]
+				== *pTextureObject)
+		{
+			GFX_apulCurrentTexture[iTextureUnit] =
+				&_aulCurrentTextureObjects[iTextureUnit];
+			_aulCurrentTextureObjects[iTextureUnit] = NONE;
+			_apulCurrentTextureOwners[iTextureUnit] = NULL;
+		}
+	}
+}
+
+static bool EnsureNativeSampledTextureIdentity(
+	ULONG64* pTextureObject,
+	DirectX12TextureHandle* pHandle)
+{
+	if (pTextureObject == NULL || pHandle == NULL)
+		return false;
+
+	DirectX12TextureHandle handle =
+		DirectX12TextureHandle::FromValue(*pTextureObject);
+	if (handle.IsValid()
+		&& GetDirectX12ResourceRegistry().Resolve(handle) != NULL)
+	{
+		*pHandle = handle;
+		return true;
+	}
+
+	if (!GetDirectX12Backend().CreateNativeSampledTexture(&handle)
+		|| !handle.IsValid())
+	{
+		CPrintF(
+			"DX12 textura sin identidad: no se pudo reemplazar "
+			"raw=%I64u.\n",
+			*pTextureObject);
+		return false;
+	}
+
+	*pTextureObject = handle.GetValue();
+	*pHandle = handle;
+	return true;
+}
 
 // for D3D: mark need for clipping (when wants to be disable but cannot be because of user clip plane)
 static BOOL _bWantsClipping = TRUE;
@@ -418,24 +482,51 @@ extern void gfxSetTexture( ULONG64 &ulTexObject, CTexParams &tpLocal)
 
 	_sfStats.StartTimer(CStatForm::STI_BINDTEXTURE);
 	_sfStats.StartTimer(CStatForm::STI_GFXAPI);
+	_aulCurrentTextureObjects[GFX_iActiveTexUnit] = ulTexObject;
+	_apulCurrentTextureOwners[GFX_iActiveTexUnit] = &ulTexObject;
+	GFX_apulCurrentTexture[GFX_iActiveTexUnit] =
+		&_aulCurrentTextureObjects[GFX_iActiveTexUnit];
 
 	if( eAPI==GAT_OGL) { // OpenGL
-		GFX_apulCurrentTexture[GFX_iActiveTexUnit] = /*(ULONG64*)*/&ulTexObject;  // OpenGL tracks bind number
 		extern void MimicTexParams_OGL( CTexParams &tpLocal);
 		pglBindTexture( GL_TEXTURE_2D, ulTexObject);
 		MimicTexParams_OGL(tpLocal);
-	} 
+	}
 	else if( eAPI==GAT_D3D) { // Direct3D
-		GFX_apulCurrentTexture[GFX_iActiveTexUnit] = &ulTexObject;    // Direct3D track pointer to texture pointer
 		extern void MimicTexParams_D3D( CTexParams &tpLocal);
-		//IDirect3DBaseTexture8* _d3d_Texture;
-		//IDirect3DBaseTexture8*  _d3d_Texture = reinterpret_cast<IDirect3DBaseTexture8*>(ulTexObject);
-		//HRESULT hr = _pGfx->gl_pd3dDevice->SetTexture( GFX_iActiveTexUnit, _d3d_Texture /*(LPDIRECT3DTEXTURE8)ulTexObject*/);
-        HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, (LPDIRECT3DTEXTURE9)ulTexObject);
-		D3D_CHECKERROR(hr);
-		GetDirectX12Backend().TrackLegacy3DTexture(
+		HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture(
 			GFX_iActiveTexUnit,
-			reinterpret_cast<LPDIRECT3DTEXTURE9>(ulTexObject));
+			NULL);
+		D3D_CHECKERROR(hr);
+		DirectX12TextureHandle sampled =
+			DirectX12TextureHandle::FromValue(ulTexObject);
+		DirectX12RenderTextureHandle rendered =
+			DirectX12RenderTextureHandle::FromValue(ulTexObject);
+		if (sampled.IsValid()
+			&& GetDirectX12ResourceRegistry().Resolve(sampled) == NULL)
+		{
+			ulTexObject = NONE;
+			sampled = DirectX12TextureHandle();
+		}
+		if (rendered.IsValid()
+			&& GetDirectX12ResourceRegistry().Resolve(rendered) == NULL)
+		{
+			ulTexObject = NONE;
+			rendered = DirectX12RenderTextureHandle();
+		}
+		_aulCurrentTextureObjects[GFX_iActiveTexUnit] = ulTexObject;
+		if (sampled.IsValid())
+			GetDirectX12Backend().TrackNative3DTexture(
+				GFX_iActiveTexUnit,
+				sampled);
+		else if (rendered.IsValid())
+			GetDirectX12Backend().TrackNative3DTexture(
+				GFX_iActiveTexUnit,
+				rendered);
+		else
+			GetDirectX12Backend().TrackLegacy3DTexture(
+				GFX_iActiveTexUnit,
+				NULL);
 		MimicTexParams_D3D(tpLocal);
 	}
 	// done
@@ -458,38 +549,38 @@ extern void gfxUploadTexture( ULONG *pulTexture, PIX pixWidth, PIX pixHeight, UL
 		UploadTexture_OGL( pulTexture, pixWidth, pixHeight, (GLenum)ulFormat, bNoDiscard);
 	}
 	else if( eAPI==GAT_D3D) { // Direct3D
-		LPDIRECT3DTEXTURE9* ppd3dCurrentTexture = (LPDIRECT3DTEXTURE9*)GFX_apulCurrentTexture[GFX_iActiveTexUnit];
-		const LPDIRECT3DTEXTURE9 pd3dLastTexture = *ppd3dCurrentTexture;
-		extern void UploadTexture_D3D(LPDIRECT3DTEXTURE9 * ppd3dTexture, ULONG * pulTexture, PIX pixSizeU, PIX pixSizeV, D3DFORMAT eInternalFormat, BOOL bDiscard);
-		UploadTexture_D3D( ppd3dCurrentTexture, pulTexture, pixWidth, pixHeight, (D3DFORMAT)ulFormat, !bNoDiscard);
-		// in case that texture has been changed, must re-set it as current
-		if( pd3dLastTexture != *ppd3dCurrentTexture) {
-			GetDirectX12Backend().RetireLegacyTextureBinding(
-				pd3dLastTexture);
-			HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, *ppd3dCurrentTexture);
-			D3D_CHECKERROR(hr);
-			GetDirectX12Backend().TrackLegacy3DTexture(
-				GFX_iActiveTexUnit,
-				*ppd3dCurrentTexture);
-		}
-		LPDIRECT3DTEXTURE9 pd3dUploadedTexture =
-			*ppd3dCurrentTexture;
-		const UINT maximumMipCount = pd3dUploadedTexture != NULL
-			? pd3dUploadedTexture->GetLevelCount()
-			: 0;
-		if (!GetDirectX12Backend().
-			RefreshLegacyTextureFromRgbaMipChain(
-				pd3dUploadedTexture,
-				pulTexture,
-				static_cast<UINT>(pixWidth),
-				static_cast<UINT>(pixHeight),
-				static_cast<INT>(ulFormat),
-				maximumMipCount))
+		ULONG64* pCurrent =
+			GFX_apulCurrentTexture[GFX_iActiveTexUnit];
+		DirectX12TextureHandle current;
+		extern UINT GetTextureMipCount_D3D(PIX width, PIX height);
+		DirectX12TextureHandle uploaded;
+		if (!EnsureNativeSampledTextureIdentity(pCurrent, &current)
+			|| !GetDirectX12Backend().UploadNativeTextureFromRgbaMipChain(
+			current,
+			pulTexture,
+			static_cast<UINT>(pixWidth),
+			static_cast<UINT>(pixHeight),
+			static_cast<INT>(ulFormat),
+			GetTextureMipCount_D3D(pixWidth, pixHeight),
+			&uploaded))
 		{
-			GetDirectX12Backend().RefreshLegacyTexture(
-				pd3dUploadedTexture);
+			ASSERTALWAYS("Fallo el upload directo de textura DX12.");
+		}
+		else
+		{
+			*pCurrent = uploaded.GetValue();
+			if (_apulCurrentTextureOwners[GFX_iActiveTexUnit] != NULL)
+			{
+				*_apulCurrentTextureOwners[GFX_iActiveTexUnit] =
+					uploaded.GetValue();
+			}
+			_apulCurrentTextureOwners[GFX_iActiveTexUnit] = NULL;
+			GetDirectX12Backend().TrackNative3DTexture(
+				GFX_iActiveTexUnit,
+				uploaded);
 		}
 	}
+	_apulCurrentTextureOwners[GFX_iActiveTexUnit] = NULL;
 	// done
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 }
@@ -511,43 +602,39 @@ extern BOOL gfxUploadCompressedTexture( UBYTE *pubMipmaps, PIX pixWidth, PIX pix
 		bUploaded = UploadCompressedTexture_OGL( pubMipmaps, pixWidth, pixHeight, slSize, (GLenum)ulFormat);
 	}
 	else if( eAPI==GAT_D3D) { // Direct3D
-		LPDIRECT3DTEXTURE9 *ppd3dCurrentTexture  = (LPDIRECT3DTEXTURE9*)GFX_apulCurrentTexture[GFX_iActiveTexUnit];
-		const LPDIRECT3DTEXTURE9 pd3dLastTexture = *ppd3dCurrentTexture;
-		extern BOOL UploadCompressedTexture_D3D( LPDIRECT3DTEXTURE9 *ppd3dTexture, UBYTE *pubTexture, PIX pixSizeU, PIX pixSizeV, SLONG slSize, D3DFORMAT eInternalFormat);
-		bUploaded = UploadCompressedTexture_D3D( ppd3dCurrentTexture, pubMipmaps, pixWidth, pixHeight, slSize, (D3DFORMAT)ulFormat);
-		// in case that texture has been changed, must re-set it as current
-		if( pd3dLastTexture != *ppd3dCurrentTexture) {
-			GetDirectX12Backend().RetireLegacyTextureBinding(
-				pd3dLastTexture);
-			HRESULT hr = _pGfx->gl_pd3d9Device->SetTexture( GFX_iActiveTexUnit, *ppd3dCurrentTexture);
-			D3D_CHECKERROR(hr);
-			GetDirectX12Backend().TrackLegacy3DTexture(
-				GFX_iActiveTexUnit,
-				*ppd3dCurrentTexture);
-		}
+		ULONG64* pCurrent =
+			GFX_apulCurrentTexture[GFX_iActiveTexUnit];
+		DirectX12TextureHandle current;
+		extern UINT GetTextureMipCount_D3D(PIX width, PIX height);
+		DirectX12TextureHandle uploaded;
+		bUploaded = EnsureNativeSampledTextureIdentity(
+				pCurrent,
+				&current)
+			&& GetDirectX12Backend().
+			UploadNativeTextureFromCompressedBlob(
+				current,
+				pubMipmaps,
+				static_cast<size_t>(slSize),
+				static_cast<UINT>(pixWidth),
+				static_cast<UINT>(pixHeight),
+				static_cast<INT>(ulFormat),
+				GetTextureMipCount_D3D(pixWidth, pixHeight),
+				&uploaded);
 		if (bUploaded)
 		{
-			LPDIRECT3DTEXTURE9 pd3dUploadedTexture =
-				*ppd3dCurrentTexture;
-			const UINT maximumMipCount =
-				pd3dUploadedTexture != NULL
-					? pd3dUploadedTexture->GetLevelCount()
-					: 0;
-			if (!GetDirectX12Backend().
-				RefreshLegacyTextureFromCompressedBlob(
-					pd3dUploadedTexture,
-					pubMipmaps,
-					static_cast<size_t>(slSize),
-					static_cast<UINT>(pixWidth),
-					static_cast<UINT>(pixHeight),
-					static_cast<INT>(ulFormat),
-					maximumMipCount))
+			*pCurrent = uploaded.GetValue();
+			if (_apulCurrentTextureOwners[GFX_iActiveTexUnit] != NULL)
 			{
-				GetDirectX12Backend().RefreshLegacyTexture(
-					pd3dUploadedTexture);
+				*_apulCurrentTextureOwners[GFX_iActiveTexUnit] =
+					uploaded.GetValue();
 			}
+			_apulCurrentTextureOwners[GFX_iActiveTexUnit] = NULL;
+			GetDirectX12Backend().TrackNative3DTexture(
+				GFX_iActiveTexUnit,
+				uploaded);
 		}
 	}
+	_apulCurrentTextureOwners[GFX_iActiveTexUnit] = NULL;
 	// done
 	_sfStats.StopTimer(CStatForm::STI_GFXAPI);
 	return bUploaded;
@@ -595,12 +682,21 @@ extern SLONG gfxGetTextureSize( ULONG64 ulTexObject, BOOL bHasMipmaps/*=TRUE*/)
 	// Direct3D
 	else if( eAPI==GAT_D3D)
 	{
-		// we can determine exact size from texture surface (i.e. mipmap)
-		D3DSURFACE_DESC d3dSurfDesc;  // ###
-		HRESULT hr = ((LPDIRECT3DTEXTURE9)ulTexObject)->GetLevelDesc( 0, &d3dSurfDesc);
-		D3D_CHECKERROR(hr);
-		//slMipSize = d3dSurfDesc.Size;
-        slMipSize = d3dSurfDesc.Width * d3dSurfDesc.Height * gfxGetTexturePixRatio(ulTexObject);
+		UINT width = 0;
+		UINT height = 0;
+		INT format = DXGI_FORMAT_UNKNOWN;
+		const DirectX12TextureHandle handle =
+			DirectX12TextureHandle::FromValue(ulTexObject);
+		if (!GetDirectX12Backend().GetNativeTextureDescription(
+			handle,
+			&width,
+			&height,
+			&format))
+		{
+			_sfStats.StopTimer(CStatForm::STI_GFXAPI);
+			return 0;
+		}
+		slMipSize = width * height * gfxGetTexturePixRatio(ulTexObject);
 	}
 
 	// eventually count in all the mipmaps (takes extra 33% of texture size)
@@ -623,8 +719,30 @@ extern INDEX gfxGetTexturePixRatio( ULONG64 ulTextureObject)
 		return GetTexturePixRatio_OGL( (GLuint)ulTextureObject);
 	}
 	else if( eAPI==GAT_D3D) {
-		extern INDEX GetTexturePixRatio_D3D( LPDIRECT3DTEXTURE9 pd3dTexture);
-		return GetTexturePixRatio_D3D( (LPDIRECT3DTEXTURE9)ulTextureObject);
+		UINT width = 0;
+		UINT height = 0;
+		INT format = DXGI_FORMAT_UNKNOWN;
+		if (!GetDirectX12Backend().GetNativeTextureDescription(
+			DirectX12TextureHandle::FromValue(ulTextureObject),
+			&width,
+			&height,
+			&format))
+			return 0;
+		switch (static_cast<DXGI_FORMAT>(format))
+		{
+		case DXGI_FORMAT_R8_UNORM:
+		case DXGI_FORMAT_A8_UNORM:
+		case DXGI_FORMAT_BC1_UNORM:
+			return 1;
+		case DXGI_FORMAT_R8G8_UNORM:
+		case DXGI_FORMAT_B5G6R5_UNORM:
+		case DXGI_FORMAT_B5G5R5A1_UNORM:
+			return 2;
+		case DXGI_FORMAT_B8G8R8A8_UNORM:
+		case DXGI_FORMAT_R8G8B8A8_UNORM:
+		default:
+			return 4;
+		}
 	}
 	else return 0;
 }
@@ -731,6 +849,17 @@ extern void InitVertexBuffers(void)
 	for( INDEX iBuf=1; iBuf<ctBuffers; iBuf++) {
 		ASSERT(_avbVertexBuffers[iBuf].vb_ulArrayMask==NONE);
 	}
+	for (std::map<INDEX, DirectX12VertexBufferFamily>::iterator family =
+		_dx12StaticVertexBuffers.begin();
+		family != _dx12StaticVertexBuffers.end();
+		++family)
+	{
+		for (size_t iBuffer = 0;
+			iBuffer < family->second.buffers.size();
+			++iBuffer)
+			delete family->second.buffers[iBuffer];
+	}
+	_dx12StaticVertexBuffers.clear();
 	_avbVertexBuffers.Clear();  // clear 'em for good
 
 	// set one for dynamic array
@@ -802,13 +931,11 @@ extern INDEX gfxCreateVertexBuffer( const INDEX ctVertices, ULONG ulTypeMask, IN
 	// Direct3D
 	else if( eAPI==GAT_D3D)
 	{
-		// for PC
-		DWORD dwFlags = D3DUSAGE_WRITEONLY;
-		if( bDynamic) dwFlags |= D3DUSAGE_DYNAMIC;
-		const LPDIRECT3DDEVICE9 pd3dDev = _pGfx->gl_pd3d9Device; 
-
 		{TRACKVB_HEAP();
-
+		DirectX12VertexBufferFamily& nativeBuffers =
+			_dx12StaticVertexBuffers[iVB];
+		nativeBuffers.buffers.assign(GFX_MAX_VBA, NULL);
+		nativeBuffers.mirrors.resize(GFX_MAX_VBA);
 		for( iVA=0; iVA<GFX_MAX_VBA; iVA++) {
 			vb.vb_paReadArray[iVA] = vb.vb_paWriteArray[iVA] = NULL;
 			vb.vb_paDx12Mirror[iVA] = NULL;
@@ -819,15 +946,18 @@ extern INDEX gfxCreateVertexBuffer( const INDEX ctVertices, ULONG ulTypeMask, IN
 			vb.vb_i1stLockedVertex[iVA] = vb.vb_ctLockedVertices[iVA] = 0;
 			if( !((ulTypeMask>>iVA)&1)) continue;
 			const SLONG slSize = ctVertices*_aslVBTypeSizes[iVA];
-			if( bRead) {
-				vb.vb_paReadArray[iVA] = AllocMemory(slSize);
-				vb.vb_paDx12Mirror[iVA] = vb.vb_paReadArray[iVA];
-			} else {
-				vb.vb_paDx12Mirror[iVA] = AllocMemory(slSize);
-				vb.vb_abDx12MirrorOwned[iVA] = TRUE;
-			}
-			HRESULT hr = pd3dDev->CreateVertexBuffer(slSize, dwFlags, 0, D3DPOOL_DEFAULT, &vb.vb_pavbWrite[iVA], NULL);
-			if( hr!=D3D_OK) break;  // out of memory (probably)
+			nativeBuffers.mirrors[iVA].resize(slSize);
+			vb.vb_paDx12Mirror[iVA] =
+				&nativeBuffers.mirrors[iVA][0];
+			if (bRead)
+				vb.vb_paReadArray[iVA] = vb.vb_paDx12Mirror[iVA];
+			nativeBuffers.buffers[iVA] = new CDirectX12Buffer;
+			if (nativeBuffers.buffers[iVA] == NULL
+				|| !nativeBuffers.buffers[iVA]->CreateVertexBuffer(
+					GetDirectX12Backend().GetDevice(),
+					slSize,
+					_aslVBTypeSizes[iVA]))
+				break;
 			slTotalSize += slSize;
 		}
 
@@ -837,24 +967,15 @@ extern INDEX gfxCreateVertexBuffer( const INDEX ctVertices, ULONG ulTypeMask, IN
 //	//(DevPartner Bug Fix)(2005-01-10)
 			for( iVA=0; iVA<GFX_MAX_VBA; iVA++)
 			{
-				if( vb.vb_abDx12MirrorOwned[iVA]
-				 && vb.vb_paDx12Mirror[iVA]!=NULL) {
-					FreeMemory(vb.vb_paDx12Mirror[iVA]);
-				}
 				vb.vb_paDx12Mirror[iVA] = NULL;
 				vb.vb_paDx12LockedArray[iVA] = NULL;
 				vb.vb_abDx12MirrorOwned[iVA] = FALSE;
 				if((ulTypeMask>>iVA)&1)
 				{
-					if(vb.vb_paReadArray[iVA]!=NULL)
-					{
-						FreeMemory( vb.vb_paReadArray[iVA]);
-						vb.vb_paReadArray[iVA] = NULL;
-					}
+					vb.vb_paReadArray[iVA] = NULL;
 				}
-				if( !((ulTypeMask>>iVA)&1) || vb.vb_paWriteArray[iVA]==NULL) continue;
-				D3DRELEASE( vb.vb_pavbWrite[iVA], TRUE);
-				vb.vb_pavbWrite[iVA] = NULL;
+				delete nativeBuffers.buffers[iVA];
+				nativeBuffers.buffers[iVA] = NULL;
 			} // sorry, didn't make it
 //	//(DevPartner Bug Fix)(2005-01-10)
 			return FALSE;
@@ -919,20 +1040,21 @@ extern void gfxDeleteVertexBuffer( const INDEX iBindNo)
 	#endif
 */
 
+		DirectX12VertexBufferFamily& nativeBuffers =
+			_dx12StaticVertexBuffers[iBindNo];
 		for( iVA=0; iVA<GFX_MAX_VBA; iVA++) {
-			if( vb.vb_abDx12MirrorOwned[iVA] && vb.vb_paDx12Mirror[iVA]!=NULL) {
-				FreeMemory(vb.vb_paDx12Mirror[iVA]);
+			if (iVA < static_cast<INDEX>(
+				nativeBuffers.buffers.size()))
+			{
+				delete nativeBuffers.buffers[iVA];
+				nativeBuffers.buffers[iVA] = NULL;
 			}
 			vb.vb_paDx12Mirror[iVA] = NULL;
 			vb.vb_paDx12LockedArray[iVA] = NULL;
 			vb.vb_abDx12MirrorOwned[iVA] = FALSE;
-			if( vb.vb_paWriteArray[iVA] == NULL) continue;
-			D3DRELEASE( vb.vb_pavbWrite[iVA], TRUE);
-			vb.vb_pavbWrite[iVA] = NULL;
-			if( vb.vb_paReadArray[iVA] == NULL) continue;
-			FreeMemory( vb.vb_paReadArray[iVA]);
 			vb.vb_paReadArray[iVA] = NULL;
 		}
+		_dx12StaticVertexBuffers.erase(iBindNo);
 
 	}
 

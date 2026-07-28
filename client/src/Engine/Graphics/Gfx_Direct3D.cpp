@@ -21,6 +21,8 @@
 #include <Engine/Graphics/Gfx_Direct3D.h>
 #include <Engine/Graphics/Gfx_Direct3D_Functions.h>
 #include <Engine/Graphics/DirectX12Backend.h>
+#include <Engine/Graphics/DirectX12Buffer.h>
+#include <vector>
 
 // Inicio de modificacion de Ahn Tae-hoon: agregar y modificar el efecto SSSE (0.1).
 #include <Engine/Effect/EffectCommon.h>
@@ -97,6 +99,37 @@ static BOOL  _bProjectiveMapping = FALSE;
 static BOOL  _bLastProjectiveMapping = FALSE;
 extern BOOL  _bGenerateTexCoord = FALSE;
 static BOOL  _bLastGenerateTexCoord = FALSE;
+
+static std::vector<UBYTE> _dx12DynamicPositions;
+static std::vector<UBYTE> _dx12DynamicNormals;
+static std::vector<UBYTE> _dx12DynamicTangents;
+static std::vector<UBYTE> _dx12DynamicWeights;
+static std::vector<UBYTE> _dx12DynamicColors[GFX_MAXLAYERS];
+static std::vector<UBYTE> _dx12DynamicTexCoords[GFX_MAXLAYERS];
+static std::vector<UWORD> _dx12DynamicIndices;
+static CDirectX12Buffer* _dx12PositionBuffer = NULL;
+static CDirectX12Buffer* _dx12NormalBuffer = NULL;
+static CDirectX12Buffer* _dx12TangentBuffer = NULL;
+static CDirectX12Buffer* _dx12WeightBuffer = NULL;
+static CDirectX12Buffer* _dx12ColorBuffers[GFX_MAXLAYERS] = { NULL };
+static CDirectX12Buffer* _dx12TexCoordBuffers[GFX_MAXLAYERS] = { NULL };
+static CDirectX12Buffer* _dx12IndexBuffer = NULL;
+
+static CDirectX12Buffer* CreateNativeVertexBuffer(
+	UINT size,
+	UINT stride)
+{
+	CDirectX12Buffer* pBuffer = new CDirectX12Buffer;
+	if (pBuffer == NULL || !pBuffer->CreateVertexBuffer(
+		GetDirectX12Backend().GetDevice(),
+		size,
+		stride))
+	{
+		delete pBuffer;
+		return NULL;
+	}
+	return pBuffer;
+}
 
 // swap intervals tables
 static UINT _auiSwapIntervals[] = {
@@ -537,39 +570,36 @@ static D3DGAMMARAMP *pgrtSystemGamma = (D3DGAMMARAMP*)&_auwSystemGammaTable[0];
 extern void SetupVertexArrays_D3D( INDEX ctVertices)
 {
 	INDEX i;
-	HRESULT hr;
 	ASSERT( ctVertices>=0);
 
 	// do nothing if buffer is sufficient
 	ctVertices = ClampUp( ctVertices, 65535L); // need to clamp max vertices first
 	if( ctVertices!=0 && ctVertices<=_pGfx->gl_ctVertices) return;
-	const LPDIRECT3DDEVICE9 pd3dDev = _pGfx->gl_pd3d9Device;
-
-	// deallocate if needed
-	if( _pGfx->gl_pd3dVtx!=NULL)
+	delete _dx12PositionBuffer;
+	delete _dx12NormalBuffer;
+	delete _dx12TangentBuffer;
+	delete _dx12WeightBuffer;
+	_dx12PositionBuffer = NULL;
+	_dx12NormalBuffer = NULL;
+	_dx12TangentBuffer = NULL;
+	_dx12WeightBuffer = NULL;
+	for (i = 0; i < GFX_MAXLAYERS; ++i)
 	{
-		// reset all streams
-		for( i=0; i<_pGfx->gl_ctMaxStreams; i++) {
-			hr = pd3dDev->SetStreamSource( i, NULL,0,0);
-			D3D_CHECKERROR(hr);
-		}
-		// release vertex and eventual normal array
-		D3DRELEASE( _pGfx->gl_pd3dVtx, TRUE);
-		ASSERT( _pGfx->gl_pd3dNor!=NULL);
-		D3DRELEASE( _pGfx->gl_pd3dNor, TRUE);
-		ASSERT( _pGfx->gl_pd3dWgh!=NULL);
-		D3DRELEASE( _pGfx->gl_pd3dWgh, TRUE);
-		// color arrays
-		for( i=0; i<_pGfx->gl_ctColBuffers; i++) {
-			ASSERT( _pGfx->gl_pd3dCol[i]!=NULL);
-			D3DRELEASE( _pGfx->gl_pd3dCol[i], TRUE);
-		}
-		// texcoord arrays
-		for( i=0; i<_pGfx->gl_ctTexBuffers; i++) {
-			ASSERT( _pGfx->gl_pd3dTex[i]!=NULL);
-			D3DRELEASE( _pGfx->gl_pd3dTex[i], TRUE);
-		}
+		delete _dx12ColorBuffers[i];
+		delete _dx12TexCoordBuffers[i];
+		_dx12ColorBuffers[i] = NULL;
+		_dx12TexCoordBuffers[i] = NULL;
+		_dx12DynamicColors[i].clear();
+		_dx12DynamicTexCoords[i].clear();
 	}
+	_dx12DynamicPositions.clear();
+	_dx12DynamicNormals.clear();
+	_dx12DynamicTangents.clear();
+	_dx12DynamicWeights.clear();
+	_pGfx->gl_pd3dVtx = NULL;
+	_pGfx->gl_pd3dNor = NULL;
+	_pGfx->gl_pd3dTan = NULL;
+	_pGfx->gl_pd3dWgh = NULL;
 
 	// allocate if needed
 	if( ctVertices>0)
@@ -578,27 +608,37 @@ extern void SetupVertexArrays_D3D( INDEX ctVertices)
 		if( _pGfx->gl_ctVertices < ctVertices) _pGfx->gl_ctVertices = ctVertices;
 		else ctVertices = _pGfx->gl_ctVertices;
 
-		// determine SW or HW VP and NPatches usage (Truform) 
-		DWORD dwFlags = D3DUSAGE_DYNAMIC|D3DUSAGE_WRITEONLY;
-		if( !(_pGfx->gl_ulFlags&GLF_D3D_USINGHWTNL)) dwFlags |= D3DUSAGE_SOFTWAREPROCESSING;
-		if( _pGfx->gl_iMaxTessellationLevel>0 && gap_iTruformLevel>0) dwFlags |= D3DUSAGE_NPATCHES;
+		_dx12DynamicPositions.resize(ctVertices * GFX_POSSIZE);
+		_dx12DynamicNormals.resize(ctVertices * GFX_NORSIZE);
+		_dx12DynamicTangents.resize(ctVertices * GFX_TANSIZE);
+		_dx12DynamicWeights.resize(ctVertices * GFX_WGHSIZE);
+		_dx12PositionBuffer = CreateNativeVertexBuffer(
+			ctVertices * GFX_POSSIZE, GFX_POSSIZE);
+		_dx12NormalBuffer = CreateNativeVertexBuffer(
+			ctVertices * GFX_NORSIZE, GFX_NORSIZE);
+		_dx12TangentBuffer = CreateNativeVertexBuffer(
+			ctVertices * GFX_TANSIZE, GFX_TANSIZE);
+		_dx12WeightBuffer = CreateNativeVertexBuffer(
+			ctVertices * GFX_WGHSIZE, GFX_WGHSIZE);
 
-		// vertices and normals...
-		hr = pd3dDev->CreateVertexBuffer( ctVertices*GFX_POSSIZE, dwFlags, 0, D3DPOOL_DEFAULT, &_pGfx->gl_pd3dVtx, NULL);  D3D_CHECKERROR(hr);
-		hr = pd3dDev->CreateVertexBuffer( ctVertices*GFX_NORSIZE, dwFlags, 0, D3DPOOL_DEFAULT, &_pGfx->gl_pd3dNor, NULL);  D3D_CHECKERROR(hr);
-		hr = pd3dDev->CreateVertexBuffer( ctVertices*GFX_WGHSIZE, dwFlags, 0, D3DPOOL_DEFAULT, &_pGfx->gl_pd3dWgh, NULL);  D3D_CHECKERROR(hr);
-
-		// all color buffers...
 		for( i=0; i<_pGfx->gl_ctColBuffers; i++) {
-			hr = pd3dDev->CreateVertexBuffer( ctVertices*GFX_COLSIZE, dwFlags, 0, D3DPOOL_DEFAULT, &_pGfx->gl_pd3dCol[i], NULL);
-			D3D_CHECKERROR(hr);
-		} 
-		// all texcoord buffers...
+			_dx12DynamicColors[i].resize(ctVertices * GFX_COLSIZE);
+			_dx12ColorBuffers[i] = CreateNativeVertexBuffer(
+				ctVertices * GFX_COLSIZE, GFX_COLSIZE);
+			_pGfx->gl_pd3dCol[i] = NULL;
+		}
 		for( i=0; i<_pGfx->gl_ctTexBuffers; i++) {
 			const SLONG slSize = ctVertices * (i==0 ? GFX_TX4SIZE : GFX_TEXSIZE); // 1st texture buffer might have projective mapping
-			hr = pd3dDev->CreateVertexBuffer( slSize, dwFlags, 0, D3DPOOL_DEFAULT, &_pGfx->gl_pd3dTex[i], NULL);
-			D3D_CHECKERROR(hr);
+			const UINT stride = i == 0 ? GFX_TX4SIZE : GFX_TEXSIZE;
+			_dx12DynamicTexCoords[i].resize(slSize);
+			_dx12TexCoordBuffers[i] = CreateNativeVertexBuffer(
+				slSize, stride);
+			_pGfx->gl_pd3dTex[i] = NULL;
 		}
+		ASSERT(_dx12PositionBuffer != NULL
+			&& _dx12NormalBuffer != NULL
+			&& _dx12TangentBuffer != NULL
+			&& _dx12WeightBuffer != NULL);
 	}
 	// just switch it off if not needed any more (i.e. D3D is shutting down)
 	else _pGfx->gl_ctVertices = 0;
@@ -626,19 +666,14 @@ extern void SetupVertexArrays_D3D( INDEX ctVertices)
 // prepare index arrays for drawing
 extern void SetupIndexArray_D3D( INDEX ctIndices)
 {
-	HRESULT hr;
 	ASSERT( ctIndices>=0);
 	// clamp max indices
 	// ctIndices = ClampUp( ctIndices, 65535L);
 
-	// determine SW or HW VP
-	DWORD dwFlags = D3DUSAGE_DYNAMIC|D3DUSAGE_WRITEONLY;
-	const LPDIRECT3DDEVICE9 pd3dDev = _pGfx->gl_pd3d9Device;
-	if( !(_pGfx->gl_ulFlags&GLF_D3D_USINGHWTNL)) dwFlags |= D3DUSAGE_SOFTWAREPROCESSING;
-	if( _pGfx->gl_iMaxTessellationLevel>0 && gap_iTruformLevel>0) dwFlags |= D3DUSAGE_NPATCHES;
-	
-	// dealocate if needed
-	if( _pGfx->gl_ctIndices>0) D3DRELEASE( _pGfx->gl_pd3dIdx, TRUE);
+	delete _dx12IndexBuffer;
+	_dx12IndexBuffer = NULL;
+	_dx12DynamicIndices.clear();
+	_pGfx->gl_pd3dIdx = NULL;
 
 	// allocate if needed
 	if( ctIndices>0)
@@ -646,12 +681,18 @@ extern void SetupIndexArray_D3D( INDEX ctIndices)
 		// eventually update max index count
 		if( _pGfx->gl_ctIndices < ctIndices) _pGfx->gl_ctIndices = ctIndices;
 		else ctIndices = _pGfx->gl_ctIndices;
-		// create buffer
-		hr = pd3dDev->CreateIndexBuffer( ctIndices*GFX_IDXSIZE, dwFlags, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &_pGfx->gl_pd3dIdx, NULL);
-		D3D_CHECKERROR(hr);
-		// set it
-		hr = _pGfx->gl_pd3d9Device->SetIndices( _pGfx->gl_pd3dIdx/*, 0*/);
-		D3D_CHECKERROR(hr);
+		_dx12DynamicIndices.resize(ctIndices);
+		_dx12IndexBuffer = new CDirectX12Buffer;
+		if (_dx12IndexBuffer == NULL
+			|| !_dx12IndexBuffer->CreateIndexBuffer(
+				GetDirectX12Backend().GetDevice(),
+				ctIndices * GFX_IDXSIZE,
+				DXGI_FORMAT_R16_UINT))
+		{
+			delete _dx12IndexBuffer;
+			_dx12IndexBuffer = NULL;
+			ASSERTALWAYS("No se pudo crear el index buffer DX12.");
+		}
 	}
 	// just switch it off if not needed any more (i.e. D3D is shutting down)
 	else _pGfx->gl_ctIndices = 0;
@@ -1813,26 +1854,12 @@ extern inline void *LockVertexArray_D3D( const INDEX ctVertices)
 	_bProjectiveMapping = FALSE;
 	_iTexPass = _iColPass = 0;
 	ASSERT( _iVtxPos>=0 && _iVtxPos<65536);
-	HRESULT hr;
-
-	// update vertex base offset
-	if( bHWTnL) {
-		hr = _pGfx->gl_pd3d9Device->SetIndices( _pGfx->gl_pd3dIdx/*, _iVtxPos*/);
-		D3D_CHECKERROR(hr);
-	}
-
 	// update streams mask and assign buffer
 	_ulStreamsMask |= 1<<GFX_POSIDX;
-	hr = _pGfx->gl_pd3d9Device->SetStreamSource( GFX_POSIDX, _pGfx->gl_pd3dVtx, (_iVtxPos * GFX_POSSIZE), GFX_POSSIZE);
-	D3D_CHECKERROR(hr);
-
-	// fetch and return D3D buffer
-	void *pLockedBuffer = NULL;
-	hr = _pGfx->gl_pd3dVtx->Lock( _iVtxPos*GFX_POSSIZE, GFX_ctVertices*GFX_POSSIZE, (void**)&pLockedBuffer, _dwVtxLockFlag);
-	D3D_CHECKERROR(hr);
-
-	// done
-	_pd3dLockedVtx = SUCCEEDED(hr) ? _pGfx->gl_pd3dVtx : NULL;
+	void *pLockedBuffer =
+		&_dx12DynamicPositions[_iVtxPos * GFX_POSSIZE];
+	_pd3dLockedVtx =
+		reinterpret_cast<LPDIRECT3DVERTEXBUFFER9>(pLockedBuffer);
 	return pLockedBuffer;
 }
 
@@ -1841,8 +1868,6 @@ extern inline void *LockVertexArray_D3D( const INDEX ctVertices)
 extern inline void UnlockVertexArray_D3D(void)
 {
 	ASSERT( _pd3dLockedVtx!=NULL && _bUsingDynamicBuffer);
-	HRESULT hr = _pd3dLockedVtx->Unlock();
-	D3D_CHECKERROR(hr);
 	_pd3dLockedVtx = NULL;
 	// advance to next available lock position
 	_iVtxOffset += GFX_ctVertices;
@@ -1856,20 +1881,12 @@ extern inline void *LockNormalArray_D3D(void)
 	ASSERT( _iTexPass>=0 && _iColPass>=0);
 	ASSERT( _iVtxPos >=0 && _iVtxPos <65536);
 	ASSERT( _iTexPass <2 && _iColPass<2);  // normals must be set in 1st pass (completed or not)
-	HRESULT hr;
-
 	// update streams mask and assign buffer
 	_ulStreamsMask |= 1<<GFX_NORIDX;
-	hr = _pGfx->gl_pd3d9Device->SetStreamSource( GFX_NORIDX, _pGfx->gl_pd3dNor, _iVtxPos * GFX_NORSIZE, GFX_NORSIZE);
-	D3D_CHECKERROR(hr);
-
-	// fetch and return D3D buffer
-	void *pLockedBuffer;
-	hr = _pGfx->gl_pd3dNor->Lock( _iVtxPos*GFX_NORSIZE, GFX_ctVertices*GFX_NORSIZE, (void**)&pLockedBuffer, _dwVtxLockFlag);
-	D3D_CHECKERROR(hr);
-
-	// done
-	_pd3dLockedNor = _pGfx->gl_pd3dNor;
+	void *pLockedBuffer =
+		&_dx12DynamicNormals[_iVtxPos * GFX_NORSIZE];
+	_pd3dLockedNor =
+		reinterpret_cast<LPDIRECT3DVERTEXBUFFER9>(pLockedBuffer);
 	return pLockedBuffer;
 }
 
@@ -1878,8 +1895,6 @@ extern inline void *LockNormalArray_D3D(void)
 extern inline void UnlockNormalArray_D3D(void)
 {
 	ASSERT( _pd3dLockedNor!=NULL && _bUsingDynamicBuffer);
-	HRESULT hr = _pd3dLockedNor->Unlock();
-	D3D_CHECKERROR(hr);
  _pd3dLockedNor = NULL;
 }
 
@@ -1890,20 +1905,12 @@ extern inline void *LockTangentArray_D3D(void)
   ASSERT( _iTexPass>=0 && _iColPass>=0);
   ASSERT( _iVtxPos >=0 && _iVtxPos <65536);
   ASSERT( _iTexPass <2 && _iColPass<2);  // normals must be set in 1st pass (completed or not)
-  HRESULT hr;
-
   // update streams mask and assign buffer
   _ulStreamsMask |= 1<<GFX_TANIDX;
-  hr = _pGfx->gl_pd3d9Device->SetStreamSource( GFX_REAL_TANIDX, _pGfx->gl_pd3dTan, _iVtxPos * GFX_TANSIZE, GFX_TANSIZE);
-  D3D_CHECKERROR(hr);
-
-  // fetch and return D3D buffer
-  void *pLockedBuffer;
-  hr = _pGfx->gl_pd3dTan->Lock( _iVtxPos*GFX_TANSIZE, GFX_ctVertices*GFX_TANSIZE, (void**)&pLockedBuffer, _dwVtxLockFlag);
-  D3D_CHECKERROR(hr);
-
-  // done
-  _pd3dLockedTan = _pGfx->gl_pd3dTan;
+  void *pLockedBuffer =
+	  &_dx12DynamicTangents[_iVtxPos * GFX_TANSIZE];
+  _pd3dLockedTan =
+	  reinterpret_cast<LPDIRECT3DVERTEXBUFFER9>(pLockedBuffer);
   return pLockedBuffer;
 }
 
@@ -1912,8 +1919,6 @@ extern inline void *LockTangentArray_D3D(void)
 extern inline void UnlockTangentArray_D3D(void)
 {
   ASSERT( _pd3dLockedTan!=NULL && _bUsingDynamicBuffer);
-  HRESULT hr = _pd3dLockedTan->Unlock();
-  D3D_CHECKERROR(hr);
  _pd3dLockedTan = NULL;
 }
 // Fin de modificacion de Ahn Tae-hoon: mapa normal en espacio tangente (0.1).
@@ -1926,20 +1931,12 @@ extern inline void *LockWeightArray_D3D(void)
 	ASSERT( _iTexPass>=0 && _iColPass>=0);
 	ASSERT( _iVtxPos >=0 && _iVtxPos <65536);
 	ASSERT( _iTexPass <2 && _iColPass<2);  // weights must be set in 1st pass (completed or not)
-	HRESULT hr;
-
 	// update streams mask and assign buffer
 	_ulStreamsMask |= 1<<GFX_WGHIDX;
-	hr = _pGfx->gl_pd3d9Device->SetStreamSource( GFX_WGHIDX, _pGfx->gl_pd3dWgh, _iVtxPos * GFX_WGHSIZE, GFX_WGHSIZE);
-	D3D_CHECKERROR(hr);
-
-	// fetch and return D3D buffer
-	void *pLockedBuffer;
-	hr = _pGfx->gl_pd3dWgh->Lock( _iVtxPos*GFX_WGHSIZE, GFX_ctVertices*GFX_WGHSIZE, (void**)&pLockedBuffer, _dwVtxLockFlag);
-	D3D_CHECKERROR(hr);
-
-	// done
-	_pd3dLockedWgh = _pGfx->gl_pd3dWgh;
+	void *pLockedBuffer =
+		&_dx12DynamicWeights[_iVtxPos * GFX_WGHSIZE];
+	_pd3dLockedWgh =
+		reinterpret_cast<LPDIRECT3DVERTEXBUFFER9>(pLockedBuffer);
 	return pLockedBuffer;
 }
 
@@ -1948,8 +1945,6 @@ extern inline void *LockWeightArray_D3D(void)
 extern inline void UnlockWeightArray_D3D(void)
 {
 	ASSERT( _pd3dLockedWgh!=NULL && _bUsingDynamicBuffer);
-	HRESULT hr = _pd3dLockedWgh->Unlock();
-	D3D_CHECKERROR(hr);
  _pd3dLockedWgh = NULL;
 }
 
@@ -1973,21 +1968,12 @@ extern inline void *LockColorArray_D3D(void)
 	ASSERT( _iVtxPos >=0 && _iVtxPos<65536);
 	_iColPass++; // advance to next color pass
 
-	HRESULT hr;
-	LPDIRECT3DVERTEXBUFFER9 pd3dVB = _pGfx->gl_pd3dCol[iThisPass];
-
 	// update streams mask and assign buffer
 	_ulStreamsMask |= 1<<GFX_COLIDX;
-	hr = _pGfx->gl_pd3d9Device->SetStreamSource( GFX_COLIDX, pd3dVB, _iVtxPos * GFX_COLSIZE, GFX_COLSIZE);
-	D3D_CHECKERROR(hr);
-
-	// fetch and return D3D buffer
-	void *pLockedBuffer;
-	hr = pd3dVB->Lock( _iVtxPos*GFX_COLSIZE, GFX_ctVertices*GFX_COLSIZE, (void**)&pLockedBuffer, dwLockFlag);
-	D3D_CHECKERROR(hr);
-
-	// done
-	_pd3dLockedCol = pd3dVB;
+	void *pLockedBuffer =
+		&_dx12DynamicColors[iThisPass][_iVtxPos * GFX_COLSIZE];
+	_pd3dLockedCol =
+		reinterpret_cast<LPDIRECT3DVERTEXBUFFER9>(pLockedBuffer);
 	return pLockedBuffer;
 }
 
@@ -1996,8 +1982,6 @@ extern inline void *LockColorArray_D3D(void)
 extern inline void UnlockColorArray_D3D(void)
 {
 	ASSERT( _pd3dLockedCol!=NULL && _bUsingDynamicBuffer);
-	HRESULT hr = _pd3dLockedCol->Unlock();
-	D3D_CHECKERROR(hr);
  _pd3dLockedCol = NULL;
 }
 
@@ -2035,21 +2019,12 @@ extern inline void *LockTexCoordArray_D3D( const BOOL bProjectiveMapping/*=FALSE
 		slStride = GFX_TX4SIZE;
 	}
 
-	HRESULT hr;
-	LPDIRECT3DVERTEXBUFFER9 pd3dVB = _pGfx->gl_pd3dTex[iThisPass];
-
 	// update streams mask and assign buffer
 	_ulStreamsMask |= 1<<iStream;
-	hr = _pGfx->gl_pd3d9Device->SetStreamSource( iStream, pd3dVB, iLockOffset, slStride);
-	D3D_CHECKERROR(hr);
-
-	// fetch and return D3D buffer
-	void *pLockedBuffer = NULL;
-	hr = pd3dVB->Lock( iLockOffset, ctLockSize, (void**)&pLockedBuffer, dwLockFlag);
-	D3D_CHECKERROR(hr);
-
-	// done
-	_pd3dLockedTex = SUCCEEDED(hr) ? pd3dVB : NULL;
+	void *pLockedBuffer =
+		&_dx12DynamicTexCoords[iThisPass][iLockOffset];
+	_pd3dLockedTex =
+		reinterpret_cast<LPDIRECT3DVERTEXBUFFER9>(pLockedBuffer);
 	return pLockedBuffer;
 }
 
@@ -2058,8 +2033,6 @@ extern inline void *LockTexCoordArray_D3D( const BOOL bProjectiveMapping/*=FALSE
 extern inline void UnlockTexCoordArray_D3D(void)
 {
 	ASSERT( _pd3dLockedTex!=NULL && _bUsingDynamicBuffer);
-	HRESULT hr = _pd3dLockedTex->Unlock();
-	D3D_CHECKERROR(hr);
  _pd3dLockedTex = NULL;
 }
 
@@ -2139,22 +2112,18 @@ extern void DrawElements_D3D( INDEX ctIndices, const UWORD *puwIndices)
 	ASSERT( _iTexPass>=0 && _iColPass>=0);
 	ASSERT( _iVtxPos >=0 && _iVtxPos<65536);
 	const LPDIRECT3DDEVICE9 pd3dDev = _pGfx->gl_pd3d9Device;
-
+	HRESULT hr = D3D_OK;
 	// at least one triangle must be sent
 
 	ASSERT( ctIndices>=3 && ((ctIndices/3)*3)==ctIndices);
 	if( ctIndices<3) return;
-	HRESULT hr;
-
 	// clamp indices and eventually adjust size of index buffer
 	ctIndices = ClampUp( ctIndices, _pGfx->gl_ctMaxPrimitives);
 	if( ctIndices>_pGfx->gl_ctIndices) SetupIndexArray_D3D(ctIndices);
 
 	// determine lock position and type
-	DWORD dwLockFlag = D3DLOCK_NOOVERWRITE;
 	if( (_iIdxOffset+ctIndices) >= _pGfx->gl_ctIndices) {
 		_iIdxOffset = 0;
-		dwLockFlag  = D3DLOCK_DISCARD;
 	}
 
 	// determine range span usage
@@ -2167,9 +2136,8 @@ extern void DrawElements_D3D( INDEX ctIndices, const UWORD *puwIndices)
 	}
 
 	// copy indices to index buffer
-	UWORD *puwLockedBuffer;
-	hr = _pGfx->gl_pd3dIdx->Lock( _iIdxOffset*GFX_IDXSIZE, ctIndices*GFX_IDXSIZE, (void**)&puwLockedBuffer, dwLockFlag);
-	D3D_CHECKERROR(hr);
+	UWORD *puwLockedBuffer =
+		&_dx12DynamicIndices[_iIdxOffset];
 
 #if (defined __MSVC_INLINE__) && (defined  PLATFORM_32BIT) && (defined ENABLE_X86_ASM)
 
@@ -2228,10 +2196,6 @@ elemEnd:
 	}
 
 #endif // ASMOPT
-
-	// indices filled
-	hr = _pGfx->gl_pd3dIdx->Unlock();
-	D3D_CHECKERROR(hr);
 
 	// no need to do all the vertex-shader and streams mumbo-jumbos if static buffer is used
 	if(_bUsingDynamicBuffer) {

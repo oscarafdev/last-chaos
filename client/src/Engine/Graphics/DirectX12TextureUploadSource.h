@@ -20,6 +20,10 @@ class CDirectX12TextureUploadSource
 {
 public:
 	CDirectX12TextureUploadSource();
+	CDirectX12TextureUploadSource(
+		const CDirectX12TextureUploadSource& other);
+	CDirectX12TextureUploadSource& operator=(
+		const CDirectX12TextureUploadSource& other);
 
 	void Clear();
 	bool PrepareFromLegacyTexture(IDirect3DTexture9* pTexture9);
@@ -57,11 +61,6 @@ private:
 		{
 		}
 	};
-
-	CDirectX12TextureUploadSource(
-		const CDirectX12TextureUploadSource&);
-	CDirectX12TextureUploadSource& operator=(
-		const CDirectX12TextureUploadSource&);
 
 	bool PrepareLegacyMip(
 		const D3DSURFACE_DESC& description,

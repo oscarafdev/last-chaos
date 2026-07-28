@@ -61,6 +61,32 @@ CDirectX12TextureUploadSource::CDirectX12TextureUploadSource()
 {
 }
 
+CDirectX12TextureUploadSource::CDirectX12TextureUploadSource(
+	const CDirectX12TextureUploadSource& other)
+	: m_width(other.m_width)
+	, m_height(other.m_height)
+	, m_format(other.m_format)
+	, m_componentMapping(other.m_componentMapping)
+	, m_mips(other.m_mips)
+{
+	RebuildSubresources();
+}
+
+CDirectX12TextureUploadSource&
+CDirectX12TextureUploadSource::operator=(
+	const CDirectX12TextureUploadSource& other)
+{
+	if (this == &other)
+		return *this;
+	m_width = other.m_width;
+	m_height = other.m_height;
+	m_format = other.m_format;
+	m_componentMapping = other.m_componentMapping;
+	m_mips = other.m_mips;
+	RebuildSubresources();
+	return *this;
+}
+
 void CDirectX12TextureUploadSource::Clear()
 {
 	m_width = 0;
@@ -75,58 +101,9 @@ bool CDirectX12TextureUploadSource::PrepareFromLegacyTexture(
 	IDirect3DTexture9* pTexture9)
 {
 	Clear();
-	if (pTexture9 == NULL)
-		return false;
-
-	D3DSURFACE_DESC baseDescription;
-	if (FAILED(pTexture9->GetLevelDesc(0, &baseDescription))
-		|| baseDescription.Pool == D3DPOOL_DEFAULT)
-		return false;
-
-	DirectX12TextureFormatInfo formatInfo;
-	if (!GetDirectX12TextureFormat(
-		baseDescription.Format,
-		&formatInfo))
-		return false;
-
-	const UINT mipCount = pTexture9->GetLevelCount();
-	if (mipCount == 0)
-		return false;
-
-	m_mips.resize(mipCount);
-	for (UINT iMip = 0; iMip < mipCount; ++iMip)
-	{
-		D3DSURFACE_DESC description;
-		D3DLOCKED_RECT lockedRect;
-		if (FAILED(pTexture9->GetLevelDesc(iMip, &description))
-			|| FAILED(pTexture9->LockRect(
-				iMip,
-				&lockedRect,
-				NULL,
-				D3DLOCK_READONLY)))
-		{
-			Clear();
-			return false;
-		}
-
-		const bool prepared = PrepareLegacyMip(
-			description,
-			lockedRect,
-			&m_mips[iMip]);
-		pTexture9->UnlockRect(iMip);
-		if (!prepared)
-		{
-			Clear();
-			return false;
-		}
-	}
-
-	m_width = baseDescription.Width;
-	m_height = baseDescription.Height;
-	m_format = formatInfo.format;
-	m_componentMapping = formatInfo.componentMapping;
-	RebuildSubresources();
-	return true;
+	// Los assets del motor deben entregar su mirror CPU directamente. Leer
+	// una textura D3D9 con LockRect reintroduciria una identidad legacy.
+	return false;
 }
 
 bool CDirectX12TextureUploadSource::PrepareFromRgbaMipChain(
