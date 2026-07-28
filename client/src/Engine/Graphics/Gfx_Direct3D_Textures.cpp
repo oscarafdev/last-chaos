@@ -1,9 +1,5 @@
 #include "stdh.h"
 
-// ###
-#include <d3dx9tex.h>
-#pragma comment(lib, "d3dx9.lib") 
-
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/Base/MemoryTracking.h>
 

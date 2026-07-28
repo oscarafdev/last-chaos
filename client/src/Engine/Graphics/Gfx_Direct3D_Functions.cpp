@@ -29,9 +29,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Templates/Stock_CTextureData.h>
 
 #ifdef SE1_D3D
-#include <D3DX9Shader.h>
-#pragma comment(lib, "d3dx9.lib")
-
 #include <Engine/Graphics/Gfx_Direct3D_Functions.h>
 #include <Engine/Graphics/Gfx_Direct3D_Types.h>
 

@@ -285,7 +285,8 @@ HRESULT LoadAllMipSurfaces(void * data, int iLevel)
 }
        
 
-    hr = D3DXCreateTexture(m_pd3dDevice, Width, Height, nMips,  0,   D3DFMT_DXT3,  D3DPOOL_MANAGED, &pCurrentTexture);
+    hr = m_pd3dDevice->CreateTexture(Width, Height, nMips, 0,
+        D3DFMT_DXT3, D3DPOOL_MANAGED, &pCurrentTexture, NULL);
     nvDXTcompress(raw_data, Width, Height, DXT3, true, 4, LoadAllMipSurfaces);
 
 */

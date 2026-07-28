@@ -436,7 +436,7 @@ extern CTPoint TR_RelFromAbsPoint(const CTerrain *ptrTerrain, const FLOAT3D &vPo
 	return pt;
 }
 
-#include <d3dx9math.h>
+#include <Engine/Math/GfxMath.h>
 extern FLOAT TR_GetHeight( CTerrainImp *ptr, FLOAT fX, FLOAT fZ )
 {
 	ASSERT( ptr != NULL );
@@ -457,56 +457,56 @@ extern FLOAT TR_GetHeight( CTerrainImp *ptr, FLOAT fX, FLOAT fZ )
 	if( ( pixX & 0x01 ) && !( pixZ & 0x01 ) || !( pixX & 0x01 ) && ( pixZ & 0x01 ) )
 		bLRDiagonal = FALSE;
 
-	D3DXPLANE	plTemp;
-	D3DXVECTOR3	vP0, vP1, vP2;
+	GfxPlane	plTemp;
+	GfxVector3	vP0, vP1, vP2;
 
 	if( bLRDiagonal )
 	{
-		vP1 = D3DXVECTOR3( pixX * slCellSize,
+		vP1 = GfxVector3( pixX * slCellSize,
 							puwHeightMap[ pixX + pixZ * pixHeightMapWidth] * fHeightStretch,
 							pixZ * slCellSize );
-		vP2 = D3DXVECTOR3( ( pixX + 1 ) * slCellSize,
+		vP2 = GfxVector3( ( pixX + 1 ) * slCellSize,
 							puwHeightMap[pixX + 1 + ( pixZ + 1 ) * pixHeightMapWidth] * fHeightStretch,
 							( pixZ + 1 ) * slCellSize );
 
 		if( fRemainedX > fRemainedZ )		// Upper right triangle
 		{
-			vP0 = D3DXVECTOR3( ( pixX + 1 ) * slCellSize,
+			vP0 = GfxVector3( ( pixX + 1 ) * slCellSize,
 								puwHeightMap[pixX + 1 + pixZ * pixHeightMapWidth] * fHeightStretch,
 								pixZ * slCellSize );
 		}
 		else								// Lower left triangle
 		{
-			vP0 = D3DXVECTOR3( pixX * slCellSize,
+			vP0 = GfxVector3( pixX * slCellSize,
 								puwHeightMap[pixX + ( pixZ + 1 ) * pixHeightMapWidth] * fHeightStretch,
 								( pixZ + 1 ) * slCellSize );
 		}
 	}
 	else
 	{
-		vP1 = D3DXVECTOR3( ( pixX + 1 ) * slCellSize,
+		vP1 = GfxVector3( ( pixX + 1 ) * slCellSize,
 							puwHeightMap[ pixX + 1 + pixZ * pixHeightMapWidth] * fHeightStretch,
 							pixZ * slCellSize );
-		vP2 = D3DXVECTOR3( pixX * slCellSize,
+		vP2 = GfxVector3( pixX * slCellSize,
 							puwHeightMap[pixX + ( pixZ + 1 ) * pixHeightMapWidth] * fHeightStretch,
 							( pixZ + 1 ) * slCellSize );
 
 		fRemainedX = slCellSize - fRemainedX;
 		if( fRemainedX > fRemainedZ )		// Upper left triangle
 		{
-			vP0 = D3DXVECTOR3( pixX * slCellSize,
+			vP0 = GfxVector3( pixX * slCellSize,
 								puwHeightMap[pixX + pixZ * pixHeightMapWidth] * fHeightStretch,
 								pixZ * slCellSize );
 		}
 		else								// Lower right triangle
 		{
-			vP0 = D3DXVECTOR3( ( pixX + 1 ) * slCellSize,
+			vP0 = GfxVector3( ( pixX + 1 ) * slCellSize,
 								puwHeightMap[pixX + 1 + ( pixZ + 1 ) * pixHeightMapWidth] * fHeightStretch,
 								( pixZ + 1 ) * slCellSize );
 		}
 	}
 
-	D3DXPlaneFromPoints( &plTemp, &vP0, &vP1, &vP2 );
+	GfxPlaneFromPoints( &plTemp, &vP0, &vP1, &vP2 );
 
 	return -( plTemp.a * fX + plTemp.c * fZ + plTemp.d ) / plTemp.b;
 }

@@ -391,12 +391,8 @@ DECLARE_INTERFACE_(ID3DXBuffer, IUnknown)
 
 
 typedef HRESULT(WINAPI* PFN_D3DXAssembleShader)(LPCSTR pSrcData, UINT SrcDataLen, const D3DXMACRO* pDefines, LPD3DXINCLUDE pInclude, DWORD Flags, LPD3DXBUFFER* ppShader, LPD3DXBUFFER* ppErrorMsgs);
-typedef HRESULT(WINAPI* PFN_D3DXDisassembleShader)(const DWORD* pShader, BOOL EnableColorCode, LPCSTR pComments, LPD3DXBUFFER* ppDisassembly);
-typedef HRESULT(WINAPI* PFN_D3DXLoadSurfaceFromSurface)(LPDIRECT3DSURFACE9 pDestSurface, const PALETTEENTRY* pDestPalette, const RECT* pDestRect, LPDIRECT3DSURFACE9 pSrcSurface, const PALETTEENTRY* pSrcPalette, const RECT* pSrcRect, DWORD Filter, D3DCOLOR ColorKey);
 
 PFN_D3DXAssembleShader D3DXAssembleShader = nullptr;
-PFN_D3DXDisassembleShader D3DXDisassembleShader = nullptr;
-PFN_D3DXLoadSurfaceFromSurface D3DXLoadSurfaceFromSurface = nullptr;
 
 
 extern ULONG* CompileVertexProgram_D3D(const char* strVertexProgram, ID3DXBuffer** ppOut)
@@ -899,15 +895,13 @@ BOOL CGfxLibrary::InitDriver_D3D(void)
 	CPrintF("DX12 info: D3D9On12 entry module loaded.\n");
 
 	// Load D3DX
-	if (!D3DXAssembleShader || !D3DXDisassembleShader || !D3DXLoadSurfaceFromSurface)
+	if (!D3DXAssembleShader)
 	{
 		const HMODULE module = LoadLibrary(TEXT("d3dx9_43.dll"));
 
 		if (module != nullptr)
 		{
 			D3DXAssembleShader = reinterpret_cast<PFN_D3DXAssembleShader>(GetProcAddress(module, "D3DXAssembleShader"));
-			D3DXDisassembleShader = reinterpret_cast<PFN_D3DXDisassembleShader>(GetProcAddress(module, "D3DXDisassembleShader"));
-			D3DXLoadSurfaceFromSurface = reinterpret_cast<PFN_D3DXLoadSurfaceFromSurface>(GetProcAddress(module, "D3DXLoadSurfaceFromSurface"));
 		}
 		else
 		{

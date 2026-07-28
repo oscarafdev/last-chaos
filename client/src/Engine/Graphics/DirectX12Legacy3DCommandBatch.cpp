@@ -4,6 +4,7 @@
 #include <float.h>
 #include <vector>
 #include <d3d9.h>
+#include <d3dcompiler.h>
 #include <d3dx9math.h>
 
 #include <Engine/Base/Console.h>
@@ -19,6 +20,8 @@
 #include <Engine/Graphics/DirectX12RenderState.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
 #include <Engine/Graphics/DirectX12UploadManager.h>
+
+#pragma comment(lib, "d3dcompiler.lib")
 
 namespace
 {
@@ -222,10 +225,11 @@ namespace
 			CloseHandle(hBinary);
 		}
 
-		ID3DXBuffer* pAssembly = NULL;
-		if (FAILED(D3DXDisassembleShader(
-			reinterpret_cast<const DWORD*>(pBytecode),
-			FALSE,
+		ID3DBlob* pAssembly = NULL;
+		if (FAILED(D3DDisassemble(
+			pBytecode,
+			byteCount,
+			0,
 			NULL,
 			&pAssembly))
 			|| pAssembly == NULL)

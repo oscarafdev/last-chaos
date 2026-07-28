@@ -30,7 +30,7 @@
 
 //강동민 수정 시작
 // NOTE : 나중에 제거해야 할듯(CreateShadowMatrix() 때문에 필요함.)
-#include <d3dx9.h>
+#include <Engine/Math/GfxMath.h>
 // ###
 #define SHADOWTEXTURESIZE (256)
 //강동민 수정 끝
@@ -1880,34 +1880,34 @@ extern void CreateShadowMatrix(CModelInstance *pMI, const CPlacement3D& plModel,
 
 	// NOTE : 아래 텍스쳐투영 행렬 계산하는 부분에서 D3D 함수들을 사용하고 있다.  수정할것.
 	// matWorldToLight^T
-	D3DXMATRIX matWorldToLight16;
-	D3DXMatrixIdentity(&matWorldToLight16);
+	GfxMatrix matWorldToLight16;
+	GfxMatrixIdentity(&matWorldToLight16);
 	memcpy(&matWorldToLight16, pMI->mi_matWorldToLight, sizeof(float)*12);
-	D3DXMatrixTranspose(&matWorldToLight16, &matWorldToLight16);
+	GfxMatrixTranspose(&matWorldToLight16, &matWorldToLight16);
 
 	// 찍힌 그림자를 모델의 위치로 이동시킴...(World)
-	D3DXMATRIX matTranslation;
-	D3DXMatrixIdentity(&matTranslation);
+	GfxMatrix matTranslation;
+	GfxMatrixIdentity(&matTranslation);
 	// NOTE : 왜 부호가 -일때만 되는것인가?
-	D3DXMatrixTranslation(&matTranslation, -plModel.pl_PositionVector(1), -plModel.pl_PositionVector(2), -plModel.pl_PositionVector(3));
+	GfxMatrixTranslation(&matTranslation, -plModel.pl_PositionVector(1), -plModel.pl_PositionVector(2), -plModel.pl_PositionVector(3));
 	
-	D3DXMATRIX matModelTrans;
-	D3DXMatrixIdentity(&matModelTrans);
-	D3DXMatrixTranslation(&matModelTrans, 0.0f, -fHeight, 0.0f);
+	GfxMatrix matModelTrans;
+	GfxMatrixIdentity(&matModelTrans);
+	GfxMatrixTranslation(&matModelTrans, 0.0f, -fHeight, 0.0f);
 
 	// matCameraToLocal^T
-	D3DXMATRIX matCameraToAbs16;
-	D3DXMatrixIdentity(&matCameraToAbs16);
+	GfxMatrix matCameraToAbs16;
+	GfxMatrixIdentity(&matCameraToAbs16);
 	memcpy(&matCameraToAbs16, matCameraToAbs, sizeof(float)*12);
-	D3DXMatrixTranspose(&matCameraToAbs16, &matCameraToAbs16);
+	GfxMatrixTranspose(&matCameraToAbs16, &matCameraToAbs16);
 
-	D3DXMATRIX matCameraToLight;
-	D3DXMatrixIdentity(&matCameraToLight);
+	GfxMatrix matCameraToLight;
+	GfxMatrixIdentity(&matCameraToLight);
 
 	// Camera -> World -> Translation -> Light
-	D3DXMatrixMultiply(&matCameraToLight, &matCameraToAbs16, &matModelTrans);
-	D3DXMatrixMultiply(&matCameraToLight, &matCameraToLight, &matTranslation);
-	D3DXMatrixMultiply(&matCameraToLight, &matCameraToLight, &matWorldToLight16);	
+	GfxMatrixMultiply(&matCameraToLight, &matCameraToAbs16, &matModelTrans);
+	GfxMatrixMultiply(&matCameraToLight, &matCameraToLight, &matTranslation);
+	GfxMatrixMultiply(&matCameraToLight, &matCameraToLight, &matWorldToLight16);
 
 	// NOTE : 전치행렬의 사용에 대해서...
 	// matTemp12 = (matWorldToLight * matCameraToAbs)^(T);
@@ -1990,34 +1990,34 @@ extern void CreateShadowMatrix(CModelInstance *pMI, const CPlacement3D& plModel,
 
 	// NOTE : 아래 텍스쳐투영 행렬 계산하는 부분에서 D3D 함수들을 사용하고 있다.  수정할것.
 	// matWorldToLight^T
-	D3DXMATRIX matWorldToLight16;
-	D3DXMatrixIdentity(&matWorldToLight16);
+	GfxMatrix matWorldToLight16;
+	GfxMatrixIdentity(&matWorldToLight16);
 	memcpy(&matWorldToLight16, matWorldToLight, sizeof(float)*12);
-	D3DXMatrixTranspose(&matWorldToLight16, &matWorldToLight16);
+	GfxMatrixTranspose(&matWorldToLight16, &matWorldToLight16);
 
 	// 찍힌 그림자를 모델의 위치로 이동시킴...(World)
-	D3DXMATRIX matTranslation;
-	D3DXMatrixIdentity(&matTranslation);
+	GfxMatrix matTranslation;
+	GfxMatrixIdentity(&matTranslation);
 	// NOTE : 왜 부호가 -일때만 되는것인가?
-	D3DXMatrixTranslation(&matTranslation, -plModel.pl_PositionVector(1), -plModel.pl_PositionVector(2), -plModel.pl_PositionVector(3));
+	GfxMatrixTranslation(&matTranslation, -plModel.pl_PositionVector(1), -plModel.pl_PositionVector(2), -plModel.pl_PositionVector(3));
 	
-	D3DXMATRIX matModelTrans;
-	D3DXMatrixIdentity(&matModelTrans);
-	D3DXMatrixTranslation(&matModelTrans, 0.0f, -fHeight, 0.0f);
+	GfxMatrix matModelTrans;
+	GfxMatrixIdentity(&matModelTrans);
+	GfxMatrixTranslation(&matModelTrans, 0.0f, -fHeight, 0.0f);
 
 	// matCameraToLocal^T
-	D3DXMATRIX matCameraToAbs16;
-	D3DXMatrixIdentity(&matCameraToAbs16);
+	GfxMatrix matCameraToAbs16;
+	GfxMatrixIdentity(&matCameraToAbs16);
 	memcpy(&matCameraToAbs16, matCameraToAbs, sizeof(float)*12);
-	D3DXMatrixTranspose(&matCameraToAbs16, &matCameraToAbs16);
+	GfxMatrixTranspose(&matCameraToAbs16, &matCameraToAbs16);
 
-	D3DXMATRIX matCameraToLight;
-	D3DXMatrixIdentity(&matCameraToLight);
+	GfxMatrix matCameraToLight;
+	GfxMatrixIdentity(&matCameraToLight);
 
 	// Camera -> World -> Translation -> Light
-	D3DXMatrixMultiply(&matCameraToLight, &matCameraToAbs16, &matModelTrans);
-	D3DXMatrixMultiply(&matCameraToLight, &matCameraToLight, &matTranslation);
-	D3DXMatrixMultiply(&matCameraToLight, &matCameraToLight, &matWorldToLight16);	
+	GfxMatrixMultiply(&matCameraToLight, &matCameraToAbs16, &matModelTrans);
+	GfxMatrixMultiply(&matCameraToLight, &matCameraToLight, &matTranslation);
+	GfxMatrixMultiply(&matCameraToLight, &matCameraToLight, &matWorldToLight16);
 
 	// NOTE : 전치행렬의 사용에 대해서...
 	// matTemp12 = (matWorldToLight * matCameraToAbs)^(T);

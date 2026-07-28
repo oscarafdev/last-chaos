@@ -1,10 +1,7 @@
 
 #include "stdh.h"
 
-// ###
 #include <cstdint>
-#include <d3dx9tex.h>
-#pragma comment(lib, "d3dx9.lib") 
 
 #include <Engine/Graphics/GfxLibrary.h>
 
@@ -39,34 +36,108 @@ static const __int64 _mmFF000000 = 0xFF000000FF000000;
 static const __int64 _mmSignSub  = 0x00007FFF00007FFF;
 static const __int64 _mmSignAdd  = 0x7FFF7FFF7FFF7FFF;
 
+static void ConvARGB8(
+	ULONG* pulSrc,
+	void* pDst,
+	PIX pixWidth,
+	PIX pixHeight,
+	SLONG slPitch);
+static void ConvARGB5(
+	ULONG* pulSrc,
+	void* pDst,
+	PIX pixWidth,
+	PIX pixHeight,
+	SLONG slPitch);
+static void ConvARGB4(
+	ULONG* pulSrc,
+	void* pDst,
+	PIX pixWidth,
+	PIX pixHeight,
+	SLONG slPitch);
+static void ConvRGB5(
+	ULONG* pulSrc,
+	void* pDst,
+	PIX pixWidth,
+	PIX pixHeight,
+	SLONG slPitch);
+static void ConvAL8(
+	ULONG* pulSrc,
+	void* pDst,
+	PIX pixWidth,
+	PIX pixHeight,
+	SLONG slPitch);
+static void ConvL8(
+	ULONG* pulSrc,
+	void* pDst,
+	PIX pixWidth,
+	PIX pixHeight,
+	SLONG slPitch);
 
-
-// convert to any D3DFormat (thru D3DX functions - slow!)
+// Conversion fallback for formats without an already selected fast path.
+// The destination format is inspected directly; no helper surface or hidden
+// staging texture is involved.
 static void ConvertAny( ULONG *pulSrc, LPDIRECT3DTEXTURE9 ptexDst, PIX pixWidth, PIX pixHeight, INDEX iMip)
 {
-  // alloc temporary memory and flip colors there
-  const PIX pixSize = pixWidth*pixHeight;
-  ULONG *pulFlipped = (ULONG*)AllocMemory( pixSize*sizeof(ULONG));
-  abgr2argb( pulSrc, pulFlipped, pixSize);
-  pulSrc = pulFlipped;
-
-  // get mipmap surface
-  HRESULT hr;
-  // ###
-  LPDIRECT3DTEXTURE9 ptexDst9 = (LPDIRECT3DTEXTURE9)ptexDst;
-  LPDIRECT3DSURFACE9 pd3dSurf; 
-  hr = ptexDst9->GetSurfaceLevel( iMip, &pd3dSurf);
+  D3DSURFACE_DESC description;
+  HRESULT hr = ptexDst->GetLevelDesc(iMip, &description);
   D3D_CHECKERROR(hr);
+  if (FAILED(hr))
+    return;
 
-  // prepare and upload surface
-  const RECT rect = { 0,0, pixWidth, pixHeight };
-  const SLONG slSrcPitch = pixWidth*sizeof(ULONG);
-  hr = D3DXLoadSurfaceFromMemory( pd3dSurf, NULL, NULL, pulSrc, D3DFMT_A8R8G8B8, slSrcPitch, NULL, &rect, D3DX_FILTER_NONE, 0);
+  void (*converter)(
+    ULONG*, void*, PIX, PIX, SLONG) = NULL;
+  switch (description.Format) {
+  case D3DFMT_A8R8G8B8:
+    _ulAlphaMask = 0x00000000;
+    converter = ConvARGB8;
+    break;
+  case D3DFMT_X8R8G8B8:
+    _ulAlphaMask = 0xFF000000;
+    converter = ConvARGB8;
+    break;
+  case D3DFMT_A1R5G5B5:
+    _ulAlphaMask = 0x00000000;
+    converter = ConvARGB5;
+    break;
+  case D3DFMT_X1R5G5B5:
+    _ulAlphaMask = 0xFF000000;
+    converter = ConvARGB5;
+    break;
+  case D3DFMT_A4R4G4B4:
+    _ulAlphaMask = 0x00000000;
+    converter = ConvARGB4;
+    break;
+  case D3DFMT_X4R4G4B4:
+    _ulAlphaMask = 0xFF000000;
+    converter = ConvARGB4;
+    break;
+  case D3DFMT_R5G6B5:
+    converter = ConvRGB5;
+    break;
+  case D3DFMT_A8L8:
+    converter = ConvAL8;
+    break;
+  case D3DFMT_L8:
+    converter = ConvL8;
+    break;
+  default:
+    ASSERTALWAYS("Unsupported native texture conversion format.");
+    return;
+  }
+
+  D3DLOCKED_RECT locked;
+  hr = ptexDst->LockRect(iMip, &locked, NULL, NONE);
   D3D_CHECKERROR(hr);
-
-  // done
-  pd3dSurf->Release();  // must not use D3DRELEASE, because freeing all istances will free texture also when using DXTC!? (Bravo MS!)
-  FreeMemory(pulFlipped);
+  if (FAILED(hr))
+    return;
+  converter(
+    pulSrc,
+    locked.pBits,
+    pixWidth,
+    pixHeight,
+    locked.Pitch);
+  hr = ptexDst->UnlockRect(iMip);
+  D3D_CHECKERROR(hr);
 }
 
 
@@ -1075,7 +1146,7 @@ extern void SetInternalFormat_D3D( const D3DFORMAT d3dFormat)
   case D3DFMT_R5G6B5:    _ulAlphaMask=0x00000000;  pSwizzleMipmap=SwizRGB5;   pConvertMipmap=ConvRGB5;   break;
   case D3DFMT_A8L8:      _ulAlphaMask=0x00000000;  pSwizzleMipmap=SwizAL8;    pConvertMipmap=ConvAL8;    break;
   case D3DFMT_L8:        _ulAlphaMask=0x00000000;  pSwizzleMipmap=SwizL8;     pConvertMipmap=ConvL8;     break;
-  default:  pSwizzleMipmap=NULL;  pConvertMipmap=NULL;  break; // must go thru D3DX :(
+  default:  pSwizzleMipmap=NULL;  pConvertMipmap=NULL;  break;
   }
   _d3dLastFormat = d3dFormat;
 }
@@ -1087,7 +1158,7 @@ extern void UploadMipmap_D3D( ULONG *pulSrc, LPDIRECT3DTEXTURE9 ptexDst, PIX pix
 {
     const BOOL bSwizzle = FALSE;
 
-  // general case thru D3DX approach (for edge-case swizzler, too - don't ask why!)
+  // General conversion path (also for the edge-case swizzler).
   if( pConvertMipmap==NULL || (pixHeight==2 && pixWidth>4 && bSwizzle)) {
     ConvertAny( pulSrc, ptexDst, pixWidth, pixHeight, iMip);
     return;
@@ -1161,7 +1232,7 @@ extern COLOR UnpackColor_D3D( UBYTE *pd3dColor, D3DFORMAT d3dFormat, SLONG &slCo
 // set color conversion routine
 extern void SetInternalFormat_D3D(D3DFORMAT d3dFormat)
 {
-	// by default, go thru D3DX :(
+	// By default select the generic native conversion path.
 	pConvertMipmap = NULL;
 	extern INDEX d3d_bFastUpload;
 	if (!d3d_bFastUpload) return; // done here if fast upload is not allowed
@@ -1185,7 +1256,7 @@ extern void SetInternalFormat_D3D(D3DFORMAT d3dFormat)
 // convert one mipmap from memory to surface
 extern void UploadMipmap_D3D(ULONG *pulSrc, LPDIRECT3DTEXTURE9 ptexDst, PIX pixWidth, PIX pixHeight, INDEX iMip)
 {
-	// general case thru D3DX approach
+	// General native conversion path.
 	if (pConvertMipmap == NULL) {
 		ConvertAny(pulSrc, ptexDst, pixWidth, pixHeight, iMip);
 		return;
