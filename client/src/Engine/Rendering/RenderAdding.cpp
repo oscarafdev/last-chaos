@@ -1004,11 +1004,15 @@ void CRenderer::AddWater(CEntity& ent)
 	Matrix12 matTemp;
 	MatrixVectorToMatrix12(matTemp, m, FLOAT3D(0.0f, 0.0f, 0.0f));	
 	
-	D3DXVECTOR3 vNormal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	GfxVector3 vNormal(0.0f, 1.0f, 0.0f);
 	TransformVector((float*)&vNormal, matTemp);	
-	D3DXVec3Normalize(&vNormal, &vNormal);
-	D3DXPLANE plTemp;
-	D3DXPlaneFromPointNormal(&plTemp, (D3DXVECTOR3*)&plModel.pl_PositionVector, &vNormal);
+	GfxVec3Normalize(&vNormal, &vNormal);
+	GfxPlane plTemp;
+	const GfxVector3 planePoint(
+		plModel.pl_PositionVector(1),
+		plModel.pl_PositionVector(2),
+		plModel.pl_PositionVector(3));
+	GfxPlaneFromPointNormal(&plTemp, &planePoint, &vNormal);
 
 	water.m_plPlane(1) = vNormal.x;
 	water.m_plPlane(2) = vNormal.y;

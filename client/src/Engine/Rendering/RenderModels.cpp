@@ -929,13 +929,13 @@ void CRenderer::RenderOneSkaModelToTexture(CEntity &en, const CPlacement3D &plMo
 	// 투영행렬을 만들기 위한 계산을 수행함.
 //강동민 수정 시작 접속 시퀀스 작업	06.07
 	/*
-	SetAdjustedProjectionMatrix(_matShadowProj, D3DX_PI/4.0f, 1.0f, 0.05f, 500.0f,
+	SetAdjustedProjectionMatrix(_matShadowProj, GFX_PI/4.0f, 1.0f, 0.05f, 500.0f,
 		0.0f, 0.0f, fTextureSize, fTextureSize);
 		*/
 	/*
 	// 직교투영으로 적용해보기.
-	//D3DXMatrixOrthoRH((D3DXMATRIX*)matShadowProj, 0.98f/fXMax, 0.98f/fYMax, 1.0f, 500.0f);
-	D3DXMatrixOrthoOffCenterRH((D3DXMATRIX*)matShadowProj, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 500.0f);
+	//GfxMatrixOrthoRH(reinterpret_cast<GfxMatrix*>(matShadowProj), 0.98f/fXMax, 0.98f/fYMax, 1.0f, 500.0f);
+	GfxMatrixOrthoOffCenterRH(reinterpret_cast<GfxMatrix*>(matShadowProj), -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 500.0f);
 	matShadowProj[0] = 0.12f/fXMax;
 	matShadowProj[5] = 0.12f/fYMax;
 	*/
@@ -963,8 +963,8 @@ void CRenderer::RenderOneSkaModelToTexture(CEntity &en, const CPlacement3D &plMo
 	FLOAT fMaxValue			= Max(Max(fBBoxXSize, fBBoxYSize), fBBoxZSize) * 1.5f;
 
 	// 직교 투영.
-	D3DXMatrixOrthoRH(
-		(D3DXMATRIX*)_matShadowProj, 
+	GfxMatrixOrthoRH(
+		reinterpret_cast<GfxMatrix*>(_matShadowProj),
 		fMaxValue, fMaxValue,			// FrameBBox의 Width
 		0.1f, 300.0f);					// FrameBBox의 Height
 

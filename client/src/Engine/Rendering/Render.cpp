@@ -29,6 +29,7 @@
 #include <Engine/World/WorldEditingProfile.h>
 #include <Engine/Brushes/BrushArchive.h>
 #include <Engine/Math/Float.h>
+#include <Engine/Math/GfxMath.h>
 #include <Engine/Math/OBBox.h>
 #include <Engine/Math/Geometry.inl>
 
@@ -1442,7 +1443,7 @@ void CRenderer::RenderShadowToBrushPolygon(const CPlacement3D &plEye)
 			
 			//////////////////////////////////////////////////////////////////////////
 			// Shadow Map 생성.
-			D3DXMATRIX matProjOld;
+			GfxMatrix matProjOld;
 			hr = _pGfx->gl_pd3d9Device->GetTransform(D3DTS_PROJECTION, &matProjOld);
 			
 			// 02.23 수정.
@@ -1790,7 +1791,7 @@ void CRenderer::RenderSkaModelShadowToTerrain(CTerrain *ptrTerrain, const CPlace
 				
 				//////////////////////////////////////////////////////////////////////////
 				// Shadow Map 생성.
-				D3DXMATRIX matProjOld;
+				GfxMatrix matProjOld;
 				HRESULT hr = _pGfx->gl_pd3d9Device->GetTransform(D3DTS_PROJECTION, &matProjOld);				
 				
 				// 02.23 수정.
@@ -2497,7 +2498,9 @@ void CRenderer::RenderReflection(/*Matrix16 &matWaterProj*/)
 		re_prProjection->Prepare();
 		papr = &re_prProjection;
 		re_pdpDrawPort->SetProjection(*papr);
-		_pGfx->gl_pd3d9Device->GetTransform(D3DTS_PROJECTION, (D3DXMATRIX*)&_matWaterProj);
+		_pGfx->gl_pd3d9Device->GetTransform(
+			D3DTS_PROJECTION,
+			reinterpret_cast<GfxMatrix*>(&_matWaterProj));
 	}
 //강동민 수정 끝 Water 구현			04.21
 	//-----------------------------------------------------------------------------
