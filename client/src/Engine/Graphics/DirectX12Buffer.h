@@ -6,6 +6,7 @@
 
 #include <windows.h>
 #include <d3d12.h>
+#include <Engine/Graphics/DirectX12ResourceHandle.h>
 
 class CDirectX12UploadManager;
 
@@ -39,6 +40,8 @@ public:
 	D3D12_RESOURCE_STATES GetState() const;
 	D3D12_VERTEX_BUFFER_VIEW GetVertexView() const;
 	D3D12_INDEX_BUFFER_VIEW GetIndexView() const;
+	DirectX12VertexBufferHandle GetVertexHandle() const;
+	DirectX12IndexBufferHandle GetIndexHandle() const;
 
 private:
 	enum BufferKind
@@ -65,6 +68,8 @@ private:
 	DXGI_FORMAT m_indexFormat;
 	D3D12_RESOURCE_STATES m_state;
 	BufferKind m_kind;
+	DirectX12VertexBufferHandle m_vertexHandle;
+	DirectX12IndexBufferHandle m_indexHandle;
 };
 
 #endif

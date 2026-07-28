@@ -50,14 +50,29 @@ public:
 		DirectX12RenderTextureHandle handle) const;
 	CDirectX12Texture* FindRenderTarget(
 		IDirect3DTexture9* pTexture9) const;
+	DirectX12TextureHandle ResolveSampledTextureHandle(
+		IDirect3DTexture9* pTexture9) const;
+	DirectX12RenderTextureHandle ResolveRenderTextureHandle(
+		IDirect3DTexture9* pTexture9) const;
 	bool ReferencesResource(
 		IDirect3DTexture9* pTexture9,
+		ID3D12Resource* pResource12) const;
+	bool ReferencesResource(
+		DirectX12RenderTextureHandle handle,
 		ID3D12Resource* pResource12) const;
 
 	bool Acquire(
 		IDirect3DTexture9* pTexture9,
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12UploadManager* pUploadManager,
+		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
+	bool Acquire(
+		DirectX12TextureHandle handle,
+		ID3D12GraphicsCommandList* pCommandList,
+		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
+	bool Acquire(
+		DirectX12RenderTextureHandle handle,
+		ID3D12GraphicsCommandList* pCommandList,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
 	bool RefreshSampledTexture(
 		IDirect3DTexture9* pTexture9,

@@ -3439,6 +3439,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClCompile Include="Graphics\DirectX12PipelineCache.cpp" />
     <ClCompile Include="Graphics\DirectX12PresentationManager.cpp" />
     <ClCompile Include="Graphics\DirectX12RenderTargetManager.cpp" />
+    <ClCompile Include="Graphics\DirectX12ResourceHandle.cpp" />
     <ClCompile Include="Graphics\DirectX12Texture.cpp" />
     <ClCompile Include="Graphics\DirectX12TextureFormat.cpp" />
     <ClCompile Include="Graphics\DirectX12UploadManager.cpp" />
@@ -8207,6 +8208,7 @@ copy Release\$(TargetName).dll $(SolutionDir)..\Bin\ &gt;nul</Command>
     <ClInclude Include="Graphics\DirectX12PresentationManager.h" />
     <ClInclude Include="Graphics\DirectX12RenderTargetManager.h" />
     <ClInclude Include="Graphics\DirectX12RenderState.h" />
+    <ClInclude Include="Graphics\DirectX12ResourceHandle.h" />
     <ClInclude Include="Graphics\DirectX12Texture.h" />
     <ClInclude Include="Graphics\DirectX12TextureFormat.h" />
     <ClInclude Include="Graphics\DirectX12UploadManager.h" />

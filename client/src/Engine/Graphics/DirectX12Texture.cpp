@@ -42,7 +42,8 @@ bool CDirectX12Texture::Create2D(
 		D3D12_RESOURCE_FLAG_NONE,
 		D3D12_RESOURCE_STATE_COPY_DEST,
 		NULL,
-		L"LastChaos D3D12 Texture 2D");
+		L"LastChaos D3D12 Texture 2D",
+		DX12_RESOURCE_SAMPLED_TEXTURE);
 }
 
 bool CDirectX12Texture::CreateRenderTarget2D(
@@ -74,7 +75,8 @@ bool CDirectX12Texture::CreateRenderTarget2D(
 		D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET,
 		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
 		&clearValue,
-		L"LastChaos D3D12 Render Texture"))
+		L"LastChaos D3D12 Render Texture",
+		DX12_RESOURCE_RENDER_TEXTURE))
 		return false;
 
 	if (!pRenderTargetDescriptorHeap->Allocate(
@@ -102,7 +104,8 @@ bool CDirectX12Texture::Create2DResource(
 	D3D12_RESOURCE_FLAGS flags,
 	D3D12_RESOURCE_STATES initialState,
 	const D3D12_CLEAR_VALUE* pClearValue,
-	const wchar_t* pDebugName)
+	const wchar_t* pDebugName,
+	DirectX12ResourceKind resourceKind)
 {
 	if (pDevice == NULL || pDescriptorHeap == NULL
 		|| pDescriptorHeap->GetType()
@@ -166,6 +169,31 @@ bool CDirectX12Texture::Create2DResource(
 	m_mipLevels = mipLevels;
 	m_format = format;
 	m_state = initialState;
+	if (resourceKind == DX12_RESOURCE_SAMPLED_TEXTURE)
+	{
+		m_textureHandle = GetDirectX12ResourceRegistry().
+			Allocate<DX12_RESOURCE_SAMPLED_TEXTURE>(this);
+		if (!m_textureHandle.IsValid())
+		{
+			Shutdown();
+			return false;
+		}
+	}
+	else if (resourceKind == DX12_RESOURCE_RENDER_TEXTURE)
+	{
+		m_renderTextureHandle = GetDirectX12ResourceRegistry().
+			Allocate<DX12_RESOURCE_RENDER_TEXTURE>(this);
+		if (!m_renderTextureHandle.IsValid())
+		{
+			Shutdown();
+			return false;
+		}
+	}
+	else
+	{
+		Shutdown();
+		return false;
+	}
 	if (pDebugName != NULL)
 		m_pResource->SetName(pDebugName);
 	return true;
@@ -173,6 +201,17 @@ bool CDirectX12Texture::Create2DResource(
 
 void CDirectX12Texture::Shutdown()
 {
+	if (m_textureHandle.IsValid())
+	{
+		GetDirectX12ResourceRegistry().Release(m_textureHandle);
+		m_textureHandle = DirectX12TextureHandle();
+	}
+	if (m_renderTextureHandle.IsValid())
+	{
+		GetDirectX12ResourceRegistry().Release(m_renderTextureHandle);
+		m_renderTextureHandle = DirectX12RenderTextureHandle();
+	}
+
 	if (m_pRenderTargetDescriptorHeap != NULL
 		&& m_renderTargetDescriptor.IsValid())
 	{
@@ -295,4 +334,15 @@ DXGI_FORMAT CDirectX12Texture::GetFormat() const
 D3D12_RESOURCE_STATES CDirectX12Texture::GetState() const
 {
 	return m_state;
+}
+
+DirectX12TextureHandle CDirectX12Texture::GetTextureHandle() const
+{
+	return m_textureHandle;
+}
+
+DirectX12RenderTextureHandle
+CDirectX12Texture::GetRenderTextureHandle() const
+{
+	return m_renderTextureHandle;
 }

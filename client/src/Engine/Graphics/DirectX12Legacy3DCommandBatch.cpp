@@ -88,6 +88,14 @@ namespace
 		IDirect3DTexture9* pTexture1;
 		IDirect3DTexture9* pTexture2;
 		IDirect3DTexture9* pTexture3;
+		DirectX12TextureHandle textureHandle;
+		DirectX12TextureHandle textureHandle1;
+		DirectX12TextureHandle textureHandle2;
+		DirectX12TextureHandle textureHandle3;
+		DirectX12RenderTextureHandle renderTextureHandle;
+		DirectX12RenderTextureHandle renderTextureHandle1;
+		DirectX12RenderTextureHandle renderTextureHandle2;
+		DirectX12RenderTextureHandle renderTextureHandle3;
 		bool depthEnabled;
 		bool depthWriteEnabled;
 		bool colorWriteEnabled;
@@ -710,6 +718,47 @@ namespace
 			pTexture->Release();
 			pTexture = NULL;
 		}
+	}
+
+	bool AcquireTexture(
+		CDirectX12InteropTextureManager* pTextures,
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
+		IDirect3DTexture9* pLegacyTexture,
+		ID3D12GraphicsCommandList* pCommandList,
+		CDirectX12UploadManager* pUploadManager,
+		D3D12_GPU_DESCRIPTOR_HANDLE* pView)
+	{
+		if (renderTextureHandle.IsValid())
+			return pTextures->Acquire(
+				renderTextureHandle,
+				pCommandList,
+				pView);
+		if (textureHandle.IsValid())
+			return pTextures->Acquire(
+				textureHandle,
+				pCommandList,
+				pView);
+		return pTextures->Acquire(
+			pLegacyTexture,
+			pCommandList,
+			pUploadManager,
+			pView);
+	}
+
+	bool ReferencesRenderTarget(
+		CDirectX12InteropTextureManager* pTextures,
+		DirectX12RenderTextureHandle renderTextureHandle,
+		IDirect3DTexture9* pLegacyTexture,
+		ID3D12Resource* pResource)
+	{
+		return renderTextureHandle.IsValid()
+			? pTextures->ReferencesResource(
+				renderTextureHandle,
+				pResource)
+			: pTextures->ReferencesResource(
+				pLegacyTexture,
+				pResource);
 	}
 }
 
@@ -3464,6 +3513,22 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	range.pTexture1 = pTexture1;
 	range.pTexture2 = pTexture2;
 	range.pTexture3 = pTexture3;
+	range.textureHandle = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture);
+	range.textureHandle1 = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture1);
+	range.textureHandle2 = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture2);
+	range.textureHandle3 = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture3);
+	range.renderTextureHandle = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture);
+	range.renderTextureHandle1 = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture1);
+	range.renderTextureHandle2 = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture2);
+	range.renderTextureHandle3 = GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture3);
 	range.depthEnabled = zEnable != FALSE;
 	range.depthWriteEnabled = zWrite != FALSE;
 	range.colorWriteEnabled = colorWriteMask != 0;
@@ -3785,13 +3850,26 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		// Una textura no puede estar enlazada simultaneamente como destino y
 		// como entrada. Omitir este draw dentro de la propia reflexion evita
 		// la realimentacion RTV/SRV sin introducir una ruta D3D9 alternativa.
-		if (pTextures->ReferencesResource(range.pTexture, pCurrentTarget)
-			|| pTextures->ReferencesResource(
-				range.pTexture1, pCurrentTarget)
-			|| pTextures->ReferencesResource(
-				range.pTexture2, pCurrentTarget)
-			|| pTextures->ReferencesResource(
-				range.pTexture3, pCurrentTarget))
+		if (ReferencesRenderTarget(
+				pTextures,
+				range.renderTextureHandle,
+				range.pTexture,
+				pCurrentTarget)
+			|| ReferencesRenderTarget(
+				pTextures,
+				range.renderTextureHandle1,
+				range.pTexture1,
+				pCurrentTarget)
+			|| ReferencesRenderTarget(
+				pTextures,
+				range.renderTextureHandle2,
+				range.pTexture2,
+				pCurrentTarget)
+			|| ReferencesRenderTarget(
+				pTextures,
+				range.renderTextureHandle3,
+				range.pTexture3,
+				pCurrentTarget))
 			continue;
 		ID3D12PipelineState* pPipeline =
 			m_pPipelineCache->GetPipelineState(
@@ -3845,7 +3923,10 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		const bool needsTextureSampling =
 			rangeWritesColor || samplesTextureForDepth;
 		if (needsTextureSampling && range.pTexture != NULL
-			&& !pTextures->Acquire(
+			&& !AcquireTexture(
+				pTextures,
+				range.textureHandle,
+				range.renderTextureHandle,
 				range.pTexture,
 				pCommandList,
 				pUploadManager,
@@ -3854,7 +3935,10 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		pCommandList->SetGraphicsRootDescriptorTable(0, textureView);
 		if ((range.rigidLit || range.genericFamily)
 			&& rangeWritesColor && range.pTexture1 != NULL
-			&& !pTextures->Acquire(
+			&& !AcquireTexture(
+				pTextures,
+				range.textureHandle1,
+				range.renderTextureHandle1,
 				range.pTexture1,
 				pCommandList,
 				pUploadManager,
@@ -3871,7 +3955,10 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		}
 		if (range.genericFamily && rangeWritesColor
 			&& range.pTexture2 != NULL
-			&& !pTextures->Acquire(
+			&& !AcquireTexture(
+				pTextures,
+				range.textureHandle2,
+				range.renderTextureHandle2,
 				range.pTexture2,
 				pCommandList,
 				pUploadManager,
@@ -3879,7 +3966,10 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			return false;
 		if (range.genericFamily && rangeWritesColor
 			&& range.pTexture3 != NULL
-			&& !pTextures->Acquire(
+			&& !AcquireTexture(
+				pTextures,
+				range.textureHandle3,
+				range.renderTextureHandle3,
 				range.pTexture3,
 				pCommandList,
 				pUploadManager,

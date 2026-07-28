@@ -5,6 +5,7 @@
 #endif
 
 #include <windows.h>
+#include <Engine/Graphics/DirectX12ResourceHandle.h>
 
 // Los envios parciales conservan el orden entre draws nativos y fallbacks
 // D3D9On12. Terreno, agua y UI pueden cruzar varias barreras en un solo
@@ -15,11 +16,6 @@ enum
 	DX12_FRAME_COUNT = 3,
 	DX12_MAX_SUBMISSIONS_PER_FRAME = 64
 };
-
-// Identidad estable de una textura de render nativa. El valor cero queda
-// reservado para el adaptador D3D9 o para una textura no inicializada.
-typedef UINT64 DirectX12RenderTextureHandle;
-const DirectX12RenderTextureHandle DX12_INVALID_RENDER_TEXTURE = 0;
 
 enum DirectX12BlendMode
 {

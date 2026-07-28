@@ -15,6 +15,7 @@ namespace
 {
 	struct NativeSampledTextureEntry
 	{
+		DirectX12TextureHandle handle;
 		IDirect3DTexture9* pTexture9;
 		CDirectX12Texture* pNativeTexture;
 	};
@@ -102,12 +103,22 @@ void CDirectX12SampledTextureCache::Clear()
 		iTexture < m_pState->textures.size();
 		++iTexture)
 	{
+		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
+			m_pState->textures[iTexture].pTexture9,
+			m_pState->textures[iTexture].handle);
 		Retire(m_pState->textures[iTexture].pNativeTexture);
 		if (m_pState->textures[iTexture].pTexture9 != NULL)
 			m_pState->textures[iTexture].pTexture9->Release();
 	}
 	m_pState->textures.clear();
 	m_pState->retiredLegacyBindings.clear();
+}
+
+DirectX12TextureHandle CDirectX12SampledTextureCache::FindHandle(
+	IDirect3DTexture9* pTexture9) const
+{
+	return GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture9);
 }
 
 void CDirectX12SampledTextureCache::BeginFrame(UINT frameIndex)
@@ -258,9 +269,7 @@ bool CDirectX12SampledTextureCache::Acquire(
 			m_pState->textures[iTexture];
 		if (cached.pTexture9 == pTexture9)
 		{
-			*pShaderResourceView =
-				cached.pNativeTexture->GetShaderResourceView();
-			return true;
+			return Acquire(cached.handle, pShaderResourceView);
 		}
 	}
 
@@ -274,6 +283,21 @@ bool CDirectX12SampledTextureCache::Acquire(
 		pUploadManager,
 		CPU_UPLOAD_NONE,
 		pShaderResourceView);
+}
+
+bool CDirectX12SampledTextureCache::Acquire(
+	DirectX12TextureHandle handle,
+	D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView) const
+{
+	if (!handle.IsValid() || pShaderResourceView == NULL)
+		return false;
+	CDirectX12Texture* pTexture =
+		static_cast<CDirectX12Texture*>(
+			GetDirectX12ResourceRegistry().Resolve(handle));
+	if (pTexture == NULL || pTexture->GetResource() == NULL)
+		return false;
+	*pShaderResourceView = pTexture->GetShaderResourceView();
+	return pShaderResourceView->ptr != 0;
 }
 
 bool CDirectX12SampledTextureCache::Replace(
@@ -318,8 +342,18 @@ bool CDirectX12SampledTextureCache::Replace(
 	Remove(pTexture9);
 	NativeSampledTextureEntry entry;
 	pTexture9->AddRef();
+	entry.handle = pNativeTexture->GetTextureHandle();
 	entry.pTexture9 = pTexture9;
 	entry.pNativeTexture = pNativeTexture;
+	if (!entry.handle.IsValid()
+		|| !GetDirectX12ResourceRegistry().BindLegacyAlias(
+			pTexture9,
+			entry.handle))
+	{
+		pTexture9->Release();
+		delete pNativeTexture;
+		return false;
+	}
 	m_pState->textures.push_back(entry);
 	*pShaderResourceView = pNativeTexture->GetShaderResourceView();
 
@@ -362,6 +396,9 @@ bool CDirectX12SampledTextureCache::Remove(
 			m_pState->textures[iTexture];
 		if (entry.pTexture9 != pTexture9)
 			continue;
+		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
+			entry.pTexture9,
+			entry.handle);
 		Retire(entry.pNativeTexture);
 		entry.pNativeTexture = NULL;
 		entry.pTexture9->Release();

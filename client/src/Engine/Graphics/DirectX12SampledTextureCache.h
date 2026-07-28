@@ -10,6 +10,7 @@
 #include <d3d12.h>
 
 #include <Engine/Graphics/DirectX12RenderState.h>
+#include <Engine/Graphics/DirectX12ResourceHandle.h>
 
 struct IDirect3DTexture9;
 class CDirectX12DescriptorHeap;
@@ -34,6 +35,7 @@ public:
 	void BeginFrame(UINT frameIndex);
 	void Forget(IDirect3DTexture9* pTexture9);
 	void RetireLegacyBinding(IDirect3DTexture9* pTexture9);
+	DirectX12TextureHandle FindHandle(IDirect3DTexture9* pTexture9) const;
 
 	// Reemplaza anticipadamente la copia nativa después de un upload legado.
 	// Si no puede hacerlo, Acquire conserva una ruta de creación bajo demanda.
@@ -65,6 +67,9 @@ public:
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12UploadManager* pUploadManager,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
+	bool Acquire(
+		DirectX12TextureHandle handle,
+		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView) const;
 
 private:
 	enum CpuUploadKind

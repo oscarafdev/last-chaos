@@ -37,6 +37,8 @@ namespace
 		UINT firstVertex;
 		UINT vertexCount;
 		IDirect3DTexture9* pTexture;
+		DirectX12TextureHandle textureHandle;
+		DirectX12RenderTextureHandle renderTextureHandle;
 		D3D12_RECT scissor;
 		DirectX12BlendMode blendMode;
 		DirectX12SamplerMode samplerMode;
@@ -391,9 +393,18 @@ bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 		m_pState->vertices.end(),
 		vertices,
 		vertices + 3);
+	const DirectX12TextureHandle textureHandle =
+		GetDirectX12ResourceRegistry().
+			ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture);
+	const DirectX12RenderTextureHandle renderTextureHandle =
+		GetDirectX12ResourceRegistry().
+			ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture);
 
 	if (!m_pState->ranges.empty()
 		&& m_pState->ranges.back().pTexture == pTexture
+		&& m_pState->ranges.back().textureHandle == textureHandle
+		&& m_pState->ranges.back().renderTextureHandle
+			== renderTextureHandle
 		&& SameScissor(m_pState->ranges.back().scissor, scissor)
 		&& m_pState->ranges.back().blendMode == blendMode
 		&& m_pState->ranges.back().samplerMode == samplerMode
@@ -408,6 +419,8 @@ bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 		range.firstVertex = firstVertex;
 		range.vertexCount = 3;
 		range.pTexture = pTexture;
+		range.textureHandle = textureHandle;
+		range.renderTextureHandle = renderTextureHandle;
 		if (range.pTexture != NULL)
 			range.pTexture->AddRef();
 		range.scissor = scissor;
@@ -624,11 +637,23 @@ bool CDirectX12DrawPortCommandBatch::Render(
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView;
 		if (range.pTexture != NULL)
 		{
-			if (!pTextures->Acquire(
-					range.pTexture,
-					pCommandList,
-					pUploadManager,
-					&textureView))
+			const bool acquired =
+				range.renderTextureHandle.IsValid()
+					? pTextures->Acquire(
+						range.renderTextureHandle,
+						pCommandList,
+						&textureView)
+					: range.textureHandle.IsValid()
+					? pTextures->Acquire(
+						range.textureHandle,
+						pCommandList,
+						&textureView)
+					: pTextures->Acquire(
+						range.pTexture,
+						pCommandList,
+						pUploadManager,
+						&textureView);
+			if (!acquired)
 			{
 				// Una textura incompatible no debe cancelar los comandos de UI
 				// restantes: se omite solamente su rango y se informa al final.

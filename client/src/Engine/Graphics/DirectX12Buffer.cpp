@@ -89,6 +89,26 @@ bool CDirectX12Buffer::Create(
 	m_indexFormat = indexFormat;
 	m_state = D3D12_RESOURCE_STATE_COPY_DEST;
 	m_kind = kind;
+	if (kind == BK_VERTEX)
+	{
+		m_vertexHandle = GetDirectX12ResourceRegistry().
+			Allocate<DX12_RESOURCE_VERTEX_BUFFER>(this);
+		if (!m_vertexHandle.IsValid())
+		{
+			Shutdown();
+			return false;
+		}
+	}
+	else
+	{
+		m_indexHandle = GetDirectX12ResourceRegistry().
+			Allocate<DX12_RESOURCE_INDEX_BUFFER>(this);
+		if (!m_indexHandle.IsValid())
+		{
+			Shutdown();
+			return false;
+		}
+	}
 	m_pResource->SetName(
 		kind == BK_VERTEX
 			? L"LastChaos D3D12 Vertex Buffer"
@@ -98,6 +118,17 @@ bool CDirectX12Buffer::Create(
 
 void CDirectX12Buffer::Shutdown()
 {
+	if (m_vertexHandle.IsValid())
+	{
+		GetDirectX12ResourceRegistry().Release(m_vertexHandle);
+		m_vertexHandle = DirectX12VertexBufferHandle();
+	}
+	if (m_indexHandle.IsValid())
+	{
+		GetDirectX12ResourceRegistry().Release(m_indexHandle);
+		m_indexHandle = DirectX12IndexBufferHandle();
+	}
+
 	if (m_pResource != NULL)
 	{
 		m_pResource->Release();
@@ -175,6 +206,16 @@ D3D12_INDEX_BUFFER_VIEW CDirectX12Buffer::GetIndexView() const
 		view.Format = m_indexFormat;
 	}
 	return view;
+}
+
+DirectX12VertexBufferHandle CDirectX12Buffer::GetVertexHandle() const
+{
+	return m_vertexHandle;
+}
+
+DirectX12IndexBufferHandle CDirectX12Buffer::GetIndexHandle() const
+{
+	return m_indexHandle;
 }
 
 D3D12_RESOURCE_STATES CDirectX12Buffer::GetUsageState() const

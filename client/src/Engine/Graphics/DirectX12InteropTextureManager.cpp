@@ -50,15 +50,9 @@ namespace
 
 struct DirectX12InteropTextureState
 {
-	DirectX12InteropTextureState()
-		: nextRenderTextureHandle(1)
-	{
-	}
-
 	std::vector<InteropTextureEntry> frames[
 		CDirectX12InteropTextureManager::FRAME_COUNT];
 	std::vector<NativeRenderTextureEntry> renderTextures;
-	DirectX12RenderTextureHandle nextRenderTextureHandle;
 };
 
 CDirectX12InteropTextureManager::CDirectX12InteropTextureManager()
@@ -201,6 +195,9 @@ void CDirectX12InteropTextureManager::ForgetTexture(
 			++iEntry;
 			continue;
 		}
+		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
+			entry.pTexture9,
+			entry.handle);
 		delete entry.pNativeTexture;
 		entry.pNativeTexture = NULL;
 		entry.pTexture9->Release();
@@ -263,9 +260,15 @@ bool CDirectX12InteropTextureManager::CreateRenderTarget(
 	}
 
 	NativeRenderTextureEntry entry;
-	entry.handle = m_pState->nextRenderTextureHandle++;
-	if (entry.handle == DX12_INVALID_RENDER_TEXTURE)
-		entry.handle = m_pState->nextRenderTextureHandle++;
+	entry.handle = pNativeTexture->GetRenderTextureHandle();
+	if (!entry.handle.IsValid()
+		|| !GetDirectX12ResourceRegistry().BindLegacyAlias(
+			pTexture9,
+			entry.handle))
+	{
+		delete pNativeTexture;
+		return false;
+	}
 	pTexture9->AddRef();
 	entry.pTexture9 = pTexture9;
 	entry.pNativeTexture = pNativeTexture;
@@ -287,6 +290,9 @@ void CDirectX12InteropTextureManager::DestroyRenderTarget(
 			m_pState->renderTextures[iEntry];
 		if (entry.handle != handle)
 			continue;
+		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
+			entry.pTexture9,
+			entry.handle);
 		delete entry.pNativeTexture;
 		entry.pNativeTexture = NULL;
 		if (entry.pTexture9 != NULL)
@@ -304,18 +310,10 @@ CDirectX12Texture*
 CDirectX12InteropTextureManager::FindRenderTarget(
 	DirectX12RenderTextureHandle handle) const
 {
-	if (m_pState == NULL || handle == DX12_INVALID_RENDER_TEXTURE)
+	if (m_pState == NULL || !handle.IsValid())
 		return NULL;
-	for (size_t iEntry = 0;
-		iEntry < m_pState->renderTextures.size();
-		++iEntry)
-	{
-		const NativeRenderTextureEntry& entry =
-			m_pState->renderTextures[iEntry];
-		if (entry.handle == handle)
-			return entry.pNativeTexture;
-	}
-	return NULL;
+	return static_cast<CDirectX12Texture*>(
+		GetDirectX12ResourceRegistry().Resolve(handle));
 }
 
 CDirectX12Texture*
@@ -336,11 +334,37 @@ CDirectX12InteropTextureManager::FindRenderTarget(
 	return NULL;
 }
 
+DirectX12TextureHandle
+CDirectX12InteropTextureManager::ResolveSampledTextureHandle(
+	IDirect3DTexture9* pTexture9) const
+{
+	return m_pSampledTextureCache != NULL
+		? m_pSampledTextureCache->FindHandle(pTexture9)
+		: DirectX12TextureHandle();
+}
+
+DirectX12RenderTextureHandle
+CDirectX12InteropTextureManager::ResolveRenderTextureHandle(
+	IDirect3DTexture9* pTexture9) const
+{
+	return GetDirectX12ResourceRegistry().
+		ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture9);
+}
+
 bool CDirectX12InteropTextureManager::ReferencesResource(
 	IDirect3DTexture9* pTexture9,
 	ID3D12Resource* pResource12) const
 {
-	CDirectX12Texture* pRenderTexture = FindRenderTarget(pTexture9);
+	const DirectX12RenderTextureHandle handle =
+		ResolveRenderTextureHandle(pTexture9);
+	return ReferencesResource(handle, pResource12);
+}
+
+bool CDirectX12InteropTextureManager::ReferencesResource(
+	DirectX12RenderTextureHandle handle,
+	ID3D12Resource* pResource12) const
+{
+	CDirectX12Texture* pRenderTexture = FindRenderTarget(handle);
 	return pRenderTexture != NULL
 		&& pRenderTexture->GetResource() == pResource12;
 }
@@ -454,6 +478,37 @@ bool CDirectX12InteropTextureManager::Acquire(
 	entries.push_back(entry);
 	*pShaderResourceView = entry.descriptor.gpu;
 	return true;
+}
+
+bool CDirectX12InteropTextureManager::Acquire(
+	DirectX12TextureHandle handle,
+	ID3D12GraphicsCommandList* pCommandList,
+	D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView)
+{
+	if (!m_frameActive || pCommandList == NULL
+		|| pShaderResourceView == NULL || m_pSampledTextureCache == NULL)
+		return false;
+	return m_pSampledTextureCache->Acquire(
+		handle,
+		pShaderResourceView);
+}
+
+bool CDirectX12InteropTextureManager::Acquire(
+	DirectX12RenderTextureHandle handle,
+	ID3D12GraphicsCommandList* pCommandList,
+	D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView)
+{
+	if (!m_frameActive || pCommandList == NULL
+		|| pShaderResourceView == NULL)
+		return false;
+	CDirectX12Texture* pTexture = FindRenderTarget(handle);
+	if (pTexture == NULL)
+		return false;
+	pTexture->Transition(
+		pCommandList,
+		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
+	*pShaderResourceView = pTexture->GetShaderResourceView();
+	return pShaderResourceView->ptr != 0;
 }
 
 bool CDirectX12InteropTextureManager::RefreshSampledTexture(
@@ -605,6 +660,9 @@ void CDirectX12InteropTextureManager::ReleaseRenderTargets()
 		iEntry < m_pState->renderTextures.size();
 		++iEntry)
 	{
+		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
+			m_pState->renderTextures[iEntry].pTexture9,
+			m_pState->renderTextures[iEntry].handle);
 		delete m_pState->renderTextures[iEntry].pNativeTexture;
 		if (m_pState->renderTextures[iEntry].pTexture9 != NULL)
 			m_pState->renderTextures[iEntry].pTexture9->Release();

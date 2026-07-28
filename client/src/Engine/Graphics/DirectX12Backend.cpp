@@ -10,6 +10,7 @@
 #include <Engine/Graphics/DirectX12InteropTextureManager.h>
 #include <Engine/Graphics/DirectX12NativeRenderer.h>
 #include <Engine/Graphics/DirectX12PresentationManager.h>
+#include <Engine/Graphics/DirectX12ResourceHandle.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
 #include <Engine/Graphics/DirectX12UploadManager.h>
 #include <Engine/Testing/ClientTestAutomation.h>
@@ -277,6 +278,14 @@ bool CDirectX12Backend::Initialize(HMODULE hD3D9Module, IDirect3D9** ppD3D9)
 
 	Shutdown();
 	*ppD3D9 = NULL;
+
+	if (!ValidateDirectX12ResourceRegistry())
+	{
+		CPrintF(
+			"DX12 error: fallo la validacion del registro de recursos "
+			"nativos.\n");
+		return false;
+	}
 
 	m_hD3D12Module = LoadLibrary(TEXT("d3d12.dll"));
 	if (m_hD3D12Module == NULL)

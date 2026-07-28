@@ -8,6 +8,7 @@
 #include <d3d12.h>
 
 #include <Engine/Graphics/DirectX12DescriptorHeap.h>
+#include <Engine/Graphics/DirectX12ResourceHandle.h>
 
 class CDirectX12UploadManager;
 struct DirectX12SubresourceData;
@@ -58,6 +59,8 @@ public:
 	UINT16 GetMipLevels() const;
 	DXGI_FORMAT GetFormat() const;
 	D3D12_RESOURCE_STATES GetState() const;
+	DirectX12TextureHandle GetTextureHandle() const;
+	DirectX12RenderTextureHandle GetRenderTextureHandle() const;
 
 private:
 	CDirectX12Texture(const CDirectX12Texture&);
@@ -73,7 +76,8 @@ private:
 		D3D12_RESOURCE_FLAGS flags,
 		D3D12_RESOURCE_STATES initialState,
 		const D3D12_CLEAR_VALUE* pClearValue,
-		const wchar_t* pDebugName);
+		const wchar_t* pDebugName,
+		DirectX12ResourceKind resourceKind);
 
 	ID3D12Resource* m_pResource;
 	CDirectX12DescriptorHeap* m_pDescriptorHeap;
@@ -85,6 +89,8 @@ private:
 	UINT16 m_mipLevels;
 	DXGI_FORMAT m_format;
 	D3D12_RESOURCE_STATES m_state;
+	DirectX12TextureHandle m_textureHandle;
+	DirectX12RenderTextureHandle m_renderTextureHandle;
 };
 
 #endif
