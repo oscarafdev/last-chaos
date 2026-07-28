@@ -1616,3 +1616,28 @@ el mismo lanzador alcanzó `eSTAGE_GAMEPLAY`, mantuvo el proceso responsivo y
 presentó la UI nativa sin fallbacks. La traza
 `Diagnostico de arranque: etapa N detectada` permite distinguir en futuros
 incidentes un bloqueo de etapa de un fallo de presentación.
+
+### Cobertura completa del inventario de shaders observado
+
+Las 28 parejas VS/PS observadas en el inventario de contenido ya tienen una
+traducción semántica DX12. Las dos últimas familias no reutilizan huellas de
+otras rutas:
+
+- `SKINNED_LIT_DETAIL` genera el segundo juego de UV aplicando la escala de la
+  constante VS 12 al UV base;
+- `SKINNED_TANGENT_PROJECTED` conserva skinning, base tangente y la coordenada
+  proyectada de la constante VS 18 usada por NormalMap con niebla.
+
+La familia Detail se validó con
+`Data\Monster\LeadingBand\Nor_LB_Moving.smc`: 937 draws y 277 352 triángulos
+nativos, sin errores de dispositivo o aplicación. NormalMap proyectado se
+validó en zona 9 con `Data\World\Dungeon1\Ska\d1_gagoil_001.smc`: 3 950 draws
+y 1 362 750 triángulos nativos. La captura retardada confirmó escenario,
+personaje, piso, iluminación y texturas correctos; la captura inmediata negra
+correspondía al intervalo de carga y no a un fallo de render.
+
+El recorrido integral reveló además la variante
+`58BF46CA623CB0F3 / 0000000000000000`: vertex color programable con una etapa
+de textura fixed-function. Se promueve mediante la familia `PS_FIXED` existente,
+sin duplicar shaders. Su prueba selectiva procesó 102 draws y 2 896 triángulos
+nativos, sin eventos de dispositivo, aplicación o pantalla.

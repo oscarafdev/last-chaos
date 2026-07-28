@@ -3094,6 +3094,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				|| shaderFamily.vertex
 					== DX12_LEGACY_VS_SKINNED_LIT
 				|| shaderFamily.vertex
+					== DX12_LEGACY_VS_SKINNED_LIT_DETAIL
+				|| shaderFamily.vertex
 					== DX12_LEGACY_VS_SKINNED_LIT_PROJECTED
 				|| shaderFamily.vertex
 					== DX12_LEGACY_VS_RIGID_LIT_REFLECTED)
@@ -3116,6 +3118,14 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 					18,
 					2,
 					&vertex);
+			}
+			else if (shaderFamily.vertex
+				== DX12_LEGACY_VS_SKINNED_LIT_DETAIL)
+			{
+				vertex.texCoordExtra[0][0] =
+					vertex.texCoord[0] * vertexShaderConstants[12 * 4];
+				vertex.texCoordExtra[0][1] =
+					vertex.texCoord[1] * vertexShaderConstants[12 * 4 + 1];
 			}
 			else if (shaderFamily.vertex
 				== DX12_LEGACY_VS_RIGID_REFLECTED
@@ -3197,6 +3207,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			else if (shaderFamily.vertex
 					== DX12_LEGACY_VS_SKINNED_TANGENT
 				|| shaderFamily.vertex
+					== DX12_LEGACY_VS_SKINNED_TANGENT_PROJECTED
+				|| shaderFamily.vertex
 					== DX12_LEGACY_VS_SKINNED_TANGENT_SPECULAR
 				|| shaderFamily.vertex
 					== DX12_LEGACY_VS_RIGID_TANGENT
@@ -3248,7 +3260,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 						* vertexShaderConstants[9 * 4 + 3];
 				}
 				if (shaderFamily.vertex
-					== DX12_LEGACY_VS_RIGID_TANGENT_PROJECTED)
+						== DX12_LEGACY_VS_RIGID_TANGENT_PROJECTED
+					|| shaderFamily.vertex
+						== DX12_LEGACY_VS_SKINNED_TANGENT_PROJECTED)
 				{
 					WriteProjectedTexCoord(
 						transformedPosition,
