@@ -970,6 +970,9 @@ void CRenderer::RenderOneSkaModelToTexture(CEntity &en, const CPlacement3D &plMo
 
 	// NOTE : 직접적으로 투영행렬을 설정하는 부분.  Serious 엔진에서 제공하는 함수를 이용하는 방향으로 변환할것.
 	HRESULT hr = _pGfx->gl_pd3d9Device->SetTransform( D3DTS_PROJECTION, (const _D3DMATRIX*)&_matShadowProj);
+	GetDirectX12Backend().TrackLegacy3DTransform(
+		D3DTS_PROJECTION,
+		reinterpret_cast<const FLOAT*>(&_matShadowProj));
 	D3D_CHECKERROR(hr);
 	
 	//-----------------------------------------------------------------------------

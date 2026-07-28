@@ -956,9 +956,16 @@ bool CDirectX12Backend::SubmitUiSegmentsThrough(
 		if (!m_partialSubmissionCapacityReported)
 		{
 			CPrintF(
-				"DX12 UI: limite de envios parciales; "
-				"los segmentos restantes se enviaran al final.\n");
+				"DX12: limite de envios parciales alcanzado.\n");
 			m_partialSubmissionCapacityReported = true;
+		}
+		if (submitLegacy3D
+			&& m_pNativeRenderer->HasPendingLegacy3DDraws())
+		{
+			CPrintF(
+				"DX12 3D: no se puede enviar el lote pendiente "
+				"sin romper el orden D3D9On12/DX12.\n");
+			return false;
 		}
 		return true;
 	}
@@ -2065,9 +2072,20 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 	}
 	const DirectX12LegacyRenderTargetKind renderTargetKind =
 		m_legacyRenderTargetKind;
-	if (renderTargetKind == DX12_LEGACY_RENDER_TARGET_OFFSCREEN
+	if (ReadFull3DReplacementMode()
 		&& m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
+	{
+		static bool capacityFallbackReported = false;
+		if (!capacityFallbackReported)
+		{
+			CPrintF(
+				"DX12 3D: se agoto la capacidad de envios parciales; "
+				"los draws restantes continuaran en D3D9On12 para "
+				"preservar el orden.\n");
+			capacityFallbackReported = true;
+		}
 		return false;
+	}
 	if (ReadRigidLitReplacementMode()
 		&& !ReadFull3DReplacementMode()
 		&& !m_legacy3DDepthAvailable

@@ -1477,6 +1477,9 @@ void CRenderer::RenderShadowToBrushPolygon(const CPlacement3D &plEye)
 			
 			// 이전의 투영행렬로 복구시킵니다.(이 코드가 없으면 화면이 제대로 Clear되지 않음)
 			hr = _pGfx->gl_pd3d9Device->SetTransform(D3DTS_PROJECTION, &matProjOld);
+			GetDirectX12Backend().TrackLegacy3DTransform(
+				D3DTS_PROJECTION,
+				reinterpret_cast<const FLOAT*>(&matProjOld));
 			//////////////////////////////////////////////////////////////////////////
 			gfxEnableBlend();			
 			
@@ -1824,6 +1827,9 @@ void CRenderer::RenderSkaModelShadowToTerrain(CTerrain *ptrTerrain, const CPlace
 				
 				// 이전의 투영행렬로 복구시킵니다.(이 코드가 없으면 화면이 제대로 Clear되지 않음)
 				hr = _pGfx->gl_pd3d9Device->SetTransform(D3DTS_PROJECTION, &matProjOld);
+				GetDirectX12Backend().TrackLegacy3DTransform(
+					D3DTS_PROJECTION,
+					reinterpret_cast<const FLOAT*>(&matProjOld));
 				//////////////////////////////////////////////////////////////////////////
 				//gfxEnableAlphaTest();
 				gfxEnableBlend();

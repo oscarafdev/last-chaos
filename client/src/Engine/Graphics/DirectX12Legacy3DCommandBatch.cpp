@@ -19,6 +19,7 @@
 #include <Engine/Graphics/DirectX12PipelineCache.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
+#include <Engine/Graphics/DirectX12Texture.h>
 #include <Engine/Graphics/DirectX12UploadManager.h>
 
 namespace
@@ -442,12 +443,38 @@ namespace
 			16384);
 	}
 
+	CDirectX12Texture* ResolveNativeTexture(
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle)
+	{
+		if (textureHandle.IsValid())
+		{
+			return static_cast<CDirectX12Texture*>(
+				GetDirectX12ResourceRegistry().Resolve(textureHandle));
+		}
+		if (renderTextureHandle.IsValid())
+		{
+			return static_cast<CDirectX12Texture*>(
+				GetDirectX12ResourceRegistry().Resolve(
+					renderTextureHandle));
+		}
+		return NULL;
+	}
+
 	bool MatchesFixedFunctionTextureWidthFilter(
 		IDirect3DTexture9* pTexture,
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
 		int expectedWidth)
 	{
 		if (expectedWidth < 0)
 			return true;
+		CDirectX12Texture* pNativeTexture = ResolveNativeTexture(
+			textureHandle,
+			renderTextureHandle);
+		if (pNativeTexture != NULL)
+			return pNativeTexture->GetWidth()
+				== static_cast<UINT>(expectedWidth);
 		if (pTexture == NULL)
 			return false;
 		D3DSURFACE_DESC description;
@@ -2754,6 +2781,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		&& fixedFunctionDraw
 		&& !MatchesFixedFunctionTextureWidthFilter(
 			drawState.textures[0],
+			drawState.textureHandles[0],
+			drawState.renderTextureHandles[0],
 			fixedFunctionTextureWidthFilter))
 		return false;
 
@@ -3280,11 +3309,25 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	IDirect3DTexture9* pTexture3 = pTextures[3];
 	D3DSURFACE_DESC fixedTextureDescription;
 	ZeroMemory(&fixedTextureDescription, sizeof(fixedTextureDescription));
-	const bool hasFixedTextureDescription =
+	bool hasFixedTextureDescription =
 		pTexture != NULL
 		&& SUCCEEDED(pTexture->GetLevelDesc(
 			0,
 			&fixedTextureDescription));
+	if (!hasFixedTextureDescription)
+	{
+		CDirectX12Texture* pNativeTexture = ResolveNativeTexture(
+			drawState.textureHandles[0],
+			drawState.renderTextureHandles[0]);
+		if (pNativeTexture != NULL)
+		{
+			fixedTextureDescription.Width = pNativeTexture->GetWidth();
+			fixedTextureDescription.Height = pNativeTexture->GetHeight();
+			fixedTextureDescription.Format = static_cast<D3DFORMAT>(
+				pNativeTexture->GetFormat());
+			hasFixedTextureDescription = true;
+		}
+	}
 	if (inventoryMode && fixedFunctionDraw)
 	{
 		RecordFixedFunctionDraw(
@@ -3350,7 +3393,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			"color=%08X, z=%u/%u, blend=%u, vertices=%u, "
 			"etapa0=%u/%u/%u alfa=%u/%u/%u, "
 			"coord=%08X transform=%08X, "
-			"fuente=%s viewport=%u,%u,%ux%u, "
+			"fuente=%s viewport=%u,%u,%ux%u profundidad=%.3f..%.3f, "
 			"primero=(%.4f,%.4f,%.4f,w=%.4f), "
 			"limites=(%.3f..%.3f,%.3f..%.3f,w=%.3f..%.3f), "
 			"uv=(%.4f,%.4f), rgba=(%.3f,%.3f,%.3f,%.3f).\n",
@@ -3383,6 +3426,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			viewport9.Y,
 			viewport9.Width,
 			viewport9.Height,
+			viewport9.MinZ,
+			viewport9.MaxZ,
 			firstVertex.position[0],
 			firstVertex.position[1],
 			firstVertex.position[2],
