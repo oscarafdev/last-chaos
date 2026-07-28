@@ -402,7 +402,6 @@ bool CDirectX12Backend::Initialize(HMODULE hD3D9Module, IDirect3D9** ppD3D9)
 	if (m_pInteropTextures == NULL
 		|| !m_pInteropTextures->Initialize(
 			m_pDevice,
-			m_pGraphicsQueue,
 			m_pResourceDescriptors,
 			m_pRenderTargetDescriptors))
 	{
@@ -867,10 +866,6 @@ bool CDirectX12Backend::EndFrame()
 			}
 		}
 	}
-	if (m_pInteropTextures == NULL
-		|| !m_pInteropTextures->PrepareForSubmission(m_pCommandList))
-		return false;
-
 	const bool hasUiReadyForPresentation =
 		HasUiReadyForInitialPresentation();
 	const bool nativePresentationReady =
@@ -928,9 +923,8 @@ bool CDirectX12Backend::EndFrame()
 	if (!WaitForFence(fenceValue))
 		return false;
 
-	bool returnSucceeded = true;
-	returnSucceeded = m_pInteropTextures != NULL
-		&& m_pInteropTextures->ReturnToD3D9(m_pFence, fenceValue);
+	bool returnSucceeded = m_pInteropTextures != NULL
+		&& m_pInteropTextures->EndFrame();
 	if (hasRenderTarget)
 	{
 		returnSucceeded =
@@ -1000,8 +994,6 @@ bool CDirectX12Backend::SubmitUiSegmentsThrough(
 			submitLegacy3D);
 	}
 	if (succeeded)
-		succeeded = m_pInteropTextures->PrepareForSubmission(m_pCommandList);
-	if (succeeded)
 		succeeded = m_pRenderTargets->PrepareForSubmission(m_pCommandList);
 	if (succeeded)
 		succeeded = SUCCEEDED(m_pCommandList->Close());
@@ -1019,10 +1011,6 @@ bool CDirectX12Backend::SubmitUiSegmentsThrough(
 	}
 	if (succeeded)
 	{
-		succeeded = m_pInteropTextures->ReturnToD3D9(
-			m_pFence,
-			fenceValue,
-			false);
 		succeeded = m_pRenderTargets->ReturnToD3D9(
 			m_pFence,
 			fenceValue)
@@ -1150,7 +1138,7 @@ bool CDirectX12Backend::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 		|| m_pInteropTextures == NULL)
 		return false;
 	if (!m_pRenderTargets->AttachD3D9Device(pDevice9)
-		|| !m_pInteropTextures->AttachD3D9Device(pDevice9))
+		|| !m_pInteropTextures->ResetLegacyBindings())
 		return false;
 	if (m_pDevice9 != NULL)
 		m_pDevice9->Release();
@@ -1421,8 +1409,6 @@ bool CDirectX12Backend::RenderNativeBloom(
 			pFilterTexture1);
 	}
 	if (succeeded)
-		succeeded = m_pInteropTextures->PrepareForSubmission(m_pCommandList);
-	if (succeeded)
 		succeeded = m_pRenderTargets->PrepareForSubmission(m_pCommandList);
 	if (succeeded)
 		succeeded = SUCCEEDED(m_pCommandList->Close());
@@ -1440,10 +1426,6 @@ bool CDirectX12Backend::RenderNativeBloom(
 	}
 	if (succeeded)
 	{
-		succeeded = m_pInteropTextures->ReturnToD3D9(
-			m_pFence,
-			fenceValue,
-			false);
 		succeeded = m_pRenderTargets->ReturnToD3D9(
 			m_pFence,
 			fenceValue)

@@ -1,7 +1,6 @@
 #include "stdh.h"
 
 #include <vector>
-#include <d3d9on12.h>
 
 #include <Engine/Base/Console.h>
 #include <Engine/Graphics/DirectX12DescriptorHeap.h>
@@ -13,15 +12,6 @@
 
 namespace
 {
-	struct InteropTextureEntry
-	{
-		IDirect3DTexture9* pTexture9;
-		ID3D12Resource* pResource12;
-		DirectX12DescriptorHandle descriptor;
-		bool transitioned;
-		bool returned;
-	};
-
 	struct NativeRenderTextureEntry
 	{
 		DirectX12RenderTextureHandle handle;
@@ -29,43 +19,20 @@ namespace
 		CDirectX12Texture* pNativeTexture;
 	};
 
-	void Transition(
-		ID3D12GraphicsCommandList* pCommandList,
-		ID3D12Resource* pResource,
-		D3D12_RESOURCE_STATES before,
-		D3D12_RESOURCE_STATES after)
-	{
-		D3D12_RESOURCE_BARRIER barrier;
-		ZeroMemory(&barrier, sizeof(barrier));
-		barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
-		barrier.Transition.pResource = pResource;
-		barrier.Transition.Subresource =
-			D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
-		barrier.Transition.StateBefore = before;
-		barrier.Transition.StateAfter = after;
-		pCommandList->ResourceBarrier(1, &barrier);
-	}
-
 }
 
 struct DirectX12InteropTextureState
 {
-	std::vector<InteropTextureEntry> frames[
-		CDirectX12InteropTextureManager::FRAME_COUNT];
 	std::vector<NativeRenderTextureEntry> renderTextures;
 };
 
 CDirectX12InteropTextureManager::CDirectX12InteropTextureManager()
 	: m_pDevice(NULL)
-	, m_pGraphicsQueue(NULL)
-	, m_pDevice9On12(NULL)
 	, m_pResourceDescriptors(NULL)
 	, m_pRenderTargetDescriptors(NULL)
 	, m_pSampledTextureCache(NULL)
 	, m_pState(NULL)
-	, m_currentFrame(0)
 	, m_frameActive(false)
-	, m_resourcesReturned(true)
 {
 }
 
@@ -76,12 +43,10 @@ CDirectX12InteropTextureManager::~CDirectX12InteropTextureManager()
 
 bool CDirectX12InteropTextureManager::Initialize(
 	ID3D12Device* pDevice,
-	ID3D12CommandQueue* pGraphicsQueue,
 	CDirectX12DescriptorHeap* pResourceDescriptors,
 	CDirectX12DescriptorHeap* pRenderTargetDescriptors)
 {
-	if (pDevice == NULL || pGraphicsQueue == NULL
-		|| pResourceDescriptors == NULL
+	if (pDevice == NULL || pResourceDescriptors == NULL
 		|| pResourceDescriptors->GetType()
 			!= D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV
 		|| !pResourceDescriptors->IsShaderVisible()
@@ -94,8 +59,6 @@ bool CDirectX12InteropTextureManager::Initialize(
 	Shutdown();
 	m_pDevice = pDevice;
 	m_pDevice->AddRef();
-	m_pGraphicsQueue = pGraphicsQueue;
-	m_pGraphicsQueue->AddRef();
 	m_pResourceDescriptors = pResourceDescriptors;
 	m_pRenderTargetDescriptors = pRenderTargetDescriptors;
 	m_pSampledTextureCache = new CDirectX12SampledTextureCache;
@@ -113,24 +76,12 @@ bool CDirectX12InteropTextureManager::Initialize(
 
 void CDirectX12InteropTextureManager::Shutdown()
 {
-	for (UINT iFrame = 0; iFrame < FRAME_COUNT; ++iFrame)
-		ReleaseFrame(iFrame);
 	ReleaseRenderTargets();
 	delete m_pState;
 	m_pState = NULL;
 	delete m_pSampledTextureCache;
 	m_pSampledTextureCache = NULL;
 
-	if (m_pDevice9On12 != NULL)
-	{
-		m_pDevice9On12->Release();
-		m_pDevice9On12 = NULL;
-	}
-	if (m_pGraphicsQueue != NULL)
-	{
-		m_pGraphicsQueue->Release();
-		m_pGraphicsQueue = NULL;
-	}
 	if (m_pDevice != NULL)
 	{
 		m_pDevice->Release();
@@ -138,43 +89,37 @@ void CDirectX12InteropTextureManager::Shutdown()
 	}
 	m_pResourceDescriptors = NULL;
 	m_pRenderTargetDescriptors = NULL;
-	m_currentFrame = 0;
 	m_frameActive = false;
-	m_resourcesReturned = true;
 }
 
-bool CDirectX12InteropTextureManager::AttachD3D9Device(
-	IDirect3DDevice9* pDevice9)
+bool CDirectX12InteropTextureManager::ResetLegacyBindings()
 {
-	if (pDevice9 == NULL || m_pState == NULL || m_frameActive)
+	if (m_pState == NULL || m_frameActive)
 		return false;
 
 	if (m_pSampledTextureCache != NULL)
 		m_pSampledTextureCache->Clear();
 	ReleaseRenderTargets();
-	if (m_pDevice9On12 != NULL)
-	{
-		m_pDevice9On12->Release();
-		m_pDevice9On12 = NULL;
-	}
-	const HRESULT hr = pDevice9->QueryInterface(
-		__uuidof(IDirect3DDevice9On12),
-		reinterpret_cast<void**>(&m_pDevice9On12));
-	return SUCCEEDED(hr);
+	return true;
 }
 
 bool CDirectX12InteropTextureManager::BeginFrame(UINT frameIndex)
 {
 	if (m_pState == NULL || frameIndex >= FRAME_COUNT
-		|| !m_resourcesReturned)
+		|| m_frameActive)
 		return false;
 
-	ReleaseFrame(frameIndex);
 	if (m_pSampledTextureCache != NULL)
 		m_pSampledTextureCache->BeginFrame(frameIndex);
-	m_currentFrame = frameIndex;
 	m_frameActive = true;
-	m_resourcesReturned = false;
+	return true;
+}
+
+bool CDirectX12InteropTextureManager::EndFrame()
+{
+	if (!m_frameActive)
+		return false;
+	m_frameActive = false;
 	return true;
 }
 
@@ -376,8 +321,7 @@ bool CDirectX12InteropTextureManager::Acquire(
 	D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView)
 {
 	if (!m_frameActive || pTexture9 == NULL || pCommandList == NULL
-		|| pUploadManager == NULL || pShaderResourceView == NULL
-		|| m_pDevice9On12 == NULL)
+		|| pUploadManager == NULL || pShaderResourceView == NULL)
 		return false;
 
 	CDirectX12Texture* pRenderTexture = FindRenderTarget(pTexture9);
@@ -404,80 +348,15 @@ bool CDirectX12InteropTextureManager::Acquire(
 				pUploadManager,
 				pShaderResourceView);
 
-	std::vector<InteropTextureEntry>& entries =
-		m_pState->frames[m_currentFrame];
-	for (size_t iEntry = 0; iEntry < entries.size(); ++iEntry)
-	{
-		if (entries[iEntry].pTexture9 == pTexture9
-			&& !entries[iEntry].returned)
-		{
-			*pShaderResourceView = entries[iEntry].descriptor.gpu;
-			return true;
-		}
-	}
-
-	InteropTextureEntry entry;
-	ZeroMemory(&entry, sizeof(entry));
-	hr = m_pDevice9On12->UnwrapUnderlyingResource(
-		reinterpret_cast<IDirect3DResource9*>(pTexture9),
-		m_pGraphicsQueue,
-		__uuidof(ID3D12Resource),
-		reinterpret_cast<void**>(&entry.pResource12));
-	if (FAILED(hr))
+	static bool defaultTextureWithoutHandleReported = false;
+	if (!defaultTextureWithoutHandleReported)
 	{
 		CPrintF(
-			"DX12 error: no se pudo desenvolver textura D3D9 (0x%08X).\n",
-			static_cast<unsigned int>(hr));
-		return false;
+			"DX12 textura: se rechazo un recurso D3DPOOL_DEFAULT sin "
+			"handle nativo.\n");
+		defaultTextureWithoutHandleReported = true;
 	}
-
-	const D3D12_RESOURCE_DESC resourceDesc = entry.pResource12->GetDesc();
-	if (resourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_TEXTURE2D
-		|| resourceDesc.SampleDesc.Count != 1
-		|| !m_pResourceDescriptors->Allocate(&entry.descriptor))
-	{
-		CPrintF(
-			"DX12 error: textura incompatible o sin descriptor "
-			"(dimension %d, muestras %u).\n",
-			static_cast<int>(resourceDesc.Dimension),
-			resourceDesc.SampleDesc.Count);
-		m_pDevice9On12->ReturnUnderlyingResource(
-			reinterpret_cast<IDirect3DResource9*>(pTexture9),
-			0,
-			NULL,
-			NULL);
-		entry.pResource12->Release();
-		return false;
-	}
-
-	D3D12_SHADER_RESOURCE_VIEW_DESC viewDesc;
-	ZeroMemory(&viewDesc, sizeof(viewDesc));
-	viewDesc.Format = resourceDesc.Format;
-	viewDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
-	DirectX12TextureFormatInfo formatInfo;
-	viewDesc.Shader4ComponentMapping =
-		GetDirectX12TextureFormat(legacyDesc.Format, &formatInfo)
-			? formatInfo.componentMapping
-			: D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-	viewDesc.Texture2D.MostDetailedMip = 0;
-	viewDesc.Texture2D.MipLevels = resourceDesc.MipLevels;
-	viewDesc.Texture2D.ResourceMinLODClamp = 0.0f;
-	m_pDevice->CreateShaderResourceView(
-		entry.pResource12,
-		&viewDesc,
-		entry.descriptor.cpu);
-
-	pTexture9->AddRef();
-	entry.pTexture9 = pTexture9;
-	entry.transitioned = true;
-	Transition(
-		pCommandList,
-		entry.pResource12,
-		D3D12_RESOURCE_STATE_COMMON,
-		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
-	entries.push_back(entry);
-	*pShaderResourceView = entry.descriptor.gpu;
-	return true;
+	return false;
 }
 
 bool CDirectX12InteropTextureManager::Acquire(
@@ -572,84 +451,6 @@ RefreshSampledTextureFromCompressedBlob(
 		maximumMipCount,
 		pCommandList,
 		pUploadManager);
-}
-
-bool CDirectX12InteropTextureManager::PrepareForSubmission(
-	ID3D12GraphicsCommandList* pCommandList)
-{
-	if (!m_frameActive || pCommandList == NULL)
-		return false;
-
-	std::vector<InteropTextureEntry>& entries =
-		m_pState->frames[m_currentFrame];
-	for (size_t iEntry = 0; iEntry < entries.size(); ++iEntry)
-	{
-		if (!entries[iEntry].transitioned)
-			continue;
-		Transition(
-			pCommandList,
-			entries[iEntry].pResource12,
-			D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
-			D3D12_RESOURCE_STATE_COMMON);
-		entries[iEntry].transitioned = false;
-	}
-	return true;
-}
-
-bool CDirectX12InteropTextureManager::ReturnToD3D9(
-	ID3D12Fence* pFence,
-	UINT64 fenceValue,
-	bool endFrame)
-{
-	if (!m_frameActive || pFence == NULL || fenceValue == 0
-		|| m_pDevice9On12 == NULL)
-		return false;
-
-	bool succeeded = true;
-	std::vector<InteropTextureEntry>& entries =
-		m_pState->frames[m_currentFrame];
-	ID3D12Fence* fences[] = { pFence };
-	UINT64 fenceValues[] = { fenceValue };
-	for (size_t iEntry = 0; iEntry < entries.size(); ++iEntry)
-	{
-		if (entries[iEntry].returned)
-			continue;
-		const HRESULT hr = m_pDevice9On12->ReturnUnderlyingResource(
-			reinterpret_cast<IDirect3DResource9*>(
-				entries[iEntry].pTexture9),
-			1,
-			fenceValues,
-			fences);
-		succeeded = SUCCEEDED(hr) && succeeded;
-		entries[iEntry].returned = SUCCEEDED(hr);
-	}
-	if (endFrame)
-	{
-		m_frameActive = false;
-		m_resourcesReturned = true;
-	}
-	return succeeded;
-}
-
-void CDirectX12InteropTextureManager::ReleaseFrame(UINT frameIndex)
-{
-	if (m_pState == NULL || frameIndex >= FRAME_COUNT)
-		return;
-
-	std::vector<InteropTextureEntry>& entries =
-		m_pState->frames[frameIndex];
-	for (size_t iEntry = 0; iEntry < entries.size(); ++iEntry)
-	{
-		if (entries[iEntry].descriptor.IsValid()
-			&& m_pResourceDescriptors != NULL)
-			m_pResourceDescriptors->Release(
-				entries[iEntry].descriptor.index);
-		if (entries[iEntry].pResource12 != NULL)
-			entries[iEntry].pResource12->Release();
-		if (entries[iEntry].pTexture9 != NULL)
-			entries[iEntry].pTexture9->Release();
-	}
-	entries.clear();
 }
 
 void CDirectX12InteropTextureManager::ReleaseRenderTargets()
