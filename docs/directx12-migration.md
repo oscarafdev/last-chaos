@@ -1555,6 +1555,18 @@ confundir una ventana superpuesta con el resultado del juego. La regresión
 309 draws DX12 máximos y cero eventos de aplicación o pantalla. La referencia
 visual es `.itconfig/terrain-opaque-pso-regression.png`.
 
+### Terreno nativo autoritativo
+
+El reemplazo integral ya no requiere una variable de laboratorio para el
+terreno. Las tres familias proyectadas y su pasada fixed-function de máscara
+de profundidad se capturan y se suprimen juntas, conservando el orden original
+en el command stream DX12.
+
+Los perfiles de diagnóstico que no activan el reemplazo integral mantienen
+todo el terreno en D3D9On12. El fixed-function general sigue aislado: este
+corte solo autoriza la máscara identificada por escritura de color nula,
+escritura de profundidad activa y alpha-test activo.
+
 ### Captura reproducible de posición y cámara
 
 Una cuenta normal puede registrar una vista defectuosa sin comandos GM ni

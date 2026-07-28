@@ -368,18 +368,6 @@ namespace
 					!= INVALID_FILE_ATTRIBUTES);
 	}
 
-	bool ReadNativeTerrainMode()
-	{
-		char value[32] = "";
-		const DWORD length = GetEnvironmentVariableA(
-			"LASTCHAOS_DX12_3D_NATIVE_TERRAIN",
-			value,
-			sizeof(value));
-		return length > 0 && length < sizeof(value)
-			&& (_stricmp(value, "enabled") == 0
-				|| strcmp(value, "1") == 0);
-	}
-
 	bool ReadTerrainRasterDebugMode(const char* pVariableName)
 	{
 		if (pVariableName == NULL)
@@ -796,7 +784,7 @@ struct DirectX12Legacy3DCommandBatchState
 	bool testFamilyAliasDiagnosticReported;
 	bool terrainColorPendingAfterDepthMask;
 	UINT terrainDepthMaskVertexCount;
-	bool terrainDepthMaskFallbackReported;
+	bool terrainDepthMaskReported;
 	bool terrainOpaqueInitializationReported;
 	bool terrainCompatibilityFallbackReported;
 	bool fixedGeneralFallbackReported;
@@ -818,7 +806,7 @@ struct DirectX12Legacy3DCommandBatchState
 		, testFamilyAliasDiagnosticReported(false)
 		, terrainColorPendingAfterDepthMask(false)
 		, terrainDepthMaskVertexCount(0)
-		, terrainDepthMaskFallbackReported(false)
+		, terrainDepthMaskReported(false)
 		, terrainOpaqueInitializationReported(false)
 		, terrainCompatibilityFallbackReported(false)
 		, fixedGeneralFallbackReported(false)
@@ -835,12 +823,12 @@ struct DirectX12Legacy3DCommandBatchState
 
 namespace
 {
-	void TrackTerrainDepthMaskFallback(
+	bool DetectTerrainDepthMask(
 		DirectX12Legacy3DCommandBatchState* pState,
 		IDirect3DDevice9* pDevice9)
 	{
 		if (pState == NULL || pDevice9 == NULL)
-			return;
+			return false;
 		DWORD colorWriteMask = 0;
 		DWORD depthWrite = FALSE;
 		DWORD alphaTest = FALSE;
@@ -856,20 +844,21 @@ namespace
 			|| colorWriteMask != 0
 			|| depthWrite == FALSE
 			|| alphaTest == FALSE)
-			return;
+			return false;
 
 		pState->terrainColorPendingAfterDepthMask = true;
 		pState->terrainDepthMaskVertexCount =
 			static_cast<UINT>(pState->positions.size() / 3);
-		if (!pState->terrainDepthMaskFallbackReported)
+		if (!pState->terrainDepthMaskReported)
 		{
 			CPrintF(
 				"DX12 diagnostico terreno: mascara de profundidad "
-				"heredada detectada, vertices=%u; la siguiente capa "
-				"compatible inicializara el color.\n",
+				"detectada, vertices=%u; la siguiente capa nativa "
+				"inicializara el color.\n",
 				pState->terrainDepthMaskVertexCount);
-			pState->terrainDepthMaskFallbackReported = true;
+			pState->terrainDepthMaskReported = true;
 		}
+		return true;
 	}
 
 	UINT64 GetVertexShaderFingerprint(
@@ -2234,6 +2223,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		!usesVertexProgram && !usesPixelProgram;
 	const bool fixedProjectiveDraw =
 		projectiveMapping && fixedFunctionDraw;
+	const bool terrainDepthMaskDraw =
+		fixedFunctionDraw
+		&& DetectTerrainDepthMask(m_pState, pDevice9);
 	// Las sombras proyectadas consumen el render target nativo mediante la
 	// ruta fixed-function. Esta pareja no tiene fingerprints de shader, pero
 	// su estado y su generacion de coordenadas se traducen explicitamente.
@@ -2254,16 +2246,12 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			indexCount);
 	if (captureProfile == NATIVE_3D_CAPTURE_OFF)
 		return false;
-	// El terreno usa una pasada de mascara de profundidad seguida por varias
-	// capas ONE/SRC_ALPHA sobre la misma geometria. La traduccion nativa aun
-	// no conserva el contrato completo entre esas pasadas y deja visible el
-	// cielo a traves del piso. Mantener juntas las tres familias proyectadas
-	// en D3D9On12 evita mezclar dos implementaciones de depth/blend mientras
-	// se prepara un compositor de terreno nativo que pueda sustituirlas como
-	// una unidad.
+	// En reemplazo integral, la mascara de profundidad y las capas proyectadas
+	// forman una sola unidad DX12. Los modos de diagnostico conservan el
+	// terreno completo en D3D9On12 para no mezclar dos implementaciones.
 	if (knownShaderFamily
 		&& IsProjectedTerrainVertexFamily(shaderFamily.vertex)
-		&& !ReadNativeTerrainMode())
+		&& !ReadFullReplacementMode())
 	{
 		CaptureProjectedTerrainCamera(pDevice9);
 		if (!m_pState->terrainCompatibilityFallbackReported)
@@ -2314,12 +2302,13 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	}
 	// Las parejas programables deben estar validadas. Fixed-function general
 	// sigue en fallback: mezcla espacios de vertices y pasadas auxiliares que
-	// pueden producir paneles gigantes. Solo la proyeccion controlada dispone
-	// de un contrato nativo validado.
+	// pueden producir paneles gigantes. Solo la proyeccion controlada y la
+	// mascara de profundidad del terreno tienen contrato nativo validado.
 	if (ReadFullReplacementMode()
 		&& !replacementFamilySelected
 		&& !shaderFamily.replacementValidated
-		&& !fixedProjectiveDraw)
+		&& !fixedProjectiveDraw
+		&& !terrainDepthMaskDraw)
 	{
 		if (fixedFunctionDraw
 			&& !m_pState->fixedGeneralFallbackReported)
@@ -2329,7 +2318,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				"en fallback para evitar paneles o triangulos gigantes.\n");
 			m_pState->fixedGeneralFallbackReported = true;
 		}
-		TrackTerrainDepthMaskFallback(m_pState, pDevice9);
 		return false;
 	}
 	if (ReadFullReplacementMode()
