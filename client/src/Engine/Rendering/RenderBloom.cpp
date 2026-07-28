@@ -11,6 +11,10 @@
 // sehan
 #include <assert.h>
 
+// Bloom remains the sole owner of the temporary D3DX link until its runtime
+// shader assembly and matrix helpers are migrated in the next block.
+#pragma comment(lib, "d3dx9.lib")
+
 #define FILTER_BLOOM_TEX			D3DTEXF_POINT
 #define FILTER_BLOOM_TEX_TO_SCREEN	D3DTEXF_LINEAR
 

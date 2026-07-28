@@ -24,7 +24,7 @@
 
 // Inicio de modificacion de Kang Dong-min: procesamiento de inicio de sesion (07.10).
 // FIXME: prueba del plano de recorte cercano.
-#include <d3dx9.h>
+#include <Engine/Math/GfxMath.h>
 // ###
 // Fin de modificacion de Kang Dong-min: procesamiento de inicio de sesion (07.10).
 
@@ -807,46 +807,46 @@ void CDrawPort::SetProjection(CAnyProjection3D &apr)
 	if( apr->pr_bNiceWater && !(_pGfx->gl_ulFlags&GLF_D3D_CLIPPLANE))
 	//if(gfx_bRenderReflection && !(_pGfx->gl_ulFlags&GLF_D3D_CLIPPLANE))
 	{
-		D3DXPLANE	plNew;
+		GfxPlane	plNew;
 		HRESULT		hr;
 		plNew.a		= +apr->pr_plNiceWaterView(1);
 		plNew.b		= +apr->pr_plNiceWaterView(2);
 		plNew.c		= +apr->pr_plNiceWaterView(3);
 		plNew.d		= -apr->pr_plNiceWaterView.Distance();
 
-		D3DXMATRIX  matClip;
-		D3DXMatrixIdentity(&matClip);
-		D3DXMATRIX	matProj;
-		D3DXMATRIX	matView;
+		GfxMatrix  matClip;
+		GfxMatrixIdentity(&matClip);
+		GfxMatrix	matProj;
+		GfxMatrix	matView;
 		hr			= _pGfx->gl_pd3d9Device->GetTransform( D3DTS_PROJECTION, &matProj);
 		hr			= _pGfx->gl_pd3d9Device->GetTransform( D3DTS_VIEW, &matView);
-		D3DXMatrixMultiply(&matClip, &matView, &matProj);
+		GfxMatrixMultiply(&matClip, &matView, &matProj);
 		
 		// Transforma el valor normal.
-		D3DXMatrixInverse(&matClip, NULL, &matClip);
-		D3DXMatrixTranspose(&matClip, &matClip);
+		GfxMatrixInverse(&matClip, NULL, &matClip);
+		GfxMatrixTranspose(&matClip, &matClip);
 
 		// Ensure Near clip always faces away from Eye point.		
 		// if (plNew.d > 0)
 		// {
-		// 	D3DXPlaneTransform(&plNew, &(-plNew), &matClip);
+		// 	GfxPlaneTransform(&plNew, &(-plNew), &matClip);
 		//}
 		//else
 		//{
-			D3DXPlaneTransform(&plNew, &plNew, &matClip);
+			GfxPlaneTransform(&plNew, &plNew, &matClip);
 		//}
 
 		// Create a transform to convert the projection Matrix
 		// to our custom near clip space.
-		D3DXMATRIX matClipProj;
-		D3DXMatrixIdentity(&matClipProj);
+		GfxMatrix matClipProj;
+		GfxMatrixIdentity(&matClipProj);
 		matClipProj(0, 2) = plNew.a;
 		matClipProj(1, 2) = plNew.b;
 		matClipProj(2, 2) = plNew.c;
 		matClipProj(3, 2) = plNew.d;
 
 		// Create a new custom clip projection matrix
-		D3DXMATRIX projClipMatrix = matProj * matClipProj;
+		GfxMatrix projClipMatrix = matProj * matClipProj;
 		hr = _pGfx->gl_pd3d9Device->SetTransform( D3DTS_PROJECTION, &projClipMatrix);
 	}
 	//----------Custom Clip Plane---------------------

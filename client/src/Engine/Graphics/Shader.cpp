@@ -20,8 +20,7 @@
 #include "initguid.h"
  // ###
 //#include <d3d9.h>
-#include <d3dx9core.h>
-#pragma comment(lib, "d3dx9.lib")
+#include <Engine/Math/GfxMath.h>
 
 // asm shortcuts
 #define O offset
@@ -147,7 +146,7 @@ static CStaticStackArray<struct GFXTexCoord> _atcHaze;  // haze tex coords
 static CStaticStackArray<UBYTE> _aubshdHaze;
 static CStaticStackArray<UBYTE> _aubshdFog;
 //강동민 수정 시작 2차 작업			05.14
-static D3DXPLANE	_plOld;
+static GfxPlane	_plOld;
 //강동민 수정 끝 2차 작업			05.14
 
 static INDEX tempFileNameCount = 0;	// 쉐이더 코드 추출을 위한 변수
@@ -192,23 +191,23 @@ extern void shaEnd(void)
 //강동민 수정 끝 테스트 클라이언트 작업		06.16
 			//gfxEnableClipPlane();
 			// NOTE : 이전에 저장된 클리핑 평면의 방정식은 월드 공간상의 평면의 방정식이다.
-			D3DXPLANE	plNew;
+			GfxPlane	plNew;
 			HRESULT		hr;
 			hr = _pGfx->gl_pd3d9Device->GetClipPlane( 0, (float*)&_plOld);			D3D_CHECKERROR(hr);
 			
-			D3DXMATRIX  matClip;
-			D3DXMatrixIdentity(&matClip);
-			D3DXMATRIX	matProj;
-			D3DXMATRIX	matView;
+			GfxMatrix  matClip;
+			GfxMatrixIdentity(&matClip);
+			GfxMatrix	matProj;
+			GfxMatrix	matView;
 			hr = _pGfx->gl_pd3d9Device->GetTransform( D3DTS_PROJECTION, &matProj);	D3D_CHECKERROR(hr);
 			hr = _pGfx->gl_pd3d9Device->GetTransform( D3DTS_VIEW, &matView);			D3D_CHECKERROR(hr);
-			D3DXMatrixMultiply(&matClip, &matView, &matProj);
+			GfxMatrixMultiply(&matClip, &matView, &matProj);
 			
 			// Normal값을 변환함.
-			D3DXMatrixInverse(&matClip, NULL, &matClip);
-			D3DXMatrixTranspose(&matClip, &matClip);
+			GfxMatrixInverse(&matClip, NULL, &matClip);
+			GfxMatrixTranspose(&matClip, &matClip);
 			
-			D3DXPlaneTransform(&plNew, &_plOld, &matClip);
+			GfxPlaneTransform(&plNew, &_plOld, &matClip);
 			hr = _pGfx->gl_pd3d9Device->SetClipPlane( 0, &plNew[0]);					D3D_CHECKERROR(hr);
 //강동민 수정 시작 테스트 클라이언트 작업	06.16
 			}
@@ -261,13 +260,13 @@ static void SetConstantRegisters(void)
 {
 	#pragma message(">> Prepare projection*view matrix")
 
-	D3DXMATRIX mat;
-	D3DXMATRIX matView;
-	D3DXMATRIX matProj;
+	GfxMatrix mat;
+	GfxMatrix matView;
+	GfxMatrix matProj;
 	_pGfx->gl_pd3dDevice->GetTransform(D3DTS_VIEW,&matView);
 	_pGfx->gl_pd3dDevice->GetTransform(D3DTS_PROJECTION,&matProj);
-	D3DXMatrixMultiply( &mat, &matView, &matProj);
-	D3DXMatrixTranspose( &mat, &mat);
+	GfxMatrixMultiply( &mat, &matView, &matProj);
+	GfxMatrixTranspose( &mat, &mat);
 
 	GFXColor colLight   = _colLight;
 	GFXColor colAmbient = _colAmbient;
@@ -306,11 +305,11 @@ static void SetConstantRegisters(void)
 extern void shaSetDefaultConstantRegisters(void) {
 	if (!((_pGfx->gl_ulFlags & GLF_VERTEXPROGRAM) && (_pGfx->gl_ulFlags & GLF_PIXELPROGRAM) && (_pGfx->gl_ctTextureUnits >= 4))) return;
 
-	D3DXMATRIX mat, matView, matProj;
+	GfxMatrix mat, matView, matProj;
 	_pGfx->gl_pd3d9Device->GetTransform(D3DTS_VIEW,&matView);
 	_pGfx->gl_pd3d9Device->GetTransform(D3DTS_PROJECTION,&matProj);
-	D3DXMatrixMultiply( &mat, &matView, &matProj);
-	D3DXMatrixTranspose( &mat, &mat);
+	GfxMatrixMultiply( &mat, &matView, &matProj);
+	GfxMatrixTranspose( &mat, &mat);
 
 	GFXColor colLight   = _colLight;
 	GFXColor colAmbient = _colAmbient;
@@ -357,13 +356,13 @@ extern void shaSetPixelProgramConst_WaterColor()
 //Transform Matrix를 상수레지스터 c0~c3에 세팅한다.
 extern void shaSetVertexProgramConst_TransformMatrix()
 {
-	D3DXMATRIX mat;
-	D3DXMATRIX matView;
-	D3DXMATRIX matProj;
+	GfxMatrix mat;
+	GfxMatrix matView;
+	GfxMatrix matProj;
 	_pGfx->gl_pd3d9Device->GetTransform(D3DTS_VIEW,&matView);
 	_pGfx->gl_pd3d9Device->GetTransform(D3DTS_PROJECTION,&matProj);
-	D3DXMatrixMultiply( &mat, &matView, &matProj);
-	D3DXMatrixTranspose( &mat, &mat);
+	GfxMatrixMultiply( &mat, &matView, &matProj);
+	GfxMatrixTranspose( &mat, &mat);
 	shaSetVertexProgramConst( 0, (Matrix16*)&mat, 4);
 }
 
@@ -411,12 +410,12 @@ extern void shaSetVertexProgramConst_ProjectionMatrix()
 {
 //	if(_pWaterInformation)
 //	{		
-		D3DXMATRIX mat;
-		D3DXMATRIX matView;
-		D3DXMATRIX matProj;		
-		D3DXMatrixIdentity(&mat);
-		D3DXMatrixIdentity(&matView);
-		D3DXMatrixIdentity(&matProj);			
+		GfxMatrix mat;
+		GfxMatrix matView;
+		GfxMatrix matProj;
+		GfxMatrixIdentity(&mat);
+		GfxMatrixIdentity(&matView);
+		GfxMatrixIdentity(&matProj);
 		_pGfx->gl_pd3d9Device->GetTransform(D3DTS_VIEW, &matView);
 //강동민 수정 시작 Water 구현		04.21
 		//_pGfx->gl_pd3dDevice->GetTransform(D3DTS_PROJECTION, &matProj);		// 원본.
@@ -437,15 +436,18 @@ extern void shaSetVertexProgramConst_ProjectionMatrix()
 		matScaleOffset[14] = 0.0f;
 		matScaleOffset[15] = 1.0f;		
 
-		//D3DXMatrixIdentity((D3DXMATRIX*)&_matWaterProj);
+		//GfxMatrixIdentity(reinterpret_cast<GfxMatrix*>(&_matWaterProj));
 //강동민 수정 시작 Water 구현		04.21
-		//D3DXMatrixMultiply(&matProj, (D3DXMATRIX*)&matProj, (D3DXMATRIX*)&matScaleOffset);		// 원본.
-		D3DXMatrixMultiply(&matProj, (D3DXMATRIX*)&_matWaterProj, (D3DXMATRIX*)&matScaleOffset);
+		//GfxMatrixMultiply(&matProj, &matProj, reinterpret_cast<const GfxMatrix*>(&matScaleOffset));		// 원본.
+		GfxMatrixMultiply(
+			&matProj,
+			reinterpret_cast<const GfxMatrix*>(&_matWaterProj),
+			reinterpret_cast<const GfxMatrix*>(&matScaleOffset));
 //강동민 수정 끝 Water 구현			04.21
 
-		D3DXMatrixMultiply( &mat, &matView, (D3DXMATRIX*)&matProj);	// mat = matView * matProj;		
-		//D3DXMatrixMultiply( &mat, &matView, (D3DXMATRIX*)&_matWaterProj);	// mat = matView * matProj;		
-		D3DXMatrixTranspose( &mat, &mat);		
+		GfxMatrixMultiply(&mat, &matView, &matProj); // mat = matView * matProj;
+		//GfxMatrixMultiply(&mat, &matView, reinterpret_cast<const GfxMatrix*>(&_matWaterProj));
+		GfxMatrixTranspose(&mat, &mat);
 
 		// c21~24
 		shaSetVertexProgramConst( 21, (Matrix16*)&mat, 4);
@@ -508,8 +510,8 @@ extern void shaSetEMBM()
 {
 	//if(_pWaterInformation)
 	//{
-		D3DXMATRIX matBumpMat;
-		D3DXMatrixIdentity(&matBumpMat);
+		GfxMatrix matBumpMat;
+		GfxMatrixIdentity(&matBumpMat);
 		matBumpMat._11 = _WaterInformation.m_fBumpMat11;
 		matBumpMat._12 = _WaterInformation.m_fBumpMat12;
 		matBumpMat._21 = _WaterInformation.m_fBumpMat21;
@@ -613,16 +615,16 @@ extern void shaSetVertexProgramConst_BoneMatrix()
 
 extern void shaPrepareForBillboard(BOOL bCylinderType/* = FALSE*/, BOOL bNeedCalcLight/* = FALSE*/)
 {
-	D3DXMATRIX mat;
-	D3DXMATRIX matView, matNewView, matInvViewRot, matViewRot;
-	D3DXMATRIX matProj;
+	GfxMatrix mat;
+	GfxMatrix matView, matNewView, matInvViewRot, matViewRot;
+	GfxMatrix matProj;
 	
 	//현재의 modelView행렬을 가져온다.
 	_pGfx->gl_pd3d9Device->GetTransform(D3DTS_VIEW,&matView);
 	//현재의 modelView행렬의 4번째줄을 기억한다.
-	D3DXVECTOR3 viewRow4(matView._41, matView._42, matView._43);
+	GfxVector3 viewRow4(matView._41, matView._42, matView._43);
 	//현재의 modelView의 위치를 기억한다.
-	D3DXVECTOR3 pos(matView._14, matView._24, matView._34);
+	GfxVector3 pos(matView._14, matView._24, matView._34);
 	//modelView행렬의 회전만을 남긴다.
 	matView._14 = matView._24 = matView._34 = 
 	matView._41 = matView._42 = matView._43 = 0;
@@ -658,7 +660,7 @@ extern void shaPrepareForBillboard(BOOL bCylinderType/* = FALSE*/, BOOL bNeedCal
 		matViewRot._21 = matRot(2,1); matViewRot._22 = matRot(2,3); matViewRot._23 = matRot(2,2); matViewRot._24 = 0;
 		matViewRot._31 = matRot(3,1); matViewRot._32 = matRot(3,3); matViewRot._33 = matRot(3,2); matViewRot._34 = 0;
 		matViewRot._41 = 0;           matViewRot._42 = 0;           matViewRot._43 = 0;           matViewRot._44 = 1;
-		D3DXMatrixMultiply(&matNewView, &matView, &matViewRot);
+		GfxMatrixMultiply(&matNewView, &matView, &matViewRot);
 		//matNewView = matViewRot; 
 		//col 4와 row 4를 다시 세팅한다.
 		matNewView._41 = viewRow4.x;
@@ -678,7 +680,7 @@ extern void shaPrepareForBillboard(BOOL bCylinderType/* = FALSE*/, BOOL bNeedCal
 		matViewRot._21 = -mView(2,1); matViewRot._22 = mView(2,2); matViewRot._23 = -mView(2,3);
 		matViewRot._31 = -mView(3,1); matViewRot._32 = mView(3,2); matViewRot._33 = -mView(3,3);
 		//modelView행렬에 계산한 행렬을 곱한다.
-		D3DXMatrixMultiply(&matNewView, &matView, &matViewRot);
+		GfxMatrixMultiply(&matNewView, &matView, &matViewRot);
 		//col 4와 row 4를 다시 세팅한다.
 		matNewView._41 = viewRow4.x;
 		matNewView._42 = viewRow4.y;
@@ -692,10 +694,10 @@ extern void shaPrepareForBillboard(BOOL bCylinderType/* = FALSE*/, BOOL bNeedCal
 	if(bNeedCalcLight)
 	{
 		//현재 modelView공간에 있는 light의 방향을 재조정한다.
-		D3DXVECTOR3 lightDir(_vLightDir(1), _vLightDir(2), _vLightDir(3)), lightNewDir;
+		GfxVector3 lightDir(_vLightDir(1), _vLightDir(2), _vLightDir(3)), lightNewDir;
 //		float det;	//이상하게도 역행렬은 필요없었음.-_-;
-//		D3DXMATRIX *ret = D3DXMatrixInverse(&matInvViewRot, &det, &matViewRot);
-		D3DXVec3TransformNormal(&lightNewDir, &lightDir, &matViewRot);
+//		GfxMatrix *ret = GfxMatrixInverse(&matInvViewRot, &det, &matViewRot);
+		GfxVec3TransformNormal(&lightNewDir, &lightDir, &matViewRot);
 		_vLightDir.vector[0] = -lightNewDir.x;
 		_vLightDir.vector[1] = lightNewDir.y;
 		_vLightDir.vector[2] = lightNewDir.z;
