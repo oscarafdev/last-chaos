@@ -54,8 +54,6 @@
 // sehan
 //BOOL g_bUseBloom = FALSE;
 extern CRenderTexture       *_prtFilterTarget   [];
-extern LPDIRECT3DVERTEXBUFFER9  _pFilterVertexBuffer;
-extern LPDIRECT3DVERTEXBUFFER9  _pBackVertexBuffer[MAX_BACKVERTEX_WIDTH][MAX_BACKVERTEX_HEIGHT];
 // sehan end
 
 extern BOOL _bSomeDarkExists;
@@ -2662,61 +2660,16 @@ CRenderer::CRenderer(void)
 
 	// sehan
 	re_bRenderBloom = FALSE;
-
-	for (i = 0; i < 2; ++i )
-	{
-		_prtFilterTarget[i] = NULL;
-	}
-
-	m_pGaussianProp		= NULL;
-	m_fTemp = -0.1f;
-	m_bElimSmallContributors	= false;
-	//_pVertexBuffer			= NULL;
-	for (int height = 0; height < MAX_BACKVERTEX_HEIGHT; height++) {
-		for (int width = 0; width < MAX_BACKVERTEX_WIDTH; width++) {
-			_pBackVertexBuffer[width][height] = NULL;
-		}
-	}
-//강동민 수정 시작 버그 사냥 작업	09.09
-    //m_dwTexCoord4OffsetVertexShader = 0L;
-    //m_dwAddFourPixelShader = 0L;
-//강동민 수정 끝 버그 사냥 작업		09.09
-	// sehan end
 }
 /*
 * Destructor.
 */
 CRenderer::~CRenderer(void)
 {
-//강동민 수정 시작 버그 사냥 작업	09.09
-	// StopDisplayMode()에서 해제해주기 때문에 주석처리함.
-	/*
-	// sehan
-	for( int i = 0; i < 2; i++ )
-    {
-		if (_prtFilterTarget[i]) {
-			delete _prtFilterTarget[i];
-			_prtFilterTarget[i] = NULL;
-		}
-	}
-
-	SAFE_RELEASE( _pFilterVertexBuffer );			// sets pointers to null after delete
-	for (int height = 0; height < MAX_BACKVERTEX_HEIGHT; height++) {
-		for (int width = 0; width < MAX_BACKVERTEX_WIDTH; width++) {
-			SAFE_RELEASE( _pBackVertexBuffer[width][height] );			// sets pointers to null after delete
-		}
-	}	
-	*/
-//강동민 수정 끝 버그 사냥 작업		09.09
 	extern void ClearFog();
 	extern void ClearHaze();
 	ClearFog();
 	ClearHaze();
-
-	SAFE_ARRAY_DELETE( m_pGaussianProp );
-	m_vGaussian1D[0].clear();
-	m_vGaussian1D[1].clear();
-	// sehan end
 }
 
 // initialize clipping rectangle
@@ -2818,7 +2771,6 @@ void RenderView(CWorld &woWorld, CEntity &enViewer,
 
 	// sehan
 	re.re_bRenderBloom = FALSE;
-	// sehan end
 }
 
 

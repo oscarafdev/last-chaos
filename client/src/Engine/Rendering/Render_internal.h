@@ -22,7 +22,6 @@
 
 //강동민 수정 시작
 // NOTE : RenderOneSkaModelToTexture()를 위해서 필요한 부분.  나중에 제거할것.
-#include <d3dx9.h>
 //###
 
 #define SHADOWTEXTURESIZE (256)
@@ -290,38 +289,12 @@ public:
 //강동민 수정 끝 접속 시퀀스 작업	06.01
 
 // sehan
-struct GaussianProp			// width and amplitude of a Gaussian 
-{
-	float radius_scale;
-	float amp;
-};
-
-struct FilterKernelElement
-{
-	float du;			// texel offset from center, in texels
-	float dv;
-	float coef;		// coefficient determining strength of Flare
-};
-
-struct FourTextureStage_TexCoordOffsets
-{
-	D3DXVECTOR4	t[4];
-};
-
-typedef struct tagQuadVertex
-{
-	D3DXVECTOR3 Position;
-	D3DXVECTOR2 Tex;
-} QuadVertex;
-
 #ifndef SAFE_ARRAY_DELETE
 	#define SAFE_ARRAY_DELETE(d) if (d) {delete[]d; d = NULL;}
 #endif
 
 #define SAFE_RELEASE(p)      { if(p) { (p)->Release(); (p)=NULL; } }
 
-#define	MAX_BACKVERTEX_WIDTH	5
-#define	MAX_BACKVERTEX_HEIGHT	4
 
 // sehan end
 
@@ -669,57 +642,7 @@ public:
 	BOOL re_bRenderBloom;
 	HRESULT RenderBloom();
 	HRESULT InitBloom();
-	HRESULT CreateBackVertexBuffer();
-
-	GaussianProp	* m_pGaussianProp;
-	float		m_fPerTexelWidth;
-	float		m_fPerTexelHeight;
-	float					m_fColorAtten[3];
-
-	// Three sets of texture coord offsets
-	// See CreateUVOffsets() for a description
-	FourTextureStage_TexCoordOffsets	m_Offsets[3];
-
-	std::vector< FilterKernelElement >	m_vGaussian1D[3];
-
-	int			m_nNumGaussiansInSingleBlur;	// the blur profile may be made of
-												//  several Gaussians added together
-	//원래 배열의 개수가 3이였음 인덱스 2에는 값이 없는데 참고해서 에러가 나는 듯 해서 2래 수정 
-	//차후 국내것과 머지 필요 할 듯 이펙트도 같이 수정되야 할 것 같음 
-	//modified by sam 10/11/18
-	int			m_nGaussianSize[2];		// size of Flare array from each element, in texels  
-										//  of the render target size
-	int			m_nTexRes;				// resolution of texture render targets
-	float		m_fTemp;
-	bool		m_bElimSmallContributors;		// eliminate Gaussian blur elements
-												// if their coef is too low.
-	//LPDIRECT3DVERTEXBUFFER8  m_pVertexBuffer;
-	//LPDIRECT3DVERTEXBUFFER8  m_pBackVertexBuffer[MAX_BACKVERTEX_WIDTH][MAX_BACKVERTEX_HEIGHT]; // 1280 X 1024 까지만 지원되는걸로 가정한다.
-
-	D3DXMATRIX		m_matFullCoverage_WVP;
-	LPD3DXBUFFER            m_pD3DXBufShader;
-//강동민 수정 시작 버그 사냥 작업	09.09
-//	DWORD                   m_dwAddFourPixelShader;
-//	DWORD                   m_dwTexCoord4OffsetVertexShader;
-//강동민 수정 끝 버그 사냥 작업		09.09
-
-	HRESULT		DoCreateFlareTexture_Separable();
-	HRESULT	SetFlareLook();
-	HRESULT CreateTextureRenderTargets( int width, int height );
-	void    CreateUVOffsets(int width, int height);
-	void	CreateGaussianBlur(int filterNum);
-	void	CalcFullCoverageMatrix();
-	HRESULT	CreatePShAddFour( );
-	HRESULT CreateVShTexCoord4Offset( LPDIRECT3DDEVICE9 pd3dDevice, 
-                                    DWORD* pdwVertexDecl );
-	// SRS Settings
-	DWORD m_dwZenable, m_dwZwriteenable, m_dwCullmode, m_dwAlphablendenable;
-	DWORD m_dwSrcblend, m_dwDestblend, m_dwFogEnable;
-	DWORD m_dwColorop, m_dwColorarg1;
-	DWORD m_dwColorarg2, m_dwAlphaop, m_dwColorop1;
-	DWORD m_dwAddressU[4], m_dwAddressV[4], m_dwMagfilter[4], m_dwMinfilter[4], m_dwMipfilter[4];
-	void	Get_SRS_Bloom();
-	void	Restore_SRS_Bloom();
+	HRESULT CreateTextureRenderTargets(int width, int height);
 	// sehan end
 };
 
