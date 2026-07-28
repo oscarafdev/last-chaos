@@ -1,198 +1,91 @@
 #include "stdh.h"
 
-#include <Engine/Graphics/DirectX12LegacyRenderTargetBridge.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
 #include <Engine/Graphics/DirectX12Texture.h>
 
 CDirectX12RenderTargetManager::CDirectX12RenderTargetManager()
 	: m_pDevice(NULL)
-	, m_pLegacyBridge(new CDirectX12LegacyRenderTargetBridge)
-	, m_pRtvHeap(NULL)
-	, m_pDsvHeap(NULL)
 	, m_pResource12(NULL)
 	, m_pDepthResource12(NULL)
 	, m_pNativeTexture(NULL)
-	, m_rtvDescriptorSize(0)
-	, m_dsvDescriptorSize(0)
-	, m_currentFrame(0)
-	, m_currentSubmission(0)
+	, m_pCurrentState(NULL)
 	, m_isAcquired(false)
 	, m_isDepthAcquired(false)
 	, m_isNative(false)
 	, m_clearNativeDepth(false)
 {
+	m_currentView.ptr = 0;
+	m_currentDepthView.ptr = 0;
 }
 
 CDirectX12RenderTargetManager::~CDirectX12RenderTargetManager()
 {
 	Shutdown();
-	delete m_pLegacyBridge;
-	m_pLegacyBridge = NULL;
 }
 
-bool CDirectX12RenderTargetManager::Initialize(
-	ID3D12Device* pDevice,
-	ID3D12CommandQueue* pGraphicsQueue)
+bool CDirectX12RenderTargetManager::Initialize(ID3D12Device* pDevice)
 {
-	if (pDevice == NULL || pGraphicsQueue == NULL)
+	if (pDevice == NULL)
 		return false;
 
 	Shutdown();
 	m_pDevice = pDevice;
 	m_pDevice->AddRef();
-	if (m_pLegacyBridge == NULL
-		|| !m_pLegacyBridge->Initialize(pGraphicsQueue))
-	{
-		Shutdown();
-		return false;
-	}
-
-	D3D12_DESCRIPTOR_HEAP_DESC heapDesc;
-	ZeroMemory(&heapDesc, sizeof(heapDesc));
-	heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
-	heapDesc.NumDescriptors =
-		FRAME_COUNT * MAX_SUBMISSIONS_PER_FRAME;
-	heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
-
-	HRESULT hr = m_pDevice->CreateDescriptorHeap(
-		&heapDesc,
-		__uuidof(ID3D12DescriptorHeap),
-		reinterpret_cast<void**>(&m_pRtvHeap));
-	if (FAILED(hr))
-	{
-		Shutdown();
-		return false;
-	}
-
-	m_pRtvHeap->SetName(L"LastChaos D3D12 Backbuffer RTVs");
-	m_rtvDescriptorSize =
-		m_pDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
-
-	ZeroMemory(&heapDesc, sizeof(heapDesc));
-	heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_DSV;
-	heapDesc.NumDescriptors =
-		FRAME_COUNT * MAX_SUBMISSIONS_PER_FRAME;
-	heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
-	hr = m_pDevice->CreateDescriptorHeap(
-		&heapDesc,
-		__uuidof(ID3D12DescriptorHeap),
-		reinterpret_cast<void**>(&m_pDsvHeap));
-	if (FAILED(hr))
-	{
-		Shutdown();
-		return false;
-	}
-	m_pDsvHeap->SetName(L"LastChaos D3D12 D3D9On12 DSVs");
-	m_dsvDescriptorSize =
-		m_pDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_DSV);
 	return true;
-}
-
-bool CDirectX12RenderTargetManager::AttachD3D9Device(IDirect3DDevice9* pDevice9)
-{
-	if (pDevice9 == NULL || m_pRtvHeap == NULL || m_isAcquired
-		|| m_pLegacyBridge == NULL)
-		return false;
-
-	return m_pLegacyBridge->AttachD3D9Device(pDevice9);
 }
 
 void CDirectX12RenderTargetManager::Shutdown()
 {
-	if (m_pLegacyBridge != NULL)
-		m_pLegacyBridge->Shutdown();
 	ReleaseAcquiredReferences();
 
-	if (m_pRtvHeap != NULL)
-	{
-		m_pRtvHeap->Release();
-		m_pRtvHeap = NULL;
-	}
-	if (m_pDsvHeap != NULL)
-	{
-		m_pDsvHeap->Release();
-		m_pDsvHeap = NULL;
-	}
 	if (m_pDevice != NULL)
 	{
 		m_pDevice->Release();
 		m_pDevice = NULL;
 	}
 
-	m_rtvDescriptorSize = 0;
-	m_dsvDescriptorSize = 0;
-	m_currentFrame = 0;
-	m_currentSubmission = 0;
 }
 
-bool CDirectX12RenderTargetManager::Acquire(
-	IDirect3DSurface9* pSurface9,
-	IDirect3DSurface9* pDepthSurface9,
+bool CDirectX12RenderTargetManager::AcquirePresentation(
+	ID3D12Resource* pColorResource,
+	D3D12_CPU_DESCRIPTOR_HANDLE colorView,
+	ID3D12Resource* pDepthResource,
+	D3D12_CPU_DESCRIPTOR_HANDLE depthView,
+	D3D12_RESOURCE_STATES* pColorState,
 	ID3D12GraphicsCommandList* pCommandList,
-	UINT frameIndex,
-	UINT submissionIndex)
+	bool clearTarget)
 {
-	if (pSurface9 == NULL || pCommandList == NULL || m_pLegacyBridge == NULL
-		|| m_isAcquired || frameIndex >= FRAME_COUNT
-		|| submissionIndex >= MAX_SUBMISSIONS_PER_FRAME)
+	if (pColorResource == NULL || colorView.ptr == 0
+		|| pDepthResource == NULL || depthView.ptr == 0
+		|| pColorState == NULL || pCommandList == NULL
+		|| m_isAcquired)
 		return false;
 
-	if (!m_pLegacyBridge->Acquire(pSurface9, pDepthSurface9))
-		return false;
-
-	m_pResource12 = m_pLegacyBridge->GetColorResource();
-	m_pDepthResource12 = m_pLegacyBridge->GetDepthResource();
-	m_currentFrame = frameIndex;
-	m_currentSubmission = submissionIndex;
+	pColorResource->AddRef();
+	pDepthResource->AddRef();
+	m_pResource12 = pColorResource;
+	m_pDepthResource12 = pDepthResource;
+	m_currentView = colorView;
+	m_currentDepthView = depthView;
+	m_pCurrentState = pColorState;
 	m_isAcquired = true;
+	m_isDepthAcquired = true;
 	m_isNative = false;
 	m_clearNativeDepth = false;
 
-	m_pDevice->CreateRenderTargetView(
-		m_pResource12,
-		NULL,
-		GetCurrentView());
-	Transition(
-		pCommandList,
-		D3D12_RESOURCE_STATE_COMMON,
-		D3D12_RESOURCE_STATE_RENDER_TARGET);
-
-	if (m_pDepthResource12 != NULL)
+	Transition(pCommandList, D3D12_RESOURCE_STATE_RENDER_TARGET);
+	if (clearTarget)
 	{
-		const D3D12_RESOURCE_DESC depthDesc =
-			m_pDepthResource12->GetDesc();
-		DXGI_FORMAT dsvFormat = depthDesc.Format;
-		if (dsvFormat == DXGI_FORMAT_R24G8_TYPELESS)
-			dsvFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
-		else if (dsvFormat == DXGI_FORMAT_R32_TYPELESS)
-			dsvFormat = DXGI_FORMAT_D32_FLOAT;
-		else if (dsvFormat == DXGI_FORMAT_R16_TYPELESS)
-			dsvFormat = DXGI_FORMAT_D16_UNORM;
-
-		m_isDepthAcquired = true;
-		D3D12_DEPTH_STENCIL_VIEW_DESC dsvDesc;
-		ZeroMemory(&dsvDesc, sizeof(dsvDesc));
-		dsvDesc.Format = dsvFormat;
-		dsvDesc.ViewDimension =
-			depthDesc.SampleDesc.Count > 1
-				? D3D12_DSV_DIMENSION_TEXTURE2DMS
-				: D3D12_DSV_DIMENSION_TEXTURE2D;
-		m_pDevice->CreateDepthStencilView(
-			m_pDepthResource12,
-			&dsvDesc,
-			GetCurrentDepthView());
-		D3D12_RESOURCE_BARRIER depthBarrier;
-		ZeroMemory(&depthBarrier, sizeof(depthBarrier));
-		depthBarrier.Type =
-			D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
-		depthBarrier.Transition.pResource = m_pDepthResource12;
-		depthBarrier.Transition.Subresource =
-			D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
-		depthBarrier.Transition.StateBefore =
-			D3D12_RESOURCE_STATE_COMMON;
-		depthBarrier.Transition.StateAfter =
-			D3D12_RESOURCE_STATE_DEPTH_WRITE;
-		pCommandList->ResourceBarrier(1, &depthBarrier);
+		const FLOAT clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+		pCommandList->ClearRenderTargetView(
+			m_currentView, clearColor, 0, NULL);
+		pCommandList->ClearDepthStencilView(
+			m_currentDepthView,
+			D3D12_CLEAR_FLAG_DEPTH,
+			1.0f,
+			0,
+			0,
+			NULL);
 	}
 	return true;
 }
@@ -200,16 +93,13 @@ bool CDirectX12RenderTargetManager::Acquire(
 bool CDirectX12RenderTargetManager::AcquireNative(
 	CDirectX12Texture* pTexture,
 	ID3D12GraphicsCommandList* pCommandList,
-	UINT frameIndex,
-	UINT submissionIndex,
 	bool clearColor,
 	const FLOAT clearValue[4])
 {
 	if (pTexture == NULL || pTexture->GetResource() == NULL
 		|| pTexture->GetRenderTargetView().ptr == 0
 		|| pCommandList == NULL || m_pDevice == NULL
-		|| m_isAcquired || frameIndex >= FRAME_COUNT
-		|| submissionIndex >= MAX_SUBMISSIONS_PER_FRAME)
+		|| m_isAcquired)
 		return false;
 
 	ID3D12Resource* pResource = pTexture->GetResource();
@@ -221,8 +111,6 @@ bool CDirectX12RenderTargetManager::AcquireNative(
 	pResource->AddRef();
 	m_pResource12 = pResource;
 	m_pNativeTexture = pTexture;
-	m_currentFrame = frameIndex;
-	m_currentSubmission = submissionIndex;
 	m_isAcquired = true;
 	m_isNative = true;
 	m_clearNativeDepth = clearColor;
@@ -269,10 +157,7 @@ bool CDirectX12RenderTargetManager::CopyCurrentColorTo(
 	}
 	else
 	{
-		Transition(
-			pCommandList,
-			D3D12_RESOURCE_STATE_RENDER_TARGET,
-			D3D12_RESOURCE_STATE_COPY_SOURCE);
+		Transition(pCommandList, D3D12_RESOURCE_STATE_COPY_SOURCE);
 	}
 	pDestination->Transition(
 		pCommandList,
@@ -291,10 +176,7 @@ bool CDirectX12RenderTargetManager::CopyCurrentColorTo(
 	}
 	else
 	{
-		Transition(
-			pCommandList,
-			D3D12_RESOURCE_STATE_COPY_SOURCE,
-			D3D12_RESOURCE_STATE_RENDER_TARGET);
+		Transition(pCommandList, D3D12_RESOURCE_STATE_RENDER_TARGET);
 	}
 	return true;
 }
@@ -313,45 +195,14 @@ bool CDirectX12RenderTargetManager::PrepareForSubmission(
 	}
 	else
 	{
-		Transition(
-			pCommandList,
-			D3D12_RESOURCE_STATE_RENDER_TARGET,
-			D3D12_RESOURCE_STATE_COMMON);
-	}
-	if (m_isDepthAcquired)
-	{
-		D3D12_RESOURCE_BARRIER depthBarrier;
-		ZeroMemory(&depthBarrier, sizeof(depthBarrier));
-		depthBarrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
-		depthBarrier.Transition.pResource = m_pDepthResource12;
-		depthBarrier.Transition.Subresource =
-			D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
-		depthBarrier.Transition.StateBefore =
-			D3D12_RESOURCE_STATE_DEPTH_WRITE;
-		depthBarrier.Transition.StateAfter =
-			D3D12_RESOURCE_STATE_COMMON;
-		pCommandList->ResourceBarrier(1, &depthBarrier);
+		Transition(pCommandList, D3D12_RESOURCE_STATE_COMMON);
 	}
 	return true;
 }
 
-bool CDirectX12RenderTargetManager::ReturnToD3D9(
-	ID3D12Fence* pFence,
-	UINT64 fenceValue)
+void CDirectX12RenderTargetManager::ReleaseAfterSubmission()
 {
-	if (!m_isAcquired || pFence == NULL || fenceValue == 0)
-		return false;
-	if (m_isNative)
-	{
-		ReleaseAcquiredReferences();
-		return true;
-	}
-
-	const bool succeeded =
-		m_pLegacyBridge != NULL
-		&& m_pLegacyBridge->ReturnToD3D9(pFence, fenceValue);
 	ReleaseAcquiredReferences();
-	return succeeded;
 }
 
 bool CDirectX12RenderTargetManager::IsAcquired() const
@@ -378,28 +229,13 @@ D3D12_CPU_DESCRIPTOR_HANDLE CDirectX12RenderTargetManager::GetCurrentView() cons
 {
 	if (m_isNative && m_pNativeTexture != NULL)
 		return m_pNativeTexture->GetRenderTargetView();
-
-	D3D12_CPU_DESCRIPTOR_HANDLE handle =
-		m_pRtvHeap->GetCPUDescriptorHandleForHeapStart();
-	const UINT descriptorIndex =
-		m_currentFrame * MAX_SUBMISSIONS_PER_FRAME
-		+ m_currentSubmission;
-	handle.ptr +=
-		static_cast<SIZE_T>(descriptorIndex) * m_rtvDescriptorSize;
-	return handle;
+	return m_currentView;
 }
 
 D3D12_CPU_DESCRIPTOR_HANDLE
 CDirectX12RenderTargetManager::GetCurrentDepthView() const
 {
-	D3D12_CPU_DESCRIPTOR_HANDLE handle =
-		m_pDsvHeap->GetCPUDescriptorHandleForHeapStart();
-	const UINT descriptorIndex =
-		m_currentFrame * MAX_SUBMISSIONS_PER_FRAME
-		+ m_currentSubmission;
-	handle.ptr +=
-		static_cast<SIZE_T>(descriptorIndex) * m_dsvDescriptorSize;
-	return handle;
+	return m_currentDepthView;
 }
 
 ID3D12Resource* CDirectX12RenderTargetManager::GetCurrentResource() const
@@ -415,12 +251,19 @@ CDirectX12RenderTargetManager::GetCurrentDepthResource() const
 
 void CDirectX12RenderTargetManager::ReleaseAcquiredReferences()
 {
-	m_pDepthResource12 = NULL;
-	if (m_isNative && m_pResource12 != NULL)
+	if (m_pDepthResource12 != NULL)
+	{
+		m_pDepthResource12->Release();
+		m_pDepthResource12 = NULL;
+	}
+	if (m_pResource12 != NULL)
 	{
 		m_pResource12->Release();
 	}
 	m_pResource12 = NULL;
+	m_currentView.ptr = 0;
+	m_currentDepthView.ptr = 0;
+	m_pCurrentState = NULL;
 	m_isAcquired = false;
 	m_isDepthAcquired = false;
 	m_pNativeTexture = NULL;
@@ -430,15 +273,17 @@ void CDirectX12RenderTargetManager::ReleaseAcquiredReferences()
 
 void CDirectX12RenderTargetManager::Transition(
 	ID3D12GraphicsCommandList* pCommandList,
-	D3D12_RESOURCE_STATES before,
 	D3D12_RESOURCE_STATES after)
 {
+	if (m_pCurrentState == NULL || *m_pCurrentState == after)
+		return;
 	D3D12_RESOURCE_BARRIER barrier;
 	ZeroMemory(&barrier, sizeof(barrier));
 	barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
 	barrier.Transition.pResource = m_pResource12;
 	barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
-	barrier.Transition.StateBefore = before;
+	barrier.Transition.StateBefore = *m_pCurrentState;
 	barrier.Transition.StateAfter = after;
 	pCommandList->ResourceBarrier(1, &barrier);
+	*m_pCurrentState = after;
 }

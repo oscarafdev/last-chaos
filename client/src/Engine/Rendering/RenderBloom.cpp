@@ -2,6 +2,7 @@
 
 #include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/GfxLibrary.h>
+#include <Engine/Graphics/ViewPort.h>
 #include <Engine/Rendering/Render.h>
 #include <Engine/Rendering/Render_internal.h>
 
@@ -87,19 +88,16 @@ HRESULT CRenderer::CreateTextureRenderTargets(int width, int height)
 {
 	ReleaseBloomRenderTargets();
 
-	IDirect3DSurface9* pBackbufferColor = NULL;
-	D3DSURFACE_DESC backbufferDescription;
-	if (FAILED(_pGfx->gl_pd3d9Device->GetRenderTarget(
-			0,
-			&pBackbufferColor))
-		|| pBackbufferColor == NULL
-		|| FAILED(pBackbufferColor->GetDesc(&backbufferDescription)))
-	{
-		if (pBackbufferColor != NULL)
-			pBackbufferColor->Release();
+	if (_pGfx == NULL || _pGfx->gl_pvpActive == NULL)
 		return E_FAIL;
-	}
-	pBackbufferColor->Release();
+	RECT clientRect;
+	if (!GetClientRect(_pGfx->gl_pvpActive->vp_hWnd, &clientRect))
+		return E_FAIL;
+	const int backbufferWidth = clientRect.right - clientRect.left;
+	const int backbufferHeight = clientRect.bottom - clientRect.top;
+	if (backbufferWidth <= 0 || backbufferHeight <= 0)
+		return E_FAIL;
+	const D3DFORMAT colorFormat = _pGfx->gl_d3dColorFormat;
 
 	for (int i = 0; i < 2; ++i)
 	{
@@ -109,7 +107,7 @@ HRESULT CRenderer::CreateTextureRenderTargets(int width, int height)
 				width,
 				height,
 				TEX_32BIT,
-				backbufferDescription.Format,
+				colorFormat,
 				RTP_POST_PROCESS))
 		{
 			ReleaseBloomRenderTargets();
@@ -120,10 +118,10 @@ HRESULT CRenderer::CreateTextureRenderTargets(int width, int height)
 	g_bloomSource = new CRenderTexture();
 	if (g_bloomSource == NULL
 		|| !g_bloomSource->Init(
-			backbufferDescription.Width,
-			backbufferDescription.Height,
+			backbufferWidth,
+			backbufferHeight,
 			TEX_32BIT,
-			backbufferDescription.Format,
+			colorFormat,
 			RTP_POST_PROCESS))
 	{
 		ReleaseBloomRenderTargets();

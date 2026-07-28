@@ -735,6 +735,10 @@ BOOL CGfxLibrary::SetCurrentViewport_D3D(CViewPort *pvp)
 	GetClientRect( pvp->vp_hWnd, &rectWindow);
 	const PIX pixWinSizeI = rectWindow.right  - rectWindow.left;
 	const PIX pixWinSizeJ = rectWindow.bottom - rectWindow.top;
+	GetDirectX12Backend().ConfigurePresentation(
+		pvp->vp_hWnd,
+		static_cast<UINT>(pixWinSizeI),
+		static_cast<UINT>(pixWinSizeJ));
 
 	// full screen allows only one window (main one, which has already been initialized)
 	if( dm.dm_pixSizeI==pixWinSizeI && dm.dm_pixSizeJ==pixWinSizeJ) {

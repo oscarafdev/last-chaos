@@ -8,9 +8,6 @@
 #include <d3d12.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
-struct IDirect3DDevice9;
-struct IDirect3DSurface9;
-class CDirectX12LegacyRenderTargetBridge;
 class CDirectX12Texture;
 
 class CDirectX12RenderTargetManager
@@ -25,28 +22,27 @@ public:
 	CDirectX12RenderTargetManager();
 	~CDirectX12RenderTargetManager();
 
-	bool Initialize(ID3D12Device* pDevice, ID3D12CommandQueue* pGraphicsQueue);
-	bool AttachD3D9Device(IDirect3DDevice9* pDevice9);
+	bool Initialize(ID3D12Device* pDevice);
 	void Shutdown();
 
-	bool Acquire(
-		IDirect3DSurface9* pSurface9,
-		IDirect3DSurface9* pDepthSurface9,
+	bool AcquirePresentation(
+		ID3D12Resource* pColorResource,
+		D3D12_CPU_DESCRIPTOR_HANDLE colorView,
+		ID3D12Resource* pDepthResource,
+		D3D12_CPU_DESCRIPTOR_HANDLE depthView,
+		D3D12_RESOURCE_STATES* pColorState,
 		ID3D12GraphicsCommandList* pCommandList,
-		UINT frameIndex,
-		UINT submissionIndex);
+		bool clearTarget);
 	bool AcquireNative(
 		CDirectX12Texture* pTexture,
 		ID3D12GraphicsCommandList* pCommandList,
-		UINT frameIndex,
-		UINT submissionIndex,
 		bool clearColor,
 		const FLOAT clearValue[4]);
 	bool CopyCurrentColorTo(
 		CDirectX12Texture* pDestination,
 		ID3D12GraphicsCommandList* pCommandList);
 	bool PrepareForSubmission(ID3D12GraphicsCommandList* pCommandList);
-	bool ReturnToD3D9(ID3D12Fence* pFence, UINT64 fenceValue);
+	void ReleaseAfterSubmission();
 
 	bool IsAcquired() const;
 	bool HasAcquiredDepth() const;
@@ -64,20 +60,15 @@ private:
 	void ReleaseAcquiredReferences();
 	void Transition(
 		ID3D12GraphicsCommandList* pCommandList,
-		D3D12_RESOURCE_STATES before,
 		D3D12_RESOURCE_STATES after);
 
 	ID3D12Device* m_pDevice;
-	CDirectX12LegacyRenderTargetBridge* m_pLegacyBridge;
-	ID3D12DescriptorHeap* m_pRtvHeap;
-	ID3D12DescriptorHeap* m_pDsvHeap;
 	ID3D12Resource* m_pResource12;
 	ID3D12Resource* m_pDepthResource12;
 	CDirectX12Texture* m_pNativeTexture;
-	UINT m_rtvDescriptorSize;
-	UINT m_dsvDescriptorSize;
-	UINT m_currentFrame;
-	UINT m_currentSubmission;
+	D3D12_CPU_DESCRIPTOR_HANDLE m_currentView;
+	D3D12_CPU_DESCRIPTOR_HANDLE m_currentDepthView;
+	D3D12_RESOURCE_STATES* m_pCurrentState;
 	bool m_isAcquired;
 	bool m_isDepthAcquired;
 	bool m_isNative;

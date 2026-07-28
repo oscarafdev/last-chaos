@@ -8,6 +8,7 @@
 #include <Engine/Math/Functions.h>
 #include <Engine/Graphics/DirectX12Backend.h>
 #include <Engine/Graphics/GfxLibrary.h>
+#include <Engine/Graphics/ViewPort.h>
 #include <Engine/Graphics/ImageInfo.h>
 #include <Engine/Graphics/TextureEffects.h>
 
@@ -171,8 +172,28 @@ void CRenderTexture::Begin()	// SetRenderTarget current
 			&& GetDirectX12Backend().BeginNativeOffscreenTexture(
 				m_nativeColorHandle);
 		IDirect3DDevice9* pDev = _pGfx->gl_pd3d9Device;
-		pDev->GetRenderTarget(0, &m_pOldRenderTarget);
-		pDev->GetDepthStencilSurface(&m_pOldDepthStencil);
+		CViewPort* pActiveViewPort = _pGfx->gl_pvpActive;
+		if (pActiveViewPort != NULL)
+		{
+			if (pActiveViewPort->vp9_pSwapChain != NULL)
+			{
+				pActiveViewPort->vp9_pSwapChain->GetBackBuffer(
+					0,
+					D3DBACKBUFFER_TYPE_MONO,
+					&m_pOldRenderTarget);
+			}
+			else
+			{
+				pDev->GetBackBuffer(
+					0,
+					0,
+					D3DBACKBUFFER_TYPE_MONO,
+					&m_pOldRenderTarget);
+			}
+			m_pOldDepthStencil = pActiveViewPort->vp9_pSurfDepth;
+			if (m_pOldDepthStencil != NULL)
+				m_pOldDepthStencil->AddRef();
+		}
 		pDev->SetDepthStencilSurface(m_pDepthStencil);
 		pDev->SetRenderTarget(0, rt_pSurface);
 		GetDirectX12Backend().TrackLegacy3DRenderTarget(

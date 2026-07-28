@@ -19,8 +19,8 @@ class CDirectX12UploadManager;
 struct DirectX12SampledTextureCacheState;
 
 // Conserva recursos y SRV nativos para las texturas muestreadas por los
-// draw calls DX12. El objeto D3D9 se usa solamente como identidad y como
-// fuente transitoria mientras las cargas de assets sigan siendo legadas.
+// draw calls DX12. El objeto D3D9 es una clave no propietaria y una fuente
+// transitoria mientras las cargas de assets sigan siendo legadas.
 class CDirectX12SampledTextureCache
 {
 public:

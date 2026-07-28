@@ -2076,21 +2076,10 @@ void CGfxLibrary::SwapBuffers( CViewPort *pvp, const BOOL bWaitForRetrace/*=FALS
 			hr = gl_pd3d9Device->EndScene(); 
 			D3D_CHECKERROR(hr);
 
-			// Entrega a DX12 el backbuffer que la swap chain va a presentar.
-			IDirect3DSurface9* pRenderTarget9 = NULL;
-			HRESULT hrRenderTarget = E_FAIL;
-			if (pvp->vp9_pSwapChain != NULL) {
-				hrRenderTarget = pvp->vp9_pSwapChain->GetBackBuffer(
-					0, D3DBACKBUFFER_TYPE_MONO, &pRenderTarget9);
-			} else {
-				hrRenderTarget = gl_pd3d9Device->GetBackBuffer(
-					0, 0, D3DBACKBUFFER_TYPE_MONO, &pRenderTarget9);
-			}
-			if (SUCCEEDED(hrRenderTarget)) {
-				if (!GetDirectX12Backend().AcquireRenderTarget(pRenderTarget9, pvp->vp_hWnd))
-					CPrintF("DX12 error: No se pudo adquirir el render target.\n");
-				pRenderTarget9->Release();
-			}
+			// La swap chain DX12 es el destino visible y no depende del
+			// backbuffer que conserva D3D9 para el camino de compatibilidad.
+			if (!GetDirectX12Backend().AcquirePresentationTarget())
+				CPrintF("DX12 error: No se pudo adquirir el render target nativo.\n");
 
 			// Envia el trabajo nativo y devuelve el recurso antes de presentarlo.
 			if (GetDirectX12Backend().IsFrameOpen()
@@ -2314,6 +2303,14 @@ BOOL CGfxLibrary::LockRaster( CRaster *praToLock)
 	// SetFPUPrecision(FPT_24BIT); 
 	ASSERT( praToLock->ra_pvpViewPort!=NULL);
 	BOOL bRes = SetCurrentViewport( praToLock->ra_pvpViewPort);
+	if( bRes && gl_eCurrentAPI==GAT_D3D) {
+		RECT presentationRect;
+		GetClientRect(praToLock->ra_pvpViewPort->vp_hWnd, &presentationRect);
+		GetDirectX12Backend().ConfigurePresentation(
+			praToLock->ra_pvpViewPort->vp_hWnd,
+			static_cast<UINT>(presentationRect.right - presentationRect.left),
+			static_cast<UINT>(presentationRect.bottom - presentationRect.top));
+	}
 	if( bRes) {
 		// must signal to picky Direct3D
 		if( gl_eCurrentAPI==GAT_D3D && !GFX_bRenderingScene) {  

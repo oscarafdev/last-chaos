@@ -210,7 +210,6 @@ CDirectX12Backend::CDirectX12Backend()
 	, m_pPresentation(NULL)
 	, m_pDevice9(NULL)
 	, m_legacyRenderTargetKind(DX12_LEGACY_RENDER_TARGET_UNKNOWN)
-	, m_hPresentationWindow(NULL)
 	, m_hFenceEvent(NULL)
 	, m_nextFenceValue(1)
 	, m_currentFrame(0)
@@ -341,7 +340,7 @@ bool CDirectX12Backend::Initialize(HMODULE hD3D9Module, IDirect3D9** ppD3D9)
 
 	m_pRenderTargets = new CDirectX12RenderTargetManager;
 	if (m_pRenderTargets == NULL
-		|| !m_pRenderTargets->Initialize(m_pDevice, m_pGraphicsQueue))
+		|| !m_pRenderTargets->Initialize(m_pDevice))
 	{
 		Shutdown();
 		return false;
@@ -639,6 +638,12 @@ bool CDirectX12Backend::BeginFrame()
 	FrameContext& frame = m_aFrames[m_currentFrame];
 	if (!WaitForFence(frame.fenceValue))
 		return false;
+	if (m_pPresentation == NULL)
+		return false;
+	if (m_pPresentation->RequiresRebuild() && !WaitForGpu())
+		return false;
+	if (!m_pPresentation->BeginFrame())
+		return false;
 
 	m_currentSubmission = 0;
 	HRESULT hr = frame.apCommandAllocators[0]->Reset();
@@ -670,7 +675,6 @@ bool CDirectX12Backend::BeginFrame()
 		return false;
 	m_pNativeRenderer->BeginFrame(m_currentFrame);
 	m_drawPortValidationMode = ReadDrawPortValidationMode();
-	m_hPresentationWindow = NULL;
 	m_nextUiSegmentToSubmit = 0;
 	m_partialSubmissionCapacityReported = false;
 	m_uiScopeDepth = 0;
@@ -680,7 +684,7 @@ bool CDirectX12Backend::BeginFrame()
 	m_nativeOffscreenClearPending = false;
 	m_suppressedLegacyDrawCount = 0;
 	m_fallbackLegacyDrawCount = 0;
-	m_legacy3DDepthAvailable = HasLegacy3DDepthSurface();
+	m_legacy3DDepthAvailable = m_pPresentation->HasDepthTarget();
 	m_suppressedLegacy3DDrawCount = 0;
 	m_fallbackLegacy3DDrawCount = 0;
 	m_frameOpen = true;
@@ -694,6 +698,8 @@ bool CDirectX12Backend::EndFrame()
 
 	const bool hasRenderTarget =
 		m_pRenderTargets != NULL && m_pRenderTargets->IsAcquired();
+	const bool hasPresentationTarget =
+		hasRenderTarget && !m_pRenderTargets->IsNativeRenderTarget();
 	const bool keepLegacyUi = ReadKeepLegacyUiMode();
 	const bool submitLegacy3D =
 		!ReadFull3DReplacementMode()
@@ -877,20 +883,17 @@ bool CDirectX12Backend::EndFrame()
 			"hasta capturar la UI completa.\n");
 		m_initialPresentationDeferralReported = true;
 	}
-	const bool nativePresentQueued =
-		m_drawPortValidationMode == DX12_DRAWPORT_VALIDATION_UI_REPLACE
-		&& hasRenderTarget
-		&& nativePresentationReady
-		&& m_pPresentation != NULL
-		&& m_pPresentation->QueueFrame(
-			m_pCommandList,
-			m_pRenderTargets->GetCurrentResource(),
-			m_hPresentationWindow);
-	if (nativePresentQueued && hasUiReadyForPresentation)
-		m_hasPresentedNativeUiFrame = true;
-	if (hasRenderTarget && !nativePresentQueued
+	if (hasRenderTarget
 		&& !m_pRenderTargets->PrepareForSubmission(m_pCommandList))
 		return false;
+	const bool nativePresentQueued =
+		m_drawPortValidationMode == DX12_DRAWPORT_VALIDATION_UI_REPLACE
+		&& hasPresentationTarget
+		&& nativePresentationReady
+		&& m_pPresentation != NULL
+		&& m_pPresentation->QueuePresent(m_pCommandList);
+	if (nativePresentQueued && hasUiReadyForPresentation)
+		m_hasPresentedNativeUiFrame = true;
 
 	m_pUploadManager->EndFrame();
 
@@ -924,11 +927,7 @@ bool CDirectX12Backend::EndFrame()
 	bool returnSucceeded = m_pInteropTextures != NULL
 		&& m_pInteropTextures->EndFrame();
 	if (hasRenderTarget)
-	{
-		returnSucceeded =
-			m_pRenderTargets->ReturnToD3D9(m_pFence, fenceValue)
-			&& returnSucceeded;
-	}
+		m_pRenderTargets->ReleaseAfterSubmission();
 	const bool presentationSucceeded =
 		!nativePresentQueued || m_pPresentation->Present();
 	return nativeDrawSucceeded && returnSucceeded
@@ -963,20 +962,11 @@ bool CDirectX12Backend::SubmitUiSegmentsThrough(
 		return true;
 	}
 
-	IDirect3DSurface9* pRenderTarget9 = NULL;
-	HRESULT hr = m_pDevice9->GetRenderTarget(0, &pRenderTarget9);
-	if (FAILED(hr) || pRenderTarget9 == NULL)
-		return false;
-
-	hr = m_pDevice9->EndScene();
+	HRESULT hr = m_pDevice9->EndScene();
 	if (FAILED(hr))
-	{
-		pRenderTarget9->Release();
 		return false;
-	}
 
-	bool succeeded = AcquireRenderTarget(pRenderTarget9);
-	pRenderTarget9->Release();
+	bool succeeded = AcquirePresentationTarget();
 	if (succeeded)
 	{
 		succeeded = m_pNativeRenderer->RenderValidationPass(
@@ -1008,12 +998,7 @@ bool CDirectX12Backend::SubmitUiSegmentsThrough(
 			m_aFrames[m_currentFrame].fenceValue = fenceValue;
 	}
 	if (succeeded)
-	{
-		succeeded = m_pRenderTargets->ReturnToD3D9(
-			m_pFence,
-			fenceValue)
-			&& succeeded;
-	}
+		m_pRenderTargets->ReleaseAfterSubmission();
 	if (succeeded)
 		succeeded = AdvanceOpenCommandList();
 
@@ -1135,8 +1120,7 @@ bool CDirectX12Backend::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 	if (pDevice9 == NULL || m_pRenderTargets == NULL
 		|| m_pInteropTextures == NULL)
 		return false;
-	if (!m_pRenderTargets->AttachD3D9Device(pDevice9)
-		|| !m_pInteropTextures->ResetLegacyBindings())
+	if (!m_pInteropTextures->ResetLegacyBindings())
 		return false;
 	if (m_pDevice9 != NULL)
 		m_pDevice9->Release();
@@ -1144,7 +1128,8 @@ bool CDirectX12Backend::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 	m_pDevice9->AddRef();
 	m_legacyDrawState.Reset();
 	m_legacyRenderTargetKind = DX12_LEGACY_RENDER_TARGET_PRESENTATION;
-	m_legacy3DDepthAvailable = HasLegacy3DDepthSurface();
+	m_legacy3DDepthAvailable =
+		m_pPresentation != NULL && m_pPresentation->HasDepthTarget();
 	return true;
 }
 
@@ -1163,21 +1148,6 @@ void CDirectX12Backend::TrackLegacy3DRenderTarget(
 	{
 		m_legacyRenderTargetKind = renderTargetKind;
 	}
-}
-
-bool CDirectX12Backend::HasLegacy3DDepthSurface() const
-{
-	if (m_pDevice9 == NULL)
-		return false;
-
-	IDirect3DSurface9* pDepthSurface9 = NULL;
-	const HRESULT hr =
-		m_pDevice9->GetDepthStencilSurface(&pDepthSurface9);
-	const bool available =
-		SUCCEEDED(hr) && pDepthSurface9 != NULL;
-	if (pDepthSurface9 != NULL)
-		pDepthSurface9->Release();
-	return available;
 }
 
 void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
@@ -1395,19 +1365,11 @@ bool CDirectX12Backend::RenderNativeBloom(
 		|| m_currentSubmission + 1 >= MAX_SUBMISSIONS_PER_FRAME)
 		return false;
 
-	IDirect3DSurface9* pRenderTarget9 = NULL;
-	HRESULT hr = m_pDevice9->GetRenderTarget(0, &pRenderTarget9);
-	if (FAILED(hr) || pRenderTarget9 == NULL)
-		return false;
-	hr = m_pDevice9->EndScene();
+	HRESULT hr = m_pDevice9->EndScene();
 	if (FAILED(hr))
-	{
-		pRenderTarget9->Release();
 		return false;
-	}
 
-	bool succeeded = AcquireRenderTarget(pRenderTarget9);
-	pRenderTarget9->Release();
+	bool succeeded = AcquirePresentationTarget();
 	if (succeeded)
 	{
 		succeeded = m_pNativeRenderer->RenderBloom(
@@ -1437,12 +1399,7 @@ bool CDirectX12Backend::RenderNativeBloom(
 			m_aFrames[m_currentFrame].fenceValue = fenceValue;
 	}
 	if (succeeded)
-	{
-		succeeded = m_pRenderTargets->ReturnToD3D9(
-			m_pFence,
-			fenceValue)
-			&& succeeded;
-	}
+		m_pRenderTargets->ReleaseAfterSubmission();
 	if (succeeded)
 		succeeded = AdvanceOpenCommandList();
 
@@ -1464,9 +1421,18 @@ bool CDirectX12Backend::RenderNativeBloom(
 	return succeeded;
 }
 
-bool CDirectX12Backend::AcquireRenderTarget(
-	IDirect3DSurface9* pSurface9,
-	HWND hPresentationWindow)
+void CDirectX12Backend::ConfigurePresentation(
+	HWND hWindow,
+	UINT width,
+	UINT height)
+{
+	if (m_pPresentation != NULL)
+		m_pPresentation->Configure(hWindow, width, height);
+	if (hWindow != NULL && width > 0 && height > 0)
+		m_legacy3DDepthAvailable = true;
+}
+
+bool CDirectX12Backend::AcquirePresentationTarget()
 {
 	if (m_nativeOffscreenTexture != DX12_INVALID_RENDER_TEXTURE
 		&& m_pInteropTextures != NULL
@@ -1479,8 +1445,6 @@ bool CDirectX12Backend::AcquireRenderTarget(
 			&& m_pRenderTargets->AcquireNative(
 				pNativeTexture,
 				m_pCommandList,
-				m_currentFrame,
-				m_currentSubmission,
 				m_nativeOffscreenClearPending,
 				m_nativeOffscreenClearColor);
 		if (acquired)
@@ -1488,28 +1452,34 @@ bool CDirectX12Backend::AcquireRenderTarget(
 		return acquired;
 	}
 
-	IDirect3DSurface9* pDepthSurface9 = NULL;
-	if (m_pDevice9 != NULL)
-		m_pDevice9->GetDepthStencilSurface(&pDepthSurface9);
+	ID3D12Resource* pColorResource = NULL;
+	ID3D12Resource* pDepthResource = NULL;
+	D3D12_CPU_DESCRIPTOR_HANDLE colorView = { 0 };
+	D3D12_CPU_DESCRIPTOR_HANDLE depthView = { 0 };
+	D3D12_RESOURCE_STATES* pColorState = NULL;
+	bool clearTarget = false;
 	if (!m_frameOpen || m_pRenderTargets == NULL
-		|| !m_pRenderTargets->Acquire(
-			pSurface9,
-			pDepthSurface9,
+		|| m_pPresentation == NULL
+		|| !m_pPresentation->AcquireCurrentTarget(
+			&pColorResource,
+			&colorView,
+			&pDepthResource,
+			&depthView,
+			&pColorState,
+			&clearTarget)
+		|| !m_pRenderTargets->AcquirePresentation(
+			pColorResource,
+			colorView,
+			pDepthResource,
+			depthView,
+			pColorState,
 			m_pCommandList,
-			m_currentFrame,
-			m_currentSubmission))
+			clearTarget))
 	{
-		if (pDepthSurface9 != NULL)
-			pDepthSurface9->Release();
 		m_legacy3DDepthAvailable = false;
 		return false;
 	}
-	if (pDepthSurface9 != NULL)
-		pDepthSurface9->Release();
-	m_legacy3DDepthAvailable =
-		m_pRenderTargets->HasAcquiredDepth()
-		|| HasLegacy3DDepthSurface();
-	m_hPresentationWindow = hPresentationWindow;
+	m_legacy3DDepthAvailable = m_pRenderTargets->HasAcquiredDepth();
 	return true;
 }
 

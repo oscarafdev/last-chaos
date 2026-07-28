@@ -342,9 +342,6 @@
     <ClCompile Include="Graphics\DirectX12RenderTargetManager.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\DirectX12LegacyRenderTargetBridge.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\DirectX12ResourceHandle.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
@@ -4086,9 +4083,6 @@
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12RenderTargetManager.h">
-      <Filter>Header Files\Graphics Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics\DirectX12LegacyRenderTargetBridge.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12RenderState.h">

@@ -284,11 +284,6 @@ void CViewPort::CloseCanvas(void)
 	// release D3D swap chain if allocated
 	if( _pGfx->gl_eCurrentAPI==GAT_D3D) 
 	{
-		LPDIRECT3DSURFACE9	pBackSurface = NULL; 
-		_pGfx->gl_pd3d9Device->GetRenderTarget(0, &pBackSurface );
-		if( pBackSurface == vp9_pSurfDepth )
-			_pGfx->gl_pd3d9Device->SetRenderTarget(NULL, NULL);
-		D3DRELEASE( pBackSurface, TRUE);
 		if( vp9_pSwapChain!=NULL) D3DRELEASE( vp9_pSwapChain, TRUE);
 		if( vp9_pSurfDepth!=NULL) D3DRELEASE( vp9_pSurfDepth, TRUE);
 	} else {

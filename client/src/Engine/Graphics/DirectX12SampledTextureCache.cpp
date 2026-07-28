@@ -127,20 +127,20 @@ void CDirectX12SampledTextureCache::Clear()
 {
 	if (m_pState == NULL)
 		return;
-	SampledTextureCacheLock lock(&m_pState->criticalSection);
-	for (size_t iTexture = 0;
-		iTexture < m_pState->textures.size();
+	std::vector<NativeSampledTextureEntry> textures;
+	{
+		SampledTextureCacheLock lock(&m_pState->criticalSection);
+		textures.swap(m_pState->textures);
+		m_pState->retiredLegacyBindings.clear();
+	}
+	for (size_t iTexture = 0; iTexture < textures.size();
 		++iTexture)
 	{
 		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
-			m_pState->textures[iTexture].pTexture9,
-			m_pState->textures[iTexture].handle);
-		Retire(m_pState->textures[iTexture].pNativeTexture);
-		if (m_pState->textures[iTexture].pTexture9 != NULL)
-			m_pState->textures[iTexture].pTexture9->Release();
+			textures[iTexture].pTexture9,
+			textures[iTexture].handle);
+		Retire(textures[iTexture].pNativeTexture);
 	}
-	m_pState->textures.clear();
-	m_pState->retiredLegacyBindings.clear();
 }
 
 DirectX12TextureHandle CDirectX12SampledTextureCache::FindHandle(
@@ -377,7 +377,6 @@ bool CDirectX12SampledTextureCache::Replace(
 
 	Remove(pTexture9);
 	NativeSampledTextureEntry entry;
-	pTexture9->AddRef();
 	entry.handle = pNativeTexture->GetTextureHandle();
 	entry.pTexture9 = pTexture9;
 	entry.pNativeTexture = pNativeTexture;
@@ -386,7 +385,6 @@ bool CDirectX12SampledTextureCache::Replace(
 			pTexture9,
 			entry.handle))
 	{
-		pTexture9->Release();
 		delete pNativeTexture;
 		return false;
 	}
@@ -433,15 +431,13 @@ bool CDirectX12SampledTextureCache::Remove(
 			m_pState->textures[iTexture];
 		if (entry.pTexture9 != pTexture9)
 			continue;
-		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
-			entry.pTexture9,
-			entry.handle);
-		Retire(entry.pNativeTexture);
-		entry.pNativeTexture = NULL;
-		entry.pTexture9->Release();
-		entry.pTexture9 = NULL;
+		const NativeSampledTextureEntry removed = entry;
 		m_pState->textures.erase(
 			m_pState->textures.begin() + iTexture);
+		GetDirectX12ResourceRegistry().UnbindLegacyAlias(
+			removed.pTexture9,
+			removed.handle);
+		Retire(removed.pNativeTexture);
 		return true;
 	}
 	return false;
