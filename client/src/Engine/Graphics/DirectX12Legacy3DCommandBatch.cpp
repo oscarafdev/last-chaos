@@ -4,7 +4,6 @@
 #include <float.h>
 #include <vector>
 #include <d3d9.h>
-#include <d3dcompiler.h>
 #include <Engine/Math/GfxMath.h>
 
 #include <Engine/Base/Console.h>
@@ -20,8 +19,6 @@
 #include <Engine/Graphics/DirectX12RenderState.h>
 #include <Engine/Graphics/DirectX12RenderTargetManager.h>
 #include <Engine/Graphics/DirectX12UploadManager.h>
-
-#pragma comment(lib, "d3dcompiler.lib")
 
 namespace
 {
@@ -225,43 +222,6 @@ namespace
 			CloseHandle(hBinary);
 		}
 
-		ID3DBlob* pAssembly = NULL;
-		if (FAILED(D3DDisassemble(
-			pBytecode,
-			byteCount,
-			0,
-			NULL,
-			&pAssembly))
-			|| pAssembly == NULL)
-			return;
-		char assemblyPath[MAX_PATH] = "";
-		_snprintf_s(
-			assemblyPath,
-			sizeof(assemblyPath),
-			_TRUNCATE,
-			"%s\\%016llX.asm",
-			directory,
-			static_cast<unsigned long long>(fingerprint));
-		HANDLE hAssembly = CreateFileA(
-			assemblyPath,
-			GENERIC_WRITE,
-			FILE_SHARE_READ,
-			NULL,
-			CREATE_NEW,
-			FILE_ATTRIBUTE_NORMAL,
-			NULL);
-		if (hAssembly != INVALID_HANDLE_VALUE)
-		{
-			DWORD written = 0;
-			WriteFile(
-				hAssembly,
-				pAssembly->GetBufferPointer(),
-				static_cast<DWORD>(pAssembly->GetBufferSize()),
-				&written,
-				NULL);
-			CloseHandle(hAssembly);
-		}
-		pAssembly->Release();
 	}
 
 	D3D12_COMPARISON_FUNC ToDepthFunction(DWORD function)

@@ -1,11 +1,10 @@
 
-#include <d3dx9.h> // ###
-
 #include <Engine/Templates/StaticStackArray.cpp>
 #include <Engine/Templates/DynamicContainer.cpp>
 #include <Engine/Graphics/GfxLibrary.h>
 #include <Engine/Graphics/Gfx_Direct3D_Functions.h>
 #include <Engine/Graphics/DirectX12Backend.h>
+#include <Engine/Graphics/LegacyD3D9ShaderBytecode.h>
 
 
 CStaticStackArray<VertexShaderProgram>	_avsVertexShaderProgram;
@@ -487,7 +486,6 @@ static void d3d_DeletePixelProgram(LPDIRECT3DPIXELSHADER9 ulHandle)
 static ULONG d3d_CreateVertexProgram(const char *strVertexProgram, ULONG ulStreamFlags)
 {
 	extern void GetShaderDeclaration_D3D9(D3DVERTEXELEMENT9* ulRetDecl, ULONG ulStreamFlags);
-	extern ULONG *CompileVertexProgram_D3D(const char *strVertexProgram, ID3DXBuffer **ppOut);
 
 	ASSERT( _pGfx->gl_eCurrentAPI==GAT_D3D);
 	ASSERT(strVertexProgram!=NULL);
@@ -496,18 +494,20 @@ static ULONG d3d_CreateVertexProgram(const char *strVertexProgram, ULONG ulStrea
 
 	D3DVERTEXELEMENT9 ulDeclaration[MAX_SHADER_DECL_SIZE];
 	GetShaderDeclaration_D3D9(ulDeclaration, ulStreamFlags);
-	LPD3DXBUFFER pBuffer = NULL;
-	ULONG* pulShaderTokens = CompileVertexProgram_D3D(strVertexProgram, &pBuffer);
-	ASSERT(pBuffer->GetBufferPointer() == pulShaderTokens);
+	const LegacyD3D9ShaderBytecodeView bytecode =
+		FindLegacyD3D9ShaderBytecode(
+			strVertexProgram,
+			LegacyD3D9ShaderKind::Vertex);
+	if (bytecode.Data == NULL) {
+		ASSERTALWAYS("Vertex shader missing from offline bytecode catalog");
+		return NONE;
+	}
 
-	// create new vertex shader
-	const DWORD dwFlags = (_pGfx->gl_ulFlags&GLF_D3D_USINGHWTNL) ? NONE : D3DUSAGE_SOFTWAREPROCESSING;
-	
 	// ###
 	VertexShaderProgram &vsp = _avsVertexShaderProgram.Push();
 
 	// create programmable vertex shader
-	HRESULT hr = _pGfx->gl_pd3d9Device->CreateVertexShader((ULONG*)pulShaderTokens, &vsp.Shader);
+	HRESULT hr = _pGfx->gl_pd3d9Device->CreateVertexShader(bytecode.Data, &vsp.Shader);
 	if (FAILED(hr)) {
 		CPrintF("D3D wrapper: Create Vertex Shader Error!\n"); //return NULL;
 	}
@@ -523,7 +523,6 @@ static ULONG d3d_CreateVertexProgram(const char *strVertexProgram, ULONG ulStrea
 	//}
 
 	vsp.vp_ulProgramHandle = (ULONG)_avsVertexShaderProgram.Count();;
-	pBuffer->Release();
 	D3D_CHECKERROR(hr);
 
 	//CPrintF("d3d_CreateVertexProgram: ulProgramHandle = %u\n", ulProgramHandle);
@@ -533,21 +532,22 @@ static ULONG d3d_CreateVertexProgram(const char *strVertexProgram, ULONG ulStrea
 
 static LPDIRECT3DPIXELSHADER9 d3d_CreatePixelProgram(const char *strPixelProgram)
 {
-	extern ULONG *CompilePixelProgram_D3D(const char *strVertexProgram, ID3DXBuffer **ppOut);
-
 	ASSERT( _pGfx->gl_eCurrentAPI==GAT_D3D);
 	ASSERT(strPixelProgram!=NULL);
 	ASSERT(strlen(strPixelProgram)>0);
 
 	LPDIRECT3DPIXELSHADER9 ulProgramHandle;
-	LPD3DXBUFFER pBuffer = NULL;
-	ULONG *pulShaderTokens = CompilePixelProgram_D3D(strPixelProgram, &pBuffer);
-	ASSERT(pBuffer->GetBufferPointer() == pulShaderTokens);
+	const LegacyD3D9ShaderBytecodeView bytecode =
+		FindLegacyD3D9ShaderBytecode(
+			strPixelProgram,
+			LegacyD3D9ShaderKind::Pixel);
+	if (bytecode.Data == NULL) {
+		ASSERTALWAYS("Pixel shader missing from offline bytecode catalog");
+		return NULL;
+	}
 
-#define D3DPIXELSHADERDEF ULONG
 	// create programmable pixel shader
-	HRESULT hr = _pGfx->gl_pd3d9Device->CreatePixelShader( (D3DPIXELSHADERDEF*)pulShaderTokens, &ulProgramHandle);
-	pBuffer->Release();
+	HRESULT hr = _pGfx->gl_pd3d9Device->CreatePixelShader(bytecode.Data, &ulProgramHandle);
 	D3D_CHECKERROR(hr);
 	return ulProgramHandle;
 }
@@ -1434,10 +1434,8 @@ static void d3d_SetLightDirection( INDEX iLight, const FLOAT3D &vLightDir)
 	hr = _pGfx->gl_pd3d9Device->GetLight( iLight, &d3dLight);
 	D3D_CHECKERROR(hr);
 
-    D3DXVECTOR3 vec3 = D3DXVECTOR3(vLightDir(0), vLightDir(1), vLightDir(2)); // ### DX9
 	// modify direction and set light
 	d3dLight.Type = D3DLIGHT_DIRECTIONAL; // force directional light
-    d3dLight.Direction = vec3; // ### DX9
 	d3dLight.Direction = (D3DVECTOR&)vLightDir;
 	hr = _pGfx->gl_pd3d9Device->SetLight( iLight, &d3dLight);
 	D3D_CHECKERROR(hr);

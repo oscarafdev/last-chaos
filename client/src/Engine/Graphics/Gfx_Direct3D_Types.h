@@ -22,15 +22,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #endif
 
 
-#define D3DXASM_DEBUG 0x0001
-#define D3DXASM_SKIPVALIDATION  0x0010
-
-#ifdef NDEBUG
-#define D3DXASM_FLAGS  0
-#else
-#define D3DXASM_FLAGS D3DXASM_DEBUG
-#endif // NDEBUG
-
 #ifdef D3DVSD_TOKEN_STREAM
 #undef D3DVSD_TOKEN_STREAM
 #endif

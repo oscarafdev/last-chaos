@@ -65,6 +65,8 @@ EXPORTS
     ?shaSetVertexProgramConst@@YAXJPEAY0M@$$CBMJ@Z=EngineStub
     ?shaGetUVMap@@YAPEAUGFXTexCoord@@J@Z=EngineStub
     ?shaGetRenFlags@@YAKXZ=EngineStub
+    ?PrepareNormalMapFogShaderValidation@@YAXXZ=EngineStub
+    ?PrepareNormalMapRigidShaderValidation@@YAXXZ=EngineStub
     ?shaSetModelColor@@YAXAEAK@Z=EngineStub
     ?DeleteSelf@CEntity@@QEAAXXZ=EngineStub
     ?shaSetEMBM@@YAXXZ=EngineStub

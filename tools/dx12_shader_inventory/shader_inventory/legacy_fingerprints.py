@@ -53,6 +53,7 @@ def build_exact_runtime_inventory(
     shader_code_header: Path,
     shader_source_root: Path,
     runtime_catalog: dict[str, object],
+    include_bytecode: bool = False,
 ) -> dict[str, object]:
     fragments = load_static_char_arrays(shader_code_header)
     _validate_fragments(fragments)
@@ -76,6 +77,7 @@ def build_exact_runtime_inventory(
                 fragments,
                 assembler,
                 errors,
+                include_bytecode,
             )
         )
         pixel_variants.extend(
@@ -84,6 +86,7 @@ def build_exact_runtime_inventory(
                 fragments,
                 assembler,
                 errors,
+                include_bytecode,
             )
         )
 
@@ -281,6 +284,7 @@ def _materialize_vertex_variants(
     fragments: dict[str, str],
     assembler: D3DX9Assembler,
     errors: list[dict[str, object]],
+    include_bytecode: bool,
 ) -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
     for variant in shader.vertex_variants:
@@ -343,8 +347,7 @@ def _materialize_vertex_variants(
                         continue
                     declaration = build_vertex_declaration(stream_flags)
                     fingerprint = fnv1a64(bytecode + declaration)
-                    records.append(
-                        {
+                    record = {
                             "manifest": shader.manifest.relative_path,
                             "program_index": variant.index,
                             "source_sha256": variant.source_sha256,
@@ -360,8 +363,16 @@ def _materialize_vertex_variants(
                                 declaration
                             ).hexdigest(),
                             "fingerprint": f"{fingerprint:016X}",
+                            "runtime_source_fingerprint": (
+                                f"{fnv1a64(full_source.encode('latin-1')):016X}"
+                            ),
+                            "runtime_source_size": len(
+                                full_source.encode("latin-1")
+                            ),
                         }
-                    )
+                    if include_bytecode:
+                        record["bytecode_hex"] = bytecode.hex()
+                    records.append(record)
     return records
 
 
@@ -370,6 +381,7 @@ def _materialize_pixel_variants(
     fragments: dict[str, str],
     assembler: D3DX9Assembler,
     errors: list[dict[str, object]],
+    include_bytecode: bool,
 ) -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
     prefix_name = (
@@ -394,8 +406,7 @@ def _materialize_pixel_variants(
             )
             continue
         fingerprint = fnv1a64(bytecode)
-        records.append(
-            {
+        record = {
                 "manifest": shader.manifest.relative_path,
                 "program_index": variant.index,
                 "fog_type": variant.fog_type,
@@ -408,8 +419,14 @@ def _materialize_pixel_variants(
                 "bytecode_size": len(bytecode),
                 "bytecode_sha256": hashlib.sha256(bytecode).hexdigest(),
                 "fingerprint": f"{fingerprint:016X}",
+                "runtime_source_fingerprint": (
+                    f"{fnv1a64(source.encode('latin-1')):016X}"
+                ),
+                "runtime_source_size": len(source.encode("latin-1")),
             }
-        )
+        if include_bytecode:
+            record["bytecode_hex"] = bytecode.hex()
+        records.append(record)
     return records
 
 

@@ -315,6 +315,9 @@
     <ClCompile Include="Graphics\DirectX12LegacyShaderFamily.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\LegacyD3D9ShaderBytecode.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="Graphics\DirectX12NativeRenderer.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
@@ -4044,6 +4047,12 @@
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12LegacyShaderFamily.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\LegacyD3D9ShaderBytecode.h">
+      <Filter>Header Files\Graphics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Generated\LegacyD3D9ShaderBytecode.h">
       <Filter>Header Files\Graphics Headers</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\DirectX12NativeRenderer.h">

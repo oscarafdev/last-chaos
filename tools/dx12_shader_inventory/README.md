@@ -36,6 +36,17 @@ python tools\dx12_shader_inventory\analyze.py `
   --output .itconfig\dx12-shader-inventory\latest
 ```
 
+Para regenerar el catálogo de bytecode usado por los adaptadores D3D9:
+
+```powershell
+python scripts\generate-legacy-shader-bytecode.py
+```
+
+Ese paso usa D3DX9 únicamente fuera del juego y escribe un header
+determinista. El cliente consulta el catálogo por el fingerprint de la fuente;
+no carga D3DX9 ni D3DCompiler y falla explícitamente si aparece una variante
+que no fue inventariada.
+
 El script requiere Python x64, Visual Studio Build Tools con C++ x64 y
 `d3dx9_43.dll` para ensamblar el código histórico. D3DX9 se usa solamente como
 herramienta offline: el analizador no crea un dispositivo D3D9 ni agrega esa
