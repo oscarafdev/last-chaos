@@ -163,10 +163,13 @@ void CRenderTexture::Begin()	// SetRenderTarget current
 	{
 		GetDirectX12Backend().InsertDrawPortBarrier(
 			DX12_DRAWPORT_BARRIER_RENDER_TARGET_BEGIN);
+		// Vacía primero los draws del destino actual. Activar la identidad
+		// nativa auxiliar antes de esta barrera hacía que el terreno pendiente
+		// del backbuffer se reprodujera dentro de la nueva render texture.
+		GetDirectX12Backend().BeginOffscreenDrawPortScope();
 		m_bNativeColorActive = m_bNativeColorTarget
 			&& GetDirectX12Backend().BeginNativeOffscreenTexture(
 				m_nativeColorHandle);
-		GetDirectX12Backend().BeginOffscreenDrawPortScope();
 		IDirect3DDevice9* pDev = _pGfx->gl_pd3d9Device;
 		pDev->GetRenderTarget(0, &m_pOldRenderTarget);
 		pDev->GetDepthStencilSurface(&m_pOldDepthStencil);
