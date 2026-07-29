@@ -7,7 +7,6 @@
 #include <windows.h>
 #include <Engine/Graphics/DirectX12ResourceHandle.h>
 
-struct IDirect3DTexture9;
 struct IDirect3DVertexShader9;
 struct IDirect3DPixelShader9;
 struct IDirect3DVertexDeclaration9;
@@ -64,7 +63,6 @@ public:
 		UINT startRegister,
 		const FLOAT* pConstants,
 		UINT registerCount);
-	void SetTexture(UINT stage, IDirect3DTexture9* pTexture);
 	void SetTexture(UINT stage, DirectX12TextureHandle texture);
 	void SetTexture(UINT stage, DirectX12RenderTextureHandle texture);
 	void ForgetTexture(DirectX12TextureHandle texture);
@@ -111,7 +109,6 @@ public:
 		DX12_LEGACY_PIXEL_CONSTANT_COUNT * 4];
 	BYTE vertexDeclaration[256];
 	UINT vertexDeclarationByteCount;
-	IDirect3DTexture9* textures[DX12_LEGACY_TEXTURE_STAGE_COUNT];
 	DirectX12TextureHandle
 		textureHandles[DX12_LEGACY_TEXTURE_STAGE_COUNT];
 	DirectX12RenderTextureHandle

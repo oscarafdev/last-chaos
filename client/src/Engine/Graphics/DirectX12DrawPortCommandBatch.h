@@ -9,7 +9,6 @@
 #include <Engine/Graphics/DirectX12DescriptorHeap.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
-struct IDirect3DTexture9;
 class CDirectX12Buffer;
 class CDirectX12InteropTextureManager;
 class CDirectX12PipelineCache;
@@ -31,7 +30,6 @@ public:
 		ID3D12Device* pDevice,
 		CDirectX12PipelineCache* pPipelineCache);
 	void Shutdown();
-	void ForgetTexture(IDirect3DTexture9* pTexture);
 	void BeginFrame(UINT frameIndex);
 	bool BeginScope(DirectX12DrawPortScope scope);
 	bool EndScope(DirectX12DrawPortScope scope);
@@ -64,14 +62,6 @@ public:
 		ULONG colorLowerLeft,
 		ULONG colorLowerRight,
 		const D3D12_RECT& scissor);
-	bool QueueTriangle(
-		IDirect3DTexture9* pTexture,
-		FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
-		FLOAT x1, FLOAT y1, FLOAT u1, FLOAT v1, ULONG color1,
-		FLOAT x2, FLOAT y2, FLOAT u2, FLOAT v2, ULONG color2,
-		const D3D12_RECT& scissor,
-		DirectX12BlendMode blendMode,
-		DirectX12SamplerMode samplerMode);
 	bool QueueTriangle(
 		DirectX12TextureHandle textureHandle,
 		DirectX12RenderTextureHandle renderTextureHandle,

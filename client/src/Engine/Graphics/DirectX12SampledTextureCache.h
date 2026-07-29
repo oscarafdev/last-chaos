@@ -33,9 +33,17 @@ public:
 	void Shutdown();
 	void Clear();
 	void BeginFrame(UINT frameIndex);
+
+private:
+	friend class CDirectX12InteropTextureManager;
+
+	// Traducción exclusiva del adaptador heredado. Ningún command stream
+	// nativo puede adquirir o resolver una textura mediante un puntero COM.
 	void Forget(IDirect3DTexture9* pTexture9);
 	void RetireLegacyBinding(IDirect3DTexture9* pTexture9);
 	DirectX12TextureHandle FindHandle(IDirect3DTexture9* pTexture9) const;
+
+public:
 	bool CreateNative(DirectX12TextureHandle* pHandle);
 	void DestroyNative(DirectX12TextureHandle handle);
 	bool RefreshNativeFromRgbaMipChain(
@@ -62,6 +70,7 @@ public:
 
 	// Reemplaza anticipadamente la copia nativa después de un upload legado.
 	// Si no puede hacerlo, Acquire conserva una ruta de creación bajo demanda.
+private:
 	bool Refresh(
 		IDirect3DTexture9* pTexture9,
 		ID3D12GraphicsCommandList* pCommandList,
@@ -90,6 +99,8 @@ public:
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12UploadManager* pUploadManager,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
+
+public:
 	bool Acquire(
 		DirectX12TextureHandle handle,
 		ID3D12GraphicsCommandList* pCommandList,

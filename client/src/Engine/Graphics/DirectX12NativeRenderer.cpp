@@ -130,12 +130,18 @@ void CDirectX12NativeRenderer::Shutdown()
 	m_resourcesReady = false;
 }
 
-void CDirectX12NativeRenderer::ForgetTexture(IDirect3DTexture9* pTexture)
+void CDirectX12NativeRenderer::ForgetTexture(
+	DirectX12TextureHandle texture)
 {
-	if (m_pDrawPortCommands != NULL)
-		m_pDrawPortCommands->ForgetTexture(pTexture);
 	if (m_pLegacy3DCommands != NULL)
-		m_pLegacy3DCommands->ForgetTexture(pTexture);
+		m_pLegacy3DCommands->ForgetTexture(texture);
+}
+
+void CDirectX12NativeRenderer::ForgetTexture(
+	DirectX12RenderTextureHandle texture)
+{
+	if (m_pLegacy3DCommands != NULL)
+		m_pLegacy3DCommands->ForgetTexture(texture);
 }
 
 void CDirectX12NativeRenderer::BeginFrame(UINT frameIndex)
@@ -424,33 +430,6 @@ bool CDirectX12NativeRenderer::QueueDrawPortRectangle(
 		colorLowerLeft,
 		colorLowerRight,
 		scissor);
-}
-
-bool CDirectX12NativeRenderer::QueueDrawPortTexturedTriangle(
-	IDirect3DTexture9* pTexture,
-	FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
-	FLOAT x1, FLOAT y1, FLOAT u1, FLOAT v1, ULONG color1,
-	FLOAT x2, FLOAT y2, FLOAT u2, FLOAT v2, ULONG color2,
-	LONG scissorLeft,
-	LONG scissorTop,
-	LONG scissorRight,
-	LONG scissorBottom,
-	DirectX12BlendMode blendMode,
-	DirectX12SamplerMode samplerMode)
-{
-	if (m_pDrawPortCommands == NULL)
-		return false;
-	const D3D12_RECT scissor = {
-		scissorLeft, scissorTop, scissorRight, scissorBottom
-	};
-	return m_pDrawPortCommands->QueueTriangle(
-		pTexture,
-		x0, y0, u0, v0, color0,
-		x1, y1, u1, v1, color1,
-		x2, y2, u2, v2, color2,
-		scissor,
-		blendMode,
-		samplerMode);
 }
 
 bool CDirectX12NativeRenderer::QueueDrawPortTexturedTriangle(

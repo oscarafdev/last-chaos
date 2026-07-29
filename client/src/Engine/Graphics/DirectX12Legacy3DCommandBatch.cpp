@@ -254,10 +254,6 @@ namespace
 		UINT indexCount;
 		D3D12_VIEWPORT viewport;
 		D3D12_RECT scissor;
-		IDirect3DTexture9* pTexture;
-		IDirect3DTexture9* pTexture1;
-		IDirect3DTexture9* pTexture2;
-		IDirect3DTexture9* pTexture3;
 		DirectX12TextureHandle textureHandle;
 		DirectX12TextureHandle textureHandle1;
 		DirectX12TextureHandle textureHandle2;
@@ -630,7 +626,6 @@ namespace
 	}
 
 	bool MatchesFixedFunctionTextureWidthFilter(
-		IDirect3DTexture9* pTexture,
 		DirectX12TextureHandle textureHandle,
 		DirectX12RenderTextureHandle renderTextureHandle,
 		int expectedWidth)
@@ -643,14 +638,7 @@ namespace
 		if (pNativeTexture != NULL)
 			return pNativeTexture->GetWidth()
 				== static_cast<UINT>(expectedWidth);
-		if (pTexture == NULL)
-			return false;
-		D3DSURFACE_DESC description;
-		ZeroMemory(&description, sizeof(description));
-		const bool matches =
-			SUCCEEDED(pTexture->GetLevelDesc(0, &description))
-			&& description.Width == static_cast<UINT>(expectedWidth);
-		return matches;
+		return false;
 	}
 
 	bool ReadReplacementShaderFamily(
@@ -883,49 +871,18 @@ namespace
 		return format;
 	}
 
-	void ReleaseTexture(IDirect3DTexture9*& pTexture)
-	{
-		if (pTexture != NULL)
-		{
-			pTexture->Release();
-			pTexture = NULL;
-		}
-	}
-
 	bool HasTextureBinding(
 		DirectX12TextureHandle textureHandle,
-		DirectX12RenderTextureHandle renderTextureHandle,
-		IDirect3DTexture9* pLegacyTexture)
+		DirectX12RenderTextureHandle renderTextureHandle)
 	{
 		return textureHandle.IsValid()
-			|| renderTextureHandle.IsValid()
-			|| pLegacyTexture != NULL;
-	}
-
-	void ReleaseLegacyTextureForNativeBinding(
-		DirectX12TextureHandle textureHandle,
-		DirectX12RenderTextureHandle renderTextureHandle,
-		IDirect3DTexture9*& pLegacyTexture)
-	{
-		if (textureHandle.IsValid() || renderTextureHandle.IsValid())
-		{
-			ReleaseTexture(pLegacyTexture);
-			static bool reported = false;
-			if (!reported)
-			{
-				CPrintF(
-					"DX12 3D: command stream usa handles nativos sin "
-					"retener identidades COM D3D9.\n");
-				reported = true;
-			}
-		}
+			|| renderTextureHandle.IsValid();
 	}
 
 	bool AcquireTexture(
 		CDirectX12InteropTextureManager* pTextures,
 		DirectX12TextureHandle textureHandle,
 		DirectX12RenderTextureHandle renderTextureHandle,
-		IDirect3DTexture9* pLegacyTexture,
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12UploadManager* pUploadManager,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pView)
@@ -942,20 +899,13 @@ namespace
 				pCommandList,
 				pUploadManager,
 				pView);
-		else
-			acquired = pTextures->Acquire(
-				pLegacyTexture,
-				pCommandList,
-				pUploadManager,
-				pView);
 		if (!acquired)
 		{
 			CPrintF(
 				"DX12 3D textura no adquirida: sampled=%I64u, "
-				"render=%I64u, legacy=%p.\n",
+				"render=%I64u.\n",
 				textureHandle.GetValue(),
-				renderTextureHandle.GetValue(),
-				pLegacyTexture);
+				renderTextureHandle.GetValue());
 		}
 		return acquired;
 	}
@@ -963,15 +913,11 @@ namespace
 	bool ReferencesRenderTarget(
 		CDirectX12InteropTextureManager* pTextures,
 		DirectX12RenderTextureHandle renderTextureHandle,
-		IDirect3DTexture9* pLegacyTexture,
 		ID3D12Resource* pResource)
 	{
 		return renderTextureHandle.IsValid()
-			? pTextures->ReferencesResource(
+			&& pTextures->ReferencesResource(
 				renderTextureHandle,
-				pResource)
-			: pTextures->ReferencesResource(
-				pLegacyTexture,
 				pResource);
 	}
 }
@@ -1245,10 +1191,8 @@ namespace
 		DWORD samplerMinification,
 		DWORD samplerMagnification,
 		const FLOAT* pPixelConstants,
-		IDirect3DTexture9* pTexture,
-		IDirect3DTexture9* pTexture1,
-		IDirect3DTexture9* pTexture2,
-		IDirect3DTexture9* pTexture3,
+		const DirectX12TextureHandle* pTextureHandles,
+		const DirectX12RenderTextureHandle* pRenderTextureHandles,
 		const std::vector<Legacy3DVertex>& vertices,
 		UINT baseVertex,
 		UINT vertexCount,
@@ -1324,24 +1268,29 @@ namespace
 			if (normalizedDepth > 1.0f)
 				++beyondFarPlane;
 		}
-		D3DSURFACE_DESC textureDescription;
-		ZeroMemory(&textureDescription, sizeof(textureDescription));
-		const bool hasTextureDescription =
-			pTexture != NULL
-			&& SUCCEEDED(pTexture->GetLevelDesc(0, &textureDescription));
-		D3DSURFACE_DESC extraTextureDescriptions[3];
-		ZeroMemory(
-			extraTextureDescriptions,
-			sizeof(extraTextureDescriptions));
-		IDirect3DTexture9* extraTextures[3] = {
-			pTexture1, pTexture2, pTexture3
-		};
-		for (UINT iTexture = 0; iTexture < 3; ++iTexture)
+		UINT textureWidths[4] = { 0, 0, 0, 0 };
+		UINT textureHeights[4] = { 0, 0, 0, 0 };
+		INT textureFormats[4] = { 0, 0, 0, 0 };
+		UINT64 textureIdentities[4] = { 0, 0, 0, 0 };
+		for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
 		{
-			if (extraTextures[iTexture] != NULL)
-				extraTextures[iTexture]->GetLevelDesc(
-					0,
-					&extraTextureDescriptions[iTexture]);
+			const DirectX12TextureHandle sampled =
+				pTextureHandles[textureUnit];
+			const DirectX12RenderTextureHandle rendered =
+				pRenderTextureHandles[textureUnit];
+			textureIdentities[textureUnit] = sampled.IsValid()
+				? sampled.GetValue()
+				: rendered.GetValue();
+			CDirectX12Texture* pNativeTexture = ResolveNativeTexture(
+				sampled,
+				rendered);
+			if (pNativeTexture != NULL)
+			{
+				textureWidths[textureUnit] = pNativeTexture->GetWidth();
+				textureHeights[textureUnit] = pNativeTexture->GetHeight();
+				textureFormats[textureUnit] =
+					static_cast<INT>(pNativeTexture->GetFormat());
+			}
 		}
 
 		CPrintF(
@@ -1355,9 +1304,9 @@ namespace
 			"uv1=(%.6f..%.6f,%.6f..%.6f), "
 			"uv2=(%.6f..%.6f,%.6f..%.6f), "
 			"uv3=(%.6f..%.6f,%.6f..%.6f), "
-			"tex=%p/%ux%u/f%d/p%d, "
-			"tex1=%p/%ux%u/f%d, tex2=%p/%ux%u/f%d, "
-			"tex3=%p/%ux%u/f%d, "
+			"tex=%I64u/%ux%u/f%d, "
+			"tex1=%I64u/%ux%u/f%d, tex2=%I64u/%ux%u/f%d, "
+			"tex3=%I64u/%ux%u/f%d, "
 			"ndc=(%.6f..%.6f,%.6f..%.6f), "
 			"z/w=%.8f..%.8f, fueraLejano=%u/%u, "
 			"corregidosLejano=%u, detrasCamara=%u.\n",
@@ -1387,25 +1336,22 @@ namespace
 			minimumU[1], maximumU[1], minimumV[1], maximumV[1],
 			minimumU[2], maximumU[2], minimumV[2], maximumV[2],
 			minimumU[3], maximumU[3], minimumV[3], maximumV[3],
-			pTexture,
-			hasTextureDescription ? textureDescription.Width : 0,
-			hasTextureDescription ? textureDescription.Height : 0,
-			hasTextureDescription
-				? static_cast<int>(textureDescription.Format) : 0,
-			hasTextureDescription
-				? static_cast<int>(textureDescription.Pool) : 0,
-			pTexture1,
-			extraTextureDescriptions[0].Width,
-			extraTextureDescriptions[0].Height,
-			static_cast<int>(extraTextureDescriptions[0].Format),
-			pTexture2,
-			extraTextureDescriptions[1].Width,
-			extraTextureDescriptions[1].Height,
-			static_cast<int>(extraTextureDescriptions[1].Format),
-			pTexture3,
-			extraTextureDescriptions[2].Width,
-			extraTextureDescriptions[2].Height,
-			static_cast<int>(extraTextureDescriptions[2].Format),
+			textureIdentities[0],
+			textureWidths[0],
+			textureHeights[0],
+			textureFormats[0],
+			textureIdentities[1],
+			textureWidths[1],
+			textureHeights[1],
+			textureFormats[1],
+			textureIdentities[2],
+			textureWidths[2],
+			textureHeights[2],
+			textureFormats[2],
+			textureIdentities[3],
+			textureWidths[3],
+			textureHeights[3],
+			textureFormats[3],
 			minimumNdcX,
 			maximumNdcX,
 			minimumNdcY,
@@ -1426,7 +1372,8 @@ namespace
 
 	void RecordFixedFunctionDraw(
 		DirectX12Legacy3DCommandBatchState* pState,
-		IDirect3DTexture9* pTexture,
+		DirectX12TextureHandle textureHandle,
+		DirectX12RenderTextureHandle renderTextureHandle,
 		const D3DSURFACE_DESC* pTextureDescription,
 		UINT texturePassCount,
 		DirectX12BlendMode blendMode,
@@ -1446,8 +1393,9 @@ namespace
 	{
 		if (pState == NULL || vertexCount == 0)
 			return;
-		const UINT64 textureIdentity =
-			static_cast<UINT64>(reinterpret_cast<ULONG_PTR>(pTexture));
+		const UINT64 textureIdentity = textureHandle.IsValid()
+			? textureHandle.GetValue()
+			: renderTextureHandle.GetValue();
 		const UINT textureWidth =
 			pTextureDescription != NULL ? pTextureDescription->Width : 0;
 		const UINT textureHeight =
@@ -2021,15 +1969,6 @@ void CDirectX12Legacy3DCommandBatch::Shutdown()
 	if (m_pState != NULL)
 	{
 		DumpShaderPairInventory(m_pState);
-		for (size_t iRange = 0;
-			iRange < m_pState->ranges.size();
-			++iRange)
-		{
-			ReleaseTexture(m_pState->ranges[iRange].pTexture);
-			ReleaseTexture(m_pState->ranges[iRange].pTexture1);
-			ReleaseTexture(m_pState->ranges[iRange].pTexture2);
-			ReleaseTexture(m_pState->ranges[iRange].pTexture3);
-		}
 		delete m_pState;
 		m_pState = NULL;
 	}
@@ -2067,15 +2006,6 @@ void CDirectX12Legacy3DCommandBatch::BeginFrame(UINT frameIndex)
 	if (m_pState->frameSerial - m_pState->lastInventoryDumpFrame
 		>= (ReadShaderInventoryMode() ? 20U : PROBE_INTERVAL_FRAMES))
 		DumpShaderPairInventory(m_pState);
-	for (size_t iRange = 0;
-		iRange < m_pState->ranges.size();
-		++iRange)
-	{
-		ReleaseTexture(m_pState->ranges[iRange].pTexture);
-		ReleaseTexture(m_pState->ranges[iRange].pTexture1);
-		ReleaseTexture(m_pState->ranges[iRange].pTexture2);
-		ReleaseTexture(m_pState->ranges[iRange].pTexture3);
-	}
 	m_pState->positions.clear();
 	for (UINT textureUnit = 0; textureUnit < 4; ++textureUnit)
 	{
@@ -2107,27 +2037,52 @@ void CDirectX12Legacy3DCommandBatch::BeginFrame(UINT frameIndex)
 }
 
 void CDirectX12Legacy3DCommandBatch::ForgetTexture(
-	IDirect3DTexture9* pTexture)
+	DirectX12TextureHandle texture)
 {
-	if (m_pState == NULL || pTexture == NULL)
+	if (m_pState == NULL || !texture.IsValid())
 		return;
-
 	for (size_t iRange = 0;
 		iRange < m_pState->ranges.size();
 		++iRange)
 	{
-		IDirect3DTexture9** textures[] = {
-			&m_pState->ranges[iRange].pTexture,
-			&m_pState->ranges[iRange].pTexture1,
-			&m_pState->ranges[iRange].pTexture2,
-			&m_pState->ranges[iRange].pTexture3
+		DirectX12TextureHandle* handles[] = {
+			&m_pState->ranges[iRange].textureHandle,
+			&m_pState->ranges[iRange].textureHandle1,
+			&m_pState->ranges[iRange].textureHandle2,
+			&m_pState->ranges[iRange].textureHandle3
 		};
 		for (UINT textureUnit = 0;
-			textureUnit < sizeof(textures) / sizeof(textures[0]);
+			textureUnit < sizeof(handles) / sizeof(handles[0]);
 			++textureUnit)
 		{
-			if (*textures[textureUnit] == pTexture)
-				ReleaseTexture(*textures[textureUnit]);
+			if (*handles[textureUnit] == texture)
+				*handles[textureUnit] = DirectX12TextureHandle();
+		}
+	}
+}
+
+void CDirectX12Legacy3DCommandBatch::ForgetTexture(
+	DirectX12RenderTextureHandle texture)
+{
+	if (m_pState == NULL || !texture.IsValid())
+		return;
+	for (size_t iRange = 0;
+		iRange < m_pState->ranges.size();
+		++iRange)
+	{
+		DirectX12RenderTextureHandle* handles[] = {
+			&m_pState->ranges[iRange].renderTextureHandle,
+			&m_pState->ranges[iRange].renderTextureHandle1,
+			&m_pState->ranges[iRange].renderTextureHandle2,
+			&m_pState->ranges[iRange].renderTextureHandle3
+		};
+		for (UINT textureUnit = 0;
+			textureUnit < sizeof(handles) / sizeof(handles[0]);
+			++textureUnit)
+		{
+			if (*handles[textureUnit] == texture)
+				*handles[textureUnit] =
+					DirectX12RenderTextureHandle();
 		}
 	}
 }
@@ -2940,7 +2895,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	if (ReadFullReplacementMode()
 		&& fixedFunctionDraw
 		&& !MatchesFixedFunctionTextureWidthFilter(
-			drawState.textures[0],
 			drawState.textureHandles[0],
 			drawState.renderTextureHandles[0],
 			fixedFunctionTextureWidthFilter))
@@ -3512,47 +3466,26 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	const UINT capturedVertexCount = static_cast<UINT>(
 		m_pState->vertices.size() - baseVertex);
 
-	IDirect3DTexture9* pTextures[4] = {
-		NULL, NULL, NULL, NULL
-	};
-	for (UINT textureUnit = 0;
-		textureUnit < shaderFamily.textureCount;
-		++textureUnit)
-	{
-		pTextures[textureUnit] = drawState.textures[textureUnit];
-		if (pTextures[textureUnit] != NULL)
-			pTextures[textureUnit]->AddRef();
-	}
-	IDirect3DTexture9* pTexture = pTextures[0];
-	IDirect3DTexture9* pTexture1 = pTextures[1];
-	IDirect3DTexture9* pTexture2 = pTextures[2];
-	IDirect3DTexture9* pTexture3 = pTextures[3];
 	D3DSURFACE_DESC fixedTextureDescription;
 	ZeroMemory(&fixedTextureDescription, sizeof(fixedTextureDescription));
-	bool hasFixedTextureDescription =
-		pTexture != NULL
-		&& SUCCEEDED(pTexture->GetLevelDesc(
-			0,
-			&fixedTextureDescription));
-	if (!hasFixedTextureDescription)
+	bool hasFixedTextureDescription = false;
+	CDirectX12Texture* pNativeTexture = ResolveNativeTexture(
+		drawState.textureHandles[0],
+		drawState.renderTextureHandles[0]);
+	if (pNativeTexture != NULL)
 	{
-		CDirectX12Texture* pNativeTexture = ResolveNativeTexture(
-			drawState.textureHandles[0],
-			drawState.renderTextureHandles[0]);
-		if (pNativeTexture != NULL)
-		{
-			fixedTextureDescription.Width = pNativeTexture->GetWidth();
-			fixedTextureDescription.Height = pNativeTexture->GetHeight();
-			fixedTextureDescription.Format = static_cast<D3DFORMAT>(
-				pNativeTexture->GetFormat());
-			hasFixedTextureDescription = true;
-		}
+		fixedTextureDescription.Width = pNativeTexture->GetWidth();
+		fixedTextureDescription.Height = pNativeTexture->GetHeight();
+		fixedTextureDescription.Format = static_cast<D3DFORMAT>(
+			pNativeTexture->GetFormat());
+		hasFixedTextureDescription = true;
 	}
 	if (inventoryMode && fixedFunctionDraw)
 	{
 		RecordFixedFunctionDraw(
 			m_pState,
-			pTexture,
+			drawState.textureHandles[0],
+			drawState.renderTextureHandles[0],
 			hasFixedTextureDescription
 				? &fixedTextureDescription
 				: NULL,
@@ -3608,7 +3541,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				? maximumW : diagnosticVertex.clipW;
 		}
 		CPrintF(
-			"DX12 diagnostico fixed: pases=%u, textura=%p, "
+			"DX12 diagnostico fixed: pases=%u, textura=%I64u, "
 			"desc=%u, formato=%d, pool=%d, tamano=%ux%u, "
 			"color=%08X, z=%u/%u, blend=%u, vertices=%u, "
 			"etapa0=%u/%u/%u alfa=%u/%u/%u, "
@@ -3618,7 +3551,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			"limites=(%.3f..%.3f,%.3f..%.3f,w=%.3f..%.3f), "
 			"uv=(%.4f,%.4f), rgba=(%.3f,%.3f,%.3f,%.3f).\n",
 			shaderFamily.textureCount,
-			pTexture,
+			drawState.textureHandles[0].IsValid()
+				? drawState.textureHandles[0].GetValue()
+				: drawState.renderTextureHandles[0].GetValue(),
 			hasFixedTextureDescription ? 1U : 0U,
 			static_cast<int>(fixedTextureDescription.Format),
 			static_cast<int>(fixedTextureDescription.Pool),
@@ -3682,10 +3617,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		static_cast<LONG>(viewport9.X + viewport9.Width);
 	range.scissor.bottom =
 		static_cast<LONG>(viewport9.Y + viewport9.Height);
-	range.pTexture = pTexture;
-	range.pTexture1 = pTexture1;
-	range.pTexture2 = pTexture2;
-	range.pTexture3 = pTexture3;
 	DirectX12TextureHandle* sampledHandles[] = {
 		&range.textureHandle,
 		&range.textureHandle1,
@@ -3702,43 +3633,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	{
 		*sampledHandles[textureUnit] =
 			drawState.textureHandles[textureUnit];
-		if (!sampledHandles[textureUnit]->IsValid())
-		{
-			*sampledHandles[textureUnit] =
-				GetDirectX12ResourceRegistry().
-					ResolveLegacyAlias<
-						DX12_RESOURCE_SAMPLED_TEXTURE>(
-							pTextures[textureUnit]);
-		}
 		*renderHandles[textureUnit] =
 			drawState.renderTextureHandles[textureUnit];
-		if (!renderHandles[textureUnit]->IsValid())
-		{
-			*renderHandles[textureUnit] =
-				GetDirectX12ResourceRegistry().
-					ResolveLegacyAlias<
-						DX12_RESOURCE_RENDER_TEXTURE>(
-							pTextures[textureUnit]);
-		}
 	}
-	// Los rangos nativos conservan handles generacionales. El alias COM sólo
-	// se retiene cuando el recurso todavía no tiene identidad DX12.
-	ReleaseLegacyTextureForNativeBinding(
-		range.textureHandle,
-		range.renderTextureHandle,
-		range.pTexture);
-	ReleaseLegacyTextureForNativeBinding(
-		range.textureHandle1,
-		range.renderTextureHandle1,
-		range.pTexture1);
-	ReleaseLegacyTextureForNativeBinding(
-		range.textureHandle2,
-		range.renderTextureHandle2,
-		range.pTexture2);
-	ReleaseLegacyTextureForNativeBinding(
-		range.textureHandle3,
-		range.renderTextureHandle3,
-		range.pTexture3);
 	range.depthEnabled = zEnable != FALSE;
 	range.depthWriteEnabled = zWrite != FALSE;
 	range.colorWriteEnabled = colorWriteMask != 0;
@@ -3810,15 +3707,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		&& range.blendMode < DX12_BLEND_COUNT
 		&& !m_pState->fixedBlendDiagnosticReported[range.blendMode])
 	{
-		D3DSURFACE_DESC fixedTextureDescription;
-		ZeroMemory(
-			&fixedTextureDescription,
-			sizeof(fixedTextureDescription));
 		const bool fixedTextureDescriptionAvailable =
-			pTexture != NULL
-			&& SUCCEEDED(pTexture->GetLevelDesc(
-				0,
-				&fixedTextureDescription));
+			hasFixedTextureDescription;
 		CPrintF(
 			"DX12 diagnostico fixed blend: modo=%u, "
 			"origen=%u, destino=%u, blend=%u, alphaTest=%u, "
@@ -3867,6 +3757,18 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		sizeof(range.pixelShaderConstants));
 	if (projectedTerrain)
 	{
+		const DirectX12TextureHandle diagnosticTextures[4] = {
+			range.textureHandle,
+			range.textureHandle1,
+			range.textureHandle2,
+			range.textureHandle3
+		};
+		const DirectX12RenderTextureHandle diagnosticRenderTextures[4] = {
+			range.renderTextureHandle,
+			range.renderTextureHandle1,
+			range.renderTextureHandle2,
+			range.renderTextureHandle3
+		};
 		CCameraTestCapture::CaptureTerrainView(
 			drawState.view,
 			drawState.projection,
@@ -3898,10 +3800,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			samplerMinification,
 			samplerMagnification,
 			legacyPixelConstants,
-			pTexture,
-			pTexture1,
-			pTexture2,
-			pTexture3,
+			diagnosticTextures,
+			diagnosticRenderTextures,
 			m_pState->vertices,
 			baseVertex,
 			capturedVertexCount,
@@ -4094,22 +3994,18 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		if (ReferencesRenderTarget(
 				pTextures,
 				range.renderTextureHandle,
-				range.pTexture,
 				pCurrentTarget)
 			|| ReferencesRenderTarget(
 				pTextures,
 				range.renderTextureHandle1,
-				range.pTexture1,
 				pCurrentTarget)
 			|| ReferencesRenderTarget(
 				pTextures,
 				range.renderTextureHandle2,
-				range.pTexture2,
 				pCurrentTarget)
 			|| ReferencesRenderTarget(
 				pTextures,
 				range.renderTextureHandle3,
-				range.pTexture3,
 				pCurrentTarget))
 			continue;
 		ID3D12PipelineState* pPipeline =
@@ -4166,13 +4062,11 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		if (needsTextureSampling
 			&& HasTextureBinding(
 				range.textureHandle,
-				range.renderTextureHandle,
-				range.pTexture)
+				range.renderTextureHandle)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle,
 				range.renderTextureHandle,
-				range.pTexture,
 				pCommandList,
 				pUploadManager,
 				&textureView))
@@ -4182,13 +4076,11 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 			&& rangeWritesColor
 			&& HasTextureBinding(
 				range.textureHandle1,
-				range.renderTextureHandle1,
-				range.pTexture1)
+				range.renderTextureHandle1)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle1,
 				range.renderTextureHandle1,
-				range.pTexture1,
 				pCommandList,
 				pUploadManager,
 				&textureView1))
@@ -4205,13 +4097,11 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		if (range.genericFamily && rangeWritesColor
 			&& HasTextureBinding(
 				range.textureHandle2,
-				range.renderTextureHandle2,
-				range.pTexture2)
+				range.renderTextureHandle2)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle2,
 				range.renderTextureHandle2,
-				range.pTexture2,
 				pCommandList,
 				pUploadManager,
 				&textureView2))
@@ -4219,13 +4109,11 @@ bool CDirectX12Legacy3DCommandBatch::RenderLegacy3DPass(
 		if (range.genericFamily && rangeWritesColor
 			&& HasTextureBinding(
 				range.textureHandle3,
-				range.renderTextureHandle3,
-				range.pTexture3)
+				range.renderTextureHandle3)
 			&& !AcquireTexture(
 				pTextures,
 				range.textureHandle3,
 				range.renderTextureHandle3,
-				range.pTexture3,
 				pCommandList,
 				pUploadManager,
 				&textureView3))

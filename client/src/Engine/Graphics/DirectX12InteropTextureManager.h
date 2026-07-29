@@ -75,15 +75,23 @@ public:
 	void DestroyRenderTarget(DirectX12RenderTextureHandle handle);
 	CDirectX12Texture* FindRenderTarget(
 		DirectX12RenderTextureHandle handle) const;
+
+private:
 	CDirectX12Texture* FindRenderTarget(
 		IDirect3DTexture9* pTexture9) const;
+
+public:
 	DirectX12TextureHandle ResolveSampledTextureHandle(
 		IDirect3DTexture9* pTexture9) const;
 	DirectX12RenderTextureHandle ResolveRenderTextureHandle(
 		IDirect3DTexture9* pTexture9) const;
+
+private:
 	bool ReferencesResource(
 		IDirect3DTexture9* pTexture9,
 		ID3D12Resource* pResource12) const;
+
+public:
 	bool ReferencesResource(
 		DirectX12RenderTextureHandle handle,
 		ID3D12Resource* pResource12) const;

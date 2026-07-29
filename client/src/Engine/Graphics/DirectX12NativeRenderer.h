@@ -10,7 +10,6 @@
 #include <Engine/Graphics/DirectX12DescriptorHeap.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
-struct IDirect3DTexture9;
 class CDirectX12Buffer;
 class CDirectX12BloomRenderer;
 class CDirectX12DrawPortCommandBatch;
@@ -32,7 +31,8 @@ public:
 
 	bool Initialize(ID3D12Device* pDevice);
 	void Shutdown();
-	void ForgetTexture(IDirect3DTexture9* pTexture);
+	void ForgetTexture(DirectX12TextureHandle texture);
+	void ForgetTexture(DirectX12RenderTextureHandle texture);
 	void BeginFrame(UINT frameIndex);
 	bool BeginDrawPortScope(DirectX12DrawPortScope scope);
 	bool EndDrawPortScope(DirectX12DrawPortScope scope);
@@ -137,17 +137,6 @@ public:
 		LONG scissorTop,
 		LONG scissorRight,
 		LONG scissorBottom);
-	bool QueueDrawPortTexturedTriangle(
-		IDirect3DTexture9* pTexture,
-		FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
-		FLOAT x1, FLOAT y1, FLOAT u1, FLOAT v1, ULONG color1,
-		FLOAT x2, FLOAT y2, FLOAT u2, FLOAT v2, ULONG color2,
-		LONG scissorLeft,
-		LONG scissorTop,
-		LONG scissorRight,
-		LONG scissorBottom,
-		DirectX12BlendMode blendMode,
-		DirectX12SamplerMode samplerMode);
 	bool QueueDrawPortTexturedTriangle(
 		DirectX12TextureHandle textureHandle,
 		DirectX12RenderTextureHandle renderTextureHandle,

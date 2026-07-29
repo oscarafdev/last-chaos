@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <cmath>
 #include <vector>
-#include <d3d9.h>
 #include <d3d12.h>
 
 #include <Engine/Base/Console.h>
@@ -36,7 +35,6 @@ namespace
 	{
 		UINT firstVertex;
 		UINT vertexCount;
-		IDirect3DTexture9* pTexture;
 		DirectX12TextureHandle textureHandle;
 		DirectX12RenderTextureHandle renderTextureHandle;
 		D3D12_RECT scissor;
@@ -62,31 +60,11 @@ namespace
 	}
 
 	bool HasTextureBinding(
-		IDirect3DTexture9* pLegacyTexture,
 		DirectX12TextureHandle textureHandle,
 		DirectX12RenderTextureHandle renderTextureHandle)
 	{
-		return pLegacyTexture != NULL
-			|| textureHandle.IsValid()
+		return textureHandle.IsValid()
 			|| renderTextureHandle.IsValid();
-	}
-
-	IDirect3DTexture9* SelectLegacyTextureIdentity(
-		IDirect3DTexture9* pLegacyTexture,
-		DirectX12TextureHandle textureHandle,
-		DirectX12RenderTextureHandle renderTextureHandle)
-	{
-		if (!textureHandle.IsValid() && !renderTextureHandle.IsValid())
-			return pLegacyTexture;
-		static bool reported = false;
-		if (!reported)
-		{
-			CPrintF(
-				"DX12 UI: command stream usa handles nativos sin "
-				"retener identidades COM D3D9.\n");
-			reported = true;
-		}
-		return NULL;
 	}
 
 	TextureCpuVertex MakeVertex(
@@ -219,22 +197,6 @@ void CDirectX12DrawPortCommandBatch::Shutdown()
 	m_frameActive = false;
 }
 
-void CDirectX12DrawPortCommandBatch::ForgetTexture(
-	IDirect3DTexture9* pTexture)
-{
-	if (m_pState == NULL || pTexture == NULL)
-		return;
-	for (size_t iRange = 0; iRange < m_pState->ranges.size(); ++iRange)
-	{
-		TextureBatchRange& range = m_pState->ranges[iRange];
-		if (range.pTexture == pTexture)
-		{
-			range.pTexture->Release();
-			range.pTexture = NULL;
-		}
-	}
-}
-
 void CDirectX12DrawPortCommandBatch::BeginFrame(UINT frameIndex)
 {
 	ClearQueuedResources();
@@ -355,7 +317,8 @@ bool CDirectX12DrawPortCommandBatch::QueueSolidTriangle(
 	const D3D12_RECT& scissor)
 {
 	return QueueTriangle(
-		NULL,
+		DirectX12TextureHandle(),
+		DirectX12RenderTextureHandle(),
 		x0, y0, 0.0f, 0.0f, color0,
 		x1, y1, 0.0f, 0.0f, color1,
 		x2, y2, 0.0f, 0.0f, color2,
@@ -396,79 +359,6 @@ bool CDirectX12DrawPortCommandBatch::QueueRectangle(
 }
 
 bool CDirectX12DrawPortCommandBatch::QueueTriangle(
-	IDirect3DTexture9* pTexture,
-	FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
-	FLOAT x1, FLOAT y1, FLOAT u1, FLOAT v1, ULONG color1,
-	FLOAT x2, FLOAT y2, FLOAT u2, FLOAT v2, ULONG color2,
-	const D3D12_RECT& scissor,
-	DirectX12BlendMode blendMode,
-	DirectX12SamplerMode samplerMode)
-{
-	if (!m_frameActive
-		|| m_pState->scopes.empty()
-		|| samplerMode < 0 || samplerMode >= DX12_SAMPLER_COUNT)
-		return false;
-	const DirectX12DrawPortScope scope = m_pState->scopes.back();
-
-	const UINT firstVertex =
-		static_cast<UINT>(m_pState->vertices.size());
-	const TextureCpuVertex vertices[] = {
-		MakeVertex(x0, y0, u0, v0, color0),
-		MakeVertex(x1, y1, u1, v1, color1),
-		MakeVertex(x2, y2, u2, v2, color2)
-	};
-	m_pState->vertices.insert(
-		m_pState->vertices.end(),
-		vertices,
-		vertices + 3);
-	const DirectX12TextureHandle textureHandle =
-		GetDirectX12ResourceRegistry().
-			ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(pTexture);
-	const DirectX12RenderTextureHandle renderTextureHandle =
-		GetDirectX12ResourceRegistry().
-			ResolveLegacyAlias<DX12_RESOURCE_RENDER_TEXTURE>(pTexture);
-	IDirect3DTexture9* pLegacyIdentity = SelectLegacyTextureIdentity(
-		pTexture,
-		textureHandle,
-		renderTextureHandle);
-
-	if (!m_pState->ranges.empty()
-		&& m_pState->ranges.back().pTexture == pLegacyIdentity
-		&& m_pState->ranges.back().textureHandle == textureHandle
-		&& m_pState->ranges.back().renderTextureHandle
-			== renderTextureHandle
-		&& SameScissor(m_pState->ranges.back().scissor, scissor)
-		&& m_pState->ranges.back().blendMode == blendMode
-		&& m_pState->ranges.back().samplerMode == samplerMode
-		&& m_pState->ranges.back().scope == scope
-		&& m_pState->ranges.back().segment == m_pState->currentSegment)
-	{
-		m_pState->ranges.back().vertexCount += 3;
-	}
-	else
-	{
-		TextureBatchRange range;
-		range.firstVertex = firstVertex;
-		range.vertexCount = 3;
-		range.pTexture = pLegacyIdentity;
-		range.textureHandle = textureHandle;
-		range.renderTextureHandle = renderTextureHandle;
-		if (range.pTexture != NULL)
-			range.pTexture->AddRef();
-		range.scissor = scissor;
-		range.blendMode = blendMode;
-		range.samplerMode = samplerMode;
-		range.scope = scope;
-		range.segment = m_pState->currentSegment;
-		m_pState->ranges.push_back(range);
-	}
-	++m_pState->primitiveCount;
-	if (scope == DX12_DRAWPORT_SCOPE_UI)
-		++m_pState->uiPrimitiveCount;
-	return true;
-}
-
-bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 	DirectX12TextureHandle textureHandle,
 	DirectX12RenderTextureHandle renderTextureHandle,
 	FLOAT x0, FLOAT y0, FLOAT u0, FLOAT v0, ULONG color0,
@@ -494,7 +384,6 @@ bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 		vertices,
 		vertices + 3);
 	if (!m_pState->ranges.empty()
-		&& m_pState->ranges.back().pTexture == NULL
 		&& m_pState->ranges.back().textureHandle == textureHandle
 		&& m_pState->ranges.back().renderTextureHandle
 			== renderTextureHandle
@@ -512,7 +401,6 @@ bool CDirectX12DrawPortCommandBatch::QueueTriangle(
 		TextureBatchRange range;
 		range.firstVertex = firstVertex;
 		range.vertexCount = 3;
-		range.pTexture = NULL;
 		range.textureHandle = textureHandle;
 		range.renderTextureHandle = renderTextureHandle;
 		range.scissor = scissor;
@@ -703,7 +591,6 @@ bool CDirectX12DrawPortCommandBatch::Render(
 			++visibleRangesByBlend[effectiveBlendMode];
 			visibleVerticesByBlend[effectiveBlendMode] += range.vertexCount;
 			if (HasTextureBinding(
-					range.pTexture,
 					range.textureHandle,
 					range.renderTextureHandle))
 				++visibleTexturedRangeCount;
@@ -731,27 +618,19 @@ bool CDirectX12DrawPortCommandBatch::Render(
 
 		D3D12_GPU_DESCRIPTOR_HANDLE textureView;
 		if (HasTextureBinding(
-				range.pTexture,
 				range.textureHandle,
 				range.renderTextureHandle))
 		{
-			const bool acquired =
-				range.renderTextureHandle.IsValid()
-					? pTextures->Acquire(
-						range.renderTextureHandle,
-						pCommandList,
-						&textureView)
-					: range.textureHandle.IsValid()
-					? pTextures->Acquire(
-						range.textureHandle,
-						pCommandList,
-						pUploadManager,
-						&textureView)
-					: pTextures->Acquire(
-						range.pTexture,
-						pCommandList,
-						pUploadManager,
-						&textureView);
+			const bool acquired = range.renderTextureHandle.IsValid()
+				? pTextures->Acquire(
+					range.renderTextureHandle,
+					pCommandList,
+					&textureView)
+				: pTextures->Acquire(
+					range.textureHandle,
+					pCommandList,
+					pUploadManager,
+					&textureView);
 			if (!acquired)
 			{
 				// Una textura incompatible no debe cancelar los comandos de UI
@@ -878,13 +757,6 @@ void CDirectX12DrawPortCommandBatch::ClearQueuedResources()
 {
 	if (m_pState == NULL)
 		return;
-	for (size_t iRange = 0;
-		iRange < m_pState->ranges.size();
-		++iRange)
-	{
-		if (m_pState->ranges[iRange].pTexture != NULL)
-			m_pState->ranges[iRange].pTexture->Release();
-	}
 	m_pState->vertices.clear();
 	m_pState->gpuVertices.clear();
 	m_pState->ranges.clear();

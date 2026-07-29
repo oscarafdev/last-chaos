@@ -1162,8 +1162,19 @@ void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
 {
 	if (pTexture9 == NULL)
 		return;
+	const DirectX12TextureHandle sampled =
+		m_pInteropTextures != NULL
+			? m_pInteropTextures->ResolveSampledTextureHandle(pTexture9)
+			: DirectX12TextureHandle();
+	const DirectX12RenderTextureHandle rendered =
+		m_pInteropTextures != NULL
+			? m_pInteropTextures->ResolveRenderTextureHandle(pTexture9)
+			: DirectX12RenderTextureHandle();
 	if (m_pNativeRenderer != NULL)
-		m_pNativeRenderer->ForgetTexture(pTexture9);
+	{
+		m_pNativeRenderer->ForgetTexture(sampled);
+		m_pNativeRenderer->ForgetTexture(rendered);
+	}
 	if (m_pInteropTextures != NULL)
 		m_pInteropTextures->ForgetTexture(pTexture9);
 }
@@ -1996,8 +2007,19 @@ void CDirectX12Backend::TrackLegacy3DTexture(
 	UINT stage,
 	IDirect3DTexture9* pTexture)
 {
-	m_legacyDrawState.SetTexture(stage, pTexture);
 	PrepareNativeTextureBinding(pTexture);
+	const DirectX12TextureHandle sampled =
+		pTexture != NULL && m_pInteropTextures != NULL
+			? m_pInteropTextures->ResolveSampledTextureHandle(pTexture)
+			: DirectX12TextureHandle();
+	const DirectX12RenderTextureHandle rendered =
+		pTexture != NULL && m_pInteropTextures != NULL
+			? m_pInteropTextures->ResolveRenderTextureHandle(pTexture)
+			: DirectX12RenderTextureHandle();
+	if (sampled.IsValid())
+		m_legacyDrawState.SetTexture(stage, sampled);
+	else
+		m_legacyDrawState.SetTexture(stage, rendered);
 }
 
 void CDirectX12Backend::TrackNative3DTexture(
@@ -2060,15 +2082,6 @@ bool CDirectX12Backend::QueueLegacy3DIndexedDraw(
 			"DX12 3D: estados, constantes y bindings cruzan como "
 			"tracker nativo; QueueLegacy3DIndexedDraw no consulta D3D9.\n");
 		nativeDrawStateReported = true;
-	}
-	// Materializa los aliases nativos en el borde de captura. Algunos assets
-	// quedaron enlazados en D3D9 antes de abrir el frame y no vuelven a pasar
-	// por gfxSetTexture aunque continúen activos.
-	for (UINT textureUnit = 0;
-		textureUnit < texturePassCount && textureUnit < 4;
-		++textureUnit)
-	{
-		PrepareNativeTextureBinding(drawState.textures[textureUnit]);
 	}
 	const DirectX12LegacyRenderTargetKind renderTargetKind =
 		m_legacyRenderTargetKind;
@@ -2207,10 +2220,21 @@ bool CDirectX12Backend::QueueDrawPortTexturedTriangle(
 	DirectX12SamplerMode samplerMode)
 {
 	PrepareNativeTextureBinding(pTexture);
+	const DirectX12TextureHandle sampled =
+		pTexture != NULL && m_pInteropTextures != NULL
+			? m_pInteropTextures->ResolveSampledTextureHandle(pTexture)
+			: DirectX12TextureHandle();
+	const DirectX12RenderTextureHandle rendered =
+		pTexture != NULL && m_pInteropTextures != NULL
+			? m_pInteropTextures->ResolveRenderTextureHandle(pTexture)
+			: DirectX12RenderTextureHandle();
+	if (pTexture != NULL && !sampled.IsValid() && !rendered.IsValid())
+		return false;
 	return m_frameOpen && m_offscreenDrawPortDepth == 0
 		&& m_pNativeRenderer != NULL
 		&& m_pNativeRenderer->QueueDrawPortTexturedTriangle(
-			pTexture,
+			sampled,
+			rendered,
 			vertex0.x, vertex0.y, vertex0.u, vertex0.v, vertex0.color,
 			vertex1.x, vertex1.y, vertex1.u, vertex1.v, vertex1.color,
 			vertex2.x, vertex2.y, vertex2.u, vertex2.v, vertex2.color,

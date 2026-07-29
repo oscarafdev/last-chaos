@@ -8,7 +8,6 @@
 #include <d3d12.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
-struct IDirect3DTexture9;
 class CDirectX12Buffer;
 class CDirectX12DepthBuffer;
 class CDirectX12InteropTextureManager;
@@ -50,7 +49,8 @@ public:
 		CDirectX12PipelineCache* pPipelineCache);
 	void Shutdown();
 	void BeginFrame(UINT frameIndex);
-	void ForgetTexture(IDirect3DTexture9* pTexture);
+	void ForgetTexture(DirectX12TextureHandle texture);
+	void ForgetTexture(DirectX12RenderTextureHandle texture);
 
 	void SetVertexArray(const FLOAT* pPositions, UINT vertexCount);
 	void SetTexCoordArray(
