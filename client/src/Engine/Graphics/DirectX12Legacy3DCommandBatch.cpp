@@ -400,7 +400,7 @@ namespace
 			if (_stricmp(value, "all") == 0)
 				return FIXED_FUNCTION_CAPTURE_ALL;
 		}
-		return FIXED_FUNCTION_CAPTURE_OPAQUE;
+		return FIXED_FUNCTION_CAPTURE_ALL;
 	}
 
 	int ReadOptionalEnvironmentInteger(
@@ -845,7 +845,6 @@ struct DirectX12Legacy3DCommandBatchState
 	bool terrainDepthMaskReported;
 	bool terrainOpaqueInitializationReported;
 	bool terrainCompatibilityFallbackReported;
-	bool fixedGeneralFallbackReported;
 	ID3D12Resource* pNativeDepthTarget;
 	UINT64 frameSerial;
 	UINT64 lastInventoryDumpFrame;
@@ -867,7 +866,6 @@ struct DirectX12Legacy3DCommandBatchState
 		, terrainDepthMaskReported(false)
 		, terrainOpaqueInitializationReported(false)
 		, terrainCompatibilityFallbackReported(false)
-		, fixedGeneralFallbackReported(false)
 		, pNativeDepthTarget(NULL)
 		, frameSerial(0)
 		, lastInventoryDumpFrame(0)
@@ -2246,6 +2244,10 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	const bool terrainDepthMaskDraw =
 		fixedFunctionDraw
 		&& DetectTerrainDepthMask(m_pState, drawState);
+	const bool fixedGeneralDraw =
+		fixedFunctionDraw
+		&& !fixedProjectiveDraw
+		&& !terrainDepthMaskDraw;
 	// Las sombras proyectadas consumen el render target nativo mediante la
 	// ruta fixed-function. Esta pareja no tiene fingerprints de shader, pero
 	// su estado y su generacion de coordenadas se traducen explicitamente.
@@ -2320,24 +2322,14 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		++m_pState->rejectedReasons[REJECT_OFFSCREEN_RENDER_TARGET];
 		return false;
 	}
-	// Las parejas programables deben estar validadas. Fixed-function general
-	// sigue en fallback: mezcla espacios de vertices y pasadas auxiliares que
-	// pueden producir paneles gigantes. Solo la proyeccion controlada y la
-	// mascara de profundidad del terreno tienen contrato nativo validado.
+	// Las parejas programables deben estar validadas. Fixed-function se
+	// clasifica más adelante usando su estado, espacio de clip y modo de
+	// captura; no debe quedar bloqueado junto con shaders desconocidos.
 	if (ReadFullReplacementMode()
 		&& !replacementFamilySelected
 		&& !shaderFamily.replacementValidated
-		&& !fixedProjectiveDraw
-		&& !terrainDepthMaskDraw)
+		&& !fixedFunctionDraw)
 	{
-		if (fixedFunctionDraw
-			&& !m_pState->fixedGeneralFallbackReported)
-		{
-			CPrintF(
-				"DX12 3D guardia: fixed-function general permanece "
-				"en fallback para evitar paneles o triangulos gigantes.\n");
-			m_pState->fixedGeneralFallbackReported = true;
-		}
 		return false;
 	}
 	if (ReadFullReplacementMode()
@@ -2752,9 +2744,9 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		ReadFixedFunctionBlendFilter();
 	const int fixedFunctionTextureWidthFilter =
 		ReadFixedFunctionTextureWidthFilter();
-	// Los grupos fixed se validan de forma aislada. El modo estable conserva
-	// solo los opacos; el laboratorio puede ejercer las capas sin escritura de
-	// profundidad sin volver autoritativos los demás estados en el mismo frame.
+	// El modo estable captura la familia fixed-function completa. Los modos
+	// parciales aíslan capas opacas o transparentes durante una regresión sin
+	// alterar el contrato de producción.
 	if (ReadFullReplacementMode()
 		&& fixedFunctionDraw
 		&& fixedFunctionCaptureMode == FIXED_FUNCTION_CAPTURE_OPAQUE
@@ -2831,6 +2823,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	const UINT baseVertex =
 		static_cast<UINT>(m_pState->vertices.size());
 	bool invalidClipCoordinate = false;
+	bool fixedDrawCrossesCameraPlane = false;
 	const bool projectedTerrain =
 		IsProjectedTerrainVertexFamily(shaderFamily.vertex);
 	UINT clampedFarDepthCount = 0;
@@ -3250,6 +3243,8 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			invalidClipCoordinate = true;
 			break;
 		}
+		if (fixedGeneralDraw && vertex.clipW <= 0.000001f)
+			fixedDrawCrossesCameraPlane = true;
 		m_pState->vertices.push_back(vertex);
 	}
 	if (invalidClipCoordinate)
@@ -3257,6 +3252,18 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		m_pState->vertices.resize(baseVertex);
 		++m_pState->rejectedDrawCount;
 		++m_pState->rejectedReasons[REJECT_INVALID_CLIP_COORDINATE];
+		return false;
+	}
+	// Los quads fixed-function que atraviesan el plano de la cámara necesitan
+	// recorte homogéneo antes de poder reemplazarse. Enviar sólo los
+	// triángulos con W positivo convierte el borde compartido en un panel que
+	// cubre media pantalla. Conservamos únicamente esos draws en el fallback;
+	// el resto de la familia ya puede cruzar por DX12 nativo.
+	if (fixedDrawCrossesCameraPlane)
+	{
+		m_pState->vertices.resize(baseVertex);
+		++m_pState->rejectedDrawCount;
+		++m_pState->rejectedReasons[REJECT_FIXED_CLIP_VOLUME];
 		return false;
 	}
 
