@@ -80,6 +80,174 @@ namespace
 		FLOAT texCoordQ[4];
 	};
 
+	enum HomogeneousClipPlane
+	{
+		CLIP_POSITIVE_W,
+		CLIP_LEFT,
+		CLIP_RIGHT,
+		CLIP_BOTTOM,
+		CLIP_TOP,
+		CLIP_NEAR,
+		CLIP_FAR,
+		CLIP_PLANE_COUNT
+	};
+
+	FLOAT EvaluateClipPlane(
+		const Legacy3DVertex& vertex,
+		HomogeneousClipPlane plane)
+	{
+		const FLOAT w = vertex.clipW;
+		switch (plane)
+		{
+		case CLIP_POSITIVE_W: return w - 0.000001f;
+		case CLIP_LEFT: return vertex.position[0] + w;
+		case CLIP_RIGHT: return w - vertex.position[0];
+		case CLIP_BOTTOM: return vertex.position[1] + w;
+		case CLIP_TOP: return w - vertex.position[1];
+		case CLIP_NEAR: return vertex.position[2];
+		case CLIP_FAR: return w - vertex.position[2];
+		default: return -1.0f;
+		}
+	}
+
+	Legacy3DVertex InterpolateVertex(
+		const Legacy3DVertex& from,
+		const Legacy3DVertex& to,
+		FLOAT factor)
+	{
+		static_assert(
+			sizeof(Legacy3DVertex) % sizeof(FLOAT) == 0,
+			"Legacy3DVertex must contain only float-compatible fields.");
+		Legacy3DVertex result;
+		const FLOAT* pFrom =
+			reinterpret_cast<const FLOAT*>(&from);
+		const FLOAT* pTo =
+			reinterpret_cast<const FLOAT*>(&to);
+		FLOAT* pResult = reinterpret_cast<FLOAT*>(&result);
+		const size_t componentCount =
+			sizeof(Legacy3DVertex) / sizeof(FLOAT);
+		for (size_t component = 0;
+			component < componentCount;
+			++component)
+		{
+			pResult[component] = pFrom[component]
+				+ (pTo[component] - pFrom[component]) * factor;
+		}
+		return result;
+	}
+
+	void ClipPolygonAgainstPlane(
+		const std::vector<Legacy3DVertex>& input,
+		HomogeneousClipPlane plane,
+		std::vector<Legacy3DVertex>* pOutput)
+	{
+		if (pOutput == NULL)
+			return;
+		pOutput->clear();
+		if (input.empty())
+			return;
+		Legacy3DVertex previous = input.back();
+		FLOAT previousDistance =
+			EvaluateClipPlane(previous, plane);
+		bool previousInside = previousDistance >= 0.0f;
+		for (size_t vertexIndex = 0;
+			vertexIndex < input.size();
+			++vertexIndex)
+		{
+			const Legacy3DVertex& current = input[vertexIndex];
+			const FLOAT currentDistance =
+				EvaluateClipPlane(current, plane);
+			const bool currentInside = currentDistance >= 0.0f;
+			if (currentInside != previousInside)
+			{
+				const FLOAT denominator =
+					previousDistance - currentDistance;
+				const FLOAT factor = denominator != 0.0f
+					? previousDistance / denominator
+					: 0.0f;
+				pOutput->push_back(InterpolateVertex(
+					previous,
+					current,
+					factor));
+			}
+			if (currentInside)
+				pOutput->push_back(current);
+			previous = current;
+			previousDistance = currentDistance;
+			previousInside = currentInside;
+		}
+	}
+
+	bool AppendClippedTriangle(
+		const Legacy3DVertex& vertex0,
+		const Legacy3DVertex& vertex1,
+		const Legacy3DVertex& vertex2,
+		std::vector<Legacy3DVertex>* pVertices,
+		std::vector<UINT>* pIndices,
+		UINT maximumVertices,
+		UINT maximumIndices)
+	{
+		if (pVertices == NULL || pIndices == NULL)
+			return false;
+		std::vector<Legacy3DVertex> polygon;
+		std::vector<Legacy3DVertex> clipped;
+		polygon.reserve(12);
+		clipped.reserve(12);
+		polygon.push_back(vertex0);
+		polygon.push_back(vertex1);
+		polygon.push_back(vertex2);
+		for (UINT plane = 0;
+			plane < CLIP_PLANE_COUNT && !polygon.empty();
+			++plane)
+		{
+			ClipPolygonAgainstPlane(
+				polygon,
+				static_cast<HomogeneousClipPlane>(plane),
+				&clipped);
+			polygon.swap(clipped);
+		}
+		if (polygon.size() < 3)
+			return true;
+		const size_t triangleCount = polygon.size() - 2;
+		if (pVertices->size() + polygon.size() > maximumVertices
+			|| pIndices->size() + triangleCount * 3 > maximumIndices)
+			return false;
+		const UINT baseVertex =
+			static_cast<UINT>(pVertices->size());
+		pVertices->insert(
+			pVertices->end(),
+			polygon.begin(),
+			polygon.end());
+		for (UINT triangle = 0;
+			triangle < static_cast<UINT>(triangleCount);
+			++triangle)
+		{
+			pIndices->push_back(baseVertex);
+			pIndices->push_back(baseVertex + triangle + 1);
+			pIndices->push_back(baseVertex + triangle + 2);
+		}
+		return true;
+	}
+
+	bool StraddlesEyePlane(
+		const std::vector<Legacy3DVertex>& vertices,
+		UINT firstVertex,
+		UINT vertexCount)
+	{
+		bool hasVertexBehindEye = false;
+		bool hasVertexInFrontOfEye = false;
+		for (UINT vertexIndex = 0;
+			vertexIndex < vertexCount;
+			++vertexIndex)
+		{
+			const FLOAT clipW =
+				vertices[firstVertex + vertexIndex].clipW;
+			hasVertexBehindEye |= clipW <= 0.000001f;
+			hasVertexInFrontOfEye |= clipW > 0.000001f;
+		}
+		return hasVertexBehindEye && hasVertexInFrontOfEye;
+	}
+
 	struct Legacy3DDrawRange
 	{
 		UINT firstIndex;
@@ -2823,7 +2991,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 	const UINT baseVertex =
 		static_cast<UINT>(m_pState->vertices.size());
 	bool invalidClipCoordinate = false;
-	bool fixedDrawCrossesCameraPlane = false;
 	const bool projectedTerrain =
 		IsProjectedTerrainVertexFamily(shaderFamily.vertex);
 	UINT clampedFarDepthCount = 0;
@@ -3243,8 +3410,6 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			invalidClipCoordinate = true;
 			break;
 		}
-		if (fixedGeneralDraw && vertex.clipW <= 0.000001f)
-			fixedDrawCrossesCameraPlane = true;
 		m_pState->vertices.push_back(vertex);
 	}
 	if (invalidClipCoordinate)
@@ -3254,50 +3419,98 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		++m_pState->rejectedReasons[REJECT_INVALID_CLIP_COORDINATE];
 		return false;
 	}
-	// Los quads fixed-function que atraviesan el plano de la cámara necesitan
-	// recorte homogéneo antes de poder reemplazarse. Enviar sólo los
-	// triángulos con W positivo convierte el borde compartido en un panel que
-	// cubre media pantalla. Conservamos únicamente esos draws en el fallback;
-	// el resto de la familia ya puede cruzar por DX12 nativo.
-	if (fixedDrawCrossesCameraPlane)
+	if (fixedGeneralDraw
+		&& clipping != FALSE
+		&& StraddlesEyePlane(
+			m_pState->vertices,
+			baseVertex,
+			usedVertexCount))
 	{
+		// Los quads fixed-function usados por algunos efectos pueden envolver
+		// el ojo. Recortarlos triángulo por triángulo conserva una mitad que se
+		// proyecta sobre casi toda la pantalla. D3D9 descartaba la primitiva
+		// coherente; consumimos el draw como un no-op DX12 para preservar ese
+		// resultado sin devolver el comando al dispositivo heredado.
 		m_pState->vertices.resize(baseVertex);
-		++m_pState->rejectedDrawCount;
-		++m_pState->rejectedReasons[REJECT_FIXED_CLIP_VOLUME];
-		return false;
+		++m_pState->capturedDrawCount;
+		return true;
 	}
 
 	const UINT firstIndex =
 		static_cast<UINT>(m_pState->indices.size());
 	UINT capturedIndexCount = 0;
-	for (UINT iIndex = 0; iIndex + 2 < indexCount; iIndex += 3)
+	if (fixedGeneralDraw && clipping != FALSE)
 	{
-		const UINT localIndex0 = remappedIndices[iIndex + 0];
-		const UINT localIndex1 = remappedIndices[iIndex + 1];
-		const UINT localIndex2 = remappedIndices[iIndex + 2];
-		if (!usesVertexProgram
-			&& !usesPixelProgram
-			&& (m_pState->vertices[baseVertex + localIndex0].clipW
-					<= 0.000001f
-				|| m_pState->vertices[baseVertex + localIndex1].clipW
-					<= 0.000001f
-				|| m_pState->vertices[baseVertex + localIndex2].clipW
-					<= 0.000001f))
+		const std::vector<Legacy3DVertex> sourceVertices(
+			m_pState->vertices.begin() + baseVertex,
+			m_pState->vertices.end());
+		m_pState->vertices.resize(baseVertex);
+		for (UINT iIndex = 0;
+			iIndex + 2 < indexCount;
+			iIndex += 3)
 		{
-			continue;
+			const UINT localIndex0 = remappedIndices[iIndex + 0];
+			const UINT localIndex1 = remappedIndices[iIndex + 1];
+			const UINT localIndex2 = remappedIndices[iIndex + 2];
+			if (!AppendClippedTriangle(
+					sourceVertices[localIndex0],
+					sourceVertices[localIndex1],
+					sourceVertices[localIndex2],
+					&m_pState->vertices,
+					&m_pState->indices,
+					captureBudget.maxVertices,
+					captureBudget.maxIndices))
+			{
+				m_pState->vertices.resize(baseVertex);
+				m_pState->indices.resize(firstIndex);
+				++m_pState->rejectedDrawCount;
+				++m_pState->rejectedReasons[REJECT_CAPTURE_LIMIT];
+				return false;
+			}
 		}
-		m_pState->indices.push_back(baseVertex + localIndex0);
-		m_pState->indices.push_back(baseVertex + localIndex1);
-		m_pState->indices.push_back(baseVertex + localIndex2);
-		capturedIndexCount += 3;
+		capturedIndexCount = static_cast<UINT>(
+			m_pState->indices.size() - firstIndex);
+	}
+	else
+	{
+		for (UINT iIndex = 0; iIndex + 2 < indexCount; iIndex += 3)
+		{
+			const UINT localIndex0 = remappedIndices[iIndex + 0];
+			const UINT localIndex1 = remappedIndices[iIndex + 1];
+			const UINT localIndex2 = remappedIndices[iIndex + 2];
+			if (!usesVertexProgram
+				&& !usesPixelProgram
+				&& (m_pState->vertices[baseVertex + localIndex0].clipW
+						<= 0.000001f
+					|| m_pState->vertices[baseVertex + localIndex1].clipW
+						<= 0.000001f
+					|| m_pState->vertices[baseVertex + localIndex2].clipW
+						<= 0.000001f))
+			{
+				continue;
+			}
+			m_pState->indices.push_back(baseVertex + localIndex0);
+			m_pState->indices.push_back(baseVertex + localIndex1);
+			m_pState->indices.push_back(baseVertex + localIndex2);
+			capturedIndexCount += 3;
+		}
 	}
 	if (capturedIndexCount == 0)
 	{
 		m_pState->vertices.resize(baseVertex);
+		if (fixedGeneralDraw && clipping != FALSE)
+		{
+			// La primitiva quedó completamente fuera del volumen visible. El
+			// reemplazo correcto es un no-op nativo, no un draw D3D9 tardío.
+			++m_pState->capturedDrawCount;
+			return true;
+		}
 		++m_pState->rejectedDrawCount;
 		++m_pState->rejectedReasons[REJECT_FIXED_CLIP_VOLUME];
 		return false;
 	}
+	const UINT capturedVertexCount = static_cast<UINT>(
+		m_pState->vertices.size() - baseVertex);
 
 	IDirect3DTexture9* pTextures[4] = {
 		NULL, NULL, NULL, NULL
@@ -3357,7 +3570,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			capturedIndexCount,
 			m_pState->vertices,
 			baseVertex,
-			usedVertexCount);
+			capturedVertexCount);
 	}
 	if (inventoryMode
 		&& !usesVertexProgram && !usesPixelProgram
@@ -3377,7 +3590,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 		FLOAT maximumY = firstVertex.position[1];
 		FLOAT minimumW = firstVertex.clipW;
 		FLOAT maximumW = firstVertex.clipW;
-		for (UINT iVertex = 1; iVertex < usedVertexCount; ++iVertex)
+		for (UINT iVertex = 1; iVertex < capturedVertexCount; ++iVertex)
 		{
 			const Legacy3DVertex& diagnosticVertex =
 				m_pState->vertices[baseVertex + iVertex];
@@ -3419,7 +3632,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 				alphaTest,
 				sourceBlend,
 				destinationBlend)),
-			usedVertexCount,
+			capturedVertexCount,
 			colorOperation,
 			colorArgument1,
 			colorArgument2,
@@ -3621,7 +3834,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			zWrite != FALSE ? 1U : 0U,
 			shaderFamily.textureCount,
 			texturePassCount,
-			usedVertexCount,
+			capturedVertexCount,
 			capturedIndexCount,
 			fixedTextureDescriptionAvailable
 				? static_cast<int>(fixedTextureDescription.Format)
@@ -3691,7 +3904,7 @@ bool CDirectX12Legacy3DCommandBatch::QueueIndexedDraw(
 			pTexture3,
 			m_pState->vertices,
 			baseVertex,
-			usedVertexCount,
+			capturedVertexCount,
 			clampedFarDepthCount);
 	}
 	m_pState->ranges.push_back(range);
