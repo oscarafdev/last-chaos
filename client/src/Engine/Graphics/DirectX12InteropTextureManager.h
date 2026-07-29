@@ -11,14 +11,13 @@
 
 #include <Engine/Graphics/DirectX12RenderState.h>
 
-struct IDirect3DTexture9;
 class CDirectX12DescriptorHeap;
 class CDirectX12SampledTextureCache;
 class CDirectX12Texture;
 class CDirectX12UploadManager;
 struct DirectX12InteropTextureState;
 
-// Mantiene las texturas D3D9 abiertas para D3D12 hasta que termina el frame
+// Gestiona texturas y render targets DX12 nativos durante el frame
 // que las utiliza y recicla sus descriptores cuando la GPU ya finalizó.
 class CDirectX12InteropTextureManager
 {
@@ -33,17 +32,9 @@ public:
 		CDirectX12DescriptorHeap* pResourceDescriptors,
 		CDirectX12DescriptorHeap* pRenderTargetDescriptors);
 	void Shutdown();
-	bool ResetLegacyBindings();
+	bool ResetResources();
 	bool BeginFrame(UINT frameIndex);
 	bool EndFrame();
-	void ForgetTexture(IDirect3DTexture9* pTexture9);
-	void RetireLegacyTextureBinding(IDirect3DTexture9* pTexture9);
-	bool CreateRenderTarget(
-		IDirect3DTexture9* pTexture9,
-		UINT width,
-		UINT height,
-		D3DFORMAT legacyFormat,
-		DirectX12RenderTextureHandle* pHandle);
 	bool CreateRenderTarget(
 		UINT width,
 		UINT height,
@@ -76,31 +67,10 @@ public:
 	CDirectX12Texture* FindRenderTarget(
 		DirectX12RenderTextureHandle handle) const;
 
-private:
-	CDirectX12Texture* FindRenderTarget(
-		IDirect3DTexture9* pTexture9) const;
-
-public:
-	DirectX12TextureHandle ResolveSampledTextureHandle(
-		IDirect3DTexture9* pTexture9) const;
-	DirectX12RenderTextureHandle ResolveRenderTextureHandle(
-		IDirect3DTexture9* pTexture9) const;
-
-private:
-	bool ReferencesResource(
-		IDirect3DTexture9* pTexture9,
-		ID3D12Resource* pResource12) const;
-
-public:
 	bool ReferencesResource(
 		DirectX12RenderTextureHandle handle,
 		ID3D12Resource* pResource12) const;
 
-	bool Acquire(
-		IDirect3DTexture9* pTexture9,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager,
-		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
 	bool Acquire(
 		DirectX12TextureHandle handle,
 		ID3D12GraphicsCommandList* pCommandList,
@@ -110,29 +80,6 @@ public:
 		DirectX12RenderTextureHandle handle,
 		ID3D12GraphicsCommandList* pCommandList,
 		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
-	bool RefreshSampledTexture(
-		IDirect3DTexture9* pTexture9,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager);
-	bool RefreshSampledTextureFromRgbaMipChain(
-		IDirect3DTexture9* pTexture9,
-		const void* pPixels,
-		UINT width,
-		UINT height,
-		D3DFORMAT legacyFormat,
-		UINT maximumMipCount,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager);
-	bool RefreshSampledTextureFromCompressedBlob(
-		IDirect3DTexture9* pTexture9,
-		const void* pBlob,
-		size_t blobSize,
-		UINT width,
-		UINT height,
-		D3DFORMAT legacyFormat,
-		UINT maximumMipCount,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager);
 private:
 	CDirectX12InteropTextureManager(
 		const CDirectX12InteropTextureManager&);

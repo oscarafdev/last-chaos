@@ -524,9 +524,9 @@ extern void gfxSetTexture( ULONG64 &ulTexObject, CTexParams &tpLocal)
 				GFX_iActiveTexUnit,
 				rendered);
 		else
-			GetDirectX12Backend().TrackLegacy3DTexture(
+			GetDirectX12Backend().TrackNative3DTexture(
 				GFX_iActiveTexUnit,
-				NULL);
+				DirectX12TextureHandle());
 		MimicTexParams_D3D(tpLocal);
 	}
 	// done

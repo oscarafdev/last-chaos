@@ -12,15 +12,13 @@
 #include <Engine/Graphics/DirectX12RenderState.h>
 #include <Engine/Graphics/DirectX12ResourceHandle.h>
 
-struct IDirect3DTexture9;
 class CDirectX12DescriptorHeap;
 class CDirectX12TextureUploadSource;
 class CDirectX12UploadManager;
 struct DirectX12SampledTextureCacheState;
 
-// Conserva recursos y SRV nativos para las texturas muestreadas por los
-// draw calls DX12. El objeto D3D9 es una clave no propietaria y una fuente
-// transitoria mientras las cargas de assets sigan siendo legadas.
+// Conserva recursos, uploads pendientes y SRV nativos para las texturas
+// muestreadas por los draw calls DX12.
 class CDirectX12SampledTextureCache
 {
 public:
@@ -34,16 +32,6 @@ public:
 	void Clear();
 	void BeginFrame(UINT frameIndex);
 
-private:
-	friend class CDirectX12InteropTextureManager;
-
-	// Traducción exclusiva del adaptador heredado. Ningún command stream
-	// nativo puede adquirir o resolver una textura mediante un puntero COM.
-	void Forget(IDirect3DTexture9* pTexture9);
-	void RetireLegacyBinding(IDirect3DTexture9* pTexture9);
-	DirectX12TextureHandle FindHandle(IDirect3DTexture9* pTexture9) const;
-
-public:
 	bool CreateNative(DirectX12TextureHandle* pHandle);
 	void DestroyNative(DirectX12TextureHandle handle);
 	bool RefreshNativeFromRgbaMipChain(
@@ -67,40 +55,6 @@ public:
 		ID3D12GraphicsCommandList* pCommandList,
 		CDirectX12UploadManager* pUploadManager,
 		DirectX12TextureHandle* pNewHandle);
-
-	// Reemplaza anticipadamente la copia nativa después de un upload legado.
-	// Si no puede hacerlo, Acquire conserva una ruta de creación bajo demanda.
-private:
-	bool Refresh(
-		IDirect3DTexture9* pTexture9,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager);
-	bool RefreshFromRgbaMipChain(
-		IDirect3DTexture9* pTexture9,
-		const void* pPixels,
-		UINT width,
-		UINT height,
-		D3DFORMAT legacyFormat,
-		UINT maximumMipCount,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager);
-	bool RefreshFromCompressedBlob(
-		IDirect3DTexture9* pTexture9,
-		const void* pBlob,
-		size_t blobSize,
-		UINT width,
-		UINT height,
-		D3DFORMAT legacyFormat,
-		UINT maximumMipCount,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager);
-	bool Acquire(
-		IDirect3DTexture9* pTexture9,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager,
-		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
-
-public:
 	bool Acquire(
 		DirectX12TextureHandle handle,
 		ID3D12GraphicsCommandList* pCommandList,
@@ -110,7 +64,6 @@ public:
 private:
 	enum CpuUploadKind
 	{
-		CPU_UPLOAD_NONE,
 		CPU_UPLOAD_RGBA,
 		CPU_UPLOAD_COMPRESSED
 	};
@@ -120,14 +73,6 @@ private:
 	CDirectX12SampledTextureCache& operator=(
 		const CDirectX12SampledTextureCache&);
 
-	bool Replace(
-		IDirect3DTexture9* pTexture9,
-		const CDirectX12TextureUploadSource& source,
-		ID3D12GraphicsCommandList* pCommandList,
-		CDirectX12UploadManager* pUploadManager,
-		CpuUploadKind cpuUploadKind,
-		D3D12_GPU_DESCRIPTOR_HANDLE* pShaderResourceView);
-	bool Remove(IDirect3DTexture9* pTexture9);
 	bool Remove(DirectX12TextureHandle handle);
 	bool ReplaceNative(
 		DirectX12TextureHandle handle,

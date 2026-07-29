@@ -1128,7 +1128,7 @@ bool CDirectX12Backend::AttachD3D9Device(IDirect3DDevice9* pDevice9)
 	if (pDevice9 == NULL || m_pRenderTargets == NULL
 		|| m_pInteropTextures == NULL)
 		return false;
-	if (!m_pInteropTextures->ResetLegacyBindings())
+	if (!m_pInteropTextures->ResetResources())
 		return false;
 	if (m_pDevice9 != NULL)
 		m_pDevice9->Release();
@@ -1156,125 +1156,6 @@ void CDirectX12Backend::TrackLegacy3DRenderTarget(
 	{
 		m_legacyRenderTargetKind = renderTargetKind;
 	}
-}
-
-void CDirectX12Backend::ForgetLegacyTexture(IDirect3DTexture9* pTexture9)
-{
-	if (pTexture9 == NULL)
-		return;
-	const DirectX12TextureHandle sampled =
-		m_pInteropTextures != NULL
-			? m_pInteropTextures->ResolveSampledTextureHandle(pTexture9)
-			: DirectX12TextureHandle();
-	const DirectX12RenderTextureHandle rendered =
-		m_pInteropTextures != NULL
-			? m_pInteropTextures->ResolveRenderTextureHandle(pTexture9)
-			: DirectX12RenderTextureHandle();
-	if (m_pNativeRenderer != NULL)
-	{
-		m_pNativeRenderer->ForgetTexture(sampled);
-		m_pNativeRenderer->ForgetTexture(rendered);
-	}
-	if (m_pInteropTextures != NULL)
-		m_pInteropTextures->ForgetTexture(pTexture9);
-}
-
-void CDirectX12Backend::PrepareNativeTextureBinding(
-	IDirect3DTexture9* pTexture9)
-{
-	if (!m_frameOpen || pTexture9 == NULL
-		|| m_pInteropTextures == NULL || m_pCommandList == NULL
-		|| m_pUploadManager == NULL)
-		return;
-	if (m_pInteropTextures->ResolveSampledTextureHandle(
-			pTexture9).IsValid()
-		|| m_pInteropTextures->ResolveRenderTextureHandle(
-			pTexture9).IsValid())
-		return;
-	D3D12_GPU_DESCRIPTOR_HANDLE ignored;
-	ignored.ptr = 0;
-	const bool acquired = m_pInteropTextures->Acquire(
-		pTexture9,
-		m_pCommandList,
-		m_pUploadManager,
-		&ignored);
-	static bool preparedReported = false;
-	static bool failureReported = false;
-	if (acquired && !preparedReported)
-	{
-		CPrintF(
-			"DX12 texturas: handle nativo preparado antes de capturar "
-			"el draw.\n");
-		preparedReported = true;
-	}
-	else if (!acquired && !failureReported)
-	{
-		CPrintF(
-			"DX12 texturas: no se pudo preparar un handle antes del draw; "
-			"se conserva el alias D3D9.\n");
-		failureReported = true;
-	}
-}
-
-void CDirectX12Backend::RefreshLegacyTexture(
-	IDirect3DTexture9* pTexture9)
-{
-	if (!m_frameOpen || pTexture9 == NULL
-		|| m_pInteropTextures == NULL || m_pCommandList == NULL
-		|| m_pUploadManager == NULL)
-		return;
-	m_pInteropTextures->RefreshSampledTexture(
-		pTexture9,
-		m_pCommandList,
-		m_pUploadManager);
-}
-
-bool CDirectX12Backend::RefreshLegacyTextureFromRgbaMipChain(
-	IDirect3DTexture9* pTexture9,
-	const void* pPixels,
-	UINT width,
-	UINT height,
-	INT legacyFormat,
-	UINT maximumMipCount)
-{
-	if (!m_frameOpen || pTexture9 == NULL || pPixels == NULL
-		|| m_pInteropTextures == NULL || m_pCommandList == NULL
-		|| m_pUploadManager == NULL)
-		return false;
-	return m_pInteropTextures->RefreshSampledTextureFromRgbaMipChain(
-		pTexture9,
-		pPixels,
-		width,
-		height,
-		static_cast<D3DFORMAT>(legacyFormat),
-		maximumMipCount,
-		m_pCommandList,
-		m_pUploadManager);
-}
-
-bool CDirectX12Backend::RefreshLegacyTextureFromCompressedBlob(
-	IDirect3DTexture9* pTexture9,
-	const void* pBlob,
-	size_t blobSize,
-	UINT width,
-	UINT height,
-	INT legacyFormat,
-	UINT maximumMipCount)
-{
-	if (!m_frameOpen || pTexture9 == NULL || pBlob == NULL
-		|| blobSize == 0 || m_pInteropTextures == NULL
-		|| m_pCommandList == NULL || m_pUploadManager == NULL)
-		return false;
-	return m_pInteropTextures->RefreshSampledTextureFromCompressedBlob(
-		pTexture9,
-		pBlob,
-		blobSize,
-		width,
-		height,
-		static_cast<D3DFORMAT>(legacyFormat),
-		maximumMipCount,
-		m_pCommandList,
-		m_pUploadManager);
 }
 
 bool CDirectX12Backend::CreateNativeSampledTexture(
@@ -1354,30 +1235,6 @@ bool CDirectX12Backend::GetNativeTextureDescription(
 	*pHeight = pTexture->GetHeight();
 	*pFormat = static_cast<INT>(pTexture->GetFormat());
 	return true;
-}
-
-void CDirectX12Backend::RetireLegacyTextureBinding(
-	IDirect3DTexture9* pTexture9)
-{
-	if (pTexture9 != NULL && m_pInteropTextures != NULL)
-		m_pInteropTextures->RetireLegacyTextureBinding(pTexture9);
-}
-
-bool CDirectX12Backend::CreateNativeOffscreenTexture(
-	IDirect3DTexture9* pTexture9,
-	UINT width,
-	UINT height,
-	INT legacyFormat,
-	DirectX12RenderTextureHandle* pHandle)
-{
-	return ReadFull3DReplacementMode()
-		&& m_pInteropTextures != NULL
-		&& m_pInteropTextures->CreateRenderTarget(
-			pTexture9,
-			width,
-			height,
-			static_cast<D3DFORMAT>(legacyFormat),
-			pHandle);
 }
 
 bool CDirectX12Backend::CreateNativeOffscreenTexture(
@@ -2003,25 +1860,6 @@ void CDirectX12Backend::TrackLegacy3DPixelShaderConstants(
 		registerCount);
 }
 
-void CDirectX12Backend::TrackLegacy3DTexture(
-	UINT stage,
-	IDirect3DTexture9* pTexture)
-{
-	PrepareNativeTextureBinding(pTexture);
-	const DirectX12TextureHandle sampled =
-		pTexture != NULL && m_pInteropTextures != NULL
-			? m_pInteropTextures->ResolveSampledTextureHandle(pTexture)
-			: DirectX12TextureHandle();
-	const DirectX12RenderTextureHandle rendered =
-		pTexture != NULL && m_pInteropTextures != NULL
-			? m_pInteropTextures->ResolveRenderTextureHandle(pTexture)
-			: DirectX12RenderTextureHandle();
-	if (sampled.IsValid())
-		m_legacyDrawState.SetTexture(stage, sampled);
-	else
-		m_legacyDrawState.SetTexture(stage, rendered);
-}
-
 void CDirectX12Backend::TrackNative3DTexture(
 	UINT stage,
 	DirectX12TextureHandle texture)
@@ -2205,45 +2043,6 @@ bool CDirectX12Backend::QueueDrawPortRectangle(
 			scissorTop,
 			scissorRight,
 			scissorBottom);
-}
-
-bool CDirectX12Backend::QueueDrawPortTexturedTriangle(
-	IDirect3DTexture9* pTexture,
-	const DirectX12DrawPortTexturedVertex& vertex0,
-	const DirectX12DrawPortTexturedVertex& vertex1,
-	const DirectX12DrawPortTexturedVertex& vertex2,
-	LONG scissorLeft,
-	LONG scissorTop,
-	LONG scissorRight,
-	LONG scissorBottom,
-	DirectX12BlendMode blendMode,
-	DirectX12SamplerMode samplerMode)
-{
-	PrepareNativeTextureBinding(pTexture);
-	const DirectX12TextureHandle sampled =
-		pTexture != NULL && m_pInteropTextures != NULL
-			? m_pInteropTextures->ResolveSampledTextureHandle(pTexture)
-			: DirectX12TextureHandle();
-	const DirectX12RenderTextureHandle rendered =
-		pTexture != NULL && m_pInteropTextures != NULL
-			? m_pInteropTextures->ResolveRenderTextureHandle(pTexture)
-			: DirectX12RenderTextureHandle();
-	if (pTexture != NULL && !sampled.IsValid() && !rendered.IsValid())
-		return false;
-	return m_frameOpen && m_offscreenDrawPortDepth == 0
-		&& m_pNativeRenderer != NULL
-		&& m_pNativeRenderer->QueueDrawPortTexturedTriangle(
-			sampled,
-			rendered,
-			vertex0.x, vertex0.y, vertex0.u, vertex0.v, vertex0.color,
-			vertex1.x, vertex1.y, vertex1.u, vertex1.v, vertex1.color,
-			vertex2.x, vertex2.y, vertex2.u, vertex2.v, vertex2.color,
-			scissorLeft,
-			scissorTop,
-			scissorRight,
-			scissorBottom,
-			blendMode,
-			samplerMode);
 }
 
 bool CDirectX12Backend::QueueDrawPortTexturedTriangle(

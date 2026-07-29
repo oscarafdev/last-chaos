@@ -78,8 +78,7 @@ static const DirectX12VertexBufferHandle DX12_INVALID_VERTEX_BUFFER;
 static const DirectX12IndexBufferHandle DX12_INVALID_INDEX_BUFFER;
 
 // Registro generacional compartido por todas las familias de recursos.
-// Los aliases legacy son adaptadores temporales: la identidad canónica es el
-// handle y sobrevive aunque el puntero D3D9 sea reemplazado durante un upload.
+// El handle es la unica identidad publica de cada recurso nativo.
 class CDirectX12ResourceRegistry
 {
 public:
@@ -105,36 +104,6 @@ public:
 		return ResolveRaw(handle.GetValue(), Kind);
 	}
 
-	template<DirectX12ResourceKind Kind>
-	bool BindLegacyAlias(
-		const void* pLegacyIdentity,
-		DirectX12TypedResourceHandle<Kind> handle)
-	{
-		return BindLegacyAliasRaw(
-			pLegacyIdentity,
-			handle.GetValue(),
-			Kind);
-	}
-
-	template<DirectX12ResourceKind Kind>
-	void UnbindLegacyAlias(
-		const void* pLegacyIdentity,
-		DirectX12TypedResourceHandle<Kind> handle)
-	{
-		UnbindLegacyAliasRaw(
-			pLegacyIdentity,
-			handle.GetValue(),
-			Kind);
-	}
-
-	template<DirectX12ResourceKind Kind>
-	DirectX12TypedResourceHandle<Kind> ResolveLegacyAlias(
-		const void* pLegacyIdentity) const
-	{
-		return DirectX12TypedResourceHandle<Kind>(
-			ResolveLegacyAliasRaw(pLegacyIdentity, Kind));
-	}
-
 private:
 	CDirectX12ResourceRegistry(const CDirectX12ResourceRegistry&);
 	CDirectX12ResourceRegistry& operator=(
@@ -143,17 +112,6 @@ private:
 	UINT64 AllocateRaw(DirectX12ResourceKind kind, void* pOwner);
 	void ReleaseRaw(UINT64 value, DirectX12ResourceKind kind);
 	void* ResolveRaw(UINT64 value, DirectX12ResourceKind kind) const;
-	bool BindLegacyAliasRaw(
-		const void* pLegacyIdentity,
-		UINT64 value,
-		DirectX12ResourceKind kind);
-	void UnbindLegacyAliasRaw(
-		const void* pLegacyIdentity,
-		UINT64 value,
-		DirectX12ResourceKind kind);
-	UINT64 ResolveLegacyAliasRaw(
-		const void* pLegacyIdentity,
-		DirectX12ResourceKind kind) const;
 
 	struct State;
 	State* m_pState;

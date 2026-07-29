@@ -11,7 +11,6 @@
 #include <Engine/Graphics/DirectX12PipelineCache.h>
 #include <Engine/Graphics/DirectX12RenderState.h>
 
-struct IDirect3DTexture9;
 class CDirectX12Buffer;
 class CDirectX12RenderTargetManager;
 class CDirectX12Texture;

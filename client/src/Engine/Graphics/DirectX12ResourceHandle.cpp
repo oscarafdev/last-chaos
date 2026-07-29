@@ -60,16 +60,8 @@ struct CDirectX12ResourceRegistry::State
 		}
 	};
 
-	struct LegacyAlias
-	{
-		const void* pIdentity;
-		UINT64 handle;
-		DirectX12ResourceKind kind;
-	};
-
 	std::vector<Slot> slots;
 	std::vector<UINT> freeSlots;
-	std::vector<LegacyAlias> aliases;
 };
 
 CDirectX12ResourceRegistry::CDirectX12ResourceRegistry()
@@ -125,14 +117,6 @@ void CDirectX12ResourceRegistry::ReleaseRaw(
 		|| slot.generation != DecodeGeneration(value))
 		return;
 
-	for (size_t iAlias = 0; iAlias < m_pState->aliases.size();)
-	{
-		if (m_pState->aliases[iAlias].handle == value)
-			m_pState->aliases.erase(
-				m_pState->aliases.begin() + iAlias);
-		else
-			++iAlias;
-	}
 	slot.pOwner = NULL;
 	slot.kind = DX12_RESOURCE_UNKNOWN;
 	slot.occupied = false;
@@ -159,72 +143,6 @@ void* CDirectX12ResourceRegistry::ResolveRaw(
 		: NULL;
 }
 
-bool CDirectX12ResourceRegistry::BindLegacyAliasRaw(
-	const void* pLegacyIdentity,
-	UINT64 value,
-	DirectX12ResourceKind kind)
-{
-	if (pLegacyIdentity == NULL || ResolveRaw(value, kind) == NULL)
-		return false;
-	for (size_t iAlias = 0;
-		iAlias < m_pState->aliases.size();
-		++iAlias)
-	{
-		State::LegacyAlias& alias = m_pState->aliases[iAlias];
-		if (alias.pIdentity == pLegacyIdentity && alias.kind == kind)
-		{
-			alias.handle = value;
-			return true;
-		}
-	}
-	State::LegacyAlias alias;
-	alias.pIdentity = pLegacyIdentity;
-	alias.handle = value;
-	alias.kind = kind;
-	m_pState->aliases.push_back(alias);
-	return true;
-}
-
-void CDirectX12ResourceRegistry::UnbindLegacyAliasRaw(
-	const void* pLegacyIdentity,
-	UINT64 value,
-	DirectX12ResourceKind kind)
-{
-	if (m_pState == NULL || pLegacyIdentity == NULL)
-		return;
-	for (size_t iAlias = 0;
-		iAlias < m_pState->aliases.size();
-		++iAlias)
-	{
-		const State::LegacyAlias& alias = m_pState->aliases[iAlias];
-		if (alias.pIdentity == pLegacyIdentity && alias.handle == value
-			&& alias.kind == kind)
-		{
-			m_pState->aliases.erase(
-				m_pState->aliases.begin() + iAlias);
-			return;
-		}
-	}
-}
-
-UINT64 CDirectX12ResourceRegistry::ResolveLegacyAliasRaw(
-	const void* pLegacyIdentity,
-	DirectX12ResourceKind kind) const
-{
-	if (m_pState == NULL || pLegacyIdentity == NULL)
-		return 0;
-	for (size_t iAlias = 0;
-		iAlias < m_pState->aliases.size();
-		++iAlias)
-	{
-		const State::LegacyAlias& alias = m_pState->aliases[iAlias];
-		if (alias.pIdentity == pLegacyIdentity && alias.kind == kind
-			&& ResolveRaw(alias.handle, kind) != NULL)
-			return alias.handle;
-	}
-	return 0;
-}
-
 CDirectX12ResourceRegistry& GetDirectX12ResourceRegistry()
 {
 	// Se mantiene vivo hasta finalizar el proceso para evitar dependencias de
@@ -241,16 +159,11 @@ bool ValidateDirectX12ResourceRegistry()
 	int secondOwner = 2;
 	const DirectX12TextureHandle first =
 		registry.Allocate<DX12_RESOURCE_SAMPLED_TEXTURE>(&firstOwner);
-	if (!first.IsValid() || registry.Resolve(first) != &firstOwner
-		|| !registry.BindLegacyAlias(&firstOwner, first)
-		|| registry.ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(
-			&firstOwner) != first)
+	if (!first.IsValid() || registry.Resolve(first) != &firstOwner)
 		return false;
 
 	registry.Release(first);
-	if (registry.Resolve(first) != NULL
-		|| registry.ResolveLegacyAlias<DX12_RESOURCE_SAMPLED_TEXTURE>(
-			&firstOwner).IsValid())
+	if (registry.Resolve(first) != NULL)
 		return false;
 
 	const DirectX12TextureHandle second =

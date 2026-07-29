@@ -97,15 +97,6 @@ void CDirectX12TextureUploadSource::Clear()
 	m_subresources.clear();
 }
 
-bool CDirectX12TextureUploadSource::PrepareFromLegacyTexture(
-	IDirect3DTexture9* pTexture9)
-{
-	Clear();
-	// Los assets del motor deben entregar su mirror CPU directamente. Leer
-	// una textura D3D9 con LockRect reintroduciria una identidad legacy.
-	return false;
-}
-
 bool CDirectX12TextureUploadSource::PrepareFromRgbaMipChain(
 	const void* pPixels,
 	UINT width,
@@ -239,80 +230,6 @@ bool CDirectX12TextureUploadSource::PrepareFromCompressedBlob(
 	m_format = formatInfo.format;
 	m_componentMapping = formatInfo.componentMapping;
 	RebuildSubresources();
-	return true;
-}
-
-bool CDirectX12TextureUploadSource::PrepareLegacyMip(
-	const D3DSURFACE_DESC& description,
-	const D3DLOCKED_RECT& lockedRect,
-	MipPayload* pMip)
-{
-	if (pMip == NULL || lockedRect.pBits == NULL
-		|| description.Width == 0 || description.Height == 0
-		|| lockedRect.Pitch <= 0)
-		return false;
-
-	DirectX12TextureFormatInfo formatInfo;
-	if (!GetDirectX12TextureFormat(
-		description.Format,
-		&formatInfo))
-		return false;
-
-	if (formatInfo.conversion != DX12_TEXTURE_CONVERSION_NONE)
-	{
-		const size_t rowPitch =
-			static_cast<size_t>(description.Width) * 4U;
-		const size_t slicePitch = rowPitch * description.Height;
-		pMip->bytes.resize(slicePitch);
-		if (!ConvertDirectX12TextureSubresource(
-			formatInfo,
-			lockedRect.pBits,
-			lockedRect.Pitch,
-			description.Width,
-			description.Height,
-			&pMip->bytes[0],
-			static_cast<LONG>(rowPitch)))
-			return false;
-		pMip->rowPitch = static_cast<LONG_PTR>(rowPitch);
-		pMip->slicePitch = static_cast<LONG_PTR>(slicePitch);
-		return true;
-	}
-
-	UINT rowCount = description.Height;
-	UINT rowPitch = 0;
-	if (IsBlockCompressed(description.Format))
-	{
-		rowCount =
-			(std::max)(1U, (description.Height + 3U) / 4U);
-		rowPitch =
-			(std::max)(1U, (description.Width + 3U) / 4U)
-			* GetBlockSize(description.Format);
-	}
-	else
-	{
-		const UINT bytesPerPixel =
-			GetLegacyBytesPerPixel(description.Format);
-		if (bytesPerPixel == 0)
-			return false;
-		rowPitch = description.Width * bytesPerPixel;
-	}
-	if (static_cast<UINT>(lockedRect.Pitch) < rowPitch)
-		return false;
-
-	const size_t slicePitch =
-		static_cast<size_t>(rowPitch) * rowCount;
-	pMip->bytes.resize(slicePitch);
-	const unsigned char* pSource =
-		static_cast<const unsigned char*>(lockedRect.pBits);
-	unsigned char* pDestination = &pMip->bytes[0];
-	for (UINT iRow = 0; iRow < rowCount; ++iRow)
-	{
-		memcpy(pDestination, pSource, rowPitch);
-		pSource += lockedRect.Pitch;
-		pDestination += rowPitch;
-	}
-	pMip->rowPitch = rowPitch;
-	pMip->slicePitch = static_cast<LONG_PTR>(slicePitch);
 	return true;
 }
 

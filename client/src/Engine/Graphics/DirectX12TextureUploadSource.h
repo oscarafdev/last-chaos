@@ -11,11 +11,7 @@
 
 #include <Engine/Graphics/DirectX12UploadManager.h>
 
-struct IDirect3DTexture9;
-
-// Convierte las fuentes de textura del motor en subrecursos listos para DX12.
-// Conserva la ruta D3D9 solamente para assets que todavía no pasan sus datos
-// de CPU directamente al backend.
+// Convierte mirrors CPU de texturas del motor en subrecursos listos para DX12.
 class CDirectX12TextureUploadSource
 {
 public:
@@ -26,7 +22,6 @@ public:
 		const CDirectX12TextureUploadSource& other);
 
 	void Clear();
-	bool PrepareFromLegacyTexture(IDirect3DTexture9* pTexture9);
 	bool PrepareFromRgbaMipChain(
 		const void* pPixels,
 		UINT width,
@@ -62,10 +57,6 @@ private:
 		}
 	};
 
-	bool PrepareLegacyMip(
-		const D3DSURFACE_DESC& description,
-		const D3DLOCKED_RECT& lockedRect,
-		MipPayload* pMip);
 	bool PrepareRgbaMip(
 		const unsigned char* pPixels,
 		UINT width,
